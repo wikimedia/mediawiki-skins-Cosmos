@@ -25,7 +25,7 @@ class SkinCosmos extends SkinTemplate {
 			'width=device-width, initial-scale=1.0, ' .
 			'user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0'
 		);
-
+                $out->addHtmlClasses('skin-cosmos');
 		$out->addModuleStyles( [
 			'mediawiki.skinning.content.externallinks',
 			'skins.cosmos',
@@ -38,6 +38,7 @@ class SkinCosmos extends SkinTemplate {
 		//Load light-mode if user sets that in their preference
         if($skin->getUser()->getOption( 'cosmos-mode') == 'cosmos-lightmode'){
 			$out->addStyle( $this->stylename . '/resources/lightmode.css' );
+			$out->addHtmlClasses('cosmos-lightmode');
         }
 	}
   
