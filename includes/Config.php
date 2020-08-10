@@ -33,7 +33,7 @@ class Config {
 		// Set the options array to the default options upon construction
 		$this->options = self::DEFAULT_CONFIG;
 		
-		$this->options['header-wordmark'] = $wgLogos['wordmark']['src'] ? $wgLogos['wordmark']['src'] : $wgLogo;
+		$this->options['header-wordmark'] = $wgLogos['wordmark']['src'] ? $wgLogos['wordmark']['src'] : $wgLogos['1x'] ? $wgLogos['1x'] : $wgLogo;
 
 		// Loop through the options array and update each entry as necessary
 		foreach ( $this->options as $name => &$value ) {
