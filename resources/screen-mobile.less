@@ -1,0 +1,132 @@
+@import 'variables.less';
+
+// Override default here because mobile narrow
+.cosmos-header__sitename a,
+.cosmos-header__local-navigation,
+#cosmos-banner-bannerLogo,
+#cosmos-search-buttonContainer {
+	display: none;
+}
+
+#cosmos-banner{
+    position: relative;
+}
+/* Page header */
+
+h1.firstHeading {
+	clear: right;
+}
+
+/* Page actions */
+
+#p-namespaces li {
+	margin-right: 1.5em;
+}
+
+.tools-inline li a {
+	.ca-icon-only();
+}
+
+
+/* Full-width thumbnails */
+
+div.thumb {
+	float: none;
+}
+
+.thumb {
+	margin: 1em auto;
+}
+
+.floatright,
+.tright {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.floatleft,
+.tleft {
+	margin-right: 0;
+	padding-right: 0;
+}
+
+.thumbinner {
+	padding: 1em 1.5em;
+	width: 100% !important;
+	box-sizing: border-box;
+}
+
+.thumbimage {
+	display: block;
+	margin: 0 auto 0.5em;
+}
+
+.mw-body {
+	border: 0;
+
+	/* Keep images from overflowing */
+	a > img {
+		height: auto !important;
+		max-width: 100% !important;
+	}
+}
+
+#mw-content {
+	padding: 0.45em;
+	border-width: 0;
+}
+
+#mw-content-block {
+	background: #000;
+}
+
+/* Table of contents */
+.toc,
+.mw-warning {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+/* Misc */
+
+.nomobile {
+	display: none;
+}
+/*Mobile menu*/
+.wds-tabs__tab{
+    background-color: #999;
+    display:none;
+}
+.wds-tabs{
+    display:block;
+    position:absolute !important;
+    margin-top:auto;
+    margin-bottom:5px;
+    z-index: 999999999999;
+}
+.wds-tabs__tab .wds-dropdown__content, .wds-dropdown-level-2__content{
+    display:block !important;
+    position:relative !important;
+    background-color: transparent !important;
+    border:none !important;
+}
+.wds-dropdown__content .wds-list.wds-is-linked .wds-dropdown-level-2 .wds-dropdown-level-2__content{
+     left: 0 !important;
+}
+.wds-dropdown:not(.wds-is-touch-device):not(.wds-is-not-hoverable):hover:not(.wds-no-chevron)::before,.wds-dropdown:not(.wds-is-touch-device):not(.wds-is-not-hoverable):hover:not(.wds-no-chevron)::after,.wds-dropdown__toggle-chevron,.wds-dropdown-chevron{
+   display:none;
+}
+.wds-tabs__tab-label span{
+  color:#000; 
+  font-size:12pt; 
+  font-weight:bolder;
+}
+#cosmos-banner-search {
+    padding-left: 20px;
+}
+.cosmos-mobile-navigation{
+    display: block;
+}
+.wds-dropdown__content .wds-list.wds-is-linked > li:hover > a:not(.wds-button) {
+    color: #088488;
+}

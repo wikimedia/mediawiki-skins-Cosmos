@@ -1,0 +1,91 @@
+@import 'variables.less';
+
+// Single-column layout with dropdown menus
+
+#mw-content-block {
+	padding: 0;
+	position: relative;
+	// In case of high resolution usage
+	max-width: 87em;
+}
+
+.ts-inner {
+	max-width: 87em;
+}
+
+#mw-content {
+	border-width: 0 0 1px;
+	clear: both;
+}
+
+#mw-content-container {
+	padding-bottom: 0;
+}
+
+
+// Header navigation
+
+.sidebar-chunk {
+	display: inline-block;
+	position: relative;
+
+	h2 {
+		display: inline-block;
+	}
+}
+
+// Have these cover the fixed header color-bar using the mw-header-nav-hack (with its own color-bar at the bottom)
+#mw-site-navigation{
+	display: inline-block;
+	position: relative;
+	z-index: 99;
+
+	h2 {
+		font-weight: normal;
+		font-family:  Rubik;
+		font-size: 1.25em;
+		padding: 0.5em 0 0.2em;
+		margin: 0;
+
+		.dropdown-header();
+	}
+}
+
+.client-nojs .sidebar-chunk:hover {
+	.sidebar-inner {
+		display: block !important;
+	}
+}
+
+
+#mw-site-navigation {
+	position: absolute;
+	top: -2.35em;
+	left: 2em;
+
+	.sidebar-chunk {
+		margin: 0 1em 0 0;
+	}
+
+	.sidebar-inner {
+		.dropdown-menu( left );
+	}
+}
+
+#mw-site-navigation .sidebar-chunk h2 span {
+	.dropdown-pokey();
+
+	&:before,
+	&:after {
+		right: 1px;
+		display: none;
+	}
+
+	&:before {
+		top: 34px;
+	}
+
+	&:after {
+		top: 36px;
+	}
+}
