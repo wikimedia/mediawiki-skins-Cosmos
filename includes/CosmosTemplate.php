@@ -777,7 +777,7 @@ class CosmosTemplate extends BaseTemplate {
 					// clicking the button while editing it doesn't use the redlink URL
 					// that would take the user straight back to edit page
 					if ( !empty( $title ) ) {
-						$view['href'] = $title->getLinkURL();
+					      $view['href'] = str_replace("Special:MovePage/", "", $title->getLinkURL());
 					}
 					$primary = $view;
 				}
