@@ -182,7 +182,7 @@ class CosmosNavigation {
 					$menu .= ' wds-dropdown__toggle';
 				}
 				$menu .= '">';
-				$menu .= '<a href="'.(!empty($nodes[$val]['href']) ? htmlspecialchars($nodes[$val]['href']) : '#').'"';
+				$menu .= '<a href="'.(!empty($nodes[$val]['href']) && $nodes[$val]['text'] !== 'Navigation' ? htmlspecialchars($nodes[$val]['href']) : '#').'"';
 				if ( !isset($nodes[$val]['internal']) || !$nodes[$val]['internal'] )
 					$menu .= ' rel="nofollow"';
 				$menu .= ' tabIndex=3><span>'.htmlspecialchars($nodes[$val]['text']) . '</span>';
@@ -279,6 +279,8 @@ class CosmosNavigation {
 					if($node['depth'] == 1) {
 						$nodes[0]['editthispage'] = true; // we have to know later if there is editthispage special word used in first level
 					}
+				} else if(!empty( $node['original'] ) && ($node['original'] == 'SEARCH' || $node['original'] == 'TOOLBOX' || $node['original'] == 'LANGUAGES')) {
+				   	continue;
 				} else if(!empty( $node['original'] ) && $node['original']{0} == '#') {
 					if($this->handleMagicWord($node)) {
 						$nodes[0]['magicWords'][] = $node['magic'];
