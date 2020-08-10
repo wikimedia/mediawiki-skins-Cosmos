@@ -20,7 +20,7 @@ body .oo-ui-buttonElement-framed:not(.oo-ui-flaggedElement-primary):not(.oo-ui-b
     background-image: none;
     padding-left: 0;
 }
-a {
+body a, body a:hover, body a:focus {
     text-decoration: none;
 }
 #mw-content{
@@ -3801,7 +3801,7 @@ button.wds-button {
 		cursor: pointer;
 	}
 }
-pre {
+body pre {
 	background-color: #3a3939;
 	color: #fff;
 	border: 1px solid #6c6b6b;
@@ -3809,6 +3809,11 @@ pre {
 	overflow: auto;
 	padding: 12px;
 	word-break: break-all;
+}
+body code {
+    background-color: #3a3939;
+    color: #fff;
+    border: 1px solid #6c6b6b;
 }
 .codeEditor-status-worker {
 	color: #000;
@@ -4038,9 +4043,6 @@ h6 {
     padding-top: 1em;
     border: 1px solid #333;
 }
-#mw-related-navigation {
-	color: #fff;
-}
 .oo-ui-fieldLayout-header {
 	color: #fff;
 }
@@ -4240,8 +4242,18 @@ ul#filetoc {
 		}
 	}
 }
-#mw-content-text{
-    word-break: break-word;
+#mw-content-text {
+    overflow-wrap: break-word;
+}
+body .wikitable > tr > th,
+body .wikitable > tr > td, 
+body .wikitable > * > tr > th, 
+body .wikitable > * > tr > td {
+    background-color: #000;
+    color: #fff;
+}
+body h1, body h2, body h3, body h4, body h5, body h6 {
+    color: #fff;
 }
 #cosmos-toolbox {
 	box-shadow: 0 0 10px 0 #000;
