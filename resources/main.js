@@ -1,5 +1,30 @@
-(function() {
-    $('.create-page-dialog__wrapper #create-page-dialog__title').keyup(function() {
+( function( $, mw ) {
+
+	// Naming conventions for variables:
+	//
+	// - Uppercase with underscores for constants
+	// - Lowercase camelCase for normal variables
+	// - Prefix with '$' if the variable/constant will store jQuery objects
+
+		/* CONSTANTS */
+
+	/**
+	 * Various time units expressed as quantities of seconds
+	 */
+	const SECS = 1;
+	const MINS = 60 * SECS;
+	const HOURS = 60 * MINS;
+	const DAYS = 24 * HOURS;
+
+	/**
+	 * The expiry time for cookies relating to the site notice,
+	 * respectively
+	 */
+	const SITE_NOTICE_EXPIRY_TIME = 7 * DAYS;
+
+		/* FUNCTIONS */
+
+   $('.create-page-dialog__wrapper #create-page-dialog__title').keyup(function() {
 
         var empty = false;
         $('.create-page-dialog__wrapper #create-page-dialog__title').each(function() {
@@ -14,7 +39,7 @@
             $('.create-page-dialog__button').removeAttr('disabled');
         }
     });
-})()
+
 var modal = document.getElementById("createPageModal");
 var btn = document.getElementById("createpage");
 var span = document.getElementsByClassName("close")[0];
@@ -28,8 +53,7 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}     
- $.when(mw.loader.using(["mediawiki.api"])).then(function () {
+};     
 var Proposalsparams = {
 		action: 'query',
 		list: 'querypage',
@@ -134,46 +158,7 @@ $.urlParam = function (name) {
     }
     return arrReturnElements;
   };
-});
-( function( $, mw ) {
 
-	// Naming conventions for variables:
-	//
-	// - Uppercase with underscores for constants
-	// - Lowercase camelCase for normal variables
-	// - Prefix with '$' if the variable/constant will store jQuery objects
-
-		/* CONSTANTS */
-
-	/**
-	 * Various time units expressed as quantities of seconds
-	 */
-	const SECS = 1;
-	const MINS = 60 * SECS;
-	const HOURS = 60 * MINS;
-	const DAYS = 24 * HOURS;
-
-	/**
-	 * The expiry time for cookies relating to the site notice,
-	 * respectively
-	 */
-	const SITE_NOTICE_EXPIRY_TIME = 7 * DAYS;
-
-	/**
-	 * The default minimum number of headings that should be included in the page
-	 * contents module, if the server fails to supply a number via a HTML5 data
-	 * attribute
-	 */
-	const DEFAULT_PAGE_CONTENTS_MIN_HEADINGS = 3;
-
-		/* FUNCTIONS */
-
-
-
-	
-	
-
-	
 	/**
 	 * Closes the site notice
 	 */
@@ -186,10 +171,5 @@ $.urlParam = function (name) {
 	$( document ).ready( function () {
 		$( '#cosmos-siteNotice-closeButton' ).click( closeSiteNotice );
 	} );
-
-   
-   function mobilemenu(){
-       
-    }
     
 } )( jQuery, mediaWiki );
