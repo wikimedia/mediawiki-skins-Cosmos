@@ -8,7 +8,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.34.0"
+		"MediaWiki": ">= 1.35.0"
 	},
 	"ValidSkinNames": {
 		"cosmos": "Cosmos"
@@ -20,6 +20,8 @@
 	},
 	"ResourceModules": {
 		"skins.cosmos": {
+		    "class": "ResourceLoaderSkinModule",
+		    "features": [ "normalize", "elements", "content", "interface", "legacy" ],
 			"targets": [
 				"desktop",
 				"mobile"
@@ -60,7 +62,8 @@
 				"resources/main.js"
 			],
 			"dependencies": [
-				"mediawiki.cookie"
+				"mediawiki.cookie",
+				"mediawiki.api"
 			]
 		},
 		"skins.cosmos.mobile": {
