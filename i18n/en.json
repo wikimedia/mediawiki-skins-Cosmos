@@ -43,6 +43,7 @@
 	"cosmos-mode-preference": "Choose the color scheme you would like to use for the Cosmos skin",
 	"cosmos-darkmode-preference": "Dark mode (recommended)",
 	"cosmos-lightmode-preference": "Light mode (beta)",
+	"cosmos-user-blocked": "Blocked",
 	"cosmos.css": "/* All CSS here will be loaded for users of the Cosmos skin */",
 	"cosmos.js": "/* All JavaScript here will be loaded for users of the Cosmos skin */"
 }
