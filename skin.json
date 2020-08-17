@@ -1,0 +1,189 @@
+{
+	"name": "Cosmos",
+	"version": "1.0.0",
+	"author": "Created by Universal Omega<br />Uses code by Isarra Yos, Daniel Beard, Jack Phoenix, Inez Korczynski, and Christian Williams",
+	"url": "https://github.com/Universal-Omega/MediaWiki-Cosmos-skin",
+	"descriptionmsg": "cosmos-desc",
+	"namemsg": "skinname-cosmos",
+	"license-name": "GPL-2.0-or-later",
+	"type": "skin",
+	"requires": {
+		"MediaWiki": ">= 1.35.0"
+	},
+	"ValidSkinNames": {
+		"cosmos": "Cosmos"
+	},
+	"MessagesDirs": {
+		"Cosmos": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"skins.cosmos": {
+		    "class": "ResourceLoaderSkinModule",
+		    "features": [ "legacy" ],
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+				"resources/libraries/normalise.css": {
+					"media": "screen"
+				},
+				"resources/forms.less": {
+					"media": "screen"
+				},
+				"resources/screen-common.less": {
+					"media": "screen"
+				},
+				"resources/screen-desktop.less": {
+					"media": "screen and (min-width: 851px)"
+				},
+				"resources/screen-desktop-full.less": {
+					"media": "screen and (min-width: 1340px)"
+				},
+				"resources/screen-desktop-mid.less": {
+					"media": "screen and (min-width: 1100px) and (max-width: 1339px)"
+				},
+				"resources/screen-desktop-small.less": {
+					"media": "screen and (min-width: 851px) and (max-width: 1099px)"
+				},
+				"resources/screen-mobile.less": {
+					"media": "screen and (max-width: 850px)"
+				},
+				"0": "resources/screen-misc.less"
+			}
+		},
+		"skins.cosmos.socialprofile": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profile-common.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.profiletabs": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profiletabs.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.profileavatar": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profileavatar.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.profileeditcount": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profileeditcount.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.profiletags": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profiletags.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.profilebio": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profilebio.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.lightmode": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/lightmode.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.js": {
+			"targets": [
+				"desktop"
+			],
+			"scripts": [
+				"resources/main.js"
+			],
+			"dependencies": [
+				"mediawiki.cookie"
+			]
+		},
+		"skins.cosmos.mobile": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"scripts": [
+				"resources/mobile.js"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteSkinPath": "Cosmos"
+	},
+	"ResourceModuleSkinStyles": {
+		"cosmos": {
+			"+oojs-ui-core.styles": "resources/ooui.less",
+			"+ext.echo.styles.badge": "resources/extensions/Echo.less",
+			"+ext.eventLogging.jsonSchema.styles": "resources/extensions/EventLogging.jsonSchema.less",
+			"+ext.visualEditor.core": "resources/extensions/VisualEditor.core.less",
+			"+ext.visualEditor.desktopArticleTarget.noscript": "resources/extensions/VisualEditor.article.less",
+			"+ext.CodeMirror.visualEditor.init": "resources/extensions/VisualEditor.CodeMirror.less",
+			"+ext.dismissableSiteNotice.styles": "resources/extensions/DismissableSiteNotice.less",
+			"+ext.MWOAuth.AuthorizeForm": "resources/extensions/MWOAuth.AuthorizeForm.less",
+			"+ext.wikiLove.icon": "resources/extensions/WikiLove.icon.less",
+			"+ext.proofreadpage.page.navigation": "resources/extensions/Proofreadpage.page.navigation.less"
+		}
+	},
+	"AutoloadClasses": {
+		"SkinCosmos": "includes/SkinCosmos.php",
+		"CosmosTemplate": "includes/CosmosTemplate.php",
+		"CosmosNavigation": "includes/CosmosNavigation.php",
+		"CosmosHooks": "includes/CosmosHooks.php",
+		"Cosmos\\Icon": "includes/Icon.php",
+		"Cosmos\\Config": "includes/Config.php",
+		"CosmosSocialProfile": "includes/CosmosSocialProfile.php"
+	},
+	"Hooks": {
+        "GetPreferences": [ "CosmosHooks::onGetPreferences" ]
+    },
+    "DefaultUserOptions": {
+		"cosmos-mode": "cosmos-darkmode"
+	},
+	"manifest_version": 2
+}
