@@ -15,7 +15,7 @@ class Config {
 		'allow-bio' => true,
 		'profile-tags' => true,
 		'social-avatar' => true,
-		'group-tags' => array('bureaucrat', 'sysop', 'bot', 'interface-admin', 'suppressor'),
+		'group-tags' => array('bureaucrat', 'bot', 'sysop', 'interface-admin', 'suppressor'),
 		'number-of-tags' => 2,
 	];
 
