@@ -4,13 +4,8 @@ class CosmosSocialProfile {
 
 	static function getUser( $parser, $user ) {
 		$title = Title::newFromText( $user );
-		$CosmosTemplate = new CosmosTemplate;
-		$skin = $CosmosTemplate->getSkin();
 		if ( is_object( $title ) && ($title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE) && !$title->isSubpage()) $user = $title->getText();
-		$user = User::newFromName( $user );
-		if ( !$user ) {
-			$user = $skin->getUser();
-		}
+		$user = User::newFromName( $user, $validate = false );
 		return $user;
 	}
 
