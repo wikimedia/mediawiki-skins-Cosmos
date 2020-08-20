@@ -658,12 +658,11 @@ class CosmosTemplate extends BaseTemplate {
 				$this->get( 'undelete' ) );
 		}
 		// If it exists, display the site notice at the top of the article
-		// Get cookie prefix
-	    global $wgCookiePrefix;
+	        $request = new WebRequest;
 	    // Check for dissmissable site notice extension
 	    if ( ExtensionRegistry::getInstance()->isLoaded( 'DismissableSiteNotice' ) ) {
 	        $html .=  $this->get( 'sitenotice' ) ;
-	        }elseif ( !empty( $this->data['sitenotice'] ) && (!isset($_COOKIE[$wgCookiePrefix . "CosmosSiteNoticeState"]) || $_COOKIE[$wgCookiePrefix . "CosmosSiteNoticeState"] != 'closed') ) {
+	        }elseif ( !empty( $this->data['sitenotice'] ) && (!$request->getCookie("CosmosSiteNoticeState") || $request->getCookie("CosmosSiteNoticeState") !== 'closed') ) {
 			$html .= Html::openElement( 'div', [
 				'id' => 'cosmos-content-siteNotice',
 				'data-site-notice-hash' => hash( 'crc32b', $this->get( 'sitenotice' ) )
