@@ -8,21 +8,45 @@ class Config {
 		'banner-logo' => null,
 		'header-wordmark' => null,
 		'header-background' => null,
-		'header-background-color' => null
+		'header-background-color' => null,
+		'modern-tabs' => true,
+		'round-avatar' => true,
+		'show-editcount' => true,
+		'allow-bio' => true,
+		'profile-tags' => true,
+		'social-avatar' => true,
+		'group-tags' => array('bureaucrat', 'bot', 'sysop', 'interface-admin', 'suppressor'),
+		'number-of-tags' => 2,
 	];
 
 	private const CONFIG_TYPES = [
 		'banner-logo' => 'string',
 		'header-wordmark' => 'string',
 		'header-background' => 'string',
-		'header-background-color' => 'string'
+		'header-background-color' => 'string',
+		'modern-tabs' => 'boolean',
+		'round-avatar' => 'boolean',
+		'show-editcount' => 'boolean',
+		'allow-bio' => 'boolean',
+		'profile-tags' => 'boolean',
+		'social-avatar' => 'boolean',
+		'group-tags' => 'array',
+		'number-of-tags' => 'integer',
 	];
 
 	private const CONFIG_NAMES = [
 		'banner-logo' => 'wgCosmosBannerLogo',
 		'header-wordmark' => 'wgCosmosWikiHeaderWordmark',
 		'header-background' => 'wgCosmosWikiHeaderBackgroundImage',
-		'header-background-color' => 'wgCosmosWikiHeaderBackgroundColor'
+		'header-background-color' => 'wgCosmosWikiHeaderBackgroundColor',
+		'modern-tabs' => 'wgCosmosSocialProfileModernTabs',
+		'round-avatar' => 'wgCosmosSocialProfileRoundAvatar',
+		'show-editcount' => 'wgCosmosSocialProfileShowEditCount',
+		'allow-bio' => 'wgCosmosSocialProfileAllowBio',
+		'profile-tags' => 'wgCosmosSocialProfileShowGroupTags',
+		'social-avatar' => 'wgCosmosUseSocialProfileAvatar',
+		'group-tags' => 'wgCosmosProfileTagGroups',
+		'number-of-tags' => 'wgCosmosNumberofGroupTags',
 	];
 
 	private $options;

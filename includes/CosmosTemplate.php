@@ -35,9 +35,19 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
-
-		$this->getTrail();
-		echo $html;
+		$title = Title::newFromText( $this->get( 'title' ) );
+		if(class_exists('UserProfilePage') && ($config->isEnabled('profile-tags') || $config->isEnabled('show-editcount') || $config->isEnabled('allow-bio')) && (is_object( $title ) && ($title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE) && !$title->isSubpage())) {
+		    //Set up Cosmos-specific SocialProfile Elements
+		    $profileOwner = Title::newFromText($this->get( 'title' ))->getText();
+		    $parser = MediaWikiServices::getInstance()->getParser();
+		    $replace  = array('<div id="profile-title">' . $profileOwner . '</div>', '<div id="profile-title-container">');
+		    $Replacewith = array('<h1 itemprop="name">' . $profileOwner . '</h1>' . ($config->isEnabled('profile-tags') ? CosmosSocialProfile::usergroups($parser, $profileOwner) : '') . ($config->isEnabled('show-editcount') ? '<br/> <div class="contributions-details tally"><a href="' . htmlspecialchars( Title::newFromText("Contributions/$profileOwner", NS_SPECIAL)->getFullURL()) . '"><em>' . CosmosSocialProfile::useredits($parser, $profileOwner) . '</em><span>Edits since joining this wiki<br>' . CosmosSocialProfile::userregistration($parser, $profileOwner) . '</span></a></div>' : '' ) . ($config->isEnabled('allow-bio') ? CosmosSocialProfile::userbio($parser, $profileOwner) : '' ), '<div class="hgroup">');
+	        echo str_replace($replace, $Replacewith, $html);
+	       
+	   }else{
+	        echo $html;
+	   }
+	    
 	}
 	  public static function extractAndUpdate( array &$data,
 			Config $config, \Skin $skin ) : void {
@@ -82,7 +92,12 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::rawElement( 'div', ['id' => 'create-page-dialog__message' ],  $skin->msg( 'cosmos-createpage-dialoge-text', SiteStats::pagesInNs(0),  $this->get( 'sitename' ) ));
 		$html .= Html::openElement( 'div', [ 'class' => 'create-page-dialog__proposals' ]);
-     	$html .= Html::rawElement( 'ul', ['class' => 'articleProposals' ], '' );
+     	$html .= Html::openElement( 'ul', ['class' => 'articleProposals' ]);
+     	//Get most wanted pages
+        foreach ( self::getMostWantedPages() as $page ){
+            $html .= '<li><a href="' . $page['url'] . '" class="new">' . $page['title'] . '</a></li>';
+        }
+		$html .= Html::closeElement( 'ul' );
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'br');
@@ -97,6 +112,47 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'form' );
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
+	}
+		protected static function getMostWantedPages() {
+	    	$WantedPagesPageResponse = ( new WantedPagesPage() )->doQuery();
+	    	$dbr = wfGetDB( DB_REPLICA );
+	    	$wantedPages = [];
+	    	$fetchedTitlesCount = 0;
+
+		while ( $row = $dbr->fetchObject( $WantedPagesPageResponse ) ) {
+			if ( $row->title &&
+				in_array( $row->namespace, [ NS_MAIN ] ) &&
+				$fetchedTitlesCount < 6
+			) {
+				$wantedPageTitle = Title::newFromText( $row->title, $row->namespace );
+
+				if ( $wantedPageTitle instanceof Title &&
+				     !$wantedPageTitle->isKnown() &&
+					(
+						empty( '/[:\/]+/' ) ||
+						!preg_match( '/[:\/]+/', $wantedPageTitle->getText() )
+					)
+				) {
+					$wantedPages[] = [
+						'title' => $wantedPageTitle->getFullText(),
+						'url' => $wantedPageTitle->getLocalURL(
+							[
+								static::getPreferredEditorQueryParamName() => 'edit',
+								'source' => 'redlink',
+							]
+						),
+					];
+					$fetchedTitlesCount++;
+				}
+			}
+		}
+
+		return $wantedPages;
+	}
+
+	protected static function getPreferredEditorQueryParamName() {
+	    // todo, add veaction if visualeditor is the users defualt preference
+	    return 'action';
 	}
 		protected function buildMobileNavigation( string &$html, Config $config ) : void {
 		    global $wgManageWikiForceSidebarLinks, $wgManageWikiSidebarLinks, $wgManageWiki;
@@ -179,7 +235,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-personalTools-userButton',
 			'class' => 'cosmos-dropdown-button cosmos-bannerOption-button' ] );
 
-		if ( class_exists( 'wAvatar' ) ) {
+		if ( class_exists( 'wAvatar' ) && $config->isEnabled( 'social-avatar' ) ) {
 			$avatar = new wAvatar( $skin->getUser()->getId(), 'm' );
 			$avatarElement = $avatar->getAvatarURL();
 		} else {
@@ -206,7 +262,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		foreach ( $this->data['personal_urls'] as $key => $item ) {
 			switch ( $key ) {
-				case 'userpage':
+			    case 'userpage':
 					$item['text'] = $skin->msg( 'cosmos-personaltools-userpage' )->escaped();
 					break;
 				case 'mytalk':
@@ -555,13 +611,10 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'section', [ 'id' => 'mw-content' ] );
 		// Build the header
 		$this->buildHeader( $html, $config );
-
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-articleContainer' ] );
-
 		// Build the article content
 		$this->buildArticle( $html, $config );
 		
-		$html .= $this->getClear();
 
 		$html .= Html::closeElement( 'div' );
 
@@ -570,7 +623,7 @@ class CosmosTemplate extends BaseTemplate {
 		
 		$this->buildFooter( $html, $config );
 		$this->buildToolbox( $html, $config );
-
+		
 
 		// Close container element for page
 	}
@@ -579,7 +632,10 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'header', [ 'id' => 'cosmos-page-header' ] );
 
 		// Build article header
-		$this->buildArticleHeader( $html, $config );
+		$title = Title::newFromText( $this->get( 'title' ) );
+		    if($title->getNamespace() !== NS_USER_PROFILE){
+		        $this->buildArticleHeader( $html, $config );
+		  }
 
 		// Close container element
 		$html .= Html::closeElement( 'header' );
@@ -601,14 +657,13 @@ class CosmosTemplate extends BaseTemplate {
 				[ 'id' => 'cosmos-pageContent-undelete' ],
 				$this->get( 'undelete' ) );
 		}
-
 		// If it exists, display the site notice at the top of the article
-		// Get cookie prefix
-	    global $wgCookiePrefix;
 	    // Check for dissmissable site notice extension
+	    $request = new WebRequest;
+
 	    if ( ExtensionRegistry::getInstance()->isLoaded( 'DismissableSiteNotice' ) ) {
 	        $html .=  $this->get( 'sitenotice' ) ;
-	        }elseif ( !empty( $this->data['sitenotice'] ) && (!isset($_COOKIE[$wgCookiePrefix . "CosmosSiteNoticeState"]) || $_COOKIE[$wgCookiePrefix . "CosmosSiteNoticeState"] != 'closed') ) {
+	        } elseif ( !empty( $this->data['sitenotice'] ) && (!$request->getCookie("CosmosSiteNoticeState") || $request->getCookie("CosmosSiteNoticeState") !== 'closed')) {
 			$html .= Html::openElement( 'div', [
 				'id' => 'cosmos-content-siteNotice',
 				'data-site-notice-hash' => hash( 'crc32b', $this->get( 'sitenotice' ) )
@@ -626,9 +681,8 @@ class CosmosTemplate extends BaseTemplate {
 
 			$html .= Html::closeElement( 'div' );
     }
-		// Insert the content of the article itself
 		$html .= $this->get( 'bodytext' );
-
+		
 		// If appropriate, insert the category links at the bottom of the page
 		if ( !empty( $this->data['catlinks'] ) ) {
 			$html .= Html::rawElement( 'span', [
@@ -662,7 +716,7 @@ class CosmosTemplate extends BaseTemplate {
 		}
 	protected function buildActionButtons( string &$html, Config $config ) : void {
 		$skin = $this->getSkin();
-		$title = $skin->getTitle();
+		$title = $skin->getRelevantTitle();
 		$talkTitle = empty( $title ) ? null : $title->getTalkPageIfDefined();
 		$isEditing = false;
 		$isViewSource = false;
@@ -777,7 +831,7 @@ class CosmosTemplate extends BaseTemplate {
 					// clicking the button while editing it doesn't use the redlink URL
 					// that would take the user straight back to edit page
 					if ( !empty( $title ) ) {
-					      $view['href'] = str_replace("Special:MovePage/", "", $title->getLinkURL());
+					      $view['href'] = $title->getLinkURL();
 					}
 					$primary = $view;
 				}

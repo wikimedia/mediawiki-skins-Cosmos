@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "1.0.0",
+	"version": "1.7.3",
 	"author": "Created by Universal Omega<br />Uses code by Isarra Yos, Daniel Beard, Jack Phoenix, Inez Korczynski, and Christian Williams",
 	"url": "https://github.com/Universal-Omega/MediaWiki-Cosmos-skin",
 	"descriptionmsg": "cosmos-desc",
@@ -21,7 +21,7 @@
 	"ResourceModules": {
 		"skins.cosmos": {
 		    "class": "ResourceLoaderSkinModule",
-		    "features": [ "normalize", "elements", "content", "interface", "legacy" ],
+		    "features": [ "legacy" ],
 			"targets": [
 				"desktop",
 				"mobile"
@@ -54,6 +54,83 @@
 				"0": "resources/screen-misc.less"
 			}
 		},
+		"skins.cosmos.socialprofile": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profile-common.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.profiletabs": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profiletabs.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.profileavatar": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profileavatar.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.profileeditcount": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profileeditcount.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.profiletags": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profiletags.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.profilebio": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profilebio.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.lightmode": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/lightmode.less": {
+			         "media": "screen"
+			    }
+			}
+		},
 		"skins.cosmos.js": {
 			"targets": [
 				"desktop"
@@ -62,8 +139,7 @@
 				"resources/main.js"
 			],
 			"dependencies": [
-				"mediawiki.cookie",
-				"mediawiki.api"
+				"mediawiki.cookie"
 			]
 		},
 		"skins.cosmos.mobile": {
@@ -100,7 +176,8 @@
 		"CosmosNavigation": "includes/CosmosNavigation.php",
 		"CosmosHooks": "includes/CosmosHooks.php",
 		"Cosmos\\Icon": "includes/Icon.php",
-		"Cosmos\\Config": "includes/Config.php"
+		"Cosmos\\Config": "includes/Config.php",
+		"CosmosSocialProfile": "includes/CosmosSocialProfile.php"
 	},
 	"Hooks": {
         "GetPreferences": [ "CosmosHooks::onGetPreferences" ]

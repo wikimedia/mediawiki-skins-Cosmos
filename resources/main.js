@@ -22,6 +22,13 @@
 	 */
 	const SITE_NOTICE_EXPIRY_TIME = 7 * DAYS;
 
+	/**
+	 * The default minimum number of headings that should be included in the page
+	 * contents module, if the server fails to supply a number via a HTML5 data
+	 * attribute
+	 */
+	const DEFAULT_PAGE_CONTENTS_MIN_HEADINGS = 3;
+
 		/* FUNCTIONS */
 
    $('.create-page-dialog__wrapper #create-page-dialog__title').keyup(function() {
@@ -34,9 +41,9 @@
         });
 
         if (empty) {
-            $('.create-page-dialog__button').attr('disabled', 'disabled');
+            $('.create-page-dialog__button').prop('disabled', true);
         } else {
-            $('.create-page-dialog__button').removeAttr('disabled');
+            $('.create-page-dialog__button').prop('disabled', false);
         }
     });
 
@@ -54,22 +61,6 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 };     
-var Proposalsparams = {
-		action: 'query',
-		list: 'querypage',
-		qppage: 'Wantedpages',
-		qplimit: '6',
-		format: 'json'
-	},
-	ProposalsAPI = new mw.Api();
-
-ProposalsAPI.get( Proposalsparams ).done( function ( data ) {
-	var querypage = data.query.querypage.results,
-		p;
-	for ( p in querypage ) {
-	     $('.articleProposals').append('<li> <a class="new" href="' + mw.config.get("wgScriptPath") + '/index.php?title=' + querypage[ p ].title + '&action=edit&redlink=1">' + querypage[ p ].title + '</a></li>' );
-	 }
-});
 mw.hook( 've.activationComplete' ).add( function () {
     $('.ve-activated .firstHeading').html($('title').html().replace(' - ' + mw.config.get("wgSiteName"), ''));
  var surface = ve.init.target.getSurface();
@@ -159,6 +150,10 @@ $.urlParam = function (name) {
     return arrReturnElements;
   };
 
+	
+	
+
+	
 	/**
 	 * Closes the site notice
 	 */
