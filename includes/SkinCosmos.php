@@ -82,14 +82,5 @@ class SkinCosmos extends SkinTemplate {
 			'skins.cosmos.lightmode',
 		] );
     }
-}
-  
-	/**
-	 * Add CSS via ResourceLoader
-	 *
-	 * @param OutputPage $out
-	 */
-	public function setupSkinUserCss( OutputPage $out ) {
-		parent::setupSkinUserCss( $out );
-	}
+  }
 }

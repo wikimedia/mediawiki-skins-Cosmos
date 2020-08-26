@@ -5,21 +5,23 @@ class CosmosSocialProfile {
 	static function getUser( $parser, $user ) {
 		$title = Title::newFromText( $user );
 		if ( is_object( $title ) && ($title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE) && !$title->isSubpage()) $user = $title->getText();
-		$user = User::newFromName( $user, $validate = false );
+		$user = User::newFromName($user);
 		return $user;
 	}
 
 	static function userregistration( $parser, $user ) {
 		$user = self::getUser( $parser, $user );
-		return date('F j, Y', strtotime($user->getRegistration()));
+		if($user){
+		    return date('F j, Y', strtotime($user->getRegistration()));
+		}
 	}
 
 	static function usergroups( $parser, $user ) {
 	    $config = new Config();
 		$user = self::getUser( $parser, $user );
-		if($user->isBlocked()){
+		if($user && $user->isBlocked()){
 		    $usertags = Html::rawElement( 'span', ['class' => 'tag tag-blocked' ], wfMessage('cosmos-user-blocked'));
-		} else {
+		} elseif($user){
 		    foreach ( $config->getArray('group-tags') as $key => $value ) {
 		       if(in_array($value, $user->getGroups())){
 		        $number_of_tags++;
@@ -34,9 +36,13 @@ class CosmosSocialProfile {
 
 	static function useredits( $parser, $user ) {
 		$user = self::getUser( $parser, $user );
-		return $user->getEditCount();
+		if($user){
+		    return $user->getEditCount();
+		}
 	}
 	static function userbio( $parser, $user ) {
-	    return '<p class="bio">' . $parser->recursiveTagParse( '{{:User:' . $user . '/bio}}') . '</p>';
+	    if($user){
+	        return '<p class="bio">' . $parser->recursiveTagParse( '{{:User:' . $user . '/bio}}') . '</p>';
+	    }
 	}
 }

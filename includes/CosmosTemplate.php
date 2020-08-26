@@ -93,7 +93,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::rawElement( 'div', ['id' => 'create-page-dialog__message' ],  $skin->msg( 'cosmos-createpage-dialoge-text', SiteStats::pagesInNs(0),  $this->get( 'sitename' ) ));
 		$html .= Html::openElement( 'div', [ 'class' => 'create-page-dialog__proposals' ]);
      	$html .= Html::openElement( 'ul', ['class' => 'articleProposals' ]);
-     	//Get top 6 wanted pages
+     	//Get most wanted pages
         foreach ( self::getMostWantedPages() as $page ){
             $html .= '<li><a href="' . $page['url'] . '" class="new">' . $page['title'] . '</a></li>';
         }
@@ -658,11 +658,12 @@ class CosmosTemplate extends BaseTemplate {
 				$this->get( 'undelete' ) );
 		}
 		// If it exists, display the site notice at the top of the article
-	        $request = new WebRequest;
 	    // Check for dissmissable site notice extension
+	    $request = new WebRequest;
+
 	    if ( ExtensionRegistry::getInstance()->isLoaded( 'DismissableSiteNotice' ) ) {
 	        $html .=  $this->get( 'sitenotice' ) ;
-	        }elseif ( !empty( $this->data['sitenotice'] ) && (!$request->getCookie("CosmosSiteNoticeState") || $request->getCookie("CosmosSiteNoticeState") !== 'closed') ) {
+	        } elseif ( !empty( $this->data['sitenotice'] ) && (!$request->getCookie("CosmosSiteNoticeState") || $request->getCookie("CosmosSiteNoticeState") !== 'closed')) {
 			$html .= Html::openElement( 'div', [
 				'id' => 'cosmos-content-siteNotice',
 				'data-site-notice-hash' => hash( 'crc32b', $this->get( 'sitenotice' ) )
@@ -715,7 +716,7 @@ class CosmosTemplate extends BaseTemplate {
 		}
 	protected function buildActionButtons( string &$html, Config $config ) : void {
 		$skin = $this->getSkin();
-		$title = $skin->getTitle();
+		$title = $skin->getRelevantTitle();
 		$talkTitle = empty( $title ) ? null : $title->getTalkPageIfDefined();
 		$isEditing = false;
 		$isViewSource = false;
@@ -830,7 +831,7 @@ class CosmosTemplate extends BaseTemplate {
 					// clicking the button while editing it doesn't use the redlink URL
 					// that would take the user straight back to edit page
 					if ( !empty( $title ) ) {
-					      $view['href'] = str_replace("Special:MovePage/", "", $title->getLinkURL());
+					      $view['href'] = $title->getLinkURL();
 					}
 					$primary = $view;
 				}
