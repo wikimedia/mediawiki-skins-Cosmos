@@ -634,7 +634,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		// Build article header
 		$title = Title::newFromText( $this->get( 'title' ) );
-		    if($title->getNamespace() !== NS_USER_PROFILE){
+		    if($title && $title->getNamespace() !== NS_USER_PROFILE){
 		        $this->buildArticleHeader( $html, $config );
 		  }
 
