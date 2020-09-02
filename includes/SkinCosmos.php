@@ -77,7 +77,7 @@ class SkinCosmos extends SkinTemplate {
         
     //Load light-mode if user sets that in their preference
     if($this->getSkin()->getUser()->getOption( 'cosmos-mode') == 'cosmos-lightmode'){
-        $out->addHtmlClasses('cosmos-lightmode');
+        /*$out->addHtmlClasses('cosmos-lightmode');*/
 		$out->addModuleStyles( [
 			'skins.cosmos.lightmode',
 		] );
