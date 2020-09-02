@@ -160,12 +160,13 @@ class CosmosTemplate extends BaseTemplate {
 		          //Load mobile navigation for Cosmos
 		          $cosmosNavigation = new CosmosNavigation();
 		          $skin = $this->getSkin();
-                  $html .= Html::openElement( 'nav', [ 'class' => 'cosmos-mobile-navigation' ] );
-                  $html .= Html::rawElement( 'div', [ 'class' => 'cosmos-button cosmos-button-primary cosmos-mobile-menu-button', 'onclick' => '$(".wds-tabs__tab").toggle()' ], $this->getMsg( 'cosmos-mobile-menu-label' )->text());
+                          $append = '';
+                          $html .= Html::openElement( 'nav', [ 'class' => 'cosmos-mobile-navigation' ] );
+                          $html .= Html::rawElement( 'div', [ 'class' => 'cosmos-button cosmos-button-primary cosmos-mobile-menu-button', 'onclick' => '$(".wds-tabs__tab").toggle()' ], $this->getMsg( 'cosmos-mobile-menu-label' )->text());
 		          $html .= Html::openElement( 'ul', [ 'class' => 'wds-tabs' ] );
-		         //Load site navigation links from MediaWiki:Cosmos-navigation
-                  $html .= $cosmosNavigation->getCode();
-		         //ManageWiki links
+		          //Load site navigation links from MediaWiki:Cosmos-navigation
+                          $html .= $cosmosNavigation->getCode();
+		          //ManageWiki links
 		         if (class_exists('ManageWiki') && in_array(true, $wgManageWiki, true) === true) {
 		        if ( (!$permissionManager->userHasRight( $skin->getUser(), 'managewiki' )) && ($wgManageWikiForceSidebarLinks || $skin->getUser()->getOption( 'managewikisidebar', 1 )) ) {
 			           $append = '-view';
