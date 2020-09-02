@@ -42,7 +42,7 @@ class CosmosSocialProfile {
 	}
 	static function userbio( $parser, $user ) {
 	    if($user){
-	        // '<p class="bio">' . $parser->recursiveTagParse( '{{:User:' . $user . '/bio}}') . '</p>';
+	        // return '<p class="bio">' . $parser->recursiveTagParse( '{{:User:' . $user . '/bio}}') . '</p>';
 	    }
 	}
 }
