@@ -11,9 +11,24 @@
 }
 
 // Icons - hides labels, but keep them accessible for screen-readers
+.icon() {
+	text-indent: -99999px;
+	border: 0;
+	background-color: transparent;
+	background-repeat: no-repeat;
+}
 
 // Icons for the page actions menus
-
+.ca-icon( @icon: '' ) {
+	background-image: url( '@{icon}.svg' );
+	border: 0;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: left top;
+	display: inline-block;
+	margin-bottom: -0.35em;
+	padding: 0 2px 0 20px;
+}
 // For use after .ca-icon() ...
 .ca-icon-only() {
 	text-indent: -99999px;
