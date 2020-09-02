@@ -23,7 +23,7 @@ class CosmosTemplate extends BaseTemplate {
 		        $html .= $this->buildCreateArticleDialog( $html, $config);
 		        $html .= Html::openElement( 'div', [ 'id' => 'mw-content-container', 'class' => 'ts-container' ]);
 		      	$html .= Html::openElement( 'div', [ 'id' => 'mw-content-block', 'class' => 'ts-inner' ]);
-			    $html .= Html::openElement( 'div', [ 'id' => 'mw-content-wrapper', 'class' => 'cosmos-pageAligned mw-body']);
+			    $html .= Html::openElement( 'div', [ 'id' => 'mw-content-wrapper' ]);
 			    $html .= $this->buildWikiHeader( $html, $config );
 			    $html .= $this->buildWiki( $html, $config);
                 $html .= Html::closeElement( 'div' );
@@ -610,6 +610,7 @@ class CosmosTemplate extends BaseTemplate {
 		// Open container element for page body (i.e. actual content such as the
 		// article and the sidebar)
 		$html .= Html::openElement( 'section', [ 'id' => 'mw-content' ] );
+		$html .= Html::openElement( 'div', [ 'id' => 'content', 'class' => 'cosmos-pageAligned mw-body'] );
 		// Build the header
 		$this->buildHeader( $html, $config );
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-articleContainer' ] );
@@ -620,6 +621,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 
 		// Close container element for page body
+		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'section' );
 		
 		$this->buildFooter( $html, $config );
