@@ -17,6 +17,7 @@ class CosmosTemplate extends BaseTemplate {
 	} else{
 		$config = new CosmosConfig();
 	}
+
 		$skin = $this->getSkin();
 		$this->extractAndUpdate( $this->data, $config, $skin );
 	        	$html = $this->get( 'headelement' );
@@ -51,11 +52,11 @@ class CosmosTemplate extends BaseTemplate {
 	    
 	}
 	  public static function extractAndUpdate( array &$data,
-			Config $config, \Skin $skin ) : void {
+			(ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMiraheze(ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) : Cosmos(ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config)), \Skin $skin ) : void {
 		self::getNotifications( $data, $config );
 	}   
 
-	protected function buildBanner( string &$html, Config $config ) : void {
+	protected function buildBanner( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 	    $skin = $this->getSkin();
 	    // Open container section for banner
 		$html .= Html::openElement( 'section', [ 'id' => 'cosmos-banner' ]);
@@ -78,7 +79,7 @@ class CosmosTemplate extends BaseTemplate {
 		// Close banner section
     	$html .= Html::closeElement( 'section' );
 	}
-	   protected function buildCreateArticleDialog( string &$html, Config $config ) : void {
+	   protected function buildCreateArticleDialog( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 	    $skin = $this->getSkin();
 		$html .= Html::openElement( 'div', [ 'id' => 'createPageModal', 'class' => 'cosmos-modal' ]);
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-modal-content' ]);
@@ -155,7 +156,7 @@ class CosmosTemplate extends BaseTemplate {
 	    // todo, add veaction if visualeditor is the users defualt preference
 	    return 'action';
 	}
-		protected function buildMobileNavigation( string &$html, Config $config ) : void {
+		protected function buildMobileNavigation( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 		    global $wgManageWikiForceSidebarLinks, $wgManageWikiSidebarLinks, $wgManageWiki;
 		          $permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		          //Load mobile navigation for Cosmos
@@ -189,7 +190,7 @@ class CosmosTemplate extends BaseTemplate {
 		        $html .= Html::closeElement( 'ul' );
 		        $html .= Html::closeElement( 'nav' );
     }
-		protected function buildBannerLogo( string &$html, Config $config ) : void {
+		protected function buildBannerLogo( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 		// Open container div
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-banner-bannerLogo' ] );
          if($config->getString( 'banner-logo' )){
@@ -214,7 +215,7 @@ class CosmosTemplate extends BaseTemplate {
 	 *
 	 * @param $html string The string onto which the HTML should be appended
 	 */
-	protected function buildUserOptions( string &$html, Config $config ) : void {
+	protected function buildUserOptions( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 		// Open container div
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-banner-userOptions' ] );
         if (!empty( $this->data["username"])){
@@ -227,7 +228,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 	}
 
-	protected function buildPersonalTools( string &$html, Config $config ) : void {
+	protected function buildPersonalTools( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 		$skin = $this->getSkin();
 
 		$html .= Html::openElement( 'div',
@@ -296,7 +297,7 @@ class CosmosTemplate extends BaseTemplate {
 	}
 
 	protected static function getNotifications( array &$data,
-			Config $config ) : void {
+			(ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 		$data['cosmos_notifications'] = [
 			'numNotifs' => 0,
 			'numMessages' => 0,
@@ -319,7 +320,7 @@ class CosmosTemplate extends BaseTemplate {
 	// HACK: This function is inelegant, and should be refactored so that the
 	//       construction of the icons and list is done by one function which is
 	//       called multiple times, but supplied with different info
-	protected function buildNotifications( string &$html, Config $config ) : void {
+	protected function buildNotifications( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 		$skin = $this->getSkin();
 		//Partial credits to the Timeless skin:
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
@@ -462,7 +463,7 @@ class CosmosTemplate extends BaseTemplate {
 	 *
 	 * @param $html string The string onto which the HTML should be appended
 	 */
-	protected function buildSearchBar( string &$html, Config $config ) : void {
+	protected function buildSearchBar( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 		// Open container div
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-banner-search' ] );
 
@@ -518,7 +519,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 	}
      
-		protected function buildWikiHeader(string &$html, Config $config) {
+		protected function buildWikiHeader(string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config)) {
 		    	global $wgManageWikiForceSidebarLinks, $wgManageWikiSidebarLinks, $wgManageWiki;
 		        $permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		        $cosmosNavigation = new CosmosNavigation();
@@ -573,7 +574,7 @@ class CosmosTemplate extends BaseTemplate {
 		        $html .= Html::closeElement( 'header' );
 }
 
-	protected function buildWordmark( string &$html, Config $config ) : void {
+	protected function buildWordmark( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 	    if($config->getString( 'header-wordmark' )){
 		// Open container div for logo
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-header__wordmark' ] );
@@ -604,7 +605,7 @@ class CosmosTemplate extends BaseTemplate {
 	 *
 	 * @return string html
 	 */
-	protected function BuildWiki(string &$html, Config $config) {
+	protected function BuildWiki(string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config)) {
 	    
 
 
@@ -631,7 +632,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		// Close container element for page
 	}
-		protected function buildHeader( string &$html, Config $config ) : void {
+		protected function buildHeader( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 		// Open container element for header
 		$html .= Html::openElement( 'header', [ 'id' => 'cosmos-page-header' ] );
 
@@ -644,7 +645,7 @@ class CosmosTemplate extends BaseTemplate {
 		// Close container element
 		$html .= Html::closeElement( 'header' );
 	}
-	protected function buildArticle( string &$html, Config $config ) : void {
+	protected function buildArticle( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 		// Open container element for article
 		$html .= Html::openElement( 'article', [ 'id' => 'cosmos-pageBody-content' ] );
 
@@ -706,7 +707,7 @@ class CosmosTemplate extends BaseTemplate {
 		// Close container element for article
 		$html .= Html::closeElement( 'article' );
 	}
-		protected function buildArticleHeader( string &$html, Config $config ) : void {
+		protected function buildArticleHeader( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 	     	$html .= Html::openElement( 'div', [ 'id' => 'cosmos-header-articleHeader' ] );
 	     	$html .= Html::openElement( 'h1', [ 'id' => 'cosmos-articleHeader-title', 'class' => 'firstHeading' ] );
      		$html .= Html::rawElement( 'span', [ 'id' => 'cosmos-title-text' ],
@@ -718,7 +719,7 @@ class CosmosTemplate extends BaseTemplate {
 	    	$html .= Html::closeElement( 'div' );
 	    	$html .= Html::closeElement( 'div' );
 		}
-	protected function buildActionButtons( string &$html, Config $config ) : void {
+	protected function buildActionButtons( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 		$skin = $this->getSkin();
 		$title = $skin->getRelevantTitle();
 		$talkTitle = empty( $title ) ? null : $title->getTalkPageIfDefined();
@@ -940,7 +941,7 @@ class CosmosTemplate extends BaseTemplate {
 	 * @param $html string The string onto which the HTML should be appended
 	 * @param $info array An array with the necessary info to build the button
 	 */
-	protected function buildActionButton( string &$html, Config $config, array $info ) : void {
+	protected function buildActionButton( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config), array $info ) : void {
 		// If the button links to another page, surround it in an <a> element that
 		// links there
 		if ( !empty( $info['href'] ) ) {
@@ -991,7 +992,7 @@ class CosmosTemplate extends BaseTemplate {
 	 * @param $html string The string onto which the HTML should be appended
 	 * @param $info array An array of items which should be placed in the list
 	 */
-	protected function buildActionDropdown( string &$html, Config $config, array $items ) : void {
+	protected function buildActionDropdown( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config), array $items ) : void {
 		// Open a <div> element to contain the entire drop-down
 		$html .= Html::openElement( 'div', [
 			'class' => 'cosmos-dropdown',
@@ -1051,7 +1052,7 @@ class CosmosTemplate extends BaseTemplate {
 	 *
 	 * @param $html string The string onto which the HTML should be appended
 	 */
-	protected function buildFooter( string &$html, Config $config ) : void {
+	protected function buildFooter( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 		// Open container element for footer
 		$html .= Html::openElement( 'footer', [ 'id' => 'cosmos-footer' ] );
 
@@ -1091,7 +1092,7 @@ class CosmosTemplate extends BaseTemplate {
 	 *
 	 * @param $html string The string onto which the HTML should be appended
 	 */
-	protected function buildFooterIcons( string &$html, Config $config ) : void {
+	protected function buildFooterIcons( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 		// Open container div for icons
 		$html .= Html::openElement( 'div', [
 			'id' => 'cosmos-footerContent-footerIcons',
@@ -1127,7 +1128,7 @@ class CosmosTemplate extends BaseTemplate {
 	 *
 	 * @param $html string The string onto which the HTML should be appended
 	 */
-	protected function buildFooterLinks( string &$html, Config $config ) : void {
+	protected function buildFooterLinks( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 		// Open container div for footer links
 		$html .= Html::openElement( 'div', [
 			'id' => 'cosmos-footerContent-footerLinks',
@@ -1160,7 +1161,7 @@ class CosmosTemplate extends BaseTemplate {
 	 *
 	 * @param $html string The string onto which the HTML should be appended
 	 */
-	protected function buildToolbox( string &$html, Config $config ) : void {
+	protected function buildToolbox( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
 		// Open container element for toolbox
 		$html .= Html::openElement( 'section', [ 'id' => 'cosmos-toolbox' ] );
 
