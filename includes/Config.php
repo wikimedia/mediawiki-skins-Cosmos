@@ -17,6 +17,7 @@ class Config {
 		'group-tags' => array('bureaucrat', 'bot', 'sysop', 'interface-admin', 'suppressor'),
 		'number-of-tags' => null,
 	];
+
 	private const CONFIG_TYPES = [
 		'banner-logo' => 'string',
 		'header-wordmark' => 'string',
