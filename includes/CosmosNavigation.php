@@ -19,12 +19,6 @@ class CosmosNavigation {
 
 	const version = '1.0.7';
 
-	/*static function invalidateCache() {
-		global $wgMemc;
-		$wgMemc->delete(wfMemcKey('mCosmosNavigation', self::version));
-		return true;
-	}*/
-
 	public $editUrl = false;
 
 	/**
@@ -105,18 +99,10 @@ class CosmosNavigation {
 	}
 
 	public function getCode() {
-		global $wgUser, $wgTitle, $wgRequest,/* $wgMemc,*/ $wgLang, $wgContLang;
+		global $wgUser, $wgTitle, $wgRequest, $wgLang, $wgContLang;
 
-		//$cache = $wgLang->getCode() == $wgContLang->getCode();
-		/*if($cache) {
-			$key = wfMemcKey('mCosmosNavigation', self::version);
-			$menu = $wgMemc->get($key);
-		}*/
 		if(empty($menu)) {
 			$menu = $this->getMenu($this->getMenuLines());
-			/*if($cache) {
-				$wgMemc->set($key, $menu, 60 * 60 * 8);
-			}*/
 		}
 		return $menu;
 	}
