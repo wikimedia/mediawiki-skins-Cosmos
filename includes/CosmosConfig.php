@@ -1,6 +1,6 @@
 <?php
 
-class Config {
+class CosmosConfig {
 	private const DEFAULT_CONFIG = [
 		'banner-logo' => null,
 		'header-wordmark' => null,
