@@ -35,14 +35,13 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
-                global $wgCosmosSocialProfileShowGroupTags;
 		$title = Title::newFromText( $this->get( 'title' ) );
-		if(class_exists('UserProfilePage') && (/*$config->isEnabled('profile-tags')*/$wgCosmosSocialProfileShowGroupTags || $config->isEnabled('show-editcount') || $config->isEnabled('allow-bio')) && (is_object( $title ) && ($title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE) && !$title->isSubpage())) {
+		if(class_exists('UserProfilePage') && ($config->isEnabled('profile-tags') || $config->isEnabled('show-editcount') || $config->isEnabled('allow-bio')) && (is_object( $title ) && ($title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE) && !$title->isSubpage())) {
 		    //Set up Cosmos-specific SocialProfile Elements
 		    $profileOwner = Title::newFromText($this->get( 'title' ))->getText();
 		    $parser = MediaWikiServices::getInstance()->getParser();
 		    $replace  = array('<div id="profile-title">' . $profileOwner . '</div>', '<div id="profile-title-container">');
-		    $Replacewith = array('<h1 itemprop="name">' . $profileOwner . '</h1>' . (/*$config->isEnabled('profile-tags')*/$wgCosmosSocialProfileShowGroupTags ? CosmosSocialProfile::usergroups($parser, $profileOwner) : '') . ($config->isEnabled('show-editcount') ? '<br/> <div class="contributions-details tally"><a href="' . htmlspecialchars( Title::newFromText("Contributions/$profileOwner", NS_SPECIAL)->getFullURL()) . '"><em>' . CosmosSocialProfile::useredits($parser, $profileOwner) . '</em><span>Edits since joining this wiki<br>' . CosmosSocialProfile::userregistration($parser, $profileOwner) . '</span></a></div>' : '' ) . ($config->isEnabled('allow-bio') ? CosmosSocialProfile::userbio($parser, $profileOwner) : '' ), '<div class="hgroup">');
+		    $Replacewith = array('<h1 itemprop="name">' . $profileOwner . '</h1>' . ($config->isEnabled('profile-tags') ? CosmosSocialProfile::usergroups($parser, $profileOwner) : '') . ($config->isEnabled('show-editcount') ? '<br/> <div class="contributions-details tally"><a href="' . htmlspecialchars( Title::newFromText("Contributions/$profileOwner", NS_SPECIAL)->getFullURL()) . '"><em>' . CosmosSocialProfile::useredits($parser, $profileOwner) . '</em><span>Edits since joining this wiki<br>' . CosmosSocialProfile::userregistration($parser, $profileOwner) . '</span></a></div>' : '' ) . ($config->isEnabled('allow-bio') ? CosmosSocialProfile::userbio($parser, $profileOwner) : '' ), '<div class="hgroup">');
 	        echo str_replace($replace, $Replacewith, $html);
 	       
 	   }else{
