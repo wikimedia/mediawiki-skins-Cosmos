@@ -22,6 +22,8 @@ class CosmosSocialProfile {
 		if($user && $user->isBlocked()){
 		    $usertags = Html::rawElement( 'span', ['class' => 'tag tag-blocked' ], wfMessage('cosmos-user-blocked'));
 		} elseif($user){
+                    $number_of_tags = 0;
+                    $usertags = '';
 		    foreach ( $config->getArray('group-tags') as $key => $value ) {
 		       if(in_array($value, $user->getGroups())){
 		        $number_of_tags++;
