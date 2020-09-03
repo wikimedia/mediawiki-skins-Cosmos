@@ -4,7 +4,6 @@
  *
  * @ingroup Skins
  */
-use Cosmos\Config;
 class SkinCosmos extends SkinTemplate {
 	/** @var string */
 	public $skinname = 'cosmos';
@@ -20,7 +19,11 @@ class SkinCosmos extends SkinTemplate {
 	 */
 	public function initPage( OutputPage $out ) {
 		parent::initPage( $out );
-	    $config = new Config();
+	  if(ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' )){
+        	$config = new CosmosMirahezeConfig();
+	} else{
+		$config = new CosmosConfig();
+	}
 	    
 		$out->addMeta( 'viewport',
 			'width=device-width, initial-scale=1.0, ' .
