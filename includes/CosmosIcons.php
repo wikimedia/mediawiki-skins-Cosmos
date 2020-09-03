@@ -1,7 +1,5 @@
 <?php
 
-namespace Cosmos;
-
 use \Html;
 
 class Icon {
