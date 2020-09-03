@@ -6,16 +6,17 @@
  * @ingroup Skins
  */
 use MediaWiki\MediaWikiServices;
-use Cosmos\Config;
-use Cosmos\Icon;
 
 class CosmosTemplate extends BaseTemplate {
 	/**
 	 * Outputs the entire contents of the page
 	 */
 	public function execute() : void  {
-	
-        $config = new Config();
+	if(ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' )){
+        	$config = new CosmosMirahezeConfig();
+	} else{
+		$config = new CosmosConfig();
+	}
 		$skin = $this->getSkin();
 		$this->extractAndUpdate( $this->data, $config, $skin );
 	        	$html = $this->get( 'headelement' );
@@ -84,7 +85,7 @@ class CosmosTemplate extends BaseTemplate {
      	$html .= Html::rawElement( 'span', ['class' => 'close' ], '&times;' );
 		$html .= Html::openElement( 'form', [ 'class' => 'wds-dialog__wrapper create-page-dialog__wrapper', 'action' => $this->get( 'wgScript' ), 'method' => 'get' ]);
 		$html .= Html::openElement( 'input', [ 'type' => 'hidden', 'value' => 'edit', 'name' => 'action' ]);
-     	$html .= Html::rawElement( 'header', ['class' => 'wds-dialog__title' ], $this->getMsg( 'cosmos-createpage-header' )->text() . Icon::getIcon( 'close' )->makeSvg( 14, 14, [ 'class' => 'wds-icon wds-icon-small create-page-dialog__close' ] ) );
+     	$html .= Html::rawElement( 'header', ['class' => 'wds-dialog__title' ], $this->getMsg( 'cosmos-createpage-header' )->text() . CosmosIcons::getIcon( 'close' )->makeSvg( 14, 14, [ 'class' => 'wds-icon wds-icon-small create-page-dialog__close' ] ) );
 		$html .= Html::openElement( 'div', [ 'class' => 'wds-dialog__content' ]);
      	$html .= Html::rawElement( 'div', ['id' => 'create-page-dialog__message' ], $this->getMsg( 'cosmos-createpage-input-label' )->text() );
 		$html .= Html::openElement( 'div', [ 'class' => 'wds-input create-page-dialog__title-wrapper' ]);
@@ -167,13 +168,13 @@ class CosmosTemplate extends BaseTemplate {
 		          //Load site navigation links from MediaWiki:Cosmos-navigation
                           $html .= $cosmosNavigation->getCode();
 		          //ManageWiki links
-		         if (class_exists('ManageWiki') && in_array(true, $wgManageWiki, true) === true) {
+		         if (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) && in_array(true, $wgManageWiki, true) === true) {
 		        if ( (!$permissionManager->userHasRight( $skin->getUser(), 'managewiki' )) && ($wgManageWikiForceSidebarLinks || $skin->getUser()->getOption( 'managewikisidebar', 1 )) ) {
 			           $append = '-view';
 			       }
 			   if ( ($permissionManager->userHasRight( $skin->getUser(), 'managewiki' ) || $wgManageWikiForceSidebarLinks || $skin->getUser()->getOption( 'managewikisidebar', 1 )) && $wgManageWikiSidebarLinks !== false) {
 			      
-     	               $html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle"><span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-administration' )->text() . '</span>' . Icon::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">');
+     	               $html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle"><span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-administration' )->text() . '</span>' . CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">');
 		       
 		       foreach ( (array)ManageWiki::listModules() as $module ) {
 		               $html .= "<li class='wds-tabs__tab'><a id='" . "managewiki{$module}link" . "' href='" . htmlspecialchars( SpecialPage::getTitleFor( 'ManageWiki', $module )->getFullURL()) . "'>" . wfMessage( "managewiki-link-{$module}{$append}" )->plain() . "</a></li>";
@@ -183,7 +184,7 @@ class CosmosTemplate extends BaseTemplate {
 		  }
 		        if ($this->getMsg( 'cosmos-navigation-explore-tab' )->text() !== '-' && $this->getMsg( 'cosmos-navigation-explore-tab' )->text() !== ''){
 		            $exploreTab = str_replace("<ul>", "", $this->getMsg( 'cosmos-navigation-explore-tab' )->parse());
-		            $html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], str_replace('<li>', "<li class='wds-tabs__tab'>", '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle">' . Icon::getIcon( 'explore' )->makeSvg( 11, 11, [ 'id' => 'wds-icons-book-tiny', 'class' => 'wds-icon-tiny wds-icon' ] ) . '<span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-explore' )->text() . '</span>' . Icon::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">' . $exploreTab));
+		            $html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], str_replace('<li>', "<li class='wds-tabs__tab'>", '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle">' . CosmosIcons::getIcon( 'explore' )->makeSvg( 11, 11, [ 'id' => 'wds-icons-book-tiny', 'class' => 'wds-icon-tiny wds-icon' ] ) . '<span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-explore' )->text() . '</span>' . CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">' . $exploreTab));
 		        }
 		        $html .= Html::closeElement( 'ul' );
 		        $html .= Html::closeElement( 'nav' );
@@ -240,7 +241,7 @@ class CosmosTemplate extends BaseTemplate {
 			$avatar = new wAvatar( $skin->getUser()->getId(), 'm' );
 			$avatarElement = $avatar->getAvatarURL();
 		} else {
-			$avatarElement = Icon::getIcon( 'avatar' )->makeSvg( 28, 28 );
+			$avatarElement = CosmosIcons::getIcon( 'avatar' )->makeSvg( 28, 28 );
 		}
 
 		$html .= Html::rawElement( 'div', [ 'id' => 'cosmos-userButton-avatar',
@@ -254,7 +255,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		$html .= Html::rawElement( 'div', [ 'id' => 'cosmos-userButton-icon',
 			'class' => 'cosmos-dropdown-icon cosmos-bannerOption-dropdownIcon' ],
-			Icon::getIcon( 'dropdown' )->makeSvg( 14, 14 ) );
+			CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14 ) );
 
 		$html .= Html::closeElement( 'div' );
 
@@ -351,11 +352,11 @@ class CosmosTemplate extends BaseTemplate {
 
 		$html .= Html::rawElement( 'div', [ 'id' => 'cosmos-notifsButton-icon',
 			'class' => 'cosmos-bannerOption-icon' ],
-			Icon::getIcon( 'notification' )->makeSvg( 28, 28 ) );
+			CosmosIcons::getIcon( 'notification' )->makeSvg( 28, 28 ) );
 		
 		$html .= Html::rawElement( 'div', [ 'id' => 'cosmos-notifsButton-icon',
 			'class' => 'cosmos-dropdown-icon cosmos-bannerOption-dropdownIcon' ],
-			Icon::getIcon( 'dropdown' )->makeSvg( 14, 14 ) );
+			CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14 ) );
 		
 		if ( $this->data['cosmos_notifications']['numNotifs'] > 0 ) {
 			$html .= Html::element( 'div', [ 'id' => 'cosmos-notifsButton-numNotifs',
@@ -405,11 +406,11 @@ class CosmosTemplate extends BaseTemplate {
 
 		$html .= Html::rawElement( 'div', [ 'id' => 'cosmos-messagesButton-icon',
 			'class' => 'cosmos-bannerOption-icon' ],
-			Icon::getIcon( 'message' )->makeSvg( 28, 28 ) );
+			CosmosIcons::getIcon( 'message' )->makeSvg( 28, 28 ) );
 		
 		$html .= Html::rawElement( 'div', [ 'id' => 'cosmos-messagesButton-icon',
 			'class' => 'cosmos-dropdown-icon cosmos-bannerOption-dropdownIcon' ],
-			Icon::getIcon( 'dropdown' )->makeSvg( 14, 14 ) );
+			CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14 ) );
 
 		if ( $this->data['cosmos_notifications']['numMessages'] > 0 ) {
 			$html .= Html::element( 'div', [ 'id' => 'cosmos-messagesButton-numMessages',
@@ -493,7 +494,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::rawElement( 'div', [
 			'id' => 'cosmos-search-buttonIcon',
 			'class' => 'cosmos-bannerOption-icon' ],
-			Icon::getIcon( 'search' )->makeSvg( 28, 28 )
+			CosmosIcons::getIcon( 'search' )->makeSvg( 28, 28 )
 		);
 
 		// Insert search button
@@ -549,13 +550,13 @@ class CosmosTemplate extends BaseTemplate {
 		        //Load site navigation links from MediaWiki:Cosmos-navigation
                 $html .= $cosmosNavigation->getCode();
 		        //ManageWiki links
-		         if (class_exists('ManageWiki') && in_array(true, $wgManageWiki, true) === true) {
+		         if (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) && in_array(true, $wgManageWiki, true) === true) {
 		        if ( (!$permissionManager->userHasRight( $skin->getUser(), 'managewiki' )) && ($wgManageWikiForceSidebarLinks || $skin->getUser()->getOption( 'managewikisidebar', 1 )) ) {
 			           $append = '-view';
 			       }
 			   if ( ($permissionManager->userHasRight( $skin->getUser(), 'managewiki' ) || $wgManageWikiForceSidebarLinks || $skin->getUser()->getOption( 'managewikisidebar', 1 )) && $wgManageWikiSidebarLinks !== false) {
 			      
-     	               $html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle"><span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-administration' )->text() . '</span>' . Icon::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">');
+     	               $html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle"><span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-administration' )->text() . '</span>' . CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">');
 		       
 		       foreach ( (array)ManageWiki::listModules() as $module ) {
 		               $html .= "<li class='wds-tabs__tab'><a id='" . "managewiki{$module}link" . "' href='" . htmlspecialchars( SpecialPage::getTitleFor( 'ManageWiki', $module )->getFullURL()) . "'>" . wfMessage( "managewiki-link-{$module}{$append}" )->plain() . "</a></li>";
@@ -565,7 +566,7 @@ class CosmosTemplate extends BaseTemplate {
 		  }
 		        if ($this->getMsg( 'cosmos-navigation-explore-tab' )->text() !== '-' && $this->getMsg( 'cosmos-navigation-explore-tab' )->text() !== ''){
 		            $exploreTab = str_replace("<ul>", "", $this->getMsg( 'cosmos-navigation-explore-tab' )->parse());
-		            $html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], str_replace('<li>', "<li class='wds-tabs__tab'>", '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle">' . Icon::getIcon( 'explore' )->makeSvg( 11, 11, [ 'id' => 'wds-icons-book-tiny', 'class' => 'wds-icon-tiny wds-icon' ] ) . '<span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-explore' )->text() . '</span>' . Icon::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">' . $exploreTab));
+		            $html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], str_replace('<li>', "<li class='wds-tabs__tab'>", '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle">' . CosmosIcons::getIcon( 'explore' )->makeSvg( 11, 11, [ 'id' => 'wds-icons-book-tiny', 'class' => 'wds-icon-tiny wds-icon' ] ) . '<span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-explore' )->text() . '</span>' . CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">' . $exploreTab));
 		        }
 		        $html .= Html::closeElement( 'ul' );
 		        $html .= Html::closeElement( 'nav' );
@@ -676,7 +677,7 @@ class CosmosTemplate extends BaseTemplate {
 			$html .= Html::rawElement( 'div', [
 				'class' => 'cosmos-button cosmos-button-primary',
 				'id' => 'cosmos-siteNotice-closeButton'
-				], Icon::getIcon( 'close' )->makeSvg( 14, 14,
+				], CosmosIcons::getIcon( 'close' )->makeSvg( 14, 14,
 					[ 'id' => 'cosmos-siteNotice-closeIcon' ] )
 			);
 
@@ -956,7 +957,7 @@ class CosmosTemplate extends BaseTemplate {
 			// corresponding to the given image type
 			switch ( $info['imgType'] ) {
 				case 'svg':
-					$icon = Icon::getIcon( $info['imgSrc'] );
+					$icon = CosmosIcons::getIcon( $info['imgSrc'] );
 					if ( !isset($icon) ) {
 						break;
 					}
@@ -1010,7 +1011,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::rawElement( 'div', [
 			'id' => 'cosmos-actionsList-dropdownIcon',
 			'class' => 'cosmos-dropdown-icon'
-			], Icon::getIcon( 'dropdown' )->makeSvg( 14, 14 ) );
+			], CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14 ) );
 
 			// Close the button div
 		$html .= Html::closeElement( 'div' );
