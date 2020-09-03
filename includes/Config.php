@@ -3,18 +3,22 @@
 namespace Cosmos;
 
 class Config {
-
+        if (class_exists('ManageWiki')){
+            $boolval = false
+        } else {
+            $boolval = true;
+        }
 	private const DEFAULT_CONFIG = [
 		'banner-logo' => null,
 		'header-wordmark' => null,
 		'header-background' => null,
 		'header-background-color' => null,
-		'modern-tabs' => false,
-		'round-avatar' => false,
-		'show-editcount' => false,
-		'allow-bio' => false,
-		'profile-tags' => false,
-		'social-avatar' => false,
+		'modern-tabs' => $boolval,
+		'round-avatar' => $boolval,
+		'show-editcount' => $boolval,
+		'allow-bio' => $boolval,
+		'profile-tags' => $boolval,
+		'social-avatar' => $boolval,
 		'group-tags' => array('bureaucrat', 'bot', 'sysop', 'interface-admin', 'suppressor'),
 		'number-of-tags' => 2,
 	];
