@@ -6,17 +6,15 @@
  * @ingroup Skins
  */
 use MediaWiki\MediaWikiServices;
-
+use Cosmos\Config;
+use Cosmos\Icon;
 class CosmosTemplate extends BaseTemplate {
 	/**
 	 * Outputs the entire contents of the page
 	 */
 	public function execute() : void  {
-	if(ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' )){
-        	$config = new CosmosMirahezeConfig();
-	} else{
-		$config = new CosmosConfig();
-	}
+    $config = new Config();
+
 
 		$skin = $this->getSkin();
 		$this->extractAndUpdate( $this->data, $config, $skin );
@@ -52,11 +50,11 @@ class CosmosTemplate extends BaseTemplate {
 	    
 	}
 	  public static function extractAndUpdate( array &$data,
-			(ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMiraheze(ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) : Cosmos(ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config)), \Skin $skin ) : void {
+			Config $config, \Skin $skin ) : void {
 		self::getNotifications( $data, $config );
 	}   
 
-	protected function buildBanner( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+	protected function buildBanner( string &$html, Config $config ) : void {
 	    $skin = $this->getSkin();
 	    // Open container section for banner
 		$html .= Html::openElement( 'section', [ 'id' => 'cosmos-banner' ]);
@@ -79,14 +77,14 @@ class CosmosTemplate extends BaseTemplate {
 		// Close banner section
     	$html .= Html::closeElement( 'section' );
 	}
-	   protected function buildCreateArticleDialog( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+	   protected function buildCreateArticleDialog( string &$html, Config $config ) : void {
 	    $skin = $this->getSkin();
 		$html .= Html::openElement( 'div', [ 'id' => 'createPageModal', 'class' => 'cosmos-modal' ]);
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-modal-content' ]);
      	$html .= Html::rawElement( 'span', ['class' => 'close' ], '&times;' );
 		$html .= Html::openElement( 'form', [ 'class' => 'wds-dialog__wrapper create-page-dialog__wrapper', 'action' => $this->get( 'wgScript' ), 'method' => 'get' ]);
 		$html .= Html::openElement( 'input', [ 'type' => 'hidden', 'value' => 'edit', 'name' => 'action' ]);
-     	$html .= Html::rawElement( 'header', ['class' => 'wds-dialog__title' ], $this->getMsg( 'cosmos-createpage-header' )->text() . CosmosIcons::getIcon( 'close' )->makeSvg( 14, 14, [ 'class' => 'wds-icon wds-icon-small create-page-dialog__close' ] ) );
+     	$html .= Html::rawElement( 'header', ['class' => 'wds-dialog__title' ], $this->getMsg( 'cosmos-createpage-header' )->text() . Icon::getIcon( 'close' )->makeSvg( 14, 14, [ 'class' => 'wds-icon wds-icon-small create-page-dialog__close' ] ) );
 		$html .= Html::openElement( 'div', [ 'class' => 'wds-dialog__content' ]);
      	$html .= Html::rawElement( 'div', ['id' => 'create-page-dialog__message' ], $this->getMsg( 'cosmos-createpage-input-label' )->text() );
 		$html .= Html::openElement( 'div', [ 'class' => 'wds-input create-page-dialog__title-wrapper' ]);
@@ -156,7 +154,7 @@ class CosmosTemplate extends BaseTemplate {
 	    // todo, add veaction if visualeditor is the users defualt preference
 	    return 'action';
 	}
-		protected function buildMobileNavigation( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+		protected function buildMobileNavigation( string &$html, Config $config ) : void {
 		    global $wgManageWikiForceSidebarLinks, $wgManageWikiSidebarLinks, $wgManageWiki;
 		          $permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		          //Load mobile navigation for Cosmos
@@ -175,7 +173,7 @@ class CosmosTemplate extends BaseTemplate {
 			       }
 			   if ( ($permissionManager->userHasRight( $skin->getUser(), 'managewiki' ) || $wgManageWikiForceSidebarLinks || $skin->getUser()->getOption( 'managewikisidebar', 1 )) && $wgManageWikiSidebarLinks !== false) {
 			      
-     	               $html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle"><span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-administration' )->text() . '</span>' . CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">');
+     	               $html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle"><span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-administration' )->text() . '</span>' . Icon::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">');
 		       
 		       foreach ( (array)ManageWiki::listModules() as $module ) {
 		               $html .= "<li class='wds-tabs__tab'><a id='" . "managewiki{$module}link" . "' href='" . htmlspecialchars( SpecialPage::getTitleFor( 'ManageWiki', $module )->getFullURL()) . "'>" . wfMessage( "managewiki-link-{$module}{$append}" )->plain() . "</a></li>";
@@ -185,12 +183,12 @@ class CosmosTemplate extends BaseTemplate {
 		  }
 		        if ($this->getMsg( 'cosmos-navigation-explore-tab' )->text() !== '-' && $this->getMsg( 'cosmos-navigation-explore-tab' )->text() !== ''){
 		            $exploreTab = str_replace("<ul>", "", $this->getMsg( 'cosmos-navigation-explore-tab' )->parse());
-		            $html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], str_replace('<li>', "<li class='wds-tabs__tab'>", '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle">' . CosmosIcons::getIcon( 'explore' )->makeSvg( 11, 11, [ 'id' => 'wds-icons-book-tiny', 'class' => 'wds-icon-tiny wds-icon' ] ) . '<span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-explore' )->text() . '</span>' . CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">' . $exploreTab));
+		            $html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], str_replace('<li>', "<li class='wds-tabs__tab'>", '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle">' . Icon::getIcon( 'explore' )->makeSvg( 11, 11, [ 'id' => 'wds-icons-book-tiny', 'class' => 'wds-icon-tiny wds-icon' ] ) . '<span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-explore' )->text() . '</span>' . Icon::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">' . $exploreTab));
 		        }
 		        $html .= Html::closeElement( 'ul' );
 		        $html .= Html::closeElement( 'nav' );
     }
-		protected function buildBannerLogo( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+		protected function buildBannerLogo( string &$html, Config $config ) : void {
 		// Open container div
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-banner-bannerLogo' ] );
          if($config->getString( 'banner-logo' )){
@@ -215,7 +213,7 @@ class CosmosTemplate extends BaseTemplate {
 	 *
 	 * @param $html string The string onto which the HTML should be appended
 	 */
-	protected function buildUserOptions( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+	protected function buildUserOptions( string &$html, Config $config ) : void {
 		// Open container div
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-banner-userOptions' ] );
         if (!empty( $this->data["username"])){
@@ -228,7 +226,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 	}
 
-	protected function buildPersonalTools( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+	protected function buildPersonalTools( string &$html, Config $config ) : void {
 		$skin = $this->getSkin();
 
 		$html .= Html::openElement( 'div',
@@ -242,7 +240,7 @@ class CosmosTemplate extends BaseTemplate {
 			$avatar = new wAvatar( $skin->getUser()->getId(), 'm' );
 			$avatarElement = $avatar->getAvatarURL();
 		} else {
-			$avatarElement = CosmosIcons::getIcon( 'avatar' )->makeSvg( 28, 28 );
+			$avatarElement = Icon::getIcon( 'avatar' )->makeSvg( 28, 28 );
 		}
 
 		$html .= Html::rawElement( 'div', [ 'id' => 'cosmos-userButton-avatar',
@@ -256,7 +254,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		$html .= Html::rawElement( 'div', [ 'id' => 'cosmos-userButton-icon',
 			'class' => 'cosmos-dropdown-icon cosmos-bannerOption-dropdownIcon' ],
-			CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14 ) );
+			Icon::getIcon( 'dropdown' )->makeSvg( 14, 14 ) );
 
 		$html .= Html::closeElement( 'div' );
 
@@ -297,7 +295,7 @@ class CosmosTemplate extends BaseTemplate {
 	}
 
 	protected static function getNotifications( array &$data,
-			(ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+			Config $config ) : void {
 		$data['cosmos_notifications'] = [
 			'numNotifs' => 0,
 			'numMessages' => 0,
@@ -320,7 +318,7 @@ class CosmosTemplate extends BaseTemplate {
 	// HACK: This function is inelegant, and should be refactored so that the
 	//       construction of the icons and list is done by one function which is
 	//       called multiple times, but supplied with different info
-	protected function buildNotifications( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+	protected function buildNotifications( string &$html, Config $config ) : void {
 		$skin = $this->getSkin();
 		//Partial credits to the Timeless skin:
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
@@ -353,11 +351,11 @@ class CosmosTemplate extends BaseTemplate {
 
 		$html .= Html::rawElement( 'div', [ 'id' => 'cosmos-notifsButton-icon',
 			'class' => 'cosmos-bannerOption-icon' ],
-			CosmosIcons::getIcon( 'notification' )->makeSvg( 28, 28 ) );
+			Icon::getIcon( 'notification' )->makeSvg( 28, 28 ) );
 		
 		$html .= Html::rawElement( 'div', [ 'id' => 'cosmos-notifsButton-icon',
 			'class' => 'cosmos-dropdown-icon cosmos-bannerOption-dropdownIcon' ],
-			CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14 ) );
+			Icon::getIcon( 'dropdown' )->makeSvg( 14, 14 ) );
 		
 		if ( $this->data['cosmos_notifications']['numNotifs'] > 0 ) {
 			$html .= Html::element( 'div', [ 'id' => 'cosmos-notifsButton-numNotifs',
@@ -407,11 +405,11 @@ class CosmosTemplate extends BaseTemplate {
 
 		$html .= Html::rawElement( 'div', [ 'id' => 'cosmos-messagesButton-icon',
 			'class' => 'cosmos-bannerOption-icon' ],
-			CosmosIcons::getIcon( 'message' )->makeSvg( 28, 28 ) );
+			Icon::getIcon( 'message' )->makeSvg( 28, 28 ) );
 		
 		$html .= Html::rawElement( 'div', [ 'id' => 'cosmos-messagesButton-icon',
 			'class' => 'cosmos-dropdown-icon cosmos-bannerOption-dropdownIcon' ],
-			CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14 ) );
+			Icon::getIcon( 'dropdown' )->makeSvg( 14, 14 ) );
 
 		if ( $this->data['cosmos_notifications']['numMessages'] > 0 ) {
 			$html .= Html::element( 'div', [ 'id' => 'cosmos-messagesButton-numMessages',
@@ -463,7 +461,7 @@ class CosmosTemplate extends BaseTemplate {
 	 *
 	 * @param $html string The string onto which the HTML should be appended
 	 */
-	protected function buildSearchBar( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+	protected function buildSearchBar( string &$html, Config $config ) : void {
 		// Open container div
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-banner-search' ] );
 
@@ -495,7 +493,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::rawElement( 'div', [
 			'id' => 'cosmos-search-buttonIcon',
 			'class' => 'cosmos-bannerOption-icon' ],
-			CosmosIcons::getIcon( 'search' )->makeSvg( 28, 28 )
+			Icon::getIcon( 'search' )->makeSvg( 28, 28 )
 		);
 
 		// Insert search button
@@ -519,7 +517,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 	}
      
-		protected function buildWikiHeader(string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config)) {
+		protected function buildWikiHeader(string &$html, Config $config) {
 		    	global $wgManageWikiForceSidebarLinks, $wgManageWikiSidebarLinks, $wgManageWiki;
 		        $permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		        $cosmosNavigation = new CosmosNavigation();
@@ -557,7 +555,7 @@ class CosmosTemplate extends BaseTemplate {
 			       }
 			   if ( ($permissionManager->userHasRight( $skin->getUser(), 'managewiki' ) || $wgManageWikiForceSidebarLinks || $skin->getUser()->getOption( 'managewikisidebar', 1 )) && $wgManageWikiSidebarLinks !== false) {
 			      
-     	               $html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle"><span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-administration' )->text() . '</span>' . CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">');
+     	               $html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle"><span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-administration' )->text() . '</span>' . Icon::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">');
 		       
 		       foreach ( (array)ManageWiki::listModules() as $module ) {
 		               $html .= "<li class='wds-tabs__tab'><a id='" . "managewiki{$module}link" . "' href='" . htmlspecialchars( SpecialPage::getTitleFor( 'ManageWiki', $module )->getFullURL()) . "'>" . wfMessage( "managewiki-link-{$module}{$append}" )->plain() . "</a></li>";
@@ -567,14 +565,14 @@ class CosmosTemplate extends BaseTemplate {
 		  }
 		        if ($this->getMsg( 'cosmos-navigation-explore-tab' )->text() !== '-' && $this->getMsg( 'cosmos-navigation-explore-tab' )->text() !== ''){
 		            $exploreTab = str_replace("<ul>", "", $this->getMsg( 'cosmos-navigation-explore-tab' )->parse());
-		            $html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], str_replace('<li>', "<li class='wds-tabs__tab'>", '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle">' . CosmosIcons::getIcon( 'explore' )->makeSvg( 11, 11, [ 'id' => 'wds-icons-book-tiny', 'class' => 'wds-icon-tiny wds-icon' ] ) . '<span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-explore' )->text() . '</span>' . CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">' . $exploreTab));
+		            $html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], str_replace('<li>', "<li class='wds-tabs__tab'>", '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle">' . Icon::getIcon( 'explore' )->makeSvg( 11, 11, [ 'id' => 'wds-icons-book-tiny', 'class' => 'wds-icon-tiny wds-icon' ] ) . '<span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-explore' )->text() . '</span>' . Icon::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">' . $exploreTab));
 		        }
 		        $html .= Html::closeElement( 'ul' );
 		        $html .= Html::closeElement( 'nav' );
 		        $html .= Html::closeElement( 'header' );
 }
 
-	protected function buildWordmark( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+	protected function buildWordmark( string &$html, Config $config ) : void {
 	    if($config->getString( 'header-wordmark' )){
 		// Open container div for logo
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-header__wordmark' ] );
@@ -605,7 +603,7 @@ class CosmosTemplate extends BaseTemplate {
 	 *
 	 * @return string html
 	 */
-	protected function BuildWiki(string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config)) {
+	protected function BuildWiki(string &$html, Config $config) {
 	    
 
 
@@ -632,7 +630,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		// Close container element for page
 	}
-		protected function buildHeader( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+		protected function buildHeader( string &$html, Config $config ) : void {
 		// Open container element for header
 		$html .= Html::openElement( 'header', [ 'id' => 'cosmos-page-header' ] );
 
@@ -645,7 +643,7 @@ class CosmosTemplate extends BaseTemplate {
 		// Close container element
 		$html .= Html::closeElement( 'header' );
 	}
-	protected function buildArticle( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+	protected function buildArticle( string &$html, Config $config ) : void {
 		// Open container element for article
 		$html .= Html::openElement( 'article', [ 'id' => 'cosmos-pageBody-content' ] );
 
@@ -678,7 +676,7 @@ class CosmosTemplate extends BaseTemplate {
 			$html .= Html::rawElement( 'div', [
 				'class' => 'cosmos-button cosmos-button-primary',
 				'id' => 'cosmos-siteNotice-closeButton'
-				], CosmosIcons::getIcon( 'close' )->makeSvg( 14, 14,
+				], Icon::getIcon( 'close' )->makeSvg( 14, 14,
 					[ 'id' => 'cosmos-siteNotice-closeIcon' ] )
 			);
 
@@ -707,7 +705,7 @@ class CosmosTemplate extends BaseTemplate {
 		// Close container element for article
 		$html .= Html::closeElement( 'article' );
 	}
-		protected function buildArticleHeader( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+		protected function buildArticleHeader( string &$html, Config $config ) : void {
 	     	$html .= Html::openElement( 'div', [ 'id' => 'cosmos-header-articleHeader' ] );
 	     	$html .= Html::openElement( 'h1', [ 'id' => 'cosmos-articleHeader-title', 'class' => 'firstHeading' ] );
      		$html .= Html::rawElement( 'span', [ 'id' => 'cosmos-title-text' ],
@@ -719,7 +717,7 @@ class CosmosTemplate extends BaseTemplate {
 	    	$html .= Html::closeElement( 'div' );
 	    	$html .= Html::closeElement( 'div' );
 		}
-	protected function buildActionButtons( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+	protected function buildActionButtons( string &$html, Config $config ) : void {
 		$skin = $this->getSkin();
 		$title = $skin->getRelevantTitle();
 		$talkTitle = empty( $title ) ? null : $title->getTalkPageIfDefined();
@@ -941,7 +939,7 @@ class CosmosTemplate extends BaseTemplate {
 	 * @param $html string The string onto which the HTML should be appended
 	 * @param $info array An array with the necessary info to build the button
 	 */
-	protected function buildActionButton( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config), array $info ) : void {
+	protected function buildActionButton( string &$html, Config $config, array $info ) : void {
 		// If the button links to another page, surround it in an <a> element that
 		// links there
 		if ( !empty( $info['href'] ) ) {
@@ -958,7 +956,7 @@ class CosmosTemplate extends BaseTemplate {
 			// corresponding to the given image type
 			switch ( $info['imgType'] ) {
 				case 'svg':
-					$icon = CosmosIcons::getIcon( $info['imgSrc'] );
+					$icon = Icon::getIcon( $info['imgSrc'] );
 					if ( !isset($icon) ) {
 						break;
 					}
@@ -992,7 +990,7 @@ class CosmosTemplate extends BaseTemplate {
 	 * @param $html string The string onto which the HTML should be appended
 	 * @param $info array An array of items which should be placed in the list
 	 */
-	protected function buildActionDropdown( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config), array $items ) : void {
+	protected function buildActionDropdown( string &$html, Config $config, array $items ) : void {
 		// Open a <div> element to contain the entire drop-down
 		$html .= Html::openElement( 'div', [
 			'class' => 'cosmos-dropdown',
@@ -1012,7 +1010,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::rawElement( 'div', [
 			'id' => 'cosmos-actionsList-dropdownIcon',
 			'class' => 'cosmos-dropdown-icon'
-			], CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14 ) );
+			], Icon::getIcon( 'dropdown' )->makeSvg( 14, 14 ) );
 
 			// Close the button div
 		$html .= Html::closeElement( 'div' );
@@ -1052,7 +1050,7 @@ class CosmosTemplate extends BaseTemplate {
 	 *
 	 * @param $html string The string onto which the HTML should be appended
 	 */
-	protected function buildFooter( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+	protected function buildFooter( string &$html, Config $config ) : void {
 		// Open container element for footer
 		$html .= Html::openElement( 'footer', [ 'id' => 'cosmos-footer' ] );
 
@@ -1092,7 +1090,7 @@ class CosmosTemplate extends BaseTemplate {
 	 *
 	 * @param $html string The string onto which the HTML should be appended
 	 */
-	protected function buildFooterIcons( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+	protected function buildFooterIcons( string &$html, Config $config ) : void {
 		// Open container div for icons
 		$html .= Html::openElement( 'div', [
 			'id' => 'cosmos-footerContent-footerIcons',
@@ -1128,7 +1126,7 @@ class CosmosTemplate extends BaseTemplate {
 	 *
 	 * @param $html string The string onto which the HTML should be appended
 	 */
-	protected function buildFooterLinks( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+	protected function buildFooterLinks( string &$html, Config $config ) : void {
 		// Open container div for footer links
 		$html .= Html::openElement( 'div', [
 			'id' => 'cosmos-footerContent-footerLinks',
@@ -1161,7 +1159,7 @@ class CosmosTemplate extends BaseTemplate {
 	 *
 	 * @param $html string The string onto which the HTML should be appended
 	 */
-	protected function buildToolbox( string &$html, (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ? CosmosMirahezeConfig $config : CosmosConfig $config) ) : void {
+	protected function buildToolbox( string &$html, Config $config ) : void {
 		// Open container element for toolbox
 		$html .= Html::openElement( 'section', [ 'id' => 'cosmos-toolbox' ] );
 

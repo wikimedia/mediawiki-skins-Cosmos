@@ -13,7 +13,7 @@
 if(!defined('MEDIAWIKI')) {
 	die(-1);
 }
-
+use Cosmos\Icon;
 class CosmosNavigation {
 
 	const version = '1.0.7';
@@ -119,7 +119,7 @@ class CosmosNavigation {
 		foreach($children as $key => $val) {
 			$link_html = htmlspecialchars($nodes[$val]['text']);
 			if ( !empty( $nodes[$val]['children'] ) ) {
-				$link_html .= CosmosIcons::getIcon( 'level-2-dropdown' )->makeSvg( 12, 12, [ 'id' => 'wds-icons-menu-control-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown-chevron' ] );
+				$link_html .= Icon::getIcon( 'level-2-dropdown' )->makeSvg( 12, 12, [ 'id' => 'wds-icons-menu-control-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown-chevron' ] );
 			}
 
 			$menu_item =
@@ -173,7 +173,7 @@ class CosmosNavigation {
 					$menu .= ' rel="nofollow"';
 				$menu .= ' tabIndex=3><span>'.htmlspecialchars($nodes[$val]['text']) . '</span>';
 				if ( !empty($nodes[$val]['children']) || !empty($nodes[$val]['magic']) ) {
-					$menu .= CosmosIcons::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] );
+					$menu .= Icon::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] );
 				}
 				$menu .= '</a></div>';
 				if ( !empty($nodes[$val]['children']) || !empty($nodes[$val]['magic']) ) {

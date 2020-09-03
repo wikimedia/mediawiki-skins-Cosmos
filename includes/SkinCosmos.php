@@ -4,6 +4,7 @@
  *
  * @ingroup Skins
  */
+use Cosmos\Config;
 class SkinCosmos extends SkinTemplate {
 	/** @var string */
 	public $skinname = 'cosmos';
@@ -19,16 +20,8 @@ class SkinCosmos extends SkinTemplate {
 	 */
 	public function initPage( OutputPage $out ) {
 		parent::initPage( $out );
-	  if(ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' )){
-        	$config = new CosmosMirahezeConfig();
-	} else{
-		$config = new CosmosConfig();
-	}
+		$config = new Config();
 	    
-		$out->addMeta( 'viewport',
-			'width=device-width, initial-scale=1.0, ' .
-			'user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0'
-		);
 		
 		$out->addModuleStyles( [
 			'mediawiki.skinning.content.externallinks',
