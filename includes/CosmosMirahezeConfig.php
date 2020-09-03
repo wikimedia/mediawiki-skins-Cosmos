@@ -1,6 +1,6 @@
 <?php
 
-class Config {
+class CosmosMirahezeConfig {
 	private const DEFAULT_CONFIG = [
 		'banner-logo' => null,
 		'header-wordmark' => null,
@@ -12,7 +12,7 @@ class Config {
 		'allow-bio' => false,
 		'profile-tags' => false,
 		'social-avatar' => false,
-		'group-tags' => array('bureaucrat', 'bot', 'sysop', 'interface-admin', 'suppressor'),
+		'group-tags' => array('bureaucrat', 'bot', 'sysop', 'interface-admin'),
 		'number-of-tags' => 2,
 	];
 
