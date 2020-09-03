@@ -1,5 +1,4 @@
 <?php
-use Cosmos\Config;
 class CosmosSocialProfile {
 
 	static function getUser( $parser, $user ) {
@@ -17,7 +16,11 @@ class CosmosSocialProfile {
 	}
 
 	static function usergroups( $parser, $user ) {
-	    $config = new Config();
+	    if(ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' )){
+        		$config = new CosmosMirahezeConfig();
+		} else{
+			$config = new CosmosConfig();
+		}
 		$user = self::getUser( $parser, $user );
 		if($user && $user->isBlocked()){
 		    $usertags = Html::rawElement( 'span', ['class' => 'tag tag-blocked' ], wfMessage('cosmos-user-blocked'));
