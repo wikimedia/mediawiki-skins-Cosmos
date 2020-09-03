@@ -15,7 +15,7 @@ class Config {
 		'profile-tags' => false,
 		'social-avatar' => false,
 		'group-tags' => array('bureaucrat', 'bot', 'sysop', 'interface-admin', 'suppressor'),
-		'number-of-tags' => null,
+		'number-of-tags' => false,
 	];
 
 	private const CONFIG_TYPES = [
