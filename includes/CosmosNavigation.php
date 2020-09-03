@@ -7,6 +7,7 @@
  *
  * @author Inez Korczynski <inez@wikia.com>
  * @author Christian Williams
+ * @author Universal Omega
  */
 use Cosmos\Icon;
 
