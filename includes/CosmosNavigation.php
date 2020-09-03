@@ -17,7 +17,7 @@ if(!defined('MEDIAWIKI')) {
 
 class CosmosNavigation {
 
-	const version = '0.10';
+	const version = '1.0.7';
 
 	static function invalidateCache() {
 		global $wgMemc;
@@ -361,7 +361,7 @@ class CosmosNavigation {
 		} else if(substr($original_lower, 1, 8) == 'category') {
 			$param = trim(substr($node['original'], 9), '#');
 			if(is_numeric($param)) {
-				//$category = $this->getBiggestCategory($param);
+				$category = $this->getBiggestCategory($param);
 				$name = $category['name'];
 			} else {
 				$name = substr($param, 1);
@@ -378,7 +378,7 @@ class CosmosNavigation {
 		return false;
 	}
 
-/*	private $biggestCategories;
+	private $biggestCategories;
 	public function getBiggestCategory($index) {
 		global $wgMemc, $wgBiggestCategoriesBlacklist;
 		$limit = max($index, 15);
@@ -406,6 +406,6 @@ class CosmosNavigation {
 			}
 		}
 		return isset($this->biggestCategories[$index-1]) ? $this->biggestCategories[$index-1] : null;
-	}*/
+	}
 
 }
