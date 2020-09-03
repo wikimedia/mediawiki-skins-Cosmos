@@ -175,9 +175,8 @@
 		"CosmosTemplate": "includes/CosmosTemplate.php",
 		"CosmosNavigation": "includes/CosmosNavigation.php",
 		"CosmosHooks": "includes/CosmosHooks.php",
-		"CosmosIcons": "includes/CosmosIcons.php",
-		"CosmosConfig": "includes/CosmosConfig.php",
-		"CosmosMirahezeConfig": "includes/CosmosMirahezeConfig.php",
+		"Cosmos\\Icon": "includes/Icon.php",
+		"Cosmos\\Config": "includes/Config.php",
 		"CosmosSocialProfile": "includes/CosmosSocialProfile.php"
 	},
 	"Hooks": {
