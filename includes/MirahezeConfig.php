@@ -1,7 +1,5 @@
 <?php
 
-namespace Cosmos;
-
 class Config {
 	private const DEFAULT_CONFIG = [
 		'banner-logo' => null,
