@@ -8,16 +8,15 @@ class Config {
 		'header-wordmark' => null,
 		'header-background' => null,
 		'header-background-color' => null,
-		'modern-tabs' => (class_exists('ManageWiki') ? false : true),
-		'round-avatar' => (class_exists('ManageWiki') ? false : true),
-		'show-editcount' => (class_exists('ManageWiki') ? false : true),
-		'allow-bio' => (class_exists('ManageWiki') ? false : true),
-		'profile-tags' => (class_exists('ManageWiki') ? false : true),
-		'social-avatar' => (class_exists('ManageWiki') ? false : true),
+		'modern-tabs' => false,
+		'round-avatar' => false,
+		'show-editcount' => false,
+		'allow-bio' => false,
+		'profile-tags' => false,
+		'social-avatar' => false,
 		'group-tags' => array('bureaucrat', 'bot', 'sysop', 'interface-admin', 'suppressor'),
-		'number-of-tags' => (class_exists('ManageWiki') ? null : 2),
+		'number-of-tags' => null,
 	];
-
 	private const CONFIG_TYPES = [
 		'banner-logo' => 'string',
 		'header-wordmark' => 'string',
