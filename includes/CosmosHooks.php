@@ -10,5 +10,10 @@ class CosmosHooks extends Hooks {
 				wfMessage( 'cosmos-lightmode-preference' )->text() => 'cosmos-lightmode',
 			],
 		];
+		$preferences['cosmos-mobile-resposniveness'] = [
+			'type' => 'check',
+			'label-message' => 'cosmos-mobile-preference',
+			'section' => 'cosmos/cosmos-resposniveness'
+		];
     }
 }
