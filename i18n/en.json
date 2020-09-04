@@ -44,7 +44,7 @@
 	"cosmos-darkmode-preference": "Dark mode (recommended)",
 	"cosmos-lightmode-preference": "Light mode (beta)",
 	"prefs-cosmos-responsiveness": "Mobile responsiveness",
-	"cosmos-mobile-preference": "Enable mobile responsive version of the Cosmos skin (experemental)"
+	"cosmos-mobile-preference": "Enable mobile responsive version of the Cosmos skin (experemental)",
 	"cosmos-user-blocked": "Blocked",
 	"cosmos.css": "/* All CSS here will be loaded for users of the Cosmos skin */",
 	"cosmos.js": "/* All JavaScript here will be loaded for users of the Cosmos skin */"
