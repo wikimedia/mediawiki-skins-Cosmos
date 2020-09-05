@@ -13,7 +13,7 @@ class CosmosHooks extends Hooks {
 		$preferences['cosmos-mobile-responsiveness'] = [
 			'type' => 'check',
 			'label-message' => 'cosmos-mobile-preference',
-			'section' => 'cosmos/cosmos-resposniveness'
+			'section' => 'cosmos/cosmos-responsiveness'
 		];
     }
 }
