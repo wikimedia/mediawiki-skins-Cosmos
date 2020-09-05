@@ -21,7 +21,7 @@ class SkinCosmos extends SkinTemplate {
 	public function initPage( OutputPage $out ) {
 		parent::initPage( $out );
 		$config = new Config();
-		if($this->getSkin()->getUser()->getOption( 'cosmos-mobile-resposniveness') == 1){
+		if($this->getSkin()->getUser()->getOption( 'cosmos-mobile-responsiveness') == 1){
 	       		 $out->addMeta( 'viewport',
 				'width=device-width, initial-scale=1.0, ' .
 				'user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0'
