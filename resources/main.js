@@ -21,14 +21,6 @@
 	 * respectively
 	 */
 	const SITE_NOTICE_EXPIRY_TIME = 7 * DAYS;
-
-	/**
-	 * The default minimum number of headings that should be included in the page
-	 * contents module, if the server fails to supply a number via a HTML5 data
-	 * attribute
-	 */
-	const DEFAULT_PAGE_CONTENTS_MIN_HEADINGS = 3;
-
 		/* FUNCTIONS */
 
    $('.create-page-dialog__wrapper #create-page-dialog__title').keyup(function() {
