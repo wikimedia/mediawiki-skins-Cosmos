@@ -14,6 +14,7 @@ class Config {
 		'allow-bio' => true,
 		'profile-tags' => true,
 		'social-avatar' => true,
+		'toolbar-message' => false,
 		'group-tags' => array('bureaucrat', 'bot', 'sysop', 'interface-admin', 'suppressor'),
 		'number-of-tags' => 2,
 	];
@@ -28,6 +29,7 @@ class Config {
 		'allow-bio' => false,
 		'profile-tags' => false,
 		'social-avatar' => false,
+		'toolbar-message' => false,
 		'group-tags' => array('bureaucrat', 'bot', 'sysop', 'interface-admin'),
 		'number-of-tags' => 2,
 	];
@@ -43,6 +45,8 @@ class Config {
 		'allow-bio' => 'boolean',
 		'profile-tags' => 'boolean',
 		'social-avatar' => 'boolean',
+		'social-avatar' => 'boolean',
+		'toolbar-message' => 'boolean',
 		'group-tags' => 'array',
 		'number-of-tags' => 'integer',
 	];
@@ -58,6 +62,7 @@ class Config {
 		'allow-bio' => 'wgCosmosSocialProfileAllowBio',
 		'profile-tags' => 'wgCosmosSocialProfileShowGroupTags',
 		'social-avatar' => 'wgCosmosUseSocialProfileAvatar',
+		'toolbar-message' => 'wgCosmosUseMessageforToolbar',
 		'group-tags' => 'wgCosmosProfileTagGroups',
 		'number-of-tags' => 'wgCosmosNumberofGroupTags',
 	];
