@@ -285,6 +285,7 @@ class CosmosTemplate extends BaseTemplate {
 			// Don't build darkmode into personal menu, this skin does not support darkmode, so that would not do anything.
 			// Don't build the notifications into the personal menu, they are built into the top banner instead.
         if($key !== 'adminlinks' && $key !== 'darkmode-link' && $key !== 'notifications-alert' &&  $key !== 'notifications-notice'){
+                //to-do: convert to Skin::makeListItem
 	    	   	$html .= $this->makeListItem( $key, $item );
            }
 		}
@@ -322,6 +323,7 @@ class CosmosTemplate extends BaseTemplate {
 		$skin = $this->getSkin();
 		//Partial credits to the Timeless skin:
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
+		//to-do: convert to Skin::getPersonalToolsForMakeListItem
 		$personalTools = $this->getPersonalTools();
 		$extraTools = [];
 		$extraTools['notifications-alert'] = $personalTools['notifications-alert'];
@@ -332,6 +334,7 @@ class CosmosTemplate extends BaseTemplate {
 		if ( !empty( $extraTools ) ) {
 			$iconList = '';
 			foreach ( $extraTools as $key => $item ) {
+			    //to-do: convert to Skin::makeListItem
 				$iconList .= $this->makeListItem( $key, $item );
 			}
 
@@ -1024,6 +1027,7 @@ class CosmosTemplate extends BaseTemplate {
 		// Step through the array and use the makeListItem to convert each of the
 		// items into a properly formatted HTML <li> element
 		foreach ( $items as $key => $value ) {
+		    //to-do: convert to Skin::makeListItem
 			$html .= $this->makeListItem( $key, $value );
 		}
 
@@ -1102,7 +1106,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		// Loop through each footer icon and generate a list item element
 		// which contains the icon to display
-		foreach ( $this->getFooterIcons( 'icononly' ) as $blockName => $footerIcons ) {
+		foreach ( $this->get('footericons') as $blockName => $footerIcons ) {
 			foreach ( $footerIcons as $icon ) {
 				$html .= Html::openElement( 'li', [
 					'class' => 'cosmos-footerIcons-listItem'
@@ -1160,6 +1164,7 @@ class CosmosTemplate extends BaseTemplate {
 	 * @param $html string The string onto which the HTML should be appended
 	 */
 	protected function buildToolbox( string &$html, Config $config ) : void {
+	    	
 		// Open container element for toolbox
 		$html .= Html::openElement( 'section', [ 'id' => 'cosmos-toolbox' ] );
 
@@ -1170,18 +1175,36 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'ul', [ 'id' => 'cosmos-tools-list' ] );
 
 		// Make a list item for each of the tool links
-		foreach ( $this->getToolbox() as $key => $toolboxItem ) {
-		    //Due to some styles used in this skin, the printable version does not work correctly at the moment,
-		    //this will be fixed eventually, but for now just remove it from the toolbox
-		    if($key != 'print'){
-			    $html .= $this->makeListItem( $key, $toolboxItem );
+		if($config->isEnabled('toolbar-message')){
+	        $cosmosToolbar = new CosmosToolbar();
+	        $html .= $cosmosToolbar->getCode();
+		}else {
+	    	//to-do: Convert to Skin::buildNavUrls and Skin::buildFeedUrls
+		    foreach ( $this->getToolbox() as $key => $toolboxItem ) {
+		        //Due to some styles used in this skin, the printable version does not work correctly at the moment,
+		        //this will be fixed eventually, but for now just remove it from the toolbox
+		        if($key != 'print'){
+		             //to-do: convert to Skin::makeListItem
+			         $html .= $this->makeListItem( $key, $toolboxItem );
+		       }
+		    }
+		    //Support CreateRedirect extension
+	        if(ExtensionRegistry::getInstance()->isLoaded( 'CreateRedirect' )){
+                $skin = $this->getSkin();
+                $action = $skin->getRequest()->getText( 'action', 'view' );
+                $title = $skin->getRelevantTitle();
+                $href = SpecialPage::getTitleFor( 'CreateRedirect', $title->getPrefixedText() )->getLocalURL();
+                $CreateRedirect = Html::rawElement(
+		    	    'li', null, Html::element( 'a', [ 'href' => $href ], wfMessage( 'createredirect' )->text() )
+		        );
+		        if ( $action == 'view' || $action == 'purge' || !$title->isSpecialPage() ) {
+		            $html .= $CreateRedirect;
+		        }
 		    }
 		}
-
 		// Avoid PHP 7.1 warnings
 		$skin = $this;
-
-		Hooks::run( 'SkinTemplateToolboxEnd', [ &$skin, true ] );
+		Hooks::run( 'CosmosTemplateToolbarEnd', [ &$skin, true ] );
 
 		// End unordered list
 		$html .= Html::closeElement( 'ul' );
