@@ -45,7 +45,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		$lessVars = parent::getLessVars( $context );
 		$config = new Config();
 		$lessVars[ 'banner-background-color' ] = $config->getString( 'banner-background-color' );
-		$lessVars[ 'header-background-color' ] = $config->getString( 'banner-background-color' );
+		$lessVars[ 'header-background-color' ] = $config->getString( 'header-background-color' );
 		$lessVars[ 'main-background-image' ] = $config->getString( 'main-background-image' );
 		$lessVars[ 'main-background-color' ] = $config->getString( 'main-background-color' );
 		$lessVars[ 'content-background-color' ] = $config->getString( 'content-background-color' );
