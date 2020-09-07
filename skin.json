@@ -30,8 +30,20 @@
 		"CosmosSocialProfile": "includes/CosmosSocialProfile.php"
 	},
 	"ResourceModules": {
-		"skins.cosmos": {
+	    "skins.cosmos.common": {
 		    "class": "Cosmos\\ResourceLoaderLessModule",
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+				"resources/screen-common.less": {
+					"media": "screen"
+				}
+			}
+	    },
+		"skins.cosmos": {
+		    "class": "ResourceLoaderSkinModule",
 		    "features": [ "legacy" ],
 			"targets": [
 				"desktop",
@@ -42,9 +54,6 @@
 					"media": "screen"
 				},
 				"resources/forms.less": {
-					"media": "screen"
-				},
-				"resources/screen-common.less": {
 					"media": "screen"
 				},
 				"resources/screen-desktop.less": {
