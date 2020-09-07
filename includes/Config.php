@@ -117,6 +117,7 @@ class Config {
 		'social-avatar' => 'wgCosmosUseSocialProfileAvatar',
 		'toolbar-message' => 'wgCosmosUseMessageforToolbar',
 		'main-background-image-norepeat' => 'wgCosmosBackgroundImageNorepeat',
+		'main-background-image-fixed' => 'wgCosmosBackgroundImageFixed',
 		'group-tags' => 'wgCosmosProfileTagGroups',
 		'number-of-tags' => 'wgCosmosNumberofGroupTags',
 		'content-opacity-level' => 'wgCosmosContentOpacityLevel',
