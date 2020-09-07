@@ -178,12 +178,8 @@
 			"+ext.proofreadpage.page.navigation": "resources/extensions/Proofreadpage.page.navigation.less"
 		}
 	},
-
 	"Hooks": {
-        "GetPreferences": [ "CosmosHooks::onGetPreferences" ]
-    },
-    "DefaultUserOptions": {
-		"cosmos-colorscheme": "cosmos-darkmode"
-	},
+        	"GetPreferences": [ "CosmosHooks::onGetPreferences" ]
+    	},
 	"manifest_version": 2
 }
