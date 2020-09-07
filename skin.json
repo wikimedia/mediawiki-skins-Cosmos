@@ -173,13 +173,14 @@
 		"SkinCosmos": "includes/SkinCosmos.php",
 		"CosmosTemplate": "includes/CosmosTemplate.php",
 		"CosmosNavigation": "includes/CosmosNavigation.php",
+		"CosmosToolbar": "includes/CosmosToolbar.php",
 		"CosmosHooks": "includes/CosmosHooks.php",
 		"Cosmos\\Icon": "includes/Icon.php",
 		"Cosmos\\Config": "includes/Config.php",
 		"CosmosSocialProfile": "includes/CosmosSocialProfile.php"
 	},
 	"Hooks": {
-        "GetPreferences": [ "CosmosHooks::onGetPreferences" ]
+        	"GetPreferences": [ "CosmosHooks::onGetPreferences" ]
     },
     "DefaultUserOptions": {
 		"cosmos-colorscheme": "cosmos-darkmode"
