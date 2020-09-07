@@ -11,7 +11,7 @@ class Config {
 		'header-background-color' => null,
 		'main-background-image' => null,
 		'main-background-color' => '#1A1A1A',
-		'content-background-color' => null,
+		'content-background-color' => '#000',
 		'main-background-image-size' => 'contain',
 		'link-color' => null,
 		'button-color' => null,
