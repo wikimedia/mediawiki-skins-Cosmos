@@ -213,7 +213,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		}
 		$lessVars[ 'banner-background-color' ] = $config->getString( 'banner-background-color' );
 		$lessVars[ 'header-background-color' ] = $config->getString( 'header-background-color' );
-		$lessVars[ 'main-background-image' ] = $config->getString( 'main-background-image' );
+		$lessVars[ 'main-background-image' ] = 'url(' . $config->getString( 'main-background-image' ) . ')';
 		$lessVars[ 'main-background-color' ] = $config->getString( 'main-background-color' );
 		$lessVars[ 'content-background-color' ] = $config->getString( 'content-background-color' );
 		$lessVars[ 'main-background-image-size' ] = $config->getString( 'main-background-image-size' );
@@ -224,6 +224,16 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		$lessVars[ 'font-family' ] = $config->getString( 'font-family' );
 		$lessVars[ 'font-style' ] = $config->getString( 'font-style' );
 		$lessVars[ 'font-style' ] = $config->getString( 'font-style' );
+		if($config->isEnabled( 'main-background-image-norepeat' )){
+		    $lessVars[ 'main-background-image-repeat' ] = 'no-repeat';
+		} else {
+		    $lessVars[ 'main-background-image-repeat' ] = 'repeat';
+		}
+		if($config->isEnabled( 'main-background-image-fixed' )){
+		    $lessVars[ 'main-background-image-position' ] = 'fixed';
+		} else {
+		    $lessVars[ 'main-background-image-position' ] = 'absolute';
+		}
 		// convert @content-background-color to rgba for background-color opacity
 		list($r, $g, $b) = array_map(function($c){return hexdec(str_pad($c, 2, $c));}, str_split(ltrim($colorname, '#'), strlen($colorname > 4 ? 2 : 1)));
 		$lessVars[ 'content-opacity-level' ] = "rgba($r, $g, $b, " . $config->getInteger( 'content-opacity-level' ) / 100.00 . ')';
