@@ -4,11 +4,11 @@ use ExtensionRegistry;
 class Config {
         
 	private const DEFAULT_CONFIG = [
-		'banner-background-color' => null,
+		'banner-background-color' => '#001e3b',
 		'banner-logo' => null,
 		'header-wordmark' => null,
 		'header-background' => null,
-		'header-background-color' => null,
+		'header-background-color' => '#001e3b',
 		'main-background-image' => null,
 		'main-background-color' => '#1A1A1A',
 		'content-background-color' => '#000',
