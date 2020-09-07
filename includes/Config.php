@@ -10,7 +10,7 @@ class Config {
 		'header-background' => null,
 		'header-background-color' => null,
 		'main-background-image' => null,
-		'main-background-color' => null,
+		'main-background-color' => '#1A1A1A',
 		'content-background-color' => null,
 		'main-background-image-size' => 'contain',
 		'link-color' => null,
