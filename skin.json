@@ -181,8 +181,8 @@
 	},
 	"Hooks": {
         	"GetPreferences": [ "CosmosHooks::onGetPreferences" ]
-    },
-    "DefaultUserOptions": {
+    	},
+  	"DefaultUserOptions": {
 		"cosmos-colorscheme": "cosmos-darkmode"
 	},
 	"manifest_version": 2
