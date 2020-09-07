@@ -4,10 +4,17 @@ use ExtensionRegistry;
 class Config {
         
 	private const DEFAULT_CONFIG = [
+		'banner-background-color' => null,
 		'banner-logo' => null,
 		'header-wordmark' => null,
 		'header-background' => null,
 		'header-background-color' => null,
+		'main-background-image' => null,
+		'main-background-color' => null,
+		'content-background-color' => null,
+		'link-color' => null,
+		'button-color' => null,
+		'toolbar-color' => null,
 		'modern-tabs' => true,
 		'round-avatar' => true,
 		'show-editcount' => true,
@@ -17,12 +24,20 @@ class Config {
 		'toolbar-message' => false,
 		'group-tags' => array('bureaucrat', 'bot', 'sysop', 'interface-admin', 'suppressor'),
 		'number-of-tags' => 2,
+		'content-opacity-level' => 100,
 	];
 	private const DEFAULT_MIRAHEZE_CONFIG = [
+		'banner-background-color' => null,
 		'banner-logo' => null,
 		'header-wordmark' => null,
 		'header-background' => null,
 		'header-background-color' => null,
+		'main-background-image' => null,
+		'main-background-color' => null,
+		'content-background-color' => null,
+		'link-color' => null,
+		'button-color' => null,
+		'toolbar-color' => null,
 		'modern-tabs' => false,
 		'round-avatar' => false,
 		'show-editcount' => false,
@@ -32,13 +47,21 @@ class Config {
 		'toolbar-message' => false,
 		'group-tags' => array('bureaucrat', 'bot', 'sysop', 'interface-admin'),
 		'number-of-tags' => 2,
+		'content-opacity-level' => 100,
 	];
 
 	private const CONFIG_TYPES = [
+		'banner-background-color' => 'string',
 		'banner-logo' => 'string',
 		'header-wordmark' => 'string',
 		'header-background' => 'string',
 		'header-background-color' => 'string',
+		'main-background-image' => 'string',
+		'main-background-color' => 'string',
+		'content-background-color' => 'string',
+		'link-color' => 'string',
+		'button-color' => 'string',
+		'toolbar-color' => 'string',
 		'modern-tabs' => 'boolean',
 		'round-avatar' => 'boolean',
 		'show-editcount' => 'boolean',
@@ -49,13 +72,21 @@ class Config {
 		'toolbar-message' => 'boolean',
 		'group-tags' => 'array',
 		'number-of-tags' => 'integer',
+		'content-opacity-level' => 'integer',
 	];
 
 	private const CONFIG_NAMES = [
+		'banner-background-color' => 'wgCosmosBannerBackgroundColor',
 		'banner-logo' => 'wgCosmosBannerLogo',
 		'header-wordmark' => 'wgCosmosWikiHeaderWordmark',
 		'header-background' => 'wgCosmosWikiHeaderBackgroundImage',
 		'header-background-color' => 'wgCosmosWikiHeaderBackgroundColor',
+		'main-background-image' => 'wgCosmosBackgroundImage',
+		'main-background-color' => 'wgCosmosMainBackgroundColor',
+		'content-background-color' => 'wgCosmosContentBackgroundColor',
+		'link-color' => 'wgCosmosLinkColor',
+		'button-color' => 'wgCosmosButtonColor',
+		'toolbar-color' => 'wgCosmosToolbarColor',
 		'modern-tabs' => 'wgCosmosSocialProfileModernTabs',
 		'round-avatar' => 'wgCosmosSocialProfileRoundAvatar',
 		'show-editcount' => 'wgCosmosSocialProfileShowEditCount',
@@ -65,6 +96,7 @@ class Config {
 		'toolbar-message' => 'wgCosmosUseMessageforToolbar',
 		'group-tags' => 'wgCosmosProfileTagGroups',
 		'number-of-tags' => 'wgCosmosNumberofGroupTags',
+		'content-opacity-level' => 'wgCosmosContentOpacityLevel',
 	];
 
 	private $options;
