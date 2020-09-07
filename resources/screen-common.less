@@ -1,12 +1,31 @@
 body {
-	background: @main-background-color;
+    background: @main-background-color;
 }
- #mw-content, #mw-site-navigation .sidebar-chunk {
+#mw-content, #mw-site-navigation .sidebar-chunk, #catlinks {
 	background: @content-background-color;
+}
+@media screen and (min-width: 850px) {
+    body {
+        &::after {
+            content: "";
+	        background: @main-background-image;
+	        opacity: 1;
+	        top: 0;
+	        left: 0;
+	        bottom: 0;
+	        right: 0;
+	        background-size: @main-background-image-size;
+	        background-repeat: @main-background-image-repeat;
+	        position: @main-background-image-position;
+	        z-index: -1;   
+        }
+    }
+    #mw-content, #mw-site-navigation .sidebar-chunk, #catlinks {
         background-color: @content-opacity-level;
+    }
 }
  .mw-prefs-buttons {
-	background: @content-background-color;
+		background: @content-background-color;
 }
 .mw-changeslist-legend {
     background-color: #ffffff;
@@ -4058,7 +4077,6 @@ body {
 	}
 }
 #catlinks {
-	background: @content-background-color;
 	clear: both;
 	line-height: 1.8em;
 	padding: 10px;
