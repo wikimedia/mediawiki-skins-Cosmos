@@ -56,7 +56,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		$lessVars[ 'font-color' ] = $config->getString( 'font-color' );
 		$lessVars[ 'font-family' ] = $config->getString( 'font-family' );
 		$lessVars[ 'font-style' ] = $config->getString( 'font-style' );
-		$lessVars[ 'content-opacity-level' ] = $config->getString( 'content-opacity-level' ) . '%';
+		$lessVars[ 'content-opacity-level' ] = $config->getInteger( 'content-opacity-level' ) . '%';
 		    return $lessVars;	
 	}	
 }
