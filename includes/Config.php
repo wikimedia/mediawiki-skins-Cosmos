@@ -13,7 +13,7 @@ class Config {
 		'main-background-color' => '#1A1A1A',
 		'content-background-color' => '#000',
 		'main-background-image-size' => 'contain',
-		'link-color' => null,
+		'link-color' => '#006cb0',
 		'button-color' => null,
 		'toolbar-color' => null,
 		'font-color' => '#fff',
