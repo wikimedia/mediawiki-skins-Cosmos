@@ -48,6 +48,15 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		$lessVars[ 'header-background-color' ] = $config->getString( 'banner-background-color' );
 		$lessVars[ 'main-background-image' ] = $config->getString( 'main-background-image' );
 		$lessVars[ 'main-background-color' ] = $config->getString( 'main-background-color' );
+		$lessVars[ 'content-background-color' ] = $config->getString( 'content-background-color' );
+		$lessVars[ 'main-background-image-size' ] = $config->getString( 'main-background-image-size' );
+		$lessVars[ 'link-color' ] = $config->getString( 'link-color' );
+		$lessVars[ 'button-color' ] = $config->getString( 'button-color' );
+		$lessVars[ 'toolbar-color' ] = $config->getString( 'toolbar-color' );
+		$lessVars[ 'font-color' ] = $config->getString( 'font-color' );
+		$lessVars[ 'font-family' ] = $config->getString( 'font-family' );
+		$lessVars[ 'font-style' ] = $config->getString( 'font-style' );
+		$lessVars[ 'content-opacity-level' ] = $config->getString( 'content-opacity-level' ) . '%';
 		    return $lessVars;	
 	}	
 }
