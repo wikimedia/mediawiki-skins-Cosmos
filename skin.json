@@ -140,17 +140,6 @@
 			    }
 			}
 		},
-		"skins.cosmos.lightmode": {
-			"targets": [
-				"desktop",
-				"mobile"
-			],
-			"styles": {
-		        "resources/lightmode.less": {
-			         "media": "screen"
-			    }
-			}
-		},
 		"skins.cosmos.js": {
 			"targets": [
 				"desktop"
