@@ -1,8 +1,12 @@
 body {
     background: @main-background-color;
 }
- #mw-content, #mw-site-navigation .sidebar-chunk, .mw-prefs-buttons {
-		background: #000;
+ #mw-content, #mw-site-navigation .sidebar-chunk {
+		background: @content-background-color;
+                opacity: @content-opacity-level;
+}
+ .mw-prefs-buttons {
+		background: @content-background-color;
 }
 .mw-changeslist-legend {
     background-color: #ffffff;
@@ -11,7 +15,7 @@ body .oo-ui-tabOptionWidget {
     color:#fff;
 }
 body .oo-ui-tabSelectWidget-framed {
-    background-color: #000;
+    background-color: @content-background-color;
 }
 body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-widget-enabled:hover{
     background-color:rgba(255,255,255,0.8);
@@ -179,7 +183,7 @@ body > #mw-content-container {
     width: 50%;
 }
 .sidebar-chunk{
-   background:#000000;
+   background: @content-background-color;
    color:#fff;
 }
 #cosmos-userButton-avatar {
@@ -3354,7 +3358,7 @@ button.wds-button {
 					>a {
 						&:not(.wds-button) {
 							background-color: @background_color_48;
-							color: @color_51;
+							color: @link-color;
 						}
 					}
 				}
@@ -3653,14 +3657,14 @@ button.wds-button {
 .wikitable {
 	>tr {
 		>th {
-			background: #000;
+			background: @content-background-color;
 			color: #fff;
 		}
 	}
 	>* {
 		>tr {
 			>th {
-				background: #000;
+				background: @content-background-color;
 				color: #fff;
 			}
 			>td {
@@ -3672,7 +3676,7 @@ button.wds-button {
 		>* {
 			>tr {
 				>td {
-					background: #000;
+					background: @content-background-color;
 				}
 			}
 		}
@@ -3728,7 +3732,7 @@ button.wds-button {
 	cursor: pointer;
 }
 .editOptions {
-	background-color: #000;
+	background-color: @content-background-color;
 	color: #fff;
 	border-width: 0 1px 1px;
 }
@@ -3772,7 +3776,7 @@ button.wds-button {
 .oo-ui-processDialog-content {
 	.oo-ui-window-body {
 		color: #fff;
-		background: #000;
+		background: @content-background-color;
 	}
 }
 .oo-ui-labelElement {
@@ -3835,7 +3839,7 @@ body code {
 	border: none;
 }
 #mw-searchoptions {
-	background: #000;
+	background: @content-background-color;
 	border: none;
 	color: #fff;
 	table {
@@ -3846,7 +3850,7 @@ body code {
 	}
 }
 .oo-ui-tabSelectWidget-framed {
-	background: #000;
+	background: @content-background-color;
 	border: none;
 	color: #fff;
 }
@@ -4035,7 +4039,7 @@ h6 {
 	}
 	a {
 		&:not(.new) {
-			color: #006cb0;
+			color: @link-color;
 			text-decoration: none;
 		}
 	}
@@ -4043,7 +4047,7 @@ h6 {
 body {
 	a {
 		&:not(.new) {
-			color: #006cb0;
+			color: @link-color;
 			text-decoration: none;
 		}
 	}
@@ -4054,7 +4058,7 @@ body {
 	}
 }
 #catlinks {
-	background: #000;
+	background: @content-background-color;
 	clear: both;
 	line-height: 1.8em;
 	padding: 10px;
@@ -4246,7 +4250,7 @@ ul#filetoc {
      line-height: 1.5em;
  }
 #mw_metadata{
-    color:#000;
+    color: #000;
 }
 
 	#catlinks {
@@ -4270,14 +4274,14 @@ body .wikitable > tr > th,
 body .wikitable > tr > td, 
 body .wikitable > * > tr > th, 
 body .wikitable > * > tr > td {
-    background-color: #000;
+    background-color: @content-background-color;
     color: #fff;
 }
 body h1, body h2, body h3, body h4, body h5, body h6 {
     color: #fff;
 }
 #cosmos-toolbox {
-	box-shadow: 0 0 10px 0 #000;
+	box-shadow: 0 0 10px 0 @content-background-color;
 	background-color: #1a3664;
 	background-image: -moz-linear-gradient(left,#070e19 0,#1a3664 50%,#070e19 100%);
 	background-image: -webkit-gradient(linear,0% 0%,100% 0%,color-stop(0,#070e19),color-stop(50%,#1a3664),color-stop(100%,#070e19));
