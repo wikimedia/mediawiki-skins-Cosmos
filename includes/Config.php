@@ -12,7 +12,7 @@ class Config {
 		'main-background-image' => null,
 		'main-background-color' => '#1A1A1A',
 		'content-background-color' => '#000',
-		'main-background-image-size' => 'contain',
+		'main-background-image-size' => 'cover',
 		'link-color' => '#006cb0',
 		'button-color' => null,
 		'toolbar-color' => null,
