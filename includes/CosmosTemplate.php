@@ -792,15 +792,15 @@ class CosmosTemplate extends BaseTemplate {
 			}
 		}
 
-		// Add Cosmos-specific IDs to the view, edit and talk buttons
+		// Add Cosmos-specific classes to the view, edit and talk buttons
 		if ( !empty( $view ) ) {
-			$view['id'] .= ' cosmos-actions-view';
+			$view['class'] .= ' cosmos-actions-view';
 		}
 		if ( !empty( $edit ) ) {
-			$edit['id'] .= ' cosmos-actions-edit';
+			$edit['class'] .= ' cosmos-actions-edit';
 		}
 		if ( !empty( $talk ) ) {
-			$talk['id'] .= ' cosmos-actions-talk';
+			$talk['class'] .= ' cosmos-actions-talk';
 		}
 
 		$primary;
