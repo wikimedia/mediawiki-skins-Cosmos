@@ -213,7 +213,12 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		}
 		$lessVars[ 'banner-background-color' ] = $config->getString( 'banner-background-color' );
 		$lessVars[ 'header-background-color' ] = $config->getString( 'header-background-color' );
-		$lessVars[ 'main-background-image' ] = 'url(' . $config->getString( 'main-background-image' ) . ')';
+		if($config->getString( 'main-background-image' )){
+			$lessVars[ 'main-background-image-isset' ] = 1
+			$lessVars[ 'main-background-image' ] = 'url(' . $config->getString( 'main-background-image' ) . ')';
+		} else {
+			$lessVars[ 'main-background-image-isset' ] = 0
+		}
 		$lessVars[ 'main-background-color' ] = $config->getString( 'main-background-color' );
 		$lessVars[ 'content-background-color' ] = $config->getString( 'content-background-color' );
 		$lessVars[ 'main-background-image-size' ] = $config->getString( 'main-background-image-size' );
