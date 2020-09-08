@@ -26,7 +26,7 @@ body {
         background-color: @content-opacity-level;
     }
 }
-#mw-content-text{
+#mw-content-text {
   min-height: 400px;
 }
 #cosmos-footer{
@@ -4447,4 +4447,36 @@ body .postedit-container{
 }
 .flaggedrevs_reviewform {
     background-color: transparent;
+}
+.ve-activated .ve-init-mw-desktopArticleTarget-uneditableContent {
+     pointer-events: all;
+     opacity: 1; 
+}
+.ve-activated .mw-dismissable-notice, .ve-activated #ca-talk, .action-edit #ca-talk {
+    display: none;
+}
+.oo-ui-window-body{
+    background: #000;
+}
+.ve-ui-mwNoticesPopupTool-item .warningbox{
+    background:none !important;
+    margin-bottom: 1em;
+    border: 1px solid;
+    padding: 0.5em 1em;
+}
+.ve-init-target div, .ve-ui-toolbar-saveButton span {
+    color: #fff;
+}
+.ve-ui-mwNoticesPopupTool-item .warningbox{
+    background:none;
+    margin-bottom: 1em;
+    border: 1px solid;
+    padding: 0.5em 1em;
+}
+.ve-active .oo-ui-barToolGroup-tools.oo-ui-toolGroup-disabled-tools .oo-ui-tool.oo-ui-flaggedElement-primary > .oo-ui-tool-link {
+    background-color: #808080;
+}
+.ve-ui-mwSaveDialog .oo-ui-window-frame {
+    width:60%;
+    height:60%;
 }
