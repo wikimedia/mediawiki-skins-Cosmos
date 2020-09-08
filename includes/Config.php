@@ -58,8 +58,8 @@ class Config {
 		'main-background-image-norepeat' => false,
 		'main-background-image-fixed' => false,
 		'group-tags' => array('bureaucrat', 'bot', 'sysop', 'interface-admin'),
-		'number-of-tags' => null,
-		'content-opacity-level' => null,
+		'number-of-tags' => 2,
+		'content-opacity-level' => 100,
 	];
 
 	private const CONFIG_TYPES = [
