@@ -5,7 +5,9 @@ body {
 	background: @content-background-color;
 }
 @media screen and (min-width: 850px) {
-    body:after {
+    body {
+	& when( @main-background-image-isset = 1 ) {
+	    &::after {
             	content: "";
 	        background: @main-background-image;
 	        opacity: 1;
@@ -17,7 +19,9 @@ body {
 	        background-repeat: @main-background-image-repeat;
 	        position: @main-background-image-position;
 	        z-index: -1;   
-        }
+            }
+	}
+    }
     #mw-content, #mw-site-navigation .sidebar-chunk, #catlinks {
         background-color: @content-opacity-level;
     }
