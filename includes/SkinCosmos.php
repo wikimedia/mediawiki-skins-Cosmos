@@ -30,7 +30,7 @@ class SkinCosmos extends SkinTemplate {
 		$out->addModuleStyles( [
 			'mediawiki.skinning.content.externallinks',
 			'skins.cosmos',
-			'skins.cosmos.common',
+			'skins.cosmos.legacy',
 		] );
 		
 		$out->addModules( [
