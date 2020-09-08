@@ -240,7 +240,12 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		    $lessVars[ 'main-background-image-position' ] = 'absolute';
 		}
 		// convert @content-background-color to rgba for background-color opacity
-		list($r, $g, $b) = array_map(function($c){return hexdec(str_pad($c, 2, $c));}, str_split(ltrim($colorname, '#'), strlen($colorname > 4 ? 2 : 1)));
+		list($r, $g, $b) = array_map(
+    		function($c) {
+        		return hexdec(str_pad($c, 2, $c));
+    		},
+    		str_split(ltrim($colorname, '#'), strlen($colorname) > 4 ? 2 : 1)
+		);
 		$lessVars[ 'content-opacity-level' ] = "rgba($r, $g, $b, " . $config->getInteger( 'content-opacity-level' ) / 100.00 . ')';
 		    return $lessVars;	
 	}	
