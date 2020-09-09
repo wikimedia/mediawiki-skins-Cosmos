@@ -13,6 +13,7 @@
 if(!defined('MEDIAWIKI')) {
 	die(-1);
 }
+use Cosmos\Config;
 class CosmosToolbar {
 
 	const version = '1.0.7';
@@ -97,7 +98,6 @@ class CosmosToolbar {
 	}
 
 	public function getCode() {
-		global $wgUser, $wgTitle, $wgRequest, $wgLang, $wgContLang;
 
 		if(empty($menu)) {
 			$menu = $this->getMenu($this->getMenuLines());
@@ -114,7 +114,6 @@ class CosmosToolbar {
 	}
 
 	public function getMenu($lines, $userMenu = false) {
-		global $wgMemc, $wgScript;
         $menu = '';
 		$nodes = $this->parse($lines);
 
@@ -170,11 +169,8 @@ class CosmosToolbar {
 				$nodes['magicWords'] = $magicWords;
 			}
 
-			$wgMemc->set($menuHash, $nodes, 60 * 60 * 24 * 3); // three days
-
-			// use AJAX request method to fetch JS code asynchronously
-			//$menuJSurl = Xml::encodeJsVar("{$wgScript}?action=ajax&v=" . self::version. "&rs=getMenu&id={$menuHash}");
-			//$menu .= "<script type=\"text/javascript\">/*<![CDATA[*/wsl.loadScriptAjax({$menuJSurl});/*]]>*/</script>";
+			$memc = ObjectCache::getLocalClusterInstance();
+			$memc->set($menuHash, $nodes, 60 * 60 * 24 * 3); // three days
 
 			return $menu;
 		}
@@ -315,14 +311,15 @@ class CosmosToolbar {
 
 	private $biggestCategories;
 	public function getBiggestCategory($index) {
-		global $wgMemc, $wgBiggestCategoriesBlacklist;
+        $config = new Config();
+		$memc = ObjectCache::getLocalClusterInstance();
 		$limit = max($index, 15);
 		if($limit > count($this->biggestCategories)) {
 			$key = wfMemcKey('biggest', $limit);
-			$data = $wgMemc->get($key);
+			$data = $memc->get($key);
 			if(empty($data)) {
 				$filterWordsA = array();
-				foreach($wgBiggestCategoriesBlacklist as $word) {
+				foreach($config->getArray('biggest-categories-blacklist') as $word) {
 					$filterWordsA[] = '(cl_to not like "%'.$word.'%")';
 				}
 				$dbr =& wfGetDB( DB_REPLICA );
@@ -335,7 +332,7 @@ class CosmosToolbar {
 				while ($row = $dbr->fetchObject($res)) {
 					$this->biggestCategories[] = array('name' => $row->cl_to, 'count' => $row->cnt);
 				}
-				$wgMemc->set($key, $this->biggestCategories, 60 * 60 * 24 * 7);
+				$memc->set($key, $this->biggestCategories, 60 * 60 * 24 * 7);
 			} else {
 				$this->biggestCategories = $data;
 			}
