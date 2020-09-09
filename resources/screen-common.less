@@ -4448,11 +4448,15 @@ body .postedit-container{
 .flaggedrevs_reviewform {
     background-color: transparent;
 }
-.ve-activated .ve-init-mw-desktopArticleTarget-uneditableContent {
-     pointer-events: all;
-     opacity: 1; 
+.ve-activated .skin-cosmos .ve-init-mw-desktopArticleTarget-uneditableContent {
+    pointer-events: auto;
+	-webkit-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+	user-select: auto;
+    opacity: 1; 
 }
-.ve-activated .mw-dismissable-notice, .ve-activated #ca-talk, .action-edit #ca-talk {
+.client-js.ve-activated .mw-dismissable-notice, .ve-activated #ca-talk, .action-edit #ca-talk {
     display: none;
 }
 .oo-ui-window-body{
