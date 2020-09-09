@@ -1175,9 +1175,9 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'ul', [ 'id' => 'cosmos-tools-list' ] );
 
 		// Make a list item for each of the tool links
+		$cosmosToolbar = new CosmosToolbar();
 		if($config->isEnabled('toolbar-message')){
-	        $cosmosToolbar = new CosmosToolbar();
-	        $html .= $cosmosToolbar->getCode();
+	        	$html .= $cosmosToolbar->getCode();
 		}else {
 	    	//to-do: Convert to Skin::buildNavUrls and Skin::buildFeedUrls
 		    foreach ( $this->getToolbox() as $key => $toolboxItem ) {
@@ -1201,6 +1201,7 @@ class CosmosTemplate extends BaseTemplate {
 		            $html .= $CreateRedirect;
 		        }
 		    }
+			$html .= $cosmosToolbar->getCode();
 		}
 		// Avoid PHP 7.1 warnings
 		$skin = $this;
