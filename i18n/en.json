@@ -32,6 +32,7 @@
 	"cosmos-adminlinks": "Admin Links",
 	"cosmos-navigation-explore-tab": "*[[Special:RecentChanges|{{int:Cosmos-recentchanges}}]]\n*[[Special:Random|Random page]]\n*[[Special:NewFiles|New files]]\n*[[Special:WantedPages|Wanted pages]]",
 	"cosmos-navigation": "{{int:Sidebar}}",
+	"cosmos-toolbar": "-",
 	"#newlychanged#": "Newly changed articles",
 	"#popular#": "Most popular articles",
 	"#topusers#": "Top users",
