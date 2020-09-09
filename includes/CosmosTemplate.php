@@ -1201,7 +1201,9 @@ class CosmosTemplate extends BaseTemplate {
 		            $html .= $CreateRedirect;
 		        }
 		    }
-			$html .= $cosmosToolbar->getCode();
+		    if ($this->getMsg( 'cosmos-toolbar' )->text() !== '-' && $this->getMsg( 'cosmos-toolbar' )->text() !== ''){
+		    	$html .= $cosmosToolbar->getCode();
+		    }
 		}
 		// Avoid PHP 7.1 warnings
 		$skin = $this;
