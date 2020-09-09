@@ -29,6 +29,7 @@ class Config {
 		'main-background-image-norepeat' => true,
 		'main-background-image-fixed' => true,
 		'group-tags' => array('bureaucrat', 'bot', 'sysop', 'interface-admin', 'suppressor'),
+		'biggest-categories-blacklist' => array(),
 		'number-of-tags' => 2,
 		'content-opacity-level' => 100,
 	];
@@ -58,6 +59,7 @@ class Config {
 		'main-background-image-norepeat' => false,
 		'main-background-image-fixed' => false,
 		'group-tags' => array('bureaucrat', 'bot', 'sysop', 'interface-admin'),
+		'biggest-categories-blacklist' => array(),
 		'number-of-tags' => 2,
 		'content-opacity-level' => 100,
 	];
@@ -89,6 +91,7 @@ class Config {
 		'main-background-image-norepeat' => 'boolean',
 		'main-background-image-fixed' => 'boolean',
 		'group-tags' => 'array',
+		'biggest-categories-blacklist' => 'array',
 		'number-of-tags' => 'integer',
 		'content-opacity-level' => 'integer',
 	];
@@ -119,6 +122,7 @@ class Config {
 		'main-background-image-norepeat' => 'wgCosmosBackgroundImageNorepeat',
 		'main-background-image-fixed' => 'wgCosmosBackgroundImageFixed',
 		'group-tags' => 'wgCosmosProfileTagGroups',
+		'biggest-categories-blacklist' => 'wgCosmosBiggestCategoriesBlacklist',
 		'number-of-tags' => 'wgCosmosNumberofGroupTags',
 		'content-opacity-level' => 'wgCosmosContentOpacityLevel',
 	];
