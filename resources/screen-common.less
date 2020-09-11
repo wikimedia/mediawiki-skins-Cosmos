@@ -4284,13 +4284,14 @@ body .wikitable > * > tr > td {
 body h1, body h2, body h3, body h4, body h5, body h6 {
     color: @font-color;
 }
+
+@toolbar-color1: mix(@toolbar-color2, @toolbar-color-mix, 25%);
 #cosmos-toolbox {
 	box-shadow: 0 0 10px 0 @content-background-color;
-	background-color: #1a3664;
-	background-image: -moz-linear-gradient(left,#070e19 0,#1a3664 50%,#070e19 100%);
-	background-image: -webkit-gradient(linear,0% 0%,100% 0%,color-stop(0,#070e19),color-stop(50%,#1a3664),color-stop(100%,#070e19));
-	background-image: -o-linear-gradient(left,#070e19 0,#1a3664 50%,#070e19 100%);
-	background-image: -ms-linear-gradient(left,#070e19 0,#1a3664 50%,#070e19 100%);
+	background-image: -moz-linear-gradient(left,@toolbar-color1 0,@toolbar-color2 50%,@toolbar-color1 100%);
+	background-image: -webkit-gradient(linear,0% 0%,100% 0%,color-stop(0,@toolbar-color1),color-stop(50%,@toolbar-color2),color-stop(100%,@toolbar-color1));
+	background-image: -o-linear-gradient(left,@toolbar-color1 0,@toolbar-color2 50%,@toolbar-color1 100%);
+	background-image: -ms-linear-gradient(left,@toolbar-color1 0,@toolbar-color2 50%,@toolbar-color1 100%);
 	position: fixed;
 	z-index: 1000;
 	bottom: 0;
@@ -4302,7 +4303,6 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 	margin: 0;
 	display: flex;
 	align-items: center;
-	background-color: #222;
 }
 #cosmos-toolbox-tools {
 	margin: 0 auto;
@@ -4316,9 +4316,9 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 	padding: 0;
 	>li {
 		display: inline;
-		color: #fff;
+		color: @toolbar-font-color;
 		>a {
-			color: #fff;
+			color: @toolbar-font-color;
 		}
 	}
 	li {
