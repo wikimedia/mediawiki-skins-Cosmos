@@ -4109,14 +4109,14 @@ body {
 	padding: 0;
 }
 .cosmos-footerLinks-list {
-	color: #999;
+	color: @footer-font-color1;
 	list-style: none;
 	font-size: 10pt;
 	margin: 0;
 	padding: 0;
 	li {
 		a {
-			color: #fff;
+			color: @footer-font-color2;
 		}
 	}
 }
@@ -4127,7 +4127,7 @@ body {
 		&:not(:first-child) {
 			&:before {
 				content: ' | ';
-				color: #999;
+				color: @footer-font-color1;
 			}
 		}
 	}
@@ -4148,7 +4148,7 @@ body {
 #cosmos-footer {
 	width: 100%;
 	margin: 0;
-	background-color: rgba(20,20,20,0.9);
+	background-color: @footer-background-color;
 	border: 0;
 }
 @media screen and (max-width: 850px) {
