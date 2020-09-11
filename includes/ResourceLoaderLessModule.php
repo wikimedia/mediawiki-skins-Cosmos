@@ -87,6 +87,22 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
     		str_split(ltrim($colorname, '#'), strlen($colorname) > 4 ? 2 : 1)
 		);
 		$lessVars[ 'content-opacity-level' ] = "rgba($r, $g, $b, " . $config->getInteger( 'content-opacity-level' ) / 100.00 . ')';
+		$footer_background_color = $config->getString( 'footer-color' );
+		if(strpos($footer_background_color, 'rgb') !== false){
+            $rgbarr = explode(",",$footer_background_color,3);
+            $colorname = sprintf("#%02x%02x%02x", $rgbarr[0], $rgbarr[1], $rgbarr[2]);
+		} else {
+		    $colorname = LessUtil::colorNameToHex($footer_background_color);
+		}
+		list($r, $g, $b) = array_map(
+    		function($c) {
+        		return hexdec(str_pad($c, 2, $c));
+    		},
+    		str_split(ltrim($colorname, '#'), strlen($colorname) > 4 ? 2 : 1)
+		);
+		$lessVars[ 'footer-background-color' ] = "rgba($r, $g, $b,0.9)";
+		$lessVars[ 'footer-font-color1' ] = LessUtil::isFooterThemeDark() ? '#999' : '#666';
+		$lessVars[ 'footer-font-color2' ] = LessUtil::isFooterThemeDark() ? '#fff' : '#000';
 		$lessVars[ 'font-color' ] = LessUtil::isThemeDark() ? '#fff' : '#000';
 		$lessVars[ 'banner-font-color' ] = LessUtil::isBannerThemeDark() ? '#fff' : '#000';
 		$lessVars[ 'banner-input-bottom-border' ] = LessUtil::isBannerThemeDark() ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)';
