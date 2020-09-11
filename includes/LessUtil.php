@@ -1,4 +1,5 @@
-       /**
+<?php
+        /**
         * @author Sean Colombo
         * @author Universal Omega
         */
@@ -21,15 +22,14 @@ class LessUtil {
 		// Load the 5 deafult colors by theme here (eg: in case the wiki has an override but the user doesn't have overrides).
 		if (empty(static::$cosmosSettings)) {
 			$themeSettings = new Config;
-			$settings = $themeSettings->getString();
 
-			static::$cosmosSettings['banner-background-color'] = self::sanitizeColor($settings['banner-background-color']);
-			static::$cosmosSettings['header-background-color'] = self::sanitizeColor($settings['header-background-color']);
-			static::$cosmosSettings['content-background-color'] = self::sanitizeColor($settings['content-background-color']);
-			static::$cosmosSettings['button-color'] = self::sanitizeColor($settings['button-color']);
-			static::$cosmosSettings['link-color'] = self::sanitizeColor($settings['link-color']);
-			static::$cosmosSettings['toolbar-color'] = self::sanitizeColor($settings['toolbar-color']);
-                        static::$cosmosSettings['footer-color'] = self::sanitizeColor($settings['footer-color']);
+			static::$cosmosSettings['banner-background-color'] = self::sanitizeColor($themeSettings->getString('banner-background-color'));
+			static::$cosmosSettings['header-background-color'] = self::sanitizeColor($themeSettings->getString('header-background-color'));
+			static::$cosmosSettings['content-background-color'] = self::sanitizeColor($themeSettings->getString('content-background-color'));
+			static::$cosmosSettings['button-color'] = self::sanitizeColor($themeSettings->getString('button-color'));
+			static::$cosmosSettings['link-color'] = self::sanitizeColor($themeSettings->getString('link-color'));
+			static::$cosmosSettings['toolbar-color'] = self::sanitizeColor($themeSettings->getString('toolbar-color'));
+                        static::$cosmosSettings['footer-color'] = self::sanitizeColor($themeSettings->getString('footer-color'));
 			/*static::$cosmosSettings['background-image'] = $themeSettings->getBackgroundUrl();
 
 			// sending width and height of background image to SASS
