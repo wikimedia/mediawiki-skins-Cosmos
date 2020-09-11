@@ -26,6 +26,7 @@
 		"CosmosHooks": "includes/CosmosHooks.php",
 		"Cosmos\\Icon": "includes/Icon.php",
 		"Cosmos\\Config": "includes/Config.php",
+		"Cosmos\\LessUtil": "includes/LessUtil.php",
 		"Cosmos\\ResourceLoaderLessModule": "includes/ResourceLoaderLessModule.php",
 		"CosmosSocialProfile": "includes/CosmosSocialProfile.php"
 	},
