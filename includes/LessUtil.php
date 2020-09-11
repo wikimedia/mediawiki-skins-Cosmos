@@ -94,7 +94,96 @@ class LessUtil {
 
 		return $isDark;
 	}
+    public static function isBannerThemeDark($cosmosSettings = null) {
 
+		if (empty($cosmosSettings)) {
+			$cosmosSettings = self::getCosmosSettings();
+			/*if(empty($cosmosSettings)) {	// if it's still empty
+				$cosmosSettings = self::getDefaultCosmosSettings();
+			}*/
+		}
+
+		$backgroundColor = $cosmosSettings['banner-background-color'];
+
+		// convert RGB to HSL
+		list($hue, $saturation, $lightness) = self::rgb2hsl($backgroundColor);
+
+		$isDark = ($lightness < 0.5);
+
+		return $isDark;
+	}
+	public static function isHeaderThemeDark($cosmosSettings = null) {
+
+		if (empty($cosmosSettings)) {
+			$cosmosSettings = self::getCosmosSettings();
+			/*if(empty($cosmosSettings)) {	// if it's still empty
+				$cosmosSettings = self::getDefaultCosmosSettings();
+			}*/
+		}
+
+		$backgroundColor = $cosmosSettings['header-background-color'];
+
+		// convert RGB to HSL
+		list($hue, $saturation, $lightness) = self::rgb2hsl($backgroundColor);
+
+		$isDark = ($lightness < 0.5);
+
+		return $isDark;
+	}
+	public static function isFooterThemeDark($cosmosSettings = null) {
+
+		if (empty($cosmosSettings)) {
+			$cosmosSettings = self::getCosmosSettings();
+			/*if(empty($cosmosSettings)) {	// if it's still empty
+				$cosmosSettings = self::getDefaultCosmosSettings();
+			}*/
+		}
+
+		$backgroundColor = $cosmosSettings['footer-color'];
+
+		// convert RGB to HSL
+		list($hue, $saturation, $lightness) = self::rgb2hsl($backgroundColor);
+
+		$isDark = ($lightness < 0.5);
+
+		return $isDark;
+	}
+	public static function isToolbarThemeDark($cosmosSettings = null) {
+
+		if (empty($cosmosSettings)) {
+			$cosmosSettings = self::getCosmosSettings();
+			/*if(empty($cosmosSettings)) {	// if it's still empty
+				$cosmosSettings = self::getDefaultCosmosSettings();
+			}*/
+		}
+
+		$backgroundColor = $cosmosSettings['toolbar-color'];
+
+		// convert RGB to HSL
+		list($hue, $saturation, $lightness) = self::rgb2hsl($backgroundColor);
+
+		$isDark = ($lightness < 0.5);
+
+		return $isDark;
+	}
+	public static function isButtonThemeDark($cosmosSettings = null) {
+
+		if (empty($cosmosSettings)) {
+			$cosmosSettings = self::getCosmosSettings();
+			/*if(empty($cosmosSettings)) {	// if it's still empty
+				$cosmosSettings = self::getDefaultCosmosSettings();
+			}*/
+		}
+
+		$backgroundColor = $cosmosSettings['button-color'];
+
+		// convert RGB to HSL
+		list($hue, $saturation, $lightness) = self::rgb2hsl($backgroundColor);
+
+		$isDark = ($lightness < 0.5);
+
+		return $isDark;
+	}
 	/**
 	 * Convert RGB colors array into HSL array
 	 *
