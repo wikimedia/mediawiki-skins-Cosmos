@@ -155,17 +155,18 @@ body > #mw-content-container {
 	width: 100%;
 	font-size: 20px;
 	border: none;
-	border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+	border-bottom: 2px solid @banner-input-bottom-border;
 	background: transparent;
 	background-color: transparent;
-	color: white;
+	color: @banner-font-color;
 	padding: 0;
 	margin: 10px 0;
 	border-radius: 0;
 	outline: none;
+	box-shadow: none;
 	-webkit-appearance: none;
 	&:not(:placeholder-shown) {
-		border-bottom: 2px solid white;
+		border-bottom: 2px solid @banner-font-color;
 	}
 }
 #cosmos-search-buttonContainer {
@@ -173,7 +174,7 @@ body > #mw-content-container {
 	margin-left: 5px;
 	&:hover {
 		>#cosmos-search-buttonIcon {
-			stroke: #ffffff;
+			stroke: @banner-font-color;
 		}
 	}
 }
@@ -211,7 +212,7 @@ body > #mw-content-container {
 }
 .sidebar-chunk{
    background: @content-background-color;
-   color:#fff;
+   color: @font-color;
 }
 #cosmos-userButton-avatar {
 	margin-right: 15px;
@@ -226,7 +227,7 @@ body > #mw-content-container {
 	display: inline-block;
 	height: 25px;
 	font-size: 20px;
-	color: #bbbbbb;
+	color: @banner-font-color;
 	margin: 5px 0;
 	padding: 5px 0;
 	cursor: default;
@@ -241,11 +242,11 @@ body > #mw-content-container {
 #cosmos-userOptions-personalTools {
 	&:hover {
 		#cosmos-userButton-label {
-			color: #ffffff;
+			color: @banner-font-color;
 		}
 		#cosmos-userButton-avatar {
 			>img {
-				border-color: #ffffff;
+				border-color: @banner-font-color;
 			}
 		}
 	}
@@ -303,7 +304,7 @@ body > #mw-content-container {
 			display: inline-flex;
 			align-items: center;
 			justify-items: center;
-			stroke: #bbbbbb;
+			stroke: @banner-font-color;
 			stroke-width: 2px;
 			height: 45px;
 			margin-top: 0;
@@ -311,11 +312,11 @@ body > #mw-content-container {
 			transition: 0.4s;
 		}
 		.cosmos-bannerOption-icon {
-			stroke: #ffffff;
+			stroke: @banner-font-color;
 		}
 		.cosmos-bannerOption-dropdownIcon {
-			stroke: #ffffff;
-			fill: #ffffff;
+			stroke: @banner-font-color;
+			fill: @banner-font-color;
 		}
 	}
 }
@@ -329,7 +330,7 @@ body > #mw-content-container {
 	display: inline-flex;
 	align-items: center;
 	justify-items: center;
-	stroke: #bbbbbb;
+	stroke: @banner-font-color;
 	stroke-width: 2px;
 	height: 45px;
 	margin-top: 0;
@@ -340,9 +341,9 @@ body > #mw-content-container {
 	height: 15px;
 	margin: 15px 0 15px 15px;
 	display: inline-block;
-	stroke: #bbbbbb;
+	stroke: @banner-font-color;
 	stroke-width: 2px;
-	fill: #bbbbbb;
+	fill: @banner-font-color;
 }
 .cosmos-emptyListMessage {
 	padding: 10px 10px 10px 15px;
@@ -357,7 +358,7 @@ body > #mw-content-container {
 }
 .cosmos-notifications-numNotifs {
 	background-color: #FF0000;
-	color: #FFFFFF;
+	color: @banner-font-color;
 	font-size: 8pt;
 	font-weight: bolder;
 	padding: 3px;
@@ -3892,7 +3893,7 @@ body code {
 }
 #searchInput {
 	&::placeholder {
-		color: #fff;
+		color: @banner-font-color;
 	}
 }
 .toc {
