@@ -134,7 +134,7 @@ class CosmosNavigation {
 				
 			}
 			$menu .=
-				Html::rawElement( 'li', (!empty( $nodes[$val]['children'] ) ? array( "class" => "wds-is-sticked-to-parent wds-dropdown-level-2" ) : null), $menu_item );
+				Html::rawElement( 'li', (!empty( $nodes[$val]['children'] ) ? array( "class" => ( $key > count( $nodes[$val]['children'] ) - 1 ? 'wds-is-sticked-to-parent ' : '' ) . 'wds-dropdown-level-2' ) : null), $menu_item );
 		}
 		$menu = Html::rawElement( 'div', array( 'class' => (!empty( $nodes[$val]['children'] ) ? 'wds-is-not-scrollable wds-dropdown-level-2__content' : 'wds-is-not-scrollable wds-dropdown-level-2__content') ), '<ul class="wds-list wds-is-linked' . (!empty( $nodes[$val]['children'] ) ? ' wds-has-bolded-items">' : '">') . $menu . '</ul>' );
 		
