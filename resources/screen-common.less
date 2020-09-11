@@ -39,7 +39,7 @@ body {
     background-color: #ffffff;
 }
 body .oo-ui-tabOptionWidget {
-    color:#fff;
+    color: @font-color;
 }
 body .oo-ui-tabSelectWidget-framed {
     background-color: @content-background-color;
@@ -252,8 +252,8 @@ body > #mw-content-container {
 }
 .cosmos-button-secondary {
 	border: 1px solid #333;
-	color: #fff;
-	stroke: #fff;
+	color: @font-color;
+	stroke: @font-color;
 	stroke-width: 2px;
 	&:hover {
 		border: 1px solid #777;
@@ -3685,14 +3685,14 @@ button.wds-button {
 	>tr {
 		>th {
 			background: @content-background-color;
-			color: #fff;
+			color:  @font-color;
 		}
 	}
 	>* {
 		>tr {
 			>th {
 				background: @content-background-color;
-				color: #fff;
+				color: @font-color;
 			}
 			>td {
 				background: unset;
@@ -3707,7 +3707,7 @@ button.wds-button {
 				}
 			}
 		}
-		color: #fff;
+		color: @font-color;
 	}
 	color: unset;
 }
@@ -3718,13 +3718,13 @@ button.wds-button {
 				&:hover {
 					td {
 						background-color: transparent;
-						color: #fff;
+						color: @font-color;
 					}
 				}
 				&:nth-child(even) {
 					td {
 						background-color: transparent;
-						color: #fff;
+						color: @font-color;
 					}
 				}
 			}
@@ -3759,8 +3759,8 @@ button.wds-button {
 	cursor: pointer;
 }
 .editOptions {
-	background-color: @content-background-color;
-	color: #fff;
+	background-color: transparent;
+	color: @font-color;
 	border-width: 0 1px 1px;
 }
 .oo-ui-window-head {
@@ -3802,12 +3802,12 @@ button.wds-button {
 }
 .oo-ui-processDialog-content {
 	.oo-ui-window-body {
-		color: #fff;
+		color: @font-color;
 		background: @content-background-color;
 	}
 }
 .oo-ui-labelElement {
-	color: #fff;
+	color: @font-color;
 }
 .cosmos-header {
 	z-index: 2;
@@ -3866,9 +3866,9 @@ body code {
 	border: none;
 }
 #mw-searchoptions {
-	background: @content-background-color;
+	background: transparent;
 	border: none;
-	color: #fff;
+	color: @font-color;
 	table {
 		width: 100%;
 		td {
@@ -3877,9 +3877,9 @@ body code {
 	}
 }
 .oo-ui-tabSelectWidget-framed {
-	background: @content-background-color;
+	background: transparent;
 	border: none;
-	color: #fff;
+	color: @font-color;
 }
 .mw-destfile-warning {
 	.thumbinner {
@@ -3888,7 +3888,7 @@ body code {
 	}
 }
 #contentSub {
-	color: #fff;
+	color: @font-color;
 }
 #searchInput {
 	&::placeholder {
@@ -3964,7 +3964,7 @@ ul.tabbernav {
 		-webkit-box-align: end;
 		-webkit-align-items: flex-end;
 		align-items: flex-end;
-		color: #D5D4D4;
+		color: @font-color;
 		display: inline-block;
 		font-size: 36px;
 		font-weight: bold;
@@ -3972,6 +3972,7 @@ ul.tabbernav {
 		max-width: 100%;
 		word-wrap: break-word;
 		border: none;
+		opacity: 0.9;
 	}
 	h1 {
 		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -4087,14 +4088,14 @@ body {
 	clear: both;
 	line-height: 1.8em;
 	padding: 10px;
-	color: #fff;
+	color: @font-color;
     margin-top: 2em;
     margin-bottom: 2em;
     padding-top: 1em;
     border: 1px solid #333;
 }
 .oo-ui-fieldLayout-header {
-	color: #fff;
+	color: @font-color;
 }
 #cosmos-footer-footerContent {
 	padding: 0 15px 40px 15px;
@@ -4300,10 +4301,10 @@ body .wikitable > tr > td,
 body .wikitable > * > tr > th, 
 body .wikitable > * > tr > td {
     background-color: @content-background-color;
-    color: #fff;
+    color: @font-color;
 }
 body h1, body h2, body h3, body h4, body h5, body h6 {
-    color: #fff;
+    color: @font-color;
 }
 #cosmos-toolbox {
 	box-shadow: 0 0 10px 0 @content-background-color;
