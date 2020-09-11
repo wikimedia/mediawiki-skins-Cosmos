@@ -201,6 +201,52 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
         return ($color_name);
     }
 }
+function rgbToHsl( $r, $g, $b ) {
+	$oldR = $r;
+	$oldG = $g;
+	$oldB = $b;
+
+	$r /= 255;
+	$g /= 255;
+	$b /= 255;
+
+    $max = max( $r, $g, $b );
+	$min = min( $r, $g, $b );
+
+	$h;
+	$s;
+	$l = ( $max + $min ) / 2;
+	$d = $max - $min;
+
+    	if( $d == 0 ){
+        	$h = $s = 0; // achromatic
+    	} else {
+        	$s = $d / ( 1 - abs( 2 * $l - 1 ) );
+
+		switch( $max ){
+	            case $r:
+	            	$h = 60 * fmod( ( ( $g - $b ) / $d ), 6 ); 
+                        if ($b > $g) {
+	                    $h += 360;
+	                }
+	                break;
+
+	            case $g: 
+	            	$h = 60 * ( ( $b - $r ) / $d + 2 ); 
+	            	break;
+
+	            case $b: 
+	            	$h = 60 * ( ( $r - $g ) / $d + 4 ); 
+	            	break;
+	        }			        	        
+	}
+
+	$h = (int)round(255.0 * $h);
+   	$s = (int)round(255.0 * $s);
+    	$l = (int)round(255.0 * $l);
+
+    return (object) Array('hue' => $h, 'saturation' => $s, 'lightness' => $l);
+}
 	protected function getLessVars( ResourceLoaderContext $context ) {
 		$lessVars = parent::getLessVars( $context );
 		$config = new Config();
@@ -225,7 +271,6 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		$lessVars[ 'link-color' ] = $config->getString( 'link-color' );
 		$lessVars[ 'button-color' ] = $config->getString( 'button-color' );
 		$lessVars[ 'toolbar-color' ] = $config->getString( 'toolbar-color' );
-		$lessVars[ 'font-color' ] = $config->getString( 'font-color' );
 		$lessVars[ 'font-family' ] = $config->getString( 'font-family' );
 		$lessVars[ 'font-style' ] = $config->getString( 'font-style' );
 		$lessVars[ 'font-style' ] = $config->getString( 'font-style' );
@@ -247,6 +292,12 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
     		str_split(ltrim($colorname, '#'), strlen($colorname) > 4 ? 2 : 1)
 		);
 		$lessVars[ 'content-opacity-level' ] = "rgba($r, $g, $b, " . $config->getInteger( 'content-opacity-level' ) / 100.00 . ')';
+		$hsl = self::rgbtohsl($r, $g, $b);
+		if($hsl->lightness > 200) {
+			$lessVars[ 'font-color' ] = '#000';
+		}else{
+			$lessVars[ 'font-color' ] = '#fff';
+		}
 		    return $lessVars;	
 	}	
 }
