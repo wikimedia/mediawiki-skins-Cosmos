@@ -15,7 +15,7 @@ class Config {
 		'main-background-image-size' => 'cover',
 		'link-color' => '#006cb0',
 		'button-color' => '#012E59',
-		'toolbar-color' => null,
+		'toolbar-color' => '#1a3664',
 		'footer-color' => '#141414',
 		'font-family' => null,
 		'font-style' => null,
