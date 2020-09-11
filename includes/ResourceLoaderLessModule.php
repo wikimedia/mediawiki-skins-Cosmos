@@ -53,7 +53,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		    $colorname = LessUtil::colorNameToHex($content__background_color);
 		}
 		$lessVars[ 'banner-background-color' ] = $config->getString( 'banner-background-color' );
-		$lessVars[ 'header-background-color' ] = $config->getString( 'header-background-color' );
+		
 		if($config->getString( 'main-background-image' )){
 			$lessVars[ 'main-background-image-isset' ] = 1;
 			$lessVars[ 'main-background-image' ] = 'url(' . $config->getString( 'main-background-image' ) . ')';
@@ -67,7 +67,6 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		$lessVars[ 'button-color' ] = $config->getString( 'button-color' );
 		$lessVars[ 'toolbar-color' ] = $config->getString( 'toolbar-color' );
 		$lessVars[ 'font-family' ] = $config->getString( 'font-family' );
-		$lessVars[ 'font-style' ] = $config->getString( 'font-style' );
 		$lessVars[ 'font-style' ] = $config->getString( 'font-style' );
 		if($config->isEnabled( 'main-background-image-norepeat' )){
 		    $lessVars[ 'main-background-image-repeat' ] = 'no-repeat';
@@ -103,6 +102,23 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		$lessVars[ 'footer-background-color' ] = "rgba($r, $g, $b,0.9)";
 		$lessVars[ 'footer-font-color1' ] = LessUtil::isFooterThemeDark() ? '#999' : '#666';
 		$lessVars[ 'footer-font-color2' ] = LessUtil::isFooterThemeDark() ? '#fff' : '#000';
+		$header_background_color = $config->getString( 'header-background-color' );
+		if(strpos($header_background_color, 'rgb') !== false){
+            $rgbarr = explode(",",$header_background_color,3);
+            $colorname = sprintf("#%02x%02x%02x", $rgbarr[0], $rgbarr[1], $rgbarr[2]);
+		} else {
+		    $colorname = LessUtil::colorNameToHex($header_background_color);
+		}
+		list($r, $g, $b) = array_map(
+    		function($c) {
+        		return hexdec(str_pad($c, 2, $c));
+    		},
+    		str_split(ltrim($colorname, '#'), strlen($colorname) > 4 ? 2 : 1)
+		);
+		$lessVars[ 'header-background-color' ] = "linear-gradient(to right,rgba($r, $g, $b,0.5),rgba($r, $g, $b,0.5)),linear-gradient(to left,rgba($r, $g, $b,0) 200px,$colorname 430px)";
+		$lessVars[ 'header-background-color2' ] = "linear-gradient(to right,rgba($r, $g, $b,0.5),rgba($r, $g, $b,0.5)),linear-gradient(to left,rgba($r, $g, $b,0) 200px,$colorname 471px)";
+	
+		$lessVars[ 'header-font-color' ] = LessUtil::isHeaderThemeDark() ? '#fff' : '#000';
 		$lessVars[ 'font-color' ] = LessUtil::isThemeDark() ? '#fff' : '#000';
 		$lessVars[ 'banner-font-color' ] = LessUtil::isBannerThemeDark() ? '#fff' : '#000';
 		$lessVars[ 'banner-input-bottom-border' ] = LessUtil::isBannerThemeDark() ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)';
