@@ -60,8 +60,8 @@ class Config {
 		'main-background-image-fixed' => false,
 		'group-tags' => array('bureaucrat', 'bot', 'sysop', 'interface-admin'),
 		'biggest-categories-blacklist' => array(),
-		'number-of-tags' => 2,
-		'content-opacity-level' => 100,
+		'number-of-tags' => false,
+		'content-opacity-level' => false,
 	];
 
 	private const CONFIG_TYPES = [
