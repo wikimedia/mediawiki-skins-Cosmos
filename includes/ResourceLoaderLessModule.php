@@ -65,7 +65,6 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		$lessVars[ 'main-background-image-size' ] = $config->getString( 'main-background-image-size' );
 		$lessVars[ 'link-color' ] = $config->getString( 'link-color' );
 		$lessVars[ 'button-color' ] = $config->getString( 'button-color' );
-		$lessVars[ 'toolbar-color' ] = $config->getString( 'toolbar-color' );
 		$lessVars[ 'font-family' ] = $config->getString( 'font-family' );
 		$lessVars[ 'font-style' ] = $config->getString( 'font-style' );
 		if($config->isEnabled( 'main-background-image-norepeat' )){
@@ -117,8 +116,10 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		);
 		$lessVars[ 'header-background-color' ] = "linear-gradient(to right,rgba($r, $g, $b,0.5),rgba($r, $g, $b,0.5)),linear-gradient(to left,rgba($r, $g, $b,0) 200px,$colorname 430px)";
 		$lessVars[ 'header-background-color2' ] = "linear-gradient(to right,rgba($r, $g, $b,0.5),rgba($r, $g, $b,0.5)),linear-gradient(to left,rgba($r, $g, $b,0) 200px,$colorname 471px)";
-	
 		$lessVars[ 'header-font-color' ] = LessUtil::isHeaderThemeDark() ? '#fff' : '#000';
+		$lessVars[ 'toolbar-color2' ] = $config->getString( 'toolbar-color' );
+		$lessVars[ 'toolbar-color-mix' ] =  $config->getString( 'toolbar-color' ) == '#000' || $config->getString( 'toolbar-color' ) == '#000000'  || $config->getString( 'toolbar-color' ) == 'black' ? '#404040' : '#000';
+		$lessVars[ 'toolbar-font-color' ] = LessUtil::isToolbarThemeDark() ? '#fff' : '#000';
 		$lessVars[ 'font-color' ] = LessUtil::isThemeDark() ? '#fff' : '#000';
 		$lessVars[ 'banner-font-color' ] = LessUtil::isBannerThemeDark() ? '#fff' : '#000';
 		$lessVars[ 'banner-input-bottom-border' ] = LessUtil::isBannerThemeDark() ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)';
