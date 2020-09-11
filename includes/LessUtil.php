@@ -6,7 +6,7 @@
 namespace Cosmos;
 
 use Cosmos\Config;
-class LESSUtil {
+class LessUtil {
 
 	const HEX_REG_EXP = '/#([a-f0-9]{3,6})/i';
 	const COLOR_KEYS = array('banner-background-color', 'header-background-color', 'content-background-color', 'button-color', 'link-color', 'toolbar-color', 'footer-color');
