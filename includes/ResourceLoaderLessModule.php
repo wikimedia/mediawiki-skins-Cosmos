@@ -1,6 +1,6 @@
 <?php	
 /**	
- * ResourceLoader module for changing styles via config.	
+ * ResourceLoader module for LESS configs	
  * @author Universal Omega
  */	
 
@@ -11,14 +11,9 @@ use Cosmos\LessUtil;
 use MediaWiki\MediaWikiServices;	
 use ResourceLoaderContext;	
 use ResourceLoaderFileModule;	
+use ExtensionRegistry;
 
-/**	
- * ResourceLoader module for print styles.	
- *	
- * This class is also used when rendering styles for the MediaWiki installer.	
- * Do not rely on any of the normal global state, services, etc., and make sure	
- * to test the installer after making any changes here.	
- */	
+
 class ResourceLoaderLessModule extends ResourceLoaderFileModule {	
 	/**	
 	 * Get language-specific LESS variables for this module.	
@@ -68,7 +63,13 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
     		},
     		str_split(ltrim($colorname, '#'), strlen($colorname) > 4 ? 2 : 1)
 		);
-		$lessVars[ 'content-opacity-level' ] = "rgba($r, $g, $b, " . $config->getInteger( 'content-opacity-level' ) / 100.00 . ')';
+		if (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' )){
+		    global $wgCosmosContentOpacityLevel;
+		    $content_opacity_level_config = $wgCosmosContentOpacityLevel;
+		}else{
+	        $content_opacity_level_config = $config->getInteger('content-opacity-level');
+		}
+		$lessVars[ 'content-opacity-level' ] = "rgba($r, $g, $b, " . $content_opacity_level_config / 100.00 . ')';
 		$footer_background_color = $config->getString( 'footer-color' );
 		if(strpos($footer_background_color, 'rgb') !== false){
             $rgbarr = explode(",",$footer_background_color,3);
