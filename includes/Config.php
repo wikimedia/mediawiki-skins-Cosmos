@@ -58,10 +58,8 @@ class Config {
 		'toolbar-message' => false,
 		'main-background-image-norepeat' => false,
 		'main-background-image-fixed' => false,
-		'group-tags' =>  [ 'bureaucrat', 'bot', 'sysop', 'interface-admin' ],
+		'group-tags' =>  [],
 		'biggest-categories-blacklist' => [],
-		'number-of-tags' => 2,
-		'content-opacity-level' => 100,
 	];
 
 	private const CONFIG_TYPES = [
