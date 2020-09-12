@@ -1,6 +1,4 @@
-@import 'variables.less';
 
-// Single-column layout with dropdown menus
 
 #mw-content-block {
 	padding: 0;
@@ -22,9 +20,6 @@
 	padding-bottom: 0;
 }
 
-
-// Header navigation
-
 .sidebar-chunk {
 	display: inline-block;
 	position: relative;
@@ -33,8 +28,6 @@
 		display: inline-block;
 	}
 }
-
-// Have these cover the fixed header color-bar using the mw-header-nav-hack (with its own color-bar at the bottom)
 #mw-site-navigation{
 	display: inline-block;
 	position: relative;
@@ -46,14 +39,6 @@
 		font-size: 1.25em;
 		padding: 0.5em 0 0.2em;
 		margin: 0;
-
-		.dropdown-header();
-	}
-}
-
-.client-nojs .sidebar-chunk:hover {
-	.sidebar-inner {
-		display: block !important;
 	}
 }
 
@@ -65,27 +50,5 @@
 
 	.sidebar-chunk {
 		margin: 0 1em 0 0;
-	}
-
-	.sidebar-inner {
-		.dropdown-menu( left );
-	}
-}
-
-#mw-site-navigation .sidebar-chunk h2 span {
-	.dropdown-pokey();
-
-	&:before,
-	&:after {
-		right: 1px;
-		display: none;
-	}
-
-	&:before {
-		top: 34px;
-	}
-
-	&:after {
-		top: 36px;
 	}
 }
