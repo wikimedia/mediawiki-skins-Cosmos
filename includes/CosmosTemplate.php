@@ -628,7 +628,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'section' );
 		
 		$this->buildFooter( $html, $config );
-		$this->buildToolbox( $html, $config );
+		$this->buildToolbar( $html, $config );
 		
 
 		// Close container element for page
@@ -639,7 +639,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		// Build article header
 		$title = Title::newFromText( $this->get( 'title' ) );
-		    if($title && $title->getNamespace() !== NS_USER_PROFILE){
+		    if(!$title || $title->getNamespace() !== NS_USER_PROFILE){
 		        $this->buildArticleHeader( $html, $config );
 		  }
 
@@ -1158,18 +1158,18 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 	}
 	/**
-	 * Builds HTML code for the toolbox that is displayed at the bottom of the
+	 * Builds HTML code for the toolbar that is displayed at the bottom of the
 	 * page, and appends it to the string of HTML that is it passed.
 	 *
 	 * @param $html string The string onto which the HTML should be appended
 	 */
-	protected function buildToolbox( string &$html, Config $config ) : void {
+	protected function buildToolbar( string &$html, Config $config ) : void {
 	    	
-		// Open container element for toolbox
-		$html .= Html::openElement( 'section', [ 'id' => 'cosmos-toolbox' ] );
+		// Open container element for toolbar
+		$html .= Html::openElement( 'section', [ 'id' => 'cosmos-toolbar' ] );
 
-		// Open container div for toolbox content
-		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-toolbox-tools' ] );
+		// Open container div for toolbar content
+		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-toolbar-tools' ] );
 
 		// Begin unordered list to contain tool links
 		$html .= Html::openElement( 'ul', [ 'id' => 'cosmos-tools-list' ] );
@@ -1180,12 +1180,12 @@ class CosmosTemplate extends BaseTemplate {
 	        	$html .= $cosmosToolbar->getCode();
 		}else {
 	    	//to-do: Convert to Skin::buildNavUrls and Skin::buildFeedUrls
-		    foreach ( $this->getToolbox() as $key => $toolboxItem ) {
+		    foreach ( $this->getToolbox() as $key => $toolbarItem ) {
 		        //Due to some styles used in this skin, the printable version does not work correctly at the moment,
-		        //this will be fixed eventually, but for now just remove it from the toolbox
+		        //this will be fixed eventually, but for now just remove it from the toolbar
 		        if($key != 'print'){
 		             //to-do: convert to Skin::makeListItem
-			         $html .= $this->makeListItem( $key, $toolboxItem );
+			         $html .= $this->makeListItem( $key, $toolbarItem );
 		       }
 		    }
 		    //Support CreateRedirect extension
