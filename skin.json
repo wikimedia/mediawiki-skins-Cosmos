@@ -61,8 +61,7 @@
 				},
 				"resources/screen-mobile.less": {
 					"media": "screen and (max-width: 850px)"
-				},
-				"0": "resources/screen-misc.less"
+				}
 			}
 	    },
 		"skins.cosmos.legacy": {
@@ -164,12 +163,8 @@
 		"cosmos": {
 			"+oojs-ui-core.styles": "resources/ooui.less",
 			"+ext.echo.styles.badge": "resources/extensions/Echo.less",
-			"+ext.eventLogging.jsonSchema.styles": "resources/extensions/EventLogging.jsonSchema.less",
 			"+ext.visualEditor.core": "resources/extensions/VisualEditor.core.less",
 			"+ext.CodeMirror.visualEditor.init": "resources/extensions/VisualEditor.CodeMirror.less",
-			"+ext.dismissableSiteNotice.styles": "resources/extensions/DismissableSiteNotice.less",
-			"+ext.MWOAuth.AuthorizeForm": "resources/extensions/MWOAuth.AuthorizeForm.less",
-			"+ext.proofreadpage.page.navigation": "resources/extensions/Proofreadpage.page.navigation.less"
 		}
 	},
 	"Hooks": {
