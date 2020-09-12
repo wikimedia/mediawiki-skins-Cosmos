@@ -7,12 +7,68 @@
 	clear: both;
 }
 #mw-site-navigation {
-	.column-left();
-	.flex(0, 0, 14em, 1);
+	padding-right: 1em;
+	box-sizing: border-box;
+		.sidebar-chunk {
+			border: solid #eaecf0;
+			border-width: 1px 1px 0.2em;
+			box-shadow: 0 1px 2px 1px rgba( 0, 0, 0, 0.02 );
+			margin: 0;
+			line-height: 1.125;
+			word-wrap: break-word;
+			font-size: 0.95em;
+			
+		ul,
+		li {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		h3 {
+			font-weight: normal;
+			font-size: 1em;
+			margin: 0.25em 0 0.75em 0;
+			padding-bottom: 0.15em;
+			border-bottom: solid 2px #c8ccd1;
+		}
+	
+		.mw-portlet-body {
+			margin-bottom: 2em;
+		}
+
+		li {
+			padding: 0.25em 0;
+		}
+	}
+	-webkit-box-pack: justify;
+	-moz-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-webkit-box-flex: 0;
+	-moz-box-flex: 0;
+	width: 14em;
+	-ms-flex: 0 0 14em;
+	flex: 0 0 14em;
+	-webkit-box-ordinal-group: 1;
+	-moz-box-ordinal-group: 1;
+	-ms-flex-order: 1;
+	order: 1;
 }
 
 #mw-content-wrapper {
-	.flex(1, 1, auto, 2);
-	// Make word wrapping, max-width percentages, etc work with the above flex
+	-webkit-box-pack: justify;
+	-moz-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-webkit-box-flex: 0;
+	-moz-box-flex: 0;
+	width: auto;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	-webkit-box-ordinal-group: 2;
+	-moz-box-ordinal-group: 2;
+	-ms-flex-order: 2;
+	order: 2;
 	min-width: 50%;
 }
