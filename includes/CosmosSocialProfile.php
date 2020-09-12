@@ -1,5 +1,6 @@
 <?php
 use Cosmos\Config;
+use ExtensionRegistry;
 class CosmosSocialProfile {
 
 	static function getUser( $parser, $user ) {
@@ -24,10 +25,16 @@ class CosmosSocialProfile {
 		} elseif($user){
                     $number_of_tags = 0;
                     $usertags = '';
-		    foreach ( $config->getArray('group-tags') as $key => $value ) {
+		    foreach ( $config->getArray('group-tags') as $value ) {
 		       if(in_array($value, $user->getGroups())){
 		        $number_of_tags++;
-		            if($number_of_tags <= $config->getInteger('number-of-tags')){
+		        if (ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' )){
+		            global $wgCosmosNumberofGroupTags;
+		            $number_of_tags_config = $wgCosmosNumberofGroupTags;
+		        }else{
+		            $number_of_tags_config = $config->getInteger('number-of-tags');
+		        }
+		            if($number_of_tags <= $number_of_tags_config){
 		                $usertags .= Html::rawElement( 'span', ['class' => 'tag tag-' . Sanitizer::escapeClass($value) ], ucfirst(wfMessage('group-' . $value . '-member')));
 		            }
 	    	    }
