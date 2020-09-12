@@ -1,9 +1,8 @@
-@import 'variables.less';
-
-// Three-column layout
-
 #mw-content-block {
-	.flex-display;
+    	display: ~'-webkit-flex'; // iOS 6-, Safari 3.1-6
+	display: ~'-moz-flex'; // Firefox 21-
+	display: ~'-ms-flexbox'; // IE 10
+	display: flex;
 	clear: both;
 }
 #mw-site-navigation {
