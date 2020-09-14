@@ -37,7 +37,7 @@ class SkinCosmos extends SkinTemplate {
 			'skins.cosmos.js',
 			'skins.cosmos.mobile'
 		] );
-	if (ExtensionRegistry::getInstance()->isLoaded( 'PortableInfobox' )){
+	if (ExtensionRegistry::getInstance()->isLoaded( 'Portable Infobox' )){
 		 $out->addModuleStyles( [
 			        'skins.cosmos.portableinfobox',
 		        ] );
