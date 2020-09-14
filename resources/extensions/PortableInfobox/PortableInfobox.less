@@ -74,10 +74,10 @@
 
 	.pi-caption {
 		-webkit-hyphens: auto;
-	  -moz-hyphens: auto;
-	  -ms-hyphens: auto;
-	  hyphens: auto;
-		color: mix(@content-background-color, #000, 50%);
+	  	-moz-hyphens: auto;
+	 	-ms-hyphens: auto;
+	 	hyphens: auto;
+		color: mix(@content-background-color, @alt-font-color, 50%);
 		font-size: 12px;
 		font-style: italic;
 		text-align: left;
@@ -226,7 +226,7 @@
 .pi-collapse .pi-header:first-child {
   
 &::after {
-		border-color: #3a3a3a; //change
+		border-color: @font-color;
 		border-style: solid;
 		border-width: 2px 2px 0 0;
 		content: '';
@@ -257,9 +257,9 @@
 
 	.pi-header:first-child::after {
 		transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
-    -moz-transform: rotate(135deg);
-    -ms-transform: rotate(135deg);
+    		-webkit-transform: rotate(135deg);
+    		-moz-transform: rotate(135deg);
+    		-ms-transform: rotate(135deg);
 		margin-top: -5px;
 	}
 
@@ -318,7 +318,7 @@ ul.pi-image-collection-tabs {
 
 // **********  Error handling styles  ********** //
 
-.WikiaArticle {
+#mw-content {
 	.pi-error-info {
 		background-color:  #f33;
 		color: white;
@@ -329,7 +329,7 @@ ul.pi-image-collection-tabs {
 	}
 
 	.pi-debug {
-		background-color: mix(@content-background-color, @font-color, 90%);
+		background-color: mix(@content-background-color, @alt-font-color, 90%);
 		font-family: monospace;
 		list-style: none;
 		margin: 0;
