@@ -37,7 +37,7 @@
 		margin-bottom: inherit;
 		margin-top: 0;
 	}
-
+	
 	// overwrite default article styles for children of data value
 	.pi-data-value {
 		> *,
@@ -54,9 +54,9 @@
 			line-height: 19px;
 		}
 	}
-}
-.portable-infobox {
-    .pi-secondary-background {
+	
+	 // overwrite default secondary background styles from the original PortableInfobox extension
+	 .pi-secondary-background {
 	    	background-color: mix(@content-background-color, @link-color, 75%);
 	}
 }
@@ -98,7 +98,7 @@
 	   display: -webkit-box;
 	   display: -moz-box;
 	   display: -ms-flexbox;
-     display: -webkit-flex;
+    	   display: -webkit-flex;
 	   display: flex; 
 	 	-ms-box-orient: horizontal;
   	-webkit-box-orient: horizontal;
@@ -111,23 +111,23 @@
 	}
 
 	.pi-data-label {
-		-ms-flex-preferred-size: 90;
+	  -ms-flex-preferred-size: 90;
 	  -webkit-flex-basis: 90;
 	  -moz-flex-basis: 90;
 	  flex-basis: 90;
-		-webkit-hyphens: auto;
+	  -webkit-hyphens: auto;
 	  -moz-hyphens: auto;
 	  -ms-hyphens: auto;
 	  hyphens: auto;
-		overflow: hidden;
-		word-wrap: break-word;
+	  overflow: hidden;
+	  word-wrap: break-word;
 	}
 
 	.pi-data-value {
 		-webkit-hyphens: auto;
-	  -moz-hyphens: auto;
-	  -ms-hyphens: auto;
-	  hyphens: auto;
+	  	-moz-hyphens: auto;
+	  	-ms-hyphens: auto;
+	  	hyphens: auto;
 		font-size: 12px;
 		line-height: 18px;
 		padding-left: 0;
@@ -135,9 +135,9 @@
 
 		&:not(:first-child) {
 		 	-ms-flex-preferred-size: 180px;
-	    -webkit-flex-basis: 180px;
-	    -moz-flex-basis: 180px;
-	    flex-basis: 180px;
+	   		-webkit-flex-basis: 180px;
+	   		-moz-flex-basis: 180px;
+	    		flex-basis: 180px;
 			padding-left: 10px;
 		}
 	}
@@ -237,7 +237,7 @@
 		top: -1px;
 		vertical-align: middle;
 		width: 5px;
-	  -webkit-transform: rotate(-45deg);
+		-webkit-transform: rotate(-45deg);
 		transform: rotate(-45deg);
 	}
 	padding-right: 25px;
