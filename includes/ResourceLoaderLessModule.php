@@ -110,6 +110,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		$lessVars[ 'banner-echo-font-color' ] = LessUtil::isBannerThemeDark() ? 'fff' : '111';
 		$lessVars[ 'banner-input-bottom-border' ] = LessUtil::isBannerThemeDark() ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)';
 		$lessVars[ 'button-font-color' ] = LessUtil::isButtonThemeDark() ? '#fff' : '#000';
+		$lessVars[ 'infobox-background-mix' ] = LessUtil::isThemeDark() ? '85%' : '90%';
 		    return $lessVars;	
 	}	
 }
