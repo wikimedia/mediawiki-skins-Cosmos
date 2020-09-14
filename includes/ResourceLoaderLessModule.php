@@ -101,6 +101,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		);
 		$lessVars[ 'header-background-color' ] = "linear-gradient(to right,rgba($r, $g, $b,0.5),rgba($r, $g, $b,0.5)),linear-gradient(to left,rgba($r, $g, $b,0) 200px,$colorname 430px)";
 		$lessVars[ 'header-background-color2' ] = "linear-gradient(to right,rgba($r, $g, $b,0.5),rgba($r, $g, $b,0.5)),linear-gradient(to left,rgba($r, $g, $b,0) 200px,$colorname 471px)";
+		$lessVars[ 'header-background-solid-color' ] = $header_background_color;
 		$lessVars[ 'header-font-color' ] = LessUtil::isHeaderThemeDark() ? '#fff' : '#000';
 		$lessVars[ 'toolbar-color2' ] = $config->getString( 'toolbar-color' );
 		$lessVars[ 'toolbar-color-mix' ] =  $config->getString( 'toolbar-color' ) == '#000' || $config->getString( 'toolbar-color' ) == '#000000'  || $config->getString( 'toolbar-color' ) == 'black' ? '#404040' : '#000';
