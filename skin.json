@@ -68,6 +68,42 @@
 		    "class": "ResourceLoaderSkinModule",
 		    "features": [ "legacy" ]
 		},
+		"skins.cosmos.portableinfobox": {
+		    "class": "Cosmos\\ResourceLoaderLessModule",
+		    "targets": [
+		        "desktop",
+			"mobile"
+		    ],
+		    "styles": {
+		        "resources/extensions/PortableInfobox/PortableInfobox.less": {
+			     "media": "screen"
+			}
+		    }
+		},
+		"skins.cosmos.portableinfobox.default": {
+		    "class": "Cosmos\\ResourceLoaderLessModule",
+		    "targets": [
+		        "desktop",
+			"mobile"
+		    ],
+		    "styles": {
+		        "resources/extensions/PortableInfobox/PortableInfoboxDefaultTheme.less": {
+			     "media": "screen"
+			}
+		    }
+		},
+		"skins.cosmos.portableinfobox.europa": {
+		    "class": "Cosmos\\ResourceLoaderLessModule",
+		    "targets": [
+		        "desktop",
+			"mobile"
+		    ],
+		    "styles": {
+		        "resources/extensions/PortableInfobox/PortableInfoboxEuropaTheme.less": {
+			     "media": "screen"
+			}
+		    }
+		},
 		"skins.cosmos.socialprofile": {
 			"targets": [
 				"desktop",
