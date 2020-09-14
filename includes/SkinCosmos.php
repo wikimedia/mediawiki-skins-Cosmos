@@ -37,7 +37,20 @@ class SkinCosmos extends SkinTemplate {
 			'skins.cosmos.js',
 			'skins.cosmos.mobile'
 		] );
-	
+	if (ExtensionRegistry::getInstance()->isLoaded( 'PortableInfobox' )){
+		 $out->addModuleStyles( [
+			        'skins.cosmos.portableinfobox',
+		        ] );
+		if($config->isEnabled( 'europa-theme' )){
+			 $out->addModuleStyles( [
+			        'skins.cosmos.portableinfobox.europa',
+		        ] );
+		}else {
+			 $out->addModuleStyles( [
+			        'skins.cosmos.portableinfobox.default',
+		        ] );
+		}
+	}
 		//Load SocialProfile styles if the respective configuration variables are enabled
         if (class_exists('UserProfilePage')){
             if($config->isEnabled( 'modern-tabs' )){
