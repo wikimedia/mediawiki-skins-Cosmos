@@ -2343,8 +2343,8 @@ body .postedit-container{
 .oo-ui-window-body{
     background: #000;
 }
-.ve-ui-mwNoticesPopupTool-item .warningbox{
-    background:none !important;
+.ve-activated .ve-ui-mwNoticesPopupTool-item .warningbox {
+    background:none;
     margin-bottom: 1em;
     border: 1px solid;
     padding: 0.5em 1em;
@@ -2364,6 +2364,9 @@ body .postedit-container{
 .ve-ui-mwSaveDialog .oo-ui-window-frame {
     width:60%;
     height:60%;
+}
+.ve-init-mw-tempWikitextEditorWidget {
+    background: transparent;
 }
 .ve-activated .oo-ui-windowManager-modal > .oo-ui-dialog.oo-ui-window-active > .oo-ui-window-frame {
     max-width: 60%;
