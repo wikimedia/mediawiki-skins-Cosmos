@@ -30,7 +30,7 @@ class Config {
 		'main-background-image-norepeat' => true,
 		'main-background-image-fixed' => true,
 		'group-tags' =>  [ 'bureaucrat', 'bot', 'sysop', 'interface-admin', 'suppressor' ],
-		'biggest-categories-blacklist' => array(),
+		'biggest-categories-blacklist' => [],
 		'number-of-tags' => 2,
 		'content-opacity-level' => 100,
 	];
