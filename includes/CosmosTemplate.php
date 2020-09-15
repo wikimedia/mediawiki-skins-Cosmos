@@ -1095,34 +1095,38 @@ class CosmosTemplate extends BaseTemplate {
 	 * @param $html string The string onto which the HTML should be appended
 	 */
 	protected function buildFooterIcons( string &$html, Config $config ) : void {
-		// Open container div for icons
-		$html .= Html::openElement( 'div', [
-			'id' => 'cosmos-footerContent-footerIcons',
-			'class' => 'cosmos-sidebarAligned'
-		] );
+		$footerIcons = $this->getFooterIcons();
 
-		// Open unordered list element for icon list
-		$html .= Html::openElement( 'ul', [ 'id' => 'cosmos-footerIcons-list' ] );
+			if ( count( $footerIcons ) > 0 ) {
+			// Open container div for icons
+			$html .= Html::openElement( 'div', [
+				'id' => 'cosmos-footerContent-footerIcons',
+				'class' => 'cosmos-sidebarAligned'
+			] );
 
-		// Loop through each footer icon and generate a list item element
-		// which contains the icon to display
-		foreach ( $this->get('footericons') as $blockName => $footerIcons ) {
-			foreach ( $footerIcons as $icon ) {
-				$html .= Html::openElement( 'li', [
-					'class' => 'cosmos-footerIcons-listItem'
-				] );
+			// Open unordered list element for icon list
+			$html .= Html::openElement( 'ul', [ 'id' => 'cosmos-footerIcons-list' ] );
 
-				$html .= $this->getSkin()->makeFooterIcon( $icon );
+			// Loop through each footer icon and generate a list item element
+			// which contains the icon to display
+			foreach ( $footerIcons as $blockName => $footerIcons ) {
+				foreach ( $footerIcons as $icon ) {
+					$html .= Html::openElement( 'li', [
+						'class' => 'cosmos-footerIcons-listItem'
+					] );
+	
+					$html .= $this->getSkin()->makeFooterIcon( $icon );
 
-				$html .= Html::closeElement( 'li' );
+					$html .= Html::closeElement( 'li' );
+				}
 			}
+
+			// Close unordered list element
+			$html .= Html::closeElement( 'ul' );
+
+			// Close container div
+			$html .= Html::closeElement( 'div' );
 		}
-
-		// Close unordered list element
-		$html .= Html::closeElement( 'ul' );
-
-		// Close container div
-		$html .= Html::closeElement( 'div' );
 	}
 	/**
 	 * Builds HTML code to display the footer links, and appends it to the string
