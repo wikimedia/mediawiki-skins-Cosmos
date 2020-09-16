@@ -312,3 +312,26 @@ ul.pi-media-collection-tabs {
 .pi-media-collection-tab-content.current {
 	display: inherit;
 }
+
+// Mobile
+@media screen and ( max-width: 720px ) {
+	.portable-infobox {
+		float: none;
+		width: initial;
+		font-size: initial;
+		margin: 0;
+		
+		.pi-title {
+			text-align: center;
+		}
+
+		.pi-data-label {
+			flex-basis: 30%
+		}
+
+		.pi-media-collection-tabs li,
+		.pi-section-navigation li {
+			li { flex: 1 50% }
+		}
+	}
+}
