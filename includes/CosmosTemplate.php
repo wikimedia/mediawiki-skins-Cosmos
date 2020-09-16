@@ -1093,7 +1093,7 @@ class CosmosTemplate extends BaseTemplate {
 	 */
 	protected function buildFooterIcons( string &$html, Config $config ) : void {
 		$footerIcons = $this->get('footericons');
-
+		$skin = $this->getSkin();
 		if ( count( $footerIcons ) > 0 ) {
 			// Open container div for icons
 			$html .= Html::openElement( 'div', [
@@ -1112,7 +1112,9 @@ class CosmosTemplate extends BaseTemplate {
 						'class' => 'cosmos-footerIcons-listItem'
 					] );
 	
-					$html .= $this->getSkin()->makeFooterIcon( $icon );
+					if ( is_string( $icon ) || isset( $icon['src'] ) ) {
+						$html .= $skin->makeFooterIcon( $icon );
+					}
 
 					$html .= Html::closeElement( 'li' );
 				}
