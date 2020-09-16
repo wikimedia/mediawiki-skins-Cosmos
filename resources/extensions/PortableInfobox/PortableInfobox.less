@@ -1,0 +1,80 @@
+// **********  Error handling styles  ********** //
+
+#mw-content {
+	.pi-error-info {
+		background-color: #f33;
+		color: white;
+		font-size: 18px;
+		line-height: 28px;
+		margin: 0;
+		padding: 30px 50px;
+	}
+
+	.pi-debug {
+		background-color: mix(@content-background-color, @alt-font-color, 90%);
+		font-family: monospace;
+		list-style: none;
+		margin: 0;
+		width: 100%;
+
+		li {
+			margin: 0;
+		}
+
+		.error {
+			font-size: inherit;
+		}
+	}
+}
+
+.pi-debug-line {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+.pi-debug-line-number,
+.pi-debug-line-code {
+	box-sizing: border-box;
+}
+
+.pi-debug-line-number {
+	-ms-flex-preferred-size: 50px;
+	-webkit-flex-basis: 50px;
+	-moz-flex-basis: 50px;
+	flex-basis: 50px;
+	-ms-flex-negative: 0;
+	-webkit-flex-shrink: 0;
+	-moz-flex-shrink: 0;
+	flex-shrink: 0;
+	padding-left: 10px;
+}
+
+.pi-debug-error-message {
+	background-color: black;
+	color: white;
+	font-family: Helvetica, Arial, sans-serif;
+	margin: 20px 0 10px 25px;
+	padding: 10px 15px;
+	position: relative;
+	width: 400px;
+
+	&:before {
+		border-bottom: 15px solid black;
+		border-left: 15px solid transparent;
+		border-right: 15px solid transparent;
+		content: '';
+		display: block;
+		height: 0;
+		left: 25px;
+		position: absolute;
+		top: -15px;
+		width: 0;
+	}
+
+	.pi-debug-error-message-item {
+		margin: 5px 0;
+	}
+}

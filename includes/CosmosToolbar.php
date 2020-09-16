@@ -1,6 +1,6 @@
 <?php
 /**
- * CosmosNavigation class
+ * CosmosToolbar class
  *
  * @package MediaWiki
  * @subpackage Skins
@@ -14,8 +14,7 @@ if(!defined('MEDIAWIKI')) {
 	die(-1);
 }
 use Cosmos\Config;
-use Cosmos\Icon;
-class CosmosNavigation {
+class CosmosToolbar {
 
 	const version = '1.0.7';
 
@@ -108,37 +107,10 @@ class CosmosNavigation {
 
 	public function getMenuLines() {
 		if(empty($lines)) {
-			$lines = CosmosNavigation::getMessageAsArray('Cosmos-navigation');
+			$lines = CosmosToolbar::getMessageAsArray('Cosmos-toolbar');
 		}
 
 		return $lines;
-	}
-
-	public function getSubMenu($nodes, $children) {
-		$menu = '';
-		foreach($children as $key => $val) {
-			$link_html = htmlspecialchars($nodes[$val]['text']);
-			if ( !empty( $nodes[$val]['children'] ) ) {
-				$link_html .= Icon::getIcon( 'level-2-dropdown' )->makeSvg( 12, 12, [ 'id' => 'wds-icons-menu-control-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown-chevron' ] );
-			}
-
-			$menu_item =
-				Html::rawElement( 'a', array(
-						'href' => !empty($nodes[$val]['href']) ? $nodes[$val]['href'] : '#',
-						'class' => (!empty( $nodes[$val]['children'] ) ? 'wds-dropdown-level-2__toggle' : null),
-						'tabIndex' => 3,
-						'rel' => $nodes[$val]['internal'] ? null : 'nofollow'
-					), $link_html ) . "\n";
-			if ( !empty( $nodes[$val]['children'] ) ) {
-				$menu_item .= $this->getSubMenu( $nodes, $nodes[$val]['children'] );
-				
-			}
-			$menu .=
-				Html::rawElement( 'li', (!empty( $nodes[$val]['children'] ) ? array( "class" => ( $key > count( $nodes[$val]['children'] ) - 1 ? 'wds-is-sticked-to-parent ' : '' ) . 'wds-dropdown-level-2' ) : null), $menu_item );
-		}
-		$menu = Html::rawElement( 'div', array( 'class' => (!empty( $nodes[$val]['children'] ) ? 'wds-is-not-scrollable wds-dropdown-level-2__content' : 'wds-is-not-scrollable wds-dropdown-level-2__content') ), '<ul class="wds-list wds-is-linked' . (!empty( $nodes[$val]['children'] ) ? ' wds-has-bolded-items">' : '">') . $menu . '</ul>' );
-		
-		return $menu;
 	}
 
 	public function getMenu($lines, $userMenu = false) {
@@ -147,39 +119,17 @@ class CosmosNavigation {
 
 		if(count($nodes) > 0) {
 
-			Hooks::run('CosmosNavigationGetMenu', array(&$nodes));
+			Hooks::run('CosmosToolbarGetMenu', array(&$nodes));
 
 			$mainMenu = array();
 			foreach($nodes[0]['children'] as $key => $val) {
-				if(isset($nodes[$val]['children'])) {
-					$mainMenu[$val] = $nodes[$val]['children'];
-				}
-				if(isset($nodes[$val]['magic'])) {
-					$mainMenu[$val] = $nodes[$val]['magic'];
-				}
 				if(isset($nodes[$val]['href']) && $nodes[$val]['href'] == 'editthispage') $menu .= '<!--b-->';
-				$menu .= '<li class="wds-tabs__tab">';
-					if ( !empty($nodes[$val]['children']) || !empty($nodes[$val]['magic']) ) {
-					$menu .= '<div class="wds-dropdown">';
-				}
-				$menu .= '<div class="wds-tabs__tab-label';
-				if ( !empty($nodes[$val]['children']) || !empty($nodes[$val]['magic']) ) {
-					$menu .= ' wds-dropdown__toggle';
-				}
-				$menu .= '">';
+				$menu .= '<li>';
 				$menu .= '<a href="'.(!empty($nodes[$val]['href']) && $nodes[$val]['text'] !== 'Navigation' ? htmlspecialchars($nodes[$val]['href']) : '#').'"';
 				if ( !isset($nodes[$val]['internal']) || !$nodes[$val]['internal'] )
 					$menu .= ' rel="nofollow"';
 				$menu .= ' tabIndex=3><span>'.htmlspecialchars($nodes[$val]['text']) . '</span>';
-				if ( !empty($nodes[$val]['children']) || !empty($nodes[$val]['magic']) ) {
-					$menu .= Icon::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] );
-				}
-				$menu .= '</a></div>';
-				if ( !empty($nodes[$val]['children']) || !empty($nodes[$val]['magic']) ) {
-				    $menu .= '<div class="wds-is-not-scrollable wds-dropdown__content">';
-					$menu .= $this->getSubMenu($nodes, $nodes[$val]['children']);
-					$menu .= '</div></div>';
-				}
+				$menu .= '</a>';
 				
 				if(isset($nodes[$val]['href']) && $nodes[$val]['href'] == 'editthispage') $menu .= '<!--e-->';
 			}
@@ -189,7 +139,7 @@ class CosmosNavigation {
 				$classes[] = 'userMenu';
 			$classes[] = 'hover-navigation';
 			
-			$menu = Html::rawElement( 'li', array( 'class' => 'wds-tabs__tab'), $menu );
+		
 
 			if($this->editUrl) {
 				$menu = str_replace('href="editthispage"', 'href="'.$this->editUrl.'"', $menu);
@@ -218,9 +168,9 @@ class CosmosNavigation {
 			if(!empty($magicWords)) {
 				$nodes['magicWords'] = $magicWords;
 			}
-            $memc = ObjectCache::getLocalClusterInstance();
-			$memc->set($menuHash, $nodes, 60 * 60 * 24 * 3); // three days
 
+			$memc = ObjectCache::getLocalClusterInstance();
+			$memc->set($menuHash, $nodes, 60 * 60 * 24 * 3); // three days
 
 			return $menu;
 		}
@@ -358,7 +308,7 @@ class CosmosNavigation {
 		}
 		return false;
 	}
-	
+
 	private $biggestCategories;
 	public function getBiggestCategory($index) {
         $config = new Config();

@@ -1,14 +1,14 @@
 {
 	"name": "Cosmos",
-	"version": "1.0.0",
-	"author": "Created by Universal Omega<br />Uses code by Isarra Yos, Daniel Beard, Jack Phoenix, Inez Korczynski, and Christian Williams",
-	"url": "https://github.com/Universal-Omega/MediaWiki-Cosmos-skin",
+	"version": "3.6.4",
+	"author": "Created by Universal Omega<br />Uses code by Isarra Yos, Daniel Beard, Jack Phoenix, Inez Korczynski, Sean Colombo, and Christian Williams",
+	"url": "https://www.mediawiki.org/wiki/Skin:Cosmos",
 	"descriptionmsg": "cosmos-desc",
 	"namemsg": "skinname-cosmos",
 	"license-name": "GPL-2.0-or-later",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.35.0"
+		"MediaWiki": ">= 1.34.0"
 	},
 	"ValidSkinNames": {
 		"cosmos": "Cosmos"
@@ -18,10 +18,21 @@
 			"i18n"
 		]
 	},
+	"AutoloadClasses": {
+		"SkinCosmos": "includes/SkinCosmos.php",
+		"CosmosTemplate": "includes/CosmosTemplate.php",
+		"CosmosNavigation": "includes/CosmosNavigation.php",
+		"CosmosToolbar": "includes/CosmosToolbar.php",
+		"CosmosHooks": "includes/CosmosHooks.php",
+		"Cosmos\\Icon": "includes/Icon.php",
+		"Cosmos\\Config": "includes/Config.php",
+		"Cosmos\\LessUtil": "includes/LessUtil.php",
+		"Cosmos\\ResourceLoaderLessModule": "includes/ResourceLoaderLessModule.php",
+		"CosmosSocialProfile": "includes/CosmosSocialProfile.php"
+	},
 	"ResourceModules": {
-		"skins.cosmos": {
-		    "class": "ResourceLoaderSkinModule",
-		    "features": [ "normalize", "elements", "content", "interface", "legacy" ],
+	    "skins.cosmos": {
+		    "class": "Cosmos\\ResourceLoaderLessModule",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -50,8 +61,113 @@
 				},
 				"resources/screen-mobile.less": {
 					"media": "screen and (max-width: 850px)"
-				},
-				"0": "resources/screen-misc.less"
+				}
+			}
+	    },
+		"skins.cosmos.legacy": {
+		    "class": "ResourceLoaderSkinModule",
+		    "features": [ "legacy" ]
+		},
+		"skins.cosmos.portableinfobox": {
+		    "class": "Cosmos\\ResourceLoaderLessModule",
+		    "targets": [
+		        "desktop",
+			"mobile"
+		    ],
+		    "styles": {
+		        "resources/extensions/PortableInfobox/PortableInfobox.less": {
+			     "media": "screen"
+			}
+		    }
+		},
+		"skins.cosmos.portableinfobox.default": {
+		    "class": "Cosmos\\ResourceLoaderLessModule",
+		    "targets": [
+		        "desktop",
+			"mobile"
+		    ],
+		    "styles": {
+		        "resources/extensions/PortableInfobox/PortableInfoboxDefaultTheme.less": {
+			     "media": "screen"
+			}
+		    }
+		},
+		"skins.cosmos.portableinfobox.europa": {
+		    "class": "Cosmos\\ResourceLoaderLessModule",
+		    "targets": [
+		        "desktop",
+			"mobile"
+		    ],
+		    "styles": {
+		        "resources/extensions/PortableInfobox/PortableInfoboxEuropaTheme.less": {
+			     "media": "screen"
+			}
+		    }
+		},
+		"skins.cosmos.socialprofile": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profile-common.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.profiletabs": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profiletabs.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.profileavatar": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profileavatar.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.profileeditcount": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profileeditcount.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.profiletags": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profiletags.less": {
+			         "media": "screen"
+			    }
+			}
+		},
+		"skins.cosmos.profilebio": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+		        "resources/extensions/SocialProfile/profilebio.less": {
+			         "media": "screen"
+			    }
 			}
 		},
 		"skins.cosmos.js": {
@@ -62,8 +178,7 @@
 				"resources/main.js"
 			],
 			"dependencies": [
-				"mediawiki.cookie",
-				"mediawiki.api"
+				"mediawiki.cookie"
 			]
 		},
 		"skins.cosmos.mobile": {
@@ -84,29 +199,12 @@
 		"cosmos": {
 			"+oojs-ui-core.styles": "resources/ooui.less",
 			"+ext.echo.styles.badge": "resources/extensions/Echo.less",
-			"+ext.eventLogging.jsonSchema.styles": "resources/extensions/EventLogging.jsonSchema.less",
 			"+ext.visualEditor.core": "resources/extensions/VisualEditor.core.less",
-			"+ext.visualEditor.desktopArticleTarget.noscript": "resources/extensions/VisualEditor.article.less",
-			"+ext.CodeMirror.visualEditor.init": "resources/extensions/VisualEditor.CodeMirror.less",
-			"+ext.dismissableSiteNotice.styles": "resources/extensions/DismissableSiteNotice.less",
-			"+ext.MWOAuth.AuthorizeForm": "resources/extensions/MWOAuth.AuthorizeForm.less",
-			"+ext.wikiLove.icon": "resources/extensions/WikiLove.icon.less",
-			"+ext.proofreadpage.page.navigation": "resources/extensions/Proofreadpage.page.navigation.less"
+			"+ext.CodeMirror.visualEditor.init": "resources/extensions/VisualEditor.CodeMirror.less"
 		}
 	},
-	"AutoloadClasses": {
-		"SkinCosmos": "includes/SkinCosmos.php",
-		"CosmosTemplate": "includes/CosmosTemplate.php",
-		"CosmosNavigation": "includes/CosmosNavigation.php",
-		"CosmosHooks": "includes/CosmosHooks.php",
-		"Cosmos\\Icon": "includes/Icon.php",
-		"Cosmos\\Config": "includes/Config.php"
-	},
 	"Hooks": {
-        "GetPreferences": [ "CosmosHooks::onGetPreferences" ]
-    },
-    "DefaultUserOptions": {
-		"cosmos-mode": "cosmos-darkmode"
-	},
+        	"GetPreferences": [ "CosmosHooks::onGetPreferences" ]
+    	},
 	"manifest_version": 2
 }

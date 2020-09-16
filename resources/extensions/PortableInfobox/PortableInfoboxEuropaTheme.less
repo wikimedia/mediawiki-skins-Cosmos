@@ -1,0 +1,218 @@
+.portable-infobox {
+	color: @font-color;
+  	width: 300px;
+
+	&.pi-background {
+		background-color: mix(mix(@button-color, @alt-font-color, 50%), @content-background-color, 10%);
+	}
+
+	&.pi-layout-stacked {
+		.pi-data-label {
+			padding-bottom: 6px;
+			padding-right: 0;
+		}
+	}
+
+	.pi-caption {
+		color: mix(@font-color, @alt-font-color, 70%);
+		font-style: normal;
+		line-height: 18px;
+	}
+
+	.pi-collapse .pi-header::after,
+	.pi-header.collapsible::after {
+		border-color: @button-font-color;
+		height: 9px;
+		right: 14px;
+		width: 9px;
+	}
+
+	.pi-collapse-closed .pi-header::after {
+		margin-top: -7px;
+	}
+
+	.pi-data-label {
+		-ms-flex-preferred-size: 88px;
+	 	-webkit-flex-basis: 88px;
+	  	-moz-flex-basis: 88px;
+  		flex-basis: 88px;
+		color: inherit;
+		padding-right: 14px;
+	}
+
+	.pi-data-value {
+		padding-left: 0;
+
+		li {
+			line-height: 18px;
+			padding-bottom: 8px;
+
+			&:last-child {
+				padding-bottom: 0;
+			}
+		}
+
+		ul {
+			list-style-type: disc;
+		}
+
+		ol {
+			margin-left: 14px;
+		}
+
+		ol, ul {
+			list-style-position: outside;
+			margin-left: 14px;
+		}
+	}
+
+	.pi-data,
+	.pi-group {
+		border-bottom: 0;
+	}
+
+	.pi-header {
+		font-size: 16px;
+	}
+
+	.pi-header,
+	.pi-media-collection-tabs {
+		line-height: 20px;
+	}
+
+	.pi-header,
+	.pi-tab-link {
+		padding: 9px 14px;
+	}
+
+	.pi-header,
+	.pi-title {
+		background-color: @button-color;
+		color: @button-font-color;
+		text-align: center;
+
+		a {
+			color: #fff;
+			text-decoration: underline;
+		}
+	}
+
+	.pi-horizontal-group {
+		text-align: left;
+
+		.pi-horizontal-group-item {
+			border-left: 0;
+		}
+
+		.pi-data-label {
+			padding: 10px 14px 6px;
+		}
+
+		.pi-data-value {
+			padding-left: 14px;
+			padding-top: 0;
+		}
+	}
+
+	.pi-horizontal-group-item:nth-child(even) {
+		background-color: mix(@button-color, mix(mix(@button-color, @alt-font-color, 50%), @content-background-color, 10%), 10%);
+	}
+
+	.pi-horizontal-group-no-labels .pi-data-value {
+		padding-top: 10px;
+	}
+	.pi-image-thumbnail {
+		width: auto;
+		max-width: 300px;
+	}
+	.pi-media-collection-tabs {
+		background-color: mix(mix(@button-color, @alt-font-color, 50%), @content-background-color, 10%);
+		margin: 0;
+		text-align: left;
+
+		.current {
+			background-color: mix(@button-color, mix(mix(@button-color, @alt-font-color, 50%), @content-background-color, 10%), 40%);
+		}
+	}
+
+	.pi-media-collection-tab-content {
+		background-color: inherit;
+	}
+
+	.pi-item-spacing {
+		padding: 10px 14px;
+
+		&.pi-caption {
+			padding-bottom: 14px;
+		}
+	}
+
+	.pi-navigation {
+		background-color: inherit;
+		color: inherit;
+		font-weight: inherit;
+	}
+
+	// need to have both (pi-data-label & pi-smart-data-label) classes in selector to override stacked layout padding (pi-layout-stacked)
+	.pi-data-label {
+		&.pi-smart-data-label {
+			padding: 10px 14px 6px;
+		}
+	}
+
+	.pi-smart-group-head + .pi-smart-group-body .pi-smart-data-value {
+		padding-top: 0;
+	}
+
+	.pi-smart-data-label,
+	.pi-smart-data-value {
+		border-left: 0;
+		box-sizing: border-box;
+		flex-basis: auto;
+
+		&:nth-child(even) {
+			background-color: mix(@button-color, mix(mix(@button-color, @alt-font-color, 50%), @content-background-color, 10%), 10%);
+		}
+	}
+
+	.pi-smart-group {
+		border-bottom: 0;
+		text-align: left;
+	}
+
+	.pi-tab-link {
+		border: 0;
+		font-size: 14px;
+		margin: 0;
+	}
+
+	.pi-title {
+		font-size: 20px;
+		font-weight: bold;
+		line-height: 24px;
+		padding-top: 14px;
+	}
+}
+
+// Mobile
+@media screen and ( max-width: 720px ) {
+	.portable-infobox {
+		float: none;
+		width: initial;
+		font-size: initial;
+		margin: 0;
+		
+		.pi-title {
+			text-align: center;
+		}
+
+		.pi-data-label {
+			flex-basis: 30%
+		}
+
+		.pi-media-collection-tabs li,
+		.pi-section-navigation li {
+			li { flex: 1 50% }
+		}
+	}
+}

@@ -1,0 +1,337 @@
+// **********  Overwrite styles from article  ********** //
+// (placing it within portable-infobox class makes it strong enough) //
+
+.portable-infobox {
+	background-color: mix(@content-background-color, @link-color, @infobox-background-mix);
+	clear: right;
+	float: right;
+	margin: 0 0 15px 15px;
+	width: 270px;
+	
+	.pi-item-spacing {
+		padding: 5px 10px;
+	}
+
+	.pi-secondary-font {
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 18px;
+		margin-top: 0;
+	}
+
+	.pi-header,
+	.pi-title {
+		border: 0;
+		margin: 0;
+	}
+
+	.pi-title {
+		font-size: 18px;
+		line-height: 28px;
+	}
+
+	.pi-data-label {
+		margin-bottom: inherit;
+		margin-top: 0;
+	}
+	
+	// overwrite default article styles for children of data value
+	.pi-data-value {
+		> *,
+		li {
+			margin: 0;
+		}
+
+		ol,
+		ul {
+			list-style-position: inside;
+		}
+
+		li {
+			line-height: 19px;
+		}
+	}
+	
+	 // overwrite default secondary background styles from the original PortableInfobox extension
+	 .pi-secondary-background {
+	    	background-color: mix(@content-background-color, @link-color, 75%);
+	}
+}
+
+	.pi-border-color {
+		border-color: mix(@content-background-color, @link-color, 75%);
+	}
+	.portable-infobox > .pi-item:last-child {
+		border-bottom: 0;
+	}
+
+	.pi-media {
+		text-align: center;
+	}
+
+	.pi-caption {
+		-webkit-hyphens: auto;
+	  	-moz-hyphens: auto;
+	 	-ms-hyphens: auto;
+	 	hyphens: auto;
+		color: mix(@content-background-color, @alt-font-color, 50%);
+		font-size: 12px;
+		font-style: italic;
+		text-align: left;
+		word-wrap: break-word;
+	}
+
+	.pi-data,
+	.pi-group {
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+	}
+
+	.pi-group > .pi-item:last-child {
+		border-bottom: 0;
+	}
+
+	.pi-data {
+	    display: -webkit-box;
+	    display: -moz-box;
+	    display: -ms-flexbox;
+    	    display: -webkit-flex;
+	    display: flex; 
+	    -ms-box-orient: horizontal;
+  	    -webkit-box-orient: horizontal;
+  	    -ms-flex-direction: row;
+  	    -webkit-flex-direction: row;
+  	    flex-direction: row;
+	    box-sizing: border-box;
+	    overflow: hidden;
+	    width: 100%;
+	}
+
+	.pi-data-label {
+	  -ms-flex-preferred-size: 90;
+	  -webkit-flex-basis: 90;
+	  -moz-flex-basis: 90;
+	  flex-basis: 90;
+	  -webkit-hyphens: auto;
+	  -moz-hyphens: auto;
+	  -ms-hyphens: auto;
+	  hyphens: auto;
+	  overflow: hidden;
+	  word-wrap: break-word;
+	}
+
+	.pi-data-value {
+		-webkit-hyphens: auto;
+	  	-moz-hyphens: auto;
+	  	-ms-hyphens: auto;
+	  	hyphens: auto;
+		font-size: 12px;
+		line-height: 18px;
+		padding-left: 0;
+		word-break: break-word;
+
+		&:not(:first-child) {
+		 	-ms-flex-preferred-size: 180px;
+	   		-webkit-flex-basis: 180px;
+	   		-moz-flex-basis: 180px;
+	    		flex-basis: 180px;
+			padding-left: 10px;
+		}
+	}
+
+// **********  Special styles for HORIZONTAL group  ********** //
+
+.pi-horizontal-group {
+	border-spacing: 0;
+	table-layout: fixed;
+	text-align: center;
+	width: 100%;
+
+	.pi-header {
+		text-align: left;
+	}
+
+	.pi-horizontal-group-item {
+		vertical-align: top;
+
+		&:not(:first-child) {
+			border-left-style: solid;
+			border-left-width: 1px;
+		}
+	}
+
+	.pi-data-label {
+		padding-bottom: 0;
+	}
+}
+
+// **********  Special styles for SMART WRAP group (row-items attribute provided)  ********** //
+
+.pi-smart-data-value, .pi-smart-data-label {
+	&:not(:first-child) {
+		border-color: mix(@content-background-color, @link-color, 75%);
+		border-left-style: solid;
+		border-left-width: 1px;
+	}
+}
+
+.pi-smart-group {
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+
+	&:last-child {
+		border-bottom: 0;
+	}
+
+	.pi-smart-data-label {
+		padding-bottom: 0;
+	}
+
+	.pi-smart-data-label,
+	.pi-smart-data-value {
+		box-sizing: border-box;
+		flex-basis: auto;
+		padding: 5px 10px;
+	}
+}
+
+.pi-smart-group-body {
+	display: flex;
+}
+
+.pi-smart-group-head {
+	display: flex;
+}
+
+// **********  Overwrite default infobox styles for STACKED layout type  ********** //
+
+.pi-layout-stacked {
+	.pi-data {
+		display: block;
+	}
+
+	.pi-data-value {
+		padding-left: 10px;
+	}
+}
+
+// **********  Collapsible groups  ********** //
+
+.pi-collapse .pi-header:first-child {
+  
+&::after {
+		border-color: @font-color;
+		border-style: solid;
+		border-width: 2px 2px 0 0;
+		content: '';
+		display: inline-block;
+		height: 5px;
+		right: 0;
+		position: relative;
+		top: -1px;
+		vertical-align: middle;
+		width: 5px;
+		-webkit-transform: rotate(-45deg);
+		transform: rotate(-45deg);
+	}
+	padding-right: 25px;
+	position: relative;
+
+	&:after {
+		display: block;
+		margin-top: -7px;
+		position: absolute;
+		right: 10px;
+		top: 50%;
+	}
+}
+
+.pi-collapse-closed {
+	border-bottom: none;
+
+	.pi-header:first-child::after {
+		transform: rotate(135deg);
+    		-webkit-transform: rotate(135deg);
+    		-moz-transform: rotate(135deg);
+    		-ms-transform: rotate(135deg);
+		margin-top: -5px;
+	}
+
+	> *:nth-child(n+2) {
+		display: none;
+	}
+
+	.pi-horizontal-group {
+		thead,
+		tbody {
+			display: none;
+		}
+	}
+}
+
+// **********  Image Collection  ********** //
+
+ul.pi-media-collection-tabs {
+	list-style: none;
+	margin: 0 -1px -1px 0;
+	overflow: hidden;
+	padding: 0;
+	text-align: center;
+
+	li {
+		border: 1px solid mix(@content-background-color, @link-color, 75%);
+		box-sizing: border-box;
+		cursor: pointer;
+		display: inline-block;
+		margin: -1px -1px 0 0;
+		max-width: 50%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		vertical-align: bottom;
+		white-space: nowrap;
+
+		&.current {
+			background: mix(@content-background-color, @link-color, 75%);
+			font-weight: bold;
+		}
+	}
+}
+
+.pi-media-collection-tab-content {
+	background-color: mix(@content-background-color, @link-color, @infobox-background-mix);
+	display: none;
+
+	.video-thumbnail {
+		display: block;
+	}
+}
+
+.pi-media-collection-tab-content.current {
+	display: inherit;
+}
+
+// Mobile
+@media screen and ( max-width: 720px ) {
+	.portable-infobox {
+		float: none;
+		width: initial;
+		font-size: initial;
+		margin: 0;
+		
+		.pi-title {
+			text-align: center;
+		}
+
+		.pi-data-label {
+			flex-basis: 30%
+		}
+
+		.pi-media-collection-tabs li,
+		.pi-section-navigation li {
+			li { flex: 1 50% }
+		}
+	}
+}

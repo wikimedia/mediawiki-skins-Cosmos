@@ -21,7 +21,6 @@
 	 * respectively
 	 */
 	const SITE_NOTICE_EXPIRY_TIME = 7 * DAYS;
-
 		/* FUNCTIONS */
 
    $('.create-page-dialog__wrapper #create-page-dialog__title').keyup(function() {
@@ -34,9 +33,9 @@
         });
 
         if (empty) {
-            $('.create-page-dialog__button').attr('disabled', 'disabled');
+            $('.create-page-dialog__button').prop('disabled', true);
         } else {
-            $('.create-page-dialog__button').removeAttr('disabled');
+            $('.create-page-dialog__button').prop('disabled', false);
         }
     });
 
@@ -54,22 +53,6 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 };     
-var Proposalsparams = {
-		action: 'query',
-		list: 'querypage',
-		qppage: 'Wantedpages',
-		qplimit: '6',
-		format: 'json'
-	},
-	ProposalsAPI = new mw.Api();
-
-ProposalsAPI.get( Proposalsparams ).done( function ( data ) {
-	var querypage = data.query.querypage.results,
-		p;
-	for ( p in querypage ) {
-	     $('.articleProposals').append('<li> <a class="new" href="' + mw.config.get("wgScriptPath") + '/index.php?title=' + querypage[ p ].title + '&action=edit&redlink=1">' + querypage[ p ].title + '</a></li>' );
-	 }
-});
 mw.hook( 've.activationComplete' ).add( function () {
     $('.ve-activated .firstHeading').html($('title').html().replace(' - ' + mw.config.get("wgSiteName"), ''));
  var surface = ve.init.target.getSurface();
@@ -159,6 +142,24 @@ $.urlParam = function (name) {
     return arrReturnElements;
   };
 
+	
+	
+	/**
+	 * Updates the height of the footer, in order to make sure it always fills
+	 * the space between the bottom of the page, and the bottom of the viewport,
+	 * regardless of how small the page is
+	 */
+	function updateFooterHeight() {
+		var $footer = $( '#cosmos-footer' );
+		// Reset the footer height to its default value
+		$footer.height( 'auto' );
+		if ( $(window).height() > $footer.offset().top + $footer.outerHeight( false )) {
+			// If the footer is not large enough to fill the bottom of the page,
+			// resize its outer height accordingly
+			$footer.outerHeight( $(window).height() - $footer.offset().top, false );
+		}
+	}
+	
 	/**
 	 * Closes the site notice
 	 */
@@ -170,6 +171,10 @@ $.urlParam = function (name) {
 
 	$( document ).ready( function () {
 		$( '#cosmos-siteNotice-closeButton' ).click( closeSiteNotice );
+		updateFooterHeight();
 	} );
-    
+	
+    	// On window resize, update the footer height if necessary
+	$( window ).resize( updateFooterHeight );
+	
 } )( jQuery, mediaWiki );

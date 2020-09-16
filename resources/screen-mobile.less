@@ -1,10 +1,9 @@
-@import 'variables.less';
-
 // Override default here because mobile narrow
 .cosmos-header__sitename a,
 .cosmos-header__local-navigation,
 #cosmos-banner-bannerLogo,
-#cosmos-search-buttonContainer {
+#cosmos-search-buttonContainer,
+.wds-button.wds-is-secondary.wds-dropdown__toggle {
 	display: none;
 }
 
@@ -16,17 +15,6 @@
 h1.firstHeading {
 	clear: right;
 }
-
-/* Page actions */
-
-#p-namespaces li {
-	margin-right: 1.5em;
-}
-
-.tools-inline li a {
-	.ca-icon-only();
-}
-
 
 /* Full-width thumbnails */
 
@@ -74,10 +62,6 @@ div.thumb {
 #mw-content {
 	padding: 0.45em;
 	border-width: 0;
-}
-
-#mw-content-block {
-	background: #000;
 }
 
 /* Table of contents */
