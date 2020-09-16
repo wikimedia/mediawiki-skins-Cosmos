@@ -140,7 +140,8 @@ class Config {
 	    } else {
 	        $this->options = self::DEFAULT_CONFIG;
 	    }
-		$this->options['header-wordmark'] = $wgLogos['wordmark']['src'] ? $wgLogos['wordmark']['src'] : $wgLogos['1x'] ? $wgLogos['1x'] : $wgLogo;
+		$this->options['header-wordmark'] = (isset($wgLogos['wordmark']['src']) ? $wgLogos['wordmark']['src'] : (isset($wgLogos['1x']) ? $wgLogos['1x'] : $wgLogo));
+
 
 		// Loop through the options array and update each entry as necessary
 		foreach ( $this->options as $name => &$value ) {

@@ -1,6 +1,5 @@
 <?php
 use Cosmos\Config;
-use ExtensionRegistry;
 class CosmosSocialProfile {
 
 	static function getUser( $parser, $user ) {

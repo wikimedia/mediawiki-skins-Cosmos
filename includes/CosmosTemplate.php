@@ -638,10 +638,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'header', [ 'id' => 'cosmos-page-header' ] );
 
 		// Build article header
-		$title = Title::newFromText( $this->get( 'title' ) );
-		    if(!$title || $title->getNamespace() !== NS_USER_PROFILE){
-		        $this->buildArticleHeader( $html, $config );
-		  }
+		$this->buildArticleHeader( $html, $config );
 
 		// Close container element
 		$html .= Html::closeElement( 'header' );
@@ -1095,8 +1092,8 @@ class CosmosTemplate extends BaseTemplate {
 	 * @param $html string The string onto which the HTML should be appended
 	 */
 	protected function buildFooterIcons( string &$html, Config $config ) : void {
-		$footerIcons = $this->getFooterIcons();
-
+		$footerIcons = $this->get('footericons');
+		$skin = $this->getSkin();
 		if ( count( $footerIcons ) > 0 ) {
 			// Open container div for icons
 			$html .= Html::openElement( 'div', [
@@ -1115,7 +1112,9 @@ class CosmosTemplate extends BaseTemplate {
 						'class' => 'cosmos-footerIcons-listItem'
 					] );
 	
-					$html .= $this->getSkin()->makeFooterIcon( $icon );
+					if ( is_string( $icon ) || isset( $icon['src'] ) ) {
+						$html .= $skin->makeFooterIcon( $icon );
+					}
 
 					$html .= Html::closeElement( 'li' );
 				}
