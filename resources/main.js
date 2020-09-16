@@ -144,7 +144,21 @@ $.urlParam = function (name) {
 
 	
 	
-
+	/**
+	 * Updates the height of the footer, in order to make sure it always fills
+	 * the space between the bottom of the page, and the bottom of the viewport,
+	 * regardless of how small the page is
+	 */
+	function updateFooterHeight() {
+		var $footer = $( '#cosmos-footer' );
+		// Reset the footer height to its default value
+		$footer.height( 'auto' );
+		if ( $(window).height() > $footer.offset().top + $footer.outerHeight( false )) {
+			// If the footer is not large enough to fill the bottom of the page,
+			// resize its outer height accordingly
+			$footer.outerHeight( $(window).height() - $footer.offset().top, false );
+		}
+	}
 	
 	/**
 	 * Closes the site notice
@@ -157,6 +171,10 @@ $.urlParam = function (name) {
 
 	$( document ).ready( function () {
 		$( '#cosmos-siteNotice-closeButton' ).click( closeSiteNotice );
+		updateFooterHeight();
 	} );
-    
+	
+    	// On window resize, update the footer height if necessary
+	$( window ).resize( updateFooterHeight );
+	
 } )( jQuery, mediaWiki );
