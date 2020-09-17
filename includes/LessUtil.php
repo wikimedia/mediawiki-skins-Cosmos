@@ -1,8 +1,8 @@
 <?php
-        /**
-        * @author Sean Colombo
-        * @author Universal Omega
-        */
+/**
+ * @author Sean Colombo
+ * @author Universal Omega
+ */
 
 namespace Cosmos;
 
@@ -10,7 +10,15 @@ use Cosmos\Config;
 class LessUtil {
 
 	const HEX_REG_EXP = '/#([a-f0-9]{3,6})/i';
-	const COLOR_KEYS = array('banner-background-color', 'header-background-color', 'content-background-color', 'button-color', 'link-color', 'toolbar-color', 'footer-color');
+	const COLOR_KEYS = array(
+		'banner-background-color',
+		'header-background-color',
+		'content-background-color',
+		'button-color',
+		'link-color',
+		'toolbar-color',
+		'footer-color'
+	);
 
 	static $cosmosSettings = [];
 
@@ -20,48 +28,26 @@ class LessUtil {
 	public static function getCosmosSettings() {
 
 		// Load the 5 deafult colors by theme here (eg: in case the wiki has an override but the user doesn't have overrides).
-		if (empty(static::$cosmosSettings)) {
+		if (empty(static ::$cosmosSettings)) {
 			$themeSettings = new Config;
 
-			static::$cosmosSettings['banner-background-color'] = self::sanitizeColor($themeSettings->getString('banner-background-color'));
-			static::$cosmosSettings['header-background-color'] = self::sanitizeColor($themeSettings->getString('header-background-color'));
-			static::$cosmosSettings['content-background-color'] = self::sanitizeColor($themeSettings->getString('content-background-color'));
-			static::$cosmosSettings['button-color'] = self::sanitizeColor($themeSettings->getString('button-color'));
-			static::$cosmosSettings['link-color'] = self::sanitizeColor($themeSettings->getString('link-color'));
-			static::$cosmosSettings['toolbar-color'] = self::sanitizeColor($themeSettings->getString('toolbar-color'));
-                        static::$cosmosSettings['footer-color'] = self::sanitizeColor($themeSettings->getString('footer-color'));
-			/*static::$cosmosSettings['background-image'] = $themeSettings->getBackgroundUrl();
-
-			// sending width and height of background image to SASS
-			if ( !empty($settings['background-image-width']) && !empty($settings['background-image-height']) ) {
-				// strip 'px' from previously cached settings since we removed 'px' (sanity check)
-				static::$cosmosSettings['background-image-width'] = str_replace( 'px', '', $settings['background-image-width'] );
-				static::$cosmosSettings['background-image-height'] = str_replace( 'px', '', $settings['background-image-height'] );
-			} else {
-				// if not cached in theme settings
-				$bgImage = wfFindFile(ThemeSettings::BackgroundImageName);
-
-					$settings['background-image-width'] = static::$cosmosSettings['background-image-width'] = $bgImage->getWidth();
-					$settings['background-image-height'] = static::$cosmosSettings['background-image-height'] = $bgImage->getHeight();
-				}
-			}
-
-			static::$cosmosSettings['background-dynamic'] = $settings['background-dynamic'];
-			static::$cosmosSettings['page-opacity'] = $settings['page-opacity'];
-			if (!empty($settings['wordmark-font']) && $settings['wordmark-font'] != 'default') {
-				static::$cosmosSettings['wordmark-font'] = $settings['wordmark-font'];
-			}*/
-
+			static ::$cosmosSettings['banner-background-color'] = self::sanitizeColor($themeSettings->getString('banner-background-color'));
+			static ::$cosmosSettings['header-background-color'] = self::sanitizeColor($themeSettings->getString('header-background-color'));
+			static ::$cosmosSettings['content-background-color'] = self::sanitizeColor($themeSettings->getString('content-background-color'));
+			static ::$cosmosSettings['button-color'] = self::sanitizeColor($themeSettings->getString('button-color'));
+			static ::$cosmosSettings['link-color'] = self::sanitizeColor($themeSettings->getString('link-color'));
+			static ::$cosmosSettings['toolbar-color'] = self::sanitizeColor($themeSettings->getString('toolbar-color'));
+			static ::$cosmosSettings['footer-color'] = self::sanitizeColor($themeSettings->getString('footer-color'));
 
 			// RT:70673
-			foreach (static::$cosmosSettings as $key => $val) {
-				if(!empty($val)) {
-					static::$cosmosSettings[$key] = trim($val);
+			foreach (static ::$cosmosSettings as $key => $val) {
+				if (!empty($val)) {
+					static ::$cosmosSettings[$key] = trim($val);
 				}
 			}
 		}
 
-		return static::$cosmosSettings;
+		return static ::$cosmosSettings;
 	}
 
 	/**
@@ -73,19 +59,16 @@ class LessUtil {
 		$color = trim(strtolower($color));
 		return $color;
 	}
-        /**
+	/**
 	 * Calculates whether currently used theme is light or dark
 	 */
-	public static function isThemeDark($cosmosSettings = null) {
+	public static function isThemeDark($background, $cosmosSettings = null) {
 
 		if (empty($cosmosSettings)) {
 			$cosmosSettings = self::getCosmosSettings();
-			/*if(empty($cosmosSettings)) {	// if it's still empty
-				$cosmosSettings = self::getDefaultCosmosSettings();
-			}*/
 		}
 
-		$backgroundColor = $cosmosSettings['content-background-color'];
+		$backgroundColor = $cosmosSettings[$background];
 
 		// convert RGB to HSL
 		list($hue, $saturation, $lightness) = self::rgb2hsl($backgroundColor);
@@ -94,96 +77,7 @@ class LessUtil {
 
 		return $isDark;
 	}
-    public static function isBannerThemeDark($cosmosSettings = null) {
 
-		if (empty($cosmosSettings)) {
-			$cosmosSettings = self::getCosmosSettings();
-			/*if(empty($cosmosSettings)) {	// if it's still empty
-				$cosmosSettings = self::getDefaultCosmosSettings();
-			}*/
-		}
-
-		$backgroundColor = $cosmosSettings['banner-background-color'];
-
-		// convert RGB to HSL
-		list($hue, $saturation, $lightness) = self::rgb2hsl($backgroundColor);
-
-		$isDark = ($lightness < 0.5);
-
-		return $isDark;
-	}
-	public static function isHeaderThemeDark($cosmosSettings = null) {
-
-		if (empty($cosmosSettings)) {
-			$cosmosSettings = self::getCosmosSettings();
-			/*if(empty($cosmosSettings)) {	// if it's still empty
-				$cosmosSettings = self::getDefaultCosmosSettings();
-			}*/
-		}
-
-		$backgroundColor = $cosmosSettings['header-background-color'];
-
-		// convert RGB to HSL
-		list($hue, $saturation, $lightness) = self::rgb2hsl($backgroundColor);
-
-		$isDark = ($lightness < 0.5);
-
-		return $isDark;
-	}
-	public static function isFooterThemeDark($cosmosSettings = null) {
-
-		if (empty($cosmosSettings)) {
-			$cosmosSettings = self::getCosmosSettings();
-			/*if(empty($cosmosSettings)) {	// if it's still empty
-				$cosmosSettings = self::getDefaultCosmosSettings();
-			}*/
-		}
-
-		$backgroundColor = $cosmosSettings['footer-color'];
-
-		// convert RGB to HSL
-		list($hue, $saturation, $lightness) = self::rgb2hsl($backgroundColor);
-
-		$isDark = ($lightness < 0.5);
-
-		return $isDark;
-	}
-	public static function isToolbarThemeDark($cosmosSettings = null) {
-
-		if (empty($cosmosSettings)) {
-			$cosmosSettings = self::getCosmosSettings();
-			/*if(empty($cosmosSettings)) {	// if it's still empty
-				$cosmosSettings = self::getDefaultCosmosSettings();
-			}*/
-		}
-
-		$backgroundColor = $cosmosSettings['toolbar-color'];
-
-		// convert RGB to HSL
-		list($hue, $saturation, $lightness) = self::rgb2hsl($backgroundColor);
-
-		$isDark = ($lightness < 0.5);
-
-		return $isDark;
-	}
-	public static function isButtonThemeDark($cosmosSettings = null) {
-
-		if (empty($cosmosSettings)) {
-			$cosmosSettings = self::getCosmosSettings();
-			/*if(empty($cosmosSettings)) {	// if it's still empty
-				$cosmosSettings = self::getDefaultCosmosSettings();
-			}*/
-		}
-
-		$backgroundColor = $cosmosSettings['button-color'];
-
-		// convert RGB to HSL
-		list($hue, $saturation, $lightness) = self::rgb2hsl($backgroundColor);
-
-		$isDark = ($lightness < 0.5);
-
-		return $isDark;
-	}
 	/**
 	 * Convert RGB colors array into HSL array
 	 *
@@ -192,14 +86,14 @@ class LessUtil {
 	 * @param string $rgbhex RGB color in hex format (#474646)
 	 * @return array HSL set
 	 */
-	private static function rgb2hsl($rgbhex){
+	private static function rgb2hsl($rgbhex) {
 
-		if ( $rgbhex[0] != '#' ) {
-			$rgbhex = self::colorNameToHex( $rgbhex );
+		if ($rgbhex[0] != '#') {
+			$rgbhex = self::colorNameToHex($rgbhex);
 		}
 
 		// We need to convert hex shorthand format
-		if ( strlen( $rgbhex ) == 4 ) {
+		if (strlen($rgbhex) == 4) {
 			$rgbhex[6] = $rgbhex[3];
 			$rgbhex[5] = $rgbhex[3];
 			$rgbhex[4] = $rgbhex[2];
@@ -209,12 +103,12 @@ class LessUtil {
 
 		// convert HEX color to rgb values
 		// #474646 -> 71, 70, 70
-		$rgb = str_split(substr($rgbhex, 1), 2);
+		$rgb = str_split(substr($rgbhex, 1) , 2);
 		$rgb = array_map('hexdec', $rgb);
 
-		$clrR = (!empty($rgb[0])? ($rgb[0]/255) : 0 );
-		$clrG = (!empty($rgb[1])? ($rgb[1]/255) : 0 );
-		$clrB = (!empty($rgb[2])? ($rgb[2]/255) : 0 );
+		$clrR = (!empty($rgb[0]) ? ($rgb[0] / 255) : 0);
+		$clrG = (!empty($rgb[1]) ? ($rgb[1] / 255) : 0);
+		$clrB = (!empty($rgb[2]) ? ($rgb[2] / 255) : 0);
 
 		$clrMin = min($clrR, $clrG, $clrB);
 		$clrMax = max($clrR, $clrG, $clrB);
@@ -222,36 +116,40 @@ class LessUtil {
 
 		$L = ($clrMax + $clrMin) / 2;
 
-		if (0 == $deltaMax){
+		if (0 == $deltaMax) {
 			$H = 0;
 			$S = 0;
 		}
-		else{
-			if (0.5 > $L){
+		else {
+			if (0.5 > $L) {
 				$S = $deltaMax / ($clrMax + $clrMin);
 			}
-			else{
+			else {
 				$S = $deltaMax / (2 - $clrMax - $clrMin);
 			}
 			$deltaR = ((($clrMax - $clrR) / 6) + ($deltaMax / 2)) / $deltaMax;
 			$deltaG = ((($clrMax - $clrG) / 6) + ($deltaMax / 2)) / $deltaMax;
 			$deltaB = ((($clrMax - $clrB) / 6) + ($deltaMax / 2)) / $deltaMax;
-			if ($clrR == $clrMax){
+			if ($clrR == $clrMax) {
 				$H = $deltaB - $deltaG;
 			}
-			else if ($clrG == $clrMax){
+			else if ($clrG == $clrMax) {
 				$H = (1 / 3) + $deltaR - $deltaB;
 			}
-			else if ($clrB == $clrMax){
+			else if ($clrB == $clrMax) {
 				$H = (2 / 3) + $deltaG - $deltaR;
 			}
 			if (0 > $H) $H += 1;
 			if (1 < $H) $H -= 1;
 		}
 
-		return array($H, $S, $L);
+		return array(
+			$H,
+			$S,
+			$L
+		);
 	}
-        /**
+	/**
 	 * Convert HTML color name to hex format
 	 * We allow users to use color names in ThemeDesigner so we need to support them
 	 *
@@ -260,7 +158,7 @@ class LessUtil {
 	 */
 	public static function colorNameToHex($colorName) {
 		// standard 147 HTML color names
-		$colors  =  array(
+		$colors = array(
 			'aliceblue' => '#f0f8ff',
 			'antiquewhite' => '#faebd7',
 			'aqua' => '#00ffff',
@@ -410,9 +308,10 @@ class LessUtil {
 			'yellowgreen' => '#9acd32'
 		);
 
-		if ( isset( $colors[ $colorName ] ) ) {
-			return $colors[ $colorName ];
-		} else {
+		if (isset($colors[$colorName])) {
+			return $colors[$colorName];
+		}
+		else {
 			return $colorName;
 		}
 	}
@@ -423,10 +322,10 @@ class LessUtil {
 	 * @param $themeSettings
 	 * @return mixed
 	 */
-	public static function normalizeThemeColors( $themeSettings ) {
-		foreach ( self::COLOR_KEYS as $key ) {
-			if ( !preg_match(self::HEX_REG_EXP, $themeSettings[$key]) ) {
-				$themeSettings[$key] = self::colorNameToHex( $themeSettings[$key] );
+	public static function normalizeThemeColors($themeSettings) {
+		foreach (self::COLOR_KEYS as $key) {
+			if (!preg_match(self::HEX_REG_EXP, $themeSettings[$key])) {
+				$themeSettings[$key] = self::colorNameToHex($themeSettings[$key]);
 			}
 		}
 
@@ -438,32 +337,34 @@ class LessUtil {
 	 *
 	 * @return mixed
 	 */
-	public static function convertColorsToRgb( array $themeSettings ): array {
-		$settings = [];
+	public static function convertColorsToRgb(array $themeSettings): array {
+			$settings = [];
 
-		foreach ( self::normalizeThemeColors( $themeSettings ) as $key => $val ) {
-			if ( preg_match( self::HEX_REG_EXP, $val ) ) {
-				$settings[$key] = self::hexToRgb( $val );
-			} else {
-				$settings[$key] = $val;
+			foreach (self::normalizeThemeColors($themeSettings) as $key => $val) {
+				if (preg_match(self::HEX_REG_EXP, $val)) {
+					$settings[$key] = self::hexToRgb($val);
+				}
+				else {
+					$settings[$key] = $val;
+				}
 			}
+
+			return $settings;
 		}
 
-		return $settings;
-	}
+		/**
+		 * @param string $hex
+		 *
+		 * @return array with r, g and b keys
+		 */
+		public static function hexToRgb(string $hex): array {
+				$hex = str_replace('#', '', $hex);
+				$length = strlen($hex);
+				$rgb['r'] = hexdec($length == 6 ? substr($hex, 0, 2) : ($length == 3 ? str_repeat(substr($hex, 0, 1) , 2) : 0));
+				$rgb['g'] = hexdec($length == 6 ? substr($hex, 2, 2) : ($length == 3 ? str_repeat(substr($hex, 1, 1) , 2) : 0));
+				$rgb['b'] = hexdec($length == 6 ? substr($hex, 4, 2) : ($length == 3 ? str_repeat(substr($hex, 2, 1) , 2) : 0));
 
-	/**
-	 * @param string $hex
-	 *
-	 * @return array with r, g and b keys
-	 */
-	public static function hexToRgb( string $hex ): array {
-		$hex      = str_replace('#', '', $hex);
-		$length   = strlen($hex);
-		$rgb['r'] = hexdec($length == 6 ? substr($hex, 0, 2) : ($length == 3 ? str_repeat(substr($hex, 0, 1), 2) : 0));
-		$rgb['g'] = hexdec($length == 6 ? substr($hex, 2, 2) : ($length == 3 ? str_repeat(substr($hex, 1, 1), 2) : 0));
-		$rgb['b'] = hexdec($length == 6 ? substr($hex, 4, 2) : ($length == 3 ? str_repeat(substr($hex, 2, 1), 2) : 0));
-
-		return $rgb;
-	}
-}
+				return $rgb;
+			}
+		}
+		
