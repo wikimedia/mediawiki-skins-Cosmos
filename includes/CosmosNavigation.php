@@ -159,7 +159,7 @@ class CosmosNavigation {
 
 		if (count($nodes) > 0) {
 
-			Hooks::run('CosmosNavigationGetMenu', array(&$nodes
+			Hooks::run('getCosmosNavigation', array(&$nodes
 			));
 
 			$mainMenu = array();
