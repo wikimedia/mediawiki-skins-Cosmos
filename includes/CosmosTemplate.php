@@ -40,15 +40,15 @@ class CosmosTemplate extends BaseTemplate {
 			$profileOwner = Title::newFromText($this->get('title'))
 				->getText();
 			$parser = MediaWikiServices::getInstance()->getParser();
-			$replace = array(
+			$replace = [
 				'<div id="profile-title">' . $profileOwner . '</div>',
 				'<div id="profile-title-container">'
-			);
-			$Replacewith = array(
+			];
+			$replaceWith = [
 				'<h1 itemprop="name">' . $profileOwner . '</h1>' . ($config->isEnabled('profile-tags') ? CosmosSocialProfile::usergroups($parser, $profileOwner) : '') . ($config->isEnabled('show-editcount') ? '<br/> <div class="contributions-details tally"><a href="' . htmlspecialchars(Title::newFromText("Contributions/$profileOwner", NS_SPECIAL)->getFullURL()) . '"><em>' . CosmosSocialProfile::useredits($parser, $profileOwner) . '</em><span>Edits since joining this wiki<br>' . CosmosSocialProfile::userregistration($parser, $profileOwner) . '</span></a></div>' : '') . ($config->isEnabled('allow-bio') ? CosmosSocialProfile::userbio($parser, $profileOwner) : '') ,
 				'<div class="hgroup">'
-			);
-			return str_replace($replace, $Replacewith, $html);
+			];
+			return str_replace($replace, $replaceWith, $html);
 
 		}
 		else {
