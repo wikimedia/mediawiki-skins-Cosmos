@@ -107,10 +107,12 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		$lessVars['toolbar-color-mix'] = $config->getString('toolbar-color') == '#000' || $config->getString('toolbar-color') == '#000000' || $config->getString('toolbar-color') == 'black' ? '#404040' : '#000';
 		$lessVars['toolbar-font-color'] = LessUtil::isThemeDark('toolbar-color') ? '#fff' : '#000';
 		$lessVars['font-color'] = LessUtil::isThemeDark('content-background-color') ? '#D5D4D4' : '#3a3a3a';
+		$lessVars['border-color'] = LessUtil::isThemeDark('content-background-color') ? '#333333' : '#CCCCCC';
+		$lessVars['editsection-color'] = LessUtil::isThemeDark('content-background-color') ? '#54595d' : '#aba6a2';
 		$lessVars['alt-font-color'] = LessUtil::isThemeDark('content-background-color') ? '#fff' : '#000';
-		$lessVars['banner-font-color'] = LessUtil::isThemeDark('banner-color') ? '#fff' : '#000';
-		$lessVars['banner-echo-font-color'] = LessUtil::isThemeDark('banner-color') ? 'fff' : '111';
-		$lessVars['banner-input-bottom-border'] = LessUtil::isThemeDark('banner-color') ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)';
+		$lessVars['banner-font-color'] = LessUtil::isThemeDark('banner-background-color') ? '#fff' : '#000';
+		$lessVars['banner-echo-font-color'] = LessUtil::isThemeDark('banner-background-color') ? 'fff' : '111';
+		$lessVars['banner-input-bottom-border'] = LessUtil::isThemeDark('banner-background-color') ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)';
 		$lessVars['button-font-color'] = LessUtil::isThemeDark('button-color') ? '#fff' : '#000';
 		$lessVars['infobox-background-mix'] = LessUtil::isThemeDark('content-background-color') ? '85%' : '90%';
 		return $lessVars;
