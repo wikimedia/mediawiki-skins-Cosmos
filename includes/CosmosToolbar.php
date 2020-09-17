@@ -128,7 +128,7 @@ class CosmosToolbar {
 
 		if (count($nodes) > 0) {
 
-			Hooks::run('CosmosToolbarGetTools', array(&$nodes
+			Hooks::run('getCosmosToolbar', array(&$nodes
 			));
 
 			$mainMenu = array();
