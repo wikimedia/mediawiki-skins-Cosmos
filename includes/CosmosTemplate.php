@@ -13,9 +13,9 @@ class CosmosTemplate extends BaseTemplate {
 	 */
 	public function execute() {
 		$config = new Config();
-
 		$skin = $this->getSkin();
-		$this->extractAndUpdate($this->data, $config, $skin);
+
+		$this->getNotifications($this->data, $config);
 		$html = $this->get('headelement');
 		$this->buildBanner($html, $config);
 		$html .= $this->buildCreateArticleDialog($html, $config);
@@ -55,10 +55,6 @@ class CosmosTemplate extends BaseTemplate {
 			return $html;
 		}
 
-	}
-
-	public static function extractAndUpdate(array & $data, Config $config, \Skin $skin) {
-		self::getNotifications($data, $config);
 	}
 
 	protected function buildBanner(string & $html, Config $config) {
@@ -314,18 +310,18 @@ class CosmosTemplate extends BaseTemplate {
 			->isLoaded('Echo')) {
 			//to-do: convert to Skin::getPersonalToolsForMakeListItem
 			$personalTools = $this->getPersonalTools();
-			$extraTools = [];
-			$extraTools['notifications-alert'] = $personalTools['notifications-alert'];
-			$extraTools['notifications-notice'] = $personalTools['notifications-notice'];
+			$notificationIcons = [];
+			$notificationIcons['notifications-alert'] = $personalTools['notifications-alert'];
+			$notificationIcons['notifications-notice'] = $personalTools['notifications-notice'];
 
-			if (!empty($extraTools)) {
+			if (!empty($notificationIcons)) {
 				$iconList = '';
-				foreach ($extraTools as $key => $item) {
+				foreach ($notificationIcons as $key => $item) {
 					//to-do: convert to Skin::makeListItem
 					$iconList .= $this->makeListItem($key, $item);
 				}
 
-				$html .= Html::rawElement('div', ['id' => 'personal-extra', 'class' => 'p-body'], Html::rawElement('div', ['id' => 'cosmos-notifsButton-icon', 'class' => 'cosmos-bannerOption-icon'], $iconList));
+				$html .= Html::rawElement('div', ['id' => 'cosmos-notification-icons', 'class' => 'p-body'], Html::rawElement('div', ['id' => 'cosmos-notifsButton-icon', 'class' => 'cosmos-bannerOption-icon'], $iconList));
 			}
 		}
 		else {
