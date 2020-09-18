@@ -28,7 +28,7 @@ class CosmosTemplate extends BaseTemplate {
 		if ($this->getMsg('cosmos-customsidebar')
 			->text() !== '-' && $this->getMsg('cosmos-customsidebar')
 			->text() !== '') {
-			$html .= Html::rawElement('div', ['id' => 'mw-site-navigation'], Html::openElement('div', ['id' => 'cosmos-custom-sidebar', 'class' => 'sidebar-chunk cosmos-sidebar']) . Html::rawElement('div', ['class' => 'sidebar-inner'], $this->getMsg('cosmos-customsidebar')
+			$html .= Html::rawElement('div', ['class' => 'cosmos-sidebar-container', 'id' => 'cosmos-custom-sidebar'], Html::rawElement('div', ['class' => 'cosmos-sidebar-inner'], $this->getMsg('cosmos-customsidebar')
 				->parse()));
 		}
 		$html .= Html::closeElement('div');
