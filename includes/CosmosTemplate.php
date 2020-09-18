@@ -321,7 +321,7 @@ class CosmosTemplate extends BaseTemplate {
 					$iconList .= $this->makeListItem($key, $item);
 				}
 
-				$html .= Html::rawElement('div', ['id' => 'cosmos-notification-icons', 'class' => 'p-body'], Html::rawElement('div', ['id' => 'cosmos-notifsButton-icon', 'class' => 'cosmos-bannerOption-icon'], $iconList));
+				$html .= Html::rawElement('div', ['id' => 'cosmos-notification-icons'], Html::rawElement('div', ['id' => 'cosmos-notifsButton-icon', 'class' => 'cosmos-bannerOption-icon'], $iconList));
 			}
 		}
 		else {
