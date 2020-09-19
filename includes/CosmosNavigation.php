@@ -123,7 +123,7 @@ class CosmosNavigation {
 		return $lines;
 	}
 
-	public function getSubMenu($nodes, $children) {
+	public function getSubMenu($nodes, $children, $bolded = false) {
 		$menu = '';
 		$val = 0;
 		foreach ($children as $key => $val) {
@@ -134,21 +134,21 @@ class CosmosNavigation {
 
 			$menu_item = Html::rawElement('a', array(
 				'href' => !empty($nodes[$val]['href']) ? $nodes[$val]['href'] : '#',
-				'class' => (!empty($nodes[$val]['children']) ? 'wds-dropdown-level-2__toggle' : null) ,
-				'tabIndex' => 3,
+				'class' => (!empty($nodes[$val]['children']) ? 'wds-dropdown-level-2__toggle' : null),
 				'rel' => $nodes[$val]['internal'] ? null : 'nofollow'
 			) , $link_html) . "\n";
 			if (!empty($nodes[$val]['children'])) {
+				$menu_item .= '<div class="wds-is-not-scrollable wds-dropdown-level-2__content" id="p-'. Sanitizer::escapeIdForAttribute($nodes[$val]['text']) . '" aria-labelledby="p-' . Sanitizer::escapeIdForAttribute($nodes[$val]['text']) . '-label">';	
 				$menu_item .= $this->getSubMenu($nodes, $nodes[$val]['children']);
-
+				$menu_item .= '</div>';
 			}
-			$menu .= Html::rawElement('li', (!empty($nodes[$val]['children']) ? array(
-				"class" => ($key > count($nodes[$val]['children']) - 1 ? 'wds-is-sticked-to-parent ' : '') . 'wds-dropdown-level-2'
-			) : null) , $menu_item);
+			$menu .= Html::rawElement('li',  array(
+				'id' => Sanitizer::escapeIdForAttribute( 'n-' . strtr( $nodes[$val]['text'], ' ', '-' ) ),
+				'class' => (!empty($nodes[$val]['children']) ? ($key > count($nodes[$val]['children']) - 1 ? 'wds-is-sticked-to-parent ' : '') . 'wds-dropdown-level-2' : false)
+			), $menu_item);
 		}
-		$menu = Html::rawElement('div', array(
-			'class' => (!empty($nodes[$val]['children']) ? 'wds-is-not-scrollable wds-dropdown-level-2__content' : 'wds-is-not-scrollable wds-dropdown-level-2__content')
-		) , '<ul class="wds-list wds-is-linked' . (!empty($nodes[$val]['children']) ? ' wds-has-bolded-items">' : '">') . $menu . '</ul>');
+		
+		$menu = Html::rawElement('div', [], '<ul class="wds-list wds-is-linked' . ($bolded === true ? ' wds-has-bolded-items' : '') . '">' . $menu . '</ul>');
 
 		return $menu;
 	}
@@ -159,8 +159,7 @@ class CosmosNavigation {
 
 		if (count($nodes) > 0) {
 
-			Hooks::run('getCosmosNavigation', array(&$nodes
-			));
+			Hooks::run('getCosmosNavigation', array(&$nodes));
 
 			$mainMenu = array();
 
@@ -170,23 +169,23 @@ class CosmosNavigation {
 				}
 				$menu .= '<li class="wds-tabs__tab">';
 				if (!empty($nodes[$val]['children'])) {
-					$menu .= '<div class="wds-dropdown">';
+					$menu .= '<div class="wds-dropdown" id="p-' . Sanitizer::escapeIdForAttribute($nodes[$val]['text']) . '" aria-labelledby="p-' . Sanitizer::escapeIdForAttribute($nodes[$val]['text']) . '-label">';
 				}
-				$menu .= '<div class="wds-tabs__tab-label p-' . Sanitizer::escapeClass($nodes[$val]['text']) . '-label';
+				$menu .= '<div class="wds-tabs__tab-label ';
 				if (!empty($nodes[$val]['children'])) {
 					$menu .= ' wds-dropdown__toggle';
 				}
-				$menu .= '">';
+				$menu .= '" id="p-' . Sanitizer::escapeIdForAttribute($nodes[$val]['text']) . '-label">';
 				$menu .= '<a href="' . (!empty($nodes[$val]['href']) && $nodes[$val]['text'] !== 'Navigation' ? htmlspecialchars($nodes[$val]['href']) : '#') . '"';
 				if (!isset($nodes[$val]['internal']) || !$nodes[$val]['internal']) $menu .= ' rel="nofollow"';
-				$menu .= ' tabIndex=3><span>' . htmlspecialchars($nodes[$val]['text']) . '</span>';
+				$menu .= '><span>' . htmlspecialchars($nodes[$val]['text']) . '</span>';
 				if (!empty($nodes[$val]['children'])) {
 					$menu .= Icon::getIcon('dropdown')->makeSvg(14, 14, ['id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron']);
 				}
 				$menu .= '</a></div>';
 				if (!empty($nodes[$val]['children'])) {
 					$menu .= '<div class="wds-is-not-scrollable wds-dropdown__content">';
-					$menu .= $this->getSubMenu($nodes, $nodes[$val]['children']);
+					$menu .= $this->getSubMenu($nodes, $nodes[$val]['children'], true);
 					$menu .= '</div></div>';
 				}
 
