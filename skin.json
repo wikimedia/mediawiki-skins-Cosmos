@@ -211,8 +211,7 @@
         ]
     },
     "DefaultUserOptions": {
-		"cosmos-mobile-responsiveness": 1
-	},
+	"cosmos-mobile-responsiveness": 1
+    },
     "manifest_version": 2
 }
- 
