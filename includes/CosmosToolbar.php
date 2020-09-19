@@ -141,8 +141,7 @@ class CosmosToolbar {
 
 			}
 			$menu .= '</li>';
-			$classes = array();
-			$classes[] = 'hover-navigation';
+			
 			$menu = preg_replace('/<!--b-->(.*)<!--e-->/U', '', $menu);
 
 			$menuHash = hash('md5', serialize($nodes));
