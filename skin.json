@@ -210,5 +210,8 @@
             "CosmosHooks::onGetPreferences"
         ]
     },
+    "DefaultUserOptions": {
+		"cosmos-mobile-responsiveness": 1
+	},
     "manifest_version": 2
 }
