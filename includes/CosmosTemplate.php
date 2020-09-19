@@ -226,7 +226,7 @@ class CosmosTemplate extends BaseTemplate {
 	protected function buildPersonalTools(string & $html, Config $config) {
 		$skin = $this->getSkin();
 
-		$html .= Html::openElement('div', ['id' => 'cosmos-userOptions-personalTools', 'class' => 'cosmos-dropdown cosmos-bannerOption']);
+		$html .= Html::openElement('div', ['id' => 'cosmos-userOptions-personalTools', 'class' => 'cosmos-dropdown cosmos-bannerOption', 'aria-labelledby' => 'p-personal-label']);
 
 		$html .= Html::openElement('div', ['id' => 'cosmos-personalTools-userButton', 'class' => 'cosmos-dropdown-button cosmos-bannerOption-button']);
 
@@ -241,14 +241,14 @@ class CosmosTemplate extends BaseTemplate {
 
 		$html .= Html::rawElement('div', ['id' => 'cosmos-userButton-avatar', 'class' => 'cosmos-bannerOption-icon'], $avatarElement);
 
-		$html .= Html::rawElement('span', ['id' => 'cosmos-userButton-label'], empty($this->data['username']) ? $skin->msg('cosmos-anonymous')
+		$html .= Html::rawElement('span', ['id' => 'p-personal-label', 'class' => 'cosmos-userButton-label'], empty($this->data['username']) ? $skin->msg('cosmos-anonymous')
 			->escaped() : $this->get('username'));
 
 		$html .= Html::rawElement('div', ['id' => 'cosmos-userButton-icon', 'class' => 'cosmos-dropdown-icon cosmos-bannerOption-dropdownIcon'], Icon::getIcon('dropdown')->makeSvg(14, 14));
 
 		$html .= Html::closeElement('div');
 
-		$html .= Html::openElement('ul', ['id' => 'cosmos-personalTools-list', 'class' => 'cosmos-dropdown-list']);
+		$html .= Html::openElement('ul', ['id' => 'p-personal', 'class' => 'cosmos-personalTools-list cosmos-dropdown-list']);
 
 		foreach ($this->data['personal_urls'] as $key => $item) {
 			switch ($key) {
@@ -276,12 +276,18 @@ class CosmosTemplate extends BaseTemplate {
 			// Don't build adminlinks into personal menu. If allowed, it will be built into the wiki header instead.
 			// Don't build darkmode into personal menu, this skin does not support darkmode, so that would not do anything.
 			// Don't build the notifications into the personal menu, they are built into the top banner instead.
+			// to-do: convert to Skin::getPersonalToolsForMakeListItem (possibly)
 			if ($key !== 'adminlinks' && $key !== 'darkmode-link' && $key !== 'notifications-alert' && $key !== 'notifications-notice') {
 				//to-do: convert to Skin::makeListItem
-				$html .= $this->makeListItem($key, $item);
+				$html .= Html::rawElement('li', [
+					'id' => 'pt-' . $key
+				], Html::rawElement('a', [
+					'class' => isset($item['class']) ? $item['class'] : false,
+					'href' => $item['href'],
+					'title' => $item['title']
+				], $item['text']));
 			}
 		}
-
 		$html .= Html::closeElement('ul');
 
 		$html .= Html::closeElement('div');
