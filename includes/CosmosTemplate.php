@@ -166,7 +166,7 @@ class CosmosTemplate extends BaseTemplate {
 			if (($permissionManager->userHasRight($skin->getUser() , 'managewiki') || $wgManageWikiForceSidebarLinks || $skin->getUser()
 				->getOption('managewikisidebar', 1)) && $wgManageWikiSidebarLinks !== false) {
 
-				$html .= Html::rawElement('li', ['class' => 'wds-tabs__tab'], '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle"><span style="padding-top: 2px;">' . $this->getMsg('cosmos-administration')
+				$html .= Html::rawElement('li', ['class' => 'wds-tabs__tab'], '<div class="wds-dropdown" id="p-' . Sanitizer::escapeIdForAttribute($this->getMsg('cosmos-administration')) . '" aria-labelledby="p-' . Sanitizer::escapeIdForAttribute($this->getMsg('cosmos-administration')) . '-label"><div class="wds-tabs__tab-label wds-dropdown__toggle" id="p-' . Sanitizer::escapeIdForAttribute($this->getMsg('cosmos-administration')) . '-label"><span style="padding-top: 2px;">' . $this->getMsg('cosmos-administration')
 					->text() . '</span>' . Icon::getIcon('dropdown')
 					->makeSvg(14, 14, ['id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron']) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">');
 
@@ -175,15 +175,6 @@ class CosmosTemplate extends BaseTemplate {
 				}
 				$html .= ('</div>');
 			}
-		}
-		if ($this->getMsg('cosmos-navigation-explore-tab')
-			->text() !== '-' && $this->getMsg('cosmos-navigation-explore-tab')
-			->text() !== '') {
-			$exploreTab = str_replace("<ul>", "", $this->getMsg('cosmos-navigation-explore-tab')
-				->parse());
-			$html .= Html::rawElement('li', ['class' => 'wds-tabs__tab'], str_replace('<li>', "<li class='wds-tabs__tab'>", '<div class="wds-dropdown"><div class="wds-tabs__tab-label wds-dropdown__toggle">' . Icon::getIcon('explore')->makeSvg(91, 91, ['id' => 'cosmos-icons-explore', 'class' => 'wds-icon']) . '<span style="padding-top: 2px;">' . $this->getMsg('cosmos-explore')
-				->text() . '</span>' . Icon::getIcon('dropdown')
-				->makeSvg(14, 14, ['id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron']) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">' . $exploreTab));
 		}
 		$html .= Html::closeElement('ul');
 
