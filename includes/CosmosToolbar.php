@@ -133,10 +133,10 @@ class CosmosToolbar {
 
 			$mainMenu = array();
 			foreach ($nodes[0]['children'] as $key => $val) {
-				$menu .= '<li>';
-				$menu .= '<a href="' . (!empty($nodes[$val]['href']) && $nodes[$val]['text'] !== 'Navigation' ? htmlspecialchars($nodes[$val]['href']) : '#') . '"';
+				$menu .= '<li id="' . Sanitizer::escapeIdForAttribute( 't-' . strtolower(strtr( $nodes[$val]['text'], ' ', '-' ) ) ) . '">';
+				$menu .= '<a href="' . (!empty($nodes[$val]['href']) ? htmlspecialchars($nodes[$val]['href']) : '#') . '"';
 				if (!isset($nodes[$val]['internal']) || !$nodes[$val]['internal']) $menu .= ' rel="nofollow"';
-				$menu .= ' tabIndex=3><span>' . htmlspecialchars($nodes[$val]['text']) . '</span>';
+				$menu .= '><span>' . htmlspecialchars($nodes[$val]['text']) . '</span>';
 				$menu .= '</a>';
 
 			}
