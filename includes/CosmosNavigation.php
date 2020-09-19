@@ -176,9 +176,9 @@ class CosmosNavigation {
 					$menu .= ' wds-dropdown__toggle';
 				}
 				$menu .= '" id="p-' . Sanitizer::escapeIdForAttribute($nodes[$val]['text']) . '-label">';
-				$menu .= '<a href="' . (!empty($nodes[$val]['href']) && $nodes[$val]['text'] !== 'Navigation' ? htmlspecialchars($nodes[$val]['href']) : '#') . '"';
+				$menu .= '<a href="' . (!empty($nodes[$val]['href']) && $nodes[$val]['text'] !== 'Navigation' && $nodes[$val]['text'] !== wfMessage('Cosmos-explore')->escaped() ? htmlspecialchars($nodes[$val]['href']) : '#') . '"';
 				if (!isset($nodes[$val]['internal']) || !$nodes[$val]['internal']) $menu .= ' rel="nofollow"';
-				$menu .= '><span>' . htmlspecialchars($nodes[$val]['text']) . '</span>';
+				$menu .= '>' . ($nodes[$val]['text'] === wfMessage('Cosmos-explore')->escaped() ? Icon::getIcon('explore')->makeSvg(91, 91, ['id' => 'cosmos-icons-explore', 'class' => 'wds-icon']) : '') . '<span ' . ($nodes[$val]['text'] === wfMessage('Cosmos-explore')->escaped() ? 'style="padding-top: 2px;"' : '') . '>' . htmlspecialchars($nodes[$val]['text']) . '</span>';
 				if (!empty($nodes[$val]['children'])) {
 					$menu .= Icon::getIcon('dropdown')->makeSvg(14, 14, ['id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron']);
 				}
@@ -191,8 +191,6 @@ class CosmosNavigation {
 
 			}
 			$menu .= '</li>';
-			$classes = array();
-			$classes[] = 'hover-navigation';
 
 			$menu = Html::rawElement('li', array(
 				'class' => 'wds-tabs__tab'
