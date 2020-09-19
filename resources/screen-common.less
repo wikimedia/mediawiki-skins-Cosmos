@@ -2046,18 +2046,18 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 	text-align: center;
 	font-size: 10pt;
 }
-#cosmos-tools-list {
+.cosmos-tools-list {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	>li {
+	li, ul {
 		display: inline;
 		color: @toolbar-font-color;
 		>a {
 			color: @toolbar-font-color;
 		}
 	}
-	li {
+	li, ul {
 		&:not(:first-child) {
 			&:before {
 				content: ' | ';
