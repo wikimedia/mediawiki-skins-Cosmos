@@ -217,7 +217,7 @@ class CosmosTemplate extends BaseTemplate {
 	protected function buildPersonalTools(string & $html, Config $config) {
 		$skin = $this->getSkin();
 
-		$html .= Html::openElement('div', ['id' => 'cosmos-userOptions-personalTools', 'class' => 'cosmos-dropdown cosmos-bannerOption', 'aria-labelledby' => 'p-personal-label']);
+		$html .= Html::openElement('div', ['id' => 'p-personal', 'class' => 'cosmos-userOptions-personalTools cosmos-dropdown cosmos-bannerOption', 'aria-labelledby' => 'p-personal-label']);
 
 		$html .= Html::openElement('div', ['id' => 'cosmos-personalTools-userButton', 'class' => 'cosmos-dropdown-button cosmos-bannerOption-button']);
 
@@ -238,8 +238,8 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::rawElement('div', ['id' => 'cosmos-userButton-icon', 'class' => 'cosmos-dropdown-icon cosmos-bannerOption-dropdownIcon'], Icon::getIcon('dropdown')->makeSvg(14, 14));
 
 		$html .= Html::closeElement('div');
-
-		$html .= Html::openElement('ul', ['id' => 'p-personal', 'class' => 'cosmos-personalTools-list cosmos-dropdown-list']);
+		$html .= Html::openElement('div', ['class' => 'body cosmos-personalTools-list cosmos-dropdown-list']);
+		$html .= Html::openElement('ul');
 
 		foreach ($this->data['personal_urls'] as $key => $item) {
 			switch ($key) {
@@ -280,7 +280,8 @@ class CosmosTemplate extends BaseTemplate {
 			}
 		}
 		$html .= Html::closeElement('ul');
-
+		$html .= Html::closeElement('div');
+		
 		$html .= Html::closeElement('div');
 	}
 
@@ -1052,7 +1053,8 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement('div', ['id' => 'p-tb', 'class' => 'cosmos-toolbar-tools']);
 
 		// Begin unordered list to contain tool links
-		$html .= Html::openElement('ul', ['id' => 'cosmos-tools-list']);
+		$html .= Html::openElement('div', ['class' => 'body cosmos-tools-list']);
+		$html .= Html::openElement('ul');
 
 		// Make a list item for each of the tool links
 		$cosmosToolbar = new CosmosToolbar();
@@ -1094,7 +1096,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		// End unordered list
 		$html .= Html::closeElement('ul');
-
+		$html .= Html::closeElement('div');
 		// Close container div
 		$html .= Html::closeElement('div');
 
