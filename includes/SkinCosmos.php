@@ -14,21 +14,6 @@ class SkinCosmos extends SkinTemplate {
 
 	/** @var string */
 	public $template = 'CosmosTemplate';
-
-	 // for some unknown reason we can not access wfReportTime at the moment
-	 // this is being investigated. For the time-being, redefine it here
-	 function wfReportTime( $nonce = null ) {
-    		global $wgShowHostnames;
-  
-     		$elapsed = ( microtime( true ) - $_SERVER['REQUEST_TIME_FLOAT'] );
-     		// seconds to milliseconds
-     		$responseTime = round( $elapsed * 1000 );
-     		$reportVars = [ 'wgBackendResponseTime' => $responseTime ];
-     		if ( $wgShowHostnames ) {
-         		$reportVars['wgHostname'] = wfHostname();
-    		}
-     		return Skin::makeVariablesScript( $reportVars, $nonce );
- 	}
 	
 	/**
 	 * @param OutputPage $out
@@ -45,6 +30,7 @@ class SkinCosmos extends SkinTemplate {
 				'user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0'
 			);
 		}
+		parent::setupSkinUserCss( $out );
 		$out->addModuleStyles([
 			'mediawiki.skinning.content.externallinks', 
 			'skins.cosmos', 
@@ -112,7 +98,7 @@ class SkinCosmos extends SkinTemplate {
 			->equals(Title::newMainPage())) {
 			$out->addBodyClasses('mainpage');
 		}
-		// to-do convert to $out->getCSP()->getNonce()/remove
+		// to-do convert to $out->getCSP()->getNonce()
 		echo wfReportTime( $out->getCSPNonce() );
 	}
 }
