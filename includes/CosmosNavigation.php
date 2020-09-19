@@ -32,7 +32,7 @@ class CosmosNavigation {
 		if (count($line_temp) >= 2 && $line_temp[1] != '') {
 			$line = trim($line_temp[1]);
 			$link = trim(wfMessage($line_temp[0])->inContentLanguage()
-				->text());
+				->escaped());
 		}
 		else {
 			$line = trim($line_temp[0]);
@@ -44,7 +44,7 @@ class CosmosNavigation {
 		if (count($line_temp) > 2 && $line_temp[2] != '') {
 			$desc = $line_temp[2];
 			if (wfMessage($desc)->exists()) {
-				$descText = wfMessage($desc)->text();
+				$descText = wfMessage($desc)->escaped();
 			}
 			else {
 				$descText = $desc;
@@ -52,7 +52,7 @@ class CosmosNavigation {
 		}
 
 		if (wfMessage($line)->exists()) {
-			$text = wfMessage($line)->text();
+			$text = wfMessage($line)->escaped();
 		}
 		else {
 			$text = $line;
@@ -97,7 +97,7 @@ class CosmosNavigation {
 	 */
 	public static function getMessageAsArray($messageKey) {
 		$message = trim(wfMessage($messageKey)->inContentLanguage()
-			->text());
+			->escaped());
 		if (wfMessage($messageKey, $message)->exists()) {
 			$lines = explode("\n", $message);
 			if (count($lines) > 0) {
@@ -271,7 +271,7 @@ class CosmosNavigation {
 
 		if (count($lineTmp) == 2 && $lineTmp[1] != '') {
 			$link = trim(wfMessage($lineTmp[0])->inContentLanguage()
-				->text());
+				->escaped());
 			$line = trim($lineTmp[1]);
 		}
 		else {
@@ -280,7 +280,7 @@ class CosmosNavigation {
 		}
 
 		if (wfMessage($line)->exists()) {
-			$text = wfMessage($line)->text();
+			$text = wfMessage($line)->escaped();
 		}
 		else {
 			$text = $line;
