@@ -172,7 +172,7 @@ class CosmosNavigation {
 				if (!empty($nodes[$val]['children'])) {
 					$menu .= '<div class="wds-dropdown">';
 				}
-				$menu .= '<div class="wds-tabs__tab-label';
+				$menu .= '<div class="wds-tabs__tab-label p-' . Sanitizer::escapeClass($nodes[$val]['text']) . '-label';
 				if (!empty($nodes[$val]['children'])) {
 					$menu .= ' wds-dropdown__toggle';
 				}
