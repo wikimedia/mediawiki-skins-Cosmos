@@ -144,7 +144,7 @@ class CosmosTemplate extends BaseTemplate {
 	}
 
 	protected static function getPreferredEditorQueryParamName() {
-		// todo, add veaction if visualeditor is the users defualt preference
+		// todo, add veaction if visualeditor is the users default preference
 		return 'action';
 	}
 	protected function buildNavigation(string & $html, Config $config) {
