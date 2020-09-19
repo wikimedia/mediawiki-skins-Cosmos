@@ -1061,7 +1061,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement('div', ['id' => 'cosmos-toolbar-tools']);
 
 		// Begin unordered list to contain tool links
-		$html .= Html::openElement('ul', ['id' => 'cosmos-tools-list']);
+		$html .= Html::openElement('ul', ['id' => 'p-tb', 'class' => 'cosmos-tools-list']);
 
 		// Make a list item for each of the tool links
 		$cosmosToolbar = new CosmosToolbar();
