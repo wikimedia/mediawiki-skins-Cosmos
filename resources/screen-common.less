@@ -253,7 +253,7 @@ body > #mw-content-container {
 	stroke: @alt-font-color;
 	stroke-width: 2px;
 	&:hover {
-		border: 1px solid #333;
+		border: 1px solid @border-color;
 		opacity: 0.8;
 		transition: 0.4s;
 	}
@@ -399,16 +399,16 @@ body > #mw-content-container {
 	max-width: 350px;
 }
 body > .suggestions .suggestions-results {
-	background: #333;
-	border-color: #666;
-	color: #fff;
+	background: @border-color;
+	border-color: mix(@border-color, @font-color, 45%);
+	color: @alt-font-color;
 }
 body > .suggestions .suggestions-special {
-	background: #333;
-	border-color: #666;
+	background: @border-color;
+	border-color: mix(@border-color, @font-color, 45%);
 }
 body >  .suggestions .suggestions-special * {
-    color: #fff;
+    color: @alt-font-color;
 }
 body > .suggestions {
 	overflow: hidden;
@@ -420,7 +420,7 @@ body > .suggestions {
 	z-index: 20000;
 	padding: 0;
 	margin: -1px 0 0 0;
-	* {
+	*:hover {
 		color: #fff;
 	}
 }
@@ -1499,15 +1499,15 @@ button.wds-button {
 	}
 }
 .mw-dismissable-notice {
-	background-color: #012E59;
-	color: #fff;
+	background-color: @button-color;
+	color: @button-font-color;
 	opacity: 1;
 	z-index: 100;
 	width: auto;
-	border: 1px solid #fff;
+	border: 1px solid @button-font-color;
 	.wikitable {
 		td {
-			background: #012E59;
+			background: @button-color;
 			border: none;
 		}
 		border: none;
@@ -1569,18 +1569,18 @@ button.wds-button {
 	}
 }
 body pre {
-	background-color: #3a3939;
-	color: #fff;
-	border: 1px solid #6c6b6b;
+	background-color: mix(@content-background-color, @code-background-color, 90%);
+	color: @alt-font-color;
+	border: 1px solid @border-color;
 	line-height: 14px;
 	overflow: auto;
 	padding: 12px;
 	word-break: break-all;
 }
 body code {
-    background-color: #3a3939;
-    color: #fff;
-    border: 1px solid #6c6b6b;
+    background-color: mix(@content-background-color, @code-background-color, 70%);
+    color: @alt-font-color;
+    border: 1px solid @border-color;
 }
 .codeEditor-status-worker {
 	color: #000;
@@ -1814,7 +1814,7 @@ body {
     	margin-top: 2em;
   	margin-bottom: 2em;
  	padding-top: 1em;
- 	border: 1px solid #333;
+ 	border: 1px solid @border-color;
 }
 .oo-ui-fieldLayout-header {
 	color: @font-color;
@@ -1946,7 +1946,7 @@ body {
 		}
 	}
 
-.mw-warning {
+/*.mw-warning {
 	&:not(#mw-undelete-revision) {
 	    &:not(.plainlinks) {
 		    background: #001e3b;
@@ -1974,7 +1974,7 @@ ul#filetoc {
 	background: #001e3b;
 	border: none;
 	color: #fff;
-}
+}*/
 #cosmos-header-articleHeader {
 	display: inline-block;
 	width: 100%;
@@ -2074,14 +2074,16 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 	}
 }
 #cosmos-content-siteNotice {
-	color: #fff;
-	background-color: #012E59;
-	border: 1px solid #fff;
+	color: @button-font-color;
+	background-color: @button-color;
+	border: 1px solid @button-font-color;
 	margin: 0 15px 15px 15px;
 	padding: 15px 15px 15px 15px;
 	min-height: 36px;
 }
-
+#cosmos-content-siteNotice * {
+	color: @button-font-color;
+}
 #cosmos-pageBody-content {
 	overflow-x: auto;
 	overflow-y: hidden;
@@ -2131,11 +2133,11 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 }
 
 body .mw-notification{
-    background:#001e3b;
-    color:#fff;
+    background: @button-color;
+    color: @button-font-color;
 }
 body .postedit:after{
-   background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" stroke="%23ffffff" width="20" height="20" viewBox="0 0 20 20"%3E %3Cpath d="M3.636 2.222l14.142 14.142-1.414 1.414L2.222 3.636z%22/%3E %3Cpath d="M17.778 3.636L3.636 17.778l-1.414-1.414L16.364 2.222z"/%3E %3C/svg%3E') no-repeat;
+   background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" stroke="%23@{notice-close-button-color}" width="20" height="20" viewBox="0 0 20 20"%3E %3Cpath d="M3.636 2.222l14.142 14.142-1.414 1.414L2.222 3.636z%22/%3E %3Cpath d="M17.778 3.636L3.636 17.778l-1.414-1.414L16.364 2.222z"/%3E %3C/svg%3E') no-repeat;
    bottom:1.5px;
    top:auto;
 }
