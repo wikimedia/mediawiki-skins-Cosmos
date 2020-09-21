@@ -98,7 +98,5 @@ class SkinCosmos extends SkinTemplate {
 			->equals(Title::newMainPage())) {
 			$out->addBodyClasses('mainpage');
 		}
-		// to-do convert to $out->getCSP()->getNonce()
-		echo wfReportTime( $out->getCSPNonce() );
 	}
 }
