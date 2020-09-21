@@ -32,7 +32,7 @@ class CosmosNavigation {
 		if (count($line_temp) >= 2 && $line_temp[1] != '') {
 			$line = trim($line_temp[1]);
 			$link = trim(wfMessage($line_temp[0])->inContentLanguage()
-				->escaped());
+				->text());
 		}
 		else {
 			$line = trim($line_temp[0]);
@@ -44,7 +44,7 @@ class CosmosNavigation {
 		if (count($line_temp) > 2 && $line_temp[2] != '') {
 			$desc = $line_temp[2];
 			if (wfMessage($desc)->exists()) {
-				$descText = wfMessage($desc)->escaped();
+				$descText = wfMessage($desc)->text();
 			}
 			else {
 				$descText = $desc;
@@ -52,7 +52,7 @@ class CosmosNavigation {
 		}
 
 		if (wfMessage($line)->exists()) {
-			$text = wfMessage($line)->escaped();
+			$text = wfMessage($line)->text();
 		}
 		else {
 			$text = $line;
@@ -97,7 +97,7 @@ class CosmosNavigation {
 	 */
 	public static function getMessageAsArray($messageKey) {
 		$message = trim(wfMessage($messageKey)->inContentLanguage()
-			->escaped());
+			->text());
 		if (wfMessage($messageKey, $message)->exists()) {
 			$lines = explode("\n", $message);
 			if (count($lines) > 0) {
@@ -176,9 +176,9 @@ class CosmosNavigation {
 					$menu .= ' wds-dropdown__toggle';
 				}
 				$menu .= '" id="p-' . Sanitizer::escapeIdForAttribute($nodes[$val]['text']) . '-label">';
-				$menu .= '<a href="' . (!empty($nodes[$val]['href']) && $nodes[$val]['text'] !== 'Navigation' && $nodes[$val]['text'] !== wfMessage('Cosmos-explore')->escaped() ? htmlspecialchars($nodes[$val]['href']) : '#') . '"';
+				$menu .= '<a href="' . (!empty($nodes[$val]['href']) && $nodes[$val]['text'] !== 'Navigation' && $nodes[$val]['text'] !== wfMessage('cosmos-explore')->text() ? htmlspecialchars($nodes[$val]['href']) : '#') . '"';
 				if (!isset($nodes[$val]['internal']) || !$nodes[$val]['internal']) $menu .= ' rel="nofollow"';
-				$menu .= '>' . ($nodes[$val]['text'] === wfMessage('Cosmos-explore')->escaped() ? Icon::getIcon('explore')->makeSvg(91, 91, ['id' => 'cosmos-icons-explore', 'class' => 'wds-icon']) : '') . '<span ' . ($nodes[$val]['text'] === wfMessage('Cosmos-explore')->escaped() ? 'style="padding-top: 2px;"' : '') . '>' . htmlspecialchars($nodes[$val]['text']) . '</span>';
+				$menu .= '>' . ($nodes[$val]['text'] === wfMessage('cosmos-explore')->text() ? Icon::getIcon('explore')->makeSvg(91, 91, ['id' => 'cosmos-icons-explore', 'class' => 'wds-icon']) : '') . '<span ' . ($nodes[$val]['text'] === wfMessage('cosmos-explore')->text() ? 'style="padding-top: 2px;"' : '') . '>' . htmlspecialchars($nodes[$val]['text']) . '</span>';
 				if (!empty($nodes[$val]['children'])) {
 					$menu .= Icon::getIcon('dropdown')->makeSvg(14, 14, ['id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron']);
 				}
@@ -271,7 +271,7 @@ class CosmosNavigation {
 
 		if (count($lineTmp) == 2 && $lineTmp[1] != '') {
 			$link = trim(wfMessage($lineTmp[0])->inContentLanguage()
-				->escaped());
+				->text());
 			$line = trim($lineTmp[1]);
 		}
 		else {
@@ -280,7 +280,7 @@ class CosmosNavigation {
 		}
 
 		if (wfMessage($line)->exists()) {
-			$text = wfMessage($line)->escaped();
+			$text = wfMessage($line)->text();
 		}
 		else {
 			$text = $line;
