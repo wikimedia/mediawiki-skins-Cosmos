@@ -406,6 +406,7 @@ body > .suggestions .suggestions-results {
 body > .suggestions .suggestions-special {
 	background: @border-color;
 	border-color: mix(@border-color, @font-color, 45%);
+	color: @alt-font-color;
 }
 body >  .suggestions .suggestions-special * {
     color: @alt-font-color;
@@ -420,6 +421,7 @@ body > .suggestions {
 	z-index: 20000;
 	padding: 0;
 	margin: -1px 0 0 0;
+	color: @alt-font-color;
 	*:hover {
 		color: #fff;
 	}
@@ -2102,7 +2104,7 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 .diff-context {
 	background-color: transparent;
 	border-color: #a3a3a3;
-	color: #e6e6e6;
+	color: @alt-font-color;
 }
 .diff-addedline {
 	background-color: #636262;
