@@ -421,7 +421,9 @@ body > .suggestions {
 	z-index: 20000;
 	padding: 0;
 	margin: -1px 0 0 0;
-	color: @alt-font-color;
+	* {
+		color: @alt-font-color;
+	}
 	*:hover {
 		color: #fff;
 	}
@@ -1668,7 +1670,7 @@ body {
 }
 #mw-content-text {
 	color: @font-color;
-	p, * {
+	p, span, small, label {
 		color: @font-color;
 	}
 }
