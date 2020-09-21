@@ -26,8 +26,8 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= $this->buildWiki($html, $config);
 		$html .= Html::closeElement('div');
 		if ($this->getMsg('cosmos-customsidebar')
-			->escaped() !== '-' && $this->getMsg('cosmos-customsidebar')
-			->escaped() !== '') {
+			->text() !== '-' && $this->getMsg('cosmos-customsidebar')
+			->text() !== '') {
 			$html .= Html::rawElement('div', ['class' => 'cosmos-sidebar-container', 'id' => 'cosmos-custom-sidebar'], Html::rawElement('div', ['class' => 'cosmos-sidebar-inner'], $this->getMsg('cosmos-customsidebar')
 				->parse()));
 		}
@@ -69,7 +69,7 @@ class CosmosTemplate extends BaseTemplate {
 		//Build the mobile navigation
 		$html .= Html::openElement('nav', ['class' => 'cosmos-mobile-navigation']);
 		$html .= Html::rawElement('div', ['class' => 'cosmos-button cosmos-button-primary cosmos-mobile-menu-button', 'onclick' => '$(".wds-tabs__tab").toggle()'], $this->getMsg('cosmos-mobile-menu-label')
-			->escaped());
+			->text());
 		$this->buildNavigation($html, $config);
 		$html .= Html::closeElement('nav');
 		//Build the logo
@@ -94,11 +94,11 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement('form', ['class' => 'wds-dialog__wrapper create-page-dialog__wrapper', 'action' => $this->get('wgScript') , 'method' => 'get']);
 		$html .= Html::hidden('action', 'edit');
 		$html .= Html::rawElement('header', ['class' => 'wds-dialog__title'], $this->getMsg('cosmos-createpage-header')
-			->escaped() . Icon::getIcon('close')
+			->text() . Icon::getIcon('close')
 			->makeSvg(14, 14, ['class' => 'wds-icon wds-icon-small create-page-dialog__close']));
 		$html .= Html::openElement('div', ['class' => 'wds-dialog__content']);
 		$html .= Html::rawElement('div', ['id' => 'create-page-dialog__message'], $this->getMsg('cosmos-createpage-input-label')
-			->escaped());
+			->text());
 		$html .= Html::openElement('div', ['class' => 'wds-input create-page-dialog__title-wrapper']);
 		$html .= Html::input('title', '', 'text', ['class' => 'wds-input__field', 'id' => 'create-page-dialog__title']);
 		$html .= Html::closeElement('div');
@@ -118,7 +118,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement('footer');
 		$html .= Html::openElement('div', ['class' => 'wds-dialog__actions']);
 		$html .= Html::openElement('input', ['type' => 'submit', 'class' => 'wds-button wds-is-text create-page-dialog__button', 'value' => $this->getMsg('cosmos-createpage-next')
-			->escaped() , 'disabled', 'disabled']);
+			->text() , 'disabled', 'disabled']);
 		$html .= Html::closeElement('div');
 		$html .= Html::closeElement('footer');
 		$html .= Html::closeElement('div');
@@ -170,7 +170,7 @@ class CosmosTemplate extends BaseTemplate {
 				->getOption('managewikisidebar', 1)) && $wgManageWikiSidebarLinks !== false) {
 
 				$html .= Html::rawElement('li', ['class' => 'wds-tabs__tab'], '<div class="wds-dropdown" id="p-' . Sanitizer::escapeIdForAttribute($this->getMsg('cosmos-administration')) . '" aria-labelledby="p-' . Sanitizer::escapeIdForAttribute($this->getMsg('cosmos-administration')) . '-label"><div class="wds-tabs__tab-label wds-dropdown__toggle" id="p-' . Sanitizer::escapeIdForAttribute($this->getMsg('cosmos-administration')) . '-label"><span style="padding-top: 2px;">' . $this->getMsg('cosmos-administration')
-					->escaped() . '</span>' . Icon::getIcon('dropdown')
+					->text() . '</span>' . Icon::getIcon('dropdown')
 					->makeSvg(14, 14, ['id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron']) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">');
 
 				foreach ((array)ManageWiki::listModules() as $module) {
@@ -466,33 +466,33 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement('div', ['class' => 'cosmos-header__top-container']);
 		$html .= Html::openElement('div', ['class' => 'cosmos-header__sitename']);
 		$html .= Html::rawElement('a', ['href' => $this->data['nav_urls']['mainpage']['href']], $this->getMsg('cosmos-tagline')
-			->escaped());
+			->text());
 		$html .= Html::closeElement('div');
 		$html .= Html::openElement('div', ['class' => 'cosmos-header__counter']);
 		$html .= Html::rawElement('span', ['class' => 'cosmos-header__counter-value'], SiteStats::pagesInNs(0));
 		$html .= Html::rawElement('span', ['class' => 'cosmos-header__counter-label'], $this->getMsg('cosmos-counter-label', SiteStats::pagesInNs(0))
-			->escaped());
+			->text());
 		$html .= Html::closeElement('div');
 		$html .= Html::openElement('div', ['class' => 'cosmos-header__wiki-buttons wds-button-group']);
 		$html .= Html::rawElement('a', ['class' => 'wds-button wds-is-secondary createpage', 'id' => 'createpage', 'href' => '#create-article', 'data-tracking' => 'add-new-page', 'title' => $this->getMsg('Cosmos-add-new-page-title')
-			->escaped() ], Icon::getIcon('newpage')
+			->text() ], Icon::getIcon('newpage')
 			->makeSvg(1000, 1000, ['class' => 'wds-icon wds-icon-small', 'id' => 'wds-icons-page-small', 'style' => ($permissionManager->userHasRight($skin->getUser() , 'adminlinks') ? 'margin-right: 0;' : '') ]) . (!$permissionManager->userHasRight($skin->getUser() , 'adminlinks') ? (empty($this->data["username"]) ? $this->getMsg("Cosmos-anon-add-new-page-text")
-			->escaped() : $this->getMsg("Cosmos-add-new-page-text")
-			->escaped()) : ''));
+			->text() : $this->getMsg("Cosmos-add-new-page-text")
+			->text()) : ''));
 		if (!empty($this->data["username"])) {
 			$html .= Html::rawElement('a', ['class' => 'wds-button wds-is-secondary', 'href' => htmlspecialchars(Title::newFromText('RecentChanges', NS_SPECIAL)->getFullURL()) , 'data-tracking' => 'recent-changes', 'title' => $this->getMsg('Cosmos-recentchanges')
-				->escaped() ], Icon::getIcon('recentchanges')
+				->text() ], Icon::getIcon('recentchanges')
 				->makeSvg(22, 22, ['class' => 'wds-icon-small', 'id' => 'wds-icons-activity-small', 'stroke' => 'currentColor', 'stroke-linecap' => 'round', 'stroke-linejoin' => 'round', 'stroke-width' => 2]));
 			if (!empty($this->data['username']) && $permissionManager->userHasRight($skin->getUser() , 'adminlinks')) {
 				$html .= Html::rawElement('a', ['class' => 'wds-button wds-is-secondary', 'href' => htmlspecialchars(Title::newFromText('AdminLinks', NS_SPECIAL)->getFullURL()) , 'data-tracking' => 'admin-links', 'title' => $this->getMsg('Cosmos-adminlinks')
-					->escaped() ], Icon::getIcon('admindashboard')
+					->text() ], Icon::getIcon('admindashboard')
 					->makeSvg(24, 24, ['class' => 'wds-icon-small', 'id' => 'wds-icons-dashboard-small']));
 			}
 			$html .= Html::rawElement('div', ['class' => 'wds-dropdown'], '<div class="wds-button wds-is-secondary wds-dropdown__toggle">' . Icon::getIcon('more')->makeSvg(384, 384, ['class' => 'wds-icon wds-icon-small', 'id' => 'wds-icons-more']) . '</div><div class="wds-dropdown__content wds-is-not-scrollable wds-is-right-aligned"><ul class="wds-list wds-is-linked"><li><a href="' . htmlspecialchars(Title::newFromText("Upload", NS_SPECIAL)
 				->getFullURL()) . '" data-tracking="more-upload-file">' . $this->getMsg('cosmos-upload')
-				->escaped() . '</a></li><li><a href="' . htmlspecialchars(Title::newFromText('RecentChanges', NS_SPECIAL)
+				->text() . '</a></li><li><a href="' . htmlspecialchars(Title::newFromText('RecentChanges', NS_SPECIAL)
 				->getFullURL()) . '" data-tracking="more-recent-changes">' . $this->getMsg('Cosmos-recentchanges')
-				->escaped() . '</a></li></ul></div>');
+				->text() . '</a></li></ul></div>');
 		}
 		$html .= Html::closeElement('div');
 		$html .= Html::closeElement('div');
@@ -1082,14 +1082,14 @@ class CosmosTemplate extends BaseTemplate {
 				$title = $skin->getRelevantTitle();
 				$href = SpecialPage::getTitleFor('CreateRedirect', $title->getPrefixedText())
 					->getLocalURL();
-				$CreateRedirect = Html::rawElement('li', null, Html::element('a', ['href' => $href], wfMessage('createredirect')->escaped()));
+				$CreateRedirect = Html::rawElement('li', null, Html::element('a', ['href' => $href], wfMessage('createredirect')->text()));
 				if ($action == 'view' || $action == 'purge' || !$title->isSpecialPage()) {
 					$html .= $CreateRedirect;
 				}
 			}
 			if ($this->getMsg('cosmos-toolbar')
-				->escaped() !== '-' && $this->getMsg('cosmos-toolbar')
-				->escaped() !== '') {
+				->text() !== '-' && $this->getMsg('cosmos-toolbar')
+				->text() !== '') {
 				$html .= $cosmosToolbar->getCode();
 			}
 		}
