@@ -34,6 +34,10 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement('div');
 		$html .= Html::closeElement('div');
 		$html .= Html::closeElement('div');
+		
+		$html .= $this->getTrail();
+		$html .= Html::closeElement( 'body' );
+		$html .= Html::closeElement( 'html' );
 		$title = Title::newFromText($this->get('title'));
 		if (class_exists('UserProfilePage') && ($config->isEnabled('profile-tags') || $config->isEnabled('show-editcount') || $config->isEnabled('allow-bio')) && (is_object($title) && ($title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE) && !$title->isSubpage())) {
 			//Set up Cosmos-specific SocialProfile Elements
@@ -49,7 +53,6 @@ class CosmosTemplate extends BaseTemplate {
 				'<div class="hgroup">'
 			];
 			return str_replace($replace, $replaceWith, $html);
-
 		}
 		else {
 			return $html;
@@ -89,7 +92,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement('div', ['class' => 'cosmos-modal-content']);
 		$html .= Html::rawElement('span', ['class' => 'close'], '&times;');
 		$html .= Html::openElement('form', ['class' => 'wds-dialog__wrapper create-page-dialog__wrapper', 'action' => $this->get('wgScript') , 'method' => 'get']);
-		$html .= Html::openElement('input', ['type' => 'hidden', 'value' => 'edit', 'name' => 'action']);
+		$html .= Html::hidden('action', 'edit');
 		$html .= Html::rawElement('header', ['class' => 'wds-dialog__title'], $this->getMsg('cosmos-createpage-header')
 			->escaped() . Icon::getIcon('close')
 			->makeSvg(14, 14, ['class' => 'wds-icon wds-icon-small create-page-dialog__close']));
@@ -97,7 +100,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::rawElement('div', ['id' => 'create-page-dialog__message'], $this->getMsg('cosmos-createpage-input-label')
 			->escaped());
 		$html .= Html::openElement('div', ['class' => 'wds-input create-page-dialog__title-wrapper']);
-		$html .= Html::openElement('input', ['type' => 'text', 'name' => 'title', 'class' => 'wds-input__field', 'id' => 'create-page-dialog__title']);
+		$html .= Html::input('title', '', 'text', ['class' => 'wds-input__field', 'id' => 'create-page-dialog__title']);
 		$html .= Html::closeElement('div');
 		$html .= Html::rawElement('div', ['id' => 'create-page-dialog__message'], $skin->msg('cosmos-createpage-dialoge-text', SiteStats::pagesInNs(0) , $this->get('sitename')));
 		$html .= Html::openElement('div', ['class' => 'create-page-dialog__proposals']);
