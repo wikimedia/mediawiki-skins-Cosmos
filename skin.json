@@ -216,7 +216,10 @@
     "Hooks": {
         "GetPreferences": [
             "CosmosHooks::onGetPreferences"
-        ]
+        ],
+	"OutputPageBodyAttributes": [
+	    "CosmosHooks::onOutputPageBodyAttributes"
+	]
     },
     "DefaultUserOptions": {
 	"cosmos-mobile-responsiveness": 1
