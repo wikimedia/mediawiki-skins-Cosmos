@@ -106,9 +106,5 @@ class SkinCosmos extends SkinTemplate {
 				]);
 			}
 		}
-		if ($out->getTitle()
-			->equals(Title::newMainPage())) {
-			$out->addBodyClasses('mainpage');
-		}
 	}
 }
