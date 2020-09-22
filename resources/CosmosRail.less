@@ -1,0 +1,93 @@
+#cosmos-pageBody-content {
+        position: relative;
+    	width: 680px;
+    	z-index: 1;
+}
+#cosmos-pageBody-content {
+	  width: 100%;
+}
+@media only screen and (min-width: 1084px) {
+  	#cosmos-pageBody-content {
+      		width: -webkit-calc(~"100% - 320px");
+    	  	width: calc(~"100% - 320px");
+  	}
+}
+@media only screen and (max-width: 1083px) and (min-width: 1024px) {
+	  #cosmos-pageBody-content {
+		    width: -webkit-calc(~"100% - 320px");
+		    width: calc(~"100% - 320px");
+  	}
+}
+
+.cosmos-articleContainer {
+    	zoom: 1;
+    	display: -webkit-box;
+    	display: -moz-box;
+    	display: -ms-flexbox;
+    	display: -webkit-flex;
+    	display: flex;
+    	-webkit-flex-wrap: wrap;
+    	-ms-flex-wrap: wrap;
+    	flex-wrap: wrap;
+    	-webkit-box-pack: justify;
+    	-webkit-justify-content: space-between;
+    	justify-content: space-between;
+	    position: relative;
+}
+@media only screen and (min-width: 1024px) {
+	  .CosmosRail {
+		      display: -ms-inline-flexbox;
+      		display: -webkit-inline-flex;
+      		display: inline-flex;
+  	}
+}
+.CosmosRail {
+    	padding: 0;
+}
+.CosmosRail {
+    	padding: 0 10px;
+    	width: 300px;
+}
+.CosmosRail .module {
+    	zoom: 1;
+    	background: transparent;
+    	margin-bottom: 30px;
+    	padding: 20px 15px 15px;
+    	position: relative;
+    	word-wrap: break-word;
+}
+.CosmosRail .rail-module {
+ 	margin: 0 10px 30px;
+ 	background: transparent;
+}
+.cosmos-rail-inner {
+    	width: 100%;
+}
+
+@media only screen and (max-width: 1023px) {
+	.CosmosRail {
+    		-moz-column-count: 2;
+    		-webkit-column-count: 2;
+    		column-count: 2;
+    		clear: both;
+    		float: none;
+    		padding: 13px 10px 0;
+    		width: auto;
+	}
+}
+@media only screen and (max-width: 1023px) {
+	.CosmosRail .rail-module {
+	    	display: inline-block;
+    		width: 330px;
+	}
+}
+@media only screen and (max-width: 1023px) {
+	.CosmosRail .module {
+    		box-sizing: border-box;
+    		display: inline-block;
+    		margin: 12px 8px;
+    		position: static;
+    		vertical-align: top;
+    		width: 330px;
+	}
+}
