@@ -25,12 +25,6 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= $this->buildWikiHeader($html, $config);
 		$html .= $this->buildWiki($html, $config);
 		$html .= Html::closeElement('div');
-		if ($this->getMsg('cosmos-customsidebar')
-			->text() !== '-' && $this->getMsg('cosmos-customsidebar')
-			->text() !== '') {
-			$html .= Html::rawElement('div', ['class' => 'cosmos-sidebar-container', 'id' => 'cosmos-custom-sidebar'], Html::rawElement('div', ['class' => 'cosmos-sidebar-inner'], $this->getMsg('cosmos-customsidebar')
-				->parse()));
-		}
 		$html .= Html::closeElement('div');
 		$html .= Html::closeElement('div');
 		$html .= Html::closeElement('div');
@@ -538,7 +532,9 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement('div', ['class' => 'cosmos-articleContainer']);
 		// Build the article content
 		$this->buildArticle($html, $config);
-
+		// Build the sidebars
+		$this->buildRail($html, $config);
+		
 		$html .= Html::closeElement('div');
 
 		// Close container element for page body
@@ -550,6 +546,20 @@ class CosmosTemplate extends BaseTemplate {
 
 		// Close container element for page
 		
+	}
+	protected function buildRail(string & $html, Config $config) {
+		if ($this->getMsg('cosmos-customsidebar')
+			->text() !== '-' && $this->getMsg('cosmos-customsidebar')
+			->text() !== '') {
+			
+			$html .= Html::openElement('div', ['class' => 'CosmosRail', 'id' => 'CosmosRailWrapper']);
+			$html .= Html::openElement('div', ['class' => 'cosmos-rail-inner loaded', 'id' => 'CosmosRail']);
+			$html .= Html::openElement('section', ['class' => 'railModule module']);
+			$html .= $this->getMsg('cosmos-customsidebar')->parse();
+			$html .= Html::closeElement('section');
+			$html .= Html::closeElement('div');
+			$html .= Html::closeElement('div');
+		}
 	}
 	protected function buildHeader(string & $html, Config $config) {
 		// Open container element for header
