@@ -41,6 +41,15 @@ class SkinCosmos extends SkinTemplate {
 			'skins.cosmos.js', 
 			'skins.cosmos.mobile'
 		]);
+		
+		if (wfMessage('cosmos-customsidebar')
+			->text() !== '-' && wfMessage('cosmos-customsidebar')
+			->text() !== '') {
+			$out->addModuleStyles([
+				'skins.cosmos.rail', 
+			]);
+		}
+		
 		if (ExtensionRegistry::getInstance()
 			->isLoaded('Portable Infobox')) {
 			$out->addModuleStyles([
