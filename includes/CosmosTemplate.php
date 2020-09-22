@@ -1109,7 +1109,7 @@ class CosmosTemplate extends BaseTemplate {
 				$title = $skin->getRelevantTitle();
 				$href = SpecialPage::getTitleFor('CreateRedirect', $title->getPrefixedText())
 					->getLocalURL();
-				$CreateRedirect = Html::rawElement('li', null, Html::element('a', ['href' => $href], wfMessage('createredirect')->text()));
+				$CreateRedirect = Html::rawElement('li', ['id' => 't-createredirect'], Html::element('a', ['href' => $href], wfMessage('createredirect')->text()));
 				if ($action == 'view' || $action == 'purge' || !$title->isSpecialPage()) {
 					$html .= $CreateRedirect;
 				}
