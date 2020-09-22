@@ -1,7 +1,7 @@
 body {
     background: @main-background-color;
 }
-#mw-content, .cosmos-sidebar-container .cosmos-sidebar-inner, #catlinks {
+#mw-content, #catlinks {
 	background: @content-background-color;
 }
 @media screen and (min-width: 850px) {
@@ -22,7 +22,7 @@ body {
             }
 	}
     }
-    #mw-content, .cosmos-sidebar-container .cosmos-sidebar-inner, #catlinks {
+    #mw-content, #catlinks {
         background-color: @content-opacity-level;
     }
 }
@@ -49,14 +49,8 @@ body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-widget-enabled:h
     color: #666;
     border-color: #c8ccd1;
 }
- .cosmos-sidebar-inner {
-    border: 0;
-}
 body .oo-ui-buttonElement-framed:not(.oo-ui-flaggedElement-primary):not(.oo-ui-buttonElement-active) > .oo-ui-buttonElement-button {
     color: #000;
-}
-.cosmos-sidebar-container .cosmos-sidebar-inner{
-    padding:1.5em;
 }
 #mw-indicator-mw-helplink a {
     background-image: none;
@@ -113,7 +107,7 @@ body a, body a:hover, body a:focus {
 	padding: 10px;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
 	z-index: 999;
-	>li {
+	> ul, > ul > li, > li {
 		margin: 0;
 		padding: 0;
 		list-style: none;
@@ -207,10 +201,6 @@ body > #mw-content-container {
     float: left;
     width: 50%;
 }
-.cosmos-sidebar-inner{
-   background: @content-background-color;
-   color: @font-color;
-}
 #cosmos-userButton-avatar {
 	margin-right: 15px;
 	>img {
@@ -220,7 +210,7 @@ body > #mw-content-container {
 		border-radius: 16px;
 	}
 }
-#cosmos-userButton-label {
+.cosmos-userButton-label {
 	display: inline-block;
 	height: 25px;
 	font-size: 20px;
@@ -236,9 +226,9 @@ body > #mw-content-container {
 	-ms-user-select: none;
 	user-select: none;
 }
-#cosmos-userOptions-personalTools {
+.cosmos-userOptions-personalTools {
 	&:hover {
-		#cosmos-userButton-label {
+		.cosmos-userButton-label {
 			color: @banner-font-color;
 		}
 		#cosmos-userButton-avatar {
@@ -253,7 +243,7 @@ body > #mw-content-container {
 	stroke: @alt-font-color;
 	stroke-width: 2px;
 	&:hover {
-		border: 1px solid #333;
+		border: 1px solid @border-color;
 		opacity: 0.8;
 		transition: 0.4s;
 	}
@@ -399,16 +389,17 @@ body > #mw-content-container {
 	max-width: 350px;
 }
 body > .suggestions .suggestions-results {
-	background: #333;
-	border-color: #666;
-	color: #fff;
+	background: @border-color;
+	border-color: mix(@border-color, @font-color, 45%);
+	color: @alt-font-color;
 }
 body > .suggestions .suggestions-special {
-	background: #333;
-	border-color: #666;
+	background: @border-color;
+	border-color: mix(@border-color, @font-color, 45%);
+	color: @alt-font-color;
 }
 body >  .suggestions .suggestions-special * {
-    color: #fff;
+    color: @alt-font-color;
 }
 body > .suggestions {
 	overflow: hidden;
@@ -421,6 +412,9 @@ body > .suggestions {
 	padding: 0;
 	margin: -1px 0 0 0;
 	* {
+		color: @alt-font-color;
+	}
+	*:hover {
 		color: #fff;
 	}
 }
@@ -476,7 +470,7 @@ body > .suggestions {
 	height: 14px;
 }
 @media all and (max-width:1280px) {
-	#cosmos-userButton-label {
+	.cosmos-userButton-label {
 		display: none;
 	}
 	#cosmos-userButton-avatar {
@@ -1390,11 +1384,7 @@ button.wds-button {
 	}
 }
 
-@media screen and (max-width: 1339px) and (min-width: 1100px) {
-	.cosmos-header {
-		margin-left: 14em;
-	}
-}
+
 //Create page modal
 
 .cosmos-modal {
@@ -1499,15 +1489,15 @@ button.wds-button {
 	}
 }
 .mw-dismissable-notice {
-	background-color: #012E59;
-	color: #fff;
+	background-color: @button-color;
+	color: @button-font-color;
 	opacity: 1;
 	z-index: 100;
 	width: auto;
-	border: 1px solid #fff;
+	border: 1px solid @button-font-color;
 	.wikitable {
 		td {
-			background: #012E59;
+			background: @button-color;
 			border: none;
 		}
 		border: none;
@@ -1569,18 +1559,18 @@ button.wds-button {
 	}
 }
 body pre {
-	background-color: #3a3939;
-	color: #fff;
-	border: 1px solid #6c6b6b;
+	background-color: mix(@content-background-color, @code-background-color, 90%);
+	color: @alt-font-color;
+	border: 1px solid @border-color;
 	line-height: 14px;
 	overflow: auto;
 	padding: 12px;
 	word-break: break-all;
 }
 body code {
-    background-color: #3a3939;
-    color: #fff;
-    border: 1px solid #6c6b6b;
+    background-color: mix(@content-background-color, @code-background-color, 70%);
+    color: @alt-font-color;
+    border: 1px solid @border-color;
 }
 .codeEditor-status-worker {
 	color: #000;
@@ -1615,16 +1605,16 @@ body code {
 	border-bottom: 0;
 }
 body .oo-ui-tabSelectWidget-framed {
-	background: transparent;
+	background: @tabs-background-color;
 	border: none;
 	color: @font-color;
 }
-.mw-destfile-warning {
+/*.mw-destfile-warning {
 	.thumbinner {
 		background: #212e3e;
 		border: 1px solid #fff;
 	}
-}
+}*/
 #contentSub {
 	color: @font-color;
 }
@@ -1654,9 +1644,9 @@ body {
 	* {
 		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
-	p {
+	/*p {
 		color: @font-color;
-	}
+	}*/
 	.create-title {
 		color: @font-color;
 	}
@@ -1664,8 +1654,11 @@ body {
 		color: @font-color;
 	}
 	.mw-changeslist-line {
-    	color: @font-color;
+    	    color: @font-color;
 	}
+}
+body #mw-content-text {
+	color: @font-color;
 }
 .category-gallery-item {
 	.snippet {
@@ -1814,7 +1807,7 @@ body {
     	margin-top: 2em;
   	margin-bottom: 2em;
  	padding-top: 1em;
- 	border: 1px solid #333;
+ 	border: 1px solid @border-color;
 }
 .oo-ui-fieldLayout-header {
 	color: @font-color;
@@ -1883,12 +1876,6 @@ body {
 	}
 }
 @media screen and (max-width: 1099px) and (min-width: 851px) {
-	.cosmos-sidebar-container {
-		position: absolute;
-		top: unset;
-		left: 2em;
-		margin: 10px;
-	}
 	#mw-content {
 		margin-top: 0;
 	}
@@ -1901,35 +1888,7 @@ body {
 		margin: 0 15px 15px 0;
 	}
 }
-@media screen and (max-width: 1339px) and (min-width: 1100px) {
-	#cosmos-footer {
-		margin-left: 14em;
-		width: auto;
-	}
-}
 
-@media screen and (max-width: 1099px) and (min-width: 851px) {
-	.cosmos-sidebar-container {
-		display: none;
-	}
-}
-@media screen and (min-width: 1340px) {
-	#mw-content-wrapper {
-		margin-right: 14em;
-		margin-left: 14em;
-		width: auto;
-	}
-}
-@media screen and (max-width: 1339px) {
-	.cosmos-sidebar-container {
-	    display: none;
-	}
-}
-@media screen and (min-width: 1339px) {
-	.cosmos-sidebar-container {
-	    position: absolute;
-	}
-}
 .editOptions {
 	p {
 		color: #000;
@@ -1946,7 +1905,7 @@ body {
 		}
 	}
 
-.mw-warning {
+/*.mw-warning {
 	&:not(#mw-undelete-revision) {
 	    &:not(.plainlinks) {
 		    background: #001e3b;
@@ -1974,7 +1933,7 @@ ul#filetoc {
 	background: #001e3b;
 	border: none;
 	color: #fff;
-}
+}*/
 #cosmos-header-articleHeader {
 	display: inline-block;
 	width: 100%;
@@ -2040,24 +1999,24 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 	display: flex;
 	align-items: center;
 }
-#cosmos-toolbar-tools {
+.cosmos-toolbar-tools {
 	margin: 0 auto;
 	padding: 0;
 	text-align: center;
 	font-size: 10pt;
 }
-#cosmos-tools-list {
+.cosmos-tools-list, .cosmos-tools-list ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	>li {
+	li, ul {
 		display: inline;
 		color: @toolbar-font-color;
 		>a {
 			color: @toolbar-font-color;
 		}
 	}
-	li {
+	li, ul {
 		&:not(:first-child) {
 			&:before {
 				content: ' | ';
@@ -2074,14 +2033,16 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 	}
 }
 #cosmos-content-siteNotice {
-	color: #fff;
-	background-color: #012E59;
-	border: 1px solid #fff;
+	color: @button-font-color;
+	background-color: @button-color;
+	border: 1px solid @button-font-color;
 	margin: 0 15px 15px 15px;
 	padding: 15px 15px 15px 15px;
 	min-height: 36px;
 }
-
+#cosmos-content-siteNotice * {
+	color: @button-font-color;
+}
 #cosmos-pageBody-content {
 	overflow-x: auto;
 	overflow-y: hidden;
@@ -2100,7 +2061,7 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 .diff-context {
 	background-color: transparent;
 	border-color: #a3a3a3;
-	color: #e6e6e6;
+	color: @alt-font-color;
 }
 .diff-addedline {
 	background-color: #636262;
@@ -2131,11 +2092,11 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 }
 
 body .mw-notification{
-    background:#001e3b;
-    color:#fff;
+    background: @button-color;
+    color: @button-font-color;
 }
 body .postedit:after{
-   background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" stroke="%23ffffff" width="20" height="20" viewBox="0 0 20 20"%3E %3Cpath d="M3.636 2.222l14.142 14.142-1.414 1.414L2.222 3.636z%22/%3E %3Cpath d="M17.778 3.636L3.636 17.778l-1.414-1.414L16.364 2.222z"/%3E %3C/svg%3E') no-repeat;
+   background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" stroke="%23@{notice-close-button-color}" width="20" height="20" viewBox="0 0 20 20"%3E %3Cpath d="M3.636 2.222l14.142 14.142-1.414 1.414L2.222 3.636z%22/%3E %3Cpath d="M17.778 3.636L3.636 17.778l-1.414-1.414L16.364 2.222z"/%3E %3C/svg%3E') no-repeat;
    bottom:1.5px;
    top:auto;
 }
@@ -2149,9 +2110,16 @@ body .postedit-container{
     line-height: 1.35;
     z-index: 10000;
 }
-.cosmos-dropdown-list .uls-trigger{
+
+#p-personal #pt-uls .uls-trigger {
     background-image: none;
+    display: block;
+    padding-left: 15px;
 }
+#p-personal #pt-uls .uls-trigger:before{
+   display: none;
+}
+
 .cosmos-dropdown-list #ca-wikilove a{
     background-image: none;
     text-indent: 0;
@@ -2250,4 +2218,57 @@ body .oo-ui-icon-bell, .mw-ui-icon-bell:before {
 
 table.mw-interwikitable.body td.mw-interwikitable-local-yes {
     background: @content-background-color;
+}
+
+.oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button {
+    color: #fff;
+}
+
+
+#mw-content {
+	min-height: 250px;
+    	overflow: hidden;
+	padding: 0 10px;
+	position: relative;
+    	word-wrap: break-word;
+    	z-index: 1;
+}
+#mw-content, .CosmosRail .module {
+  	border: 1px solid @border-color;
+}
+.cosmos-header, #mw-content {
+ 	 border-bottom: 0;
+}
+#mw-content {
+  	border-top: 0;
+}
+#mw-content-wrapper {
+    	margin: 0 auto;
+    	position: relative;
+    	width: 1000px;
+    	z-index: 3;
+}
+@media only screen and (max-width: 1083px) and (min-width: 1024px) {
+  	#mw-content-wrapper {
+      		padding: 0 10px;
+      		width: 984px;
+  	}
+}
+@media only screen and (max-width: 1083px) {
+  	#mw-content-wrapper {
+      		padding: 0 24px;
+      		width: auto;
+  	}
+}
+@media only screen and (max-width: 1595px) and (min-width: 1084px) {
+  	#mw-content-wrapper {
+      		padding: 0 20px;
+      		width: 1024px;
+  	}
+}
+@media only screen and (min-width: 1596px) {
+  	#mw-content-wrapper {
+      		padding: 0 30px;
+      		width: 1178px;
+  	}
 }

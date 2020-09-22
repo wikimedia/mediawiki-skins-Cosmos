@@ -14,7 +14,7 @@ class SkinCosmos extends SkinTemplate {
 
 	/** @var string */
 	public $template = 'CosmosTemplate';
-
+	
 	/**
 	 * @param OutputPage $out
 	 */
@@ -30,6 +30,7 @@ class SkinCosmos extends SkinTemplate {
 				'user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0'
 			);
 		}
+		parent::setupSkinUserCss( $out );
 		$out->addModuleStyles([
 			'mediawiki.skinning.content.externallinks', 
 			'skins.cosmos', 
@@ -40,6 +41,15 @@ class SkinCosmos extends SkinTemplate {
 			'skins.cosmos.js', 
 			'skins.cosmos.mobile'
 		]);
+		
+		if (wfMessage('cosmos-customsidebar')
+			->text() !== '-' && wfMessage('cosmos-customsidebar')
+			->text() !== '') {
+			$out->addModuleStyles([
+				'skins.cosmos.rail', 
+			]);
+		}
+		
 		if (ExtensionRegistry::getInstance()
 			->isLoaded('Portable Infobox')) {
 			$out->addModuleStyles([
