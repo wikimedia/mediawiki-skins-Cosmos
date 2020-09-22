@@ -111,7 +111,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		$lessVars['editsection-color'] = LessUtil::isThemeDark('content-background-color') ? '#54595d' : '#aba6a2';
 		$lessVars['alt-font-color'] = LessUtil::isThemeDark('content-background-color') ? '#fff' : '#000';
 		$lessVars['code-background-color'] = LessUtil::isThemeDark('content-background-color') ? '#c5c6c6' : '#3a3939';
-		$lessVars['tabs-background-color'] = LessUtil::isThemeDark('content-background-color') ? '#eaecf0' : 'transparent';
+		$lessVars['tabs-background-color'] = LessUtil::isThemeDark('content-background-color') ? 'transparent' : '#eaecf0';
 		$lessVars['banner-font-color'] = LessUtil::isThemeDark('banner-background-color') ? '#fff' : '#000';
 		$lessVars['banner-echo-font-color'] = LessUtil::isThemeDark('banner-background-color') ? 'fff' : '111';
 		$lessVars['notice-close-button-color'] = LessUtil::isThemeDark('button-color') ? 'fff' : '111';
