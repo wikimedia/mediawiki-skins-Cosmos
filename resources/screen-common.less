@@ -1,7 +1,7 @@
 body {
     background: @main-background-color;
 }
-#mw-content, .cosmos-sidebar-container .cosmos-sidebar-inner, #catlinks {
+#mw-content, #catlinks {
 	background: @content-background-color;
 }
 @media screen and (min-width: 850px) {
@@ -22,7 +22,7 @@ body {
             }
 	}
     }
-    #mw-content, .cosmos-sidebar-container .cosmos-sidebar-inner, #catlinks {
+    #mw-content, #catlinks {
         background-color: @content-opacity-level;
     }
 }
@@ -39,7 +39,7 @@ body {
     background-color: #ffffff;
 }
 body .oo-ui-tabOptionWidget {
-    color: @tabs-font-color;
+    color: @font-color;
 }
 body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-widget-enabled:hover{
     background-color:rgba(255,255,255,0.8);
@@ -49,14 +49,8 @@ body .oo-ui-tabSelectWidget-framed .oo-ui-tabOptionWidget.oo-ui-widget-enabled:h
     color: #666;
     border-color: #c8ccd1;
 }
- .cosmos-sidebar-inner {
-    border: 0;
-}
 body .oo-ui-buttonElement-framed:not(.oo-ui-flaggedElement-primary):not(.oo-ui-buttonElement-active) > .oo-ui-buttonElement-button {
     color: #000;
-}
-.cosmos-sidebar-container .cosmos-sidebar-inner{
-    padding:1.5em;
 }
 #mw-indicator-mw-helplink a {
     background-image: none;
@@ -206,10 +200,6 @@ body > #mw-content-container {
 .articleProposals li {
     float: left;
     width: 50%;
-}
-.cosmos-sidebar-inner{
-   background: @content-background-color;
-   color: @font-color;
 }
 #cosmos-userButton-avatar {
 	margin-right: 15px;
@@ -1394,11 +1384,7 @@ button.wds-button {
 	}
 }
 
-@media screen and (max-width: 1339px) and (min-width: 1100px) {
-	.cosmos-header {
-		margin-left: 14em;
-	}
-}
+
 //Create page modal
 
 .cosmos-modal {
@@ -1621,7 +1607,7 @@ body code {
 body .oo-ui-tabSelectWidget-framed {
 	background: @tabs-background-color;
 	border: none;
-	color: @tabs-font-color;
+	color: @font-color;
 }
 /*.mw-destfile-warning {
 	.thumbinner {
@@ -1890,12 +1876,6 @@ body {
 	}
 }
 @media screen and (max-width: 1099px) and (min-width: 851px) {
-	.cosmos-sidebar-container {
-		position: absolute;
-		top: unset;
-		left: 2em;
-		margin: 10px;
-	}
 	#mw-content {
 		margin-top: 0;
 	}
@@ -1908,35 +1888,7 @@ body {
 		margin: 0 15px 15px 0;
 	}
 }
-@media screen and (max-width: 1339px) and (min-width: 1100px) {
-	#cosmos-footer {
-		margin-left: 14em;
-		width: auto;
-	}
-}
 
-@media screen and (max-width: 1099px) and (min-width: 851px) {
-	.cosmos-sidebar-container {
-		display: none;
-	}
-}
-@media screen and (min-width: 1340px) {
-	#mw-content-wrapper {
-		margin-right: 14em;
-		margin-left: 14em;
-		width: auto;
-	}
-}
-@media screen and (max-width: 1339px) {
-	.cosmos-sidebar-container {
-	    display: none;
-	}
-}
-@media screen and (min-width: 1339px) {
-	.cosmos-sidebar-container {
-	    position: absolute;
-	}
-}
 .editOptions {
 	p {
 		color: #000;
@@ -2270,4 +2222,53 @@ table.mw-interwikitable.body td.mw-interwikitable-local-yes {
 
 .oo-ui-buttonElement-framed.oo-ui-widget-enabled.oo-ui-flaggedElement-primary.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button {
     color: #fff;
+}
+
+
+#mw-content {
+	min-height: 250px;
+    	overflow: hidden;
+	padding: 0 10px;
+	position: relative;
+    	word-wrap: break-word;
+    	z-index: 1;
+}
+#mw-content, .CosmosRail .module {
+  	border: 1px solid @border-color;
+}
+.cosmos-header, #mw-content {
+ 	 border-bottom: 0;
+}
+#mw-content {
+  	border-top: 0;
+}
+#mw-content-wrapper {
+    	margin: 0 auto;
+    	position: relative;
+    	width: 1000px;
+    	z-index: 3;
+}
+@media only screen and (max-width: 1083px) and (min-width: 1024px) {
+  	#mw-content-wrapper {
+      		padding: 0 10px;
+      		width: 984px;
+  	}
+}
+@media only screen and (max-width: 1083px) {
+  	#mw-content-wrapper {
+      		padding: 0 24px;
+      		width: auto;
+  	}
+}
+@media only screen and (max-width: 1595px) and (min-width: 1084px) {
+  	#mw-content-wrapper {
+      		padding: 0 20px;
+      		width: 1024px;
+  	}
+}
+@media only screen and (min-width: 1596px) {
+  	#mw-content-wrapper {
+      		padding: 0 30px;
+      		width: 1178px;
+  	}
 }
