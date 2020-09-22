@@ -70,6 +70,17 @@
                 "legacy"
             ]
         },
+	"skins.cosmos.rail": {
+            "targets": [
+                "desktop",
+                "mobile"
+            ],
+            "styles": {
+                "resources/CosmosRail.less": {
+                    "media": "screen"
+                }
+            }
+        },
         "skins.cosmos.portableinfobox": {
             "class": "Cosmos\\ResourceLoaderLessModule",
             "targets": [
