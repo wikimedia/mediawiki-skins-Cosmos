@@ -455,7 +455,7 @@ class CosmosTemplate extends BaseTemplate {
 	protected function buildWikiHeader(string & $html, Config $config) {
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		$skin = $this->getSkin();
-		$html .= Html::openElement('header', ['class' => 'cosmos-header', 'style' => $config->getString('header-background') ? "background-image: url({$config->getString('header-background') });" : '']);
+		$html .= Html::openElement('header', ['class' => 'cosmos-header', 'style' => $config->getString('header-background') ? "background-image: url({$config->getString('header-background') });" : null]);
 		$this->buildWordmark($html, $config);
 		$html .= Html::openElement('div', ['class' => 'cosmos-header__top-container']);
 		$html .= Html::openElement('div', ['class' => 'cosmos-header__sitename']);
@@ -548,19 +548,36 @@ class CosmosTemplate extends BaseTemplate {
 		
 	}
 	protected function buildRail(string & $html, Config $config) {
-		if ($this->getMsg('cosmos-customsidebar')
+		if (($this->getMsg('cosmos-customsidebar')
 			->text() !== '-' && $this->getMsg('cosmos-customsidebar')
-			->text() !== '') {
-			
+			->text() !== '' && $this->getMsg('cosmos-customsidebar')
+			->exists()) || ($this->getMsg('cosmos-stickysidebar')
+			->text() !== '-' && $this->getMsg('cosmos-stickysidebar')
+			->text() !== '' && $this->getMsg('cosmos-stickysidebar')
+			->exists())) {
 			$html .= Html::openElement('div', ['class' => 'CosmosRail', 'id' => 'CosmosRailWrapper']);
 			$html .= Html::openElement('div', ['class' => 'cosmos-rail-inner loaded', 'id' => 'CosmosRail']);
-			$html .= Html::openElement('section', ['class' => 'railModule module']);
-			$html .= $this->getMsg('cosmos-customsidebar')->parse();
-			$html .= Html::closeElement('section');
+			if ($this->getMsg('cosmos-customsidebar')
+			->text() !== '-' && $this->getMsg('cosmos-customsidebar')
+			->text() !== '' && $this->getMsg('cosmos-customsidebar')
+			->exists()) {
+				$html .= Html::openElement('section', ['class' => 'railModule module']);
+				$html .= $this->getMsg('cosmos-customsidebar')->parse();
+				$html .= Html::closeElement('section');
+			}
+			if ($this->getMsg('cosmos-stickysidebar')
+			->text() !== '-' && $this->getMsg('cosmos-stickysidebar')
+			->text() !== '' && $this->getMsg('cosmos-stickysidebar')
+			->exists()) {
+				$html .= Html::openElement('section', ['class' => 'railModule module rail-sticky-module']);
+				$html .= $this->getMsg('cosmos-stickysidebar')->parse();
+				$html .= Html::closeElement('section');
+			}
 			$html .= Html::closeElement('div');
 			$html .= Html::closeElement('div');
 		}
 	}
+
 	protected function buildHeader(string & $html, Config $config) {
 		// Open container element for header
 		$html .= Html::openElement('header', ['id' => 'cosmos-page-header']);
