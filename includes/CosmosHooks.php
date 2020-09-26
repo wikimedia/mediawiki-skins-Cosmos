@@ -28,7 +28,7 @@ class CosmosHooks extends Hooks {
 	 * @return bool
 	 */
 	public static function addToAdminLinks( ALTree &$adminLinksTree ) {
-		$cosmos_section = new ALSection( wfMessage( 'Cosmos' )->text() );
+		$cosmos_section = new ALSection( wfMessage( 'skinname-cosmos' )->text() );
 		$cosmos_row = new ALRow( 'cosmos' );
 		$cosmos_row->addItem( ALItem::newFromEditLink( 'MediaWiki:Cosmos-navigation', 'Edit navigation' ) );
 		$cosmos_row->addItem( ALItem::newFromEditLink( 'MediaWiki:Cosmos-toolbar', 'Edit toolbar' ) );
