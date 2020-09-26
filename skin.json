@@ -214,11 +214,14 @@
         }
     },
     "Hooks": {
-        "GetPreferences": [
-            "CosmosHooks::onGetPreferences"
-        ],
+	"AdminLinks": [
+		"CosmosHooks::addToAdminLinks"
+	],
+	"GetPreferences": [
+		"CosmosHooks::onGetPreferences"
+	],
 	"OutputPageBodyAttributes": [
-	    "CosmosHooks::onOutputPageBodyAttributes"
+		"CosmosHooks::onOutputPageBodyAttributes"
 	]
     },
     "DefaultUserOptions": {
