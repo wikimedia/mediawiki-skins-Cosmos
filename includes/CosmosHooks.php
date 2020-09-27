@@ -30,11 +30,11 @@ class CosmosHooks extends Hooks {
 	public static function addToAdminLinks( ALTree &$adminLinksTree ) {
 		$cosmos_section = new ALSection( wfMessage( 'skinname-cosmos' )->text(), wfMessage( 'adminlinks_users' )->text() );
 		$cosmos_row = new ALRow( 'cosmos' );
-		$cosmos_row->addItem( ALItem::newFromEditLink( 'MediaWiki:Cosmos-navigation', 'Edit navigation' ) );
-		$cosmos_row->addItem( ALItem::newFromEditLink( 'MediaWiki:Cosmos-toolbar', 'Edit toolbar' ) );
-		$cosmos_row->addItem( ALItem::newFromEditLink( 'MediaWiki:Cosmos-tagline', 'Edit tagline' ) );
-		$cosmos_row->addItem( ALItem::newFromEditLink( 'MediaWiki:Cosmos-customsidebar', 'Edit custom sidebar' ) );
-		$cosmos_row->addItem( ALItem::newFromEditLink( 'MediaWiki:Cosmos-stickysidebar', 'Edit custom sticky sidebar' ) );
+		$cosmos_row->addItem( ALItem::newFromEditLink( 'Cosmos-navigation', 'Edit navigation' ) );
+		$cosmos_row->addItem( ALItem::newFromEditLink( 'Cosmos-toolbar', 'Edit toolbar' ) );
+		$cosmos_row->addItem( ALItem::newFromEditLink( 'Cosmos-tagline', 'Edit tagline' ) );
+		$cosmos_row->addItem( ALItem::newFromEditLink( 'Cosmos-customsidebar', 'Edit custom sidebar' ) );
+		$cosmos_row->addItem( ALItem::newFromEditLink( 'Cosmos-stickysidebar', 'Edit custom sticky sidebar' ) );
 		$cosmos_section->addRow( $cosmos_row );
 		$adminLinksTree->addSection( $cosmos_section );
 
