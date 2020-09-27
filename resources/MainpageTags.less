@@ -1,0 +1,60 @@
+.mainpage .CosmosRail {
+    display: none;
+}
+.mainpage #cosmos-pageBody-content {
+    width: 100%;
+}
+
+.main-page-tag-rcs {
+    position: relative;
+    width: 300px;
+    float: right;
+    clear: right
+}
+
+.main-page-tag-lcs-collapsed {
+    overflow: hidden;
+    height: 1%
+}
+
+.main-page-tag-lcs-exploded {
+    float: left;
+    width: 100%;
+    position: relative
+}
+@media only screen and (max-width:1083px) {
+    .main-page-tag-lcs-exploded,.lcs-container {
+        width: 100%
+    }
+}
+
+@media only screen and (min-width:1084px) {
+    .main-page-tag-rcs,
+    .rcs-container {
+        width: 300px
+    }
+}
+
+.main-page-tag-rcs {
+    padding: 0
+}
+
+@media only screen and (max-width:1023px) {
+    .main-page-tag-rcs {
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
+        column-count: 2;
+        clear: both;
+        float: none;
+        padding: 13px 10px 0;
+        width: auto
+    }
+}
+
+@media only screen and (min-width:1024px) {
+    .main-page-tag-rcs {
+        display: -ms-inline-flexbox;
+        display: -webkit-inline-flex;
+        display: inline-flex
+    }
+}
