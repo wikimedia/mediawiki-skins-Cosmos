@@ -4,6 +4,7 @@ Cosmos is a  MediaWiki skin designed and based off Fandom's Oasis skin. Designed
 ## Support
 To report issues with Cosmos, suggest features, or for any other assistance you require, you can:
 * Join it's Discord server, [here](https://discord.gg/nnT2Vhq)!
+* Ask on Phabricator, by using the [Cosmos tag](https://phabricator.wikimedia.org/tag/cosmos)!
 * Leave a message on the user talk page of Universal Omega, [here](https://www.mediawiki.org/wiki/User_talk:Universal_Omega)!
 * Check the [mediawiki.org documentation page](https://www.mediawiki.org/wiki/Skin:Cosmos) for Cosmos and see if that answers your question.
 ## Installation
