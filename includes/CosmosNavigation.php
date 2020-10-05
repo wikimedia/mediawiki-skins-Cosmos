@@ -297,7 +297,7 @@ class CosmosNavigation {
 			if (empty($link)) {
 				$href = '#';
 			}
-			else if ($link{0} == '#') {
+			else if ($link[0] == '#') {
 				$href = '#';
 			}
 			else {
