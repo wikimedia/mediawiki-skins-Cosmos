@@ -61,12 +61,7 @@
                 }
             }
         },
-        "skins.cosmos.legacy": {
-            "class": "ResourceLoaderSkinModule",
-            "features": [
-                "legacy"
-            ]
-        },
+
 	"skins.cosmos.rail": {
             "targets": [
                 "desktop",
