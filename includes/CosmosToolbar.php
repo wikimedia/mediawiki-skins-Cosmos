@@ -10,6 +10,14 @@
  * @author Universal Omega
  */
 
+namespace Cosmos;
+
+use Hooks;
+use ObjectCache;
+use Sanitizer;
+use SpecialPageFactory;
+use Title;
+
 if (!defined('MEDIAWIKI')) {
 	die(-1);
 }

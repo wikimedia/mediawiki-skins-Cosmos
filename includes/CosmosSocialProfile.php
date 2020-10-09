@@ -1,5 +1,11 @@
 <?php
-use Cosmos\Config;
+namespace Cosmos;
+
+use ExtensionRegistry;
+use Html;
+use Sanitizer;
+use Title;
+use User;
 
 class CosmosSocialProfile {
 

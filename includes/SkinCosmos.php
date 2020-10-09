@@ -4,6 +4,7 @@
  *
  * @ingroup Skins
  */
+
 use Cosmos\Config;
 
 class SkinCosmos extends SkinTemplate {
@@ -14,7 +15,7 @@ class SkinCosmos extends SkinTemplate {
 	public $stylename = 'Cosmos';
 
 	/** @var string */
-	public $template = 'CosmosTemplate';
+	public $template = 'Cosmos\\CosmosTemplate';
 	
 	/**
 	 * @param OutputPage $out

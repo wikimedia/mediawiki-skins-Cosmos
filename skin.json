@@ -20,15 +20,15 @@
     },
     "AutoloadClasses": {
         "SkinCosmos": "includes/SkinCosmos.php",
-        "CosmosTemplate": "includes/CosmosTemplate.php",
-        "CosmosNavigation": "includes/CosmosNavigation.php",
-        "CosmosToolbar": "includes/CosmosToolbar.php",
-        "CosmosHooks": "includes/CosmosHooks.php",
+        "Cosmos\\CosmosTemplate": "includes/CosmosTemplate.php",
+        "Cosmos\\CosmosSocialProfile": "includes/CosmosSocialProfile.php",
+        "Cosmos\\CosmosNavigation": "includes/CosmosNavigation.php",
+        "Cosmos\\CosmosToolbar": "includes/CosmosToolbar.php",
+        "Cosmos\\CosmosHooks": "includes/CosmosHooks.php",
         "Cosmos\\Icon": "includes/Icon.php",
         "Cosmos\\Config": "includes/Config.php",
         "Cosmos\\LessUtil": "includes/LessUtil.php",
-        "Cosmos\\ResourceLoaderLessModule": "includes/ResourceLoaderLessModule.php",
-        "CosmosSocialProfile": "includes/CosmosSocialProfile.php"
+        "Cosmos\\ResourceLoaderLessModule": "includes/ResourceLoaderLessModule.php"
     },
     "ResourceModules": {
         "skins.cosmos": {
@@ -211,13 +211,13 @@
     },
     "Hooks": {
 	"AdminLinks": [
-		"CosmosHooks::addToAdminLinks"
+		"Cosmos\\CosmosHooks::addToAdminLinks"
 	],
 	"GetPreferences": [
-		"CosmosHooks::onGetPreferences"
+		"Cosmos\\CosmosHooks::onGetPreferences"
 	],
 	"OutputPageBodyAttributes": [
-		"CosmosHooks::onOutputPageBodyAttributes"
+		"Cosmos\\CosmosHooks::onOutputPageBodyAttributes"
 	]
     },
     "DefaultUserOptions": {

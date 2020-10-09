@@ -1,5 +1,15 @@
 <?php
-class CosmosHooks extends Hooks {
+namespace Cosmos;
+
+use ALItem;
+use ALRow;
+use ALSection;
+use ALTree;
+use OutputPage;
+use Skin;
+use Title;
+
+class CosmosHooks {
 	public static function onGetPreferences($user, &$preferences) {
 		$preferences['cosmos-mobile-responsiveness'] = [
 			'type' => 'check',

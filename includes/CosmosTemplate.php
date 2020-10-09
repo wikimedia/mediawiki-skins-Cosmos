@@ -4,9 +4,21 @@
  *
  * @ingroup Skins
  */
-use Cosmos\Config;
-use Cosmos\Icon;
+namespace Cosmos;
+
+use BaseTemplate;
+use ExtensionRegistry;
+use Hooks;
+use Html;
+use Linker;
+use ManageWiki;
 use MediaWiki\MediaWikiServices;
+use Sanitizer;
+use SiteStats;
+use Skin;
+use Title;
+use WantedPagesPage;
+use WebRequest;
 
 class CosmosTemplate extends BaseTemplate {
 	/**
@@ -14,6 +26,7 @@ class CosmosTemplate extends BaseTemplate {
 	 */
 	public function execute() {
 		$config = new Config();
+		/** @var Skin */
 		$skin = $this->getSkin();
 
 		$this->getNotifications($this->data, $config);
