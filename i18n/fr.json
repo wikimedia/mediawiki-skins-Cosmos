@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"Universal Omega"
+		]
+	},
+	"cosmos-desc": "Cosmos est un habillage conçu et basé sur l’habillage Oasis de Fandom. Conçu pour améliorer leur look, et fournir un habillage Médiawiki efficace pour les utilisateurs non Fandom, ou pour les utilisateurs sortant de Fandom.",
+	"cosmos-anonymous": "Anonyme",
+	"cosmos-counter-label": "{{PLURAL:$1|Article|Articles}}",
+	"cosmos-createpage-header": "Créer un nouvel article",
+	"cosmos-createpage-input-label": "Écrire le titre de votre page ici:",
+	"cosmos-createpage-next": "Suivant",
+	"cosmos-createpage-dialoge-text": "Nous avons actuellement <b>$1</b> {{PLURAL:$1|article|articles}} sur $2. Tapez le nom de votre article ci-dessus ou cliquez sur un des titres ci-dessous et commencez à écrire !",
+	"cosmos-personaltools-userpage": "Page utilisateur",
+	"cosmos-personaltools-usertalk": "Discussion utilisateur",
+	"cosmos-personaltools-anontalk": "Ma discussion",
+	"cosmos-notifications-nomessages": "Vous n’avez pas de nouveau message !",
+	"cosmos-notifications-nonotifs": "Vous n’avez pas de nouvelle notification !",
+	"cosmos-action-addsection": "Nouveau sujet",
+	"cosmos-action-cancel": "Annuler",
+	"cosmos-action-backtopage": "Retour à $1",
+	"cosmos-action-back": "Retour",
+	"cosmos-upload": "Télécharger le fichier",
+	"cosmos-add-new-page-title": "Ajouter une nouvelle page",
+	"cosmos-add-new-page-text": "Ajouter",
+	"cosmos-anon-add-new-page-text": "Ajouter une nouvelle page",
+	"cosmos-recentchanges": "Modifications récentes",
+	"cosmos-administration": "Administration",
+	"cosmos-adminlinks": "Liens administrateur",
+	"cosmos-explore": "Explorer",
+	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Page aléatoire\n**Special:NewFiles|Nouveaux fichiers\n**Special:WantedPages|Pages demandées",
+	"prefs-cosmos": "Habillage Cosmos",
+	"prefs-cosmos-responsiveness": "Réactivité mobile",
+	"cosmos-mobile-preference": "Permettre la version mobile réactive sur l’habillage Cosmos",
+	"cosmos-user-blocked": "Bloqué"
+}

@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"cosmos-desc": "Cosmos är ett utseende baserat på Fandoms Oasis-utseende. Det är designat för att förbättra deras design och tillhandahålla ett effektivt MediaWiki-utseende för användare som inte har använt Fandom eller användare som har gjort det.",
+	"cosmos-anonymous": "Anonym",
+	"cosmos-counter-label": "{{PLURAL:$1|artikel|artiklar}}",
+	"cosmos-createpage-header": "Skapa en ny artikel",
+	"cosmos-createpage-input-label": "Skriv din sidtitel här:",
+	"cosmos-createpage-next": "Nästa",
+	"cosmos-createpage-dialoge-text": "Vi har för tillfället <b>$1</b> {{PLURAL:$1|artikel|artiklar}} på $2. Skriv namnet på din artikel ovan eller klicka på en av titlarna nedan och börja skriva!",
+	"cosmos-personaltools-userpage": "Användarsida",
+	"cosmos-personaltools-usertalk": "Användardiskussion",
+	"cosmos-personaltools-anontalk": "Min diskussion",
+	"cosmos-notifications-nomessages": "Du har inga nya meddelanden!",
+	"cosmos-notifications-nonotifs": "Du har inga nya aviseringar!",
+	"cosmos-action-addsection": "Nytt ämne",
+	"cosmos-action-cancel": "Avbryt",
+	"cosmos-action-backtopage": "Tillbaka till $1",
+	"cosmos-action-back": "Tillbaka",
+	"cosmos-upload": "Ladda upp fil",
+	"cosmos-add-new-page-title": "Lägg till sida",
+	"cosmos-add-new-page-text": "Lägg till",
+	"cosmos-anon-add-new-page-text": "Lägg till ny sida",
+	"cosmos-recentchanges": "Senaste ändringar",
+	"cosmos-administration": "Administration",
+	"cosmos-adminlinks": "Administrationslänkar",
+	"cosmos-explore": "Utforska",
+	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Slumpsida\n**Special:NewFiles|Nya filer\n**Special:WantedPages|Bevakade sidor",
+	"prefs-cosmos": "Cosmos-utseende",
+	"prefs-cosmos-responsiveness": "Mobil responsivitet",
+	"cosmos-mobile-preference": "Aktivera responsiva mobilversionen av utseendet Cosmos",
+	"cosmos-user-blocked": "Blockerad"
+}

@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rail"
+		]
+	},
+	"skinname-cosmos": "Kosmos",
+	"cosmos-desc": "Kosmos jest skórką opartą i zaprojektowaną na wzór skórki Oasis od Fandomu. Stworzona, aby ulepszyć ich projekt i dostarczyć sprawną skórkę MediaWiki dla użytkowników poza Fandomem, lub dla osób przenoszących się z Fandomu",
+	"cosmos-anonymous": "Anonimowy użytkownik",
+	"cosmos-counter-label": "{{PLURAL:$1|artykuł|artykuły|artykułów}}",
+	"cosmos-createpage-header": "Utwórz nowy artykuł",
+	"cosmos-createpage-input-label": "Wpisz tutaj tytuł strony:",
+	"cosmos-createpage-next": "Dalej",
+	"cosmos-personaltools-userpage": "Strona użytkownika",
+	"cosmos-personaltools-usertalk": "Dyskusja użytkownika",
+	"cosmos-personaltools-anontalk": "Moja dyskusja",
+	"cosmos-notifications-nomessages": "Nie masz nowych wiadomości!",
+	"cosmos-notifications-nonotifs": "Nie masz nowych powiadomień!",
+	"cosmos-action-addsection": "Nowy wątek",
+	"cosmos-action-cancel": "Anuluj",
+	"cosmos-action-backtopage": "Wróć do $1",
+	"cosmos-action-back": "Wstecz",
+	"cosmos-upload": "Prześlij plik",
+	"cosmos-add-new-page-title": "Dodaj nową stronę",
+	"cosmos-add-new-page-text": "Dodaj",
+	"cosmos-anon-add-new-page-text": "Dodaj nową stronę",
+	"cosmos-recentchanges": "Ostatnie zmiany",
+	"cosmos-administration": "Administracja",
+	"cosmos-adminlinks": "Linki dla administratorów",
+	"cosmos-explore": "Odkrywaj",
+	"prefs-cosmos": "Skórka Kosmos",
+	"prefs-cosmos-responsiveness": "Mobilna responsywność",
+	"cosmos-mobile-preference": "Włącz responsywną mobilnie wersję skórki Kosmos",
+	"cosmos-user-blocked": "Zablokowany",
+	"cosmos.css": "/* Umieszczony tutaj kod CSS zostanie załadowany wyłącznie przez użytkowników korzystających ze skórki Cosmos */",
+	"cosmos.js": "/* Umieszczony tutaj kod JavaScript zostanie załadowany wyłącznie przez użytkowników korzystających ze skórki Cosmos */"
+}

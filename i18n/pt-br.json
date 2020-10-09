@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Addad de Oliveira"
+		]
+	},
+	"cosmos-desc": "Cosmos é um tema desenhado e baseado no tema Oasis do Fandom. Projetado para melhorar seu design e fornecer um tema no MediaWiki eficiente para usuários não-Fandom ou para usuários em transição fora do Fandom.",
+	"cosmos-anonymous": "Anônimo",
+	"cosmos-counter-label": "{{PLURAL:$1|Artigo|Artigos}}",
+	"cosmos-createpage-header": "Criar uma novo artigo",
+	"cosmos-createpage-input-label": "Escreva o título da sua página aqui:",
+	"cosmos-createpage-next": "Próximo",
+	"cosmos-createpage-dialoge-text": "Atualmente temos <b>$1</b> {{PLURAL:$1|artigo|artigos}} em $2. Digite o nome do seu artigo acima ou clique em um dos títulos abaixo e comece a escrever!",
+	"cosmos-personaltools-userpage": "Pagina de usuário",
+	"cosmos-personaltools-usertalk": "Página de discussão do usuário",
+	"cosmos-personaltools-anontalk": "Minhas discussões",
+	"cosmos-notifications-nomessages": "Você não tem novas mensagens!",
+	"cosmos-notifications-nonotifs": "Você não tem novas notificações!",
+	"cosmos-action-addsection": "Novo tópico",
+	"cosmos-action-cancel": "Cancelar",
+	"cosmos-action-backtopage": "Voltar para $1",
+	"cosmos-action-back": "Voltar",
+	"cosmos-upload": "Enviar arquivo",
+	"cosmos-add-new-page-title": "Adicionar nova página",
+	"cosmos-add-new-page-text": "Adicionar",
+	"cosmos-anon-add-new-page-text": "Adicionar uma nova página",
+	"cosmos-recentchanges": "Mudanças recentes",
+	"cosmos-administration": "Administração",
+	"cosmos-adminlinks": "Links administrativos",
+	"cosmos-explore": "Explorar",
+	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Página aleatória\n**Special:NewFiles|Novos arquivos\n**Special:WantedPages|Páginas procuradas",
+	"prefs-cosmos": "Tema Cosmos",
+	"prefs-cosmos-responsiveness": "Capacidade de resposta móvel",
+	"cosmos-mobile-preference": "Ativar versão responsiva móvel do tema do Cosmos",
+	"cosmos-user-blocked": "Bloqueado"
+}

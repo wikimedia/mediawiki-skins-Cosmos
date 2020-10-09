@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"MuratTheTurkish"
+		]
+	},
+	"cosmos-desc": "Cosmos, Fandom'un Oasis görünümünden yola çıkılarak tasarlanmış bir görünümdür. Tasarımlarını geliştirmek ve Fandom dışındaki kullanıcılar veya Fandom'dan geçiş yapan kullanıcılar için verimli bir MediaWiki görünümü sağlamak için tasarlanmıştır.",
+	"cosmos-anonymous": "Anonim",
+	"cosmos-counter-label": "{{PLURAL:$1|Madde|Maddeler}}",
+	"cosmos-createpage-header": "Yeni bir madde oluştur",
+	"cosmos-createpage-input-label": "Sayfa başlığınızı buraya yazın:",
+	"cosmos-createpage-next": "Sonraki",
+	"cosmos-createpage-dialoge-text": "Şu anda $2 sitesinde <b>$1</b> madde var. Yukarıya madde adınızı yazın veya aşağıdaki başlıklardan birine tıklayın ve yazmaya başlayın!",
+	"cosmos-personaltools-userpage": "Kullanıcı sayfası",
+	"cosmos-personaltools-usertalk": "Kullanıcı mesaj",
+	"cosmos-personaltools-anontalk": "Mesaj sayfam",
+	"cosmos-notifications-nomessages": "Yeni mesajınız yok!",
+	"cosmos-notifications-nonotifs": "Yeni bildiriminiz yok!",
+	"cosmos-action-addsection": "Yeni konu",
+	"cosmos-action-cancel": "İptal",
+	"cosmos-action-backtopage": "$1 sayfasına geri dön",
+	"cosmos-action-back": "Geri",
+	"cosmos-upload": "Dosya Yükle",
+	"cosmos-add-new-page-title": "Yeni Sayfa Ekle",
+	"cosmos-add-new-page-text": "Ekle",
+	"cosmos-anon-add-new-page-text": "Yeni sayfa ekle",
+	"cosmos-recentchanges": "Son Değişiklikler",
+	"cosmos-administration": "Yönetim",
+	"cosmos-adminlinks": "Hizmetli Bağlantıları",
+	"cosmos-explore": "Keşfet",
+	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Rastgele sayfa\n**Special:NewFiles|Yeni dosyalar\n**Special:WantedPages|İstenen sayfalar",
+	"prefs-cosmos": "Cosmos görünümü",
+	"prefs-cosmos-responsiveness": "Mobil yanıt vermesi",
+	"cosmos-mobile-preference": "Cosmos görünümünün mobil duyarlı sürümünü etkinleştirin",
+	"cosmos-user-blocked": "Engellendi"
+}

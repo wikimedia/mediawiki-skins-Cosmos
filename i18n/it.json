@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16",
+			"Mpayansilva"
+		]
+	},
+	"cosmos-anonymous": "Anonimo",
+	"cosmos-counter-label": "{{PLURAL:$1|Voce|Voci}}",
+	"cosmos-createpage-header": "Crea una nuova voce",
+	"cosmos-createpage-next": "Avanti",
+	"cosmos-personaltools-userpage": "Pagina utente",
+	"cosmos-personaltools-usertalk": "Discussioni utente",
+	"cosmos-notifications-nomessages": "Non hai nuovi messaggi!",
+	"cosmos-notifications-nonotifs": "Non hai nuove notifiche.",
+	"cosmos-action-addsection": "Nuovo argomento",
+	"cosmos-action-cancel": "Annulla",
+	"cosmos-action-backtopage": "Torna a $1",
+	"cosmos-action-back": "Indietro",
+	"cosmos-upload": "Carica file",
+	"cosmos-add-new-page-title": "Aggiungi nuova pagina",
+	"cosmos-add-new-page-text": "Aggiungi",
+	"cosmos-anon-add-new-page-text": "Aggiungi nuova pagina",
+	"cosmos-recentchanges": "Ultime modifiche",
+	"cosmos-administration": "Amministrazione",
+	"cosmos-adminlinks": "Link di amministrazione",
+	"cosmos-explore": "Esplora",
+	"cosmos-user-blocked": "Bloccato"
+}
