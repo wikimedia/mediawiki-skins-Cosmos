@@ -5,8 +5,6 @@
  */
 
 namespace Cosmos;
-
-use Cosmos\Config;
 class LessUtil {
 
 	const HEX_REG_EXP = '/#([a-f0-9]{3,6})/i';

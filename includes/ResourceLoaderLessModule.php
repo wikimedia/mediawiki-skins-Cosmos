@@ -5,13 +5,9 @@
  */
 
 namespace Cosmos;
-
-use Cosmos\Config;
-use Cosmos\LessUtil;
-use MediaWiki\MediaWikiServices;
+use ExtensionRegistry;
 use ResourceLoaderContext;
 use ResourceLoaderFileModule;
-use ExtensionRegistry;
 
 class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 	/**	

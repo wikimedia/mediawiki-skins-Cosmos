@@ -4,9 +4,9 @@
  *
  * @ingroup Skins
  */
-use MediaWiki\MediaWikiServices;
 use Cosmos\Config;
 use Cosmos\Icon;
+use MediaWiki\MediaWikiServices;
 class CosmosTemplate extends BaseTemplate {
 	/**
 	 * Outputs the entire contents of the page
