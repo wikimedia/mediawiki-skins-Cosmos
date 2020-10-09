@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<ruleset>
+	<file>.</file>
+	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
+		<exclude name="Generic.Arrays.DisallowLongArraySyntax.Found" />
+		<exclude name="Generic.ControlStructures.InlineControlStructure.NotAllowed" />
+		<exclude name="Generic.Files.LineLength.TooLong" />
+		<exclude name="Generic.Functions.FunctionCallArgumentSpacing.SpaceBeforeComma" />
+		<exclude name="Generic.PHP.ForbiddenFunctions.FoundWithAlternative" />
+		<exclude name="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed" />
+		<exclude name="MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures" />
+		<exclude name="MediaWiki.Classes.UnusedUseStatement.UnnecessaryUse" />
+		<exclude name="MediaWiki.Classes.UnsortedUseStatements.UnsortedUse" />
+		<exclude name="MediaWiki.Classes.UnusedUseStatement.UnusedUse" />
+		<exclude name="MediaWiki.Commenting.FunctionAnnotations.UnrecognizedAnnotation" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationProtected" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationPublic" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.MissingParamTag" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.MissingReturn" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.NoParamType" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.ParamNameNoMatch" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.ParamPassByReference" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.WrongStyle" />
+		<exclude name="MediaWiki.ControlStructures.IfElseStructure.SpaceBeforeElse" />
+		<exclude name="MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName" />
+		<exclude name="MediaWiki.Usage.ForbiddenFunctions.sizeof" />
+		<exclude name="MediaWiki.WhiteSpace.DisallowEmptyLineFunctions.NoEmptyLine" />
+		<exclude name="MediaWiki.WhiteSpace.MultipleEmptyLines.MultipleEmptyLines" />
+		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.NewLineComment" />
+		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.SingleSpaceBeforeSingleLineComment" />
+		<exclude name="MediaWiki.WhiteSpace.SpaceyParenthesis.SingleSpaceAfterOpenParenthesis" />
+		<exclude name="MediaWiki.WhiteSpace.SpaceyParenthesis.SingleSpaceBeforeCloseParenthesis" />
+		<exclude name="PSR2.Classes.PropertyDeclaration.ScopeMissing" />
+		<exclude name="PSR2.ControlStructures.ElseIfDeclaration.NotAllowed" />
+		<exclude name="PSR2.Files.EndFileNewline.TooMany" />
+		<exclude name="PSR2.Methods.FunctionClosingBrace.SpacingBeforeClose" />
+		<exclude name="PSR2.Namespaces.NamespaceDeclaration.BlankLineAfter" />
+		<exclude name="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse" />
+		<exclude name="PSR12.Files.ImportStatement.LeadingSlash" />
+		<exclude name="PSR12.Properties.ConstantVisibility.NotFound" />
+		<exclude name="Squiz.Classes.SelfMemberReference.SpaceBefore" />
+		<exclude name="Squiz.Classes.SelfMemberReference.NotUsed" />
+		<exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterOpen" />
+		<exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterReference" />
+		<exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingBeforeClose" />
+		<exclude name="Squiz.Scope.MemberVarScope.Missing" />
+		<exclude name="Squiz.Scope.MethodScope.Missing" />
+		<exclude name="Squiz.Strings.ConcatenationSpacing.PaddingFound" />
+		<exclude name="Squiz.WhiteSpace.FunctionSpacing.After" />
+		<exclude name="Squiz.WhiteSpace.ObjectOperatorSpacing.Before" />
+		<exclude name="Squiz.WhiteSpace.OperatorSpacing.NoSpaceAfter" />
+		<exclude name="Squiz.WhiteSpace.OperatorSpacing.NoSpaceBefore" />
+		<exclude name="Squiz.WhiteSpace.ScopeClosingBrace.Indent" />
+		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine" />
+	</rule>
+
+	<arg name="bootstrap" value="./vendor/mediawiki/mediawiki-codesniffer/utils/bootstrap-ci.php"/>
+	<arg name="extensions" value="php,php5,inc"/>
+	<arg name="encoding" value="UTF-8"/>
+</ruleset>
