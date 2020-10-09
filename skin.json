@@ -47,6 +47,7 @@
                 "resources/screen-common.less": {
                     "media": "screen"
                 },
+                "resources/screen-responsive.less": {},
                 "resources/screen-desktop.less": {
                     "media": "screen and (min-width: 851px)"
                 },
@@ -68,9 +69,7 @@
                 "mobile"
             ],
             "styles": {
-                "resources/CosmosRail.less": {
-                    "media": "screen"
-                }
+                "resources/CosmosRail.less": {}
             }
         },
         "skins.cosmos.portableinfobox": {
@@ -92,9 +91,7 @@
                 "mobile"
             ],
             "styles": {
-                "resources/extensions/PortableInfobox/PortableInfoboxDefaultTheme.less": {
-                    "media": "screen"
-                }
+                "resources/extensions/PortableInfobox/PortableInfoboxDefaultTheme.less": {}
             }
         },
         "skins.cosmos.portableinfobox.europa": {
@@ -104,9 +101,7 @@
                 "mobile"
             ],
             "styles": {
-                "resources/extensions/PortableInfobox/PortableInfoboxEuropaTheme.less": {
-                    "media": "screen"
-                }
+                "resources/extensions/PortableInfobox/PortableInfoboxEuropaTheme.less": {}
             }
         },
         "skins.cosmos.socialprofile": {

@@ -1,0 +1,137 @@
+@media screen and (min-width: 850px) {
+	body {
+	    & when( @main-background-image-isset = 1 ) {
+		&::after {
+			content: "";
+		    background: @main-background-image;
+		    opacity: 1;
+		    top: -100px;
+		    left: 0;
+		    bottom: 0;
+		    right: 0;
+		    background-size: @main-background-image-size;
+		    background-repeat: @main-background-image-repeat;
+		    position: @main-background-image-position;
+		    z-index: -1;   
+		}
+	    }
+	}
+	#mw-content, #catlinks, .CosmosRail .module, .CosmosRail .rail-module {
+	    background-color: @content-opacity-level;
+	}
+}
+
+@media all and (max-width:1280px) {
+	.cosmos-userButton-label {
+		display: none;
+	}
+	#cosmos-userButton-avatar {
+		margin-right: 0;
+	}
+}
+@media all and (max-width:750px) {
+	#cosmos-userOptions-messages {
+		display: none;
+	}
+}
+
+
+@media only screen and (max-width: 1083px) {
+	.cosmos-header {
+		height: 115px;
+		&::before {
+			background: @header-background-color2;
+		}
+	}
+	.cosmos-header__wordmark {
+		height: 49px;
+		margin-bottom: 0;
+		max-width: 175px;
+	}
+	.cosmos-header__top-container {
+		height: 69px;
+	}
+	.cosmos-header__sitename {
+		font-size: 24px;
+		margin-top: 20px;
+		max-height: 72px;
+		white-space: normal;
+		word-wrap: break-word;
+	}
+	.cosmos-header__counter {
+		margin-top: 22px;
+	}
+	.cosmos-header__counter-value {
+		font-size: 18px;
+	}
+	.cosmos-header__counter-label {
+		font-size: 10px;
+	}
+	.cosmos-header__local-navigation {
+		clear: both;
+	}
+}
+@media only screen and (min-width: 1084px) {
+	.cosmos-header__sitename {
+		a {
+			display: inline-block;
+			height: 100%;
+			line-height: 1.2;
+			text-decoration: none;
+		}
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}
+@media only screen and (max-width: 1023px) {
+	.cosmos-header__local-navigation {
+		.wds-tabs__tab-label {
+			font-size: 10px;
+		}
+	}
+}
+
+@media screen and (max-width: 1099px) and (min-width: 851px) {
+	#mw-content {
+		margin-top: 0;
+	}
+}
+@media (max-width: 1280px) {
+	#cosmos-footerIcons-list {
+		direction: ltr;
+	}
+	.cosmos-footerIcons-listItem {
+		margin: 0 15px 15px 0;
+	}
+}
+
+@media screen and (max-width: 1099px) and (min-width: 851px) {
+	#mw-content-wrapper {
+		margin-top: auto;
+	}
+}
+
+@media only screen and (max-width: 1083px) and (min-width: 1024px) {
+	#mw-content-wrapper {
+		    padding: 0 10px;
+		    width: 984px;
+	}
+}
+@media only screen and (max-width: 1083px) {
+	#mw-content-wrapper {
+		    padding: 0 24px;
+		    width: auto;
+	}
+}
+@media only screen and (max-width: 1595px) and (min-width: 1084px) {
+	#mw-content-wrapper {
+		    padding: 0 20px;
+		    width: 1024px;
+	}
+}
+@media only screen and (min-width: 1596px) {
+	#mw-content-wrapper {
+		    padding: 0 30px;
+		    width: 1178px;
+	}
+}
