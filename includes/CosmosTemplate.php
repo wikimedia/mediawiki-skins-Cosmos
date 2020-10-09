@@ -733,8 +733,8 @@ class CosmosTemplate extends BaseTemplate {
 			$talk['class'] .= ' cosmos-actions-talk';
 		}
 
-		$primary;
-		$secondary;
+		$primary = '';
+		$secondary = '';
 		if ($isEditing || $isSpecialAction) {
 			if ($isTalkPage) {
 				// Primary button leads back to talk page
