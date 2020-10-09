@@ -7,6 +7,7 @@
 use Cosmos\Config;
 use Cosmos\Icon;
 use MediaWiki\MediaWikiServices;
+
 class CosmosTemplate extends BaseTemplate {
 	/**
 	 * Outputs the entire contents of the page
@@ -51,7 +52,6 @@ class CosmosTemplate extends BaseTemplate {
 		else {
 			return $html;
 		}
-
 	}
 
 	protected function buildBanner(string & $html, Config $config) {
@@ -174,7 +174,6 @@ class CosmosTemplate extends BaseTemplate {
 			}
 		}
 		$html .= Html::closeElement('ul');
-
 	}
 	protected function buildBannerLogo(string & $html, Config $config) {
 		// Open container div
@@ -410,7 +409,6 @@ class CosmosTemplate extends BaseTemplate {
 
 			$html .= Html::closeElement('div');
 		}
-
 	}
 
 	/**
@@ -545,7 +543,6 @@ class CosmosTemplate extends BaseTemplate {
 		$this->buildToolbar($html, $config);
 
 		// Close container element for page
-		
 	}
 	protected function buildRail(string & $html, Config $config) {
 		if (($this->getMsg('cosmos-customsidebar')
@@ -789,7 +786,7 @@ class CosmosTemplate extends BaseTemplate {
 				array_unshift($dropdown, $edit);
 			}
 		}
-		else if ($isHistory || $isViewSource) {
+		elseif ($isHistory || $isViewSource) {
 			if ($isTalkPage) {
 				// Primary button leads back to talk page
 				if (!empty($talk)) {
@@ -1135,4 +1132,3 @@ class CosmosTemplate extends BaseTemplate {
 	}
 
 }
-

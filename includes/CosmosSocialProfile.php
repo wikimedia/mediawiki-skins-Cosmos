@@ -1,5 +1,6 @@
 <?php
 use Cosmos\Config;
+
 class CosmosSocialProfile {
 
 	static function getUser($parser, $user) {
@@ -57,4 +58,3 @@ class CosmosSocialProfile {
 		}
 	}
 }
-

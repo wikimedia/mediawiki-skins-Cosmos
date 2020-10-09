@@ -5,6 +5,7 @@
  * @ingroup Skins
  */
 use Cosmos\Config;
+
 class SkinCosmos extends SkinTemplate {
 	/** @var string */
 	public $skinname = 'cosmos';

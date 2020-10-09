@@ -1,6 +1,8 @@
 <?php
 namespace Cosmos;
+
 use \Html;
+
 class Icon {
 	private static $icons = [];
 

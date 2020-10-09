@@ -5,6 +5,7 @@
  */
 
 namespace Cosmos;
+
 class LessUtil {
 
 	const HEX_REG_EXP = '/#([a-f0-9]{3,6})/i';
@@ -18,7 +19,7 @@ class LessUtil {
 		'footer-color'
 	);
 
-	static $cosmosSettings = [];
+	private static $cosmosSettings = [];
 
 	/**
 	 * Gets theme settings from Config class
@@ -131,10 +132,10 @@ class LessUtil {
 			if ($clrR == $clrMax) {
 				$H = $deltaB - $deltaG;
 			}
-			else if ($clrG == $clrMax) {
+			elseif ($clrG == $clrMax) {
 				$H = (1 / 3) + $deltaR - $deltaB;
 			}
-			else if ($clrB == $clrMax) {
+			elseif ($clrB == $clrMax) {
 				$H = (2 / 3) + $deltaG - $deltaR;
 			}
 			if (0 > $H) $H += 1;
@@ -365,4 +366,3 @@ class LessUtil {
 				return $rgb;
 			}
 		}
-		

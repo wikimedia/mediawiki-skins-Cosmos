@@ -5,6 +5,7 @@
  */
 
 namespace Cosmos;
+
 use ExtensionRegistry;
 use ResourceLoaderContext;
 use ResourceLoaderFileModule;

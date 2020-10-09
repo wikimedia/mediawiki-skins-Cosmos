@@ -1,6 +1,8 @@
 <?php
 namespace Cosmos;
+
 use ExtensionRegistry;
+
 class Config {
 
 	private const DEFAULT_CONFIG = [
@@ -213,4 +215,3 @@ class Config {
 			}
 		}
 	}
-	

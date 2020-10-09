@@ -15,6 +15,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 use Cosmos\Icon;
+
 class CosmosNavigation {
 
 	/**
@@ -297,7 +298,7 @@ class CosmosNavigation {
 			if (empty($link)) {
 				$href = '#';
 			}
-			else if ($link[0] == '#') {
+			elseif ($link[0] == '#') {
 				$href = '#';
 			}
 			else {

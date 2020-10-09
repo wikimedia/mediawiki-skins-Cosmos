@@ -180,7 +180,7 @@ class CosmosToolbar {
 				if ($node['depth'] == $lastDepth) {
 					$node['parentIndex'] = $nodes[$i]['parentIndex'];
 				}
-				else if ($node['depth'] == $lastDepth + 1) {
+				elseif ($node['depth'] == $lastDepth + 1) {
 					$node['parentIndex'] = $i;
 				}
 				else {
@@ -238,7 +238,7 @@ class CosmosToolbar {
 			if (empty($link)) {
 				$href = '#';
 			}
-			else if ($link[0] == '#') {
+			elseif ($link[0] == '#') {
 				$href = '#';
 			}
 			else {
