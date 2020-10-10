@@ -515,7 +515,6 @@ class CosmosTemplate extends BaseTemplate {
 	 * @return string html
 	 */
 	protected function BuildWiki(string & $html, Config $config) {
-
 		// Open container element for page body (i.e. actual content such as the
 		// article and the sidebar)
 		$html .= Html::openElement('section', ['id' => 'mw-content']);
@@ -1058,7 +1057,6 @@ class CosmosTemplate extends BaseTemplate {
 	 * @param $html string The string onto which the HTML should be appended
 	 */
 	protected function buildToolbar(string & $html, Config $config) {
-
 		// Open container element for toolbar
 		$html .= Html::openElement('section', ['id' => 'cosmos-toolbar']);
 

@@ -25,7 +25,6 @@ class LessUtil {
 	 * Gets theme settings from Config class
 	 */
 	public static function getCosmosSettings() {
-
 		// Load the 5 deafult colors by theme here (eg: in case the wiki has an override but the user doesn't have overrides).
 		if (empty(static::$cosmosSettings)) {
 			$themeSettings = new Config;
@@ -62,7 +61,6 @@ class LessUtil {
 	 * Calculates whether currently used theme is light or dark
 	 */
 	public static function isThemeDark($background, $cosmosSettings = null) {
-
 		if (empty($cosmosSettings)) {
 			$cosmosSettings = self::getCosmosSettings();
 		}
@@ -86,7 +84,6 @@ class LessUtil {
 	 * @return array HSL set
 	 */
 	private static function rgb2hsl($rgbhex) {
-
 		if ($rgbhex[0] != '#') {
 			$rgbhex = self::colorNameToHex($rgbhex);
 		}

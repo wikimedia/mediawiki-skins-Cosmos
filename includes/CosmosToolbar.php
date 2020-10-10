@@ -23,7 +23,6 @@ class CosmosToolbar {
 	 * @author Inez Korczynski <inez@wikia.com>
 	 */
 	public static function parseItem($line) {
-
 		$href = $specialCanonicalName = false;
 
 		$line_temp = explode('|', trim($line, '* '), 3);
@@ -104,7 +103,6 @@ class CosmosToolbar {
 	}
 
 	public function getCode() {
-
 		if (empty($menu)) {
 			$menu = $this->getMenu($this->getMenuLines());
 		}

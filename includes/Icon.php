@@ -443,7 +443,6 @@ class Icon {
 
 	protected function makeElement( string &$result, array $element,
 			int $width, int $height ) : void {
-
 		// TODO: Implement rescaling of element to match the given width and height
 
 		$result .= Html::element( $element['type'], $element['attributes'] );

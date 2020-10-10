@@ -25,7 +25,6 @@ class CosmosNavigation {
 	 * @author Inez Korczynski <inez@wikia.com>
 	 */
 	public static function parseItem($line) {
-
 		$href = $specialCanonicalName = false;
 
 		$line_temp = explode('|', trim($line, '* '), 3);
@@ -106,7 +105,6 @@ class CosmosNavigation {
 	}
 
 	public function getCode() {
-
 		if (empty($menu)) {
 			$menu = $this->getMenu($this->getMenuLines());
 		}
@@ -213,7 +211,6 @@ class CosmosNavigation {
 			$memc = ObjectCache::getLocalClusterInstance();
 			$memc->set($menuHash, $nodes, 60 * 60 * 24 * 3); // three days
 			
-
 			return $menu;
 		}
 	}
