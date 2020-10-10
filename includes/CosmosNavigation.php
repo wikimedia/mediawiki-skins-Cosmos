@@ -118,7 +118,7 @@ class CosmosNavigation {
 
 	public function getMenuLines() {
 		if (empty($lines)) {
-			$lines = CosmosNavigation::getMessageAsArray('Cosmos-navigation');
+			$lines = self::getMessageAsArray('Cosmos-navigation');
 		}
 
 		return $lines;

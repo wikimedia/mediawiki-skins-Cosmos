@@ -131,7 +131,7 @@ class CosmosTemplate extends BaseTemplate {
 				$wantedPageTitle = Title::newFromText($row->title, $row->namespace);
 
 				if ($wantedPageTitle instanceof Title && !$wantedPageTitle->isKnown() && (empty('/[:\/]+/') || !preg_match('/[:\/]+/', $wantedPageTitle->getText()))) {
-					$wantedPages[] = ['title' => $wantedPageTitle->getFullText() , 'url' => $wantedPageTitle->getLocalURL([static ::getPreferredEditorQueryParamName() => 'edit', 'source' => 'redlink', ]) , ];
+					$wantedPages[] = ['title' => $wantedPageTitle->getFullText() , 'url' => $wantedPageTitle->getLocalURL([static::getPreferredEditorQueryParamName() => 'edit', 'source' => 'redlink', ]) , ];
 					$fetchedTitlesCount++;
 				}
 			}

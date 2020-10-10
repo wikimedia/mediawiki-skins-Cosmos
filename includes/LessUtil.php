@@ -27,26 +27,26 @@ class LessUtil {
 	public static function getCosmosSettings() {
 
 		// Load the 5 deafult colors by theme here (eg: in case the wiki has an override but the user doesn't have overrides).
-		if (empty(static ::$cosmosSettings)) {
+		if (empty(static::$cosmosSettings)) {
 			$themeSettings = new Config;
 
-			static ::$cosmosSettings['banner-background-color'] = self::sanitizeColor($themeSettings->getString('banner-background-color'));
-			static ::$cosmosSettings['header-background-color'] = self::sanitizeColor($themeSettings->getString('header-background-color'));
-			static ::$cosmosSettings['content-background-color'] = self::sanitizeColor($themeSettings->getString('content-background-color'));
-			static ::$cosmosSettings['button-color'] = self::sanitizeColor($themeSettings->getString('button-color'));
-			static ::$cosmosSettings['link-color'] = self::sanitizeColor($themeSettings->getString('link-color'));
-			static ::$cosmosSettings['toolbar-color'] = self::sanitizeColor($themeSettings->getString('toolbar-color'));
-			static ::$cosmosSettings['footer-color'] = self::sanitizeColor($themeSettings->getString('footer-color'));
+			static::$cosmosSettings['banner-background-color'] = self::sanitizeColor($themeSettings->getString('banner-background-color'));
+			static::$cosmosSettings['header-background-color'] = self::sanitizeColor($themeSettings->getString('header-background-color'));
+			static::$cosmosSettings['content-background-color'] = self::sanitizeColor($themeSettings->getString('content-background-color'));
+			static::$cosmosSettings['button-color'] = self::sanitizeColor($themeSettings->getString('button-color'));
+			static::$cosmosSettings['link-color'] = self::sanitizeColor($themeSettings->getString('link-color'));
+			static::$cosmosSettings['toolbar-color'] = self::sanitizeColor($themeSettings->getString('toolbar-color'));
+			static::$cosmosSettings['footer-color'] = self::sanitizeColor($themeSettings->getString('footer-color'));
 
 			// RT:70673
-			foreach (static ::$cosmosSettings as $key => $val) {
+			foreach (static::$cosmosSettings as $key => $val) {
 				if (!empty($val)) {
-					static ::$cosmosSettings[$key] = trim($val);
+					static::$cosmosSettings[$key] = trim($val);
 				}
 			}
 		}
 
-		return static ::$cosmosSettings;
+		return static::$cosmosSettings;
 	}
 
 	/**

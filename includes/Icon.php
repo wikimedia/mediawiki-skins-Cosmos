@@ -372,18 +372,18 @@ class Icon {
 	];
 
 	public static function getIcon( string $iconName ) : ?Icon {
-		if ( isset( Icon::$icons[$iconName] ) ) {
+		if ( isset( self::$icons[$iconName] ) ) {
 			// If the requested icon is already part of the icon array, just return
 			// it immediately
-			return Icon::$icons[$iconName];
-		} elseif ( isset( Icon::$iconSources[$iconName] ) ) {
+			return self::$icons[$iconName];
+		} elseif ( isset( self::$iconSources[$iconName] ) ) {
 			// Otherwise, if the requested icon is part of the iconSources array,
 			// construct a new Icon object using the iconSources info, add it to the
 			// icon array and return it
-			$source = Icon::$iconSources[$iconName];
-			Icon::$icons[$iconName] = new Icon( $source['width'], $source['height'],
+			$source = self::$iconSources[$iconName];
+			self::$icons[$iconName] = new Icon( $source['width'], $source['height'],
 					$source['content'] );
-			return Icon::$icons[$iconName];
+			return self::$icons[$iconName];
 		} else {
 			// Finally, if the requested icon is not part of either array, just
 			// return null - no such icon exists

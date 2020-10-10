@@ -116,7 +116,7 @@ class CosmosToolbar {
 
 	public function getMenuLines() {
 		if (empty($lines)) {
-			$lines = CosmosToolbar::getMessageAsArray('Cosmos-toolbar');
+			$lines = self::getMessageAsArray('Cosmos-toolbar');
 		}
 
 		return $lines;
