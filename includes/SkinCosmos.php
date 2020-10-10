@@ -69,7 +69,7 @@ class SkinCosmos extends SkinTemplate {
 				]);
 			}
 		}
-		//Load SocialProfile styles if the respective configuration variables are enabled
+		// Load SocialProfile styles if the respective configuration variables are enabled
 		if (class_exists('UserProfilePage')) {
 			if ($config->isEnabled('modern-tabs')) {
 				$out->addModuleStyles([

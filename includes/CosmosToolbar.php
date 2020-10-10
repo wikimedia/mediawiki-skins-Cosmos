@@ -155,7 +155,8 @@ class CosmosToolbar {
 			$nodes['mainMenu'] = $mainMenu;
 
 			$memc = ObjectCache::getLocalClusterInstance();
-			$memc->set($menuHash, $nodes, 60 * 60 * 24 * 3); // three days
+			// three days
+			$memc->set($menuHash, $nodes, 60 * 60 * 24 * 3);
 			return $menu;
 		}
 	}
@@ -167,7 +168,8 @@ class CosmosToolbar {
 		if (is_array($lines) && count($lines) > 0) {
 			foreach ($lines as $line) {
 				if (trim($line) === '') {
-					continue; // ignore empty lines
+					// ignore empty lines
+					continue;
 					
 				}
 
@@ -202,7 +204,8 @@ class CosmosToolbar {
 
 	public function parseLine($line) {
 		$lineTmp = explode('|', trim($line, '* '), 2);
-		$lineTmp[0] = trim($lineTmp[0], '[]'); // for external links defined as [http://example.com] instead of just http://example.com
+		// for external links defined as [http://example.com] instead of just http://example.com
+		$lineTmp[0] = trim($lineTmp[0], '[]');
 		$internal = false;
 
 		if (count($lineTmp) == 2 && $lineTmp[1] != '') {

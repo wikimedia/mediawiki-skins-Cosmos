@@ -35,7 +35,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'html' );
 		$title = Title::newFromText($this->get('title'));
 		if (class_exists('UserProfilePage') && ($config->isEnabled('profile-tags') || $config->isEnabled('show-editcount') || $config->isEnabled('allow-bio')) && (is_object($title) && ($title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE) && !$title->isSubpage())) {
-			//Set up Cosmos-specific SocialProfile Elements
+			// Set up Cosmos-specific SocialProfile Elements
 			$profileOwner = Title::newFromText($this->get('title'))
 				->getText();
 			$parser = MediaWikiServices::getInstance()->getParser();
@@ -59,13 +59,13 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement('section', ['id' => 'cosmos-banner']);
 		// Open container div for banner content
 		$html .= Html::openElement('div', ['id' => 'cosmos-banner-content', 'class' => 'cosmos-pageAligned']);
-		//Build the mobile navigation
+		// Build the mobile navigation
 		$html .= Html::openElement('nav', ['class' => 'cosmos-mobile-navigation']);
 		$html .= Html::rawElement('div', ['class' => 'cosmos-button cosmos-button-primary cosmos-mobile-menu-button', 'onclick' => '$(".wds-tabs__tab").toggle()'], $this->getMsg('cosmos-mobile-menu-label')
 			->text());
 		$this->buildNavigation($html, $config);
 		$html .= Html::closeElement('nav');
-		//Build the logo
+		// Build the logo
 		$this->buildBannerLogo($html, $config);
 
 		// Build the search bar
@@ -98,7 +98,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::rawElement('div', ['id' => 'create-page-dialog__message'], $skin->msg('cosmos-createpage-dialoge-text', SiteStats::pagesInNs(0), $this->get('sitename')));
 		$html .= Html::openElement('div', ['class' => 'create-page-dialog__proposals']);
 		$html .= Html::openElement('ul', ['class' => 'articleProposals']);
-		//Get most wanted pages
+		// Get most wanted pages
 		foreach (self::getMostWantedPages() as $page) {
 			$html .= '<li><a href="' . $page['url'] . '" class="new">' . $page['title'] . '</a></li>';
 		}
@@ -150,9 +150,9 @@ class CosmosTemplate extends BaseTemplate {
 		$skin = $this->getSkin();
 		$append = '';
 		$html .= Html::openElement('ul', ['class' => 'wds-tabs']);
-		//Load site navigation links from MediaWiki:Cosmos-navigation
+		// Load site navigation links from MediaWiki:Cosmos-navigation
 		$html .= $cosmosNavigation->getCode();
-		//ManageWiki links
+		// ManageWiki links
 		if (ExtensionRegistry::getInstance()
 			->isLoaded('ManageWiki') && in_array(true, $wgManageWiki, true) === true) {
 			if ((!$permissionManager->userHasRight($skin->getUser(), 'managewiki')) && ($wgManageWikiForceSidebarLinks || $skin->getUser()
@@ -263,7 +263,7 @@ class CosmosTemplate extends BaseTemplate {
 			// Don't build the notifications into the personal menu, they are built into the top banner instead.
 			// to-do: convert to Skin::getPersonalToolsForMakeListItem (possibly)
 			if ($key !== 'adminlinks' && $key !== 'darkmode-link' && $key !== 'notifications-alert' && $key !== 'notifications-notice') {
-				//to-do: convert to Skin::makeListItem
+				// to-do: convert to Skin::makeListItem
 				$html .= Html::rawElement('li', [
 					'id' => 'pt-' . $key
 				], Html::rawElement('a', [
@@ -297,10 +297,10 @@ class CosmosTemplate extends BaseTemplate {
 	//       called multiple times, but supplied with different info
 	protected function buildNotifications(string & $html, Config $config) {
 		$skin = $this->getSkin();
-		//Partial credits to the Timeless skin:
+		// Partial credits to the Timeless skin:
 		if (ExtensionRegistry::getInstance()
 			->isLoaded('Echo')) {
-			//to-do: convert to Skin::getPersonalToolsForMakeListItem
+			// to-do: convert to Skin::getPersonalToolsForMakeListItem
 			$personalTools = $this->getPersonalTools();
 			$notificationIcons = [];
 			$notificationIcons['notifications-alert'] = $personalTools['notifications-alert'];
@@ -309,7 +309,7 @@ class CosmosTemplate extends BaseTemplate {
 			if (!empty($notificationIcons)) {
 				$iconList = '';
 				foreach ($notificationIcons as $key => $item) {
-					//to-do: convert to Skin::makeListItem
+					// to-do: convert to Skin::makeListItem
 					$iconList .= $this->makeListItem($key, $item);
 				}
 
@@ -936,7 +936,7 @@ class CosmosTemplate extends BaseTemplate {
 		// Step through the array and use the makeListItem to convert each of the
 		// items into a properly formatted HTML <li> element
 		foreach ($items as $key => $value) {
-			//to-do: convert to Skin::makeListItem
+			// to-do: convert to Skin::makeListItem
 			$html .= $this->makeListItem($key, $value);
 		}
 
@@ -1072,16 +1072,17 @@ class CosmosTemplate extends BaseTemplate {
 		if ($config->isEnabled('toolbar-message')) {
 			$html .= $cosmosToolbar->getCode();
 		} else {
-			//to-do: Convert to Skin::buildNavUrls and Skin::buildFeedUrls
+			// to-do: Convert to Skin::buildNavUrls and Skin::buildFeedUrls
 			foreach ($this->getToolbox() as $key => $toolbarItem) {
-				//Due to some styles used in this skin, the printable version does not work correctly at the moment,
-				//this will be fixed eventually, but for now just remove it from the toolbar
+				// Due to some styles used in this skin, the printable version does not work
+				// correctly at the moment, this will be fixed eventually, but for now just
+				// remove it from the toolbar
 				if ($key != 'print') {
-					//to-do: convert to Skin::makeListItem
+					// to-do: convert to Skin::makeListItem
 					$html .= $this->makeListItem($key, $toolbarItem);
 				}
 			}
-			//Support CreateRedirect extension
+			// Support CreateRedirect extension
 			if (ExtensionRegistry::getInstance()->isLoaded('CreateRedirect')) {
 				$skin = $this->getSkin();
 				$action = $skin->getRequest()
