@@ -8,8 +8,8 @@ namespace Cosmos;
 
 class LessUtil {
 
-	const HEX_REG_EXP = '/#([a-f0-9]{3,6})/i';
-	const COLOR_KEYS = array(
+	private const HEX_REG_EXP = '/#([a-f0-9]{3,6})/i';
+	private const COLOR_KEYS = array(
 		'banner-background-color',
 		'header-background-color',
 		'content-background-color',
