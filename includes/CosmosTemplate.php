@@ -864,7 +864,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		// If there are one or more miscellaneous content actions available,
 		// display them as a drop-down list following the primary button
-		if (sizeof($dropdown) > 0) {
+		if (count($dropdown) > 0) {
 			$this->buildActionDropdown($html, $config, $dropdown);
 		}
 
