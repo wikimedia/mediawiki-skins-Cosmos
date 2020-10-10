@@ -4,6 +4,7 @@
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
 		<exclude name="Generic.Files.LineLength.TooLong" />
 		<exclude name="MediaWiki.Commenting.FunctionAnnotations.UnrecognizedAnnotation" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationPrivate" />
 		<exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationProtected" />
 		<exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationPublic" />
 		<exclude name="MediaWiki.Commenting.FunctionComment.MissingParamTag" />
@@ -23,8 +24,6 @@
 		<exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterOpen" />
 		<exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterReference" />
 		<exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingBeforeClose" />
-		<exclude name="Squiz.Scope.MemberVarScope.Missing" />
-		<exclude name="Squiz.Scope.MethodScope.Missing" />
 		<exclude name="Squiz.Strings.ConcatenationSpacing.PaddingFound" />
 		<exclude name="Squiz.WhiteSpace.FunctionSpacing.After" />
 		<exclude name="Squiz.WhiteSpace.ObjectOperatorSpacing.Before" />

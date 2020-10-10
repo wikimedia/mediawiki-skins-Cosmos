@@ -3,7 +3,7 @@ use Cosmos\Config;
 
 class CosmosSocialProfile {
 
-	static function getUser($parser, $user) {
+	private static function getUser($parser, $user) {
 		$title = Title::newFromText($user);
 		if (is_object($title) && ($title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE) && !$title->isSubpage()) {
 			$user = $title->getText();
@@ -12,14 +12,14 @@ class CosmosSocialProfile {
 		return $user;
 	}
 
-	static function userregistration($parser, $user) {
+	public static function userregistration($parser, $user) {
 		$user = self::getUser($parser, $user);
 		if ($user) {
 			return date('F j, Y', strtotime($user->getRegistration()));
 		}
 	}
 
-	static function usergroups($parser, $user) {
+	public static function usergroups($parser, $user) {
 		$config = new Config();
 		$user = self::getUser($parser, $user);
 		if ($user && $user->isBlocked()) {
@@ -45,13 +45,13 @@ class CosmosSocialProfile {
 		return $usertags;
 	}
 
-	static function useredits($parser, $user) {
+	public static function useredits($parser, $user) {
 		$user = self::getUser($parser, $user);
 		if ($user) {
 			return $user->getEditCount();
 		}
 	}
-	static function userbio($parser, $user) {
+	public static function userbio($parser, $user) {
 		if ($user) {
 			// return '<p class="bio">' . $parser->recursiveTagParse( '{{:User:' . $user . '/bio}}') . '</p>';
 			
