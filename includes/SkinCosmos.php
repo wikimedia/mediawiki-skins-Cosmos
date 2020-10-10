@@ -63,8 +63,7 @@ class SkinCosmos extends SkinTemplate {
 				$out->addModuleStyles([
 					'skins.cosmos.portableinfobox.europa', 
 				]);
-			}
-			else {
+			} else {
 				$out->addModuleStyles([
 					'skins.cosmos.portableinfobox.default', 
 				]);

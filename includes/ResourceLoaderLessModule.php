@@ -24,8 +24,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		if (strpos($content__background_color, 'rgb') !== false) {
 			$rgbarr = explode(",", $content__background_color, 3);
 			$colorname = sprintf("#%02x%02x%02x", $rgbarr[0], $rgbarr[1], $rgbarr[2]);
-		}
-		else {
+		} else {
 			$colorname = LessUtil::colorNameToHex($content__background_color);
 		}
 		$lessVars['banner-background-color'] = $config->getString('banner-background-color');
@@ -33,8 +32,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		if ($config->getString('main-background-image')) {
 			$lessVars['main-background-image-isset'] = 1;
 			$lessVars['main-background-image'] = 'url(' . $config->getString('main-background-image') . ')';
-		}
-		else {
+		} else {
 			$lessVars['main-background-image-isset'] = 0;
 		}
 		$lessVars['main-background-color'] = $config->getString('main-background-color');
@@ -46,14 +44,12 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		$lessVars['font-style'] = $config->getString('font-style');
 		if ($config->isEnabled('main-background-image-norepeat')) {
 			$lessVars['main-background-image-repeat'] = 'no-repeat';
-		}
-		else {
+		} else {
 			$lessVars['main-background-image-repeat'] = 'repeat';
 		}
 		if ($config->isEnabled('main-background-image-fixed')) {
 			$lessVars['main-background-image-position'] = 'fixed';
-		}
-		else {
+		} else {
 			$lessVars['main-background-image-position'] = 'absolute';
 		}
 		// convert @content-background-color to rgba for background-color opacity
@@ -64,8 +60,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		if (ExtensionRegistry::getInstance()->isLoaded('ManageWiki')) {
 			global $wgCosmosContentOpacityLevel;
 			$content_opacity_level_config = $wgCosmosContentOpacityLevel;
-		}
-		else {
+		} else {
 			$content_opacity_level_config = $config->getInteger('content-opacity-level');
 		}
 		$lessVars['content-opacity-level'] = "rgba($r, $g, $b, " . $content_opacity_level_config / 100.00 . ')';
@@ -73,8 +68,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		if (strpos($footer_background_color, 'rgb') !== false) {
 			$rgbarr = explode(",", $footer_background_color, 3);
 			$colorname = sprintf("#%02x%02x%02x", $rgbarr[0], $rgbarr[1], $rgbarr[2]);
-		}
-		else {
+		} else {
 			$colorname = LessUtil::colorNameToHex($footer_background_color);
 		}
 		list($r, $g, $b) = array_map(function ($c) {
@@ -88,8 +82,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		if (strpos($header_background_color, 'rgb') !== false) {
 			$rgbarr = explode(",", $header_background_color, 3);
 			$colorname = sprintf("#%02x%02x%02x", $rgbarr[0], $rgbarr[1], $rgbarr[2]);
-		}
-		else {
+		} else {
 			$colorname = LessUtil::colorNameToHex($header_background_color);
 		}
 		list($r, $g, $b) = array_map(function ($c) {

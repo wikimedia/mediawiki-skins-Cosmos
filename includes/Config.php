@@ -141,8 +141,7 @@ class Config {
 		// Set the options array to the default options upon construction
 		if (ExtensionRegistry::getInstance()->isLoaded('ManageWiki')) {
 			$this->options = self::DEFAULT_MIRAHEZE_CONFIG;
-		}
-		else {
+		} else {
 			$this->options = self::DEFAULT_CONFIG;
 		}
 		$this->options['header-wordmark'] = (isset($wgLogos['wordmark']['src']) ? $wgLogos['wordmark']['src'] : (isset($wgLogos['1x']) ? $wgLogos['1x'] : $wgLogo));
@@ -173,8 +172,7 @@ class Config {
 	public function isEnabled(string $option): ? bool {
 			if (isset($this->options[$option]) && is_bool($this->options[$option])) {
 				return $this->options[$option];
-			}
-			else {
+			} else {
 				return null;
 			}
 		}
@@ -182,8 +180,7 @@ class Config {
 		public function getInteger(string $option) : ? int {
 			if (isset($this->options[$option]) && is_int($this->options[$option])) {
 				return $this->options[$option];
-			}
-			else {
+			} else {
 				return null;
 			}
 		}
@@ -191,8 +188,7 @@ class Config {
 		public function getFloat(string $option) : ? float {
 			if (isset($this->options[$option]) && is_float($this->options[$option])) {
 				return $this->options[$option];
-			}
-			else {
+			} else {
 				return null;
 			}
 		}
@@ -200,8 +196,7 @@ class Config {
 		public function getString(string $option) : ? string {
 			if (isset($this->options[$option]) && is_string($this->options[$option])) {
 				return $this->options[$option];
-			}
-			else {
+			} else {
 				return null;
 			}
 		}
@@ -209,8 +204,7 @@ class Config {
 		public function getArray(string $option) : ? array {
 			if (isset($this->options[$option]) && is_array($this->options[$option])) {
 				return $this->options[$option];
-			}
-			else {
+			} else {
 				return null;
 			}
 		}

@@ -11,8 +11,7 @@ class CosmosHooks extends Hooks {
 	public static function onOutputPageBodyAttributes( OutputPage $out, Skin $skin, &$bodyAttrs ) {
 		if ( $skin->getUser()->isLoggedIn() ) {
 			$bodyAttrs['class'] .= ' user-logged';
-		}
-		else {
+		} else {
 			$bodyAttrs['class'] .= ' user-anon';
 		}
 		if ($out->getTitle()->equals(Title::newMainPage())) {

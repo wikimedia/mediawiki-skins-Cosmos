@@ -32,8 +32,7 @@ class CosmosToolbar {
 			$line = trim($line_temp[1]);
 			$link = trim(wfMessage($line_temp[0])->inContentLanguage()
 				->text());
-		}
-		else {
+		} else {
 			$line = trim($line_temp[0]);
 			$link = trim($line_temp[0]);
 		}
@@ -44,16 +43,14 @@ class CosmosToolbar {
 			$desc = $line_temp[2];
 			if (wfMessage($desc)->exists()) {
 				$descText = wfMessage($desc)->text();
-			}
-			else {
+			} else {
 				$descText = $desc;
 			}
 		}
 
 		if (wfMessage($line)->exists()) {
 			$text = wfMessage($line)->text();
-		}
-		else {
+		} else {
 			$text = $line;
 		}
 
@@ -63,19 +60,19 @@ class CosmosToolbar {
 			}
 			if (preg_match('/^(?:' . wfUrlProtocols() . ')/', $link)) {
 				$href = $link;
-			}
-			else {
+			} else {
 				$title = Title::newFromText($link);
 				if ($title) {
 					if ($title->getNamespace() == NS_SPECIAL) {
 						$dbkey = $title->getDBkey();
 						list($specialCanonicalName) = SpecialPageFactory::resolveAlias($dbkey);
-						if (!$specialCanonicalName) $specialCanonicalName = $dbkey;
+						if (!$specialCanonicalName) {
+							$specialCanonicalName = $dbkey;
+						}
 					}
 					$title = $title->fixSpecialName();
 					$href = $title->getLocalURL();
-				}
-				else {
+				} else {
 					$href = '#';
 				}
 			}
@@ -135,7 +132,9 @@ class CosmosToolbar {
 			foreach ($nodes[0]['children'] as $key => $val) {
 				$menu .= '<li id="' . Sanitizer::escapeIdForAttribute( 't-' . strtolower(strtr( $nodes[$val]['text'], ' ', '-' ) ) ) . '">';
 				$menu .= '<a href="' . (!empty($nodes[$val]['href']) ? htmlspecialchars($nodes[$val]['href']) : '#') . '"';
-				if (!isset($nodes[$val]['internal']) || !$nodes[$val]['internal']) $menu .= ' rel="nofollow"';
+				if (!isset($nodes[$val]['internal']) || !$nodes[$val]['internal']) {
+					$menu .= ' rel="nofollow"';
+				}
 				$menu .= '><span>' . htmlspecialchars($nodes[$val]['text']) . '</span>';
 				$menu .= '</a>';
 
@@ -179,11 +178,9 @@ class CosmosToolbar {
 
 				if ($node['depth'] == $lastDepth) {
 					$node['parentIndex'] = $nodes[$i]['parentIndex'];
-				}
-				elseif ($node['depth'] == $lastDepth + 1) {
+				} elseif ($node['depth'] == $lastDepth + 1) {
 					$node['parentIndex'] = $i;
-				}
-				else {
+				} else {
 					for ($x = $i;$x >= 0;$x--) {
 						if ($x == 0) {
 							$node['parentIndex'] = 0;
@@ -214,16 +211,14 @@ class CosmosToolbar {
 			$link = trim(wfMessage($lineTmp[0])->inContentLanguage()
 				->text());
 			$line = trim($lineTmp[1]);
-		}
-		else {
+		} else {
 			$link = trim($lineTmp[0]);
 			$line = trim($lineTmp[0]);
 		}
 
 		if (wfMessage($line)->exists()) {
 			$text = wfMessage($line)->text();
-		}
-		else {
+		} else {
 			$text = $line;
 		}
 
@@ -233,22 +228,18 @@ class CosmosToolbar {
 
 		if (preg_match('/^(?:' . wfUrlProtocols() . ')/', $link)) {
 			$href = $link;
-		}
-		else {
+		} else {
 			if (empty($link)) {
 				$href = '#';
-			}
-			elseif ($link[0] == '#') {
+			} elseif ($link[0] == '#') {
 				$href = '#';
-			}
-			else {
+			} else {
 				$title = Title::newFromText($link);
 				if (is_object($title)) {
 					$href = $title->fixSpecialName()
 						->getLocalURL();
 					$internal = true;
-				}
-				else {
+				} else {
 					$href = '#';
 				}
 			}

@@ -118,12 +118,10 @@ class LessUtil {
 		if (0 == $deltaMax) {
 			$H = 0;
 			$S = 0;
-		}
-		else {
+		} else {
 			if (0.5 > $L) {
 				$S = $deltaMax / ($clrMax + $clrMin);
-			}
-			else {
+			} else {
 				$S = $deltaMax / (2 - $clrMax - $clrMin);
 			}
 			$deltaR = ((($clrMax - $clrR) / 6) + ($deltaMax / 2)) / $deltaMax;
@@ -131,15 +129,17 @@ class LessUtil {
 			$deltaB = ((($clrMax - $clrB) / 6) + ($deltaMax / 2)) / $deltaMax;
 			if ($clrR == $clrMax) {
 				$H = $deltaB - $deltaG;
-			}
-			elseif ($clrG == $clrMax) {
+			} elseif ($clrG == $clrMax) {
 				$H = (1 / 3) + $deltaR - $deltaB;
-			}
-			elseif ($clrB == $clrMax) {
+			} elseif ($clrB == $clrMax) {
 				$H = (2 / 3) + $deltaG - $deltaR;
 			}
-			if (0 > $H) $H += 1;
-			if (1 < $H) $H -= 1;
+			if (0 > $H) {
+				$H += 1;
+			}
+			if (1 < $H) {
+				$H -= 1;
+			}
 		}
 
 		return array(
@@ -309,8 +309,7 @@ class LessUtil {
 
 		if (isset($colors[$colorName])) {
 			return $colors[$colorName];
-		}
-		else {
+		} else {
 			return $colorName;
 		}
 	}
@@ -342,8 +341,7 @@ class LessUtil {
 			foreach (self::normalizeThemeColors($themeSettings) as $key => $val) {
 				if (preg_match(self::HEX_REG_EXP, $val)) {
 					$settings[$key] = self::hexToRgb($val);
-				}
-				else {
+				} else {
 					$settings[$key] = $val;
 				}
 			}

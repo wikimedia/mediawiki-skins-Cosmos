@@ -48,8 +48,7 @@ class CosmosTemplate extends BaseTemplate {
 				'<div class="hgroup">'
 			];
 			return str_replace($replace, $replaceWith, $html);
-		}
-		else {
+		} else {
 			return $html;
 		}
 	}
@@ -221,8 +220,7 @@ class CosmosTemplate extends BaseTemplate {
 			$avatar = new wAvatar($skin->getUser()
 				->getId() , 'm');
 			$avatarElement = $avatar->getAvatarURL();
-		}
-		else {
+		} else {
 			$avatarElement = Icon::getIcon('avatar')->makeSvg(28, 28);
 		}
 
@@ -317,8 +315,7 @@ class CosmosTemplate extends BaseTemplate {
 
 				$html .= Html::rawElement('div', ['id' => 'cosmos-notification-icons'], Html::rawElement('div', ['id' => 'cosmos-notifsButton-icon', 'class' => 'cosmos-bannerOption-icon'], $iconList));
 			}
-		}
-		else {
+		} else {
 			$html .= Html::openElement('div', ['id' => 'cosmos-userOptions-notifications', 'class' => 'cosmos-dropdown cosmos-bannerOption']);
 
 			$html .= Html::openElement('div', ['id' => 'cosmos-notifications-notifsButton', 'class' => 'cosmos-dropdown-button cosmos-bannerOption-button']);
@@ -351,8 +348,7 @@ class CosmosTemplate extends BaseTemplate {
 
 					$html .= Html::closeElement('li');
 				}
-			}
-			else {
+			} else {
 				$html .= Html::openElement('li', ['class' => 'cosmos-emptyListMessage']);
 
 				$html .= Html::element('div', [], $skin->msg('cosmos-notifications-nonotifs'));
@@ -396,8 +392,7 @@ class CosmosTemplate extends BaseTemplate {
 
 					$html .= Html::closeElement('li');
 				}
-			}
-			else {
+			} else {
 				$html .= Html::openElement('li', ['class' => 'cosmos-emptyListMessage']);
 
 				$html .= Html::rawElement('div', [], $skin->msg('cosmos-notifications-nomessages'));
@@ -604,8 +599,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		if (ExtensionRegistry::getInstance()->isLoaded('DismissableSiteNotice')) {
 			$html .= $this->get('sitenotice');
-		}
-		elseif (!empty($this->data['sitenotice']) && (!$request->getCookie("CosmosSiteNoticeState") || $request->getCookie("CosmosSiteNoticeState") !== 'closed')) {
+		} elseif (!empty($this->data['sitenotice']) && (!$request->getCookie("CosmosSiteNoticeState") || $request->getCookie("CosmosSiteNoticeState") !== 'closed')) {
 			$html .= Html::openElement('div', ['id' => 'cosmos-content-siteNotice', 'data-site-notice-hash' => hash('crc32b', $this->get('sitenotice')) ]);
 
 			// Display the site notice close button
@@ -704,16 +698,13 @@ class CosmosTemplate extends BaseTemplate {
 				default:
 					if (substr($key, 0, 6) === 'nstab-') {
 						$view = $tab;
-					}
-					else {
+					} else {
 						if (stripos($tab['class'], 'selected') === false) {
 							$dropdown[$key] = $tab;
-						}
-						else {
+						} else {
 							if ($key === 'history') {
 								$isHistory = true;
-							}
-							else {
+							} else {
 								$isSpecialAction = true;
 							}
 						}
@@ -758,8 +749,7 @@ class CosmosTemplate extends BaseTemplate {
 					$view['text'] = $skin->msg('cosmos-action-backtopage', $view['text'])->escaped();
 					$secondary = $view;
 				}
-			}
-			else {
+			} else {
 				// Primary button leads back to article
 				if (!empty($view)) {
 					$view['imgType'] = 'svg';
@@ -785,8 +775,7 @@ class CosmosTemplate extends BaseTemplate {
 			if (!$isEditing && !empty($edit)) {
 				array_unshift($dropdown, $edit);
 			}
-		}
-		elseif ($isHistory || $isViewSource) {
+		} elseif ($isHistory || $isViewSource) {
 			if ($isTalkPage) {
 				// Primary button leads back to talk page
 				if (!empty($talk)) {
@@ -803,8 +792,7 @@ class CosmosTemplate extends BaseTemplate {
 					$view['text'] = $skin->msg('cosmos-action-backtopage', $view['text'])->escaped();
 					$secondary = $view;
 				}
-			}
-			else {
+			} else {
 				// Primary button leads back to article
 				if (!empty($view)) {
 					$view['imgType'] = 'svg';
@@ -822,8 +810,7 @@ class CosmosTemplate extends BaseTemplate {
 			if (!$isViewSource && !empty($edit)) {
 				array_unshift($dropdown, $edit);
 			}
-		}
-		else {
+		} else {
 			if ($isTalkPage) {
 				// Primary button leads to talk page edit
 				if (!empty($edit)) {
@@ -836,8 +823,7 @@ class CosmosTemplate extends BaseTemplate {
 					$view['text'] = $skin->msg('cosmos-action-backtopage', $view['text'])->escaped();
 					$secondary = $view;
 				}
-			}
-			else {
+			} else {
 				// Primary button leads to article edit
 				if (!empty($edit)) {
 					$primary = $edit;
@@ -1087,8 +1073,7 @@ class CosmosTemplate extends BaseTemplate {
 		$cosmosToolbar = new CosmosToolbar();
 		if ($config->isEnabled('toolbar-message')) {
 			$html .= $cosmosToolbar->getCode();
-		}
-		else {
+		} else {
 			//to-do: Convert to Skin::buildNavUrls and Skin::buildFeedUrls
 			foreach ($this->getToolbox() as $key => $toolbarItem) {
 				//Due to some styles used in this skin, the printable version does not work correctly at the moment,
