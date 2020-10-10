@@ -56,7 +56,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		list($r, $g, $b) = array_map(function ($c) {
 			return hexdec(str_pad($c, 2, $c));
 		}, 
-		str_split(ltrim($colorname, '#') , strlen($colorname) > 4 ? 2 : 1));
+		str_split(ltrim($colorname, '#'), strlen($colorname) > 4 ? 2 : 1));
 		if (ExtensionRegistry::getInstance()->isLoaded('ManageWiki')) {
 			global $wgCosmosContentOpacityLevel;
 			$content_opacity_level_config = $wgCosmosContentOpacityLevel;
@@ -74,7 +74,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		list($r, $g, $b) = array_map(function ($c) {
 			return hexdec(str_pad($c, 2, $c));
 		},
-		str_split(ltrim($colorname, '#') , strlen($colorname) > 4 ? 2 : 1));
+		str_split(ltrim($colorname, '#'), strlen($colorname) > 4 ? 2 : 1));
 		$lessVars['footer-background-color'] = "rgba($r, $g, $b,0.9)";
 		$lessVars['footer-font-color1'] = LessUtil::isThemeDark('footer-color') ? '#999' : '#666';
 		$lessVars['footer-font-color2'] = LessUtil::isThemeDark('footer-color') ? '#fff' : '#000';
@@ -87,8 +87,8 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		}
 		list($r, $g, $b) = array_map(function ($c) {
 			return hexdec(str_pad($c, 2, $c));
-		}
-		, str_split(ltrim($colorname, '#') , strlen($colorname) > 4 ? 2 : 1));
+		},
+		str_split(ltrim($colorname, '#'), strlen($colorname) > 4 ? 2 : 1));
 		$lessVars['header-background-color'] = "linear-gradient(to right,rgba($r, $g, $b,0.5),rgba($r, $g, $b,0.5)),linear-gradient(to left,rgba($r, $g, $b,0) 200px,$colorname 430px)";
 		$lessVars['header-background-color2'] = "linear-gradient(to right,rgba($r, $g, $b,0.5),rgba($r, $g, $b,0.5)),linear-gradient(to left,rgba($r, $g, $b,0) 200px,$colorname 471px)";
 		$lessVars['header-background-solid-color'] = $header_background_color;

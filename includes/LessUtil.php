@@ -9,7 +9,7 @@ namespace Cosmos;
 class LessUtil {
 
 	private const HEX_REG_EXP = '/#([a-f0-9]{3,6})/i';
-	private const COLOR_KEYS = array(
+	private const COLOR_KEYS = [
 		'banner-background-color',
 		'header-background-color',
 		'content-background-color',
@@ -17,7 +17,7 @@ class LessUtil {
 		'link-color',
 		'toolbar-color',
 		'footer-color'
-	);
+	];
 
 	private static $cosmosSettings = [];
 
@@ -102,7 +102,7 @@ class LessUtil {
 
 		// convert HEX color to rgb values
 		// #474646 -> 71, 70, 70
-		$rgb = str_split(substr($rgbhex, 1) , 2);
+		$rgb = str_split(substr($rgbhex, 1), 2);
 		$rgb = array_map('hexdec', $rgb);
 
 		$clrR = (!empty($rgb[0]) ? ($rgb[0] / 255) : 0);
@@ -142,11 +142,11 @@ class LessUtil {
 			}
 		}
 
-		return array(
+		return [
 			$H,
 			$S,
 			$L
-		);
+		];
 	}
 	/**
 	 * Convert HTML color name to hex format
@@ -157,7 +157,7 @@ class LessUtil {
 	 */
 	public static function colorNameToHex($colorName) {
 		// standard 147 HTML color names
-		$colors = array(
+		$colors = [
 			'aliceblue' => '#f0f8ff',
 			'antiquewhite' => '#faebd7',
 			'aqua' => '#00ffff',
@@ -305,7 +305,7 @@ class LessUtil {
 			'whitesmoke' => '#f5f5f5',
 			'yellow' => '#ffff00',
 			'yellowgreen' => '#9acd32'
-		);
+		];
 
 		if (isset($colors[$colorName])) {
 			return $colors[$colorName];
@@ -357,9 +357,9 @@ class LessUtil {
 		public static function hexToRgb(string $hex): array {
 				$hex = str_replace('#', '', $hex);
 				$length = strlen($hex);
-				$rgb['r'] = hexdec($length == 6 ? substr($hex, 0, 2) : ($length == 3 ? str_repeat(substr($hex, 0, 1) , 2) : 0));
-				$rgb['g'] = hexdec($length == 6 ? substr($hex, 2, 2) : ($length == 3 ? str_repeat(substr($hex, 1, 1) , 2) : 0));
-				$rgb['b'] = hexdec($length == 6 ? substr($hex, 4, 2) : ($length == 3 ? str_repeat(substr($hex, 2, 1) , 2) : 0));
+				$rgb['r'] = hexdec($length == 6 ? substr($hex, 0, 2) : ($length == 3 ? str_repeat(substr($hex, 0, 1), 2) : 0));
+				$rgb['g'] = hexdec($length == 6 ? substr($hex, 2, 2) : ($length == 3 ? str_repeat(substr($hex, 1, 1), 2) : 0));
+				$rgb['b'] = hexdec($length == 6 ? substr($hex, 4, 2) : ($length == 3 ? str_repeat(substr($hex, 2, 1), 2) : 0));
 
 				return $rgb;
 			}

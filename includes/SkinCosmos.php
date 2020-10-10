@@ -97,10 +97,10 @@ class SkinCosmos extends SkinTemplate {
 				]);
 			}
 			if ($config->isEnabled('modern-tabs') || 
-			    $config->isEnabled('round-avatar') || 
-			    $config->isEnabled('show-editcount') || 
-			    $config->isEnabled('allow-bio') || 
-			    $config->isEnabled('profile-tags')) {
+				$config->isEnabled('round-avatar') || 
+				$config->isEnabled('show-editcount') || 
+				$config->isEnabled('allow-bio') || 
+				$config->isEnabled('profile-tags')) {
 				$out->addModuleStyles([
 					'skins.cosmos.socialprofile', 
 				]);

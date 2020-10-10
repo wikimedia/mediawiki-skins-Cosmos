@@ -28,7 +28,7 @@ class CosmosNavigation {
 
 		$href = $specialCanonicalName = false;
 
-		$line_temp = explode('|', trim($line, '* ') , 3);
+		$line_temp = explode('|', trim($line, '* '), 3);
 		$line_temp[0] = trim($line_temp[0], '[]');
 		if (count($line_temp) >= 2 && $line_temp[1] != '') {
 			$line = trim($line_temp[1]);
@@ -80,13 +80,13 @@ class CosmosNavigation {
 			}
 		}
 
-		return array(
+		return [
 			'text' => $text,
 			'href' => $href,
 			'org' => $line_temp[0],
 			'desc' => $descText,
 			'specialCanonicalName' => $specialCanonicalName
-		);
+		];
 	}
 
 	/**
@@ -130,20 +130,20 @@ class CosmosNavigation {
 				$link_html .= Icon::getIcon('level-2-dropdown')->makeSvg(12, 12, ['id' => 'wds-icons-menu-control-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown-chevron']);
 			}
 
-			$menu_item = Html::rawElement('a', array(
+			$menu_item = Html::rawElement('a', [
 				'href' => !empty($nodes[$val]['href']) ? $nodes[$val]['href'] : '#',
 				'class' => (!empty($nodes[$val]['children']) ? 'wds-dropdown-level-2__toggle' : null),
 				'rel' => $nodes[$val]['internal'] ? null : 'nofollow'
-			) , $link_html) . "\n";
+			], $link_html) . "\n";
 			if (!empty($nodes[$val]['children'])) {
 				$menu_item .= '<div class="wds-is-not-scrollable wds-dropdown-level-2__content" id="p-'. Sanitizer::escapeIdForAttribute($nodes[$val]['text']) . '" aria-labelledby="p-' . Sanitizer::escapeIdForAttribute($nodes[$val]['text']) . '-label">';	
 				$menu_item .= $this->getSubMenu($nodes, $nodes[$val]['children']);
 				$menu_item .= '</div>';
 			}
-			$menu .= Html::rawElement('li',  array(
+			$menu .= Html::rawElement('li',  [
 				'id' => Sanitizer::escapeIdForAttribute( 'n-' . strtr( $nodes[$val]['text'], ' ', '-' ) ),
 				'class' => (!empty($nodes[$val]['children']) ? ($key > count($nodes[$val]['children']) - 1 ? 'wds-is-sticked-to-parent ' : '') . 'wds-dropdown-level-2' : false)
-			), $menu_item);
+			], $menu_item);
 		}
 		
 		$menu = Html::rawElement('div', [], '<ul class="wds-list wds-is-linked' . ($bolded === true ? ' wds-has-bolded-items' : '') . '">' . $menu . '</ul>');
@@ -157,9 +157,9 @@ class CosmosNavigation {
 
 		if (count($nodes) > 0) {
 
-			Hooks::run('getCosmosNavigation', array(&$nodes));
+			Hooks::run('getCosmosNavigation', [&$nodes]);
 
-			$mainMenu = array();
+			$mainMenu = [];
 
 			foreach ($nodes[0]['children'] as $key => $val) {
 				if (isset($nodes[$val]['children'])) {
@@ -192,9 +192,9 @@ class CosmosNavigation {
 			}
 			$menu .= '</li>';
 
-			$menu = Html::rawElement('li', array(
+			$menu = Html::rawElement('li', [
 				'class' => 'wds-tabs__tab'
-			) , $menu);
+			], $menu);
 			$menu = preg_replace('/<!--b-->(.*)<!--e-->/U', '', $menu);
 
 			$menuHash = hash('md5', serialize($nodes));
@@ -219,7 +219,7 @@ class CosmosNavigation {
 	}
 
 	public function parse($lines) {
-		$nodes = array();
+		$nodes = [];
 		$lastDepth = 0;
 		$i = 0;
 		if (is_array($lines) && count($lines) > 0) {
@@ -263,7 +263,7 @@ class CosmosNavigation {
 	}
 
 	public function parseLine($line) {
-		$lineTmp = explode('|', trim($line, '* ') , 2);
+		$lineTmp = explode('|', trim($line, '* '), 2);
 		$lineTmp[0] = trim($lineTmp[0], '[]'); // for external links defined as [http://example.com] instead of just http://example.com
 		$internal = false;
 
@@ -305,10 +305,10 @@ class CosmosNavigation {
 			}
 		}
 
-		$ret = array(
+		$ret = [
 			'original' => $lineTmp[0],
 			'text' => $text
-		);
+		];
 		$ret['href'] = $href;
 		$ret['internal'] = $internal;
 		return $ret;

@@ -26,7 +26,7 @@ class CosmosToolbar {
 
 		$href = $specialCanonicalName = false;
 
-		$line_temp = explode('|', trim($line, '* ') , 3);
+		$line_temp = explode('|', trim($line, '* '), 3);
 		$line_temp[0] = trim($line_temp[0], '[]');
 		if (count($line_temp) >= 2 && $line_temp[1] != '') {
 			$line = trim($line_temp[1]);
@@ -78,13 +78,13 @@ class CosmosToolbar {
 			}
 		}
 
-		return array(
+		return [
 			'text' => $text,
 			'href' => $href,
 			'org' => $line_temp[0],
 			'desc' => $descText,
 			'specialCanonicalName' => $specialCanonicalName
-		);
+		];
 	}
 
 	/**
@@ -125,10 +125,10 @@ class CosmosToolbar {
 
 		if (count($nodes) > 0) {
 
-			Hooks::run('getCosmosToolbar', array(&$nodes
-			));
+			Hooks::run('getCosmosToolbar', [&$nodes
+			]);
 
-			$mainMenu = array();
+			$mainMenu = [];
 			foreach ($nodes[0]['children'] as $key => $val) {
 				$menu .= '<li id="' . Sanitizer::escapeIdForAttribute( 't-' . strtolower(strtr( $nodes[$val]['text'], ' ', '-' ) ) ) . '">';
 				$menu .= '<a href="' . (!empty($nodes[$val]['href']) ? htmlspecialchars($nodes[$val]['href']) : '#') . '"';
@@ -163,7 +163,7 @@ class CosmosToolbar {
 	}
 
 	public function parse($lines) {
-		$nodes = array();
+		$nodes = [];
 		$lastDepth = 0;
 		$i = 0;
 		if (is_array($lines) && count($lines) > 0) {
@@ -203,7 +203,7 @@ class CosmosToolbar {
 	}
 
 	public function parseLine($line) {
-		$lineTmp = explode('|', trim($line, '* ') , 2);
+		$lineTmp = explode('|', trim($line, '* '), 2);
 		$lineTmp[0] = trim($lineTmp[0], '[]'); // for external links defined as [http://example.com] instead of just http://example.com
 		$internal = false;
 
@@ -245,10 +245,10 @@ class CosmosToolbar {
 			}
 		}
 
-		$ret = array(
+		$ret = [
 			'original' => $lineTmp[0],
 			'text' => $text
-		);
+		];
 		$ret['href'] = $href;
 		$ret['internal'] = $internal;
 		return $ret;

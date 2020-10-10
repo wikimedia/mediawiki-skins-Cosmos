@@ -95,7 +95,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement('div', ['class' => 'wds-input create-page-dialog__title-wrapper']);
 		$html .= Html::input('title', '', 'text', ['class' => 'wds-input__field', 'id' => 'create-page-dialog__title']);
 		$html .= Html::closeElement('div');
-		$html .= Html::rawElement('div', ['id' => 'create-page-dialog__message'], $skin->msg('cosmos-createpage-dialoge-text', SiteStats::pagesInNs(0) , $this->get('sitename')));
+		$html .= Html::rawElement('div', ['id' => 'create-page-dialog__message'], $skin->msg('cosmos-createpage-dialoge-text', SiteStats::pagesInNs(0), $this->get('sitename')));
 		$html .= Html::openElement('div', ['class' => 'create-page-dialog__proposals']);
 		$html .= Html::openElement('ul', ['class' => 'articleProposals']);
 		//Get most wanted pages
@@ -155,11 +155,11 @@ class CosmosTemplate extends BaseTemplate {
 		//ManageWiki links
 		if (ExtensionRegistry::getInstance()
 			->isLoaded('ManageWiki') && in_array(true, $wgManageWiki, true) === true) {
-			if ((!$permissionManager->userHasRight($skin->getUser() , 'managewiki')) && ($wgManageWikiForceSidebarLinks || $skin->getUser()
+			if ((!$permissionManager->userHasRight($skin->getUser(), 'managewiki')) && ($wgManageWikiForceSidebarLinks || $skin->getUser()
 				->getOption('managewikisidebar', 1))) {
 				$append = '-view';
 			}
-			if (($permissionManager->userHasRight($skin->getUser() , 'managewiki') || $wgManageWikiForceSidebarLinks || $skin->getUser()
+			if (($permissionManager->userHasRight($skin->getUser(), 'managewiki') || $wgManageWikiForceSidebarLinks || $skin->getUser()
 				->getOption('managewikisidebar', 1)) && $wgManageWikiSidebarLinks !== false) {
 
 				$html .= Html::rawElement('li', ['class' => 'wds-tabs__tab'], '<div class="wds-dropdown" id="p-' . Sanitizer::escapeIdForAttribute($this->getMsg('cosmos-administration')) . '" aria-labelledby="p-' . Sanitizer::escapeIdForAttribute($this->getMsg('cosmos-administration')) . '-label"><div class="wds-tabs__tab-label wds-dropdown__toggle" id="p-' . Sanitizer::escapeIdForAttribute($this->getMsg('cosmos-administration')) . '-label"><span style="padding-top: 2px;">' . $this->getMsg('cosmos-administration')
@@ -218,7 +218,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		if (class_exists('wAvatar') && $config->isEnabled('social-avatar')) {
 			$avatar = new wAvatar($skin->getUser()
-				->getId() , 'm');
+				->getId(), 'm');
 			$avatarElement = $avatar->getAvatarURL();
 		} else {
 			$avatarElement = Icon::getIcon('avatar')->makeSvg(28, 28);
@@ -463,14 +463,14 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement('div', ['class' => 'cosmos-header__wiki-buttons wds-button-group']);
 		$html .= Html::rawElement('a', ['class' => 'wds-button wds-is-secondary createpage', 'id' => 'createpage', 'href' => '#create-article', 'data-tracking' => 'add-new-page', 'title' => $this->getMsg('Cosmos-add-new-page-title')
 			->text() ], Icon::getIcon('newpage')
-			->makeSvg(1000, 1000, ['class' => 'wds-icon wds-icon-small', 'id' => 'wds-icons-page-small', 'style' => ($permissionManager->userHasRight($skin->getUser() , 'adminlinks') ? 'margin-right: 0;' : '') ]) . (!$permissionManager->userHasRight($skin->getUser() , 'adminlinks') ? (empty($this->data["username"]) ? $this->getMsg("Cosmos-anon-add-new-page-text")
+			->makeSvg(1000, 1000, ['class' => 'wds-icon wds-icon-small', 'id' => 'wds-icons-page-small', 'style' => ($permissionManager->userHasRight($skin->getUser(), 'adminlinks') ? 'margin-right: 0;' : '') ]) . (!$permissionManager->userHasRight($skin->getUser(), 'adminlinks') ? (empty($this->data["username"]) ? $this->getMsg("Cosmos-anon-add-new-page-text")
 			->text() : $this->getMsg("Cosmos-add-new-page-text")
 			->text()) : ''));
 		if (!empty($this->data["username"])) {
 			$html .= Html::rawElement('a', ['class' => 'wds-button wds-is-secondary', 'href' => htmlspecialchars(Title::newFromText('RecentChanges', NS_SPECIAL)->getFullURL()) , 'data-tracking' => 'recent-changes', 'title' => $this->getMsg('Cosmos-recentchanges')
 				->text() ], Icon::getIcon('recentchanges')
 				->makeSvg(22, 22, ['class' => 'wds-icon-small', 'id' => 'wds-icons-activity-small', 'stroke' => 'currentColor', 'stroke-linecap' => 'round', 'stroke-linejoin' => 'round', 'stroke-width' => 2]));
-			if (!empty($this->data['username']) && $permissionManager->userHasRight($skin->getUser() , 'adminlinks')) {
+			if (!empty($this->data['username']) && $permissionManager->userHasRight($skin->getUser(), 'adminlinks')) {
 				$html .= Html::rawElement('a', ['class' => 'wds-button wds-is-secondary', 'href' => htmlspecialchars(Title::newFromText('AdminLinks', NS_SPECIAL)->getFullURL()) , 'data-tracking' => 'admin-links', 'title' => $this->getMsg('Cosmos-adminlinks')
 					->text() ], Icon::getIcon('admindashboard')
 					->makeSvg(24, 24, ['class' => 'wds-icon-small', 'id' => 'wds-icons-dashboard-small']));
