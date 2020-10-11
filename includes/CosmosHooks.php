@@ -24,7 +24,7 @@ class CosmosHooks {
 		} else {
 			$bodyAttrs['class'] .= ' user-anon';
 		}
-		if ($out->getTitle()->equals(Title::newMainPage())) {
+		if ( $out->getTitle()->equals( Title::newMainPage() ) ) {
 			$bodyAttrs['class'] .= ' mainpage';
 		}
 		return true;

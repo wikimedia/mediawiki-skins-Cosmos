@@ -21,11 +21,11 @@ class SkinCosmos extends SkinTemplate {
 	 * @param OutputPage $out
 	 */
 	public function initPage( OutputPage $out ) {
-		parent::initPage($out);
+		parent::initPage( $out );
 		$config = new Config();
-		if ($this->getSkin()
+		if ( $this->getSkin()
 			->getUser()
-			->getOption('cosmos-mobile-responsiveness') == 1) {
+			->getOption( 'cosmos-mobile-responsiveness' ) == 1 ) {
 			$out->addMeta(
 				'viewport',
 				'width=device-width, initial-scale=1.0, ' .
@@ -33,78 +33,78 @@ class SkinCosmos extends SkinTemplate {
 			);
 		}
 		parent::setupSkinUserCss( $out );
-		$out->addModuleStyles([
+		$out->addModuleStyles( [
 			'mediawiki.skinning.content.externallinks',
 			'skins.cosmos',
 			'skins.cosmos.legacy'
-		]);
+		] );
 
-		$out->addModules([
+		$out->addModules( [
 			'skins.cosmos.js',
 			'skins.cosmos.mobile'
-		]);
-		if ((wfMessage('cosmos-customsidebar')
-			->text() !== '-' && wfMessage('cosmos-customsidebar')
-			->text() !== '' && wfMessage('cosmos-customsidebar')
-			->exists()) || (wfMessage('cosmos-stickysidebar')
-			->text() !== '-' && wfMessage('cosmos-stickysidebar')
-			->text() !== '' && wfMessage('cosmos-stickysidebar')
-			->exists())) {
-				$out->addModuleStyles([
+		] );
+		if ( ( wfMessage( 'cosmos-customsidebar' )
+			->text() !== '-' && wfMessage( 'cosmos-customsidebar' )
+			->text() !== '' && wfMessage( 'cosmos-customsidebar' )
+			->exists() ) || ( wfMessage( 'cosmos-stickysidebar' )
+			->text() !== '-' && wfMessage( 'cosmos-stickysidebar' )
+			->text() !== '' && wfMessage( 'cosmos-stickysidebar' )
+			->exists() ) ) {
+				$out->addModuleStyles( [
 					'skins.cosmos.rail',
-				]);
+				] );
 		}
 
-		if (ExtensionRegistry::getInstance()
-			->isLoaded('Portable Infobox')) {
-			$out->addModuleStyles([
+		if ( ExtensionRegistry::getInstance()
+			->isLoaded( 'Portable Infobox' ) ) {
+			$out->addModuleStyles( [
 				'skins.cosmos.portableinfobox',
-			]);
-			if ($config->isEnabled('europa-theme')) {
-				$out->addModuleStyles([
+			] );
+			if ( $config->isEnabled( 'europa-theme' ) ) {
+				$out->addModuleStyles( [
 					'skins.cosmos.portableinfobox.europa',
-				]);
+				] );
 			} else {
-				$out->addModuleStyles([
+				$out->addModuleStyles( [
 					'skins.cosmos.portableinfobox.default',
-				]);
+				] );
 			}
 		}
 		// Load SocialProfile styles if the respective configuration variables are enabled
-		if (class_exists('UserProfilePage')) {
-			if ($config->isEnabled('modern-tabs')) {
-				$out->addModuleStyles([
+		if ( class_exists( 'UserProfilePage' ) ) {
+			if ( $config->isEnabled( 'modern-tabs' ) ) {
+				$out->addModuleStyles( [
 					'skins.cosmos.profiletabs',
-				]);
+				] );
 			}
-			if ($config->isEnabled('round-avatar')) {
-				$out->addModuleStyles([
+			if ( $config->isEnabled( 'round-avatar' ) ) {
+				$out->addModuleStyles( [
 					'skins.cosmos.profileavatar',
-				]);
+				] );
 			}
-			if ($config->isEnabled('show-editcount')) {
-				$out->addModuleStyles([
+			if ( $config->isEnabled( 'show-editcount' ) ) {
+				$out->addModuleStyles( [
 					'skins.cosmos.profileeditcount',
-				]);
+				] );
 			}
-			if ($config->isEnabled('allow-bio')) {
-				$out->addModuleStyles([
+			if ( $config->isEnabled( 'allow-bio' ) ) {
+				$out->addModuleStyles( [
 					'skins.cosmos.profilebio',
-				]);
+				] );
 			}
-			if ($config->isEnabled('profile-tags')) {
-				$out->addModuleStyles([
+			if ( $config->isEnabled( 'profile-tags' ) ) {
+				$out->addModuleStyles( [
 					'skins.cosmos.profiletags',
-				]);
+				] );
 			}
-			if ($config->isEnabled('modern-tabs') ||
-				$config->isEnabled('round-avatar') ||
-				$config->isEnabled('show-editcount') ||
-				$config->isEnabled('allow-bio') ||
-				$config->isEnabled('profile-tags')) {
-				$out->addModuleStyles([
+			if ( $config->isEnabled( 'modern-tabs' ) ||
+				$config->isEnabled( 'round-avatar' ) ||
+				$config->isEnabled( 'show-editcount' ) ||
+				$config->isEnabled( 'allow-bio' ) ||
+				$config->isEnabled( 'profile-tags' ) ) {
+				$out->addModuleStyles( [
 					'skins.cosmos.socialprofile',
-				]);
+				] );
 			}
 		}
 	}
