@@ -71,8 +71,11 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		},
 		str_split( ltrim( $colorname, '#' ), strlen( $colorname ) > 4 ? 2 : 1 ) );
 		$lessVars['footer-background-color'] = "rgba($r, $g, $b,0.9)";
-		$lessVars['footer-font-color1'] = LessUtil::isThemeDark( 'footer-color' ) ? '#999' : '#666';
-		$lessVars['footer-font-color2'] = LessUtil::isThemeDark( 'footer-color' ) ? '#fff' : '#000';
+
+		$isFooterColorDark = LessUtil::isThemeDark( 'footer-color' );
+		$lessVars['footer-font-color1'] = $isFooterColorDark ? '#999' : '#666';
+		$lessVars['footer-font-color2'] = $isFooterColorDark ? '#fff' : '#000';
+
 		$header_background_color = $config->get( 'CosmosWikiHeaderBackgroundColor' );
 		if ( strpos( $header_background_color, 'rgb' ) !== false ) {
 			$rgbarr = explode( ",", $header_background_color, 3 );
@@ -84,25 +87,34 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 			return hexdec( str_pad( $c, 2, $c ) );
 		},
 		str_split( ltrim( $colorname, '#' ), strlen( $colorname ) > 4 ? 2 : 1 ) );
+
 		$lessVars['header-background-color'] = "linear-gradient(to right,rgba($r, $g, $b,0.5),rgba($r, $g, $b,0.5)),linear-gradient(to left,rgba($r, $g, $b,0) 200px,$colorname 430px)";
 		$lessVars['header-background-color2'] = "linear-gradient(to right,rgba($r, $g, $b,0.5),rgba($r, $g, $b,0.5)),linear-gradient(to left,rgba($r, $g, $b,0) 200px,$colorname 471px)";
 		$lessVars['header-background-solid-color'] = $header_background_color;
 		$lessVars['header-font-color'] = LessUtil::isThemeDark( 'header-background-color' ) ? '#fff' : '#000';
+
 		$lessVars['toolbar-color2'] = $config->get( 'CosmosToolbarColor' );
 		$lessVars['toolbar-color-mix'] = $config->get( 'CosmosToolbarColor' ) == '#000' || $config->get( 'CosmosToolbarColor' ) == '#000000' || $config->get( 'CosmosToolbarColor' ) == 'black' ? '#404040' : '#000';
 		$lessVars['toolbar-font-color'] = LessUtil::isThemeDark( 'toolbar-color' ) ? '#fff' : '#000';
-		$lessVars['font-color'] = LessUtil::isThemeDark( 'content-background-color' ) ? '#D5D4D4' : '#000';
-		$lessVars['border-color'] = LessUtil::isThemeDark( 'content-background-color' ) ? '#333333' : '#CCCCCC';
-		$lessVars['editsection-color'] = LessUtil::isThemeDark( 'content-background-color' ) ? '#54595d' : '#aba6a2';
-		$lessVars['alt-font-color'] = LessUtil::isThemeDark( 'content-background-color' ) ? '#fff' : '#000';
-		$lessVars['code-background-color'] = LessUtil::isThemeDark( 'content-background-color' ) ? '#c5c6c6' : '#3a3939';
-		$lessVars['tabs-background-color'] = LessUtil::isThemeDark( 'content-background-color' ) ? 'transparent' : '#eaecf0';
-		$lessVars['banner-font-color'] = LessUtil::isThemeDark( 'banner-background-color' ) ? '#fff' : '#000';
-		$lessVars['banner-echo-font-color'] = LessUtil::isThemeDark( 'banner-background-color' ) ? 'fff' : '111';
-		$lessVars['notice-close-button-color'] = LessUtil::isThemeDark( 'button-color' ) ? 'fff' : '111';
-		$lessVars['banner-input-bottom-border'] = LessUtil::isThemeDark( 'banner-background-color' ) ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)';
-		$lessVars['button-font-color'] = LessUtil::isThemeDark( 'button-color' ) ? '#fff' : '#000';
-		$lessVars['infobox-background-mix'] = LessUtil::isThemeDark( 'content-background-color' ) ? '85%' : '90%';
+
+		$isContentBackgroundColorDark = LessUtil::isThemeDark( 'content-background-color' );
+		$lessVars['font-color'] = $isContentBackgroundColorDark ? '#D5D4D4' : '#000';
+		$lessVars['border-color'] = $isContentBackgroundColorDark ? '#333333' : '#CCCCCC';
+		$lessVars['editsection-color'] = $isContentBackgroundColorDark ? '#54595d' : '#aba6a2';
+		$lessVars['alt-font-color'] = $isContentBackgroundColorDark ? '#fff' : '#000';
+		$lessVars['code-background-color'] = $isContentBackgroundColorDark ? '#c5c6c6' : '#3a3939';
+		$lessVars['tabs-background-color'] = $isContentBackgroundColorDark ? 'transparent' : '#eaecf0';
+		$lessVars['infobox-background-mix'] = $isContentBackgroundColorDark ? '85%' : '90%';
+
+		$isBannerBackgroundColorDark = LessUtil::isThemeDark( 'banner-background-color' );
+		$lessVars['banner-font-color'] = $isBannerBackgroundColorDark ? '#fff' : '#000';
+		$lessVars['banner-echo-font-color'] = $isBannerBackgroundColorDark ? 'fff' : '111';
+		$lessVars['banner-input-bottom-border'] = $isBannerBackgroundColorDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)';
+
+		$isButtonColorDark = LessUtil::isThemeDark( 'button-color' );
+		$lessVars['notice-close-button-color'] = $isButtonColorDark ? 'fff' : '111';
+		$lessVars['button-font-color'] = $isButtonColorDark ? '#fff' : '#000';
+
 		return $lessVars;
 	}
 }
