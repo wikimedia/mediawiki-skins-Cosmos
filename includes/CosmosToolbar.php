@@ -30,7 +30,7 @@ class CosmosToolbar {
 	 * @return array
 	 * @author Inez Korczynski <inez@wikia.com>
 	 */
-	public static function parseItem($line) {
+	public static function parseItem( $line ) {
 		$href = $specialCanonicalName = false;
 
 		$line_temp = explode('|', trim($line, '* '), 3);
@@ -98,7 +98,7 @@ class CosmosToolbar {
 	 * @author Inez Korczynski <inez@wikia.com>
 	 * @return array
 	 */
-	public static function getMessageAsArray($messageKey) {
+	public static function getMessageAsArray( $messageKey ) {
 		$message = trim(wfMessage($messageKey)->inContentLanguage()
 			->text());
 		if (wfMessage($messageKey, $message)->exists()) {
@@ -125,7 +125,7 @@ class CosmosToolbar {
 		return $lines;
 	}
 
-	public function getMenu($lines) {
+	public function getMenu( $lines ) {
 		$menu = '';
 		$nodes = $this->parse($lines);
 
@@ -146,7 +146,7 @@ class CosmosToolbar {
 
 			}
 			$menu .= '</li>';
-			
+
 			$menu = preg_replace('/<!--b-->(.*)<!--e-->/U', '', $menu);
 
 			$menuHash = hash('md5', serialize($nodes));
@@ -169,7 +169,7 @@ class CosmosToolbar {
 		}
 	}
 
-	public function parse($lines) {
+	public function parse( $lines ) {
 		$nodes = [];
 		$lastDepth = 0;
 		$i = 0;
@@ -178,7 +178,7 @@ class CosmosToolbar {
 				if (trim($line) === '') {
 					// ignore empty lines
 					continue;
-					
+
 				}
 
 				$node = $this->parseLine($line);
@@ -210,7 +210,7 @@ class CosmosToolbar {
 		return $nodes;
 	}
 
-	public function parseLine($line) {
+	public function parseLine( $line ) {
 		$lineTmp = explode('|', trim($line, '* '), 2);
 		// for external links defined as [http://example.com] instead of just http://example.com
 		$lineTmp[0] = trim($lineTmp[0], '[]');

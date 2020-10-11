@@ -1,5 +1,5 @@
 <?php
-/**	
+/**
  * ResourceLoader module for LESS configs
  * @author Universal Omega
  */
@@ -11,13 +11,13 @@ use ResourceLoaderContext;
 use ResourceLoaderFileModule;
 
 class ResourceLoaderLessModule extends ResourceLoaderFileModule {
-	/**	
+	/**
 	 * Get language-specific LESS variables for this module.
 	 *
 	 * @param ResourceLoaderContext $context
 	 * @return array
 	 */
-	protected function getLessVars(ResourceLoaderContext $context) {
+	protected function getLessVars( ResourceLoaderContext $context ) {
 		$lessVars = parent::getLessVars($context);
 		$config = new Config();
 		$content__background_color = $config->getString('content-background-color');
@@ -53,9 +53,9 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 			$lessVars['main-background-image-position'] = 'absolute';
 		}
 		// convert @content-background-color to rgba for background-color opacity
-		list($r, $g, $b) = array_map(function ($c) {
+		list($r, $g, $b) = array_map(function ( $c ) {
 			return hexdec(str_pad($c, 2, $c));
-		}, 
+		},
 		str_split(ltrim($colorname, '#'), strlen($colorname) > 4 ? 2 : 1));
 		if (ExtensionRegistry::getInstance()->isLoaded('ManageWiki')) {
 			global $wgCosmosContentOpacityLevel;
@@ -71,7 +71,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		} else {
 			$colorname = LessUtil::colorNameToHex($footer_background_color);
 		}
-		list($r, $g, $b) = array_map(function ($c) {
+		list($r, $g, $b) = array_map(function ( $c ) {
 			return hexdec(str_pad($c, 2, $c));
 		},
 		str_split(ltrim($colorname, '#'), strlen($colorname) > 4 ? 2 : 1));
@@ -85,7 +85,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		} else {
 			$colorname = LessUtil::colorNameToHex($header_background_color);
 		}
-		list($r, $g, $b) = array_map(function ($c) {
+		list($r, $g, $b) = array_map(function ( $c ) {
 			return hexdec(str_pad($c, 2, $c));
 		},
 		str_split(ltrim($colorname, '#'), strlen($colorname) > 4 ? 2 : 1));

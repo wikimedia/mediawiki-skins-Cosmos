@@ -10,7 +10,7 @@ use Skin;
 use Title;
 
 class CosmosHooks {
-	public static function onGetPreferences($user, &$preferences) {
+	public static function onGetPreferences( $user, &$preferences ) {
 		$preferences['cosmos-mobile-responsiveness'] = [
 			'type' => 'check',
 			'label-message' => 'cosmos-mobile-preference',

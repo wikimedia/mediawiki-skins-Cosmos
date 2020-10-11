@@ -31,7 +31,7 @@ class CosmosNavigation {
 	 * @return array
 	 * @author Inez Korczynski <inez@wikia.com>
 	 */
-	public static function parseItem($line) {
+	public static function parseItem( $line ) {
 		$href = $specialCanonicalName = false;
 
 		$line_temp = explode('|', trim($line, '* '), 3);
@@ -99,7 +99,7 @@ class CosmosNavigation {
 	 * @author Inez Korczynski <inez@wikia.com>
 	 * @return array
 	 */
-	public static function getMessageAsArray($messageKey) {
+	public static function getMessageAsArray( $messageKey ) {
 		$message = trim(wfMessage($messageKey)->inContentLanguage()
 			->text());
 		if (wfMessage($messageKey, $message)->exists()) {
@@ -126,7 +126,7 @@ class CosmosNavigation {
 		return $lines;
 	}
 
-	public function getSubMenu($nodes, $children, $bolded = false) {
+	public function getSubMenu( $nodes, $children, $bolded = false ) {
 		$menu = '';
 		$val = 0;
 		foreach ($children as $key => $val) {
@@ -141,7 +141,7 @@ class CosmosNavigation {
 				'rel' => $nodes[$val]['internal'] ? null : 'nofollow'
 			], $link_html) . "\n";
 			if (!empty($nodes[$val]['children'])) {
-				$menu_item .= '<div class="wds-is-not-scrollable wds-dropdown-level-2__content" id="p-'. Sanitizer::escapeIdForAttribute($nodes[$val]['text']) . '" aria-labelledby="p-' . Sanitizer::escapeIdForAttribute($nodes[$val]['text']) . '-label">';	
+				$menu_item .= '<div class="wds-is-not-scrollable wds-dropdown-level-2__content" id="p-' . Sanitizer::escapeIdForAttribute($nodes[$val]['text']) . '" aria-labelledby="p-' . Sanitizer::escapeIdForAttribute($nodes[$val]['text']) . '-label">';
 				$menu_item .= $this->getSubMenu($nodes, $nodes[$val]['children']);
 				$menu_item .= '</div>';
 			}
@@ -150,13 +150,13 @@ class CosmosNavigation {
 				'class' => (!empty($nodes[$val]['children']) ? ($key > count($nodes[$val]['children']) - 1 ? 'wds-is-sticked-to-parent ' : '') . 'wds-dropdown-level-2' : false)
 			], $menu_item);
 		}
-		
+
 		$menu = Html::rawElement('div', [], '<ul class="wds-list wds-is-linked' . ($bolded === true ? ' wds-has-bolded-items' : '') . '">' . $menu . '</ul>');
 
 		return $menu;
 	}
 
-	public function getMenu($lines) {
+	public function getMenu( $lines ) {
 		$menu = '';
 		$nodes = $this->parse($lines);
 
@@ -218,12 +218,12 @@ class CosmosNavigation {
 			$memc = ObjectCache::getLocalClusterInstance();
 			// three days
 			$memc->set($menuHash, $nodes, 60 * 60 * 24 * 3);
-			
+
 			return $menu;
 		}
 	}
 
-	public function parse($lines) {
+	public function parse( $lines ) {
 		$nodes = [];
 		$lastDepth = 0;
 		$i = 0;
@@ -232,7 +232,7 @@ class CosmosNavigation {
 				if (trim($line) === '') {
 					// ignore empty lines
 					continue;
-					
+
 				}
 
 				$node = $this->parseLine($line);
@@ -268,7 +268,7 @@ class CosmosNavigation {
 		return $nodes;
 	}
 
-	public function parseLine($line) {
+	public function parseLine( $line ) {
 		$lineTmp = explode('|', trim($line, '* '), 2);
 		// for external links defined as [http://example.com] instead of just http://example.com
 		$lineTmp[0] = trim($lineTmp[0], '[]');

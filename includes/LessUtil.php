@@ -53,14 +53,15 @@ class LessUtil {
 	 * @param string $color
 	 * @return string
 	 */
-	public static function sanitizeColor($color) {
+	public static function sanitizeColor( $color ) {
 		$color = trim(strtolower($color));
 		return $color;
 	}
+
 	/**
 	 * Calculates whether currently used theme is light or dark
 	 */
-	public static function isThemeDark($background, $cosmosSettings = null) {
+	public static function isThemeDark( $background, $cosmosSettings = null ) {
 		if (empty($cosmosSettings)) {
 			$cosmosSettings = self::getCosmosSettings();
 		}
@@ -83,7 +84,7 @@ class LessUtil {
 	 * @param string $rgbhex RGB color in hex format (#474646)
 	 * @return array HSL set
 	 */
-	private static function rgb2hsl($rgbhex) {
+	private static function rgb2hsl( $rgbhex ) {
 		if ($rgbhex[0] != '#') {
 			$rgbhex = self::colorNameToHex($rgbhex);
 		}
@@ -145,6 +146,7 @@ class LessUtil {
 			$L
 		];
 	}
+
 	/**
 	 * Convert HTML color name to hex format
 	 * We allow users to use color names in ThemeDesigner so we need to support them
@@ -152,7 +154,7 @@ class LessUtil {
 	 * @param $colorName
 	 * @return mixed
 	 */
-	public static function colorNameToHex($colorName) {
+	public static function colorNameToHex( $colorName ) {
 		// standard 147 HTML color names
 		$colors = [
 			'aliceblue' => '#f0f8ff',
@@ -317,7 +319,7 @@ class LessUtil {
 	 * @param $themeSettings
 	 * @return mixed
 	 */
-	public static function normalizeThemeColors($themeSettings) {
+	public static function normalizeThemeColors( $themeSettings ) {
 		foreach (self::COLOR_KEYS as $key) {
 			if (!preg_match(self::HEX_REG_EXP, $themeSettings[$key])) {
 				$themeSettings[$key] = self::colorNameToHex($themeSettings[$key]);
@@ -332,32 +334,32 @@ class LessUtil {
 	 *
 	 * @return mixed
 	 */
-	public static function convertColorsToRgb(array $themeSettings): array {
-			$settings = [];
+	public static function convertColorsToRgb( array $themeSettings ): array {
+		$settings = [];
 
-			foreach (self::normalizeThemeColors($themeSettings) as $key => $val) {
-				if (preg_match(self::HEX_REG_EXP, $val)) {
-					$settings[$key] = self::hexToRgb($val);
-				} else {
-					$settings[$key] = $val;
-				}
-			}
-
-			return $settings;
-		}
-
-		/**
-		 * @param string $hex
-		 *
-		 * @return array with r, g and b keys
-		 */
-		public static function hexToRgb(string $hex): array {
-				$hex = str_replace('#', '', $hex);
-				$length = strlen($hex);
-				$rgb['r'] = hexdec($length == 6 ? substr($hex, 0, 2) : ($length == 3 ? str_repeat(substr($hex, 0, 1), 2) : 0));
-				$rgb['g'] = hexdec($length == 6 ? substr($hex, 2, 2) : ($length == 3 ? str_repeat(substr($hex, 1, 1), 2) : 0));
-				$rgb['b'] = hexdec($length == 6 ? substr($hex, 4, 2) : ($length == 3 ? str_repeat(substr($hex, 2, 1), 2) : 0));
-
-				return $rgb;
+		foreach (self::normalizeThemeColors($themeSettings) as $key => $val) {
+			if (preg_match(self::HEX_REG_EXP, $val)) {
+				$settings[$key] = self::hexToRgb($val);
+			} else {
+				$settings[$key] = $val;
 			}
 		}
+
+		return $settings;
+	}
+
+	/**
+	 * @param string $hex
+	 *
+	 * @return array with r, g and b keys
+	 */
+	public static function hexToRgb( string $hex ): array {
+		$hex = str_replace('#', '', $hex);
+		$length = strlen($hex);
+		$rgb['r'] = hexdec($length == 6 ? substr($hex, 0, 2) : ($length == 3 ? str_repeat(substr($hex, 0, 1), 2) : 0));
+		$rgb['g'] = hexdec($length == 6 ? substr($hex, 2, 2) : ($length == 3 ? str_repeat(substr($hex, 1, 1), 2) : 0));
+		$rgb['b'] = hexdec($length == 6 ? substr($hex, 4, 2) : ($length == 3 ? str_repeat(substr($hex, 2, 1), 2) : 0));
+
+		return $rgb;
+	}
+}
