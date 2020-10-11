@@ -17,16 +17,13 @@ use ObjectCache;
 use Sanitizer;
 use SpecialPageFactory;
 use Title;
+use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( -1 );
-}
-
-class CosmosToolbar {
-
+class CosmosToolbar implements ExpirationAwareness {
 	/**
 	 * Parse one line from MediaWiki message to array with indexes 'text' and 'href'
 	 *
+	 * @todo This static method seems to be unused?
 	 * @author Inez Korczynski <inez@wikia.com>
 	 * @param string $line
 	 * @return array
@@ -38,8 +35,7 @@ class CosmosToolbar {
 		$line_temp[0] = trim( $line_temp[0], '[]' );
 		if ( count( $line_temp ) >= 2 && $line_temp[1] != '' ) {
 			$line = trim( $line_temp[1] );
-			$link = trim( wfMessage( $line_temp[0] )->inContentLanguage()
-				->text() );
+			$link = trim( wfMessage( $line_temp[0] )->inContentLanguage()->text() );
 		} else {
 			$line = trim( $line_temp[0] );
 			$link = trim( $line_temp[0] );
@@ -78,6 +74,7 @@ class CosmosToolbar {
 							$specialCanonicalName = $dbkey;
 						}
 					}
+
 					$title = $title->fixSpecialName();
 					$href = $title->getLocalURL();
 				} else {
@@ -96,41 +93,10 @@ class CosmosToolbar {
 	}
 
 	/**
-	 * @author Inez Korczynski <inez@wikia.com>
-	 * @param string $messageKey
-	 * @return array
-	 */
-	public static function getMessageAsArray( $messageKey ) {
-		$message = trim( wfMessage( $messageKey )->inContentLanguage()
-			->text() );
-		if ( wfMessage( $messageKey, $message )->exists() ) {
-			$lines = explode( "\n", $message );
-			if ( count( $lines ) > 0 ) {
-				return $lines;
-			}
-		}
-		return null;
-	}
-
-	/**
 	 * @return string
 	 */
 	public function getCode() {
-		if ( empty( $menu ) ) {
-			$menu = $this->getMenu( $this->getMenuLines() );
-		}
-		return $menu;
-	}
-
-	/**
-	 * @return array
-	 */
-	public function getMenuLines() {
-		if ( empty( $lines ) ) {
-			$lines = self::getMessageAsArray( 'Cosmos-toolbar' );
-		}
-
-		return $lines;
+		return $this->getMenu( $this->getMenuLines() );
 	}
 
 	/**
@@ -142,25 +108,27 @@ class CosmosToolbar {
 		$nodes = $this->parse( $lines );
 
 		if ( count( $nodes ) > 0 ) {
-
-			Hooks::run( 'getCosmosToolbar', [ &$nodes
-			] );
+			Hooks::run( 'getCosmosToolbar', [ &$nodes ] );
 
 			$mainMenu = [];
 			foreach ( $nodes[0]['children'] as $key => $val ) {
-				$menu .= '<li id="' . Sanitizer::escapeIdForAttribute( 't-' . strtolower( strtr( $nodes[$val]['text'], ' ', '-' ) ) ) . '">';
+				$menu .= '<li id="' .
+					Sanitizer::escapeIdForAttribute( 't-' . strtolower( strtr( $nodes[$val]['text'], ' ', '-' ) ) ) . '">';
 				$menu .= '<a href="' . ( !empty( $nodes[$val]['href'] ) ? htmlspecialchars( $nodes[$val]['href'] ) : '#' ) . '"';
-				if ( !isset( $nodes[$val]['internal'] ) || !$nodes[$val]['internal'] ) {
+				if (
+					!isset( $nodes[$val]['internal'] ) ||
+					!$nodes[$val]['internal']
+				) {
 					$menu .= ' rel="nofollow"';
 				}
+
 				$menu .= '><span>' . htmlspecialchars( $nodes[$val]['text'] ) . '</span>';
 				$menu .= '</a>';
 
 			}
+
 			$menu .= '</li>';
-
 			$menu = preg_replace( '/<!--b-->(.*)<!--e-->/U', '', $menu );
-
 			$menuHash = hash( 'md5', serialize( $nodes ) );
 
 			foreach ( $nodes as $key => $val ) {
@@ -173,10 +141,9 @@ class CosmosToolbar {
 			}
 
 			$nodes['mainMenu'] = $mainMenu;
-
 			$memc = ObjectCache::getLocalClusterInstance();
-			// three days
-			$memc->set( $menuHash, $nodes, 60 * 60 * 24 * 3 );
+			$memc->set( $menuHash, $nodes, self::TTL_DAY * 3 );
+
 			return $menu;
 		}
 	}
@@ -210,6 +177,7 @@ class CosmosToolbar {
 							$node['parentIndex'] = 0;
 							break;
 						}
+
 						if ( $nodes[$x]['depth'] == $node['depth'] - 1 ) {
 							$node['parentIndex'] = $x;
 							break;
@@ -223,6 +191,7 @@ class CosmosToolbar {
 				$i++;
 			}
 		}
+
 		return $nodes;
 	}
 
@@ -237,8 +206,7 @@ class CosmosToolbar {
 		$internal = false;
 
 		if ( count( $lineTmp ) == 2 && $lineTmp[1] != '' ) {
-			$link = trim( wfMessage( $lineTmp[0] )->inContentLanguage()
-				->text() );
+			$link = trim( wfMessage( $lineTmp[0] )->inContentLanguage()->text() );
 			$line = trim( $lineTmp[1] );
 		} else {
 			$link = trim( $lineTmp[0] );
@@ -265,8 +233,7 @@ class CosmosToolbar {
 			} else {
 				$title = Title::newFromText( $link );
 				if ( is_object( $title ) ) {
-					$href = $title->fixSpecialName()
-						->getLocalURL();
+					$href = $title->fixSpecialName()->getLocalURL();
 					$internal = true;
 				} else {
 					$href = '#';
@@ -274,12 +241,35 @@ class CosmosToolbar {
 			}
 		}
 
-		$ret = [
+		return [
 			'original' => $lineTmp[0],
-			'text' => $text
+			'text' => $text,
+			'href' => $href,
+			'internal' => $internal
 		];
-		$ret['href'] = $href;
-		$ret['internal'] = $internal;
-		return $ret;
+	}
+
+	/**
+	 * @return array|null
+	 */
+	private function getMenuLines() {
+		return $this->getMessageAsArray( 'Cosmos-toolbar' );
+	}
+
+	/**
+	 * @param string $messageKey
+	 * @return array|null
+	 */
+	private function getMessageAsArray( $messageKey ) {
+		$message = trim( wfMessage( $messageKey )->inContentLanguage()->text() );
+
+		if ( wfMessage( $messageKey, $message )->exists() ) {
+			$lines = explode( "\n", $message );
+			if ( count( $lines ) > 0 ) {
+				return $lines;
+			}
+		}
+
+		return null;
 	}
 }

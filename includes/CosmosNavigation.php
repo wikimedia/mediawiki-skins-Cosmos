@@ -18,16 +18,13 @@ use ObjectCache;
 use Sanitizer;
 use SpecialPageFactory;
 use Title;
+use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( -1 );
-}
-
-class CosmosNavigation {
-
+class CosmosNavigation implements ExpirationAwareness {
 	/**
 	 * Parse one line from MediaWiki message to array with indexes 'text' and 'href'
 	 *
+	 * @todo This static method seems to be unused?
 	 * @author Inez Korczynski <inez@wikia.com>
 	 * @param string $line
 	 * @return array
@@ -39,8 +36,7 @@ class CosmosNavigation {
 		$line_temp[0] = trim( $line_temp[0], '[]' );
 		if ( count( $line_temp ) >= 2 && $line_temp[1] != '' ) {
 			$line = trim( $line_temp[1] );
-			$link = trim( wfMessage( $line_temp[0] )->inContentLanguage()
-				->text() );
+			$link = trim( wfMessage( $line_temp[0] )->inContentLanguage()->text() );
 		} else {
 			$line = trim( $line_temp[0] );
 			$link = trim( $line_temp[0] );
@@ -67,6 +63,7 @@ class CosmosNavigation {
 			if ( !wfMessage( $line_temp[0] )->exists() ) {
 				$link = $line_temp[0];
 			}
+
 			if ( preg_match( '/^(?:' . wfUrlProtocols() . ')/', $link ) ) {
 				$href = $link;
 			} else {
@@ -79,6 +76,7 @@ class CosmosNavigation {
 							$specialCanonicalName = $dbkey;
 						}
 					}
+
 					$title = $title->fixSpecialName();
 					$href = $title->getLocalURL();
 				} else {
@@ -97,41 +95,10 @@ class CosmosNavigation {
 	}
 
 	/**
-	 * @author Inez Korczynski <inez@wikia.com>
-	 * @param string $messageKey
-	 * @return array
-	 */
-	public static function getMessageAsArray( $messageKey ) {
-		$message = trim( wfMessage( $messageKey )->inContentLanguage()
-			->text() );
-		if ( wfMessage( $messageKey, $message )->exists() ) {
-			$lines = explode( "\n", $message );
-			if ( count( $lines ) > 0 ) {
-				return $lines;
-			}
-		}
-		return null;
-	}
-
-	/**
 	 * @return string
 	 */
 	public function getCode() {
-		if ( empty( $menu ) ) {
-			$menu = $this->getMenu( $this->getMenuLines() );
-		}
-		return $menu;
-	}
-
-	/**
-	 * @return array
-	 */
-	public function getMenuLines() {
-		if ( empty( $lines ) ) {
-			$lines = self::getMessageAsArray( 'Cosmos-navigation' );
-		}
-
-		return $lines;
+		return $this->getMenu( $this->getMenuLines() );
 	}
 
 	/**
@@ -146,7 +113,11 @@ class CosmosNavigation {
 		foreach ( $children as $key => $val ) {
 			$link_html = htmlspecialchars( $nodes[$val]['text'] );
 			if ( !empty( $nodes[$val]['children'] ) ) {
-				$link_html .= Icon::getIcon( 'level-2-dropdown' )->makeSvg( 12, 12, [ 'id' => 'wds-icons-menu-control-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown-chevron' ] );
+				$link_html .= Icon::getIcon( 'level-2-dropdown' )
+					->makeSvg( 12, 12, [
+						'id' => 'wds-icons-menu-control-tiny',
+						'class' => 'wds-icon wds-icon-tiny wds-dropdown-chevron'
+					] );
 			}
 
 			$menu_item = Html::rawElement( 'a', [
@@ -154,11 +125,13 @@ class CosmosNavigation {
 				'class' => ( !empty( $nodes[$val]['children'] ) ? 'wds-dropdown-level-2__toggle' : null ),
 				'rel' => $nodes[$val]['internal'] ? null : 'nofollow'
 			], $link_html ) . "\n";
+
 			if ( !empty( $nodes[$val]['children'] ) ) {
 				$menu_item .= '<div class="wds-is-not-scrollable wds-dropdown-level-2__content" id="p-' . Sanitizer::escapeIdForAttribute( $nodes[$val]['text'] ) . '" aria-labelledby="p-' . Sanitizer::escapeIdForAttribute( $nodes[$val]['text'] ) . '-label">';
 				$menu_item .= $this->getSubMenu( $nodes, $nodes[$val]['children'] );
 				$menu_item .= '</div>';
 			}
+
 			$menu .= Html::rawElement( 'li',  [
 				'id' => Sanitizer::escapeIdForAttribute( 'n-' . strtr( $nodes[$val]['text'], ' ', '-' ) ),
 				'class' => ( !empty( $nodes[$val]['children'] ) ? ( $key > count( $nodes[$val]['children'] ) - 1 ? 'wds-is-sticked-to-parent ' : '' ) . 'wds-dropdown-level-2' : false )
@@ -179,7 +152,6 @@ class CosmosNavigation {
 		$nodes = $this->parse( $lines );
 
 		if ( count( $nodes ) > 0 ) {
-
 			Hooks::run( 'getCosmosNavigation', [ &$nodes ] );
 
 			$mainMenu = [];
@@ -188,23 +160,28 @@ class CosmosNavigation {
 				if ( isset( $nodes[$val]['children'] ) ) {
 					$mainMenu[$val] = $nodes[$val]['children'];
 				}
+
 				$menu .= '<li class="wds-tabs__tab">';
 				if ( !empty( $nodes[$val]['children'] ) ) {
 					$menu .= '<div class="wds-dropdown" id="p-' . Sanitizer::escapeIdForAttribute( $nodes[$val]['text'] ) . '" aria-labelledby="p-' . Sanitizer::escapeIdForAttribute( $nodes[$val]['text'] ) . '-label">';
 				}
+
 				$menu .= '<div class="wds-tabs__tab-label ';
 				if ( !empty( $nodes[$val]['children'] ) ) {
 					$menu .= ' wds-dropdown__toggle';
 				}
+
 				$menu .= '" id="p-' . Sanitizer::escapeIdForAttribute( $nodes[$val]['text'] ) . '-label">';
 				$menu .= '<a href="' . ( !empty( $nodes[$val]['href'] ) && $nodes[$val]['text'] !== 'Navigation' && $nodes[$val]['text'] !== wfMessage( 'cosmos-explore' )->text() ? htmlspecialchars( $nodes[$val]['href'] ) : '#' ) . '"';
 				if ( !isset( $nodes[$val]['internal'] ) || !$nodes[$val]['internal'] ) {
 					$menu .= ' rel="nofollow"';
 				}
+
 				$menu .= '>' . ( $nodes[$val]['text'] === wfMessage( 'cosmos-explore' )->text() ? Icon::getIcon( 'explore' )->makeSvg( 91, 91, [ 'id' => 'cosmos-icons-explore', 'class' => 'wds-icon' ] ) : '' ) . '<span ' . ( $nodes[$val]['text'] === wfMessage( 'cosmos-explore' )->text() ? 'style="padding-top: 2px;"' : '' ) . '>' . htmlspecialchars( $nodes[$val]['text'] ) . '</span>';
 				if ( !empty( $nodes[$val]['children'] ) ) {
 					$menu .= Icon::getIcon( 'dropdown' )->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] );
 				}
+
 				$menu .= '</a></div>';
 				if ( !empty( $nodes[$val]['children'] ) ) {
 					$menu .= '<div class="wds-is-not-scrollable wds-dropdown__content">';
@@ -214,12 +191,10 @@ class CosmosNavigation {
 
 			}
 			$menu .= '</li>';
-
 			$menu = Html::rawElement( 'li', [
 				'class' => 'wds-tabs__tab'
 			], $menu );
 			$menu = preg_replace( '/<!--b-->(.*)<!--e-->/U', '', $menu );
-
 			$menuHash = hash( 'md5', serialize( $nodes ) );
 
 			foreach ( $nodes as $key => $val ) {
@@ -232,10 +207,8 @@ class CosmosNavigation {
 			}
 
 			$nodes['mainMenu'] = $mainMenu;
-
 			$memc = ObjectCache::getLocalClusterInstance();
-			// three days
-			$memc->set( $menuHash, $nodes, 60 * 60 * 24 * 3 );
+			$memc->set( $menuHash, $nodes, self::TTL_DAY * 3 );
 
 			return $menu;
 		}
@@ -249,12 +222,12 @@ class CosmosNavigation {
 		$nodes = [];
 		$lastDepth = 0;
 		$i = 0;
+
 		if ( is_array( $lines ) && count( $lines ) > 0 ) {
 			foreach ( $lines as $line ) {
 				if ( trim( $line ) === '' ) {
 					// ignore empty lines
 					continue;
-
 				}
 
 				$node = $this->parseLine( $line );
@@ -270,6 +243,7 @@ class CosmosNavigation {
 							$node['parentIndex'] = 0;
 							break;
 						}
+
 						if ( $nodes[$x]['depth'] == $node['depth'] - 1 ) {
 							$node['parentIndex'] = $x;
 							break;
@@ -277,7 +251,13 @@ class CosmosNavigation {
 					}
 				}
 
-				if ( !empty( $node['original'] ) && ( $node['original'] == 'SEARCH' || $node['original'] == 'TOOLBOX' || $node['original'] == 'LANGUAGES' ) ) {
+				if (
+					!empty( $node['original'] ) && (
+						$node['original'] == 'SEARCH' ||
+						$node['original'] == 'TOOLBOX' ||
+						$node['original'] == 'LANGUAGES'
+					)
+				) {
 					continue;
 				}
 
@@ -287,6 +267,7 @@ class CosmosNavigation {
 				$i++;
 			}
 		}
+
 		return $nodes;
 	}
 
@@ -301,8 +282,7 @@ class CosmosNavigation {
 		$internal = false;
 
 		if ( count( $lineTmp ) == 2 && $lineTmp[1] != '' ) {
-			$link = trim( wfMessage( $lineTmp[0] )->inContentLanguage()
-				->text() );
+			$link = trim( wfMessage( $lineTmp[0] )->inContentLanguage()->text() );
 			$line = trim( $lineTmp[1] );
 		} else {
 			$link = trim( $lineTmp[0] );
@@ -338,12 +318,34 @@ class CosmosNavigation {
 			}
 		}
 
-		$ret = [
+		return [
 			'original' => $lineTmp[0],
-			'text' => $text
+			'text' => $text,
+			'href' => $href,
+			'internal' => $internal
 		];
-		$ret['href'] = $href;
-		$ret['internal'] = $internal;
-		return $ret;
+	}
+
+	/**
+	 * @return array|null
+	 */
+	private function getMenuLines() {
+		return $this->getMessageAsArray( 'Cosmos-navigation' );
+	}
+
+	/**
+	 * @param string $messageKey
+	 * @return array|null
+	 */
+	private function getMessageAsArray( $messageKey ) {
+		$message = trim( wfMessage( $messageKey )->inContentLanguage()->text() );
+		if ( wfMessage( $messageKey, $message )->exists() ) {
+			$lines = explode( "\n", $message );
+			if ( count( $lines ) > 0 ) {
+				return $lines;
+			}
+		}
+
+		return null;
 	}
 }
