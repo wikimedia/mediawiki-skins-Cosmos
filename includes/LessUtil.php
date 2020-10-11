@@ -314,7 +314,7 @@ class LessUtil {
 	}
 
 	/**
-	 * @desc Converts theme designer color names to hex
+	 * Converts theme designer color names to hex
 	 *
 	 * @param $themeSettings
 	 * @return mixed

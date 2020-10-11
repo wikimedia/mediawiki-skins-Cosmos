@@ -18,14 +18,14 @@ class CosmosSocialProfile {
 		return $user;
 	}
 
-	public static function userregistration( $parser, $user ) {
+	public static function getUserRegistration( $parser, $user ) {
 		$user = self::getUser( $parser, $user );
 		if ( $user ) {
 			return date( 'F j, Y', strtotime( $user->getRegistration() ) );
 		}
 	}
 
-	public static function usergroups( $parser, $user ) {
+	public static function getUserGroups( $parser, $user ) {
 		$config = new Config();
 		$user = self::getUser( $parser, $user );
 		if ( $user && $user->isBlocked() ) {
@@ -51,14 +51,14 @@ class CosmosSocialProfile {
 		return $usertags;
 	}
 
-	public static function useredits( $parser, $user ) {
+	public static function getUserEdits( $parser, $user ) {
 		$user = self::getUser( $parser, $user );
 		if ( $user ) {
 			return $user->getEditCount();
 		}
 	}
 
-	public static function userbio( $parser, $user ) {
+	public static function getUserBio( $parser, $user ) {
 		if ( $user ) {
 			// return '<p class="bio">' . $parser->recursiveTagParse( '{{:User:' . $user . '/bio}}') . '</p>';
 

@@ -57,7 +57,7 @@ class CosmosTemplate extends BaseTemplate {
 				'<div id="profile-title-container">'
 			];
 			$replaceWith = [
-				'<h1 itemprop="name">' . $profileOwner . '</h1>' . ( $config->isEnabled( 'profile-tags' ) ? CosmosSocialProfile::usergroups( $parser, $profileOwner ) : '' ) . ( $config->isEnabled( 'show-editcount' ) ? '<br/> <div class="contributions-details tally"><a href="' . htmlspecialchars( Title::newFromText( "Contributions/$profileOwner", NS_SPECIAL )->getFullURL() ) . '"><em>' . CosmosSocialProfile::useredits( $parser, $profileOwner ) . '</em><span>Edits since joining this wiki<br>' . CosmosSocialProfile::userregistration( $parser, $profileOwner ) . '</span></a></div>' : '' ) . ( $config->isEnabled( 'allow-bio' ) ? CosmosSocialProfile::userbio( $parser, $profileOwner ) : '' ) ,
+				'<h1 itemprop="name">' . $profileOwner . '</h1>' . ( $config->isEnabled( 'profile-tags' ) ? CosmosSocialProfile::getUserGroups( $parser, $profileOwner ) : '' ) . ( $config->isEnabled( 'show-editcount' ) ? '<br/> <div class="contributions-details tally"><a href="' . htmlspecialchars( Title::newFromText( "Contributions/$profileOwner", NS_SPECIAL )->getFullURL() ) . '"><em>' . CosmosSocialProfile::getUserEdits( $parser, $profileOwner ) . '</em><span>Edits since joining this wiki<br>' . CosmosSocialProfile::getUserRegistration( $parser, $profileOwner ) . '</span></a></div>' : '' ) . ( $config->isEnabled( 'allow-bio' ) ? CosmosSocialProfile::getUserBio( $parser, $profileOwner ) : '' ) ,
 				'<div class="hgroup">'
 			];
 			return str_replace( $replace, $replaceWith, $html );
@@ -533,7 +533,7 @@ class CosmosTemplate extends BaseTemplate {
 	 *
 	 * @return string html
 	 */
-	protected function BuildWiki( string &$html, Config $config ) {
+	protected function buildWiki( string &$html, Config $config ) {
 		// Open container element for page body (i.e. actual content such as the
 		// article and the sidebar)
 		$html .= Html::openElement( 'section', [ 'id' => 'mw-content' ] );
