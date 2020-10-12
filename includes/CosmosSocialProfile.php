@@ -9,6 +9,12 @@ use User;
 
 class CosmosSocialProfile {
 
+	/**
+	 * @todo $parser parameter is unused
+	 * @param Parser $parser
+	 * @param string $user
+	 * @return User|false
+	 */
 	private static function getUser( $parser, $user ) {
 		$title = Title::newFromText( $user );
 		if ( is_object( $title ) && ( $title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE ) && !$title->isSubpage() ) {
@@ -18,6 +24,12 @@ class CosmosSocialProfile {
 		return $user;
 	}
 
+	/**
+	 * @todo $parser parameter is unused
+	 * @param Parser $parser
+	 * @param string $user
+	 * @return string|false|null
+	 */
 	public static function getUserRegistration( $parser, $user ) {
 		$user = self::getUser( $parser, $user );
 		if ( $user ) {
@@ -25,6 +37,12 @@ class CosmosSocialProfile {
 		}
 	}
 
+	/**
+	 * @todo $parser parameter is unused
+	 * @param Parser $parser
+	 * @param string $user
+	 * @return string
+	 */
 	public static function getUserGroups( $parser, $user ) {
 		$config = new Config();
 		$user = self::getUser( $parser, $user );
@@ -51,6 +69,12 @@ class CosmosSocialProfile {
 		return $usertags;
 	}
 
+	/**
+	 * @todo $parser parameter is unused
+	 * @param Parser $parser
+	 * @param string $user
+	 * @return int|null
+	 */
 	public static function getUserEdits( $parser, $user ) {
 		$user = self::getUser( $parser, $user );
 		if ( $user ) {
@@ -58,6 +82,12 @@ class CosmosSocialProfile {
 		}
 	}
 
+	/**
+	 * @todo Seems like a method that is a work in progress...
+	 * @param Parser $parser
+	 * @param string $user
+	 * @return void
+	 */
 	public static function getUserBio( $parser, $user ) {
 		if ( $user ) {
 			// return '<p class="bio">' . $parser->recursiveTagParse( '{{:User:' . $user . '/bio}}') . '</p>';

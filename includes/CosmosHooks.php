@@ -8,8 +8,14 @@ use ALTree;
 use OutputPage;
 use Skin;
 use Title;
+use User;
 
 class CosmosHooks {
+	/**
+	 * @see https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:Hooks/GetPreferences
+	 * @param User $user
+	 * @param array &$preferences
+	 */
 	public static function onGetPreferences( $user, &$preferences ) {
 		$preferences['cosmos-mobile-responsiveness'] = [
 			'type' => 'check',
@@ -18,6 +24,13 @@ class CosmosHooks {
 		];
 	}
 
+	/**
+	 * @see https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:Hooks/OutputPageBodyAttributes
+	 * @param OutputPage $out
+	 * @param Skin $skin
+	 * @param array &$bodyAttrs
+	 * @return bool
+	 */
 	public static function onOutputPageBodyAttributes( OutputPage $out, Skin $skin, &$bodyAttrs ) {
 		if ( $skin->getUser()->isLoggedIn() ) {
 			$bodyAttrs['class'] .= ' user-logged';
@@ -33,6 +46,7 @@ class CosmosHooks {
 	/**
 	 * Implements AdminLinks hook from Extension:Admin_Links.
 	 *
+	 * @see https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Admin_Links/Hooks/AdminLinks
 	 * @param ALTree &$adminLinksTree
 	 * @return bool
 	 */

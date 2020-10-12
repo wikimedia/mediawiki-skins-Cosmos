@@ -28,8 +28,9 @@ class CosmosNavigation {
 	/**
 	 * Parse one line from MediaWiki message to array with indexes 'text' and 'href'
 	 *
-	 * @return array
 	 * @author Inez Korczynski <inez@wikia.com>
+	 * @param string $line
+	 * @return array
 	 */
 	public static function parseItem( $line ) {
 		$href = $specialCanonicalName = false;
@@ -97,6 +98,7 @@ class CosmosNavigation {
 
 	/**
 	 * @author Inez Korczynski <inez@wikia.com>
+	 * @param string $messageKey
 	 * @return array
 	 */
 	public static function getMessageAsArray( $messageKey ) {
@@ -111,6 +113,9 @@ class CosmosNavigation {
 		return null;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getCode() {
 		if ( empty( $menu ) ) {
 			$menu = $this->getMenu( $this->getMenuLines() );
@@ -118,6 +123,9 @@ class CosmosNavigation {
 		return $menu;
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getMenuLines() {
 		if ( empty( $lines ) ) {
 			$lines = self::getMessageAsArray( 'Cosmos-navigation' );
@@ -126,6 +134,12 @@ class CosmosNavigation {
 		return $lines;
 	}
 
+	/**
+	 * @param array $nodes
+	 * @param array $children
+	 * @param bool $bolded
+	 * @return string
+	 */
 	public function getSubMenu( $nodes, $children, $bolded = false ) {
 		$menu = '';
 		$val = 0;
@@ -156,6 +170,10 @@ class CosmosNavigation {
 		return $menu;
 	}
 
+	/**
+	 * @param array $lines
+	 * @return string
+	 */
 	public function getMenu( $lines ) {
 		$menu = '';
 		$nodes = $this->parse( $lines );
@@ -223,6 +241,10 @@ class CosmosNavigation {
 		}
 	}
 
+	/**
+	 * @param array $lines
+	 * @return array
+	 */
 	public function parse( $lines ) {
 		$nodes = [];
 		$lastDepth = 0;
@@ -268,6 +290,10 @@ class CosmosNavigation {
 		return $nodes;
 	}
 
+	/**
+	 * @param string $line
+	 * @return array
+	 */
 	public function parseLine( $line ) {
 		$lineTmp = explode( '|', trim( $line, '* ' ), 2 );
 		// for external links defined as [http://example.com] instead of just http://example.com

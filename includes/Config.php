@@ -169,6 +169,10 @@ class Config {
 		}
 	}
 
+	/**
+	 * @param string $option
+	 * @return bool|null
+	 */
 	public function isEnabled( string $option ): ? bool {
 		if ( isset( $this->options[$option] ) && is_bool( $this->options[$option] ) ) {
 			return $this->options[$option];
@@ -177,6 +181,10 @@ class Config {
 		}
 	}
 
+	/**
+	 * @param string $option
+	 * @return int|null
+	 */
 	public function getInteger( string $option ) : ? int {
 		if ( isset( $this->options[$option] ) && is_int( $this->options[$option] ) ) {
 			return $this->options[$option];
@@ -185,6 +193,10 @@ class Config {
 		}
 	}
 
+	/**
+	 * @param string $option
+	 * @return float|null
+	 */
 	public function getFloat( string $option ) : ? float {
 		if ( isset( $this->options[$option] ) && is_float( $this->options[$option] ) ) {
 			return $this->options[$option];
@@ -193,6 +205,10 @@ class Config {
 		}
 	}
 
+	/**
+	 * @param string $option
+	 * @return string|null
+	 */
 	public function getString( string $option ) : ? string {
 		if ( isset( $this->options[$option] ) && is_string( $this->options[$option] ) ) {
 			return $this->options[$option];
@@ -201,6 +217,10 @@ class Config {
 		}
 	}
 
+	/**
+	 * @param string $option
+	 * @return array|null
+	 */
 	public function getArray( string $option ) : ? array {
 		if ( isset( $this->options[$option] ) && is_array( $this->options[$option] ) ) {
 			return $this->options[$option];

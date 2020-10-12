@@ -23,6 +23,8 @@ use WebRequest;
 class CosmosTemplate extends BaseTemplate {
 	/**
 	 * Outputs the entire contents of the page
+	 *
+	 * @return string
 	 */
 	public function execute() {
 		$config = new Config();
@@ -66,6 +68,10 @@ class CosmosTemplate extends BaseTemplate {
 		}
 	}
 
+	/**
+	 * @param string &$html
+	 * @param Config $config
+	 */
 	protected function buildBanner( string &$html, Config $config ) {
 		$skin = $this->getSkin();
 		// Open container section for banner
@@ -93,6 +99,11 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'section' );
 	}
 
+	/**
+	 * @todo $config parameter is unused
+	 * @param string &$html
+	 * @param Config $config
+	 */
 	protected function buildCreateArticleDialog( string &$html, Config $config ) {
 		$skin = $this->getSkin();
 		$html .= Html::openElement( 'div', [ 'id' => 'createPageModal', 'class' => 'cosmos-modal' ] );
@@ -134,6 +145,9 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 	}
 
+	/**
+	 * @return array
+	 */
 	protected static function getMostWantedPages() {
 		$WantedPagesPageResponse = ( new WantedPagesPage() )->doQuery();
 		$dbr = wfGetDB( DB_REPLICA );
@@ -154,11 +168,19 @@ class CosmosTemplate extends BaseTemplate {
 		return $wantedPages;
 	}
 
+	/**
+	 * @return string
+	 */
 	protected static function getPreferredEditorQueryParamName() {
 		// todo, add veaction if visualeditor is the users default preference
 		return 'action';
 	}
 
+	/**
+	 * @todo $config parameter is unused
+	 * @param string &$html
+	 * @param Config $config
+	 */
 	protected function buildNavigation( string &$html, Config $config ) {
 		global $wgManageWikiForceSidebarLinks, $wgManageWikiSidebarLinks, $wgManageWiki;
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
@@ -191,6 +213,10 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'ul' );
 	}
 
+	/**
+	 * @param string &$html
+	 * @param Config $config
+	 */
 	protected function buildBannerLogo( string &$html, Config $config ) {
 		// Open container div
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-banner-bannerLogo' ] );
@@ -212,7 +238,8 @@ class CosmosTemplate extends BaseTemplate {
 	 * Builds HTML code to present the user account-related options to the reader
 	 * and appends it to the string passed to it.
 	 *
-	 * @param $html string The string onto which the HTML should be appended
+	 * @param string &$html The string onto which the HTML should be appended
+	 * @param Config $config
 	 */
 	protected function buildUserOptions( string &$html, Config $config ) {
 		// Open container div
@@ -227,6 +254,10 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 	}
 
+	/**
+	 * @param string &$html
+	 * @param Config $config
+	 */
 	protected function buildPersonalTools( string &$html, Config $config ) {
 		$skin = $this->getSkin();
 
@@ -297,6 +328,11 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 	}
 
+	/**
+	 * @todo $config parameter is unused
+	 * @param array &$data
+	 * @param Config $config
+	 */
 	protected static function getNotifications( array &$data, Config $config ) {
 		$data['cosmos_notifications'] = [ 'numNotifs' => 0, 'numMessages' => 0, 'notifs' => [], 'messages' => [] ];
 
@@ -311,9 +347,14 @@ class CosmosTemplate extends BaseTemplate {
 		}
 	}
 
-	// HACK: This function is inelegant, and should be refactored so that the
-	//       construction of the icons and list is done by one function which is
-	//       called multiple times, but supplied with different info
+	/**
+	 * @todo HACK: This function is inelegant, and should be refactored so that the
+	 * construction of the icons and list is done by one function which is
+	 * called multiple times, but supplied with different info
+	 * @todo $config parameter is unused
+	 * @param string &$html
+	 * @param Config $config
+	 */
 	protected function buildNotifications( string &$html, Config $config ) {
 		$skin = $this->getSkin();
 		// Partial credits to the Timeless skin:
@@ -429,7 +470,9 @@ class CosmosTemplate extends BaseTemplate {
 	 * Builds HTML code to present the search form to the user, and appends it to
 	 * string passed to it.
 	 *
-	 * @param $html string The string onto which the HTML should be appended
+	 * @todo $config parameter is unused
+	 * @param string &$html The string onto which the HTML should be appended
+	 * @param Config $config
 	 */
 	protected function buildSearchBar( string &$html, Config $config ) {
 		// Open container div
@@ -464,6 +507,10 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 	}
 
+	/**
+	 * @param string &$html
+	 * @param Config $config
+	 */
 	protected function buildWikiHeader( string &$html, Config $config ) {
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		$skin = $this->getSkin();
@@ -508,6 +555,10 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'header' );
 	}
 
+	/**
+	 * @param string &$html
+	 * @param Config $config
+	 */
 	protected function buildWordmark( string &$html, Config $config ) {
 		if ( $config->getString( 'header-wordmark' ) ) {
 			// Open container div for logo
@@ -531,6 +582,8 @@ class CosmosTemplate extends BaseTemplate {
 	 * Generate the page content block
 	 * Broken out here due to the excessive indenting, or stuff.
 	 *
+	 * @param string &$html
+	 * @param Config $config
 	 * @return string html
 	 */
 	protected function buildWiki( string &$html, Config $config ) {
@@ -558,6 +611,11 @@ class CosmosTemplate extends BaseTemplate {
 		// Close container element for page
 	}
 
+	/**
+	 * @todo $config parameter is unused
+	 * @param string &$html
+	 * @param Config $config
+	 */
 	protected function buildRail( string &$html, Config $config ) {
 		if ( ( $this->getMsg( 'cosmos-customsidebar' )
 			->text() !== '-' && $this->getMsg( 'cosmos-customsidebar' )
@@ -589,6 +647,10 @@ class CosmosTemplate extends BaseTemplate {
 		}
 	}
 
+	/**
+	 * @param string &$html
+	 * @param Config $config
+	 */
 	protected function buildHeader( string &$html, Config $config ) {
 		// Open container element for header
 		$html .= Html::openElement( 'header', [ 'id' => 'cosmos-page-header' ] );
@@ -600,6 +662,11 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'header' );
 	}
 
+	/**
+	 * @todo $config parameter is unused
+	 * @param string &$html
+	 * @param Config $config
+	 */
 	protected function buildArticle( string &$html, Config $config ) {
 		// Open container element for article
 		$html .= Html::openElement( 'article', [ 'id' => 'cosmos-pageBody-content' ] );
@@ -645,6 +712,10 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'article' );
 	}
 
+	/**
+	 * @param string &$html
+	 * @param Config $config
+	 */
 	protected function buildArticleHeader( string &$html, Config $config ) {
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-header-articleHeader' ] );
 		$html .= Html::openElement( 'h1', [ 'id' => 'cosmos-articleHeader-title', 'class' => 'firstHeading' ] );
@@ -657,6 +728,10 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 	}
 
+	/**
+	 * @param string &$html
+	 * @param Config $config
+	 */
 	protected function buildActionButtons( string &$html, Config $config ) {
 		$skin = $this->getSkin();
 		$title = $skin->getRelevantTitle();
@@ -886,8 +961,10 @@ class CosmosTemplate extends BaseTemplate {
 	 * Builds HTML code to for an individual content action button, and appends
 	 * it to the string passed
 	 *
-	 * @param $html string The string onto which the HTML should be appended
-	 * @param $info array An array with the necessary info to build the button
+	 * @todo $config parameter is unused
+	 * @param string &$html The string onto which the HTML should be appended
+	 * @param Config $config
+	 * @param array $info An array with the necessary info to build the button
 	 */
 	protected function buildActionButton( string &$html, Config $config, array $info ) {
 		// If the button links to another page, surround it in an <a> element that
@@ -935,8 +1012,10 @@ class CosmosTemplate extends BaseTemplate {
 	 * Builds HTML code to for a drop-down list of selectable content actions,
 	 * and appends it to a given string
 	 *
-	 * @param $html string The string onto which the HTML should be appended
-	 * @param $info array An array of items which should be placed in the list
+	 * @todo $config parameter is unused
+	 * @param string &$html The string onto which the HTML should be appended
+	 * @param Config $config
+	 * @param array $items An array of items which should be placed in the list
 	 */
 	protected function buildActionDropdown( string &$html, Config $config, array $items ) {
 		// Open a <div> element to contain the entire drop-down
@@ -982,7 +1061,8 @@ class CosmosTemplate extends BaseTemplate {
 	 * Builds HTML code for the page foooter, and appends it to the string passed
 	 * to it.
 	 *
-	 * @param $html string The string onto which the HTML should be appended
+	 * @param string &$html The string onto which the HTML should be appended
+	 * @param Config $config
 	 */
 	protected function buildFooter( string &$html, Config $config ) {
 		// Open container element for footer
@@ -1016,7 +1096,9 @@ class CosmosTemplate extends BaseTemplate {
 	 * Builds HTML code to display the footer icons, and appends it to the string
 	 * that is passed to it.
 	 *
-	 * @param $html string The string onto which the HTML should be appended
+	 * @todo $config parameter is unused
+	 * @param string &$html The string onto which the HTML should be appended
+	 * @param Config $config
 	 */
 	protected function buildFooterIcons( string &$html, Config $config ) {
 		$footerIcons = $this->get( 'footericons' );
@@ -1054,7 +1136,9 @@ class CosmosTemplate extends BaseTemplate {
 	 * Builds HTML code to display the footer links, and appends it to the string
 	 * that is passed to it.
 	 *
-	 * @param $html string The string onto which the HTML should be appended
+	 * @todo $config parameter is unused
+	 * @param string &$html The string onto which the HTML should be appended
+	 * @param Config $config
 	 */
 	protected function buildFooterLinks( string &$html, Config $config ) {
 		// Open container div for footer links
@@ -1079,7 +1163,8 @@ class CosmosTemplate extends BaseTemplate {
 	 * Builds HTML code for the toolbar that is displayed at the bottom of the
 	 * page, and appends it to the string of HTML that is it passed.
 	 *
-	 * @param $html string The string onto which the HTML should be appended
+	 * @param string &$html The string onto which the HTML should be appended
+	 * @param Config $config
 	 */
 	protected function buildToolbar( string &$html, Config $config ) {
 		// Open container element for toolbar
