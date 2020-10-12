@@ -27,8 +27,9 @@ class CosmosToolbar {
 	/**
 	 * Parse one line from MediaWiki message to array with indexes 'text' and 'href'
 	 *
-	 * @return array
 	 * @author Inez Korczynski <inez@wikia.com>
+	 * @param string $line
+	 * @return array
 	 */
 	public static function parseItem( $line ) {
 		$href = $specialCanonicalName = false;
@@ -96,6 +97,7 @@ class CosmosToolbar {
 
 	/**
 	 * @author Inez Korczynski <inez@wikia.com>
+	 * @param string $messageKey
 	 * @return array
 	 */
 	public static function getMessageAsArray( $messageKey ) {
@@ -110,6 +112,9 @@ class CosmosToolbar {
 		return null;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getCode() {
 		if ( empty( $menu ) ) {
 			$menu = $this->getMenu( $this->getMenuLines() );
@@ -117,6 +122,9 @@ class CosmosToolbar {
 		return $menu;
 	}
 
+	/**
+	 * @return array
+	 */
 	public function getMenuLines() {
 		if ( empty( $lines ) ) {
 			$lines = self::getMessageAsArray( 'Cosmos-toolbar' );
@@ -125,6 +133,10 @@ class CosmosToolbar {
 		return $lines;
 	}
 
+	/**
+	 * @param array $lines
+	 * @return string
+	 */
 	public function getMenu( $lines ) {
 		$menu = '';
 		$nodes = $this->parse( $lines );
@@ -169,6 +181,10 @@ class CosmosToolbar {
 		}
 	}
 
+	/**
+	 * @param array $lines
+	 * @return array
+	 */
 	public function parse( $lines ) {
 		$nodes = [];
 		$lastDepth = 0;
@@ -210,6 +226,10 @@ class CosmosToolbar {
 		return $nodes;
 	}
 
+	/**
+	 * @param string $line
+	 * @return array
+	 */
 	public function parseLine( $line ) {
 		$lineTmp = explode( '|', trim( $line, '* ' ), 2 );
 		// for external links defined as [http://example.com] instead of just http://example.com

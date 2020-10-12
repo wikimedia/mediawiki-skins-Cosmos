@@ -19,10 +19,13 @@ class LessUtil {
 		'footer-color'
 	];
 
+	/** @var array */
 	private static $cosmosSettings = [];
 
 	/**
 	 * Gets theme settings from Config class
+	 *
+	 * @return array
 	 */
 	public static function getCosmosSettings() {
 		// Load the 5 deafult colors by theme here (eg: in case the wiki has an override but the user doesn't have overrides).
@@ -60,6 +63,10 @@ class LessUtil {
 
 	/**
 	 * Calculates whether currently used theme is light or dark
+	 *
+	 * @param string $background
+	 * @param array|null $cosmosSettings
+	 * @return bool
 	 */
 	public static function isThemeDark( $background, $cosmosSettings = null ) {
 		if ( empty( $cosmosSettings ) ) {
@@ -151,8 +158,8 @@ class LessUtil {
 	 * Convert HTML color name to hex format
 	 * We allow users to use color names in ThemeDesigner so we need to support them
 	 *
-	 * @param $colorName
-	 * @return mixed
+	 * @param string $colorName
+	 * @return string
 	 */
 	public static function colorNameToHex( $colorName ) {
 		// standard 147 HTML color names
@@ -316,8 +323,8 @@ class LessUtil {
 	/**
 	 * Converts theme designer color names to hex
 	 *
-	 * @param $themeSettings
-	 * @return mixed
+	 * @param array $themeSettings
+	 * @return array
 	 */
 	public static function normalizeThemeColors( $themeSettings ) {
 		foreach ( self::COLOR_KEYS as $key ) {
@@ -330,9 +337,9 @@ class LessUtil {
 	}
 
 	/**
-	 * @param $themeSettings
+	 * @param array $themeSettings
 	 *
-	 * @return mixed
+	 * @return array
 	 */
 	public static function convertColorsToRgb( array $themeSettings ): array {
 		$settings = [];
