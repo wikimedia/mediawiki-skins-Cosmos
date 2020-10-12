@@ -20,19 +20,19 @@
 	},
 	"AutoloadClasses": {
 		"SkinCosmos": "includes/SkinCosmos.php",
-		"Cosmos\\CosmosTemplate": "includes/CosmosTemplate.php",
-		"Cosmos\\CosmosSocialProfile": "includes/CosmosSocialProfile.php",
-		"Cosmos\\CosmosNavigation": "includes/CosmosNavigation.php",
-		"Cosmos\\CosmosToolbar": "includes/CosmosToolbar.php",
-		"Cosmos\\CosmosHooks": "includes/CosmosHooks.php",
-		"Cosmos\\Icon": "includes/Icon.php",
-		"Cosmos\\Config": "includes/Config.php",
-		"Cosmos\\LessUtil": "includes/LessUtil.php",
-		"Cosmos\\ResourceLoaderLessModule": "includes/ResourceLoaderLessModule.php"
+		"MediaWiki\\Skin\\Cosmos\\CosmosTemplate": "includes/CosmosTemplate.php",
+		"MediaWiki\\Skin\\Cosmos\\CosmosSocialProfile": "includes/CosmosSocialProfile.php",
+		"MediaWiki\\Skin\\Cosmos\\CosmosNavigation": "includes/CosmosNavigation.php",
+		"MediaWiki\\Skin\\Cosmos\\CosmosToolbar": "includes/CosmosToolbar.php",
+		"MediaWiki\\Skin\\Cosmos\\CosmosHooks": "includes/CosmosHooks.php",
+		"MediaWiki\\Skin\\Cosmos\\Icon": "includes/Icon.php",
+		"MediaWiki\\Skin\\Cosmos\\Config": "includes/Config.php",
+		"MediaWiki\\Skin\\Cosmos\\LessUtil": "includes/LessUtil.php",
+		"MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule": "includes/ResourceLoaderLessModule.php"
 	},
 	"ResourceModules": {
 		"skins.cosmos": {
-			"class": "Cosmos\\ResourceLoaderLessModule",
+			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -78,7 +78,7 @@
 			}
 		},
 		"skins.cosmos.portableinfobox": {
-			"class": "Cosmos\\ResourceLoaderLessModule",
+			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -90,7 +90,7 @@
 			}
 		},
 		"skins.cosmos.portableinfobox.default": {
-			"class": "Cosmos\\ResourceLoaderLessModule",
+			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -100,7 +100,7 @@
 			}
 		},
 		"skins.cosmos.portableinfobox.europa": {
-			"class": "Cosmos\\ResourceLoaderLessModule",
+			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -210,9 +210,9 @@
 		}
 	},
 	"Hooks": {
-		"AdminLinks": "Cosmos\\CosmosHooks::addToAdminLinks",
-		"GetPreferences": "Cosmos\\CosmosHooks::onGetPreferences",
-		"OutputPageBodyAttributes": "Cosmos\\CosmosHooks::onOutputPageBodyAttributes"
+		"AdminLinks": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::addToAdminLinks",
+		"GetPreferences": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::onGetPreferences",
+		"OutputPageBodyAttributes": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::onOutputPageBodyAttributes"
 	},
 	"DefaultUserOptions": {
 		"cosmos-mobile-responsiveness": 1

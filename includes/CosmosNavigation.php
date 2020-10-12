@@ -10,7 +10,7 @@
  * @author Universal Omega
  */
 
-namespace Cosmos;
+namespace MediaWiki\Skin\Cosmos;
 
 use Hooks;
 use Html;

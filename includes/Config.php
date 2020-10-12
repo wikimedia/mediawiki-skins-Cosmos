@@ -1,5 +1,5 @@
 <?php
-namespace Cosmos;
+namespace MediaWiki\Skin\Cosmos;
 
 use ExtensionRegistry;
 

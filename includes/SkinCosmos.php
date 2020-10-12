@@ -5,7 +5,7 @@
  * @ingroup Skins
  */
 
-use Cosmos\Config;
+use MediaWiki\Skin\Cosmos\Config;
 
 class SkinCosmos extends SkinTemplate {
 	/** @var string */
@@ -15,7 +15,7 @@ class SkinCosmos extends SkinTemplate {
 	public $stylename = 'Cosmos';
 
 	/** @var string */
-	public $template = 'Cosmos\\CosmosTemplate';
+	public $template = 'MediaWiki\\Skin\\Cosmos\\CosmosTemplate';
 
 	/**
 	 * @param OutputPage $out

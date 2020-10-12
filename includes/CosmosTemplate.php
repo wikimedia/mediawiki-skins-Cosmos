@@ -4,7 +4,7 @@
  *
  * @ingroup Skins
  */
-namespace Cosmos;
+namespace MediaWiki\Skin\Cosmos;
 
 use BaseTemplate;
 use ExtensionRegistry;
@@ -18,6 +18,7 @@ use SiteStats;
 use Skin;
 use Title;
 use WantedPagesPage;
+use wAvatar;
 use WebRequest;
 
 class CosmosTemplate extends BaseTemplate {
