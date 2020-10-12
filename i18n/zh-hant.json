@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"cosmos-desc": "Cosmos 是基於 Fandom 站台上 Oasis 外觀所設計的外觀。是製作用來改善原本的設計，以及針對非 Fandom 使用者提供有效的 MediaWiki 外觀，或是針對從 Fandom 過渡來的使用者。",
+	"cosmos-anonymous": "匿名",
+	"cosmos-counter-label": "{{PLURAL:$1|條目}}",
+	"cosmos-createpage-header": "建立一個新條目",
+	"cosmos-createpage-input-label": "在此寫入您的頁面標題：",
+	"cosmos-createpage-next": "下一個",
+	"cosmos-createpage-dialoge-text": "我們目前在$2共有 <b>$1</b> {{PLURAL:$1|個條目}}。請在上方輸入您的條目名稱，或是在下方點擊其一標題來開始編寫！",
+	"cosmos-personaltools-userpage": "使用者頁面",
+	"cosmos-personaltools-usertalk": "使用者討論",
+	"cosmos-personaltools-anontalk": "我的討論",
+	"cosmos-notifications-nomessages": "你沒有新的訊息！",
+	"cosmos-notifications-nonotifs": "你沒有新的通知！",
+	"cosmos-action-addsection": "新話題",
+	"cosmos-action-cancel": "取消",
+	"cosmos-action-backtopage": "返回到$1",
+	"cosmos-action-back": "返回",
+	"cosmos-upload": "上傳檔案",
+	"cosmos-add-new-page-title": "添加新頁面",
+	"cosmos-add-new-page-text": "添加",
+	"cosmos-anon-add-new-page-text": "添加新頁面",
+	"cosmos-recentchanges": "近期變更",
+	"cosmos-administration": "管理",
+	"cosmos-adminlinks": "管理連結",
+	"cosmos-explore": "探索",
+	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-近期變更\n**Special:Random|隨機頁面\n**Special:NewFiles|新的檔案\n**Special:WantedPages|請求的頁面",
+	"prefs-cosmos": "Cosmos 外觀",
+	"prefs-cosmos-responsiveness": "移動回應式",
+	"cosmos-mobile-preference": "啟用 Cosmos 外觀的移動回應式版本",
+	"cosmos-user-blocked": "已封鎖"
+}

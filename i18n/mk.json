@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"cosmos-desc": "„Космос“ е руво изработено според рувото „Оаза“ на Fandom. Се работи за подобрување на истото, давајќи делотворно руво за МедијаВики MediaWiki за корисници кои не се на Fandom, или за корисници кои преоѓаат од Fandom на друго место.",
+	"cosmos-anonymous": "Анонимен",
+	"cosmos-counter-label": "{{PLURAL:$1|Статија|Статии}}",
+	"cosmos-createpage-header": "Создајте нова статија",
+	"cosmos-createpage-input-label": "Тука напишете го насловот на страницата:",
+	"cosmos-createpage-next": "Следно",
+	"cosmos-createpage-dialoge-text": "Тековно имаме <b>$1</b> {{PLURAL:$1|статија|статии}} на $2. Погоре внесете го името на вашата статија или стиснете на еден од насловите подолу за да почнете со пишување!",
+	"cosmos-personaltools-userpage": "Корисничка страница",
+	"cosmos-personaltools-usertalk": "Разговор со корисник",
+	"cosmos-personaltools-anontalk": "Мој разговор",
+	"cosmos-notifications-nomessages": "Немате нови пораки!",
+	"cosmos-notifications-nonotifs": "Немате нови известувања!",
+	"cosmos-action-addsection": "Нова тема",
+	"cosmos-action-cancel": "Откажи",
+	"cosmos-action-backtopage": "Назад на $1",
+	"cosmos-action-back": "Назад",
+	"cosmos-upload": "Подигни податотека",
+	"cosmos-add-new-page-title": "Додај нова страница",
+	"cosmos-add-new-page-text": "Додај",
+	"cosmos-anon-add-new-page-text": "Додај нова страница",
+	"cosmos-recentchanges": "Скорешни промени",
+	"cosmos-administration": "Администрација",
+	"cosmos-adminlinks": "Администраторски врски",
+	"cosmos-explore": "Истражи",
+	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|Скорешни промени\n**Special:Random|Случајна страница\n**Special:NewFiles|Нови податотеки\n**Special:WantedPages|Потребни страници",
+	"prefs-cosmos": "Руво „Космос“",
+	"prefs-cosmos-responsiveness": "Мобилна одѕивност",
+	"cosmos-mobile-preference": "Овозможи мобилно одѕивна верзија на рувото „Космос“",
+	"cosmos-user-blocked": "Блокиран"
+}

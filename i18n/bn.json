@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Al Riaz Uddin Ripon"
+			"Al Riaz Uddin Ripon",
+			"আফতাবুজ্জামান"
 		]
 	},
 	"cosmos-anonymous": "অজ্ঞাত",
@@ -11,9 +12,9 @@
 	"cosmos-personaltools-userpage": "ব্যবহারকারী পাতা",
 	"cosmos-personaltools-usertalk": "ব্যবহারকারী আলাপ",
 	"cosmos-personaltools-anontalk": "আমার আলোচনা",
-	"cosmos-notifications-nomessages": "আপনার নতুন কোনো বার্তা নেই",
+	"cosmos-notifications-nomessages": "আপনার নতুন কোনো বার্তা নেই!",
 	"cosmos-notifications-nonotifs": "আপনার জন্য নতুন কোনো বিজ্ঞপ্তি নেই।",
-	"cosmos-action-addsection": "নতুন বিষয়বস্তু",
+	"cosmos-action-addsection": "নতুন প্রসঙ্গ",
 	"cosmos-action-cancel": "বাতিল",
 	"cosmos-action-backtopage": "$1 এ ফেরত যান",
 	"cosmos-action-back": "পেছনে",

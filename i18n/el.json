@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"SkarletWitch"
+		]
+	},
+	"cosmos-desc": "Το Cosmos είναι ένα θέμα βασισμένο στο θέμα του Fandom - Oasis. Σχεδιασμένο και βελτιωμένο από το αρχικό, μπορεί να παρέχει ένα πλήρες θέμα του MediaWiki για χρήστες που μεταφέρονται από το Fandom, ή και όχι.",
+	"cosmos-anonymous": "Ανώνυμος",
+	"cosmos-counter-label": "$1 {{PLURAL:$1|λήμμα|λήμματα}}",
+	"cosmos-createpage-header": "Δημιουργία ενός νέου άρθρου",
+	"cosmos-createpage-input-label": "Γράψτε εδώ τον τίτλο της σελίδας:",
+	"cosmos-createpage-next": "Επόμενο",
+	"cosmos-createpage-dialoge-text": "Αυτή τη στιγμή έχουμε <b>$1</b> {{PLURAL:$1|λήμμα|λήμματα}} στο $2. Πληκτρολογήστε τον τίτλο της σελίδας σας ή επιλέξτε σε έναν τίτλο παρακάτω και ξεκινήστε να γράφετε!",
+	"cosmos-personaltools-userpage": "Σελίδα Χρήστη",
+	"cosmos-personaltools-usertalk": "Συζήτηση Χρήστη",
+	"cosmos-personaltools-anontalk": "Η συζήτηση μου",
+	"cosmos-notifications-nomessages": "Δεν έχετε νέα μηνύματα!",
+	"cosmos-notifications-nonotifs": "Δεν έχετε νέες ειδοποιήσεις!",
+	"cosmos-action-addsection": "Νέο θέμα",
+	"cosmos-action-cancel": "Ακύρωση",
+	"cosmos-action-backtopage": "Πίσω σε $1",
+	"cosmos-action-back": "Πίσω",
+	"cosmos-upload": "Ανέβασμα αρχείου",
+	"cosmos-add-new-page-title": "Προσθήκη νέας σελίδας",
+	"cosmos-add-new-page-text": "Προσθήκη",
+	"cosmos-anon-add-new-page-text": "Προσθήκη νέας σελίδας",
+	"cosmos-recentchanges": "Πρόσφατες αλλαγές",
+	"cosmos-administration": "Διαχείριση",
+	"cosmos-adminlinks": "Σύνδεσμοι διαχειριστών",
+	"cosmos-explore": "Εξερεύνηση",
+	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Τυχαία Σελίδα\n**Special:NewFiles|Νέα Αρχεία\n**Special:WantedPages|Ζητούμενες Σελίδες",
+	"prefs-cosmos": "Θέμα Cosmos",
+	"prefs-cosmos-responsiveness": "Ανταπόκριση για κινητά",
+	"cosmos-mobile-preference": "Ενεργοποιήστε την έκδοση για κινητά για το θέμα Cosmos",
+	"cosmos-user-blocked": "Φραγμένος"
+}

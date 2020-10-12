@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kareyac"
+		]
+	},
+	"cosmos-action-addsection": "Новая тема",
+	"cosmos-action-cancel": "Отмена",
+	"cosmos-action-back": "Назад",
+	"cosmos-upload": "Загрузить файл",
+	"cosmos-add-new-page-text": "Добавить"
+}
