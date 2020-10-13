@@ -19,16 +19,10 @@
 		]
 	},
 	"AutoloadClasses": {
-		"SkinCosmos": "includes/SkinCosmos.php",
-		"MediaWiki\\Skin\\Cosmos\\CosmosTemplate": "includes/CosmosTemplate.php",
-		"MediaWiki\\Skin\\Cosmos\\CosmosSocialProfile": "includes/CosmosSocialProfile.php",
-		"MediaWiki\\Skin\\Cosmos\\CosmosNavigation": "includes/CosmosNavigation.php",
-		"MediaWiki\\Skin\\Cosmos\\CosmosToolbar": "includes/CosmosToolbar.php",
-		"MediaWiki\\Skin\\Cosmos\\CosmosHooks": "includes/CosmosHooks.php",
-		"MediaWiki\\Skin\\Cosmos\\Icon": "includes/Icon.php",
-		"MediaWiki\\Skin\\Cosmos\\Config": "includes/Config.php",
-		"MediaWiki\\Skin\\Cosmos\\LessUtil": "includes/LessUtil.php",
-		"MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule": "includes/ResourceLoaderLessModule.php"
+		"SkinCosmos": "includes/SkinCosmos.php"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Skin\\Cosmos\\": "includes/"
 	},
 	"ResourceModules": {
 		"skins.cosmos": {
