@@ -32,10 +32,10 @@ class CosmosTemplate extends BaseTemplate {
 		/** @var Skin */
 		$skin = $this->getSkin();
 
-		$this->getNotifications( $this->data, $config );
+		$this->getNotifications( $this->data );
 		$html = $this->get( 'headelement' );
 		$this->buildBanner( $html, $config );
-		$html .= $this->buildCreateArticleDialog( $html, $config );
+		$html .= $this->buildCreateArticleDialog( $html );
 		$html .= Html::openElement( 'div', [ 'id' => 'mw-content-container', 'class' => 'ts-container' ] );
 		$html .= Html::openElement( 'div', [ 'id' => 'mw-content-block', 'class' => 'ts-inner' ] );
 		$html .= Html::openElement( 'div', [ 'id' => 'mw-content-wrapper' ] );
@@ -54,13 +54,12 @@ class CosmosTemplate extends BaseTemplate {
 			// Set up Cosmos-specific SocialProfile Elements
 			$profileOwner = Title::newFromText( $this->get( 'title' ) )
 				->getText();
-			$parser = MediaWikiServices::getInstance()->getParser();
 			$replace = [
 				'<div id="profile-title">' . $profileOwner . '</div>',
 				'<div id="profile-title-container">'
 			];
 			$replaceWith = [
-				'<h1 itemprop="name">' . $profileOwner . '</h1>' . ( $config->isEnabled( 'profile-tags' ) ? CosmosSocialProfile::getUserGroups( $parser, $profileOwner ) : '' ) . ( $config->isEnabled( 'show-editcount' ) ? '<br/> <div class="contributions-details tally"><a href="' . htmlspecialchars( Title::newFromText( "Contributions/$profileOwner", NS_SPECIAL )->getFullURL() ) . '"><em>' . CosmosSocialProfile::getUserEdits( $parser, $profileOwner ) . '</em><span>Edits since joining this wiki<br>' . CosmosSocialProfile::getUserRegistration( $parser, $profileOwner ) . '</span></a></div>' : '' ) . ( $config->isEnabled( 'allow-bio' ) ? CosmosSocialProfile::getUserBio( $parser, $profileOwner ) : '' ) ,
+				'<h1 itemprop="name">' . $profileOwner . '</h1>' . ( $config->isEnabled( 'profile-tags' ) ? CosmosSocialProfile::getUserGroups( $profileOwner ) : '' ) . ( $config->isEnabled( 'show-editcount' ) ? '<br/> <div class="contributions-details tally"><a href="' . htmlspecialchars( Title::newFromText( "Contributions/$profileOwner", NS_SPECIAL )->getFullURL() ) . '"><em>' . CosmosSocialProfile::getUserEdits( $profileOwner ) . '</em><span>Edits since joining this wiki<br>' . CosmosSocialProfile::getUserRegistration( $profileOwner ) . '</span></a></div>' : '' ) . ( $config->isEnabled( 'allow-bio' ) ? CosmosSocialProfile::getUserBio( $profileOwner ) : '' ) ,
 				'<div class="hgroup">'
 			];
 			return str_replace( $replace, $replaceWith, $html );
@@ -83,13 +82,13 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'nav', [ 'class' => 'cosmos-mobile-navigation' ] );
 		$html .= Html::rawElement( 'div', [ 'class' => 'cosmos-button cosmos-button-primary cosmos-mobile-menu-button', 'onclick' => '$(".wds-tabs__tab").toggle()' ], $this->getMsg( 'cosmos-mobile-menu-label' )
 			->text() );
-		$this->buildNavigation( $html, $config );
+		$this->buildNavigation( $html );
 		$html .= Html::closeElement( 'nav' );
 		// Build the logo
 		$this->buildBannerLogo( $html, $config );
 
 		// Build the search bar
-		$this->buildSearchBar( $html, $config );
+		$this->buildSearchBar( $html );
 
 		// Build user options/login button (floats on the right of the div)
 		$this->buildUserOptions( $html, $config );
@@ -101,11 +100,9 @@ class CosmosTemplate extends BaseTemplate {
 	}
 
 	/**
-	 * @todo $config parameter is unused
 	 * @param string &$html
-	 * @param Config $config
 	 */
-	protected function buildCreateArticleDialog( string &$html, Config $config ) {
+	protected function buildCreateArticleDialog( string &$html ) {
 		$skin = $this->getSkin();
 		$html .= Html::openElement( 'div', [ 'id' => 'createPageModal', 'class' => 'cosmos-modal' ] );
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-modal-content' ] );
@@ -178,11 +175,9 @@ class CosmosTemplate extends BaseTemplate {
 	}
 
 	/**
-	 * @todo $config parameter is unused
 	 * @param string &$html
-	 * @param Config $config
 	 */
-	protected function buildNavigation( string &$html, Config $config ) {
+	protected function buildNavigation( string &$html ) {
 		global $wgManageWikiForceSidebarLinks, $wgManageWikiSidebarLinks, $wgManageWiki;
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		$cosmosNavigation = new CosmosNavigation();
@@ -246,7 +241,7 @@ class CosmosTemplate extends BaseTemplate {
 		// Open container div
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-banner-userOptions' ] );
 		if ( !empty( $this->data["username"] ) ) {
-			$this->buildNotifications( $html, $config );
+			$this->buildNotifications( $html );
 		}
 
 		$this->buildPersonalTools( $html, $config );
@@ -330,11 +325,9 @@ class CosmosTemplate extends BaseTemplate {
 	}
 
 	/**
-	 * @todo $config parameter is unused
 	 * @param array &$data
-	 * @param Config $config
 	 */
-	protected static function getNotifications( array &$data, Config $config ) {
+	protected static function getNotifications( array &$data ) {
 		$data['cosmos_notifications'] = [ 'numNotifs' => 0, 'numMessages' => 0, 'notifs' => [], 'messages' => [] ];
 
 		$numNotifs = & $data['cosmos_notifications']['numNotifs'];
@@ -352,11 +345,9 @@ class CosmosTemplate extends BaseTemplate {
 	 * @todo HACK: This function is inelegant, and should be refactored so that the
 	 * construction of the icons and list is done by one function which is
 	 * called multiple times, but supplied with different info
-	 * @todo $config parameter is unused
 	 * @param string &$html
-	 * @param Config $config
 	 */
-	protected function buildNotifications( string &$html, Config $config ) {
+	protected function buildNotifications( string &$html ) {
 		$skin = $this->getSkin();
 		// Partial credits to the Timeless skin:
 		if ( ExtensionRegistry::getInstance()
@@ -471,11 +462,9 @@ class CosmosTemplate extends BaseTemplate {
 	 * Builds HTML code to present the search form to the user, and appends it to
 	 * string passed to it.
 	 *
-	 * @todo $config parameter is unused
 	 * @param string &$html The string onto which the HTML should be appended
-	 * @param Config $config
 	 */
-	protected function buildSearchBar( string &$html, Config $config ) {
+	protected function buildSearchBar( string &$html ) {
 		// Open container div
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-banner-search' ] );
 
@@ -551,7 +540,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::openElement( 'nav', [ 'class' => 'cosmos-header__local-navigation' ] );
-		$this->buildNavigation( $html, $config );
+		$this->buildNavigation( $html );
 		$html .= Html::closeElement( 'nav' );
 		$html .= Html::closeElement( 'header' );
 	}
@@ -596,9 +585,9 @@ class CosmosTemplate extends BaseTemplate {
 		$this->buildHeader( $html, $config );
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-articleContainer' ] );
 		// Build the article content
-		$this->buildArticle( $html, $config );
+		$this->buildArticle( $html );
 		// Build the sidebars
-		$this->buildRail( $html, $config );
+		$this->buildRail( $html );
 
 		$html .= Html::closeElement( 'div' );
 
@@ -606,18 +595,16 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'section' );
 
-		$this->buildFooter( $html, $config );
+		$this->buildFooter( $html );
 		$this->buildToolbar( $html, $config );
 
 		// Close container element for page
 	}
 
 	/**
-	 * @todo $config parameter is unused
 	 * @param string &$html
-	 * @param Config $config
 	 */
-	protected function buildRail( string &$html, Config $config ) {
+	protected function buildRail( string &$html ) {
 		if ( ( $this->getMsg( 'cosmos-customsidebar' )
 			->text() !== '-' && $this->getMsg( 'cosmos-customsidebar' )
 			->text() !== '' && $this->getMsg( 'cosmos-customsidebar' )
@@ -650,25 +637,22 @@ class CosmosTemplate extends BaseTemplate {
 
 	/**
 	 * @param string &$html
-	 * @param Config $config
 	 */
-	protected function buildHeader( string &$html, Config $config ) {
+	protected function buildHeader( string &$html ) {
 		// Open container element for header
 		$html .= Html::openElement( 'header', [ 'id' => 'cosmos-page-header' ] );
 
 		// Build article header
-		$this->buildArticleHeader( $html, $config );
+		$this->buildArticleHeader( $html );
 
 		// Close container element
 		$html .= Html::closeElement( 'header' );
 	}
 
 	/**
-	 * @todo $config parameter is unused
 	 * @param string &$html
-	 * @param Config $config
 	 */
-	protected function buildArticle( string &$html, Config $config ) {
+	protected function buildArticle( string &$html ) {
 		// Open container element for article
 		$html .= Html::openElement( 'article', [ 'id' => 'cosmos-pageBody-content' ] );
 
@@ -715,25 +699,23 @@ class CosmosTemplate extends BaseTemplate {
 
 	/**
 	 * @param string &$html
-	 * @param Config $config
 	 */
-	protected function buildArticleHeader( string &$html, Config $config ) {
+	protected function buildArticleHeader( string &$html ) {
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-header-articleHeader' ] );
 		$html .= Html::openElement( 'h1', [ 'id' => 'cosmos-articleHeader-title', 'class' => 'firstHeading' ] );
 		$html .= Html::rawElement( 'span', [ 'id' => 'cosmos-title-text' ], $this->get( 'title' ) );
 		$html .= $this->getIndicators();
 		$html .= Html::closeElement( 'h1' );
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-articleHeader-actions' ] );
-		$this->buildActionButtons( $html, $config );
+		$this->buildActionButtons( $html );
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
 	}
 
 	/**
 	 * @param string &$html
-	 * @param Config $config
 	 */
-	protected function buildActionButtons( string &$html, Config $config ) {
+	protected function buildActionButtons( string &$html ) {
 		$skin = $this->getSkin();
 		$title = $skin->getRelevantTitle();
 		$talkTitle = empty( $title ) ? null : $title->getTalkPageIfDefined();
@@ -943,18 +925,18 @@ class CosmosTemplate extends BaseTemplate {
 
 		// If the primary content action is available, display it as a button
 		if ( !empty( $primary ) && $primary !== null ) {
-			$this->buildActionButton( $html, $config, $primary );
+			$this->buildActionButton( $html, $primary );
 		}
 
 		// If there are one or more miscellaneous content actions available,
 		// display them as a drop-down list following the primary button
 		if ( count( $dropdown ) > 0 ) {
-			$this->buildActionDropdown( $html, $config, $dropdown );
+			$this->buildActionDropdown( $html, $dropdown );
 		}
 
 		// If the secondary content action is available, display it as a button
 		if ( !empty( $secondary ) && $secondary !== null ) {
-			$this->buildActionButton( $html, $config, $secondary );
+			$this->buildActionButton( $html, $secondary );
 		}
 	}
 
@@ -962,12 +944,10 @@ class CosmosTemplate extends BaseTemplate {
 	 * Builds HTML code to for an individual content action button, and appends
 	 * it to the string passed
 	 *
-	 * @todo $config parameter is unused
 	 * @param string &$html The string onto which the HTML should be appended
-	 * @param Config $config
 	 * @param array $info An array with the necessary info to build the button
 	 */
-	protected function buildActionButton( string &$html, Config $config, array $info ) {
+	protected function buildActionButton( string &$html, array $info ) {
 		// If the button links to another page, surround it in an <a> element that
 		// links there
 		if ( !empty( $info['href'] ) ) {
@@ -1013,12 +993,10 @@ class CosmosTemplate extends BaseTemplate {
 	 * Builds HTML code to for a drop-down list of selectable content actions,
 	 * and appends it to a given string
 	 *
-	 * @todo $config parameter is unused
 	 * @param string &$html The string onto which the HTML should be appended
-	 * @param Config $config
 	 * @param array $items An array of items which should be placed in the list
 	 */
-	protected function buildActionDropdown( string &$html, Config $config, array $items ) {
+	protected function buildActionDropdown( string &$html, array $items ) {
 		// Open a <div> element to contain the entire drop-down
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-dropdown', 'id' => 'cosmos-actions-actionsList' ] );
 
@@ -1063,9 +1041,8 @@ class CosmosTemplate extends BaseTemplate {
 	 * to it.
 	 *
 	 * @param string &$html The string onto which the HTML should be appended
-	 * @param Config $config
 	 */
-	protected function buildFooter( string &$html, Config $config ) {
+	protected function buildFooter( string &$html ) {
 		// Open container element for footer
 		$html .= Html::openElement( 'footer', [ 'id' => 'cosmos-footer' ] );
 
@@ -1077,10 +1054,10 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-articleContainer' ] );
 
 		// Build the footer links
-		$this->buildFooterLinks( $html, $config );
+		$this->buildFooterLinks( $html );
 
 		// Build the footer icons
-		$this->buildFooterIcons( $html, $config );
+		$this->buildFooterIcons( $html );
 
 		$html .= Html::closeElement( 'div' );
 
@@ -1097,11 +1074,9 @@ class CosmosTemplate extends BaseTemplate {
 	 * Builds HTML code to display the footer icons, and appends it to the string
 	 * that is passed to it.
 	 *
-	 * @todo $config parameter is unused
 	 * @param string &$html The string onto which the HTML should be appended
-	 * @param Config $config
 	 */
-	protected function buildFooterIcons( string &$html, Config $config ) {
+	protected function buildFooterIcons( string &$html ) {
 		$footerIcons = $this->get( 'footericons' );
 		$skin = $this->getSkin();
 		if ( count( $footerIcons ) > 0 ) {
@@ -1137,11 +1112,9 @@ class CosmosTemplate extends BaseTemplate {
 	 * Builds HTML code to display the footer links, and appends it to the string
 	 * that is passed to it.
 	 *
-	 * @todo $config parameter is unused
 	 * @param string &$html The string onto which the HTML should be appended
-	 * @param Config $config
 	 */
-	protected function buildFooterLinks( string &$html, Config $config ) {
+	protected function buildFooterLinks( string &$html ) {
 		// Open container div for footer links
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-footerContent-footerLinks', 'class' => 'cosmos-articleAligned' ] );
 

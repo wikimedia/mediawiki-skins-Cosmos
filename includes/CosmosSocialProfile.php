@@ -10,12 +10,10 @@ use User;
 class CosmosSocialProfile {
 
 	/**
-	 * @todo $parser parameter is unused
-	 * @param Parser $parser
 	 * @param string $user
 	 * @return User|false
 	 */
-	private static function getUser( $parser, $user ) {
+	private static function getUser( $user ) {
 		$title = Title::newFromText( $user );
 		if ( is_object( $title ) && ( $title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE ) && !$title->isSubpage() ) {
 			$user = $title->getText();
@@ -25,27 +23,23 @@ class CosmosSocialProfile {
 	}
 
 	/**
-	 * @todo $parser parameter is unused
-	 * @param Parser $parser
 	 * @param string $user
 	 * @return string|false|null
 	 */
-	public static function getUserRegistration( $parser, $user ) {
-		$user = self::getUser( $parser, $user );
+	public static function getUserRegistration( $user ) {
+		$user = self::getUser( $user );
 		if ( $user ) {
 			return date( 'F j, Y', strtotime( $user->getRegistration() ) );
 		}
 	}
 
 	/**
-	 * @todo $parser parameter is unused
-	 * @param Parser $parser
 	 * @param string $user
 	 * @return string
 	 */
-	public static function getUserGroups( $parser, $user ) {
+	public static function getUserGroups( $user ) {
 		$config = new Config();
-		$user = self::getUser( $parser, $user );
+		$user = self::getUser( $user );
 		if ( $user && $user->isBlocked() ) {
 			$usertags = Html::rawElement( 'span', [ 'class' => 'tag tag-blocked' ], wfMessage( 'cosmos-user-blocked' ) );
 		} elseif ( $user ) {
@@ -70,13 +64,11 @@ class CosmosSocialProfile {
 	}
 
 	/**
-	 * @todo $parser parameter is unused
-	 * @param Parser $parser
 	 * @param string $user
 	 * @return int|null
 	 */
-	public static function getUserEdits( $parser, $user ) {
-		$user = self::getUser( $parser, $user );
+	public static function getUserEdits( $user ) {
+		$user = self::getUser( $user );
 		if ( $user ) {
 			return $user->getEditCount();
 		}
@@ -84,11 +76,10 @@ class CosmosSocialProfile {
 
 	/**
 	 * @todo Seems like a method that is a work in progress...
-	 * @param Parser $parser
 	 * @param string $user
 	 * @return void
 	 */
-	public static function getUserBio( $parser, $user ) {
+	public static function getUserBio( $user ) {
 		if ( $user ) {
 			// return '<p class="bio">' . $parser->recursiveTagParse( '{{:User:' . $user . '/bio}}') . '</p>';
 
