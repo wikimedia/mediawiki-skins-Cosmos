@@ -1,8 +1,8 @@
 <?php
 namespace MediaWiki\Skin\Cosmos;
 
-use ExtensionRegistry;
 use Html;
+use MediaWiki\MediaWikiServices;
 use Sanitizer;
 use Title;
 use User;
@@ -38,22 +38,17 @@ class CosmosSocialProfile {
 	 * @return string
 	 */
 	public static function getUserGroups( $user ) {
-		$config = new Config();
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
 		$user = self::getUser( $user );
 		if ( $user && $user->isBlocked() ) {
 			$usertags = Html::rawElement( 'span', [ 'class' => 'tag tag-blocked' ], wfMessage( 'cosmos-user-blocked' ) );
 		} elseif ( $user ) {
 			$number_of_tags = 0;
 			$usertags = '';
-			foreach ( $config->getArray( 'group-tags' ) as $value ) {
+			foreach ( $config->get( 'CosmosProfileTagGroups' ) as $value ) {
 				if ( in_array( $value, $user->getGroups() ) ) {
 					$number_of_tags++;
-					if ( ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ) {
-						global $wgCosmosNumberofGroupTags;
-						$number_of_tags_config = $wgCosmosNumberofGroupTags;
-					} else {
-						$number_of_tags_config = $config->getInteger( 'number-of-tags' );
-					}
+					$number_of_tags_config = $config->get( 'CosmosNumberofGroupTags' );
 					if ( $number_of_tags <= $number_of_tags_config ) {
 						$usertags .= Html::rawElement( 'span', [ 'class' => 'tag tag-' . Sanitizer::escapeClass( $value ) ], ucfirst( wfMessage( 'group-' . $value . '-member' ) ) );
 					}

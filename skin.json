@@ -24,6 +24,9 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Skin\\Cosmos\\": "includes/"
 	},
+	"ConfigRegistry": {
+		"cosmos": "GlobalVarConfig::newInstance"
+	},
 	"ResourceModules": {
 		"skins.cosmos": {
 			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
@@ -202,6 +205,149 @@
 			"+ext.CodeMirror.visualEditor.init": "resources/extensions/VisualEditor.CodeMirror.less",
 			"+ext.dummyfandoommainpagetags.styles": "resources/extensions/DummyFandoomMainpageTags.less"
 		}
+	},
+	"config": {
+		"CosmosBannerBackgroundColor": {
+			"value": "#c0c0c0",
+			"path": false,
+			"public": true
+		},
+		"CosmosBannerLogo": {
+			"value": null,
+			"path": false,
+			"public": true
+		},
+		"CosmosWikiHeaderWordmark": {
+			"value": null,
+			"path": false,
+			"public": true
+		},
+		"CosmosWikiHeaderBackgroundImage": {
+			"value": null,
+			"path": false,
+			"public": true
+		},
+		"CosmosWikiHeaderBackgroundColor": {
+			"value": "#c0c0c0",
+			"path": false,
+			"public": true
+		},
+		"CosmosBackgroundImage": {
+			"value": null,
+			"path": false,
+			"public": true
+		},
+		"CosmosMainBackgroundColor": {
+			"value": "#1A1A1A",
+			"path": false,
+			"public": true
+		},
+		"CosmosContentBackgroundColor": {
+			"value": "#ffffff",
+			"path": false,
+			"public": true
+		},
+		"CosmosBackgroundImageSize": {
+			"value": "cover",
+			"path": false,
+			"public": true
+		},
+		"CosmosLinkColor": {
+			"value": "#0645ad",
+			"path": false,
+			"public": true
+		},
+		"CosmosButtonColor": {
+			"value": "#c0c0c0",
+			"path": false,
+			"public": true
+		},
+		"CosmosToolbarColor": {
+			"value": "#000000",
+			"path": false,
+			"public": true
+		},
+		"CosmosFooterColor": {
+			"value": "#c0c0c0",
+			"path": false,
+			"public": true
+		},
+		"CosmosFontFamily": {
+			"value": null,
+			"path": false,
+			"public": true
+		},
+		"CosmosFontStyle": {
+			"value": null,
+			"path": false,
+			"public": true
+		},
+		"CosmosSocialProfileModernTabs": {
+			"value": true,
+			"path": false,
+			"public": true
+		},
+		"CosmosSocialProfileRoundAvatar": {
+			"value": true,
+			"path": false,
+			"public": true
+		},
+		"CosmosSocialProfileShowEditCount": {
+			"value": true,
+			"path": false,
+			"public": true
+		},
+		"CosmosSocialProfileAllowBio": {
+			"value": true,
+			"path": false,
+			"public": true
+		},
+		"CosmosSocialProfileShowGroupTags": {
+			"value": true,
+			"path": false,
+			"public": true
+		},
+		"CosmosUseSocialProfileAvatar": {
+			"value": true,
+			"path": false,
+			"public": true
+		},
+		"CosmosEnablePortableInfoboxEuropaTheme": {
+			"value": true,
+			"path": false,
+			"public": true
+		},
+		"CosmosUseMessageforToolbar": {
+			"value": false,
+			"path": false,
+			"public": true
+		},
+		"CosmosBackgroundImageNorepeat": {
+			"value": true,
+			"path": false,
+			"public": true
+		},
+		"CosmosBackgroundImageFixed": {
+			"value": true,
+			"path": false,
+			"public": true
+		},
+		"CosmosProfileTagGroups": {
+			"value": [ "bureaucrat", "bot", "sysop", "interface-admin", "suppressor" ],
+			"path": false,
+			"public": true
+		},
+		"CosmosNumberofGroupTags": {
+			"value": 2,
+			"path": false,
+			"public": true
+		},
+		"CosmosContentOpacityLevel": {
+			"value": 100,
+			"path": false,
+			"public": true
+		}
+
 	},
 	"Hooks": {
 		"AdminLinks": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::addToAdminLinks",

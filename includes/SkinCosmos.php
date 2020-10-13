@@ -5,7 +5,7 @@
  * @ingroup Skins
  */
 
-use MediaWiki\Skin\Cosmos\Config;
+use MediaWiki\MediaWikiServices;
 
 class SkinCosmos extends SkinTemplate {
 	/** @var string */
@@ -22,7 +22,7 @@ class SkinCosmos extends SkinTemplate {
 	 */
 	public function initPage( OutputPage $out ) {
 		parent::initPage( $out );
-		$config = new Config();
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
 		if ( $this->getSkin()
 			->getUser()
 			->getOption( 'cosmos-mobile-responsiveness' ) == 1 ) {
@@ -60,7 +60,7 @@ class SkinCosmos extends SkinTemplate {
 			$out->addModuleStyles( [
 				'skins.cosmos.portableinfobox',
 			] );
-			if ( $config->isEnabled( 'europa-theme' ) ) {
+			if ( $config->get( 'CosmosEnablePortableInfoboxEuropaTheme' ) ) {
 				$out->addModuleStyles( [
 					'skins.cosmos.portableinfobox.europa',
 				] );
@@ -72,36 +72,36 @@ class SkinCosmos extends SkinTemplate {
 		}
 		// Load SocialProfile styles if the respective configuration variables are enabled
 		if ( class_exists( 'UserProfilePage' ) ) {
-			if ( $config->isEnabled( 'modern-tabs' ) ) {
+			if ( $config->get( 'CosmosSocialProfileModernTabs' ) ) {
 				$out->addModuleStyles( [
 					'skins.cosmos.profiletabs',
 				] );
 			}
-			if ( $config->isEnabled( 'round-avatar' ) ) {
+			if ( $config->get( 'CosmosSocialProfileRoundAvatar' ) ) {
 				$out->addModuleStyles( [
 					'skins.cosmos.profileavatar',
 				] );
 			}
-			if ( $config->isEnabled( 'show-editcount' ) ) {
+			if ( $config->get( 'CosmosSocialProfileShowEditCount' ) ) {
 				$out->addModuleStyles( [
 					'skins.cosmos.profileeditcount',
 				] );
 			}
-			if ( $config->isEnabled( 'allow-bio' ) ) {
+			if ( $config->get( 'CosmosSocialProfileAllowBio' ) ) {
 				$out->addModuleStyles( [
 					'skins.cosmos.profilebio',
 				] );
 			}
-			if ( $config->isEnabled( 'profile-tags' ) ) {
+			if ( $config->get( 'CosmosSocialProfileShowGroupTags' ) ) {
 				$out->addModuleStyles( [
 					'skins.cosmos.profiletags',
 				] );
 			}
-			if ( $config->isEnabled( 'modern-tabs' ) ||
-				$config->isEnabled( 'round-avatar' ) ||
-				$config->isEnabled( 'show-editcount' ) ||
-				$config->isEnabled( 'allow-bio' ) ||
-				$config->isEnabled( 'profile-tags' ) ) {
+			if ( $config->get( 'CosmosSocialProfileModernTabs' ) ||
+				$config->get( 'CosmosSocialProfileRoundAvatar' ) ||
+				$config->get( 'CosmosSocialProfileShowEditCount' ) ||
+				$config->get( 'CosmosSocialProfileAllowBio' ) ||
+				$config->get( 'CosmosSocialProfileShowGroupTags' ) ) {
 				$out->addModuleStyles( [
 					'skins.cosmos.socialprofile',
 				] );

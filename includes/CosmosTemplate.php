@@ -7,6 +7,7 @@
 namespace MediaWiki\Skin\Cosmos;
 
 use BaseTemplate;
+use Config;
 use ExtensionRegistry;
 use Hooks;
 use Html;
@@ -28,7 +29,7 @@ class CosmosTemplate extends BaseTemplate {
 	 * @return string
 	 */
 	public function execute() {
-		$config = new Config();
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
 		/** @var Skin */
 		$skin = $this->getSkin();
 
@@ -50,7 +51,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'body' );
 		$html .= Html::closeElement( 'html' );
 		$title = Title::newFromText( $this->get( 'title' ) );
-		if ( class_exists( 'UserProfilePage' ) && ( $config->isEnabled( 'profile-tags' ) || $config->isEnabled( 'show-editcount' ) || $config->isEnabled( 'allow-bio' ) ) && ( is_object( $title ) && ( $title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE ) && !$title->isSubpage() ) ) {
+		if ( class_exists( 'UserProfilePage' ) && ( $config->get( 'CosmosSocialProfileShowGroupTags' ) || $config->get( 'CosmosSocialProfileShowEditCount' ) || $config->get( 'CosmosSocialProfileAllowBio' ) ) && ( is_object( $title ) && ( $title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE ) && !$title->isSubpage() ) ) {
 			// Set up Cosmos-specific SocialProfile Elements
 			$profileOwner = Title::newFromText( $this->get( 'title' ) )
 				->getText();
@@ -59,7 +60,7 @@ class CosmosTemplate extends BaseTemplate {
 				'<div id="profile-title-container">'
 			];
 			$replaceWith = [
-				'<h1 itemprop="name">' . $profileOwner . '</h1>' . ( $config->isEnabled( 'profile-tags' ) ? CosmosSocialProfile::getUserGroups( $profileOwner ) : '' ) . ( $config->isEnabled( 'show-editcount' ) ? '<br/> <div class="contributions-details tally"><a href="' . htmlspecialchars( Title::newFromText( "Contributions/$profileOwner", NS_SPECIAL )->getFullURL() ) . '"><em>' . CosmosSocialProfile::getUserEdits( $profileOwner ) . '</em><span>Edits since joining this wiki<br>' . CosmosSocialProfile::getUserRegistration( $profileOwner ) . '</span></a></div>' : '' ) . ( $config->isEnabled( 'allow-bio' ) ? CosmosSocialProfile::getUserBio( $profileOwner ) : '' ) ,
+				'<h1 itemprop="name">' . $profileOwner . '</h1>' . ( $config->get( 'CosmosSocialProfileShowGroupTags' ) ? CosmosSocialProfile::getUserGroups( $profileOwner ) : '' ) . ( $config->get( 'CosmosSocialProfileShowEditCount' ) ? '<br/> <div class="contributions-details tally"><a href="' . htmlspecialchars( Title::newFromText( "Contributions/$profileOwner", NS_SPECIAL )->getFullURL() ) . '"><em>' . CosmosSocialProfile::getUserEdits( $profileOwner ) . '</em><span>Edits since joining this wiki<br>' . CosmosSocialProfile::getUserRegistration( $profileOwner ) . '</span></a></div>' : '' ) . ( $config->get( 'CosmosSocialProfileAllowBio' ) ? CosmosSocialProfile::getUserBio( $profileOwner ) : '' ) ,
 				'<div class="hgroup">'
 			];
 			return str_replace( $replace, $replaceWith, $html );
@@ -216,12 +217,12 @@ class CosmosTemplate extends BaseTemplate {
 	protected function buildBannerLogo( string &$html, Config $config ) {
 		// Open container div
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-banner-bannerLogo' ] );
-		if ( $config->getString( 'banner-logo' ) ) {
+		if ( $config->get( 'CosmosBannerLogo' ) ) {
 			// Open link element
 			$html .= Html::openElement( 'a', array_merge( [ 'href' => $this->data['nav_urls']['mainpage']['href'] ], Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) );
 
 			// Insert logo image
-			$html .= Html::rawElement( 'img', [ 'id' => 'cosmos-bannerLogo-image', 'src' => $config->getString( 'banner-logo' ) , 'alt' => $this->get( 'sitename' ) ] );
+			$html .= Html::rawElement( 'img', [ 'id' => 'cosmos-bannerLogo-image', 'src' => $config->get( 'CosmosBannerLogo' ), 'alt' => $this->get( 'sitename' ) ] );
 
 			// Close link element
 			$html .= Html::closeElement( 'a' );
@@ -261,7 +262,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-personalTools-userButton', 'class' => 'cosmos-dropdown-button cosmos-bannerOption-button' ] );
 
-		if ( class_exists( 'wAvatar' ) && $config->isEnabled( 'social-avatar' ) ) {
+		if ( class_exists( 'wAvatar' ) && $config->get( 'CosmosUseSocialProfileAvatar' ) ) {
 			$avatar = new wAvatar( $skin->getUser()
 				->getId(), 'm' );
 			$avatarElement = $avatar->getAvatarURL();
@@ -504,7 +505,7 @@ class CosmosTemplate extends BaseTemplate {
 	protected function buildWikiHeader( string &$html, Config $config ) {
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		$skin = $this->getSkin();
-		$html .= Html::openElement( 'header', [ 'class' => 'cosmos-header', 'style' => $config->getString( 'header-background' ) ? "background-image: url({$config->getString('header-background') });" : null ] );
+		$html .= Html::openElement( 'header', [ 'class' => 'cosmos-header', 'style' => $config->get( 'CosmosWikiHeaderBackgroundImage' ) ? "background-image: url({$config->get( 'CosmosWikiHeaderBackgroundImage' ) });" : null ] );
 		$this->buildWordmark( $html, $config );
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-header__top-container' ] );
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-header__sitename' ] );
@@ -550,7 +551,8 @@ class CosmosTemplate extends BaseTemplate {
 	 * @param Config $config
 	 */
 	protected function buildWordmark( string &$html, Config $config ) {
-		if ( $config->getString( 'header-wordmark' ) ) {
+		$mainConfig = $this->getSkin()->getConfig();
+		if ( $config->get( 'CosmosWikiHeaderWordmark' ) || isset( $mainConfig->get( 'Logos' )['wordmark']['src'] ) || isset( $mainConfig->get( 'Logos' )['1x'] ) || $mainConfig->get( 'Logo' ) ) {
 			// Open container div for logo
 			$html .= Html::openElement( 'div', [ 'class' => 'cosmos-header__wordmark' ] );
 
@@ -558,7 +560,7 @@ class CosmosTemplate extends BaseTemplate {
 			$html .= Html::openElement( 'a', array_merge( [ 'href' => $this->data['nav_urls']['mainpage']['href'] ], Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) );
 
 			// Insert logo image
-			$html .= Html::rawElement( 'img', [ 'src' => $config->getString( 'header-wordmark' ) , 'alt' => $this->get( 'sitename' ) ] );
+			$html .= Html::rawElement( 'img', [ 'src' => ( $config->get( 'CosmosWikiHeaderWordmark' ) ? $config->get( 'CosmosWikiHeaderWordmark' ) : ( isset( $mainConfig->get( 'Logos' )['wordmark']['src'] ) ? $mainConfig->get( 'Logos' )['wordmark']['src'] : ( isset( $mainConfig->get( 'Logos' )['1x'] ) ? $mainConfig->get( 'Logos' )['1x'] : $mainConfig->get( 'Logo' ) ) ) ), 'alt' => $this->get( 'sitename' ) ] );
 
 			// Close link element
 			$html .= Html::closeElement( 'a' );
@@ -1153,7 +1155,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		// Make a list item for each of the tool links
 		$cosmosToolbar = new CosmosToolbar();
-		if ( $config->isEnabled( 'toolbar-message' ) ) {
+		if ( $config->get( 'CosmosUseMessageforToolbar' ) ) {
 			$html .= $cosmosToolbar->getCode();
 		} else {
 			// to-do: Convert to Skin::buildNavUrls and Skin::buildFeedUrls
@@ -1198,5 +1200,4 @@ class CosmosTemplate extends BaseTemplate {
 		// Close container element
 		$html .= Html::closeElement( 'section' );
 	}
-
 }
