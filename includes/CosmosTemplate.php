@@ -16,6 +16,7 @@ use MediaWiki\MediaWikiServices;
 use Sanitizer;
 use SiteStats;
 use Skin;
+use SpecialPage;
 use Title;
 use WantedPagesPage;
 use wAvatar;
