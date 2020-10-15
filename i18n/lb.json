@@ -4,9 +4,22 @@
 			"Robby"
 		]
 	},
+	"cosmos-anonymous": "Anonym",
+	"cosmos-counter-label": "{{PLURAL:$1|Artikel|Artikelen}}",
+	"cosmos-createpage-header": "En neien Artikel uleeën",
 	"cosmos-personaltools-userpage": "Benotzersäit",
 	"cosmos-personaltools-usertalk": "Benotzer Diskussioun",
+	"cosmos-personaltools-anontalk": "Meng Diskussioun",
+	"cosmos-notifications-nomessages": "Dir hutt keng nei Messagen!",
+	"cosmos-notifications-nonotifs": "Dir hutt keng nei Notifikatiounen!",
 	"cosmos-action-addsection": "Neit Thema",
 	"cosmos-action-cancel": "Ofbriechen",
-	"cosmos-action-back": "Zréck"
+	"cosmos-action-backtopage": "Zréck op $1",
+	"cosmos-action-back": "Zréck",
+	"cosmos-upload": "Fichier eroplueden",
+	"cosmos-add-new-page-title": "Net Säit dobäisetzen",
+	"cosmos-anon-add-new-page-text": "Nei Säit dobäisetzen",
+	"cosmos-recentchanges": "Rezent Ännerungen",
+	"cosmos-administration": "Administratioun",
+	"prefs-cosmos": "Cosmos Interface"
 }

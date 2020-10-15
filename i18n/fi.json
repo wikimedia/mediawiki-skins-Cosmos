@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"01miki10"
+		]
+	},
+	"cosmos-desc": "Cosmos on Fandomin Oasis-ulkoasuun perustuva ulkoasu. Se on suunniteltu sen parannukseksi ja tarjoamaan tehokkaan MediaWiki-ulkoasun Fandomin ulkopuolisille tai sieltä pois siirtyville käyttäjille.",
+	"cosmos-anonymous": "Anonyymi",
+	"cosmos-counter-label": "{{PLURAL:$1|artikkeli|artikkelia}}",
+	"cosmos-createpage-header": "Luo uusi artikkeli",
+	"cosmos-createpage-input-label": "Kirjoita sivun nimi tähän:",
+	"cosmos-createpage-next": "Seuraava",
+	"cosmos-createpage-dialoge-text": "Tällä hetkellä {{GRAMMAR:inessive|$2}} on <b>$1</b> {{PLURAL:$1|artikkeli|artikkelia}}. Kirjoita artikkelisi nimi yläpuolelle tai klikkaa yhtä alla olevista nimistä ja aloita kirjoittaminen!",
+	"cosmos-personaltools-userpage": "Käyttäjäsivu",
+	"cosmos-personaltools-usertalk": "Keskustelu käyttäjästä",
+	"cosmos-personaltools-anontalk": "Keskustelusivuni",
+	"cosmos-notifications-nomessages": "Sinulla ei ole uusia viestejä!",
+	"cosmos-notifications-nonotifs": "Sinulla ei ole uusia ilmoituksia!",
+	"cosmos-action-addsection": "Uusi aihe",
+	"cosmos-action-cancel": "Peruuta",
+	"cosmos-action-back": "Takaisin",
+	"cosmos-upload": "Tallenna tiedosto",
+	"cosmos-add-new-page-title": "Lisää uusi sivu",
+	"cosmos-add-new-page-text": "Lisää",
+	"cosmos-anon-add-new-page-text": "Lisää uusi sivu",
+	"cosmos-recentchanges": "Tuoreet muutokset",
+	"cosmos-administration": "Ylläpito",
+	"cosmos-adminlinks": "Ylläpidon linkit",
+	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Satunnainen sivu\n**Special:NewFiles|Uudet tiedostot\n**Special:WantedPages|Halutut sivut",
+	"prefs-cosmos": "Cosmos-ulkoasu",
+	"cosmos-mobile-preference": "Ota käyttöön Cosmos-ulkoasun responsiivinen mobiiliversio",
+	"cosmos-user-blocked": "Estetty"
+}
