@@ -43,16 +43,13 @@ class SkinCosmos extends SkinTemplate {
 			'skins.cosmos.js',
 			'skins.cosmos.mobile'
 		] );
-		if ( ( wfMessage( 'cosmos-customsidebar' )
-			->text() !== '-' && wfMessage( 'cosmos-customsidebar' )
-			->text() !== '' && wfMessage( 'cosmos-customsidebar' )
-			->exists() ) || ( wfMessage( 'cosmos-stickysidebar' )
-			->text() !== '-' && wfMessage( 'cosmos-stickysidebar' )
-			->text() !== '' && wfMessage( 'cosmos-stickysidebar' )
-			->exists() ) ) {
-				$out->addModuleStyles( [
-					'skins.cosmos.rail',
-				] );
+		if (
+			!wfMessage( 'cosmos-customsidebar' )->isDisabled() ||
+			!wfMessage( 'cosmos-stickysidebar' )->isDisabled()
+		) {
+			$out->addModuleStyles( [
+				'skins.cosmos.rail',
+			] );
 		}
 
 		if ( ExtensionRegistry::getInstance()
