@@ -6,6 +6,8 @@
 
 namespace MediaWiki\Skin\Cosmos;
 
+use MediaWiki\MediaWikiServices;
+
 class LessUtil {
 
 	private const HEX_REG_EXP = '/#([a-f0-9]{3,6})/i';
@@ -30,15 +32,15 @@ class LessUtil {
 	public static function getCosmosSettings() {
 		// Load the 5 deafult colors by theme here (eg: in case the wiki has an override but the user doesn't have overrides).
 		if ( empty( static::$cosmosSettings ) ) {
-			$themeSettings = new Config;
+			$themeSettings = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
 
-			static::$cosmosSettings['banner-background-color'] = self::sanitizeColor( $themeSettings->getString( 'banner-background-color' ) );
-			static::$cosmosSettings['header-background-color'] = self::sanitizeColor( $themeSettings->getString( 'header-background-color' ) );
-			static::$cosmosSettings['content-background-color'] = self::sanitizeColor( $themeSettings->getString( 'content-background-color' ) );
-			static::$cosmosSettings['button-color'] = self::sanitizeColor( $themeSettings->getString( 'button-color' ) );
-			static::$cosmosSettings['link-color'] = self::sanitizeColor( $themeSettings->getString( 'link-color' ) );
-			static::$cosmosSettings['toolbar-color'] = self::sanitizeColor( $themeSettings->getString( 'toolbar-color' ) );
-			static::$cosmosSettings['footer-color'] = self::sanitizeColor( $themeSettings->getString( 'footer-color' ) );
+			static::$cosmosSettings['banner-background-color'] = self::sanitizeColor( $themeSettings->get( 'CosmosBannerBackgroundColor' ) );
+			static::$cosmosSettings['header-background-color'] = self::sanitizeColor( $themeSettings->get( 'CosmosWikiHeaderBackgroundColor' ) );
+			static::$cosmosSettings['content-background-color'] = self::sanitizeColor( $themeSettings->get( 'CosmosContentBackgroundColor' ) );
+			static::$cosmosSettings['button-color'] = self::sanitizeColor( $themeSettings->get( 'CosmosButtonColor' ) );
+			static::$cosmosSettings['link-color'] = self::sanitizeColor( $themeSettings->get( 'CosmosLinkColor' ) );
+			static::$cosmosSettings['toolbar-color'] = self::sanitizeColor( $themeSettings->get( 'CosmosToolbarColor' ) );
+			static::$cosmosSettings['footer-color'] = self::sanitizeColor( $themeSettings->get( 'CosmosFooterColor' ) );
 
 			// RT:70673
 			foreach ( static::$cosmosSettings as $key => $val ) {
