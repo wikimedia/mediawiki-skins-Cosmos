@@ -23,7 +23,8 @@ class SkinCosmos extends SkinTemplate {
 	public function initPage( OutputPage $out ) {
 		parent::initPage( $out );
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
-		if ( $this->getSkin()
+		$skin = $this->getSkin();
+		if ( $skin
 			->getUser()
 			->getOption( 'cosmos-mobile-responsiveness' ) == 1 ) {
 			$out->addMeta(
@@ -44,8 +45,8 @@ class SkinCosmos extends SkinTemplate {
 			'skins.cosmos.mobile'
 		] );
 		if (
-			!wfMessage( 'cosmos-customsidebar' )->isDisabled() ||
-			!wfMessage( 'cosmos-stickysidebar' )->isDisabled()
+			!$skin->msg( 'cosmos-customsidebar' )->isDisabled() ||
+			!$skin->msg( 'cosmos-stickysidebar' )->isDisabled()
 		) {
 			$out->addModuleStyles( [
 				'skins.cosmos.rail',

@@ -13,6 +13,7 @@
 namespace MediaWiki\Skin\Cosmos;
 
 use Hooks;
+use MessageLocalizer;
 use ObjectCache;
 use Sanitizer;
 use SpecialPageFactory;
@@ -20,6 +21,16 @@ use Title;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
 class CosmosToolbar implements ExpirationAwareness {
+	/** @var MessageLocalizer */
+	private $messageLocalizer;
+
+	/**
+	 * @param MessageLocalizer $messageLocalizer
+	 */
+	public function __construct( MessageLocalizer $messageLocalizer ) {
+		$this->messageLocalizer = $messageLocalizer;
+	}
+
 	/**
 	 * Parse one line from MediaWiki message to array with indexes 'text' and 'href'
 	 *
@@ -206,20 +217,20 @@ class CosmosToolbar implements ExpirationAwareness {
 		$internal = false;
 
 		if ( count( $lineTmp ) == 2 && $lineTmp[1] != '' ) {
-			$link = trim( wfMessage( $lineTmp[0] )->inContentLanguage()->text() );
+			$link = trim( $this->messageLocalizer->msg( $lineTmp[0] )->inContentLanguage()->text() );
 			$line = trim( $lineTmp[1] );
 		} else {
 			$link = trim( $lineTmp[0] );
 			$line = trim( $lineTmp[0] );
 		}
 
-		if ( wfMessage( $line )->exists() ) {
-			$text = wfMessage( $line )->text();
+		if ( $this->messageLocalizer->msg( $line )->exists() ) {
+			$text = $this->messageLocalizer->msg( $line )->text();
 		} else {
 			$text = $line;
 		}
 
-		if ( !wfMessage( $lineTmp[0] )->exists() ) {
+		if ( !$this->messageLocalizer->msg( $lineTmp[0] )->exists() ) {
 			$link = $lineTmp[0];
 		}
 
@@ -261,9 +272,9 @@ class CosmosToolbar implements ExpirationAwareness {
 	 * @return array|null
 	 */
 	private function getMessageAsArray( $messageKey ) {
-		$message = trim( wfMessage( $messageKey )->inContentLanguage()->text() );
+		$message = trim( $this->messageLocalizer->msg( $messageKey )->inContentLanguage()->text() );
 
-		if ( wfMessage( $messageKey, $message )->exists() ) {
+		if ( $this->messageLocalizer->msg( $messageKey, $message )->exists() ) {
 			$lines = explode( "\n", $message );
 			if ( count( $lines ) > 0 ) {
 				return $lines;

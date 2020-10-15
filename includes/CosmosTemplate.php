@@ -188,7 +188,7 @@ class CosmosTemplate extends BaseTemplate {
 	protected function buildNavigation() {
 		global $wgManageWikiForceSidebarLinks, $wgManageWikiSidebarLinks, $wgManageWiki;
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
-		$cosmosNavigation = new CosmosNavigation();
+		$cosmosNavigation = new CosmosNavigation( $this->getSkin()->getContext() );
 		$skin = $this->getSkin();
 		$append = '';
 		$html = '';
@@ -210,7 +210,7 @@ class CosmosTemplate extends BaseTemplate {
 					->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">' );
 
 				foreach ( (array)ManageWiki::listModules() as $module ) {
-					$html .= "<li class='wds-tabs__tab'><a id='" . "managewiki{$module}link" . "' href='" . htmlspecialchars( SpecialPage::getTitleFor( 'ManageWiki', $module )->getFullURL() ) . "'>" . wfMessage( "managewiki-link-{$module}{$append}" )->plain() . "</a></li>";
+					$html .= "<li class='wds-tabs__tab'><a id='" . "managewiki{$module}link" . "' href='" . htmlspecialchars( SpecialPage::getTitleFor( 'ManageWiki', $module )->getFullURL() ) . "'>" . $this->getMsg( "managewiki-link-{$module}{$append}" )->plain() . "</a></li>";
 				}
 				$html .= ( '</div>' );
 			}
@@ -1216,7 +1216,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'ul' );
 
 		// Make a list item for each of the tool links
-		$cosmosToolbar = new CosmosToolbar();
+		$cosmosToolbar = new CosmosToolbar( $this->getSkin()->getContext() );
 		if ( $config->get( 'CosmosUseMessageforToolbar' ) ) {
 			$html .= $cosmosToolbar->getCode();
 		} else {
@@ -1238,7 +1238,7 @@ class CosmosTemplate extends BaseTemplate {
 				$title = $skin->getRelevantTitle();
 				$href = SpecialPage::getTitleFor( 'CreateRedirect', $title->getPrefixedText() )
 					->getLocalURL();
-				$CreateRedirect = Html::rawElement( 'li', [ 'id' => 't-createredirect' ], Html::element( 'a', [ 'href' => $href ], wfMessage( 'createredirect' )->text() ) );
+				$CreateRedirect = Html::rawElement( 'li', [ 'id' => 't-createredirect' ], Html::element( 'a', [ 'href' => $href ], $this->getMsg( 'createredirect' )->text() ) );
 				if ( $action == 'view' || $action == 'purge' || !$title->isSpecialPage() ) {
 					$html .= $CreateRedirect;
 				}
