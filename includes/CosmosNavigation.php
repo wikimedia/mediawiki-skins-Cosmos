@@ -17,7 +17,6 @@ use Html;
 use MessageLocalizer;
 use ObjectCache;
 use Sanitizer;
-use SpecialPageFactory;
 use Title;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
@@ -30,79 +29,6 @@ class CosmosNavigation implements ExpirationAwareness {
 	 */
 	public function __construct( MessageLocalizer $messageLocalizer ) {
 		$this->messageLocalizer = $messageLocalizer;
-	}
-
-	/**
-	 * Parse one line from MediaWiki message to array with indexes 'text' and 'href'
-	 *
-	 * @todo This static method seems to be unused?
-	 * @author Inez Korczynski <inez@wikia.com>
-	 * @param string $line
-	 * @return array
-	 */
-	public static function parseItem( $line ) {
-		$href = $specialCanonicalName = false;
-
-		$line_temp = explode( '|', trim( $line, '* ' ), 3 );
-		$line_temp[0] = trim( $line_temp[0], '[]' );
-		if ( count( $line_temp ) >= 2 && $line_temp[1] != '' ) {
-			$line = trim( $line_temp[1] );
-			$link = trim( wfMessage( $line_temp[0] )->inContentLanguage()->text() );
-		} else {
-			$line = trim( $line_temp[0] );
-			$link = trim( $line_temp[0] );
-		}
-
-		$descText = null;
-
-		if ( count( $line_temp ) > 2 && $line_temp[2] != '' ) {
-			$desc = $line_temp[2];
-			if ( wfMessage( $desc )->exists() ) {
-				$descText = wfMessage( $desc )->text();
-			} else {
-				$descText = $desc;
-			}
-		}
-
-		if ( wfMessage( $line )->exists() ) {
-			$text = wfMessage( $line )->text();
-		} else {
-			$text = $line;
-		}
-
-		if ( $link != null ) {
-			if ( !wfMessage( $line_temp[0] )->exists() ) {
-				$link = $line_temp[0];
-			}
-
-			if ( preg_match( '/^(?:' . wfUrlProtocols() . ')/', $link ) ) {
-				$href = $link;
-			} else {
-				$title = Title::newFromText( $link );
-				if ( $title ) {
-					if ( $title->getNamespace() == NS_SPECIAL ) {
-						$dbkey = $title->getDBkey();
-						list( $specialCanonicalName ) = SpecialPageFactory::resolveAlias( $dbkey );
-						if ( !$specialCanonicalName ) {
-							$specialCanonicalName = $dbkey;
-						}
-					}
-
-					$title = $title->fixSpecialName();
-					$href = $title->getLocalURL();
-				} else {
-					$href = '#';
-				}
-			}
-		}
-
-		return [
-			'text' => $text,
-			'href' => $href,
-			'org' => $line_temp[0],
-			'desc' => $descText,
-			'specialCanonicalName' => $specialCanonicalName
-		];
 	}
 
 	/**
