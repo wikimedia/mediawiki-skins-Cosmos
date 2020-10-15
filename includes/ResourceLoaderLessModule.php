@@ -6,6 +6,7 @@
 
 namespace MediaWiki\Skin\Cosmos;
 
+use Config;
 use MediaWiki\MediaWikiServices;
 use ResourceLoaderContext;
 use ResourceLoaderFileModule;
@@ -93,28 +94,71 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		$lessVars['header-background-solid-color'] = $header_background_color;
 		$lessVars['header-font-color'] = LessUtil::isThemeDark( 'header-background-color' ) ? '#fff' : '#000';
 
-		$lessVars['toolbar-color2'] = $config->get( 'CosmosToolbarColor' );
-		$lessVars['toolbar-color-mix'] = $config->get( 'CosmosToolbarColor' ) == '#000' || $config->get( 'CosmosToolbarColor' ) == '#000000' || $config->get( 'CosmosToolbarColor' ) == 'black' ? '#404040' : '#000';
-		$lessVars['toolbar-font-color'] = LessUtil::isThemeDark( 'toolbar-color' ) ? '#fff' : '#000';
+		return array_merge(
+			$lessVars,
+			$this->getThemedToolbarColorSettings( $config ),
+			$this->getThemeContentBackgroundColorSettings(),
+			$this->getThemedBannerBackgroundColorSettings(),
+			$this->getThemedButtonColorSettings()
+		);
+	}
 
+	/**
+	 * @param Config $config
+	 * @return array
+	 */
+	private function getThemedToolbarColorSettings( Config $config ) : array {
+		$toolbarColor = $config->get( 'CosmosToolbarColor' );
+
+		return [
+			'toolbar-color2' => $toolbarColor,
+			'toolbar-color-mix' =>
+				$toolbarColor == '#000' ||
+				$toolbarColor == '#000000' ||
+				$toolbarColor == 'black' ? '#404040' : '#000',
+			'toolbar-font-color' => LessUtil::isThemeDark( 'toolbar-color' ) ? '#fff' : '#000',
+		];
+	}
+
+	/**
+	 * @return array
+	 */
+	private function getThemeContentBackgroundColorSettings() : array {
 		$isContentBackgroundColorDark = LessUtil::isThemeDark( 'content-background-color' );
-		$lessVars['font-color'] = $isContentBackgroundColorDark ? '#D5D4D4' : '#000';
-		$lessVars['border-color'] = $isContentBackgroundColorDark ? '#333333' : '#CCCCCC';
-		$lessVars['editsection-color'] = $isContentBackgroundColorDark ? '#54595d' : '#aba6a2';
-		$lessVars['alt-font-color'] = $isContentBackgroundColorDark ? '#fff' : '#000';
-		$lessVars['code-background-color'] = $isContentBackgroundColorDark ? '#c5c6c6' : '#3a3939';
-		$lessVars['tabs-background-color'] = $isContentBackgroundColorDark ? 'transparent' : '#eaecf0';
-		$lessVars['infobox-background-mix'] = $isContentBackgroundColorDark ? '85%' : '90%';
 
+		return [
+			'font-color' => $isContentBackgroundColorDark ? '#D5D4D4' : '#000',
+			'border-color' => $isContentBackgroundColorDark ? '#333333' : '#CCCCCC',
+			'editsection-color' => $isContentBackgroundColorDark ? '#54595d' : '#aba6a2',
+			'alt-font-color' => $isContentBackgroundColorDark ? '#fff' : '#000',
+			'code-background-color' => $isContentBackgroundColorDark ? '#c5c6c6' : '#3a3939',
+			'tabs-background-color' => $isContentBackgroundColorDark ? 'transparent' : '#eaecf0',
+			'infobox-background-mix' => $isContentBackgroundColorDark ? '85%' : '90%',
+		];
+	}
+
+	/**
+	 * @return array
+	 */
+	private function getThemedBannerBackgroundColorSettings() : array {
 		$isBannerBackgroundColorDark = LessUtil::isThemeDark( 'banner-background-color' );
-		$lessVars['banner-font-color'] = $isBannerBackgroundColorDark ? '#fff' : '#000';
-		$lessVars['banner-echo-font-color'] = $isBannerBackgroundColorDark ? 'fff' : '111';
-		$lessVars['banner-input-bottom-border'] = $isBannerBackgroundColorDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)';
 
+		return [
+			'banner-font-color' => $isBannerBackgroundColorDark ? '#fff' : '#000',
+			'banner-echo-font-color' => $isBannerBackgroundColorDark ? 'fff' : '111',
+			'banner-input-bottom-border' => $isBannerBackgroundColorDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)',
+		];
+	}
+
+	/**
+	 * @return array
+	 */
+	private function getThemedButtonColorSettings() : array {
 		$isButtonColorDark = LessUtil::isThemeDark( 'button-color' );
-		$lessVars['notice-close-button-color'] = $isButtonColorDark ? 'fff' : '111';
-		$lessVars['button-font-color'] = $isButtonColorDark ? '#fff' : '#000';
 
-		return $lessVars;
+		return [
+			'notice-close-button-color' => $isButtonColorDark ? 'fff' : '111',
+			'button-font-color' => $isButtonColorDark ? '#fff' : '#000',
+		];
 	}
 }
