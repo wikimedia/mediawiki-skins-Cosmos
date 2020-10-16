@@ -7,7 +7,6 @@ use ALSection;
 use ALTree;
 use OutputPage;
 use Skin;
-use Title;
 use User;
 
 class CosmosHooks {
@@ -37,7 +36,7 @@ class CosmosHooks {
 		} else {
 			$bodyAttrs['class'] .= ' user-anon';
 		}
-		if ( $out->getTitle()->equals( Title::newMainPage() ) ) {
+		if ( $out->getTitle()->isMainPage() ) {
 			$bodyAttrs['class'] .= ' mainpage';
 		}
 	}
