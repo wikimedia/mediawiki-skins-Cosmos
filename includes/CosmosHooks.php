@@ -29,7 +29,6 @@ class CosmosHooks {
 	 * @param OutputPage $out
 	 * @param Skin $skin
 	 * @param array &$bodyAttrs
-	 * @return bool
 	 */
 	public static function onOutputPageBodyAttributes( OutputPage $out, Skin $skin, &$bodyAttrs ) {
 		if ( $skin->getUser()->isLoggedIn() ) {
@@ -40,7 +39,6 @@ class CosmosHooks {
 		if ( $out->getTitle()->equals( Title::newMainPage() ) ) {
 			$bodyAttrs['class'] .= ' mainpage';
 		}
-		return true;
 	}
 
 	/**
@@ -48,7 +46,6 @@ class CosmosHooks {
 	 *
 	 * @see https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Admin_Links/Hooks/AdminLinks
 	 * @param ALTree &$adminLinksTree
-	 * @return bool
 	 */
 	public static function addToAdminLinks( ALTree &$adminLinksTree ) {
 		$cosmos_section = new ALSection( wfMessage( 'skinname-cosmos' )->text(), wfMessage( 'adminlinks_users' )->text() );
@@ -60,7 +57,5 @@ class CosmosHooks {
 		$cosmos_row->addItem( ALItem::newFromEditLink( 'Cosmos-stickysidebar', 'Edit custom sticky sidebar' ) );
 		$cosmos_section->addRow( $cosmos_row );
 		$adminLinksTree->addSection( $cosmos_section );
-
-		return true;
 	}
 }
