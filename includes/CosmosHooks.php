@@ -19,8 +19,9 @@ class CosmosHooks {
 	public static function onGetPreferences( $user, &$preferences ) {
 		$preferences['cosmos-mobile-responsiveness'] = [
 			'type' => 'check',
-			'label-message' => 'cosmos-mobile-preference',
-			'section' => 'cosmos/cosmos-responsiveness'
+			'help-message' => 'cosmos-mobile-preference',
+			'label-message' => 'prefs-cosmos-responsiveness',
+			'section' => 'rendering/skin/skin-prefs',
 		];
 	}
 

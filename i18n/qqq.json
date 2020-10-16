@@ -36,7 +36,6 @@
 	"cosmos-navigation": "The default navigation for Cosmos.\n\nUses multiple other messages:\n\n*{{msg-mw|sidebar}}\n\n*{{msg-mw|cosmos-explore}}\n\n*{{msg-mw|cosmos-recentchanges}}",
 	"cosmos-toolbar": "{{notranslate}}",
 	"cosmos-mobile-menu-label": "{{notranslate}}",
-	"prefs-cosmos": "The label for the Cosmos skin tab in Special:Preferences.",
 	"prefs-cosmos-responsiveness": "The label for the Mobile Responsiveness section in Special:Preferences.",
 	"cosmos-mobile-preference": "The checkbox label for the mobile responsiveness toggle in Special:Preferences",
 	"cosmos-user-blocked": "The text used to show a user is blocked on social profile Pages' avatar area.\n\n{{Identical|Blocked}}",
