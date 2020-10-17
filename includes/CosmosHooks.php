@@ -5,17 +5,22 @@ use ALItem;
 use ALRow;
 use ALSection;
 use ALTree;
+use MediaWiki\Hook\OutputPageBodyAttributesHook;
+use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use OutputPage;
 use Skin;
 use User;
 
-class CosmosHooks {
+class CosmosHooks implements
+	GetPreferencesHook,
+	OutputPageBodyAttributesHook
+{
 	/**
 	 * @see https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:Hooks/GetPreferences
 	 * @param User $user
 	 * @param array &$preferences
 	 */
-	public static function onGetPreferences( $user, &$preferences ) {
+	public function onGetPreferences( $user, &$preferences ) {
 		$preferences['cosmos-mobile-responsiveness'] = [
 			'type' => 'check',
 			'help-message' => 'cosmos-mobile-preference',
@@ -30,7 +35,7 @@ class CosmosHooks {
 	 * @param Skin $skin
 	 * @param array &$bodyAttrs
 	 */
-	public static function onOutputPageBodyAttributes( OutputPage $out, Skin $skin, &$bodyAttrs ) {
+	public function onOutputPageBodyAttributes( $out, $skin, &$bodyAttrs ) : void {
 		if ( $skin->getUser()->isLoggedIn() ) {
 			$bodyAttrs['class'] .= ' user-logged';
 		} else {

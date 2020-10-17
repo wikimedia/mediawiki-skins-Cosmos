@@ -349,10 +349,19 @@
 		}
 
 	},
+	"HookHandlers": {
+		"CosmosHookHandlers": {
+			"class": "MediaWiki\\Skin\\Cosmos\\CosmosHooks"
+		}
+	},
 	"Hooks": {
 		"AdminLinks": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::addToAdminLinks",
-		"GetPreferences": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::onGetPreferences",
-		"OutputPageBodyAttributes": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::onOutputPageBodyAttributes"
+		"GetPreferences": {
+			"handler": "CosmosHookHandlers"
+		},
+		"OutputPageBodyAttributes": {
+			"handler": "CosmosHookHandlers"
+		}
 	},
 	"DefaultUserOptions": {
 		"cosmos-mobile-responsiveness": 1
