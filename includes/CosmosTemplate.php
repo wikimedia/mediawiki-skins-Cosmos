@@ -1127,35 +1127,39 @@ class CosmosTemplate extends BaseTemplate {
 	 */
 	protected function buildFooterIcons() {
 		$footerIcons = $this->get( 'footericons' );
+
+		if ( count( $footerIcons ) <= 0 ) {
+			return '';
+		}
+
 		$skin = $this->getSkin();
 		$html = '';
-		if ( count( $footerIcons ) > 0 ) {
-			// Open container div for icons
-			$html .= Html::openElement( 'div', [ 'id' => 'cosmos-footerContent-footerIcons', 'class' => 'cosmos-sidebarAligned' ] );
 
-			// Open unordered list element for icon list
-			$html .= Html::openElement( 'ul', [ 'id' => 'cosmos-footerIcons-list' ] );
+		// Open container div for icons
+		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-footerContent-footerIcons', 'class' => 'cosmos-sidebarAligned' ] );
 
-			// Loop through each footer icon and generate a list item element
-			// which contains the icon to display
-			foreach ( $footerIcons as $blockName => $footerIcons ) {
-				foreach ( $footerIcons as $icon ) {
-					$html .= Html::openElement( 'li', [ 'id' => "cosmos-footerIcons-$blockName", 'class' => 'cosmos-footerIcons-listItem' ] );
+		// Open unordered list element for icon list
+		$html .= Html::openElement( 'ul', [ 'id' => 'cosmos-footerIcons-list' ] );
 
-					if ( is_string( $icon ) || isset( $icon['src'] ) ) {
-						$html .= $skin->makeFooterIcon( $icon );
-					}
+		// Loop through each footer icon and generate a list item element
+		// which contains the icon to display
+		foreach ( $footerIcons as $blockName => $footerIcons ) {
+			foreach ( $footerIcons as $icon ) {
+				$html .= Html::openElement( 'li', [ 'id' => "cosmos-footerIcons-$blockName", 'class' => 'cosmos-footerIcons-listItem' ] );
 
-					$html .= Html::closeElement( 'li' );
+				if ( is_string( $icon ) || isset( $icon['src'] ) ) {
+					$html .= $skin->makeFooterIcon( $icon );
 				}
+
+				$html .= Html::closeElement( 'li' );
 			}
-
-			// Close unordered list element
-			$html .= Html::closeElement( 'ul' );
-
-			// Close container div
-			$html .= Html::closeElement( 'div' );
 		}
+
+		// Close unordered list element
+		$html .= Html::closeElement( 'ul' );
+
+		// Close container div
+		$html .= Html::closeElement( 'div' );
 
 		return $html;
 	}
