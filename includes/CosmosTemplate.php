@@ -642,8 +642,8 @@ class CosmosTemplate extends BaseTemplate {
 	protected function buildRail() {
 		$customSidebarMsg = $this->getMsg( 'cosmos-customsidebar' );
 		$stickySidebarMsg = $this->getMsg( 'cosmos-stickysidebar' );
-		$isCustomSidebarDisabled = $this->getMsg( 'cosmos-customsidebar' )->isDisabled();
-		$isStickySidebarDisabled = $this->getMsg( 'cosmos-stickysidebar' )->isDisabled();
+		$isCustomSidebarDisabled = $customSidebarMsg->isDisabled();
+		$isStickySidebarDisabled = $stickySidebarMsg->isDisabled();
 
 		if ( ( $isCustomSidebarDisabled || $isStickySidebarDisabled ) ) {
 			return;
