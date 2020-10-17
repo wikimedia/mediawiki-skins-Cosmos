@@ -186,25 +186,29 @@ class CosmosTemplate extends BaseTemplate {
 	 * @return string
 	 */
 	protected function buildNavigation() {
-		global $wgManageWikiForceSidebarLinks, $wgManageWikiSidebarLinks, $wgManageWiki;
-		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
-		$cosmosNavigation = new CosmosNavigation( $this->getSkin()->getContext() );
+		global $wgManageWiki;
+
 		$skin = $this->getSkin();
+		$cosmosNavigation = new CosmosNavigation( $skin->getContext() );
 		$append = '';
 		$html = '';
 		$html .= Html::openElement( 'ul', [ 'class' => 'wds-tabs' ] );
 		// Load site navigation links from MediaWiki:Cosmos-navigation
 		$html .= $cosmosNavigation->getCode();
+
 		// ManageWiki links
 		if ( ExtensionRegistry::getInstance()
 			->isLoaded( 'ManageWiki' ) && in_array( true, $wgManageWiki, true ) === true ) {
-			if ( ( !$permissionManager->userHasRight( $skin->getUser(), 'managewiki' ) ) && ( $wgManageWikiForceSidebarLinks || $skin->getUser()
-				->getOption( 'managewikisidebar', 1 ) ) ) {
+			global $wgManageWikiForceSidebarLinks, $wgManageWikiSidebarLinks;
+
+			$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
+			$canManageWiki = $permissionManager->userHasRight( $skin->getUser(), 'managewiki' );
+			$manageWikiSidebar = $skin->getUser()->getOption( 'managewikisidebar', 1 );
+
+			if ( !$canManageWiki && ( $wgManageWikiForceSidebarLinks || $manageWikiSidebar ) ) {
 				$append = '-view';
 			}
-			if ( ( $permissionManager->userHasRight( $skin->getUser(), 'managewiki' ) || $wgManageWikiForceSidebarLinks || $skin->getUser()
-				->getOption( 'managewikisidebar', 1 ) ) && $wgManageWikiSidebarLinks !== false ) {
-
+			if ( ( $canManageWiki || $wgManageWikiForceSidebarLinks || $manageWikiSidebar ) && $wgManageWikiSidebarLinks !== false ) {
 				$html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], '<div class="wds-dropdown" id="p-' . Sanitizer::escapeIdForAttribute( $this->getMsg( 'cosmos-administration' ) ) . '" aria-labelledby="p-' . Sanitizer::escapeIdForAttribute( $this->getMsg( 'cosmos-administration' ) ) . '-label"><div class="wds-tabs__tab-label wds-dropdown__toggle" id="p-' . Sanitizer::escapeIdForAttribute( $this->getMsg( 'cosmos-administration' ) ) . '-label"><span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-administration' )
 					->text() . '</span>' . Icon::getIcon( 'dropdown' )
 					->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">' );
@@ -215,6 +219,7 @@ class CosmosTemplate extends BaseTemplate {
 				$html .= ( '</div>' );
 			}
 		}
+
 		$html .= Html::closeElement( 'ul' );
 
 		return $html;
