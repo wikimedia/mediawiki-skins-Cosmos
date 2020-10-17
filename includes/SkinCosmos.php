@@ -23,11 +23,13 @@ class SkinCosmos extends SkinTemplate {
 	 */
 	public function initPage( OutputPage $out ) {
 		parent::initPage( $out );
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
+
+		$services = MediaWikiServices::getInstance();
+		$config = $services->getConfigFactory()->makeConfig( 'cosmos' );
+		$userOptionsLookup = $services->getUserOptionsLookup();
 		$skin = $this->getSkin();
-		if ( $skin
-			->getUser()
-			->getOption( 'cosmos-mobile-responsiveness' ) == 1 ) {
+
+		if ( $userOptionsLookup->getOption( $skin->getUser(), 'cosmos-mobile-responsiveness' ) == 1 ) {
 			$out->addMeta(
 				'viewport',
 				'width=device-width, initial-scale=1.0, ' .

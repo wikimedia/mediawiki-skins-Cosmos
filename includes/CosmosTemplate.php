@@ -201,9 +201,12 @@ class CosmosTemplate extends BaseTemplate {
 			->isLoaded( 'ManageWiki' ) && in_array( true, $wgManageWiki, true ) === true ) {
 			global $wgManageWikiForceSidebarLinks, $wgManageWikiSidebarLinks;
 
-			$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
-			$canManageWiki = $permissionManager->userHasRight( $skin->getUser(), 'managewiki' );
-			$manageWikiSidebar = $skin->getUser()->getOption( 'managewikisidebar', 1 );
+			$services = MediaWikiServices::getInstance();
+			$permissionManager = $services->getPermissionManager();
+			$userOptionsLookup = $services->getUserOptionsLookup();
+			$user = $skin->getUser();
+			$canManageWiki = $permissionManager->userHasRight( $user, 'managewiki' );
+			$manageWikiSidebar = $userOptionsLookup->getOption( $user, 'managewikisidebar', 1 );
 
 			if ( !$canManageWiki && ( $wgManageWikiForceSidebarLinks || $manageWikiSidebar ) ) {
 				$append = '-view';
