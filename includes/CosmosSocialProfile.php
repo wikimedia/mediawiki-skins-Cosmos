@@ -41,7 +41,7 @@ class CosmosSocialProfile {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
 		$user = self::getUser( $user );
 		if ( $user && $user->isBlocked() ) {
-			$usertags = Html::rawElement( 'span', [ 'class' => 'tag tag-blocked' ], wfMessage( 'cosmos-user-blocked' ) );
+			$usertags = Html::element( 'span', [ 'class' => 'tag tag-blocked' ], wfMessage( 'cosmos-user-blocked' )->text() );
 		} elseif ( $user ) {
 			$number_of_tags = 0;
 			$usertags = '';
@@ -50,7 +50,7 @@ class CosmosSocialProfile {
 					$number_of_tags++;
 					$number_of_tags_config = $config->get( 'CosmosNumberofGroupTags' );
 					if ( $number_of_tags <= $number_of_tags_config ) {
-						$usertags .= Html::rawElement( 'span', [ 'class' => 'tag tag-' . Sanitizer::escapeClass( $value ) ], ucfirst( wfMessage( 'group-' . $value . '-member' ) ) );
+						$usertags .= Html::element( 'span', [ 'class' => 'tag tag-' . Sanitizer::escapeClass( $value ) ], ucfirst( wfMessage( 'group-' . $value . '-member' )->text() ) );
 					}
 				}
 			}
