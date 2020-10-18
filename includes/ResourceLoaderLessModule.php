@@ -21,12 +21,12 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 	protected function getLessVars( ResourceLoaderContext $context ) {
 		$lessVars = parent::getLessVars( $context );
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
-		$content__background_color = $config->get( 'CosmosContentBackgroundColor' );
-		if ( strpos( $content__background_color, 'rgb' ) !== false ) {
-			$rgbarr = explode( ",", $content__background_color, 3 );
-			$colorname = sprintf( "#%02x%02x%02x", $rgbarr[0], $rgbarr[1], $rgbarr[2] );
+		$contentBackgroundColor = $config->get( 'CosmosContentBackgroundColor' );
+		if ( strpos( $contentBackgroundColor, 'rgb' ) !== false ) {
+			$rgbArr = explode( ",", $contentBackgroundColor, 3 );
+			$colorName = sprintf( "#%02x%02x%02x", $rgbArr[0], $rgbArr[1], $rgbArr[2] );
 		} else {
-			$colorname = LessUtil::colorNameToHex( $content__background_color );
+			$colorName = LessUtil::colorNameToHex( $contentBackgroundColor );
 		}
 		$lessVars['banner-background-color'] = $config->get( 'CosmosBannerBackgroundColor' );
 
@@ -57,41 +57,41 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		list( $r, $g, $b ) = array_map( function ( $c ) {
 			return hexdec( str_pad( $c, 2, $c ) );
 		},
-		str_split( ltrim( $colorname, '#' ), strlen( $colorname ) > 4 ? 2 : 1 ) );
-		$content_opacity_level_config = $config->get( 'CosmosContentOpacityLevel' );
-		$lessVars['content-opacity-level'] = "rgba($r, $g, $b, " . $content_opacity_level_config / 100.00 . ')';
-		$footer_background_color = $config->get( 'CosmosFooterColor' );
-		if ( strpos( $footer_background_color, 'rgb' ) !== false ) {
-			$rgbarr = explode( ",", $footer_background_color, 3 );
-			$colorname = sprintf( "#%02x%02x%02x", $rgbarr[0], $rgbarr[1], $rgbarr[2] );
+		str_split( ltrim( $colorName, '#' ), strlen( $colorName ) > 4 ? 2 : 1 ) );
+		$contentOpacityLevelConfig = $config->get( 'CosmosContentOpacityLevel' );
+		$lessVars['content-opacity-level'] = "rgba($r, $g, $b, " . $contentOpacityLevelConfig / 100.00 . ')';
+		$footerBackgroundColor = $config->get( 'CosmosFooterColor' );
+		if ( strpos( $footerBackgroundColor, 'rgb' ) !== false ) {
+			$rgbArr = explode( ",", $footerBackgroundColor, 3 );
+			$colorName = sprintf( "#%02x%02x%02x", $rgbArr[0], $rgbArr[1], $rgbArr[2] );
 		} else {
-			$colorname = LessUtil::colorNameToHex( $footer_background_color );
+			$colorName = LessUtil::colorNameToHex( $footerBackgroundColor );
 		}
 		list( $r, $g, $b ) = array_map( function ( $c ) {
 			return hexdec( str_pad( $c, 2, $c ) );
 		},
-		str_split( ltrim( $colorname, '#' ), strlen( $colorname ) > 4 ? 2 : 1 ) );
+		str_split( ltrim( $colorName, '#' ), strlen( $colorName ) > 4 ? 2 : 1 ) );
 		$lessVars['footer-background-color'] = "rgba($r, $g, $b,0.9)";
 
 		$isFooterColorDark = LessUtil::isThemeDark( 'footer-color' );
 		$lessVars['footer-font-color1'] = $isFooterColorDark ? '#999' : '#666';
 		$lessVars['footer-font-color2'] = $isFooterColorDark ? '#fff' : '#000';
 
-		$header_background_color = $config->get( 'CosmosWikiHeaderBackgroundColor' );
-		if ( strpos( $header_background_color, 'rgb' ) !== false ) {
-			$rgbarr = explode( ",", $header_background_color, 3 );
-			$colorname = sprintf( "#%02x%02x%02x", $rgbarr[0], $rgbarr[1], $rgbarr[2] );
+		$headerBackgroundColor = $config->get( 'CosmosWikiHeaderBackgroundColor' );
+		if ( strpos( $headerBackgroundColor, 'rgb' ) !== false ) {
+			$rgbArr = explode( ",", $headerBackgroundColor, 3 );
+			$colorName = sprintf( "#%02x%02x%02x", $rgbArr[0], $rgbArr[1], $rgbArr[2] );
 		} else {
-			$colorname = LessUtil::colorNameToHex( $header_background_color );
+			$colorName = LessUtil::colorNameToHex( $headerBackgroundColor );
 		}
 		list( $r, $g, $b ) = array_map( function ( $c ) {
 			return hexdec( str_pad( $c, 2, $c ) );
 		},
-		str_split( ltrim( $colorname, '#' ), strlen( $colorname ) > 4 ? 2 : 1 ) );
+		str_split( ltrim( $colorName, '#' ), strlen( $colorName ) > 4 ? 2 : 1 ) );
 
-		$lessVars['header-background-color'] = "linear-gradient(to right,rgba($r, $g, $b,0.5),rgba($r, $g, $b,0.5)),linear-gradient(to left,rgba($r, $g, $b,0) 200px,$colorname 430px)";
-		$lessVars['header-background-color2'] = "linear-gradient(to right,rgba($r, $g, $b,0.5),rgba($r, $g, $b,0.5)),linear-gradient(to left,rgba($r, $g, $b,0) 200px,$colorname 471px)";
-		$lessVars['header-background-solid-color'] = $header_background_color;
+		$lessVars['header-background-color'] = "linear-gradient(to right,rgba($r, $g, $b,0.5),rgba($r, $g, $b,0.5)),linear-gradient(to left,rgba($r, $g, $b,0) 200px,$colorName 430px)";
+		$lessVars['header-background-color2'] = "linear-gradient(to right,rgba($r, $g, $b,0.5),rgba($r, $g, $b,0.5)),linear-gradient(to left,rgba($r, $g, $b,0) 200px,$colorName 471px)";
+		$lessVars['header-background-solid-color'] = $headerBackgroundColor;
 		$lessVars['header-font-color'] = LessUtil::isThemeDark( 'header-background-color' ) ? '#fff' : '#000';
 
 		return array_merge(

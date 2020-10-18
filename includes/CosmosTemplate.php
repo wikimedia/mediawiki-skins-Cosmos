@@ -1242,9 +1242,9 @@ class CosmosTemplate extends BaseTemplate {
 				$title = $skin->getRelevantTitle();
 				$href = SpecialPage::getTitleFor( 'CreateRedirect', $title->getPrefixedText() )
 					->getLocalURL();
-				$CreateRedirect = Html::rawElement( 'li', [ 'id' => 't-createredirect' ], Html::element( 'a', [ 'href' => $href ], $this->getMsg( 'createredirect' )->text() ) );
+				$createRedirect = Html::rawElement( 'li', [ 'id' => 't-createredirect' ], Html::element( 'a', [ 'href' => $href ], $this->getMsg( 'createredirect' )->text() ) );
 				if ( $action == 'view' || $action == 'purge' || !$title->isSpecialPage() ) {
-					$html .= $CreateRedirect;
+					$html .= $createRedirect;
 				}
 			}
 			if ( !$this->getMsg( 'cosmos-toolbar' )->isDisabled() ) {
