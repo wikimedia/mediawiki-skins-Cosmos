@@ -9,18 +9,6 @@ namespace MediaWiki\Skin\Cosmos;
 use MediaWiki\MediaWikiServices;
 
 class LessUtil {
-
-	private const HEX_REG_EXP = '/#([a-f0-9]{3,6})/i';
-	private const COLOR_KEYS = [
-		'banner-background-color',
-		'header-background-color',
-		'content-background-color',
-		'button-color',
-		'link-color',
-		'toolbar-color',
-		'footer-color'
-	];
-
 	/** @var array */
 	private static $cosmosSettings = [];
 
@@ -320,41 +308,6 @@ class LessUtil {
 		} else {
 			return $colorName;
 		}
-	}
-
-	/**
-	 * Converts theme designer color names to hex
-	 *
-	 * @param array $themeSettings
-	 * @return array
-	 */
-	public static function normalizeThemeColors( $themeSettings ) {
-		foreach ( self::COLOR_KEYS as $key ) {
-			if ( !preg_match( self::HEX_REG_EXP, $themeSettings[$key] ) ) {
-				$themeSettings[$key] = self::colorNameToHex( $themeSettings[$key] );
-			}
-		}
-
-		return $themeSettings;
-	}
-
-	/**
-	 * @param array $themeSettings
-	 *
-	 * @return array
-	 */
-	public static function convertColorsToRgb( array $themeSettings ): array {
-		$settings = [];
-
-		foreach ( self::normalizeThemeColors( $themeSettings ) as $key => $val ) {
-			if ( preg_match( self::HEX_REG_EXP, $val ) ) {
-				$settings[$key] = self::hexToRgb( $val );
-			} else {
-				$settings[$key] = $val;
-			}
-		}
-
-		return $settings;
 	}
 
 	/**
