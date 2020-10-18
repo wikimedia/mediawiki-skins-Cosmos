@@ -41,21 +41,21 @@ class CosmosSocialProfile {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
 		$user = self::getUser( $user );
 		if ( $user && $user->isBlocked() ) {
-			$usertags = Html::element( 'span', [ 'class' => 'tag tag-blocked' ], wfMessage( 'cosmos-user-blocked' )->text() );
+			$userTags = Html::element( 'span', [ 'class' => 'tag tag-blocked' ], wfMessage( 'cosmos-user-blocked' )->text() );
 		} elseif ( $user ) {
-			$number_of_tags = 0;
-			$usertags = '';
+			$numberOfTags = 0;
+			$userTags = '';
 			foreach ( $config->get( 'CosmosProfileTagGroups' ) as $value ) {
 				if ( in_array( $value, $user->getGroups() ) ) {
-					$number_of_tags++;
-					$number_of_tags_config = $config->get( 'CosmosNumberofGroupTags' );
-					if ( $number_of_tags <= $number_of_tags_config ) {
-						$usertags .= Html::element( 'span', [ 'class' => 'tag tag-' . Sanitizer::escapeClass( $value ) ], ucfirst( wfMessage( 'group-' . $value . '-member' )->text() ) );
+					$numberOfTags++;
+					$numberOfTagsConfig = $config->get( 'CosmosNumberofGroupTags' );
+					if ( $numberOfTags <= $numberOfTagsConfig ) {
+						$userTags .= Html::element( 'span', [ 'class' => 'tag tag-' . Sanitizer::escapeClass( $value ) ], ucfirst( wfMessage( 'group-' . $value . '-member' )->text() ) );
 					}
 				}
 			}
 		}
-		return $usertags;
+		return $userTags;
 	}
 
 	/**
