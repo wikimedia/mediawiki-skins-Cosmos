@@ -538,6 +538,9 @@ class CosmosTemplate extends BaseTemplate {
 	protected function buildWikiHeader( Config $config ) {
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		$skin = $this->getSkin();
+		$hasAdminLinksRights = $permissionManager->userHasRight( $skin->getUser(), 'adminlinks' );
+		$cosmosRecentChangesMsg = $this->getMsg( 'Cosmos-recentchanges' )->text();
+
 		$html = '';
 		$html .= Html::openElement( 'header', [ 'class' => 'cosmos-header', 'style' => $config->get( 'CosmosWikiHeaderBackgroundImage' ) ? "background-image: url({$config->get( 'CosmosWikiHeaderBackgroundImage' ) });" : null ] );
 		$html .= $this->buildWordmark( $config );
@@ -554,14 +557,13 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-header__wiki-buttons wds-button-group' ] );
 		$html .= Html::rawElement( 'a', [ 'class' => 'wds-button wds-is-secondary createpage', 'id' => 'createpage', 'href' => '#create-article', 'data-tracking' => 'add-new-page', 'title' => $this->getMsg( 'Cosmos-add-new-page-title' )
 			->text() ], Icon::getIcon( 'newpage' )
-			->makeSvg( 1000, 1000, [ 'class' => 'wds-icon wds-icon-small', 'id' => 'wds-icons-page-small', 'style' => ( $permissionManager->userHasRight( $skin->getUser(), 'adminlinks' ) ? 'margin-right: 0;' : '' ) ] ) . ( !$permissionManager->userHasRight( $skin->getUser(), 'adminlinks' ) ? ( empty( $this->data["username"] ) ? $this->getMsg( "Cosmos-anon-add-new-page-text" )
+			->makeSvg( 1000, 1000, [ 'class' => 'wds-icon wds-icon-small', 'id' => 'wds-icons-page-small', 'style' => ( $hasAdminLinksRights ? 'margin-right: 0;' : '' ) ] ) . ( !$hasAdminLinksRights ? ( empty( $this->data["username"] ) ? $this->getMsg( "Cosmos-anon-add-new-page-text" )
 			->text() : $this->getMsg( "Cosmos-add-new-page-text" )
 			->text() ) : '' ) );
 		if ( !empty( $this->data["username"] ) ) {
-			$html .= Html::rawElement( 'a', [ 'class' => 'wds-button wds-is-secondary', 'href' => htmlspecialchars( Title::newFromText( 'RecentChanges', NS_SPECIAL )->getFullURL() ) , 'data-tracking' => 'recent-changes', 'title' => $this->getMsg( 'Cosmos-recentchanges' )
-				->text() ], Icon::getIcon( 'recentchanges' )
+			$html .= Html::rawElement( 'a', [ 'class' => 'wds-button wds-is-secondary', 'href' => htmlspecialchars( Title::newFromText( 'RecentChanges', NS_SPECIAL )->getFullURL() ) , 'data-tracking' => 'recent-changes', 'title' => $cosmosRecentChangesMsg ], Icon::getIcon( 'recentchanges' )
 				->makeSvg( 22, 22, [ 'class' => 'wds-icon-small', 'id' => 'wds-icons-activity-small', 'stroke' => 'currentColor', 'stroke-linecap' => 'round', 'stroke-linejoin' => 'round', 'stroke-width' => 2 ] ) );
-			if ( !empty( $this->data['username'] ) && $permissionManager->userHasRight( $skin->getUser(), 'adminlinks' ) ) {
+			if ( !empty( $this->data['username'] ) && $hasAdminLinksRights ) {
 				$html .= Html::rawElement( 'a', [ 'class' => 'wds-button wds-is-secondary', 'href' => htmlspecialchars( Title::newFromText( 'AdminLinks', NS_SPECIAL )->getFullURL() ) , 'data-tracking' => 'admin-links', 'title' => $this->getMsg( 'Cosmos-adminlinks' )
 					->text() ], Icon::getIcon( 'admindashboard' )
 					->makeSvg( 24, 24, [ 'class' => 'wds-icon-small', 'id' => 'wds-icons-dashboard-small' ] ) );
@@ -569,9 +571,9 @@ class CosmosTemplate extends BaseTemplate {
 			$html .= Html::rawElement( 'div', [ 'class' => 'wds-dropdown' ], '<div class="wds-button wds-is-secondary wds-dropdown__toggle">' . Icon::getIcon( 'more' )->makeSvg( 384, 384, [ 'class' => 'wds-icon wds-icon-small', 'id' => 'wds-icons-more' ] ) . '</div><div class="wds-dropdown__content wds-is-not-scrollable wds-is-right-aligned"><ul class="wds-list wds-is-linked"><li><a href="' . htmlspecialchars( Title::newFromText( "Upload", NS_SPECIAL )
 				->getFullURL() ) . '" data-tracking="more-upload-file">' . $this->getMsg( 'cosmos-upload' )
 				->text() . '</a></li><li><a href="' . htmlspecialchars( Title::newFromText( 'RecentChanges', NS_SPECIAL )
-				->getFullURL() ) . '" data-tracking="more-recent-changes">' . $this->getMsg( 'Cosmos-recentchanges' )
-				->text() . '</a></li></ul></div>' );
+				->getFullURL() ) . '" data-tracking="more-recent-changes">' . $cosmosRecentChangesMsg . '</a></li></ul></div>' );
 		}
+
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::openElement( 'nav', [ 'class' => 'cosmos-header__local-navigation' ] );
