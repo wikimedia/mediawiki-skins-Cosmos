@@ -29,7 +29,6 @@
 	"cosmos-adminlinks": "Admin Links",
 	"cosmos-explore": "Explore",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Random page\n**Special:NewFiles|New files\n**Special:WantedPages|Wanted pages",
-	"prefs-cosmos": "Cosmos skin",
 	"prefs-cosmos-responsiveness": "Mobile responsiveness",
 	"cosmos-mobile-preference": "Enable mobile responsive version of the Cosmos skin",
 	"cosmos-user-blocked": "Blocked"

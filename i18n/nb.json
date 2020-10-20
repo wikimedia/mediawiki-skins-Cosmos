@@ -29,8 +29,7 @@
 	"cosmos-adminlinks": "Adminlenker",
 	"cosmos-explore": "Utforsk",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Tilfeldig side\n**Special:NewFiles|Nye filer\n**Special:WantedPages|Ønskede sider",
-	"prefs-cosmos": "Cosmos-drakta",
-	"prefs-cosmos-responsiveness": "Mobil responsivitet",
+	"prefs-cosmos-responsiveness": "Mobil responsivitet for Cosmos",
 	"cosmos-mobile-preference": "Slå på mobilresponsiv versjon av Cosmos-drakta",
 	"cosmos-user-blocked": "Blokkert"
 }

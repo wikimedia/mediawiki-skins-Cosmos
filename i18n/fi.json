@@ -27,7 +27,6 @@
 	"cosmos-administration": "Ylläpito",
 	"cosmos-adminlinks": "Ylläpidon linkit",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Satunnainen sivu\n**Special:NewFiles|Uudet tiedostot\n**Special:WantedPages|Halutut sivut",
-	"prefs-cosmos": "Cosmos-ulkoasu",
 	"cosmos-mobile-preference": "Ota käyttöön Cosmos-ulkoasun responsiivinen mobiiliversio",
 	"cosmos-user-blocked": "Estetty"
 }

@@ -30,7 +30,6 @@
 	"cosmos-adminlinks": "Enlaces de administración",
 	"cosmos-explore": "Explorar",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|Cambios recientes\n**Special:Random|Página aleatoria\n**Special:NewFiles|Nuevos archivos\n**Special:WantedPages|Páginas requeridas",
-	"prefs-cosmos": "Piel Cosmos",
 	"prefs-cosmos-responsiveness": "Capacidad de respuesta móvil",
 	"cosmos-mobile-preference": "Habilitar versión con capacidad de respuesta móvil de la piel Cosmos",
 	"cosmos-user-blocked": "Bloqueado"

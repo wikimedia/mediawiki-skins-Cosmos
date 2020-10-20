@@ -29,7 +29,6 @@
 	"cosmos-adminlinks": "Администраторски врски",
 	"cosmos-explore": "Истражи",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|Скорешни промени\n**Special:Random|Случајна страница\n**Special:NewFiles|Нови податотеки\n**Special:WantedPages|Потребни страници",
-	"prefs-cosmos": "Руво „Космос“",
 	"prefs-cosmos-responsiveness": "Мобилна одѕивност",
 	"cosmos-mobile-preference": "Овозможи мобилно одѕивна верзија на рувото „Космос“",
 	"cosmos-user-blocked": "Блокиран"

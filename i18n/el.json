@@ -29,7 +29,6 @@
 	"cosmos-adminlinks": "Σύνδεσμοι διαχειριστών",
 	"cosmos-explore": "Εξερεύνηση",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Τυχαία Σελίδα\n**Special:NewFiles|Νέα Αρχεία\n**Special:WantedPages|Ζητούμενες Σελίδες",
-	"prefs-cosmos": "Θέμα Cosmos",
 	"prefs-cosmos-responsiveness": "Ανταπόκριση για κινητά",
 	"cosmos-mobile-preference": "Ενεργοποιήστε την έκδοση για κινητά για το θέμα Cosmos",
 	"cosmos-user-blocked": "Φραγμένος"

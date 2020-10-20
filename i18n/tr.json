@@ -29,8 +29,7 @@
 	"cosmos-adminlinks": "Hizmetli Bağlantıları",
 	"cosmos-explore": "Keşfet",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Rastgele sayfa\n**Special:NewFiles|Yeni dosyalar\n**Special:WantedPages|İstenen sayfalar",
-	"prefs-cosmos": "Cosmos görünümü",
-	"prefs-cosmos-responsiveness": "Mobil yanıt vermesi",
+	"prefs-cosmos-responsiveness": "Cosmos için mobil yanıt vermesi",
 	"cosmos-mobile-preference": "Cosmos görünümünün mobil duyarlı sürümünü etkinleştirin",
 	"cosmos-user-blocked": "Engellendi"
 }

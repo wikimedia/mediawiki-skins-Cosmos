@@ -30,7 +30,6 @@
 	"cosmos-adminlinks": "Linki dla administratorów",
 	"cosmos-explore": "Odkrywaj",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Losowa strona\n**Special:NewFiles|Nowe pliki\n**Special:WantedPages|Potrzebne strony",
-	"prefs-cosmos": "Skórka Kosmos",
 	"prefs-cosmos-responsiveness": "Mobilna responsywność",
 	"cosmos-mobile-preference": "Włącz responsywną mobilnie wersję skórki Kosmos",
 	"cosmos-user-blocked": "Zablokowany",

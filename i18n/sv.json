@@ -29,7 +29,6 @@
 	"cosmos-adminlinks": "Administrationslänkar",
 	"cosmos-explore": "Utforska",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Slumpsida\n**Special:NewFiles|Nya filer\n**Special:WantedPages|Bevakade sidor",
-	"prefs-cosmos": "Cosmos-utseende",
 	"prefs-cosmos-responsiveness": "Mobil responsivitet",
 	"cosmos-mobile-preference": "Aktivera responsiva mobilversionen av utseendet Cosmos",
 	"cosmos-user-blocked": "Blockerad"
