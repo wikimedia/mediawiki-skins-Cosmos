@@ -30,9 +30,9 @@
 	"cosmos-adminlinks": "Linki dla administratorów",
 	"cosmos-explore": "Odkrywaj",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Losowa strona\n**Special:NewFiles|Nowe pliki\n**Special:WantedPages|Potrzebne strony",
-	"prefs-cosmos-responsiveness": "Mobilna responsywność",
+	"prefs-cosmos-responsiveness": "Mobilna responsywność skórki Kosmos",
 	"cosmos-mobile-preference": "Włącz responsywną mobilnie wersję skórki Kosmos",
 	"cosmos-user-blocked": "Zablokowany",
-	"cosmos.css": "/* Umieszczony tutaj kod CSS zostanie załadowany wyłącznie przez użytkowników korzystających ze skórki Cosmos */",
-	"cosmos.js": "/* Umieszczony tutaj kod JavaScript zostanie załadowany wyłącznie przez użytkowników korzystających ze skórki Cosmos */"
+	"cosmos.css": "/* Umieszczony tutaj kod CSS zostanie załadowany przez użytkowników korzystających ze skórki Kosmos */",
+	"cosmos.js": "/* Umieszczony tutaj kod JavaScript zostanie załadowany przez użytkowników korzystających ze skórki Kosmos */"
 }

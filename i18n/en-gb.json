@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bjh21",
 			"Universal Omega"
 		]
 	},
-	"cosmos-desc": "Cosmos is a skin designed and based off Fandom's Oasis skin. Designed to improve upon their design, and provide an efficient MediaWiki skin for non-Fandom users, or for users transitioning out of Fandom.",
+	"cosmos-desc": "Cosmos is a skin designed and based on Fandom's Oasis skin. Designed to improve upon their design, and provide an efficient MediaWiki skin for non-Fandom users, or for users transitioning out of Fandom.",
 	"cosmos-anonymous": "Anonymous",
 	"cosmos-counter-label": "{{PLURAL:$1|Article|Articles}}",
 	"cosmos-createpage-header": "Create a new article",
@@ -29,7 +30,7 @@
 	"cosmos-adminlinks": "Admin Links",
 	"cosmos-explore": "Explore",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Random page\n**Special:NewFiles|New files\n**Special:WantedPages|Wanted pages",
-	"prefs-cosmos-responsiveness": "Mobile responsiveness",
+	"prefs-cosmos-responsiveness": "Mobile responsiveness for Cosmos",
 	"cosmos-mobile-preference": "Enable mobile responsive version of the Cosmos skin",
 	"cosmos-user-blocked": "Blocked"
 }
