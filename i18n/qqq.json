@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Umherirrender",
 			"Universal Omega"
 		]
 	},
 	"skinname-cosmos": "{{name}}",
 	"cosmos-desc": "{{desc|what=skin|name=Cosmos|url=https://www.mediawiki.org/wiki/Skin:Cosmos}}",
 	"cosmos-anonymous": "The text that shows instead of a username in the top banner if the user is not logged in.\n\n{{Identical|Anonymous}}",
-	"cosmos-tagline": "The tagline in the wiki navigation header.\n\n{{msg-mw|sitetitle}}",
+	"cosmos-tagline": "{{notranslate}}\nThe tagline in the wiki navigation header.\n\n{{msg-mw|sitetitle}}",
 	"cosmos-counter-label": "The label for the article counter in wiki navigation. Uses Plural:$1.",
 	"cosmos-createpage-header": "The header for the create page pop-up dialogue.",
 	"cosmos-createpage-input-label": "The new page's name input label.",
@@ -24,7 +25,7 @@
 	"cosmos-action-cancel": "The label for the action cancel buttons.\n\n{{Identical|Cancel}}",
 	"cosmos-action-backtopage": "The label for the 'Back to $1' button, when the $1 is relevant.",
 	"cosmos-action-back": "The label of the back button.\n\n{{Identical|Back}}",
-	"cosmos-action-talk": "The article talk button label.\n\n{{msg-mw|talk}}",
+	"cosmos-action-talk": "{{notranslate}}\nThe article talk button label.\n\n{{msg-mw|talk}}",
 	"cosmos-upload": "The Upload File text used throughout Cosmos.\n\n{{Identical|Upload file}}",
 	"cosmos-add-new-page-title": "The html title attribute for the add new page button.",
 	"cosmos-add-new-page-text": "The label for the add page button if user is logged in.\n\n{{Identical|Add}}",
