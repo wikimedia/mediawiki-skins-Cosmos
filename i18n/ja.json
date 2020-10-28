@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"A2y4"
+			"A2y4",
+			"Omotecho"
 		]
 	},
+	"cosmos-desc": "コスモス外装は Fandom のオアシス外装をもとに設計されました。その改善点を盛り込み、また非-Fandom 利用者あるいは Fandom から離れる利用者にも有効なメディアウィキ外装を提供します。",
+	"cosmos-personaltools-userpage": "利用者ページ",
+	"cosmos-personaltools-usertalk": "利用者の議論",
 	"cosmos-action-cancel": "キャンセル",
 	"cosmos-user-blocked": "ブロック済み"
 }

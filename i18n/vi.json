@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Phunh"
+			"Phunh",
+			"Yosari101"
 		]
 	},
 	"cosmos-createpage-input-label": "Viết tiêu đề trang của bạn ở đây:",
-	"cosmos-personaltools-userpage": "Trang người dùng",
+	"cosmos-personaltools-userpage": "Trang cá nhân",
 	"cosmos-notifications-nomessages": "Bạn không có tin nhắn mới!"
 }
