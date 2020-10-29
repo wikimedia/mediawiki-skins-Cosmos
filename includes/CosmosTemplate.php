@@ -659,7 +659,7 @@ class CosmosTemplate extends BaseTemplate {
 		$isCustomSidebarDisabled = $customSidebarMsg->isDisabled();
 		$isStickySidebarDisabled = $stickySidebarMsg->isDisabled();
 
-		if ( ( $isCustomSidebarDisabled || $isStickySidebarDisabled ) ) {
+		if ( ( $isCustomSidebarDisabled && $isStickySidebarDisabled ) ) {
 			return;
 		}
 
