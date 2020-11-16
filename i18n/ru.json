@@ -1,13 +1,23 @@
 {
 	"@metadata": {
 		"authors": [
+			"Helpau",
 			"Kareyac",
 			"Megakott"
 		]
 	},
+	"skinname-cosmos": "Cosmos",
 	"cosmos-desc": "Cosmos - это скин, созданный на основе скина Oasis ФЭНДОМа. Предназначены для улучшения их дизайна и обеспечения эффективного скина MediaWiki для участников, не являющихся пользователями ФЭНДОМа, или для пользователей, выходящих из ФЭНДОМа.",
+	"cosmos-anonymous": "Аноним",
+	"cosmos-createpage-header": "Создать новую статью",
+	"cosmos-createpage-next": "Далее",
+	"cosmos-personaltools-userpage": "Страница участника",
+	"cosmos-personaltools-usertalk": "Обсуждение участника",
+	"cosmos-notifications-nomessages": "У вас нет новых сообщений!",
+	"cosmos-notifications-nonotifs": "У вас нет непрочитанных уведомлений!",
 	"cosmos-action-addsection": "Новая тема",
 	"cosmos-action-cancel": "Отмена",
+	"cosmos-action-backtopage": "Вернуться к $1",
 	"cosmos-action-back": "Назад",
 	"cosmos-upload": "Загрузить файл",
 	"cosmos-add-new-page-text": "Добавить"
