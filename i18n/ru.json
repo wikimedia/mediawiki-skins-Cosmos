@@ -3,16 +3,21 @@
 		"authors": [
 			"Helpau",
 			"Kareyac",
-			"Megakott"
+			"Megakott",
+			"WerySkok"
 		]
 	},
 	"skinname-cosmos": "Cosmos",
 	"cosmos-desc": "Cosmos - это скин, созданный на основе скина Oasis ФЭНДОМа. Предназначены для улучшения их дизайна и обеспечения эффективного скина MediaWiki для участников, не являющихся пользователями ФЭНДОМа, или для пользователей, выходящих из ФЭНДОМа.",
 	"cosmos-anonymous": "Аноним",
+	"cosmos-counter-label": "{{PLURAL:$1|статья|статьи|статей}}",
 	"cosmos-createpage-header": "Создать новую статью",
+	"cosmos-createpage-input-label": "Введите сюда заголовок страницы:",
 	"cosmos-createpage-next": "Далее",
+	"cosmos-createpage-dialoge-text": "У нас есть <b>$1</b> {{PLURAL:$1|статья|статьи|статей}} в $2. Введите название статьи ниже или нажмите на одно из названий ниже и начните писать!",
 	"cosmos-personaltools-userpage": "Страница участника",
 	"cosmos-personaltools-usertalk": "Обсуждение участника",
+	"cosmos-personaltools-anontalk": "Моё обсуждение",
 	"cosmos-notifications-nomessages": "У вас нет новых сообщений!",
 	"cosmos-notifications-nonotifs": "У вас нет непрочитанных уведомлений!",
 	"cosmos-action-addsection": "Новая тема",
@@ -20,5 +25,15 @@
 	"cosmos-action-backtopage": "Вернуться к $1",
 	"cosmos-action-back": "Назад",
 	"cosmos-upload": "Загрузить файл",
-	"cosmos-add-new-page-text": "Добавить"
+	"cosmos-add-new-page-title": "Создать страницу",
+	"cosmos-add-new-page-text": "Добавить",
+	"cosmos-anon-add-new-page-text": "Создать страницу",
+	"cosmos-recentchanges": "Свежие правки",
+	"cosmos-administration": "Администрирование",
+	"cosmos-adminlinks": "Ссылки для администраторов",
+	"cosmos-explore": "Исследовать",
+	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Случайная статья\n**Special:NewFiles|Новые файлы\n**Special:WantedPages|Требуемые статьи",
+	"prefs-cosmos-responsiveness": "Адаптивность для мобильных устройств для Cosmos",
+	"cosmos-mobile-preference": "Включить адаптивность для темы оформления Cosmos",
+	"cosmos-user-blocked": "Заблокирован"
 }
