@@ -20,11 +20,11 @@
 		"declaration-block-semicolon-newline-after": null,
 		"declaration-block-trailing-semicolon": null,
 		"declaration-no-important": null,
-		"declaration-property-value-blacklist": null,
+		"declaration-property-value-disallowed-list": null,
 		"font-family-name-quotes": null,
 		"font-weight-notation": null,
 		"function-comma-space-after": null,
-		"function-blacklist": null,
+		"function-disallowed-list": null,
 		"function-parentheses-space-inside": null,
 		"function-url-quotes": null,
 		"indentation": null,
@@ -47,7 +47,7 @@
 		"selector-pseudo-class-parentheses-space-inside": null,
 		"selector-pseudo-element-colon-notation": null,
 		"string-quotes": null,
-		"unit-blacklist": null,
+		"unit-disallowed-list": null,
 		"value-keyword-case": null,
 		"value-list-comma-space-after": null
 	}
