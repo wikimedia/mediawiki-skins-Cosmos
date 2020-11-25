@@ -124,7 +124,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'div', [ 'class' => 'wds-input create-page-dialog__title-wrapper' ] );
 		$html .= Html::input( 'title', '', 'text', [ 'class' => 'wds-input__field', 'id' => 'create-page-dialog__title' ] );
 		$html .= Html::closeElement( 'div' );
-		$html .= Html::rawElement( 'div', [ 'id' => 'create-page-dialog__message' ], $skin->msg( 'cosmos-createpage-dialoge-text', SiteStats::pagesInNs( 0 ), $this->get( 'sitename' ) ) );
+		$html .= Html::rawElement( 'div', [ 'id' => 'create-page-dialog__message' ], $skin->msg( 'cosmos-createpage-dialoge-text', SiteStats::articles(), $this->get( 'sitename' ) ) );
 		$html .= Html::openElement( 'div', [ 'class' => 'create-page-dialog__proposals' ] );
 		$html .= Html::openElement( 'ul', [ 'class' => 'articleProposals' ] );
 		// Get most wanted pages
@@ -552,8 +552,8 @@ class CosmosTemplate extends BaseTemplate {
 			->text() );
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-header__counter' ] );
-		$html .= Html::rawElement( 'span', [ 'class' => 'cosmos-header__counter-value' ], SiteStats::pagesInNs( 0 ) );
-		$html .= Html::rawElement( 'span', [ 'class' => 'cosmos-header__counter-label' ], $this->getMsg( 'cosmos-counter-label', SiteStats::pagesInNs( 0 ) )
+		$html .= Html::rawElement( 'span', [ 'class' => 'cosmos-header__counter-value' ], SiteStats::articles() );
+		$html .= Html::rawElement( 'span', [ 'class' => 'cosmos-header__counter-label' ], $this->getMsg( 'cosmos-counter-label', SiteStats::articles() )
 			->text() );
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-header__wiki-buttons wds-button-group' ] );
