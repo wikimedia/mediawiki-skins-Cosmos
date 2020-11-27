@@ -212,7 +212,7 @@ class CosmosTemplate extends BaseTemplate {
 				$append = '-view';
 			}
 			if ( ( $canManageWiki || $wgManageWikiForceSidebarLinks || $manageWikiSidebar ) && $wgManageWikiSidebarLinks !== false ) {
-				$html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], '<div class="wds-dropdown" id="p-' . Sanitizer::escapeIdForAttribute( $this->getMsg( 'cosmos-administration' ) ) . '" aria-labelledby="p-' . Sanitizer::escapeIdForAttribute( $this->getMsg( 'cosmos-administration' ) ) . '-label"><div class="wds-tabs__tab-label wds-dropdown__toggle" id="p-' . Sanitizer::escapeIdForAttribute( $this->getMsg( 'cosmos-administration' ) ) . '-label"><span style="padding-top: 2px;">' . $this->getMsg( 'cosmos-administration' )
+				$html .= Html::rawElement( 'li', [ 'class' => 'wds-tabs__tab' ], '<div class="wds-dropdown" id="p-' . Sanitizer::escapeIdForAttribute( $this->getMsg( 'managewiki-sidebar-header' ) ) . '" aria-labelledby="p-' . Sanitizer::escapeIdForAttribute( $this->getMsg( 'managewiki-sidebar-header' ) ) . '-label"><div class="wds-tabs__tab-label wds-dropdown__toggle" id="p-' . Sanitizer::escapeIdForAttribute( $this->getMsg( 'managewiki-sidebar-header' ) ) . '-label"><span style="padding-top: 2px;">' . $this->getMsg( 'managewiki-sidebar-header' )
 					->text() . '</span>' . Icon::getIcon( 'dropdown' )
 					->makeSvg( 14, 14, [ 'id' => 'wds-icons-dropdown-tiny', 'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron' ] ) . '</div><div class="wds-is-not-scrollable wds-dropdown__content"><ul class="wds-list wds-is-linked wds-has-bolded-items">' );
 

@@ -31,7 +31,6 @@
 	"cosmos-add-new-page-text": "The label for the add page button if user is logged in.\n\n{{Identical|Add}}",
 	"cosmos-anon-add-new-page-text": "The label for the add new page button if the user is not logged in.",
 	"cosmos-recentchanges": "The recent changes text used throughout Cosmos.\n\n{{Identical|Recent changes}}",
-	"cosmos-administration": "The header for the Administration tab in the Cosmos navigation. Only uses if the ManageWiki extension by Miraheze is enabled.\n\n{{Identical|Administration}}",
 	"cosmos-adminlinks": "The html title value for the Admin Links button in the wiki navigation.",
 	"cosmos-explore": "The header for the explore tab in the navigation.\n\n{{Identical|Explore}}",
 	"cosmos-navigation": "The default navigation for Cosmos.\n\nUses multiple other messages:\n\n*{{msg-mw|sidebar}}\n\n*{{msg-mw|cosmos-explore}}\n\n*{{msg-mw|cosmos-recentchanges}}",
