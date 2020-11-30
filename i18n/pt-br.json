@@ -25,7 +25,6 @@
 	"cosmos-add-new-page-text": "Adicionar",
 	"cosmos-anon-add-new-page-text": "Adicionar uma nova página",
 	"cosmos-recentchanges": "Mudanças recentes",
-	"cosmos-administration": "Administração",
 	"cosmos-adminlinks": "Links administrativos",
 	"cosmos-explore": "Explorar",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Página aleatória\n**Special:NewFiles|Novos arquivos\n**Special:WantedPages|Páginas procuradas",

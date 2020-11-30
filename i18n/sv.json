@@ -25,7 +25,6 @@
 	"cosmos-add-new-page-text": "Lägg till",
 	"cosmos-anon-add-new-page-text": "Lägg till ny sida",
 	"cosmos-recentchanges": "Senaste ändringar",
-	"cosmos-administration": "Administration",
 	"cosmos-adminlinks": "Administrationslänkar",
 	"cosmos-explore": "Utforska",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Slumpsida\n**Special:NewFiles|Nya filer\n**Special:WantedPages|Bevakade sidor",

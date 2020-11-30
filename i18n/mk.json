@@ -25,7 +25,6 @@
 	"cosmos-add-new-page-text": "Додај",
 	"cosmos-anon-add-new-page-text": "Додај нова страница",
 	"cosmos-recentchanges": "Скорешни промени",
-	"cosmos-administration": "Администрација",
 	"cosmos-adminlinks": "Администраторски врски",
 	"cosmos-explore": "Истражи",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|Скорешни промени\n**Special:Random|Случајна страница\n**Special:NewFiles|Нови податотеки\n**Special:WantedPages|Потребни страници",

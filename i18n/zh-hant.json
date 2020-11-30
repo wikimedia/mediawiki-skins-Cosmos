@@ -25,11 +25,10 @@
 	"cosmos-add-new-page-text": "添加",
 	"cosmos-anon-add-new-page-text": "添加新頁面",
 	"cosmos-recentchanges": "近期變更",
-	"cosmos-administration": "管理",
 	"cosmos-adminlinks": "管理連結",
 	"cosmos-explore": "探索",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-近期變更\n**Special:Random|隨機頁面\n**Special:NewFiles|新的檔案\n**Special:WantedPages|請求的頁面",
-	"prefs-cosmos-responsiveness": "移動回應式",
+	"prefs-cosmos-responsiveness": "Cosmos 移動響應",
 	"cosmos-mobile-preference": "啟用 Cosmos 外觀的移動回應式版本",
 	"cosmos-user-blocked": "已封鎖"
 }

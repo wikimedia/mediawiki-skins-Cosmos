@@ -29,7 +29,6 @@
 	"cosmos-add-new-page-text": "Добавить",
 	"cosmos-anon-add-new-page-text": "Создать страницу",
 	"cosmos-recentchanges": "Свежие правки",
-	"cosmos-administration": "Администрирование",
 	"cosmos-adminlinks": "Ссылки для администраторов",
 	"cosmos-explore": "Исследовать",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Случайная статья\n**Special:NewFiles|Новые файлы\n**Special:WantedPages|Требуемые статьи",
