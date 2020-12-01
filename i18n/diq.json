@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"1917 Ekim Devrimi"
+		]
+	},
+	"cosmos-anonymous": "Anonim",
+	"cosmos-counter-label": "$1 {{PLURAL:$1|meqale|meqaley}}",
+	"cosmos-createpage-header": "Yew meqaleyo newe vıraze",
+	"cosmos-createpage-input-label": "Serey pela tiya ra bınusne:",
+	"cosmos-createpage-next": "Bahdoyên",
+	"cosmos-personaltools-userpage": "Pela karberi",
+	"cosmos-personaltools-usertalk": "Vatenê karberi",
+	"cosmos-personaltools-anontalk": "Werênayışê mı",
+	"cosmos-notifications-nomessages": "Şıma rê mesaco newe çıniyo",
+	"cosmos-notifications-nonotifs": "Pêhesnayışê newey çıniyê!",
+	"cosmos-action-addsection": "Mewzuyo newe",
+	"cosmos-action-cancel": "Bıtexelne",
+	"cosmos-action-backtopage": "Peyser ravêr $1",
+	"cosmos-action-back": "Peyser",
+	"cosmos-upload": "Dosya bar ke",
+	"cosmos-add-new-page-title": "Pela neweyên vırazê",
+	"cosmos-add-new-page-text": "Dekerê"
+}
