@@ -1,7 +1,11 @@
 {
 	"name": "Cosmos",
-	"version": "3.6.4",
-	"author": "Created by Universal Omega<br />Uses code by Isarra Yos, Daniel Beard, Jack Phoenix, Inez Korczynski, Sean Colombo, and Christian Williams",
+	"version": "3.6.5",
+	"author": [
+		"Universal Omega",
+		"SamanthaNguyen",
+		"..."
+	],
 	"url": "https://www.mediawiki.org/wiki/Skin:Cosmos",
 	"descriptionmsg": "cosmos-desc",
 	"namemsg": "skinname-cosmos",
@@ -11,15 +15,26 @@
 		"MediaWiki": ">= 1.35.0"
 	},
 	"ValidSkinNames": {
-		"cosmos": "Cosmos"
+		"cosmos": {
+			"class": "MediaWiki\\Skin\\Cosmos\\SkinCosmos",
+			"args": [ {
+				"name": "cosmos",
+				"responsive": false,
+				"styles": [
+					"mediawiki.skinning.interface",
+					"skins.cosmos.styles"
+				],
+				"scripts": [
+					"skins.cosmos.js",
+					"skins.cosmos.mobile"
+				]
+			} ]
+		}
 	},
 	"MessagesDirs": {
 		"Cosmos": [
 			"i18n"
 		]
-	},
-	"AutoloadClasses": {
-		"SkinCosmos": "includes/SkinCosmos.php"
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Skin\\Cosmos\\": "includes/"
@@ -28,7 +43,7 @@
 		"cosmos": "GlobalVarConfig::newInstance"
 	},
 	"ResourceModules": {
-		"skins.cosmos": {
+		"skins.cosmos.styles": {
 			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
 			"targets": [
 				"desktop",
@@ -56,21 +71,7 @@
 				},
 				"resources/screen-mobile.less": {
 					"media": "screen and (max-width: 850px)"
-				}
-			}
-		},
-		"skins.cosmos.legacy": {
-			"class": "ResourceLoaderSkinModule",
-			"features": [
-				"legacy"
-			]
-		},
-		"skins.cosmos.rail": {
-			"targets": [
-				"desktop",
-				"mobile"
-			],
-			"styles": {
+				},
 				"resources/CosmosRail.less": {}
 			}
 		},
@@ -353,7 +354,6 @@
 			"path": false,
 			"public": true
 		}
-
 	},
 	"HookHandlers": {
 		"CosmosHookHandlers": {

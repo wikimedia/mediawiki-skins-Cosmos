@@ -4,17 +4,14 @@
  *
  * @ingroup Skins
  */
+namespace MediaWiki\Skin\Cosmos;
 
+use ExtensionRegistry;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Skin\Cosmos\CosmosTemplate;
+use OutputPage;
+use SkinTemplate;
 
 class SkinCosmos extends SkinTemplate {
-	/** @var string */
-	public $skinname = 'cosmos';
-
-	/** @var string */
-	public $stylename = 'Cosmos';
-
 	/** @var string */
 	public $template = CosmosTemplate::class;
 
@@ -22,91 +19,68 @@ class SkinCosmos extends SkinTemplate {
 	 * @param OutputPage $out
 	 */
 	public function initPage( OutputPage $out ) {
-		parent::initPage( $out );
+		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 
-		$services = MediaWikiServices::getInstance();
-		$config = $services->getConfigFactory()->makeConfig( 'cosmos' );
-		$userOptionsLookup = $services->getUserOptionsLookup();
-		$skin = $this->getSkin();
-
-		if ( $userOptionsLookup->getOption( $skin->getUser(), 'cosmos-mobile-responsiveness' ) == 1 ) {
+		if ( $userOptionsLookup->getOption( $this->getSkin()->getUser(), 'cosmos-mobile-responsiveness' ) == 1 ) {
 			$out->addMeta(
 				'viewport',
 				'width=device-width, initial-scale=1.0, ' .
 				'user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0'
 			);
 		}
-		parent::setupSkinUserCss( $out );
-		$out->addModuleStyles( [
-			'mediawiki.skinning.content.externallinks',
-			'skins.cosmos',
-			'skins.cosmos.legacy'
-		] );
+	}
 
-		$out->addModules( [
-			'skins.cosmos.js',
-			'skins.cosmos.mobile'
-		] );
-		if (
-			!$skin->msg( 'cosmos-customsidebar' )->isDisabled() ||
-			!$skin->msg( 'cosmos-stickysidebar' )->isDisabled()
-		) {
-			$out->addModuleStyles( [
-				'skins.cosmos.rail',
-			] );
-		}
+	/**
+	 * @return $modules
+	 */
+	public function getDefaultModules() {
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
+		$modules = parent::getDefaultModules();
 
+		// Load PortableInfobox styles
 		if ( ExtensionRegistry::getInstance()
 			->isLoaded( 'Portable Infobox' ) ) {
-			$out->addModuleStyles( [
-				'skins.cosmos.portableinfobox',
-			] );
+			$modules['styles']['skin'][] = 'skins.cosmos.portableinfobox';
+
+			// Load PortableInfobox EuropaTheme style if the configuration is enabled
 			if ( $config->get( 'CosmosEnablePortableInfoboxEuropaTheme' ) ) {
-				$out->addModuleStyles( [
-					'skins.cosmos.portableinfobox.europa',
-				] );
+				$modules['styles']['skin'][] = 'skins.cosmos.portableinfobox.europa';
 			} else {
-				$out->addModuleStyles( [
-					'skins.cosmos.portableinfobox.default',
-				] );
+				$modules['styles']['skin'][] = 'skins.cosmos.portableinfobox.default';
 			}
 		}
+
 		// Load SocialProfile styles if the respective configuration variables are enabled
 		if ( class_exists( 'UserProfilePage' ) ) {
 			if ( $config->get( 'CosmosSocialProfileModernTabs' ) ) {
-				$out->addModuleStyles( [
-					'skins.cosmos.profiletabs',
-				] );
+				$modules['styles']['skin'][] = 'skins.cosmos.profiletabs';
 			}
+
 			if ( $config->get( 'CosmosSocialProfileRoundAvatar' ) ) {
-				$out->addModuleStyles( [
-					'skins.cosmos.profileavatar',
-				] );
+				$modules['styles']['skin'][] = 'skins.cosmos.profileavatar';
 			}
+
 			if ( $config->get( 'CosmosSocialProfileShowEditCount' ) ) {
-				$out->addModuleStyles( [
-					'skins.cosmos.profileeditcount',
-				] );
+				$modules['styles']['skin'][] = 'skins.cosmos.profileeditcount';
 			}
+
 			if ( $config->get( 'CosmosSocialProfileAllowBio' ) ) {
-				$out->addModuleStyles( [
-					'skins.cosmos.profilebio',
-				] );
+				$modules['styles']['skin'][] = 'skins.cosmos.profilebio';
 			}
+
 			if ( $config->get( 'CosmosSocialProfileShowGroupTags' ) ) {
-				$out->addModuleStyles( [
-					'skins.cosmos.profiletags',
-				] );
+				$modules['styles']['skin'][] = 'skins.cosmos.profiletags';
 			}
+
 			if ( $config->get( 'CosmosSocialProfileModernTabs' ) ||
 				$config->get( 'CosmosSocialProfileRoundAvatar' ) ||
 				$config->get( 'CosmosSocialProfileShowEditCount' ) ||
 				$config->get( 'CosmosSocialProfileAllowBio' ) ||
 				$config->get( 'CosmosSocialProfileShowGroupTags' ) ) {
-				$out->addModuleStyles( [
-					'skins.cosmos.socialprofile',
-				] );
+				$modules['styles']['skin'][] = 'skins.cosmos.socialprofile';
 			}
 		}
+
+		return $modules;
 	}
 }
