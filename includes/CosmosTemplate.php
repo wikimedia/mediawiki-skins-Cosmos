@@ -9,7 +9,6 @@ namespace MediaWiki\Skin\Cosmos;
 use BaseTemplate;
 use Config;
 use ExtensionRegistry;
-use Hooks;
 use Html;
 use Linker;
 use ManageWiki;
@@ -1259,7 +1258,7 @@ class CosmosTemplate extends BaseTemplate {
 		}
 		// Avoid PHP 7.1 warnings
 		$skin = $this;
-		Hooks::run( 'CosmosTemplateToolbarEnd', [ &$skin, true ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run( 'CosmosTemplateToolbarEnd', [ &$skin, true ] );
 
 		// End unordered list
 		$html .= Html::closeElement( 'ul' );

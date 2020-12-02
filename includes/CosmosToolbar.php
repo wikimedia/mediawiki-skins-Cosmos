@@ -12,7 +12,7 @@
 
 namespace MediaWiki\Skin\Cosmos;
 
-use Hooks;
+use MediaWiki\MediaWikiServices;
 use MessageLocalizer;
 use ObjectCache;
 use Sanitizer;
@@ -46,7 +46,7 @@ class CosmosToolbar implements ExpirationAwareness {
 		$nodes = $this->parse( $lines );
 
 		if ( count( $nodes ) > 0 ) {
-			Hooks::run( 'getCosmosToolbar', [ &$nodes ] );
+			MediaWikiServices::getInstance()->getHookContainer()->run( 'getCosmosToolbar', [ &$nodes ] );
 
 			$mainMenu = [];
 			foreach ( $nodes[0]['children'] as $key => $val ) {
