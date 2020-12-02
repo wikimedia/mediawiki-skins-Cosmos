@@ -1229,8 +1229,7 @@ class CosmosTemplate extends BaseTemplate {
 		if ( $config->get( 'CosmosUseMessageforToolbar' ) ) {
 			$html .= $cosmosToolbar->getCode();
 		} else {
-			// to-do: Convert to Skin::buildNavUrls and Skin::buildFeedUrls
-			foreach ( $this->getToolbox() as $key => $toolbarItem ) {
+			foreach ( $this->data['sidebar']['TOOLBOX'] as $key => $toolbarItem ) {
 				// Due to some styles used in this skin, the printable version does not work
 				// correctly at the moment, this will be fixed eventually, but for now just
 				// remove it from the toolbar
