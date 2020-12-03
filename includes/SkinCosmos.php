@@ -35,7 +35,15 @@ class SkinCosmos extends SkinTemplate {
 	 */
 	public function getDefaultModules() {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
+
+		$skin = $this->getSkin();
+
 		$modules = parent::getDefaultModules();
+
+		// CosmosRail styles
+		if ( !$skin->msg( 'cosmos-customsidebar' )->isDisabled() || !$skin->msg( 'cosmos-stickysidebar' )->isDisabled() ) {
+			$modules['styles']['skin'][] = 'skins.cosmos.rail';
+		}
 
 		// Load PortableInfobox styles
 		if ( ExtensionRegistry::getInstance()

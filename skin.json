@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "3.6.5",
+	"version": "4.0.0",
 	"author": [
 		"Universal Omega",
 		"SamanthaNguyen",
@@ -74,7 +74,15 @@
 				},
 				"resources/print.less": {
 					"media": "print"
-				},
+				}
+			}
+		},
+		"skins.cosmos.rail": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
 				"resources/CosmosRail.less": {}
 			}
 		},

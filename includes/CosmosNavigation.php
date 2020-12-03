@@ -12,6 +12,7 @@
 
 namespace MediaWiki\Skin\Cosmos;
 
+use ExtensionRegistry;
 use Html;
 use MediaWiki\MediaWikiServices;
 use MessageLocalizer;
@@ -275,7 +276,31 @@ class CosmosNavigation implements ExpirationAwareness {
 	 * @return array|null
 	 */
 	private function getMessageAsArray( $messageKey ) {
-		$message = trim( $this->messageLocalizer->msg( $messageKey )->inContentLanguage()->text() );
+		$cosmosNavigationMessage = $this->messageLocalizer->msg( $messageKey )->inContentLanguage()->text();
+
+		$exploreChildURL = null;
+		$exploreChildText = null;
+
+		$forceExploreChildURL = null;
+		$forceExploreChildText = null;
+
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'Video' ) && ( strpos( $cosmosNavigationMessage, '{$NEWVIDEOS_CONDITIONAL}' ) !== false || strpos( $cosmosNavigationMessage, '{$NEWVIDEOS}' ) !== false ) ) {
+			$exploreChildURL = "**" . htmlspecialchars( Title::newFromText( 'NewVideos', NS_SPECIAL ) ) . '|';
+			$exploreChildText = "newvideos";
+
+			if ( strpos( $cosmosNavigationMessage, '{$WANTEDPAGES_FORCE}' ) !== false ) {
+				$forceExploreChildURL = "**" . htmlspecialchars( Title::newFromText( 'WantedPages', NS_SPECIAL ) ) . '|';
+				$forceExploreChildText = 'wantedpages';
+			}
+		} elseif ( strpos( $cosmosNavigationMessage, '{$WANTEDPAGES_CONDITIONAL}' ) !== false || strpos( $cosmosNavigationMessage, '{$WANTEDPAGES}' ) !== false ) {
+			$exploreChildURL = "**" . htmlspecialchars( Title::newFromText( 'WantedPages', NS_SPECIAL ) ) . '|';
+			$exploreChildText = 'wantedpages';
+		}
+
+		$message = trim( preg_replace( '/(\{\$NEWVIDEOS\})|(\{\$WANTEDPAGES\})|(\{\$NEWVIDEOS_CONDITIONAL\})|(\{\$WANTEDPAGES_CONDITIONAL\})|(\{\$WANTEDPAGES_FORCE\})/', '', $cosmosNavigationMessage ) .
+			$exploreChildURL . $exploreChildText .
+			$forceExploreChildURL . $forceExploreChildText );
+
 		if ( $this->messageLocalizer->msg( $messageKey, $message )->exists() ) {
 			$lines = explode( "\n", $message );
 			if ( count( $lines ) > 0 ) {
