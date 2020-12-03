@@ -1225,17 +1225,14 @@ class CosmosTemplate extends BaseTemplate {
 
 		// Make a list item for each of the tool links
 		$cosmosToolbar = new CosmosToolbar( $this->getSkin()->getContext() );
+
 		if ( $config->get( 'CosmosUseMessageforToolbar' ) ) {
 			$html .= $cosmosToolbar->getCode();
 		} else {
 			foreach ( $this->data['sidebar']['TOOLBOX'] as $key => $toolbarItem ) {
-				// Due to some styles used in this skin, the printable version does not work
-				// correctly at the moment, this will be fixed eventually, but for now just
-				// remove it from the toolbar
-				if ( $key != 'print' ) {
-					$html .= $skin->makeListItem( $key, $toolbarItem );
-				}
+				$html .= $skin->makeListItem( $key, $toolbarItem );
 			}
+
 			// Support CreateRedirect extension
 			if ( ExtensionRegistry::getInstance()->isLoaded( 'CreateRedirect' ) ) {
 				$action = $skin->getRequest()
