@@ -333,7 +333,6 @@ class CosmosTemplate extends BaseTemplate {
 			// Don't build the notifications into the personal menu, they are built into the top banner instead.
 			// to-do: convert to Skin::getPersonalToolsForMakeListItem (possibly)
 			if ( $key !== 'adminlinks' && $key !== 'darkmode-link' && $key !== 'notifications-alert' && $key !== 'notifications-notice' ) {
-				// to-do: convert to Skin::makeListItem
 				$html .= Html::rawElement( 'li', [
 					'id' => 'pt-' . $key
 				], Html::rawElement( 'a', [
@@ -389,8 +388,7 @@ class CosmosTemplate extends BaseTemplate {
 			if ( !empty( $notificationIcons ) ) {
 				$iconList = '';
 				foreach ( $notificationIcons as $key => $item ) {
-					// to-do: convert to Skin::makeListItem
-					$iconList .= $this->makeListItem( $key, $item );
+					$iconList .= $skin->makeListItem( $key, $item );
 				}
 
 				$html .= Html::rawElement( 'div', [ 'id' => 'cosmos-notification-icons' ], Html::rawElement( 'div', [ 'id' => 'cosmos-notifsButton-icon', 'class' => 'cosmos-bannerOption-icon' ], $iconList ) );
@@ -1061,6 +1059,7 @@ class CosmosTemplate extends BaseTemplate {
 	 * @return string
 	 */
 	protected function buildActionDropdown( array $items ) {
+		$skin = $this->getSkin();
 		$html = '';
 		// Open a <div> element to contain the entire drop-down
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-dropdown', 'id' => 'cosmos-actions-actionsList' ] );
@@ -1082,8 +1081,7 @@ class CosmosTemplate extends BaseTemplate {
 		// Step through the array and use the makeListItem to convert each of the
 		// items into a properly formatted HTML <li> element
 		foreach ( $items as $key => $value ) {
-			// to-do: convert to Skin::makeListItem
-			$html .= $this->makeListItem( $key, $value );
+			$html .= $skin->makeListItem( $key, $value );
 		}
 
 		// Close the <ul> list container
@@ -1213,6 +1211,7 @@ class CosmosTemplate extends BaseTemplate {
 	 * @return string
 	 */
 	protected function buildToolbar( Config $config ) {
+		$skin = $this->getSkin();
 		$html = '';
 		// Open container element for toolbar
 		$html .= Html::openElement( 'section', [ 'id' => 'cosmos-toolbar' ] );
@@ -1234,13 +1233,11 @@ class CosmosTemplate extends BaseTemplate {
 				// correctly at the moment, this will be fixed eventually, but for now just
 				// remove it from the toolbar
 				if ( $key != 'print' ) {
-					// to-do: convert to Skin::makeListItem
-					$html .= $this->makeListItem( $key, $toolbarItem );
+					$html .= $skin->makeListItem( $key, $toolbarItem );
 				}
 			}
 			// Support CreateRedirect extension
 			if ( ExtensionRegistry::getInstance()->isLoaded( 'CreateRedirect' ) ) {
-				$skin = $this->getSkin();
 				$action = $skin->getRequest()
 					->getText( 'action', 'view' );
 				$title = $skin->getRelevantTitle();
