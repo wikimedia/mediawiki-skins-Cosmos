@@ -18,7 +18,6 @@ use SiteStats;
 use Skin;
 use SpecialPage;
 use Title;
-use WantedPagesPage;
 use wAvatar;
 use WebRequest;
 
@@ -154,7 +153,8 @@ class CosmosTemplate extends BaseTemplate {
 	 * @return array
 	 */
 	protected static function getMostWantedPages() {
-		$WantedPagesPageResponse = ( new WantedPagesPage() )->doQuery();
+		$WantedPagesPage = MediaWikiServices::getInstance()->getSpecialPageFactory()->getPage( 'Wantedpages' );
+		$WantedPagesPageResponse = $WantedPagesPage->doQuery();
 		$dbr = wfGetDB( DB_REPLICA );
 		$wantedPages = [];
 		$fetchedTitlesCount = 0;
