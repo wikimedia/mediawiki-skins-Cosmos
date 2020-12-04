@@ -289,7 +289,7 @@ class CosmosNavigation implements ExpirationAwareness {
 			$exploreChildText = "newvideos";
 
 			if ( strpos( $cosmosNavigationMessage, '{$WANTEDPAGES_FORCE}' ) !== false ) {
-				$forceExploreChildURL = "**" . htmlspecialchars( Title::newFromText( 'WantedPages', NS_SPECIAL ) ) . '|';
+				$forceExploreChildURL = "\n**" . htmlspecialchars( Title::newFromText( 'WantedPages', NS_SPECIAL ) ) . '|';
 				$forceExploreChildText = 'wantedpages';
 			}
 		} elseif ( strpos( $cosmosNavigationMessage, '{$WANTEDPAGES_CONDITIONAL}' ) !== false || strpos( $cosmosNavigationMessage, '{$WANTEDPAGES}' ) !== false ) {
