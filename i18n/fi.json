@@ -19,12 +19,9 @@
 	"cosmos-action-addsection": "Uusi aihe",
 	"cosmos-action-cancel": "Peruuta",
 	"cosmos-action-back": "Takaisin",
-	"cosmos-upload": "Tallenna tiedosto",
 	"cosmos-add-new-page-title": "Lisää uusi sivu",
 	"cosmos-add-new-page-text": "Lisää",
 	"cosmos-anon-add-new-page-text": "Lisää uusi sivu",
-	"cosmos-recentchanges": "Tuoreet muutokset",
-	"cosmos-adminlinks": "Ylläpidon linkit",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Satunnainen sivu\n**Special:NewFiles|Uudet tiedostot\n**Special:WantedPages|Halutut sivut",
 	"cosmos-mobile-preference": "Ota käyttöön Cosmos-ulkoasun responsiivinen mobiiliversio",
 	"cosmos-user-blocked": "Estetty"

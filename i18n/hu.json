@@ -19,12 +19,9 @@
 	"cosmos-action-cancel": "Mégse",
 	"cosmos-action-backtopage": "Vissza ide: $1",
 	"cosmos-action-back": "Vissza",
-	"cosmos-upload": "Fájl feltöltése",
 	"cosmos-add-new-page-title": "Új oldal hozzáadása",
 	"cosmos-add-new-page-text": "Hozzáadás",
 	"cosmos-anon-add-new-page-text": "Új oldal hozzáadása",
-	"cosmos-recentchanges": "Friss változtatások",
-	"cosmos-adminlinks": "Adminlinkek",
 	"cosmos-explore": "Felfedezés",
 	"cosmos-user-blocked": "Blokkolva"
 }

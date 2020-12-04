@@ -17,12 +17,9 @@
 	"cosmos-action-cancel": "Annulla",
 	"cosmos-action-backtopage": "Torna a $1",
 	"cosmos-action-back": "Indietro",
-	"cosmos-upload": "Carica file",
 	"cosmos-add-new-page-title": "Aggiungi nuova pagina",
 	"cosmos-add-new-page-text": "Aggiungi",
 	"cosmos-anon-add-new-page-text": "Aggiungi nuova pagina",
-	"cosmos-recentchanges": "Ultime modifiche",
-	"cosmos-adminlinks": "Link di amministrazione",
 	"cosmos-explore": "Esplora",
 	"cosmos-user-blocked": "Bloccato"
 }

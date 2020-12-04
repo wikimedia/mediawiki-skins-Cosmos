@@ -18,12 +18,9 @@
 	"cosmos-action-cancel": "বাতিল",
 	"cosmos-action-backtopage": "$1 এ ফেরত যান",
 	"cosmos-action-back": "পেছনে",
-	"cosmos-upload": "ফাইল আপলোড করুন",
 	"cosmos-add-new-page-title": "নতুন পাতা যোগ",
 	"cosmos-add-new-page-text": "যোগ করুন",
 	"cosmos-anon-add-new-page-text": "নতুন পাতা যোগ করুন",
-	"cosmos-recentchanges": "সাম্প্রতিক পরিবর্তনসমূহ",
-	"cosmos-adminlinks": "প্রশাসক সংযোগসমূহ",
 	"cosmos-explore": "অনুসন্ধান",
 	"cosmos-user-blocked": "বাধাপ্রাপ্ত"
 }
