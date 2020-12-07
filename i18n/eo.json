@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Javiero"
+		]
+	},
+	"cosmos-add-new-image": "Aldoni Novan Bildon",
+	"cosmos-add-new-video": "Aldoni Novan Videon",
+	"cosmos-newfiles": "Novaj dosieroj",
+	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**recentchanges-url|recentchanges\n**randompage-url|randompage\n**Special:NewFiles|cosmos-newfiles\n{$NEWVIDEOS_CONDITIONAL}\n{$WANTEDPAGES_CONDITIONAL}"
+}

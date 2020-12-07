@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Avengium",
+			"Fitoschido",
 			"Rodney Araujo",
 			"Universal Omega"
 		]
@@ -22,11 +23,13 @@
 	"cosmos-action-cancel": "Cancelar",
 	"cosmos-action-backtopage": "Volver a $1",
 	"cosmos-action-back": "Atrás",
+	"cosmos-add-new-image": "Añadir imagen nueva",
+	"cosmos-add-new-video": "Añadir vídeo nuevo",
 	"cosmos-add-new-page-title": "Añadir página nueva",
 	"cosmos-add-new-page-text": "Añadir",
 	"cosmos-anon-add-new-page-text": "Añadir página nueva",
 	"cosmos-explore": "Explorar",
-	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|Cambios recientes\n**Special:Random|Página aleatoria\n**Special:NewFiles|Archivos nuevos\n**Special:WantedPages|Páginas requeridas",
+	"cosmos-newfiles": "Archivos nuevos",
 	"prefs-cosmos-responsiveness": "Capacidad de respuesta móvil para Cosmos",
 	"cosmos-mobile-preference": "Habilitar la versión con capacidad de respuesta móvil de la apariencia Cosmos",
 	"cosmos-user-blocked": "Bloqueado"

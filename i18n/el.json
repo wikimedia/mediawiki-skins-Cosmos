@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Norhorn",
 			"SkarletWitch"
 		]
 	},
@@ -20,11 +21,14 @@
 	"cosmos-action-cancel": "Ακύρωση",
 	"cosmos-action-backtopage": "Πίσω σε $1",
 	"cosmos-action-back": "Πίσω",
+	"cosmos-add-new-image": "Προσθήκη νέας εικόνας",
+	"cosmos-add-new-video": "Προσθήκη νέου βίντεο",
 	"cosmos-add-new-page-title": "Προσθήκη νέας σελίδας",
 	"cosmos-add-new-page-text": "Προσθήκη",
 	"cosmos-anon-add-new-page-text": "Προσθήκη νέας σελίδας",
 	"cosmos-explore": "Εξερεύνηση",
-	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Τυχαία Σελίδα\n**Special:NewFiles|Νέα Αρχεία\n**Special:WantedPages|Ζητούμενες Σελίδες",
+	"cosmos-newfiles": "Νέα αρχεία",
+	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**recentchanges-url|recentchanges\n**randompage-url|randompage\n**Special:NewFiles|cosmos-newfiles\n{$NEWVIDEOS_CONDITIONAL}\n{$WANTEDPAGES_CONDITIONAL}",
 	"prefs-cosmos-responsiveness": "Ανταπόκριση για κινητά",
 	"cosmos-mobile-preference": "Ενεργοποιήστε την έκδοση για κινητά για το θέμα Cosmos",
 	"cosmos-user-blocked": "Φραγμένος"

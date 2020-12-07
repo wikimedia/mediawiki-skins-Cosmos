@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"cosmos-anonymous": "Anonym",
+	"cosmos-counter-label": "{{PLURAL:$1|Artikel}}",
+	"cosmos-createpage-header": "Einen neuen Artikel erstellen",
+	"cosmos-createpage-input-label": "Schreibe den Seitennamen hierhin:",
+	"cosmos-createpage-next": "Nächster",
+	"cosmos-createpage-dialoge-text": "Wir haben derzeit <b>$1</b> {{PLURAL:$1|Artikel}} auf $2. Gib oben deinen Artikelnamen ein oder klicke auf einen der Titel unten und beginne zu schreiben!",
+	"cosmos-personaltools-userpage": "Benutzerseite",
+	"cosmos-personaltools-usertalk": "Benutzer Diskussion",
+	"cosmos-personaltools-anontalk": "Meine Diskussionsseite",
+	"cosmos-notifications-nomessages": "Du hast keine neuen Nachrichten!",
+	"cosmos-notifications-nonotifs": "Du hast keine neuen Benachrichtigungen!",
+	"cosmos-action-addsection": "Neues Thema",
+	"cosmos-action-cancel": "Abbrechen",
+	"cosmos-action-backtopage": "Zurück zu $1",
+	"cosmos-action-back": "Zurück",
+	"cosmos-add-new-image": "Neues Bild hinzufügen",
+	"cosmos-add-new-video": "Neues Video hinzufügen",
+	"cosmos-add-new-page-title": "Neues Seite hinzufügen",
+	"cosmos-add-new-page-text": "Hinzufügen",
+	"cosmos-anon-add-new-page-text": "Neue Seite hinzufügen",
+	"cosmos-explore": "Entdecken",
+	"cosmos-newfiles": "Neuer Dateien",
+	"prefs-cosmos-responsiveness": "Mobile Responsivität für den Cosmos",
+	"cosmos-mobile-preference": "Mobile, responsive Version der Cosmos-Benutzeroberfläche aktivieren",
+	"cosmos-user-blocked": "Gesperrt"
+}
