@@ -24,7 +24,6 @@
 	"cosmos-add-new-page-text": "Legg til",
 	"cosmos-anon-add-new-page-text": "Legg til ny side",
 	"cosmos-explore": "Utforsk",
-	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Tilfeldig side\n**Special:NewFiles|Nye filer\n**Special:WantedPages|Ønskede sider",
 	"prefs-cosmos-responsiveness": "Mobil responsivitet for Cosmos",
 	"cosmos-mobile-preference": "Slå på mobilresponsiv versjon av Cosmos-drakta",
 	"cosmos-user-blocked": "Blokkert"

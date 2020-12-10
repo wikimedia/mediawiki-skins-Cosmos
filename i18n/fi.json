@@ -22,7 +22,6 @@
 	"cosmos-add-new-page-title": "Lisää uusi sivu",
 	"cosmos-add-new-page-text": "Lisää",
 	"cosmos-anon-add-new-page-text": "Lisää uusi sivu",
-	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Satunnainen sivu\n**Special:NewFiles|Uudet tiedostot\n**Special:WantedPages|Halutut sivut",
 	"cosmos-mobile-preference": "Ota käyttöön Cosmos-ulkoasun responsiivinen mobiiliversio",
 	"cosmos-user-blocked": "Estetty"
 }

@@ -25,7 +25,6 @@
 	"cosmos-add-new-page-text": "Add",
 	"cosmos-anon-add-new-page-text": "Add new page",
 	"cosmos-explore": "Explore",
-	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**Special:RecentChanges|cosmos-recentchanges\n**Special:Random|Random page\n**Special:NewFiles|New files\n**Special:WantedPages|Wanted pages",
 	"prefs-cosmos-responsiveness": "Mobile responsiveness for Cosmos",
 	"cosmos-mobile-preference": "Enable mobile responsive version of the Cosmos skin",
 	"cosmos-user-blocked": "Blocked"

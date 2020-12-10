@@ -28,7 +28,6 @@
 	"cosmos-anon-add-new-page-text": "Προσθήκη νέας σελίδας",
 	"cosmos-explore": "Εξερεύνηση",
 	"cosmos-newfiles": "Νέα αρχεία",
-	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**recentchanges-url|recentchanges\n**randompage-url|randompage\n**Special:NewFiles|cosmos-newfiles\n{$NEWVIDEOS_CONDITIONAL}\n{$WANTEDPAGES_CONDITIONAL}",
 	"prefs-cosmos-responsiveness": "Ανταπόκριση για κινητά",
 	"cosmos-mobile-preference": "Ενεργοποιήστε την έκδοση για κινητά για το θέμα Cosmos",
 	"cosmos-user-blocked": "Φραγμένος"

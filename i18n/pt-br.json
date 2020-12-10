@@ -27,7 +27,6 @@
 	"cosmos-anon-add-new-page-text": "Adicionar uma nova página",
 	"cosmos-explore": "Explorar",
 	"cosmos-newfiles": "Novos arquivos",
-	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**recentchanges-url|recentchanges\n**randompage-url|randompage\n**Special:NewFiles|cosmos-newfiles\n{$NEWVIDEOS_CONDITIONAL}\n{$WANTEDPAGES_CONDITIONAL}",
 	"prefs-cosmos-responsiveness": "Capacidade de resposta móvel para Cosmos",
 	"cosmos-mobile-preference": "Ativar versão responsiva móvel do tema do Cosmos",
 	"cosmos-user-blocked": "Bloqueado"

@@ -27,7 +27,6 @@
 	"cosmos-anon-add-new-page-text": "Yeni sayfa ekle",
 	"cosmos-explore": "Keşfet",
 	"cosmos-newfiles": "Yeni dosyalar",
-	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**recentchanges-url|recentchanges\n**randompage-url|randompage\n**Special:NewFiles|cosmos-newfiles\n{$NEWVIDEOS_CONDITIONAL}\n{$WANTEDPAGES_CONDITIONAL}",
 	"prefs-cosmos-responsiveness": "Cosmos için mobil yanıt vermesi",
 	"cosmos-mobile-preference": "Cosmos görünümünün mobil duyarlı sürümünü etkinleştirin",
 	"cosmos-user-blocked": "Engellendi"
