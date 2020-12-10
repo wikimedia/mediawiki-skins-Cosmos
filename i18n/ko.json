@@ -17,9 +17,12 @@
 	"cosmos-action-cancel": "취소",
 	"cosmos-action-backtopage": "$1(으)로 돌아가기",
 	"cosmos-action-back": "뒤로",
+	"cosmos-add-new-image": "새 이미지 추가",
+	"cosmos-add-new-video": "새 동영상 추가",
 	"cosmos-add-new-page-title": "새 문서 추가",
 	"cosmos-add-new-page-text": "추가",
 	"cosmos-anon-add-new-page-text": "새 문서 추가",
 	"cosmos-explore": "찾아보기",
+	"cosmos-newfiles": "새 파일",
 	"cosmos-user-blocked": "차단됨"
 }

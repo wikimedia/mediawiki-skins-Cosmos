@@ -1,6 +1,8 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Pittigrilli"
+		]
 	},
 	"cosmos-anonymous": "Anonym",
 	"cosmos-counter-label": "{{PLURAL:$1|Artikel}}",
@@ -23,7 +25,7 @@
 	"cosmos-add-new-page-text": "Hinzufügen",
 	"cosmos-anon-add-new-page-text": "Neue Seite hinzufügen",
 	"cosmos-explore": "Entdecken",
-	"cosmos-newfiles": "Neuer Dateien",
+	"cosmos-newfiles": "Neue Dateien",
 	"prefs-cosmos-responsiveness": "Mobile Responsivität für den Cosmos",
 	"cosmos-mobile-preference": "Mobile, responsive Version der Cosmos-Benutzeroberfläche aktivieren",
 	"cosmos-user-blocked": "Gesperrt"
