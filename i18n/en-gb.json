@@ -5,7 +5,8 @@
 			"Universal Omega"
 		]
 	},
-	"cosmos-desc": "Cosmos is a skin designed and based on Fandom's Oasis skin. Designed to improve upon their design, and provide an efficient MediaWiki skin for non-Fandom users, or for users transitioning out of Fandom.",
+	"skinname-cosmos": "Cosmos",
+	"cosmos-desc": "Cosmos is a skin designed and based off Fandom's Oasis skin. Designed to improve upon their design, and provide an efficient MediaWiki skin for non-Fandom users, or for users transitioning out of Fandom.",
 	"cosmos-anonymous": "Anonymous",
 	"cosmos-counter-label": "{{PLURAL:$1|Article|Articles}}",
 	"cosmos-createpage-header": "Create a new article",
@@ -21,11 +22,16 @@
 	"cosmos-action-cancel": "Cancel",
 	"cosmos-action-backtopage": "Back to $1",
 	"cosmos-action-back": "Back",
+	"cosmos-add-new-image": "Add New Image",
+	"cosmos-add-new-video": "Add New Video",
 	"cosmos-add-new-page-title": "Add New Page",
 	"cosmos-add-new-page-text": "Add",
 	"cosmos-anon-add-new-page-text": "Add new page",
 	"cosmos-explore": "Explore",
+	"cosmos-newfiles": "New files",
 	"prefs-cosmos-responsiveness": "Mobile responsiveness for Cosmos",
 	"cosmos-mobile-preference": "Enable mobile responsive version of the Cosmos skin",
-	"cosmos-user-blocked": "Blocked"
+	"cosmos-user-blocked": "Blocked",
+	"cosmos.css": "/* All CSS here will be loaded for users of the Cosmos skin */",
+	"cosmos.js": "/* All JavaScript here will be loaded for users of the Cosmos skin */"
 }
