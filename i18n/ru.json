@@ -24,10 +24,13 @@
 	"cosmos-action-cancel": "Отмена",
 	"cosmos-action-backtopage": "Вернуться к $1",
 	"cosmos-action-back": "Назад",
+	"cosmos-add-new-image": "Добавить новое изображение",
+	"cosmos-add-new-video": "Добавить новое видео",
 	"cosmos-add-new-page-title": "Создать страницу",
 	"cosmos-add-new-page-text": "Добавить",
 	"cosmos-anon-add-new-page-text": "Создать страницу",
 	"cosmos-explore": "Исследовать",
+	"cosmos-newfiles": "Новые файлы",
 	"prefs-cosmos-responsiveness": "Адаптивность для мобильных устройств для Cosmos",
 	"cosmos-mobile-preference": "Включить адаптивность для темы оформления Cosmos",
 	"cosmos-user-blocked": "Заблокирован"
