@@ -235,6 +235,10 @@ class CosmosTemplate extends BaseTemplate {
 					$html .= "<li class='wds-tabs__tab'><a id='" . "managewiki{$module}link" . "' href='" . htmlspecialchars( SpecialPage::getTitleFor( 'ManageWiki', $module )->getFullURL() ) . "'>" . $this->getMsg( "managewiki-link-{$module}{$append}" )->plain() . "</a></li>";
 				}
 
+				if ( ExtensionRegistry::getInstance()->isLoaded( 'DataDump' ) ) {
+					$html .= "<li class='wds-tabs__tab'><a id='datadumplink' href='" . htmlspecialchars( SpecialPage::getTitleFor( 'DataDump' )->getFullURL() ) . "'>" . $this->getMsg( "datadump-link" )->plain() . "</a></li>";
+				}
+
 				$html .= ( '</div>' );
 			}
 		}
