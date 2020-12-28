@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Al Riaz Uddin Ripon",
+			"YahyA",
 			"আফতাবুজ্জামান"
 		]
 	},
@@ -18,9 +19,12 @@
 	"cosmos-action-cancel": "বাতিল",
 	"cosmos-action-backtopage": "$1 এ ফেরত যান",
 	"cosmos-action-back": "পেছনে",
+	"cosmos-add-new-image": "নতুন চিত্র যোগ করুন",
+	"cosmos-add-new-video": "নতুন ভিডিও যোগ করুন",
 	"cosmos-add-new-page-title": "নতুন পাতা যোগ",
 	"cosmos-add-new-page-text": "যোগ করুন",
 	"cosmos-anon-add-new-page-text": "নতুন পাতা যোগ করুন",
 	"cosmos-explore": "অনুসন্ধান",
+	"cosmos-newfiles": "নতুন ফাইল",
 	"cosmos-user-blocked": "বাধাপ্রাপ্ত"
 }

@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"cosmos-desc": "Cosmos jè 'nu skin proggettate e basate sus a 'u skin Fandom's Oasis. Proggettate pe migliorà 'a grafeca lore, e dà 'nu skin de MediaUicchi efficiende pe le utinde non-Fandom, o pe le utinde ca stonne a iessene da Fandom.",
+	"cosmos-anonymous": "Anonime",
+	"cosmos-counter-label": "{{PLURAL:$1|Vôsce}}",
+	"cosmos-createpage-header": "Ccreje 'na vôscia nove",
+	"cosmos-createpage-input-label": "Scrive 'u titole d'a pàgene aqquà:",
+	"cosmos-createpage-next": "Prossime",
+	"cosmos-createpage-dialoge-text": "Nuje pe mò tenime <b>$1</b> {{PLURAL:$1|vôsce}} sus a $2. Scrive 'u nome d'a vôscia toje aqquà sus o cazze sus a une de le titole aqquà sotte e accuminze a scrivere!",
+	"cosmos-personaltools-userpage": "Pàgene de l'utende",
+	"cosmos-personaltools-usertalk": "'Ngazzaminde de l'utende",
+	"cosmos-personaltools-anontalk": "'Ngazzaminde mie",
+	"cosmos-notifications-nomessages": "Non ge tìne messàgge nuève!",
+	"cosmos-notifications-nonotifs": "Non ge tìne notifeche nove!",
+	"cosmos-action-addsection": "Argomende nuève",
+	"cosmos-action-cancel": "Annulle",
+	"cosmos-action-backtopage": "Tuèrne a $1",
+	"cosmos-action-back": "Rrete",
+	"cosmos-add-new-image": "Aggiunge 'n'immaggine nove",
+	"cosmos-add-new-video": "Aggiunge 'nu video nuève",
+	"cosmos-add-new-page-title": "Aggiunge 'na pàgena nove",
+	"cosmos-add-new-page-text": "Aggiunge",
+	"cosmos-anon-add-new-page-text": "Aggiunge 'na pàgena nove",
+	"cosmos-explore": "Esplore",
+	"cosmos-newfiles": "Fail nueve",
+	"prefs-cosmos-responsiveness": "Responsibbeletà mobbile pe Cosmos",
+	"cosmos-mobile-preference": "Abbilite 'a versione responsive mobbile d'u skin Cosmos",
+	"cosmos-user-blocked": "Bloccate"
+}
