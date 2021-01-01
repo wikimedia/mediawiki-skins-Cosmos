@@ -20,6 +20,7 @@
 	"cosmos-personaltools-anontalk": "My talk",
 	"cosmos-notifications-nomessages": "You have no new messages!",
 	"cosmos-notifications-nonotifs": "You have no new notifications!",
+	"cosmos-editcount-label": "Edits since joining this wiki",
 	"cosmos-action-addsection": "New topic",
 	"cosmos-action-cancel": "Cancel",
 	"cosmos-action-backtopage": "Back to $1",

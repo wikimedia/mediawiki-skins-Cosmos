@@ -63,7 +63,7 @@ class CosmosTemplate extends BaseTemplate {
 			];
 
 			$replaceWith = [
-				'<h1 itemprop="name">' . $profileOwner . '</h1>' . ( $config->get( 'CosmosSocialProfileShowGroupTags' ) ? CosmosSocialProfile::getUserGroups( $profileOwner ) : null ) . ( $config->get( 'CosmosSocialProfileShowEditCount' ) ? '<br/> <div class="contributions-details tally"><a href="' . htmlspecialchars( Title::newFromText( "Contributions/$profileOwner", NS_SPECIAL )->getFullURL() ) . '"><em>' . CosmosSocialProfile::getUserEdits( $profileOwner ) . '</em><span>Edits since joining this wiki<br>' . CosmosSocialProfile::getUserRegistration( $profileOwner ) . '</span></a></div>' : null ) . ( $config->get( 'CosmosSocialProfileAllowBio' ) ? CosmosSocialProfile::getUserBio( $profileOwner ) : null ) ,
+				'<h1 itemprop="name">' . $profileOwner . '</h1>' . ( $config->get( 'CosmosSocialProfileShowGroupTags' ) ? CosmosSocialProfile::getUserGroups( $profileOwner ) : null ) . ( $config->get( 'CosmosSocialProfileShowEditCount' ) ? '<br/> <div class="contributions-details tally"><a href="' . htmlspecialchars( Title::newFromText( "Contributions/$profileOwner", NS_SPECIAL )->getFullURL() ) . '"><em>' . CosmosSocialProfile::getUserEdits( $profileOwner ) . '</em><span>' . $this->getMsg( 'cosmos-editcount-label' ) . '<br>' . CosmosSocialProfile::getUserRegistration( $profileOwner ) . '</span></a></div>' : null ) . ( $config->get( 'CosmosSocialProfileAllowBio' ) ? CosmosSocialProfile::getUserBio( $profileOwner ) : null ) ,
 				'<div class="hgroup">'
 			];
 

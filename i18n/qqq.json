@@ -21,6 +21,7 @@
 	"cosmos-personaltools-anontalk": "The link text for an anonymous user's talk page in personal tools.",
 	"cosmos-notifications-nomessages": "The text that displays if the user has no new talk page notifications and the Echo extension is not enabled.",
 	"cosmos-notifications-nonotifs": "The text that displays if the user has no new alerts and the Echo extension is not enabled.",
+	"cosmos-editcount-label": "The label for the edit count displayed on social profile user pages.",
 	"cosmos-action-addsection": "The new topic link text displayed on talk pages.\n\n{{Identical|New topic}}",
 	"cosmos-action-cancel": "The label for the action cancel buttons.\n\n{{Identical|Cancel}}",
 	"cosmos-action-backtopage": "The label for the 'Back to $1' button, when the $1 is relevant.",
