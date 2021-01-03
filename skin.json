@@ -16,10 +16,10 @@
 	},
 	"ValidSkinNames": {
 		"cosmos": {
+			"displayname": "Cosmos",
 			"class": "MediaWiki\\Skin\\Cosmos\\SkinCosmos",
 			"args": [ {
 				"name": "cosmos",
-				"responsive": false,
 				"styles": [
 					"mediawiki.skinning.interface",
 					"skins.cosmos.styles"
