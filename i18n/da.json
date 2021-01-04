@@ -5,6 +5,7 @@
 		]
 	},
 	"cosmos-anonymous": "Anonym",
+	"cosmos-counter-label": "$1 {{PLURAL:$1|Artikel|Artikler}}",
 	"cosmos-createpage-header": "Opret en ny artikel",
 	"cosmos-createpage-next": "Næste",
 	"cosmos-personaltools-userpage": "Brugerside",

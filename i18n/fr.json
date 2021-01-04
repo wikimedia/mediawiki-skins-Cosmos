@@ -18,6 +18,7 @@
 	"cosmos-personaltools-anontalk": "Ma discussion",
 	"cosmos-notifications-nomessages": "Vous n’avez pas de nouveau message !",
 	"cosmos-notifications-nonotifs": "Vous n’avez pas de nouvelle notification !",
+	"cosmos-editcount-label": "Modifications depuis l’inscription à ce wiki",
 	"cosmos-action-addsection": "Nouveau sujet",
 	"cosmos-action-cancel": "Annuler",
 	"cosmos-action-backtopage": "Retour à $1",
