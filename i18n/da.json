@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"IBDJ",
 			"Saederup92"
 		]
 	},
@@ -11,6 +12,7 @@
 	"cosmos-personaltools-userpage": "Brugerside",
 	"cosmos-personaltools-usertalk": "Brugerdiskussion",
 	"cosmos-personaltools-anontalk": "Min diskussion",
+	"cosmos-editcount-label": "Redigeringer siden start i denne wiki",
 	"cosmos-action-addsection": "Nyt emne",
 	"cosmos-action-backtopage": "Tilbage til $1",
 	"cosmos-action-back": "Tilbage",
