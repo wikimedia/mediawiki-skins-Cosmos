@@ -110,11 +110,11 @@ class LessUtil {
 
 		$L = ( $clrMax + $clrMin ) / 2;
 
-		if ( 0 == $deltaMax ) {
+		if ( $deltaMax == 0 ) {
 			$H = 0;
 			$S = 0;
 		} else {
-			if ( 0.5 > $L ) {
+			if ( $L < 0.5 ) {
 				$S = $deltaMax / ( $clrMax + $clrMin );
 			} else {
 				$S = $deltaMax / ( 2 - $clrMax - $clrMin );
@@ -129,10 +129,10 @@ class LessUtil {
 			} elseif ( $clrB == $clrMax ) {
 				$H = ( 2 / 3 ) + $deltaG - $deltaR;
 			}
-			if ( 0 > $H ) {
+			if ( $H < 0 ) {
 				$H += 1;
 			}
-			if ( 1 < $H ) {
+			if ( $H > 1 ) {
 				$H -= 1;
 			}
 		}
