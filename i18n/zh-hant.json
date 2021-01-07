@@ -16,6 +16,7 @@
 	"cosmos-personaltools-anontalk": "我的討論",
 	"cosmos-notifications-nomessages": "你沒有新的訊息！",
 	"cosmos-notifications-nonotifs": "你沒有新的通知！",
+	"cosmos-editcount-label": "自加入此 wiki 的編輯數",
 	"cosmos-action-addsection": "新話題",
 	"cosmos-action-cancel": "取消",
 	"cosmos-action-backtopage": "返回到$1",

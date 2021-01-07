@@ -6,18 +6,19 @@
 			"Verdy p"
 		]
 	},
-	"cosmos-desc": "Cosmos est un habillage conçu et basé sur l’habillage Oasis de Fandom. Conçu pour améliorer leur look, et fournir un habillage Médiawiki efficace pour les utilisateurs non Fandom, ou pour les utilisateurs sortant de Fandom.",
+	"skinname-cosmos": "Cosmos",
+	"cosmos-desc": "Cosmos est un habillage conçu et basé sur l’habillage Oasis de Fandom. Conçu pour améliorer leur look et fournir un habillage MediaWiki efficace pour les utilisateurs non Fandom ou pour les utilisateurs sortant de Fandom.",
 	"cosmos-anonymous": "Anonyme",
-	"cosmos-counter-label": "{{PLURAL:$1|Article|Articles}}",
+	"cosmos-counter-label": "Article{{PLURAL:$1||s}}",
 	"cosmos-createpage-header": "Créer un nouvel article",
-	"cosmos-createpage-input-label": "Écrire le titre de votre page ici:",
+	"cosmos-createpage-input-label": "Écrivez le titre de votre page ici :",
 	"cosmos-createpage-next": "Suivant",
-	"cosmos-createpage-dialoge-text": "Nous avons actuellement <b>$1</b> {{PLURAL:$1|article|articles}} sur $2. Tapez le nom de votre article ci-dessus ou cliquez sur un des titres ci-dessous et commencez à écrire !",
+	"cosmos-createpage-dialoge-text": "Nous avons actuellement <b>$1</b> article{{PLURAL:$1||s}} sur $2. Tapez le nom de votre article ci-dessus ou cliquez sur un des titres ci-dessous et commencez à écrire !",
 	"cosmos-personaltools-userpage": "Page utilisateur",
 	"cosmos-personaltools-usertalk": "Discussion utilisateur",
 	"cosmos-personaltools-anontalk": "Ma discussion",
-	"cosmos-notifications-nomessages": "Vous n’avez pas de nouveau message !",
-	"cosmos-notifications-nonotifs": "Vous n’avez pas de nouvelle notification !",
+	"cosmos-notifications-nomessages": "Vous n’avez aucun nouveau message !",
+	"cosmos-notifications-nonotifs": "Vous n’avez aucune nouvelle notification !",
 	"cosmos-editcount-label": "Modifications depuis l’inscription à ce wiki",
 	"cosmos-action-addsection": "Nouveau sujet",
 	"cosmos-action-cancel": "Annuler",
@@ -32,5 +33,7 @@
 	"cosmos-newfiles": "Nouveaux fichiers",
 	"prefs-cosmos-responsiveness": "Réactivité mobile pour Cosmos",
 	"cosmos-mobile-preference": "Permettre la version mobile réactive sur l’habillage Cosmos",
-	"cosmos-user-blocked": "Bloqué"
+	"cosmos-user-blocked": "Bloqué",
+	"cosmos.css": "/* Tout CSS placé ici sera chargé avec les pages accédées par les utilisateurs de l’habillage Cosmos */",
+	"cosmos.js": "/* Tout code JavaScript placé ici sera chargé avec les pages accédées par les utilisateurs de l’habillage Cosmos */"
 }
