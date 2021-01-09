@@ -172,7 +172,7 @@ class CosmosTemplate extends BaseTemplate {
 		$wantedPages = [];
 		$fetchedTitlesCount = 0;
 
-		while ( $row = $dbr->fetchObject( $WantedPagesPageResponse ) ) {
+		foreach ( $WantedPagesPageResponse as $row ) {
 			if ( $row->title && in_array( $row->namespace, [ NS_MAIN ] ) && $fetchedTitlesCount < 6 ) {
 				$wantedPageTitle = Title::newFromText( $row->title, $row->namespace );
 
