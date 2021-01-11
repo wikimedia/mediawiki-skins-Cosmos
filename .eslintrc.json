@@ -6,7 +6,7 @@
 		"wikimedia/mediawiki"
 	],
 	"parserOptions": {
-		"ecmaVersion": 2017
+		"ecmaVersion": 2021
 	},
 	"env": {
 		"browser": true,
@@ -14,26 +14,10 @@
 		"es6": true
 	},
 	"rules": {
-		"comma-dangle": 0,
 		"computed-property-spacing": 0,
-		"eqeqeq": 0,
-		"indent": 0,
-		"no-jquery/no-event-shorthand": 0,
 		"no-jquery/no-global-selector": 0,
 		"no-jquery/no-ready-shorthand": 0,
-		"no-mixed-spaces-and-tabs": 0,
-		"no-multiple-empty-lines": 0,
-		"no-trailing-spaces": 0,
-		"no-undef": 0,
-		"no-underscore-dangle": 0,
-		"no-unused-vars": 0,
-		"no-useless-escape": 0,
-		"one-var": 0,
-		"operator-linebreak": 0,
-		"quotes": 0,
-		"semi": 0,
 		"space-before-function-paren": 0,
-		"space-in-parens": 0,
 		"vars-on-top": 0,
 		"wrap-iife": 0
 	}

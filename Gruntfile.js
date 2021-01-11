@@ -11,10 +11,10 @@ module.exports = function ( grunt ) {
 		banana: config.MessagesDirs,
 		eslint: {
 			options: {
+				extensions: [ '.js' ],
 				cache: true
 			},
 			all: [
-				'*.js',
 				'**/*.js',
 				'!node_modules/**',
 				'!vendor/**'
@@ -22,7 +22,10 @@ module.exports = function ( grunt ) {
 			fix: {
 				options: {
 					fix: true
-				}
+				},
+				src: [
+					'<%= eslint.all %>'
+				]
 			}
 		},
 		stylelint: {
