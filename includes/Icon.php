@@ -57,24 +57,6 @@ class Icon {
 				]
 			]
 		],
-		'sidebar' => [
-			'width' => 28,
-			'height' => 28,
-			'content' => [
-				[
-					'type' => 'path',
-					'attributes' => [
-						'd' => 'M 2 2 L 15 2 L 15 26 L 2 26 Z'
-					]
-				],
-				[
-					'type' => 'path',
-					'attributes' => [
-						'd' => 'M 19 2 L 26 2 L 26 26 L 19 26 Z'
-					]
-				]
-			]
-		],
 		'back' => [
 			'width' => 28,
 			'height' => 28,
@@ -135,42 +117,6 @@ class Icon {
 				]
 			]
 		],
-		'activity' => [
-			'width' => 28,
-			'height' => 28,
-			'content' => [
-				[
-					'type' => 'path',
-					'attributes' => [
-						'd' => 'M 2 14 L 6 14 L 10 6 L 18 22 L 22 14 L 26 14'
-					]
-				]
-			]
-		],
-		'sun' => [
-			'width' => 28,
-			'height' => 28,
-			'content' => [
-				[
-					'type' => 'path',
-					'attributes' => [
-						'd' => 'M 9 14 A 5 5 180 0 1 19 14 A 5 5 180 0 1 9 14 Z M 14 6 L 14 2 Z M 14 22 L 14 26 Z M 2 14 L 6 14 Z M 22 14 L 26 14 Z M 5 5 L 8 8 Z M 20 8 L 23 5 Z M 20 20 L 23 23 Z M 5 23 L 8 20 Z'
-					]
-				]
-			]
-		],
-		'moon' => [
-			'width' => 28,
-			'height' => 28,
-			'content' => [
-				[
-					'type' => 'path',
-					'attributes' => [
-						'd' => 'M 16 2 A 12 12 360 1 1 2 16 M 16 2 A 6 6 240 1 1 2 16'
-					]
-				]
-			]
-		],
 		'dropdown' => [
 			'width' => 14,
 			'height' => 14,
@@ -191,18 +137,6 @@ class Icon {
 					'type' => 'path',
 					'attributes' => [
 						'd' => 'M11.707 3.293a.999.999 0 0 0-1.414 0L6 7.586 1.707 3.293A.999.999 0 1 0 .293 4.707l5 5a.997.997 0 0 0 1.414 0l5-5a.999.999 0 0 0 0-1.414'
-					]
-				]
-			]
-		],
-		'bullet' => [
-			'width' => 14,
-			'height' => 14,
-			'content' => [
-				[
-					'type' => 'path',
-					'attributes' => [
-						'd' => 'M 7 4 A 3 3 180 0 0 7 10 A 3 3 180 0 0 7 4 Z'
 					]
 				]
 			]
