@@ -16,7 +16,6 @@
 	"rules": {
 		"computed-property-spacing": 0,
 		"no-jquery/no-global-selector": 0,
-		"no-jquery/no-ready-shorthand": 0,
 		"space-before-function-paren": 0,
 		"vars-on-top": 0,
 		"wrap-iife": 0

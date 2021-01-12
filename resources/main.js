@@ -64,7 +64,7 @@
 		mw.cookie.set( 'CosmosSiteNoticeState', 'closed', { expires: 604800 } );
 	}
 
-	$( document ).ready( function () {
+	$( function () {
 		$( '#cosmos-siteNotice-closeButton' ).on( 'click', closeSiteNotice );
 		updateFooterHeight();
 	} );
