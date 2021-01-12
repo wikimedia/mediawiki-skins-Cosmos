@@ -4,10 +4,11 @@ namespace MediaWiki\Skin\Cosmos;
 use Html;
 
 class Icon {
+	/** @var array */
 	private static $icons = [];
 
+	/** @var array */
 	private static $iconSources = [
-		// TODO: Make this 28x28
 		'avatar' => [
 			'width' => 28,
 			'height' => 28,

@@ -3,7 +3,6 @@
 	<file>.</file>
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
 		<exclude name="Generic.Files.LineLength.TooLong" />
-		<exclude name="MediaWiki.Commenting.PropertyDocumentation.MissingDocumentationPrivate" />
 	</rule>
 	<arg name="bootstrap" value="./vendor/mediawiki/mediawiki-codesniffer/utils/bootstrap-ci.php"/>
 	<arg name="extensions" value="php,php5,inc"/>
