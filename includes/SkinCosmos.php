@@ -20,8 +20,9 @@ class SkinCosmos extends SkinTemplate {
 	 */
 	public function initPage( OutputPage $out ) {
 		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
+		$user = $this->getSkin()->getUser();
 
-		if ( $userOptionsLookup->getOption( $this->getSkin()->getUser(), 'cosmos-mobile-responsiveness' ) == 1 ) {
+		if ( $userOptionsLookup->getBoolOption( $user, 'cosmos-mobile-responsiveness' ) ) {
 			$out->addMeta(
 				'viewport',
 				'width=device-width, initial-scale=1.0, ' .
@@ -34,20 +35,22 @@ class SkinCosmos extends SkinTemplate {
 	 * @return $modules
 	 */
 	public function getDefaultModules() {
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
+		$services = MediaWikiServices::getInstance();
+		$config = $services->getConfigFactory()->makeConfig( 'cosmos' );
 
 		$skin = $this->getSkin();
 
 		$modules = parent::getDefaultModules();
 
 		// CosmosRail styles
-		if ( !$skin->msg( 'cosmos-customsidebar' )->isDisabled() || !$skin->msg( 'cosmos-stickysidebar' )->isDisabled() ) {
+		if ( !$skin->msg( 'cosmos-customsidebar' )->isDisabled() ||
+			!$skin->msg( 'cosmos-stickysidebar' )->isDisabled()
+		) {
 			$modules['styles']['skin'][] = 'skins.cosmos.rail';
 		}
 
 		// Load PortableInfobox styles
-		if ( ExtensionRegistry::getInstance()
-			->isLoaded( 'Portable Infobox' ) ) {
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'Portable Infobox' ) ) {
 			$modules['styles']['skin'][] = 'skins.cosmos.portableinfobox';
 
 			// Load PortableInfobox EuropaTheme style if the configuration is enabled
