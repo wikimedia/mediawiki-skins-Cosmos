@@ -18,19 +18,45 @@ class LessUtil {
 	 * @return array
 	 */
 	public static function getCosmosSettings() {
-		// Load the 5 deafult colors by theme here (eg: in case the wiki has an override but the user doesn't have overrides).
 		if ( empty( static::$cosmosSettings ) ) {
-			$themeSettings = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
+			$services = MediaWikiServices::getInstance();
+			$themeSettings = $services->getConfigFactory()->makeConfig( 'cosmos' );
 
-			static::$cosmosSettings['banner-background-color'] = self::sanitizeColor( $themeSettings->get( 'CosmosBannerBackgroundColor' ) );
-			static::$cosmosSettings['header-background-color'] = self::sanitizeColor( $themeSettings->get( 'CosmosWikiHeaderBackgroundColor' ) );
-			static::$cosmosSettings['content-background-color'] = self::sanitizeColor( $themeSettings->get( 'CosmosContentBackgroundColor' ) );
-			static::$cosmosSettings['button-color'] = self::sanitizeColor( $themeSettings->get( 'CosmosButtonColor' ) );
-			static::$cosmosSettings['link-color'] = self::sanitizeColor( $themeSettings->get( 'CosmosLinkColor' ) );
-			static::$cosmosSettings['toolbar-color'] = self::sanitizeColor( $themeSettings->get( 'CosmosToolbarColor' ) );
-			static::$cosmosSettings['footer-color'] = self::sanitizeColor( $themeSettings->get( 'CosmosFooterColor' ) );
+			static::$cosmosSettings['banner-background-color'] =
+				self::sanitizeColor(
+					$themeSettings->get( 'CosmosBannerBackgroundColor' )
+				);
 
-			// RT:70673
+			static::$cosmosSettings['header-background-color'] =
+				self::sanitizeColor(
+					$themeSettings->get( 'CosmosWikiHeaderBackgroundColor' )
+				);
+
+			static::$cosmosSettings['content-background-color'] =
+				self::sanitizeColor(
+					$themeSettings->get( 'CosmosContentBackgroundColor' )
+				);
+
+			static::$cosmosSettings['button-color'] =
+				self::sanitizeColor(
+					$themeSettings->get( 'CosmosButtonColor' )
+				);
+
+			static::$cosmosSettings['link-color'] =
+				self::sanitizeColor(
+					$themeSettings->get( 'CosmosLinkColor' )
+				);
+
+			static::$cosmosSettings['toolbar-color'] =
+				self::sanitizeColor(
+					$themeSettings->get( 'CosmosToolbarColor' )
+				);
+
+			static::$cosmosSettings['footer-color'] =
+				self::sanitizeColor(
+					$themeSettings->get( 'CosmosFooterColor' )
+				);
+
 			foreach ( static::$cosmosSettings as $key => $val ) {
 				if ( !empty( $val ) ) {
 					static::$cosmosSettings[$key] = trim( $val );
@@ -42,7 +68,7 @@ class LessUtil {
 	}
 
 	/**
-	 * Get normalized color value (RT #74057)
+	 * Get normalized color value
 	 * @param string $color
 	 * @return string
 	 */
@@ -75,8 +101,6 @@ class LessUtil {
 
 	/**
 	 * Convert RGB colors array into HSL array
-	 *
-	 * @see http://blog.archive.jpsykes.com/211/rgb2hsl/index.html
 	 *
 	 * @param string $rgbhex RGB color in hex format (#474646)
 	 * @return array HSL set
@@ -146,7 +170,6 @@ class LessUtil {
 
 	/**
 	 * Convert HTML color name to hex format
-	 * We allow users to use color names in ThemeDesigner so we need to support them
 	 *
 	 * @param string $colorName
 	 * @return string
@@ -318,9 +341,20 @@ class LessUtil {
 	public static function hexToRgb( string $hex ): array {
 		$hex = str_replace( '#', '', $hex );
 		$length = strlen( $hex );
-		$rgb['r'] = hexdec( $length == 6 ? substr( $hex, 0, 2 ) : ( $length == 3 ? str_repeat( substr( $hex, 0, 1 ), 2 ) : 0 ) );
-		$rgb['g'] = hexdec( $length == 6 ? substr( $hex, 2, 2 ) : ( $length == 3 ? str_repeat( substr( $hex, 1, 1 ), 2 ) : 0 ) );
-		$rgb['b'] = hexdec( $length == 6 ? substr( $hex, 4, 2 ) : ( $length == 3 ? str_repeat( substr( $hex, 2, 1 ), 2 ) : 0 ) );
+
+		if ( $length == 6 ) {
+			$rgb['r'] = hexdec( substr( $hex, 0, 2 ) );
+			$rgb['g'] = hexdec( substr( $hex, 2, 2 ) );
+			$rgb['b'] = hexdec( substr( $hex, 4, 2 ) );
+		} elseif ( $length == 3 ) {
+			$rgb['r'] = hexdec( str_repeat( substr( $hex, 0, 1 ), 2 ) );
+			$rgb['g'] = hexdec( str_repeat( substr( $hex, 1, 1 ), 2 ) );
+			$rgb['b'] = hexdec( str_repeat( substr( $hex, 2, 1 ), 2 ) );
+		} else {
+			$rgb['r'] = 0;
+			$rgb['g'] = 0;
+			$rgb['b'] = 0;
+		}
 
 		return $rgb;
 	}
