@@ -1,22 +1,6 @@
 /* global mediaWiki */
 
 ( function( $, mw ) {
-
-	$( '.create-page-dialog__wrapper #create-page-dialog__title' ).on( 'keyup', function() {
-		var empty = false;
-		$( '.create-page-dialog__wrapper #create-page-dialog__title' ).each( function() {
-			if ( $( this ).val() === '' ) {
-				empty = true;
-			}
-		} );
-
-		if ( empty ) {
-			$( '.create-page-dialog__button' ).prop( 'disabled', true );
-		} else {
-			$( '.create-page-dialog__button' ).prop( 'disabled', false );
-		}
-	} );
-
 	var modal = document.getElementById( 'createPageModal' ),
 		btn = document.getElementById( 'createpage' ),
 		span = document.getElementsByClassName( 'close' )[0];
@@ -34,6 +18,22 @@
 			modal.style.display = 'none';
 		}
 	};
+
+	$( '.create-page-dialog__wrapper #create-page-dialog__title' ).on( 'keyup', function() {
+		var empty = false;
+
+		$( '.create-page-dialog__wrapper #create-page-dialog__title' ).each( function() {
+			if ( $( this ).val() === '' ) {
+				empty = true;
+			}
+		} );
+
+		if ( empty ) {
+			$( '.create-page-dialog__button' ).prop( 'disabled', true );
+		} else {
+			$( '.create-page-dialog__button' ).prop( 'disabled', false );
+		}
+	} );
 
 	mw.hook( 've.activationComplete' ).add( function() {
 		$( '.ve-activated .firstHeading' ).html( $( 'title' ).html().replace( ' - ' + mw.config.get( 'wgSiteName' ), '' ) );
