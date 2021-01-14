@@ -41,12 +41,10 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		$lessVars['main-background-image-size'] = $config->get( 'CosmosBackgroundImageSize' );
 		$lessVars['link-color'] = $config->get( 'CosmosLinkColor' );
 		$lessVars['button-color'] = $config->get( 'CosmosButtonColor' );
-		$lessVars['font-family'] = $config->get( 'CosmosFontFamily' );
-		$lessVars['font-style'] = $config->get( 'CosmosFontStyle' );
-		if ( $config->get( 'CosmosBackgroundImageNorepeat' ) ) {
-			$lessVars['main-background-image-repeat'] = 'no-repeat';
-		} else {
+		if ( $config->get( 'CosmosBackgroundImageRepeat' ) ) {
 			$lessVars['main-background-image-repeat'] = 'repeat';
+		} else {
+			$lessVars['main-background-image-repeat'] = 'no-repeat';
 		}
 		if ( $config->get( 'CosmosBackgroundImageFixed' ) ) {
 			$lessVars['main-background-image-position'] = 'fixed';
