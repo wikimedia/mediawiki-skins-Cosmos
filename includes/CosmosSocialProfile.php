@@ -15,7 +15,11 @@ class CosmosSocialProfile {
 	 */
 	private static function getUser( $user ) {
 		$title = Title::newFromText( $user );
-		if ( is_object( $title ) && ( $title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE ) && !$title->isSubpage() ) {
+		if (
+			is_object( $title ) &&
+			( $title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE ) &&
+			!$title->isSubpage()
+		) {
 			$user = $title->getText();
 		}
 		$user = User::newFromName( $user );
@@ -41,7 +45,11 @@ class CosmosSocialProfile {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
 		$user = self::getUser( $user );
 		if ( $user && $user->isBlocked() ) {
-			$userTags = Html::element( 'span', [ 'class' => 'tag tag-blocked' ], wfMessage( 'cosmos-user-blocked' )->text() );
+			$userTags = Html::element(
+				'span',
+				[ 'class' => 'tag tag-blocked' ],
+				wfMessage( 'cosmos-user-blocked' )->text()
+			);
 		} elseif ( $user ) {
 			$numberOfTags = 0;
 			$userTags = '';
@@ -52,7 +60,11 @@ class CosmosSocialProfile {
 					$userGroupMessage = wfMessage( 'group-' . $value . '-member' );
 
 					if ( $numberOfTags <= $numberOfTagsConfig ) {
-						$userTags .= Html::element( 'span', [ 'class' => 'tag tag-' . Sanitizer::escapeClass( $value ) ], ucfirst( ( !$userGroupMessage->isDisabled() ? $userGroupMessage->text() : $value ) ) );
+						$userTags .= Html::element(
+							'span',
+							[ 'class' => 'tag tag-' . Sanitizer::escapeClass( $value ) ],
+							ucfirst( ( !$userGroupMessage->isDisabled() ? $userGroupMessage->text() : $value ) )
+						);
 					}
 				}
 			}

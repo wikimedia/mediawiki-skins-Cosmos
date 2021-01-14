@@ -7,6 +7,7 @@ class Icon {
 	/** @var array */
 	private static $icons = [];
 
+	// phpcs:disable Generic.Files.LineLength.TooLong
 	/** @var array */
 	private static $iconSources = [
 		'avatar' => [
@@ -305,6 +306,7 @@ class Icon {
 			]
 		]
 	];
+	// phpcs:enable Generic.Files.LineLength.TooLong
 
 	/**
 	 * @param string $iconName

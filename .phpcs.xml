@@ -1,9 +1,7 @@
 <?xml version="1.0"?>
 <ruleset>
 	<file>.</file>
-	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
-		<exclude name="Generic.Files.LineLength.TooLong" />
-	</rule>
+	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki" />
 	<arg name="bootstrap" value="./vendor/mediawiki/mediawiki-codesniffer/utils/bootstrap-ci.php"/>
 	<arg name="extensions" value="php,php5,inc"/>
 	<arg name="encoding" value="UTF-8"/>

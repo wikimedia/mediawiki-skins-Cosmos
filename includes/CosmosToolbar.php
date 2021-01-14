@@ -51,8 +51,9 @@ class CosmosToolbar implements ExpirationAwareness {
 			$mainMenu = [];
 			foreach ( $nodes[0]['children'] as $key => $val ) {
 				$menu .= '<li id="' .
-					Sanitizer::escapeIdForAttribute( 't-' . strtolower( strtr( $nodes[$val]['text'], ' ', '-' ) ) ) . '">';
-				$menu .= '<a href="' . ( !empty( $nodes[$val]['href'] ) ? htmlspecialchars( $nodes[$val]['href'] ) : '#' ) . '"';
+					Sanitizer::escapeIdForAttribute( 't-' . strtolower( strtr( $nodes[$val]['text'], ' ', '-' ) ) ) .
+					'">' . '<a href="' .
+					( !empty( $nodes[$val]['href'] ) ? htmlspecialchars( $nodes[$val]['href'] ) : '#' ) . '"';
 				if (
 					!isset( $nodes[$val]['internal'] ) ||
 					!$nodes[$val]['internal']
