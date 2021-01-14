@@ -158,7 +158,7 @@ class CosmosTemplate extends BaseTemplate {
 			'form',
 			[
 				'class' => 'wds-dialog__wrapper create-page-dialog__wrapper',
-				'action' => $this->get( 'wgScript' ) ,
+				'action' => $this->get( 'wgScript' ),
 				'method' => 'get'
 			]
 		);
@@ -231,13 +231,13 @@ class CosmosTemplate extends BaseTemplate {
 	 * @return array
 	 */
 	protected static function getMostWantedPages() {
-		$WantedPagesPage = MediaWikiServices::getInstance()->getSpecialPageFactory()->getPage( 'Wantedpages' );
-		$WantedPagesPageResponse = $WantedPagesPage->doQuery();
+		$wantedPagesPage = MediaWikiServices::getInstance()->getSpecialPageFactory()->getPage( 'Wantedpages' );
+		$wantedPagesPageResponse = $wantedPagesPage->doQuery();
 		$dbr = wfGetDB( DB_REPLICA );
 		$wantedPages = [];
 		$fetchedTitlesCount = 0;
 
-		foreach ( $WantedPagesPageResponse as $row ) {
+		foreach ( $wantedPagesPageResponse as $row ) {
 			if ( $row->title && in_array( $row->namespace, [ NS_MAIN ] ) && $fetchedTitlesCount < 6 ) {
 				$wantedPageTitle = Title::newFromText( $row->title, $row->namespace );
 
@@ -733,7 +733,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-banner-search' ] );
 
 		// Open search form
-		$html .= Html::openElement( 'form', [ 'action' => $this->get( 'wgScript' ) , 'id' => 'cosmos-search-form' ] );
+		$html .= Html::openElement( 'form', [ 'action' => $this->get( 'wgScript' ), 'id' => 'cosmos-search-form' ] );
 
 		// Insert hidden search title
 		$html .= Html::element(
