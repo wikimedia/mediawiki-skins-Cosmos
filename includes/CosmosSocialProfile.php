@@ -49,8 +49,10 @@ class CosmosSocialProfile {
 				if ( in_array( $value, $user->getGroups() ) ) {
 					$numberOfTags++;
 					$numberOfTagsConfig = $config->get( 'CosmosNumberofGroupTags' );
+					$userGroupMessage = wfMessage( 'group-' . $value . '-member' );
+
 					if ( $numberOfTags <= $numberOfTagsConfig ) {
-						$userTags .= Html::element( 'span', [ 'class' => 'tag tag-' . Sanitizer::escapeClass( $value ) ], ucfirst( wfMessage( 'group-' . $value . '-member' )->text() ) );
+						$userTags .= Html::element( 'span', [ 'class' => 'tag tag-' . Sanitizer::escapeClass( $value ) ], ucfirst( ( !$userGroupMessage->isDisabled() ? $userGroupMessage->text() : $value ) ) );
 					}
 				}
 			}
