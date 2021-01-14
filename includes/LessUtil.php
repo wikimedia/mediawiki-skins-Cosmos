@@ -6,6 +6,7 @@
 
 namespace MediaWiki\Skin\Cosmos;
 
+use LogicException;
 use MediaWiki\MediaWikiServices;
 
 class LessUtil {
@@ -152,6 +153,8 @@ class LessUtil {
 				$H = ( 1 / 3 ) + $deltaR - $deltaB;
 			} elseif ( $clrB == $clrMax ) {
 				$H = ( 2 / 3 ) + $deltaG - $deltaR;
+			} else {
+				throw new LogicException( 'Unreachable' );
 			}
 			if ( $H < 0 ) {
 				$H += 1;
@@ -343,17 +346,19 @@ class LessUtil {
 		$length = strlen( $hex );
 
 		if ( $length == 6 ) {
-			$rgb['r'] = hexdec( substr( $hex, 0, 2 ) );
-			$rgb['g'] = hexdec( substr( $hex, 2, 2 ) );
-			$rgb['b'] = hexdec( substr( $hex, 4, 2 ) );
+			$rgb = [
+				'r' => hexdec( substr( $hex, 0, 2 ) ),
+				'g' => hexdec( substr( $hex, 2, 2 ) ),
+				'b' => hexdec( substr( $hex, 4, 2 ) )
+			];
 		} elseif ( $length == 3 ) {
-			$rgb['r'] = hexdec( str_repeat( substr( $hex, 0, 1 ), 2 ) );
-			$rgb['g'] = hexdec( str_repeat( substr( $hex, 1, 1 ), 2 ) );
-			$rgb['b'] = hexdec( str_repeat( substr( $hex, 2, 1 ), 2 ) );
+			$rgb = [
+				'r' => hexdec( str_repeat( substr( $hex, 0, 1 ), 2 ) ),
+				'g' => hexdec( str_repeat( substr( $hex, 1, 1 ), 2 ) ),
+				'b' => hexdec( str_repeat( substr( $hex, 2, 1 ), 2 ) )
+			];
 		} else {
-			$rgb['r'] = 0;
-			$rgb['g'] = 0;
-			$rgb['b'] = 0;
+			$rgb = [ 'r' => 0, 'g' => 0, 'b' => 0 ];
 		}
 
 		return $rgb;

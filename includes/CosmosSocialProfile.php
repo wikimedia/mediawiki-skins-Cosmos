@@ -68,6 +68,8 @@ class CosmosSocialProfile {
 					}
 				}
 			}
+		} else {
+			$userTags = '';
 		}
 		return $userTags;
 	}
@@ -86,12 +88,13 @@ class CosmosSocialProfile {
 	/**
 	 * @todo Seems like a method that is a work in progress...
 	 * @param string $user
-	 * @return void
+	 * @return string
 	 */
 	public static function getUserBio( $user ) {
 		if ( $user ) {
 			// return '<p class="bio">' . $parser->recursiveTagParse( '{{:User:' . $user . '/bio}}') . '</p>';
 
 		}
+		return '';
 	}
 }

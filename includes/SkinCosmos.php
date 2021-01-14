@@ -32,7 +32,7 @@ class SkinCosmos extends SkinTemplate {
 	}
 
 	/**
-	 * @return $modules
+	 * @return array
 	 */
 	public function getDefaultModules() {
 		$services = MediaWikiServices::getInstance();

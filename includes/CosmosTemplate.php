@@ -87,7 +87,7 @@ class CosmosTemplate extends BaseTemplate {
 			}
 			$bio = $config->get( 'CosmosSocialProfileAllowBio' )
 				? CosmosSocialProfile::getUserBio( $profileOwner )
-				: null;
+				: '';
 			$replaceWith = [
 				'<h1 itemprop="name">' . $profileOwner . '</h1>' . $groupTags . $editCount . $bio,
 				'<div class="hgroup">'
@@ -244,7 +244,7 @@ class CosmosTemplate extends BaseTemplate {
 				if (
 					$wantedPageTitle instanceof Title &&
 					!$wantedPageTitle->isKnown()
-					&& ( empty( '/[:\/]+/' ) || !preg_match( '/[:\/]+/', $wantedPageTitle->getText() ) )
+					&& !preg_match( '/[:\/]+/', $wantedPageTitle->getText() )
 				) {
 					$wantedPages[] = [
 						'title' => $wantedPageTitle->getFullText(),
@@ -399,7 +399,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-banner-userOptions' ] );
 
 		if ( !empty( $this->data["username"] ) ) {
-			$html .= $this->buildNotifications( $html );
+			$html .= $this->buildNotifications();
 		}
 
 		$html .= $this->buildPersonalTools( $config );
@@ -504,7 +504,7 @@ class CosmosTemplate extends BaseTemplate {
 			$html .= Html::rawElement( 'li', [
 				'id' => 'pt-' . $key
 			], Html::rawElement( 'a', [
-				'class' => isset( $item['class'] ) ? $item['class'] : false,
+				'class' => $item['class'] ?? false,
 				'href' => $item['href'],
 				'title' => $item['title']
 			], $item['text'] ) );
@@ -557,23 +557,21 @@ class CosmosTemplate extends BaseTemplate {
 			$notificationIcons['notifications-alert'] = $personalTools['notifications-alert'];
 			$notificationIcons['notifications-notice'] = $personalTools['notifications-notice'];
 
-			if ( !empty( $notificationIcons ) ) {
-				$iconList = '';
+			$iconList = '';
 
-				foreach ( $notificationIcons as $key => $item ) {
-					$iconList .= $skin->makeListItem( $key, $item );
-				}
-
-				$html .= Html::rawElement(
-					'div',
-					[ 'id' => 'cosmos-notification-icons' ],
-					Html::rawElement(
-						'div',
-						[ 'id' => 'cosmos-notifsButton-icon', 'class' => 'cosmos-bannerOption-icon' ],
-						$iconList
-					)
-				);
+			foreach ( $notificationIcons as $key => $item ) {
+				$iconList .= $skin->makeListItem( $key, $item );
 			}
+
+			$html .= Html::rawElement(
+				'div',
+				[ 'id' => 'cosmos-notification-icons' ],
+				Html::rawElement(
+					'div',
+					[ 'id' => 'cosmos-notifsButton-icon', 'class' => 'cosmos-bannerOption-icon' ],
+					$iconList
+				)
+			);
 		} else {
 			$html .= Html::openElement(
 				'div',
@@ -603,11 +601,13 @@ class CosmosTemplate extends BaseTemplate {
 				Icon::getIcon( 'dropdown' )->makeSvg( 14, 14 )
 			);
 
-			if ( $this->data['cosmos_notifications']['numNotifs'] > 0 ) {
+			$numNotifs = $this->data['cosmos_notifications']['numNotifs'];
+			'@phan-var int $numNotifs';
+			if ( $numNotifs > 0 ) {
 				$html .= Html::element(
 					'div',
 					[ 'id' => 'cosmos-notifsButton-numNotifs', 'class' => 'cosmos-notifications-numNotifs' ],
-					$this->data['cosmos_notifications']['numNotifs']
+					$numNotifs
 				);
 			}
 
@@ -618,7 +618,7 @@ class CosmosTemplate extends BaseTemplate {
 				[ 'id' => 'cosmos-notifications-list', 'class' => 'cosmos-dropdown-list' ]
 			);
 
-			if ( $this->data['cosmos_notifications']['numNotifs'] > 0 ) {
+			if ( $numNotifs > 0 ) {
 				foreach ( $this->data['cosmos_notifications']['notifs'] as $notif ) {
 					$html .= Html::openElement( 'li' );
 
@@ -674,11 +674,13 @@ class CosmosTemplate extends BaseTemplate {
 				Icon::getIcon( 'dropdown' )->makeSvg( 14, 14 )
 			);
 
-			if ( $this->data['cosmos_notifications']['numMessages'] > 0 ) {
+			$numMessages = $this->data['cosmos_notifications']['numMessages'];
+			'@phan-var int $numMessages';
+			if ( $numMessages > 0 ) {
 				$html .= Html::element(
 					'div',
 					[ 'id' => 'cosmos-messagesButton-numMessages', 'class' => 'cosmos-notifications-numNotifs' ],
-					$this->data['cosmos_notifications']['numMessages']
+					$numMessages
 				);
 			}
 
@@ -686,7 +688,7 @@ class CosmosTemplate extends BaseTemplate {
 
 			$html .= Html::openElement( 'ul', [ 'id' => 'cosmos-messages-list', 'class' => 'cosmos-dropdown-list' ] );
 
-			if ( $this->data['cosmos_notifications']['numMessages'] > 0 ) {
+			if ( $numMessages > 0 ) {
 				foreach ( $this->data['cosmos_notifications']['messages'] as $message ) {
 					$html .= Html::openElement( 'li' );
 
@@ -1421,7 +1423,7 @@ class CosmosTemplate extends BaseTemplate {
 		}
 
 		// If the primary content action is available, display it as a button
-		if ( !empty( $primary ) && $primary !== null ) {
+		if ( !empty( $primary ) ) {
 			$html .= $this->buildActionButton( $primary );
 		}
 
@@ -1432,7 +1434,7 @@ class CosmosTemplate extends BaseTemplate {
 		}
 
 		// If the secondary content action is available, display it as a button
-		if ( !empty( $secondary ) && $secondary !== null ) {
+		if ( !empty( $secondary ) ) {
 			$html .= $this->buildActionButton( $secondary );
 		}
 
