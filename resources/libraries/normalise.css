@@ -97,7 +97,7 @@ abbr[ title ] {
 
 @supports (text-decoration: underline dotted) {
 	abbr[ title ] {
-		border-bottom: none;
+		border-bottom: 0;
 		text-decoration: underline dotted;
 	}
 }

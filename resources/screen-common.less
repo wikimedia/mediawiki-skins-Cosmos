@@ -100,16 +100,6 @@ body a:focus {
 	padding: 10px;
 	box-shadow: 0 8px 16px 0 rgba( 0, 0, 0, 0.3 );
 	z-index: 999;
-	background-color: #1d1d1d;
-	display: none;
-	position: absolute;
-	right: 0;
-	background-color: #eee;
-	min-width: 200px;
-	margin: 0;
-	padding: 10px;
-	box-shadow: 0 8px 16px 0 rgba( 0, 0, 0, 0.3 );
-	z-index: 999;
 
 	> ul,
 	> ul > li,
@@ -159,7 +149,7 @@ body > #mw-content-container {
 #searchInput {
 	width: 100%;
 	font-size: 20px;
-	border: none;
+	border: 0;
 	border-bottom: 2px solid @banner-input-bottom-border;
 	background: transparent;
 	background-color: transparent;
@@ -167,7 +157,7 @@ body > #mw-content-container {
 	padding: 0;
 	margin: 10px 0;
 	border-radius: 0;
-	outline: none;
+	outline: 0;
 	box-shadow: none;
 	-webkit-appearance: none;
 
@@ -195,7 +185,7 @@ body > #mw-content-container {
 	width: 100%;
 	color: transparent;
 	background: transparent;
-	border: none;
+	border: 0;
 	margin: 0;
 }
 
@@ -300,8 +290,6 @@ body > #mw-content-container {
 }
 
 .cosmos-button-action {
-	height: 28px;
-	margin: 15px 0 15px 0;
 	height: 28px;
 	margin: 15px 0 15px 0;
 
@@ -630,7 +618,7 @@ body > .suggestions {
 
 	.wds-list {
 		color: #1a1a1a;
-		font-weight: 400;
+		font-weight: normal;
 		letter-spacing: normal;
 		text-transform: none;
 		text-align: left;
@@ -757,10 +745,8 @@ body > .suggestions {
 				content: '';
 				display: block;
 				height: 30px;
-				margin: 0 0 -30px;
 				position: relative;
 				z-index: -1;
-				background-color: #fff;
 				margin: -29px 0 0;
 			}
 
@@ -1021,7 +1007,7 @@ button.wds-button {
 
 .wds-dialog__title {
 	font-size: 24px;
-	font-weight: 700;
+	font-weight: bold;
 	line-height: 28px;
 	padding: 24px 24px 0;
 }
@@ -1107,7 +1093,7 @@ button.wds-button {
 
 	>li {
 		font-size: 14px;
-		font-weight: 400;
+		font-weight: normal;
 		line-height: 1em;
 		padding: 11px 0;
 	}
@@ -1115,7 +1101,7 @@ button.wds-button {
 
 .wds-list.wds-has-bolded-items {
 	>li {
-		font-weight: 700;
+		font-weight: bold;
 	}
 }
 
@@ -1195,7 +1181,7 @@ button.wds-button {
 	display: inline-flex;
 	text-decoration: none;
 	font-size: 12px;
-	font-weight: 700;
+	font-weight: bold;
 	height: 40px;
 	margin: 0 11px;
 	text-align: center;
@@ -1268,9 +1254,8 @@ button.wds-button {
 	background-size: auto;
 	height: 105px;
 	position: relative;
-	z-index: 1;
+	z-index: 2;
 	background-color: @header-background-solid-color;
-	z-index: 5;
 
 	&:before {
 		content: '';
@@ -1303,10 +1288,8 @@ button.wds-button {
 					content: '';
 					display: block;
 					height: 30px;
-					margin: 0 0 -30px;
 					position: relative;
 					z-index: -1;
-					background-color: #fff;
 					margin: -29px 0 0;
 				}
 
@@ -1608,7 +1591,7 @@ button.wds-button {
 	&:not( .oo-ui-flaggedElement-primary ) {
 		&:not( .oo-ui-buttonElement-active ) {
 			>.oo-ui-buttonElement-button {
-				color: rgb( 230, 230, 230 );
+				color: #e6e6e6;
 			}
 		}
 	}
@@ -1625,9 +1608,9 @@ button.wds-button {
 	.wikitable {
 		td {
 			background: @button-color;
-			border: none;
+			border: 0;
 		}
-		border: none;
+		border: 0;
 	}
 }
 
@@ -1664,10 +1647,6 @@ button.wds-button {
 	color: @font-color;
 }
 
-.cosmos-header {
-	z-index: 2;
-}
-
 .mw-rcfilters-ui-filterTagMultiselectWidget-views-select-widget.oo-ui-widget {
 	background: #fff;
 }
@@ -1681,7 +1660,7 @@ button.wds-button {
 	float: right;
 	font-size: 28px;
 	font-weight: bold;
-	border: none;
+	border: -;
 
 	&:hover {
 		color: #000;
@@ -1717,12 +1696,12 @@ body code {
 }
 
 #mw-content-container {
-	border: none;
+	border: 0;
 }
 
 #mw-searchoptions {
 	background: transparent;
-	border: none;
+	border: 0;
 	color: @font-color;
 
 	table {
@@ -1753,7 +1732,7 @@ body code {
 
 body .oo-ui-tabSelectWidget-framed {
 	background: @tabs-background-color;
-	border: none;
+	border: 0;
 	color: @font-color;
 }
 
@@ -1788,7 +1767,7 @@ body .oo-ui-tabSelectWidget-framed {
 
 body {
 	* {
-		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 	}
 
 	.create-title {
@@ -1811,29 +1790,29 @@ body #mw-content-text {
 .category-gallery-item {
 	.snippet {
 		.text {
-			font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 		}
 	}
 }
 
 input {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 
 .button {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 
 button {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 
 select {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 
 ul.tabbernav {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 
 .mw-body {
@@ -1848,36 +1827,36 @@ ul.tabbernav {
 		line-height: 1;
 		max-width: 100%;
 		word-wrap: break-word;
-		border: none;
+		border: 0;
 		opacity: 0.9;
 	}
 
 	h1 {
-		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 	}
 
 	h2 {
-		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 	}
 
 	h3 {
-		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 	}
 
 	h4 {
-		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 	}
 
 	h5 {
-		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 	}
 
 	h6 {
-		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 	}
 
 	dt {
-		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 	}
 }
 
@@ -1938,7 +1917,7 @@ h6 {
 
 .toctitle {
 	h2 {
-		border-bottom: none;
+		border-bottom: 0;
 	}
 }
 
