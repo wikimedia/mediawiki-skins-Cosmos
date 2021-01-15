@@ -6,6 +6,7 @@ use MediaWiki\MediaWikiServices;
 use Sanitizer;
 use Title;
 use User;
+use WikiPage;
 
 class CosmosSocialProfile {
 
@@ -86,15 +87,32 @@ class CosmosSocialProfile {
 	}
 
 	/**
-	 * @todo Seems like a method that is a work in progress...
 	 * @param string $user
+	 * @param bool|false $followRedirects
 	 * @return string
 	 */
-	public static function getUserBio( $user ) {
-		if ( $user ) {
-			// return '<p class="bio">' . $parser->recursiveTagParse( '{{:User:' . $user . '/bio}}') . '</p>';
+	public static function getUserBio( $user, $followRedirects = false ) {
+		if ( $user && Title::newFromText( "User:{$user}/bio" )->isKnown() ) {
+			$userBioPage = Title::newFromText( "User:{$user}/bio" );
 
+			$wikiPage = new WikiPage( $userBioPage );
+
+			$content = $wikiPage->getContent();
+
+			if (
+				$followRedirects &&
+				$userBioPage->isRedirect() &&
+				$content->getRedirectTarget()->isKnown() &&
+				$content->getRedirectTarget()->inNamespace( NS_USER )
+			) {
+				$userBioPage = $content->getRedirectTarget();
+
+				$wikiPage = new WikiPage( $userBioPage );
+
+				$content = $wikiPage->getContent();
+			}
+
+			return Html::element( 'p', [ 'class' => 'bio' ], $content->getText() );
 		}
-		return '';
 	}
 }
