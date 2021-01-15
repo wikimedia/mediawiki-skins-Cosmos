@@ -834,15 +834,11 @@ button.wds-button {
 	>.wds-button {
 		&:not( .wds-is-secondary ) {
 			&:not( :last-child ) {
-				border-right-color: #fff;
-				border-right-width: 1px;
-				border-right-style: solid;
+				border-right: 1px solid #fff;
 			}
 
 			&:not( :first-child ) {
-				border-left-color: #fff;
-				border-left-width: 1px;
-				border-left-style: solid;
+				border-left: 1px solid #fff;
 			}
 		}
 		border-radius: 0;
@@ -869,17 +865,13 @@ button.wds-button {
 	>.wds-dropdown {
 		&:not( :last-child ) {
 			.wds-button {
-				border-right-color: #fff;
-				border-right-width: 1px;
-				border-right-style: solid;
+				border-right: 1px solid #fff;
 			}
 		}
 
 		&:not( :first-child ) {
 			.wds-button {
-				border-left-color: #fff;
-				border-left-width: 1px;
-				border-left-style: solid;
+				border-left: 1px solid #fff;
 			}
 		}
 
@@ -1041,9 +1033,7 @@ button.wds-button {
 }
 
 .wds-dialog__actions {
-	border-top-color: #e6e6e6;
-	border-top-style: solid;
-	border-top-width: 1px;
+	border-top: 1px solid #e6e6e6;
 	display: flex;
 	height: 40px;
 	justify-content: flex-end;

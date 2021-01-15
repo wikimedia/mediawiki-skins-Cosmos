@@ -4,16 +4,14 @@
 		"resources/libraries/**.{css|less}"
 	],
 	"rules": {
-		"color-named": null,
 		"declaration-block-no-duplicate-properties": null,
-		"declaration-block-no-redundant-longhand-properties": null,
 		"declaration-no-important": null,
-		"no-descending-specificity": null,
 		"declaration-property-value-disallowed-list": null,
 		"font-family-name-quotes": null,
 		"font-weight-notation": null,
 		"function-disallowed-list": null,
 		"function-url-quotes": null,
+		"no-descending-specificity": null,
 		"no-duplicate-selectors": null,
 		"selector-max-id": null,
 		"unit-disallowed-list": null
