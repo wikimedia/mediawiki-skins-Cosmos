@@ -1,126 +1,136 @@
 #cosmos-pageBody-content {
-        position: relative;
-    	width: 680px;
-    	z-index: 1;
+	position: relative;
+	width: 680px;
+	z-index: 1;
 }
+
 #cosmos-pageBody-content {
-	  width: 100%;
+	width: 100%;
 }
-@media only screen and (min-width: 1084px) {
-  	#cosmos-pageBody-content {
-      		width: -webkit-calc(~"100% - 320px");
-    	  	width: calc(~"100% - 320px");
-  	}
+
+@media only screen and ( min-width: 1084px ) {
+	#cosmos-pageBody-content {
+		width: -webkit-calc( ~'100% - 320px' );
+		width: calc( ~'100% - 320px' );
+	}
 }
-@media only screen and (max-width: 1083px) and (min-width: 1024px) {
-	  #cosmos-pageBody-content {
-		    width: -webkit-calc(~"100% - 320px");
-		    width: calc(~"100% - 320px");
-  	}
+
+@media only screen and ( max-width: 1083px ) and ( min-width: 1024px ) {
+	#cosmos-pageBody-content {
+		width: -webkit-calc( ~'100% - 320px' );
+		width: calc( ~'100% - 320px' );
+	}
 }
 
 .cosmos-articleContainer {
-    	zoom: 1;
-    	display: -webkit-box;
-    	display: -moz-box;
-    	display: -ms-flexbox;
-    	display: -webkit-flex;
-    	display: flex;
-    	-webkit-flex-wrap: wrap;
-    	-ms-flex-wrap: wrap;
-    	flex-wrap: wrap;
-    	-webkit-box-pack: justify;
-    	-webkit-justify-content: space-between;
-    	justify-content: space-between;
-	    position: relative;
-}
-@media only screen and (min-width: 1024px) {
-	  .CosmosRail {
-		      display: -ms-inline-flexbox;
-      		display: -webkit-inline-flex;
-      		display: inline-flex;
-  	}
-}
-.CosmosRail {
-    	padding: 0;
-}
-.CosmosRail {
-    	padding: 0 10px;
-    	width: 300px;
-}
-.CosmosRail .module {
-        background: transparent;
-    	zoom: 1;
-    	margin-bottom: 30px;
-    	padding: 20px 15px 15px;
-    	position: relative;
-    	word-wrap: break-word;
-}
-.CosmosRail .rail-module {
-        background: transparent;
- 	margin: 0 10px 30px;
-}
-.cosmos-rail-inner {
-    	width: 100%;
+	zoom: 1;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	position: relative;
 }
 
-@media only screen and (max-width: 1023px) {
+@media only screen and ( min-width: 1024px ) {
 	.CosmosRail {
-    		-moz-column-count: 2;
-    		-webkit-column-count: 2;
-    		column-count: 2;
-    		clear: both;
-    		float: none;
-    		padding: 13px 10px 0;
-    		width: auto;
+		display: -ms-inline-flexbox;
+		display: -webkit-inline-flex;
+		display: inline-flex;
 	}
 }
-@media only screen and (max-width: 1023px) {
+
+.CosmosRail {
+	padding: 0;
+}
+
+.CosmosRail {
+	padding: 0 10px;
+	width: 300px;
+}
+
+.CosmosRail .module {
+	background: transparent;
+	zoom: 1;
+	margin-bottom: 30px;
+	padding: 20px 15px 15px;
+	position: relative;
+	word-wrap: break-word;
+}
+
+.CosmosRail .rail-module {
+	background: transparent;
+	margin: 0 10px 30px;
+}
+
+.cosmos-rail-inner {
+	width: 100%;
+}
+
+@media only screen and ( max-width: 1023px ) {
+	.CosmosRail {
+		-moz-column-count: 2;
+		-webkit-column-count: 2;
+		column-count: 2;
+		clear: both;
+		float: none;
+		padding: 13px 10px 0;
+		width: auto;
+	}
+}
+
+@media only screen and ( max-width: 1023px ) {
 	.CosmosRail .rail-module {
-	    	display: inline-block;
-    		width: 330px;
+		display: inline-block;
+		width: 330px;
 	}
 }
-@media only screen and (max-width: 1023px) {
+
+@media only screen and ( max-width: 1023px ) {
 	.CosmosRail .module {
-    		box-sizing: border-box;
-    		display: inline-block;
-    		margin: 12px 8px;
-    		position: static;
-    		vertical-align: top;
-    		width: 330px;
+		box-sizing: border-box;
+		display: inline-block;
+		margin: 12px 8px;
+		position: static;
+		vertical-align: top;
+		width: 330px;
 	}
 }
+
 .CosmosRail .module h2 {
-    border: 0;
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 0;
-    margin-bottom: 25px;
-    padding-left: 2px;
+	border: 0;
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 0;
+	margin-bottom: 25px;
+	padding-left: 2px;
 }
+
 .CosmosRail .module p {
-    line-height: 21px;
-    margin: 0;
-    padding: 0;
+	line-height: 21px;
+	margin: 0;
+	padding: 0;
 }
+
 .CosmosRail .module b {
-    font-weight: bold;
+	font-weight: bold;
 }
-@media only screen and (min-width: 1024px) {
-  .CosmosRail .rail-sticky-module {
-      position: absolute;
-  }
+
+@media only screen and ( min-width: 1024px ) {
+	.CosmosRail .rail-sticky-module {
+		position: absolute;
+	}
 }
+
 .CosmosRail .rail-sticky-module {
-    position: static;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 65px;
+	position: static;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 65px;
 }
-/*.CosmosRail .rail-sticky-module h2 {
-    text-transform: capitalize;
-}
-.CosmosRail .rail-sticky-module li {
-    margin: 0 6px 16px;
-}*/
