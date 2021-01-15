@@ -13,8 +13,6 @@
 	"cosmos-createpage-dialoge-text": "Jelenleg <b>$1</b> cikk létezik $2-ról/ről. Gépeld be fent a cikk címét, vagy kattints az alábbiak közül valamelyikre és kezdj el írni!",
 	"cosmos-personaltools-userpage": "Felhasználói lap",
 	"cosmos-personaltools-usertalk": "Szerkesztővita",
-	"cosmos-notifications-nomessages": "Nincsenek új üzeneteid!",
-	"cosmos-notifications-nonotifs": "Nincsenek olvasatlan értesítéseid!",
 	"cosmos-action-addsection": "Új téma",
 	"cosmos-action-cancel": "Mégse",
 	"cosmos-action-backtopage": "Vissza ide: $1",
