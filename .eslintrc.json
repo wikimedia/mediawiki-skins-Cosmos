@@ -14,9 +14,6 @@
 		"es6": true
 	},
 	"rules": {
-		"computed-property-spacing": 0,
-		"no-jquery/no-global-selector": 0,
-		"space-before-function-paren": 0,
-		"wrap-iife": 0
+		"no-jquery/no-global-selector": 0
 	}
 }
