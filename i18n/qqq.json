@@ -6,7 +6,7 @@
 		]
 	},
 	"skinname-cosmos": "{{name}}",
-	"cosmos-desc": "{{desc|what=skin|name=Cosmos|url=https://www.mediawiki.org/wiki/Skin:Cosmos}}",
+	"cosmos-desc": "{{desc|what=skin|name=Cosmos|url=https://www.mediawiki.org/wiki/Special:MyLanguage/Skin:Cosmos}}",
 	"cosmos-anonymous": "The text that shows instead of a username in the top banner if the user is not logged in.\n\n{{Identical|Anonymous}}",
 	"cosmos-tagline": "{{notranslate}}\nThe tagline in the wiki navigation header.\n\n{{msg-mw|sitetitle}}",
 	"cosmos-counter-label": "The label for the article counter in wiki navigation. Uses Plural:$1.",
@@ -19,8 +19,6 @@
 	"cosmos-personaltools-userpage": "The link text for user page in personal tools.\n\n{{Identical|User page}}",
 	"cosmos-personaltools-usertalk": "The link text for a logged in user's talk page in personal tools.",
 	"cosmos-personaltools-anontalk": "The link text for an anonymous user's talk page in personal tools.",
-	"cosmos-notifications-nomessages": "The text that displays if the user has no new talk page notifications and the Echo extension is not enabled.",
-	"cosmos-notifications-nonotifs": "The text that displays if the user has no new alerts and the Echo extension is not enabled.",
 	"cosmos-editcount-label": "The label for the edit count displayed on social profile user pages.",
 	"cosmos-action-addsection": "The new topic link text displayed on talk pages.\n\n{{Identical|New topic}}",
 	"cosmos-action-cancel": "The label for the action cancel buttons.\n\n{{Identical|Cancel}}",

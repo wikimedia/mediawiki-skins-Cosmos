@@ -1,12 +1,12 @@
 {
 	"name": "Cosmos",
-	"version": "4.0.0",
+	"version": "4.8.3",
 	"author": [
 		"Universal Omega",
 		"SamanthaNguyen",
 		"..."
 	],
-	"url": "https://www.mediawiki.org/wiki/Skin:Cosmos",
+	"url": "https://www.mediawiki.org/wiki/Special:MyLanguage/Skin:Cosmos",
 	"descriptionmsg": "cosmos-desc",
 	"namemsg": "skinname-cosmos",
 	"license-name": "GPL-2.0-or-later",
@@ -290,16 +290,6 @@
 			"path": false,
 			"public": true
 		},
-		"CosmosFontFamily": {
-			"value": null,
-			"path": false,
-			"public": true
-		},
-		"CosmosFontStyle": {
-			"value": null,
-			"path": false,
-			"public": true
-		},
 		"CosmosSocialProfileModernTabs": {
 			"value": true,
 			"path": false,
@@ -340,8 +330,8 @@
 			"path": false,
 			"public": true
 		},
-		"CosmosBackgroundImageNorepeat": {
-			"value": true,
+		"CosmosBackgroundImageRepeat": {
+			"value": false,
 			"path": false,
 			"public": true
 		},
