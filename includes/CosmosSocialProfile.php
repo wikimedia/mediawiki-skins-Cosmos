@@ -9,13 +9,13 @@ use User;
 use WikiPage;
 
 class CosmosSocialProfile {
-
 	/**
 	 * @param string $user
 	 * @return User|false
 	 */
 	private static function getUser( $user ) {
 		$title = Title::newFromText( $user );
+
 		if (
 			is_object( $title ) &&
 			( $title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE ) &&
@@ -23,16 +23,19 @@ class CosmosSocialProfile {
 		) {
 			$user = $title->getText();
 		}
+
 		$user = User::newFromName( $user );
+
 		return $user;
 	}
 
 	/**
 	 * @param string $user
-	 * @return string|false|null
+	 * @return string|null
 	 */
 	public static function getUserRegistration( $user ) {
 		$user = self::getUser( $user );
+
 		if ( $user ) {
 			return date( 'F j, Y', strtotime( $user->getRegistration() ) );
 		}
@@ -40,11 +43,12 @@ class CosmosSocialProfile {
 
 	/**
 	 * @param string $user
-	 * @return string
+	 * @return string|null
 	 */
 	public static function getUserGroups( $user ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
 		$user = self::getUser( $user );
+
 		if ( $user && $user->isBlocked() ) {
 			$userTags = Html::element(
 				'span',
@@ -54,11 +58,12 @@ class CosmosSocialProfile {
 		} elseif ( $user ) {
 			$numberOfTags = 0;
 			$userTags = '';
+
 			foreach ( $config->get( 'CosmosProfileTagGroups' ) as $value ) {
 				if ( in_array( $value, $user->getGroups() ) ) {
 					$numberOfTags++;
 					$numberOfTagsConfig = $config->get( 'CosmosNumberofGroupTags' );
-					$userGroupMessage = wfMessage( 'group-' . $value . '-member' );
+					$userGroupMessage = wfMessage( "group-{$value}-member" );
 
 					if ( $numberOfTags <= $numberOfTagsConfig ) {
 						$userTags .= Html::element(
@@ -70,8 +75,9 @@ class CosmosSocialProfile {
 				}
 			}
 		} else {
-			$userTags = '';
+			$userTags = null;
 		}
+
 		return $userTags;
 	}
 
@@ -81,6 +87,7 @@ class CosmosSocialProfile {
 	 */
 	public static function getUserEdits( $user ) {
 		$user = self::getUser( $user );
+
 		if ( $user ) {
 			return $user->getEditCount();
 		}
@@ -89,7 +96,7 @@ class CosmosSocialProfile {
 	/**
 	 * @param string $user
 	 * @param bool $followRedirects
-	 * @return string
+	 * @return string|null
 	 */
 	public static function getUserBio( $user, $followRedirects ) {
 		if ( $user && Title::newFromText( "User:{$user}/bio" )->isKnown() ) {

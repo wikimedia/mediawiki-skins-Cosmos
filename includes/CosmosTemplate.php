@@ -63,7 +63,7 @@ class CosmosTemplate extends BaseTemplate {
 			)
 		) {
 
-			// Set up Cosmos-specific SocialProfile Elements
+			// Set up Cosmos-specific SocialProfile elements
 			$profileOwner = Title::newFromText( $this->get( 'title' ) )->getText();
 
 			$replace = [
@@ -74,8 +74,10 @@ class CosmosTemplate extends BaseTemplate {
 			$groupTags = $config->get( 'CosmosSocialProfileShowGroupTags' )
 				? CosmosSocialProfile::getUserGroups( $profileOwner )
 				: null;
+
 			if ( $config->get( 'CosmosSocialProfileShowEditCount' ) ) {
 				$contribsURL = Title::newFromText( "Contributions/{$profileOwner}", NS_SPECIAL )->getFullURL();
+
 				$editCount = '<br/> <div class="contributions-details tally"><a href="' .
 					htmlspecialchars( $contribsURL ) . '"><em>' . CosmosSocialProfile::getUserEdits( $profileOwner ) .
 					'</em><span>' . $this->getMsg( 'cosmos-editcount-label' )->escaped() . '<br>' .
@@ -89,7 +91,8 @@ class CosmosTemplate extends BaseTemplate {
 
 			$bio = $config->get( 'CosmosSocialProfileAllowBio' )
 				? CosmosSocialProfile::getUserBio( $profileOwner, $followBioRedirects )
-				: '';
+				: null;
+
 			$replaceWith = [
 				'<h1 itemprop="name">' . $profileOwner . '</h1>' . $groupTags . $editCount . $bio,
 				'<div class="hgroup">'
@@ -488,14 +491,14 @@ class CosmosTemplate extends BaseTemplate {
 				break;
 			}
 
-			$tooltip = $this->getMsg( 'tooltip-pt-' . $key );
+			$tooltipMsg = $this->getMsg( "tooltip-pt-{$key}" );
 
-			if ( !empty( $tooltip ) ) {
-				$item['title'] = $tooltip->text();
+			if ( !$tooltipMsg->isDisabled() ) {
+				$item['title'] = $tooltipMsg->text();
 			}
 
 			$html .= Html::rawElement( 'li', [
-				'id' => 'pt-' . $key
+				'id' => "pt-{$key}"
 			], Html::rawElement( 'a', [
 				'class' => $item['class'] ?? false,
 				'href' => $item['href'],
@@ -1039,9 +1042,9 @@ class CosmosTemplate extends BaseTemplate {
 		foreach ( $this->data['content_actions'] as $key => $tab ) {
 			switch ( $key ) {
 
-					// If the action is edit or view source, assign the tab array to the
-					// edit variable, and specify the path to the image to use as the
-					// button's icon
+				// If the action is edit or view source, assign the tab array to the
+				// edit variable, and specify the path to the image to use as the
+				// button's icon
 
 				case 'edit':
 					$edit = $tab;

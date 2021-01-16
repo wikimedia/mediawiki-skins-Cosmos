@@ -42,6 +42,7 @@ class CosmosHooks implements
 		} else {
 			$bodyAttrs['class'] .= ' user-anon';
 		}
+
 		if ( $out->getTitle()->isMainPage() ) {
 			$bodyAttrs['class'] .= ' mainpage';
 		}
@@ -57,7 +58,6 @@ class CosmosHooks implements
 		$cosmos_section = new ALSection( wfMessage( 'skinname-cosmos' )->text() );
 		$cosmos_row = new ALRow( 'cosmos' );
 		$cosmos_row->addItem( ALItem::newFromEditLink( 'Cosmos-navigation', 'Edit navigation' ) );
-		$cosmos_row->addItem( ALItem::newFromEditLink( 'Cosmos-toolbar', 'Edit toolbar' ) );
 		$cosmos_row->addItem( ALItem::newFromEditLink( 'Cosmos-tagline', 'Edit tagline' ) );
 		$cosmos_row->addItem( ALItem::newFromEditLink( 'Cosmos-customsidebar', 'Edit custom sidebar' ) );
 		$cosmos_row->addItem( ALItem::newFromEditLink( 'Cosmos-stickysidebar', 'Edit custom sticky sidebar' ) );
