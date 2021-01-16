@@ -32,7 +32,6 @@
 	"cosmos-explore": "The header for the explore tab in the navigation.\n\n{{Identical|Explore}}",
 	"cosmos-newfiles": "New files label.",
 	"cosmos-navigation": "{{notranslate}}",
-	"cosmos-toolbar": "{{notranslate}}",
 	"cosmos-mobile-menu-label": "{{notranslate}}",
 	"prefs-cosmos-responsiveness": "The label for the Mobile Responsiveness section in Special:Preferences.",
 	"cosmos-mobile-preference": "The checkbox label for the mobile responsiveness toggle in Special:Preferences",

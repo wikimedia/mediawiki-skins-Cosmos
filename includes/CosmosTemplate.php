@@ -83,8 +83,12 @@ class CosmosTemplate extends BaseTemplate {
 			} else {
 				$editCount = null;
 			}
+
+			// experimental
+			$followBioRedirects = $config->get( 'CosmosSocialProfileFollowBioRedirects' );
+
 			$bio = $config->get( 'CosmosSocialProfileAllowBio' )
-				? CosmosSocialProfile::getUserBio( $profileOwner )
+				? CosmosSocialProfile::getUserBio( $profileOwner, $followBioRedirects )
 				: '';
 			$replaceWith = [
 				'<h1 itemprop="name">' . $profileOwner . '</h1>' . $groupTags . $editCount . $bio,
@@ -1515,33 +1519,24 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'ul' );
 
 		// Make a list item for each of the tool links
-		$cosmosToolbar = new CosmosToolbar( $skin->getContext() );
+		foreach ( $this->data['sidebar']['TOOLBOX'] as $key => $toolbarItem ) {
+			$html .= $skin->makeListItem( $key, $toolbarItem );
+		}
 
-		if ( $config->get( 'CosmosUseMessageforToolbar' ) && !$this->getMsg( 'cosmos-toolbar' )->isDisabled() ) {
-			$html .= $cosmosToolbar->getCode();
-		} else {
-			foreach ( $this->data['sidebar']['TOOLBOX'] as $key => $toolbarItem ) {
-				$html .= $skin->makeListItem( $key, $toolbarItem );
-			}
+		// Support CreateRedirect extension
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'CreateRedirect' ) ) {
+			$action = $skin->getRequest()->getText( 'action', 'view' );
+			$title = $skin->getRelevantTitle();
 
-			// Support CreateRedirect extension
-			if ( ExtensionRegistry::getInstance()->isLoaded( 'CreateRedirect' ) ) {
-				$action = $skin->getRequest()
-					->getText( 'action', 'view' );
-				$title = $skin->getRelevantTitle();
-				$href = SpecialPage::getTitleFor( 'CreateRedirect', $title->getPrefixedText() )
-					->getLocalURL();
-				$createRedirect = Html::rawElement(
-					'li',
-					[ 'id' => 't-createredirect' ],
-					Html::element( 'a', [ 'href' => $href ], $this->getMsg( 'createredirect' )->text() )
-				);
-				if ( $action == 'view' || $action == 'purge' || !$title->isSpecialPage() ) {
-					$html .= $createRedirect;
-				}
-			}
-			if ( !$this->getMsg( 'cosmos-toolbar' )->isDisabled() ) {
-				$html .= $cosmosToolbar->getCode();
+			$href = SpecialPage::getTitleFor( 'CreateRedirect', $title->getPrefixedText() )->getLocalURL();
+			$createRedirect = Html::rawElement(
+				'li',
+				[ 'id' => 't-createredirect' ],
+				Html::element( 'a', [ 'href' => $href ], $this->getMsg( 'createredirect' )->text() )
+			);
+
+			if ( $action == 'view' || $action == 'purge' || !$title->isSpecialPage() ) {
+				$html .= $createRedirect;
 			}
 		}
 

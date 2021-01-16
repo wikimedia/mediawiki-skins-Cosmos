@@ -31,7 +31,6 @@
 	"cosmos-explore": "Explore",
 	"cosmos-newfiles": "New files",
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**recentchanges-url|recentchanges\n**randompage-url|randompage\n**Special:NewFiles|cosmos-newfiles\n{$NEWVIDEOS_CONDITIONAL}\n{$WANTEDPAGES_CONDITIONAL}",
-	"cosmos-toolbar": "-",
 	"cosmos-mobile-menu-label": "&#9776;",
 	"prefs-cosmos-responsiveness": "Mobile responsiveness for Cosmos",
 	"cosmos-mobile-preference": "Enable mobile responsive version of the Cosmos skin",

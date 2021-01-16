@@ -227,133 +227,107 @@
 	"config": {
 		"CosmosBannerBackgroundColor": {
 			"value": "#c0c0c0",
-			"path": false,
-			"public": true
+			"description": "Changes the background color of the top banner"
 		},
 		"CosmosBannerLogo": {
 			"value": null,
-			"path": false,
-			"public": true
+			"description": "Sets a logo to appear in the top banner next to the search input field. (deprecated)"
 		},
 		"CosmosWikiHeaderWordmark": {
 			"value": null,
-			"path": false,
-			"public": true
+			"description": "Adds a wordmark to the wiki header (deprecated)"
 		},
 		"CosmosWikiHeaderBackgroundImage": {
 			"value": null,
-			"path": false,
-			"public": true
+			"description": "Adds a background image to the wiki header"
 		},
 		"CosmosWikiHeaderBackgroundColor": {
 			"value": "#c0c0c0",
-			"path": false,
-			"public": true
+			"description": "Changes the background color of the wiki header"
 		},
 		"CosmosBackgroundImage": {
 			"value": null,
-			"path": false,
-			"public": true
+			"description": "Adds a background image to the page body (behind the content area)"
 		},
 		"CosmosMainBackgroundColor": {
 			"value": "#1A1A1A",
-			"path": false,
-			"public": true
+			"description": "Adds a background color to the page body (behind the content area)"
 		},
 		"CosmosContentBackgroundColor": {
 			"value": "#ffffff",
-			"path": false,
-			"public": true
+			"description": "Changes the background color of the main wiki article content area"
 		},
 		"CosmosBackgroundImageSize": {
 			"value": "cover",
-			"path": false,
-			"public": true
+			"description": "Sets the background image size for the body background if set"
 		},
 		"CosmosLinkColor": {
 			"value": "#0645ad",
-			"path": false,
-			"public": true
+			"description": "Changes the color of links in the cosmos wiki article area"
 		},
 		"CosmosButtonColor": {
 			"value": "#c0c0c0",
-			"path": false,
-			"public": true
+			"description": "Changes the background color of the page action buttons for Cosmos"
 		},
 		"CosmosToolbarColor": {
 			"value": "#000000",
-			"path": false,
-			"public": true
+			"description": "Changes the background color of the floating toolbar at the bottom"
 		},
 		"CosmosFooterColor": {
 			"value": "#c0c0c0",
-			"path": false,
-			"public": true
+			"description": "Changes the background color of the footer"
 		},
 		"CosmosSocialProfileModernTabs": {
 			"value": true,
-			"path": false,
-			"public": true
+			"description": "Enables a modern version of the tabs on SocialProfile profile pages"
 		},
 		"CosmosSocialProfileRoundAvatar": {
 			"value": true,
-			"path": false,
-			"public": true
+			"description": "Makes the avatar round on SocialProfile profile pages"
 		},
 		"CosmosSocialProfileShowEditCount": {
 			"value": true,
-			"path": false,
-			"public": true
+			"description": "Show's the edit count and registration date for the user on SocialProfile profile pages, underneath their username"
 		},
 		"CosmosSocialProfileAllowBio": {
 			"value": true,
-			"path": false,
-			"public": true
+			"description": "Allows users to add a bio to display on their user pages, through Special:MyPage/bio"
+		},
+		"CosmosSocialProfileFollowBioRedirects": {
+			"value": false,
+			"description": "Whether or not to follow redirects from Special:MyPage/bio and display the redirect target as bio instead (experimental)"
 		},
 		"CosmosSocialProfileShowGroupTags": {
 			"value": true,
-			"path": false,
-			"public": true
+			"description": "Enables usergroup tags to appear next to user's username on SocialProfile profile pages"
 		},
 		"CosmosUseSocialProfileAvatar": {
 			"value": true,
-			"path": false,
-			"public": true
+			"description": "Use SocialProfile avatar as avatar next to username in top banner"
 		},
 		"CosmosEnablePortableInfoboxEuropaTheme": {
 			"value": true,
-			"path": false,
-			"public": true
-		},
-		"CosmosUseMessageforToolbar": {
-			"value": false,
-			"path": false,
-			"public": true
+			"description": "Enables the Europa theme from Fandom's portable infobox extension on the ported extension."
 		},
 		"CosmosBackgroundImageRepeat": {
 			"value": false,
-			"path": false,
-			"public": true
+			"description": "If true the background image will be set to 'repeat' otherwise, if false, it will be set to 'no-repeat'"
 		},
 		"CosmosBackgroundImageFixed": {
 			"value": true,
-			"path": false,
-			"public": true
+			"description": "If true the background image will be set to position: fixed"
 		},
 		"CosmosProfileTagGroups": {
 			"value": [ "bureaucrat", "bot", "sysop", "interface-admin", "suppressor" ],
-			"path": false,
-			"public": true
+			"description": "Array of usergroups to show on SocialProfile pages if the user has them"
 		},
 		"CosmosNumberofGroupTags": {
 			"value": 2,
-			"path": false,
-			"public": true
+			"description": "Set the max number of group tags to show on a user's SocialProfile page if they have them"
 		},
 		"CosmosContentOpacityLevel": {
 			"value": 100,
-			"path": false,
-			"public": true
+			"description": "Set the content area background opacity in percentage (without the percent symbol)"
 		}
 	},
 	"HookHandlers": {

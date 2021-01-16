@@ -88,10 +88,10 @@ class CosmosSocialProfile {
 
 	/**
 	 * @param string $user
-	 * @param bool|false $followRedirects
+	 * @param bool $followRedirects
 	 * @return string
 	 */
-	public static function getUserBio( $user, $followRedirects = false ) {
+	public static function getUserBio( $user, $followRedirects ) {
 		if ( $user && Title::newFromText( "User:{$user}/bio" )->isKnown() ) {
 			$userBioPage = Title::newFromText( "User:{$user}/bio" );
 
@@ -99,6 +99,7 @@ class CosmosSocialProfile {
 
 			$content = $wikiPage->getContent();
 
+			// experimental
 			if (
 				$followRedirects &&
 				$userBioPage->isRedirect() &&
