@@ -1,8 +1,4 @@
 <?php
-/**
- * @author Sean Colombo
- * @author Universal Omega
- */
 
 namespace MediaWiki\Skin\Cosmos;
 

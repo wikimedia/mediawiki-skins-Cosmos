@@ -1,14 +1,4 @@
 <?php
-/**
- * CosmosNavigation class
- *
- * @package MediaWiki
- * @subpackage Skins
- *
- * @author Inez Korczynski <inez@wikia.com>
- * @author Christian Williams
- * @author Universal Omega
- */
 
 namespace MediaWiki\Skin\Cosmos;
 

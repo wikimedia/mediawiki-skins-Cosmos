@@ -1,4 +1,5 @@
 <?php
+
 namespace MediaWiki\Skin\Cosmos;
 
 use ALItem;

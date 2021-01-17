@@ -1,9 +1,5 @@
 <?php
-/**
- * SkinTemplate class for the Cosmos skin
- *
- * @ingroup Skins
- */
+
 namespace MediaWiki\Skin\Cosmos;
 
 use ExtensionRegistry;

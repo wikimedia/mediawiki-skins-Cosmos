@@ -1,9 +1,5 @@
 <?php
-/**
- * BaseTemplate class for the Cosmos skin
- *
- * @ingroup Skins
- */
+
 namespace MediaWiki\Skin\Cosmos;
 
 use BaseTemplate;

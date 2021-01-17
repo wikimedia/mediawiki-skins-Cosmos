@@ -1,8 +1,4 @@
 <?php
-/**
- * ResourceLoader module for LESS configs
- * @author Universal Omega
- */
 
 namespace MediaWiki\Skin\Cosmos;
 
