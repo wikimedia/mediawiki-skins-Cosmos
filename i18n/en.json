@@ -35,6 +35,9 @@
 	"prefs-cosmos-responsiveness": "Mobile responsiveness for Cosmos",
 	"cosmos-mobile-preference": "Enable mobile responsive version of the Cosmos skin",
 	"cosmos-user-blocked": "Blocked",
+	"cosmos-themedesigner-success": "Successfully updated configuration for Cosmos.",
+	"themedesigner": "Theme Designer",
+	"right-themedesigner": "Use Cosmos ThemeDesigner",
 	"cosmos.css": "/* All CSS here will be loaded for users of the Cosmos skin */",
 	"cosmos.js": "/* All JavaScript here will be loaded for users of the Cosmos skin */"
 }
