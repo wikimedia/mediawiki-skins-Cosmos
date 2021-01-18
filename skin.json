@@ -318,7 +318,7 @@
 			"description": "If true the background image will be set to position: fixed"
 		},
 		"CosmosProfileTagGroups": {
-			"value": [ "bureaucrat", "bot", "sysop", "interface-admin", "suppressor" ],
+			"value": [ "bureaucrat", "bot", "sysop", "interface-admin" ],
 			"description": "Array of usergroups to show on SocialProfile pages if the user has them"
 		},
 		"CosmosNumberofGroupTags": {
