@@ -4,6 +4,7 @@
 			"Pittigrilli"
 		]
 	},
+	"cosmos-desc": "Cosmos ist ein Skin, der auf dem Oasis-Skin von Fandom basiert. Sie wurde entwickelt, um deren Design zu verbessern und eine effiziente MediaWiki-Skin für Nicht-Fandom-Benutzer oder für Benutzer, die aus Fandom aussteigen, bereitzustellen.",
 	"cosmos-anonymous": "Anonym",
 	"cosmos-counter-label": "{{PLURAL:$1|Artikel}}",
 	"cosmos-createpage-header": "Einen neuen Artikel erstellen",
@@ -27,5 +28,8 @@
 	"cosmos-newfiles": "Neue Dateien",
 	"prefs-cosmos-responsiveness": "Mobile Responsivität für den Cosmos",
 	"cosmos-mobile-preference": "Mobile, responsive Version der Cosmos-Benutzeroberfläche aktivieren",
-	"cosmos-user-blocked": "Gesperrt"
+	"cosmos-user-blocked": "Gesperrt",
+	"cosmos-themedesigner-success": "Konfiguration für Cosmos erfolgreich aktualisiert.",
+	"themedesigner": "Theme-Designer",
+	"right-themedesigner": "Cosmos ThemeDesigner verwenden"
 }
