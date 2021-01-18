@@ -19,7 +19,6 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 );
 
 $cfg['suppress_issue_types'] = array_merge( $cfg['suppress_issue_types'], [
-	// Ignore temporarily so these can be fixed, not all at once
 	'PhanUndeclaredTypeParameter',
 	'PhanUndeclaredClassMethod',
 	'PhanUndeclaredConstant',
