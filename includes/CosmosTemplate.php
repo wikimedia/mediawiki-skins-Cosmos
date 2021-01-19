@@ -26,6 +26,8 @@ class CosmosTemplate extends BaseTemplate {
 	public function execute() {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
 
+		$cosmosConfig = MediaWikiServices::getInstance()->getService( 'CosmosConfig' );
+
 		/** @var Skin */
 		$skin = $this->getSkin();
 
@@ -35,8 +37,8 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'div', [ 'id' => 'mw-content-container', 'class' => 'ts-container' ] );
 		$html .= Html::openElement( 'div', [ 'id' => 'mw-content-block', 'class' => 'ts-inner' ] );
 		$html .= Html::openElement( 'div', [ 'id' => 'mw-content-wrapper' ] );
-		$html .= $this->buildWikiHeader( $config );
-		$html .= $this->buildWiki( $config );
+		$html .= $this->buildWikiHeader( $cosmosConfig );
+		$html .= $this->buildWiki();
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
@@ -599,10 +601,10 @@ class CosmosTemplate extends BaseTemplate {
 	}
 
 	/**
-	 * @param Config $config
+	 * @param CosmosConfig $config
 	 * @return string
 	 */
-	protected function buildWikiHeader( Config $config ) {
+	protected function buildWikiHeader( CosmosConfig $config ) {
 		$skin = $this->getSkin();
 		$user = $skin->getUser();
 
@@ -627,8 +629,8 @@ class CosmosTemplate extends BaseTemplate {
 
 		$html = '';
 
-		$headerStyle = $config->get( 'CosmosWikiHeaderBackgroundImage' )
-			? "background-image: url({$config->get( 'CosmosWikiHeaderBackgroundImage' ) });"
+		$headerStyle = $config->getWikiHeaderBackgroundImage()
+			? "background-image: url({$config->getWikiHeaderBackgroundImage() });"
 			: null;
 		$html .= Html::openElement(
 			'header',
@@ -778,16 +780,17 @@ class CosmosTemplate extends BaseTemplate {
 	}
 
 	/**
-	 * @param Config $config
+	 * @param CosmosConfig $config
 	 * @return string
 	 */
-	protected function buildWordmark( Config $config ) {
+	protected function buildWordmark( CosmosConfig $config ) {
 		$html = '';
 
 		$mainConfig = $this->getSkin()->getConfig();
+		$config = MediaWikiServices::getInstance()->getService( 'CosmosConfig' );
 
 		if (
-			$config->get( 'CosmosWikiHeaderWordmark' ) ||
+			$config->getWikiHeaderWordmark() ||
 			isset( $mainConfig->get( 'Logos' )['wordmark']['src'] ) ||
 			isset( $mainConfig->get( 'Logos' )['1x'] ) ||
 			$mainConfig->get( 'Logo' )
@@ -805,8 +808,8 @@ class CosmosTemplate extends BaseTemplate {
 			);
 
 			// Insert logo image
-			if ( $config->get( 'CosmosWikiHeaderWordmark' ) ) {
-				$logoSrc = $config->get( 'CosmosWikiHeaderWordmark' );
+			if ( $config->getWikiHeaderWordmark() ) {
+				$logoSrc = $config->getWikiHeaderWordmark();
 			} else {
 				$logoSrc = $mainConfig->get( 'Logos' )['wordmark']['src'] ??
 					$mainConfig->get( 'Logos' )['1x'] ??
@@ -831,10 +834,9 @@ class CosmosTemplate extends BaseTemplate {
 	 * Generate the page content block
 	 * Broken out here due to the excessive indenting, or stuff.
 	 *
-	 * @param Config $config
 	 * @return string html
 	 */
-	protected function buildWiki( Config $config ) {
+	protected function buildWiki() {
 		$html = '';
 
 		// Open container element for page body
@@ -858,7 +860,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'section' );
 
 		$html .= $this->buildFooter();
-		$html .= $this->buildToolbar( $config );
+		$html .= $this->buildToolbar();
 
 		return $html;
 	}
@@ -1499,10 +1501,9 @@ class CosmosTemplate extends BaseTemplate {
 	 * Builds HTML code for the toolbar that is displayed at the bottom of the
 	 * page, and appends it to the string of HTML that is it passed.
 	 *
-	 * @param Config $config
 	 * @return string
 	 */
-	protected function buildToolbar( Config $config ) {
+	protected function buildToolbar() {
 		$skin = $this->getSkin();
 
 		$html = '';

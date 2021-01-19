@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Skin\Cosmos;
 
-use Config;
 use MediaWiki\MediaWikiServices;
 use ResourceLoaderContext;
 use ResourceLoaderFileModule;
@@ -16,33 +15,34 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 	 */
 	protected function getLessVars( ResourceLoaderContext $context ) {
 		$lessVars = parent::getLessVars( $context );
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
-		$contentBackgroundColor = $config->get( 'CosmosContentBackgroundColor' );
+		$config = MediaWikiServices::getInstance()->getService( 'CosmosConfig' );
+
+		$contentBackgroundColor = $config->getContentBackgroundColor();
 		if ( strpos( $contentBackgroundColor, 'rgb' ) !== false ) {
 			$rgbArr = explode( ",", $contentBackgroundColor, 3 );
 			$colorName = sprintf( "#%02x%02x%02x", $rgbArr[0], $rgbArr[1], $rgbArr[2] );
 		} else {
 			$colorName = LessUtil::colorNameToHex( $contentBackgroundColor );
 		}
-		$lessVars['banner-background-color'] = $config->get( 'CosmosBannerBackgroundColor' );
+		$lessVars['banner-background-color'] = $config->getBannerBackgroundColor();
 
-		if ( $config->get( 'CosmosBackgroundImage' ) ) {
+		if ( $config->getBackgroundImage() ) {
 			$lessVars['main-background-image-isset'] = 1;
-			$lessVars['main-background-image'] = 'url(' . $config->get( 'CosmosBackgroundImage' ) . ')';
+			$lessVars['main-background-image'] = 'url(' . $config->getBackgroundImage() . ')';
 		} else {
 			$lessVars['main-background-image-isset'] = 0;
 		}
-		$lessVars['main-background-color'] = $config->get( 'CosmosMainBackgroundColor' );
-		$lessVars['content-background-color'] = $config->get( 'CosmosContentBackgroundColor' );
-		$lessVars['main-background-image-size'] = $config->get( 'CosmosBackgroundImageSize' );
-		$lessVars['link-color'] = $config->get( 'CosmosLinkColor' );
-		$lessVars['button-color'] = $config->get( 'CosmosButtonColor' );
-		if ( $config->get( 'CosmosBackgroundImageRepeat' ) ) {
+		$lessVars['main-background-color'] = $config->getMainBackgroundColor();
+		$lessVars['content-background-color'] = $config->getContentBackgroundColor();
+		$lessVars['main-background-image-size'] = $config->getBackgroundImageSize();
+		$lessVars['link-color'] = $config->getLinkColor();
+		$lessVars['button-color'] = $config->getButtonColor();
+		if ( $config->getBackgroundImageRepeat() ) {
 			$lessVars['main-background-image-repeat'] = 'repeat';
 		} else {
 			$lessVars['main-background-image-repeat'] = 'no-repeat';
 		}
-		if ( $config->get( 'CosmosBackgroundImageFixed' ) ) {
+		if ( $config->getBackgroundImageFixed() ) {
 			$lessVars['main-background-image-position'] = 'fixed';
 		} else {
 			$lessVars['main-background-image-position'] = 'absolute';
@@ -52,9 +52,9 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 			return hexdec( str_pad( $c, 2, $c ) );
 		},
 		str_split( ltrim( $colorName, '#' ), strlen( $colorName ) > 4 ? 2 : 1 ) );
-		$contentOpacityLevelConfig = $config->get( 'CosmosContentOpacityLevel' );
+		$contentOpacityLevelConfig = $config->getContentOpacityLevel();
 		$lessVars['content-opacity-level'] = "rgba($r, $g, $b, " . $contentOpacityLevelConfig / 100.00 . ')';
-		$footerBackgroundColor = $config->get( 'CosmosFooterColor' );
+		$footerBackgroundColor = $config->getFooterColor();
 		if ( strpos( $footerBackgroundColor, 'rgb' ) !== false ) {
 			$rgbArr = explode( ",", $footerBackgroundColor, 3 );
 			$colorName = sprintf( "#%02x%02x%02x", $rgbArr[0], $rgbArr[1], $rgbArr[2] );
@@ -71,7 +71,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		$lessVars['footer-font-color1'] = $isFooterColorDark ? '#999' : '#666';
 		$lessVars['footer-font-color2'] = $isFooterColorDark ? '#fff' : '#000';
 
-		$headerBackgroundColor = $config->get( 'CosmosWikiHeaderBackgroundColor' );
+		$headerBackgroundColor = $config->getWikiHeaderBackgroundColor();
 		if ( strpos( $headerBackgroundColor, 'rgb' ) !== false ) {
 			$rgbArr = explode( ",", $headerBackgroundColor, 3 );
 			$colorName = sprintf( "#%02x%02x%02x", $rgbArr[0], $rgbArr[1], $rgbArr[2] );
@@ -104,11 +104,11 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 	}
 
 	/**
-	 * @param Config $config
+	 * @param CosmosConfig $config
 	 * @return array
 	 */
-	private function getThemedToolbarColorSettings( Config $config ) : array {
-		$toolbarColor = $config->get( 'CosmosToolbarColor' );
+	private function getThemedToolbarColorSettings( CosmosConfig $config ) : array {
+		$toolbarColor = $config->getToolbarColor();
 
 		return [
 			'toolbar-color2' => $toolbarColor,

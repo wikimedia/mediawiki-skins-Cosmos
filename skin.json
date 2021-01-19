@@ -39,6 +39,9 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Skin\\Cosmos\\": "includes/"
 	},
+	"ServiceWiringFiles": [
+		"includes/ServiceWiring.php"
+	],
 	"ConfigRegistry": {
 		"cosmos": "GlobalVarConfig::newInstance"
 	},
@@ -230,15 +233,15 @@
 			"description": "Changes the background color of the top banner"
 		},
 		"CosmosBannerLogo": {
-			"value": null,
+			"value": false,
 			"description": "Sets a logo to appear in the top banner next to the search input field. (deprecated)"
 		},
 		"CosmosWikiHeaderWordmark": {
-			"value": null,
+			"value": false,
 			"description": "Adds a wordmark to the wiki header (deprecated)"
 		},
 		"CosmosWikiHeaderBackgroundImage": {
-			"value": null,
+			"value": false,
 			"description": "Adds a background image to the wiki header"
 		},
 		"CosmosWikiHeaderBackgroundColor": {
@@ -246,7 +249,7 @@
 			"description": "Changes the background color of the wiki header"
 		},
 		"CosmosBackgroundImage": {
-			"value": null,
+			"value": false,
 			"description": "Adds a background image to the page body (behind the content area)"
 		},
 		"CosmosMainBackgroundColor": {

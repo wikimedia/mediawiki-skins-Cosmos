@@ -17,41 +17,41 @@ class LessUtil {
 	public static function getCosmosSettings() {
 		if ( empty( static::$cosmosSettings ) ) {
 			$services = MediaWikiServices::getInstance();
-			$themeSettings = $services->getConfigFactory()->makeConfig( 'cosmos' );
+			$themeSettings = $services->getService( 'CosmosConfig' );
 
 			static::$cosmosSettings['banner-background-color'] =
 				self::sanitizeColor(
-					$themeSettings->get( 'CosmosBannerBackgroundColor' )
+					$themeSettings->getBannerBackgroundColor()
 				);
 
 			static::$cosmosSettings['header-background-color'] =
 				self::sanitizeColor(
-					$themeSettings->get( 'CosmosWikiHeaderBackgroundColor' )
+					$themeSettings->getWikiHeaderBackgroundColor()
 				);
 
 			static::$cosmosSettings['content-background-color'] =
 				self::sanitizeColor(
-					$themeSettings->get( 'CosmosContentBackgroundColor' )
+					$themeSettings->getContentBackgroundColor()
 				);
 
 			static::$cosmosSettings['button-color'] =
 				self::sanitizeColor(
-					$themeSettings->get( 'CosmosButtonColor' )
+					$themeSettings->getButtonColor()
 				);
 
 			static::$cosmosSettings['link-color'] =
 				self::sanitizeColor(
-					$themeSettings->get( 'CosmosLinkColor' )
+					$themeSettings->getLinkColor()
 				);
 
 			static::$cosmosSettings['toolbar-color'] =
 				self::sanitizeColor(
-					$themeSettings->get( 'CosmosToolbarColor' )
+					$themeSettings->getToolbarColor()
 				);
 
 			static::$cosmosSettings['footer-color'] =
 				self::sanitizeColor(
-					$themeSettings->get( 'CosmosFooterColor' )
+					$themeSettings->getFooterColor()
 				);
 
 			foreach ( static::$cosmosSettings as $key => $val ) {
