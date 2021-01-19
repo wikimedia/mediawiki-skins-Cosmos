@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shuiwater"
+			"Shuiwater",
+			"Yfdyh000"
 		]
 	},
 	"cosmos-anonymous": "匿名",
@@ -16,5 +17,7 @@
 	"cosmos-add-new-page-title": "添加新的页面",
 	"cosmos-add-new-page-text": "添加",
 	"cosmos-anon-add-new-page-text": "添加新页面",
-	"cosmos-explore": "探索"
+	"cosmos-explore": "探索",
+	"themedesigner": "主题设计工具",
+	"right-themedesigner": "使用Cosmos ThemeDesigner"
 }

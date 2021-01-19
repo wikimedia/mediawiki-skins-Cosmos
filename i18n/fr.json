@@ -32,6 +32,9 @@
 	"prefs-cosmos-responsiveness": "Réactivité mobile pour Cosmos",
 	"cosmos-mobile-preference": "Permettre la version mobile réactive sur l’habillage Cosmos",
 	"cosmos-user-blocked": "Bloqué",
+	"cosmos-themedesigner-success": "Configuration bien misse à jour pour Cosmos",
+	"themedesigner": "Concepteur de thème",
+	"right-themedesigner": "Utiliser le concepteur de thème de Cosmos",
 	"cosmos.css": "/* Tout CSS placé ici sera chargé avec les pages accédées par les utilisateurs de l’habillage Cosmos */",
 	"cosmos.js": "/* Tout code JavaScript placé ici sera chargé avec les pages accédées par les utilisateurs de l’habillage Cosmos */"
 }

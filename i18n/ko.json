@@ -23,5 +23,8 @@
 	"cosmos-anon-add-new-page-text": "새 문서 추가",
 	"cosmos-explore": "찾아보기",
 	"cosmos-newfiles": "새 파일",
-	"cosmos-user-blocked": "차단됨"
+	"cosmos-user-blocked": "차단됨",
+	"cosmos-themedesigner-success": "코스모스의 구성을 성공적으로 업데이트했습니다.",
+	"themedesigner": "테마 디자이너",
+	"right-themedesigner": "코스모스 테마디자이너 사용"
 }
