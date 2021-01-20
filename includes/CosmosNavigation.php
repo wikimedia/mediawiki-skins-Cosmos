@@ -205,6 +205,7 @@ class CosmosNavigation implements ExpirationAwareness {
 				$node['depth'] = strrpos( $line, '*' ) + 1;
 
 				if ( $node['depth'] == $lastDepth ) {
+					// @phan-suppress-next-line PhanTypeInvalidDimOffset
 					$node['parentIndex'] = $nodes[$i]['parentIndex'];
 				} elseif ( $node['depth'] == $lastDepth + 1 ) {
 					$node['parentIndex'] = $i;
@@ -215,6 +216,7 @@ class CosmosNavigation implements ExpirationAwareness {
 							break;
 						}
 
+						// @phan-suppress-next-line PhanTypeInvalidDimOffset
 						if ( $nodes[$x]['depth'] == $node['depth'] - 1 ) {
 							$node['parentIndex'] = $x;
 							break;
@@ -233,7 +235,7 @@ class CosmosNavigation implements ExpirationAwareness {
 				}
 
 				$nodes[$i + 1] = $node;
-				$nodes[$node['parentIndex']]['children'][] = $i + 1;
+				$nodes[ $node['parentIndex'] ?? 0 ]['children'][] = $i + 1;
 				$lastDepth = $node['depth'];
 				$i++;
 			}
