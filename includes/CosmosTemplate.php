@@ -608,6 +608,8 @@ class CosmosTemplate extends BaseTemplate {
 		$skin = $this->getSkin();
 		$user = $skin->getUser();
 
+		$mainConfig = $skin->getConfig();
+
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 
 		$canCreate = $permissionManager->userHasRight( $user, 'createpage' );
@@ -616,6 +618,13 @@ class CosmosTemplate extends BaseTemplate {
 		$canUpload = $permissionManager->userHasRight( $user, 'upload' );
 		$canAddVideo = $permissionManager->userHasRight( $user, 'addvideo' );
 		$canViewAdminLinks = $permissionManager->userHasRight( $user, 'adminlinks' );
+
+		$uploadsEnabled = $mainConfig->get( 'EnableUploads' );
+
+		$specialUploadURL = Title::newFromText( 'Upload', NS_SPECIAL )->getFullURL();
+		$uploadNavigationURL = $mainConfig->get( 'UploadNavigationUrl' );
+
+		$uploadURL = $uploadNavigationURL ?: $specialUploadURL;
 
 		$videoExtensionLoaded = ExtensionRegistry::getInstance()->isLoaded( 'Video' );
 		$adminLinksExtensionLoaded = ExtensionRegistry::getInstance()->isLoaded( 'Admin Links' );
@@ -630,7 +639,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html = '';
 
 		$headerStyle = $config->getWikiHeaderBackgroundImage()
-			? "background-image: url({$config->getWikiHeaderBackgroundImage() });"
+			? "background-image: url({$config->getWikiHeaderBackgroundImage()});"
 			: null;
 		$html .= Html::openElement(
 			'header',
@@ -730,17 +739,19 @@ class CosmosTemplate extends BaseTemplate {
 			}
 
 			if (
-				( !$isAnon && ( $canUpload || ( $canAddVideo && $videoExtensionLoaded ) ) ) ||
-				( ( $canUpload || ( $canAddVideo && $videoExtensionLoaded ) ) && !$canEdit && !$canCreate )
+				( !$isAnon && ( ( $canUpload && $uploadsEnabled ) ||
+				( $canAddVideo && $videoExtensionLoaded ) ) ) ||
+				( ( ( $canUpload && $uploadsEnabled ) ||
+				( $canAddVideo && $videoExtensionLoaded ) ) && !$canEdit && !$canCreate )
 			) {
 				$moreIcon = Icon::getIcon( 'more' )->makeSvg(
 					384,
 					384,
 					[ 'class' => 'wds-icon wds-icon-small', 'id' => 'wds-icons-more' ]
 				);
-				if ( $canUpload ) {
+				if ( $canUpload && $uploadsEnabled ) {
 					$newImageHTML = '<li id="m-add-new-image"><a href="' .
-						htmlspecialchars( Title::newFromText( 'Upload', NS_SPECIAL )->getFullURL() ) .
+						htmlspecialchars( $uploadURL ) .
 						'">' . $this->getMsg( 'cosmos-add-new-image' )->escaped() . '</a></li>';
 				} else {
 					$newImageHTML = null;
