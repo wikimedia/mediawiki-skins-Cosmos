@@ -482,7 +482,7 @@ body > .suggestions {
 
 .cosmos-button-primary {
 	color: @button-font-color;
-	background-color: @button-color;
+	background-color: @button-background-color;
 	stroke: @button-font-color;
 	stroke-width: 2px;
 }
@@ -1598,7 +1598,7 @@ button.wds-button {
 }
 
 .mw-dismissable-notice {
-	background-color: @button-color;
+	background-color: @button-background-color;
 	color: @button-font-color;
 	opacity: 1;
 	z-index: 100;
@@ -1607,7 +1607,7 @@ button.wds-button {
 
 	.wikitable {
 		td {
-			background: @button-color;
+			background: @button-background-color;
 			border: 0;
 		}
 		border: 0;
@@ -2099,14 +2099,14 @@ body h6 {
 	color: @font-color;
 }
 
-@toolbar-color1: mix(@toolbar-color2, @toolbar-color-mix, 25%);
+@toolbar-background-color1: mix(@toolbar-background-color2, @toolbar-background-color-mix, 25%);
 
 #cosmos-toolbar {
 	box-shadow: 0 0 10px 0 @content-background-color;
-	background-image: -moz-linear-gradient( left, @toolbar-color1 0, @toolbar-color2 50%, @toolbar-color1 100% );
-	background-image: -webkit-gradient( linear, 0% 0%, 100% 0%, color-stop( 0, @toolbar-color1 ), color-stop( 50%, @toolbar-color2 ), color-stop( 100%, @toolbar-color1 ) );
-	background-image: -o-linear-gradient( left, @toolbar-color1 0, @toolbar-color2 50%, @toolbar-color1 100% );
-	background-image: -ms-linear-gradient( left, @toolbar-color1 0, @toolbar-color2 50%, @toolbar-color1 100% );
+	background-image: -moz-linear-gradient( left, @toolbar-background-color1 0, @toolbar-background-color2 50%, @toolbar-background-color1 100% );
+	background-image: -webkit-gradient( linear, 0% 0%, 100% 0%, color-stop( 0, @toolbar-background-color1 ), color-stop( 50%, @toolbar-background-color2 ), color-stop( 100%, @toolbar-background-color1 ) );
+	background-image: -o-linear-gradient( left, @toolbar-background-color1 0, @toolbar-background-color2 50%, @toolbar-background-color1 100% );
+	background-image: -ms-linear-gradient( left, @toolbar-background-color1 0, @toolbar-background-color2 50%, @toolbar-background-color1 100% );
 	position: fixed;
 	z-index: 1000;
 	bottom: 0;
@@ -2163,7 +2163,7 @@ body h6 {
 
 #cosmos-content-siteNotice {
 	color: @button-font-color;
-	background-color: @button-color;
+	background-color: @button-background-color;
 	border: 1px solid @button-font-color;
 	margin: 0 15px 15px 15px;
 	padding: 15px 15px 15px 15px;
@@ -2231,7 +2231,7 @@ body h6 {
 }
 
 body .mw-notification {
-	background: @button-color;
+	background: @button-background-color;
 	color: @button-font-color;
 }
 

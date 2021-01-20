@@ -34,9 +34,9 @@ class LessUtil {
 					$themeSettings->getContentBackgroundColor()
 				);
 
-			static::$cosmosSettings['button-color'] =
+			static::$cosmosSettings['button-background-color'] =
 				self::sanitizeColor(
-					$themeSettings->getButtonColor()
+					$themeSettings->getButtonBackgroundColor()
 				);
 
 			static::$cosmosSettings['link-color'] =
@@ -44,14 +44,14 @@ class LessUtil {
 					$themeSettings->getLinkColor()
 				);
 
-			static::$cosmosSettings['toolbar-color'] =
+			static::$cosmosSettings['toolbar-background-color'] =
 				self::sanitizeColor(
-					$themeSettings->getToolbarColor()
+					$themeSettings->getToolbarBackgroundColor()
 				);
 
-			static::$cosmosSettings['footer-color'] =
+			static::$cosmosSettings['footer-background-color'] =
 				self::sanitizeColor(
-					$themeSettings->getFooterColor()
+					$themeSettings->getFooterBackgroundColor()
 				);
 
 			foreach ( static::$cosmosSettings as $key => $val ) {

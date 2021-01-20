@@ -36,7 +36,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		$lessVars['content-background-color'] = $config->getContentBackgroundColor();
 		$lessVars['main-background-image-size'] = $config->getBackgroundImageSize();
 		$lessVars['link-color'] = $config->getLinkColor();
-		$lessVars['button-color'] = $config->getButtonColor();
+		$lessVars['button-background-color'] = $config->getButtonBackgroundColor();
 		if ( $config->getBackgroundImageRepeat() ) {
 			$lessVars['main-background-image-repeat'] = 'repeat';
 		} else {
@@ -54,7 +54,7 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 		str_split( ltrim( $colorName, '#' ), strlen( $colorName ) > 4 ? 2 : 1 ) );
 		$contentOpacityLevelConfig = $config->getContentOpacityLevel();
 		$lessVars['content-opacity-level'] = "rgba($r, $g, $b, " . $contentOpacityLevelConfig / 100.00 . ')';
-		$footerBackgroundColor = $config->getFooterColor();
+		$footerBackgroundColor = $config->getFooterBackgroundColor();
 		if ( strpos( $footerBackgroundColor, 'rgb' ) !== false ) {
 			$rgbArr = explode( ",", $footerBackgroundColor, 3 );
 			$colorName = sprintf( "#%02x%02x%02x", $rgbArr[0], $rgbArr[1], $rgbArr[2] );
@@ -65,11 +65,11 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 			return hexdec( str_pad( $c, 2, $c ) );
 		},
 		str_split( ltrim( $colorName, '#' ), strlen( $colorName ) > 4 ? 2 : 1 ) );
-		$lessVars['footer-background-color'] = "rgba($r, $g, $b,0.9)";
+		$lessVars['footer-background-color'] = "rgba($r, $g, $b, 0.9)";
 
-		$isFooterColorDark = LessUtil::isThemeDark( 'footer-color' );
-		$lessVars['footer-font-color1'] = $isFooterColorDark ? '#999' : '#666';
-		$lessVars['footer-font-color2'] = $isFooterColorDark ? '#fff' : '#000';
+		$isFooterBackgroundColorDark = LessUtil::isThemeDark( 'footer-background-color' );
+		$lessVars['footer-font-color1'] = $isFooterBackgroundColorDark ? '#999' : '#666';
+		$lessVars['footer-font-color2'] = $isFooterBackgroundColorDark ? '#fff' : '#000';
 
 		$headerBackgroundColor = $config->getWikiHeaderBackgroundColor();
 		if ( strpos( $headerBackgroundColor, 'rgb' ) !== false ) {
@@ -96,10 +96,10 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 
 		return array_merge(
 			$lessVars,
-			$this->getThemedToolbarColorSettings( $config ),
+			$this->getThemedToolbarBackgroundColorSettings( $config ),
 			$this->getThemeContentBackgroundColorSettings(),
 			$this->getThemedBannerBackgroundColorSettings(),
-			$this->getThemedButtonColorSettings()
+			$this->getThemedButtonBackgroundColorSettings()
 		);
 	}
 
@@ -107,16 +107,16 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 	 * @param CosmosConfig $config
 	 * @return array
 	 */
-	private function getThemedToolbarColorSettings( CosmosConfig $config ) : array {
-		$toolbarColor = $config->getToolbarColor();
+	private function getThemedToolbarBackgroundColorSettings( CosmosConfig $config ) : array {
+		$toolbarBackgroundColor = $config->getToolbarBackgroundColor();
 
 		return [
-			'toolbar-color2' => $toolbarColor,
-			'toolbar-color-mix' =>
-				$toolbarColor == '#000' ||
-				$toolbarColor == '#000000' ||
-				$toolbarColor == 'black' ? '#404040' : '#000',
-			'toolbar-font-color' => LessUtil::isThemeDark( 'toolbar-color' ) ? '#fff' : '#000',
+			'toolbar-background-color2' => $toolbarBackgroundColor,
+			'toolbar-background-color-mix' =>
+				$toolbarBackgroundColor == '#000' ||
+				$toolbarBackgroundColor == '#000000' ||
+				$toolbarBackgroundColor == 'black' ? '#404040' : '#000',
+			'toolbar-font-color' => LessUtil::isThemeDark( 'toolbar-background-color' ) ? '#fff' : '#000',
 		];
 	}
 
@@ -153,12 +153,12 @@ class ResourceLoaderLessModule extends ResourceLoaderFileModule {
 	/**
 	 * @return array
 	 */
-	private function getThemedButtonColorSettings() : array {
-		$isButtonColorDark = LessUtil::isThemeDark( 'button-color' );
+	private function getThemedButtonBackgroundColorSettings() : array {
+		$isButtonBackgroundColorDark = LessUtil::isThemeDark( 'button-background-color' );
 
 		return [
-			'notice-close-button-color' => $isButtonColorDark ? 'fff' : '111',
-			'button-font-color' => $isButtonColorDark ? '#fff' : '#000',
+			'notice-close-button-color' => $isButtonBackgroundColorDark ? 'fff' : '111',
+			'button-font-color' => $isButtonBackgroundColorDark ? '#fff' : '#000',
 		];
 	}
 }

@@ -78,10 +78,10 @@ class CosmosConfig {
 	/**
 	 * @return string
 	 */
-	public function getButtonColor() : string {
-		$config = $this->config->get( 'CosmosButtonColor' );
+	public function getButtonBackgroundColor() : string {
+		$config = $this->config->get( 'CosmosButtonBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
-			$this->themeDesignerConfig['CosmosButtonColor'] : false;
+			$this->themeDesignerConfig['CosmosButtonBackgroundColor'] : false;
 
 		return ( $themeDesignerConfig ?: $config );
 	}
@@ -100,10 +100,10 @@ class CosmosConfig {
 	/**
 	 * @return string
 	 */
-	public function getFooterColor() : string {
-		$config = $this->config->get( 'CosmosFooterColor' );
+	public function getFooterBackgroundColor() : string {
+		$config = $this->config->get( 'CosmosFooterBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
-			$this->themeDesignerConfig['CosmosFooterColor'] : false;
+			$this->themeDesignerConfig['CosmosFooterBackgroundColor'] : false;
 
 		return ( $themeDesignerConfig ?: $config );
 	}
@@ -111,10 +111,10 @@ class CosmosConfig {
 	/**
 	 * @return string
 	 */
-	public function getToolbarColor() : string {
-		$config = $this->config->get( 'CosmosToolbarColor' );
+	public function getToolbarBackgroundColor() : string {
+		$config = $this->config->get( 'CosmosToolbarBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
-			$this->themeDesignerConfig['CosmosToolbarColor'] : false;
+			$this->themeDesignerConfig['CosmosToolbarBackgroundColor'] : false;
 
 		return ( $themeDesignerConfig ?: $config );
 	}
@@ -122,10 +122,10 @@ class CosmosConfig {
 	/**
 	 * @return string
 	 */
-	public function getWikiHeaderWordmark() : string {
-		$config = $this->config->get( 'CosmosWikiHeaderWordmark' );
+	public function getWordmark() : string {
+		$config = $this->config->get( 'CosmosWordmark' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
-			$this->themeDesignerConfig['CosmosWikiHeaderWordmark'] : false;
+			$this->themeDesignerConfig['CosmosWordmark'] : false;
 
 		return ( $themeDesignerConfig ?: $config );
 	}

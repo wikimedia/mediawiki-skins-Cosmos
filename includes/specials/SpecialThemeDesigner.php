@@ -69,9 +69,9 @@ class SpecialThemeDesigner extends FormSpecialPage {
 			'help-message' => 'cosmos-themedesigner-help-4',
 		];
 
-		$formDescriptor['CosmosButtonColor'] = [
+		$formDescriptor['CosmosButtonBackgroundColor'] = [
 			'type' => 'text',
-			'default' => $this->config->getButtonColor(),
+			'default' => $this->config->getButtonBackgroundColor(),
 			'help-message' => 'cosmos-themedesigner-help-5',
 		];
 
@@ -81,21 +81,21 @@ class SpecialThemeDesigner extends FormSpecialPage {
 			'help-message' => 'cosmos-themedesigner-help-6',
 		];
 
-		$formDescriptor['CosmosFooterColor'] = [
+		$formDescriptor['CosmosFooterBackgroundColor'] = [
 			'type' => 'text',
-			'default' => $this->config->getFooterColor(),
+			'default' => $this->config->getFooterBackgroundColor(),
 			'help-message' => 'cosmos-themedesigner-help-7',
 		];
 
-		$formDescriptor['CosmosToolbarColor'] = [
+		$formDescriptor['CosmosToolbarBackgroundColor'] = [
 			'type' => 'text',
-			'default' => $this->config->getToolbarColor(),
+			'default' => $this->config->getToolbarBackgroundColor(),
 			'help-message' => 'cosmos-themedesigner-help-8',
 		];
 
-		$formDescriptor['CosmosWikiHeaderWordmark'] = [
+		$formDescriptor['CosmosWordmark'] = [
 			'type' => 'text',
-			'default' => $this->config->getWikiHeaderWordmark(),
+			'default' => $this->config->getWordmark(),
 			'help-message' => 'cosmos-themedesigner-help-9',
 		];
 

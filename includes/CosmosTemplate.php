@@ -801,7 +801,7 @@ class CosmosTemplate extends BaseTemplate {
 		$config = MediaWikiServices::getInstance()->getService( 'CosmosConfig' );
 
 		if (
-			$config->getWikiHeaderWordmark() ||
+			$config->getWordmark() ||
 			isset( $mainConfig->get( 'Logos' )['wordmark']['src'] ) ||
 			isset( $mainConfig->get( 'Logos' )['1x'] ) ||
 			$mainConfig->get( 'Logo' )
@@ -819,8 +819,8 @@ class CosmosTemplate extends BaseTemplate {
 			);
 
 			// Insert logo image
-			if ( $config->getWikiHeaderWordmark() ) {
-				$logoSrc = $config->getWikiHeaderWordmark();
+			if ( $config->getWordmark() ) {
+				$logoSrc = $config->getWordmark();
 			} else {
 				$logoSrc = $mainConfig->get( 'Logos' )['wordmark']['src'] ??
 					$mainConfig->get( 'Logos' )['1x'] ??

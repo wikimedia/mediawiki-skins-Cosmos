@@ -250,23 +250,23 @@
 	"config": {
 		"CosmosBannerBackgroundColor": {
 			"value": "#c0c0c0",
-			"description": "Changes the background color of the top banner"
+			"description": "Changes the background color of the personal navigation"
 		},
 		"CosmosBannerLogo": {
 			"value": false,
-			"description": "Sets a logo to appear in the top banner next to the search input field. (deprecated)"
+			"description": "Sets a logo to appear in the personal navigation next to the search input field (deprecated)"
 		},
-		"CosmosWikiHeaderWordmark": {
+		"CosmosWordmark": {
 			"value": false,
-			"description": "Adds a wordmark to the wiki header (deprecated)"
+			"description": "Adds a wordmark to the wiki navigation (deprecated)"
 		},
 		"CosmosWikiHeaderBackgroundImage": {
 			"value": false,
-			"description": "Adds a background image to the wiki header"
+			"description": "Adds a background image to the wiki navigation"
 		},
 		"CosmosWikiHeaderBackgroundColor": {
 			"value": "#c0c0c0",
-			"description": "Changes the background color of the wiki header"
+			"description": "Changes the background color of the wiki navigation"
 		},
 		"CosmosBackgroundImage": {
 			"value": false,
@@ -278,7 +278,7 @@
 		},
 		"CosmosContentBackgroundColor": {
 			"value": "#ffffff",
-			"description": "Changes the background color of the main wiki article content area"
+			"description": "Changes the background color of the wiki article area"
 		},
 		"CosmosBackgroundImageSize": {
 			"value": "cover",
@@ -288,15 +288,15 @@
 			"value": "#0645ad",
 			"description": "Changes the color of links in the cosmos wiki article area"
 		},
-		"CosmosButtonColor": {
+		"CosmosButtonBackgroundColor": {
 			"value": "#c0c0c0",
 			"description": "Changes the background color of the page action buttons for Cosmos"
 		},
-		"CosmosToolbarColor": {
+		"CosmosToolbarBackgroundColor": {
 			"value": "#000000",
-			"description": "Changes the background color of the floating toolbar at the bottom"
+			"description": "Changes the background color of the toolbar"
 		},
-		"CosmosFooterColor": {
+		"CosmosFooterBackgroundColor": {
 			"value": "#c0c0c0",
 			"description": "Changes the background color of the footer"
 		},
