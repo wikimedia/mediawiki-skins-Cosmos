@@ -244,7 +244,8 @@
 			"+ext.echo.styles.badge": "resources/extensions/Echo.less",
 			"+ext.visualEditor.core": "resources/extensions/VisualEditor.core.less",
 			"+ext.CodeMirror.visualEditor.init": "resources/extensions/VisualEditor.CodeMirror.less",
-			"+ext.dummyfandoommainpagetags.styles": "resources/extensions/DummyFandoomMainpageTags.less"
+			"+ext.dummyfandoommainpagetags.styles": "resources/extensions/DummyFandoomMainpageTags.less",
+			"+ext.centralNotice.display": "resources/extensions/CentralNotice.less"
 		}
 	},
 	"config": {
