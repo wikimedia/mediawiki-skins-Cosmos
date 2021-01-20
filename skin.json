@@ -36,14 +36,34 @@
 			"i18n"
 		]
 	},
+	"ExtensionMessagesFiles": {
+		"ThemeDesignerAliases": "includes/ThemeDesignerAliases.php"
+	},
 	"AutoloadNamespaces": {
-		"MediaWiki\\Skin\\Cosmos\\": "includes/"
+		"MediaWiki\\Skin\\Cosmos\\": "includes/",
+		"MediaWiki\\Skin\\Cosmos\\Specials\\": "includes/specials/"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
 	],
 	"ConfigRegistry": {
 		"cosmos": "GlobalVarConfig::newInstance"
+	},
+	"GroupPermissions": {
+		"sysop": {
+			"themedesigner": true
+		}
+	},
+	"AvailableRights": [
+		"themedesigner"
+	],
+	"SpecialPages": {
+		"ThemeDesigner": {
+			"class": "MediaWiki\\Skin\\Cosmos\\Specials\\SpecialThemeDesigner",
+			"services": [
+				"CosmosConfig"
+			]
+		}
 	},
 	"ResourceModules": {
 		"skins.cosmos.styles": {

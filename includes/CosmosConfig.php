@@ -5,119 +5,195 @@ namespace MediaWiki\Skin\Cosmos;
 use Config;
 
 class CosmosConfig {
+	/** @var string */
+	private $cacheDir;
+
 	/** @var Config */
 	private $config;
+
+	/** @var array */
+	private $themeDesignerConfig;
 
 	/**
 	 * @param Config $config
 	 */
 	public function __construct( Config $config ) {
 		$this->config = $config;
+
+		$this->cacheDir = __DIR__ . "/../cache";
+
+		if ( file_exists( "{$this->cacheDir}/cosmos_themedesigner.json" ) ) {
+			$this->themeDesignerConfig = json_decode(
+				file_get_contents(
+					"{$this->cacheDir}/cosmos_themedesigner.json"
+				), true
+			)['values'] ?? false;
+		}
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getBannerBackgroundColor() : string {
-		return $this->config->get( 'CosmosBannerBackgroundColor' );
+		$config = $this->config->get( 'CosmosBannerBackgroundColor' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			$this->themeDesignerConfig['CosmosBannerBackgroundColor'] : false;
+
+		return ( $themeDesignerConfig ?: $config );
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getWikiHeaderBackgroundColor() : string {
-		return $this->config->get( 'CosmosWikiHeaderBackgroundColor' );
+		$config = $this->config->get( 'CosmosWikiHeaderBackgroundColor' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			$this->themeDesignerConfig['CosmosWikiHeaderBackgroundColor'] : false;
+
+		return ( $themeDesignerConfig ?: $config );
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getMainBackgroundColor() : string {
-		return $this->config->get( 'CosmosMainBackgroundColor' );
+		$config = $this->config->get( 'CosmosMainBackgroundColor' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			$this->themeDesignerConfig['CosmosMainBackgroundColor'] : false;
+
+		return ( $themeDesignerConfig ?: $config );
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getContentBackgroundColor() : string {
-		return $this->config->get( 'CosmosContentBackgroundColor' );
+		$config = $this->config->get( 'CosmosContentBackgroundColor' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			$this->themeDesignerConfig['CosmosContentBackgroundColor'] : false;
+
+		return ( $themeDesignerConfig ?: $config );
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getButtonColor() : string {
-		return $this->config->get( 'CosmosButtonColor' );
+		$config = $this->config->get( 'CosmosButtonColor' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			$this->themeDesignerConfig['CosmosButtonColor'] : false;
+
+		return ( $themeDesignerConfig ?: $config );
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getLinkColor() : string {
-		return $this->config->get( 'CosmosLinkColor' );
+		$config = $this->config->get( 'CosmosLinkColor' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			$this->themeDesignerConfig['CosmosLinkColor'] : false;
+
+		return ( $themeDesignerConfig ?: $config );
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getFooterColor() : string {
-		return $this->config->get( 'CosmosFooterColor' );
+		$config = $this->config->get( 'CosmosFooterColor' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			$this->themeDesignerConfig['CosmosFooterColor'] : false;
+
+		return ( $themeDesignerConfig ?: $config );
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getToolbarColor() : string {
-		return $this->config->get( 'CosmosToolbarColor' );
+		$config = $this->config->get( 'CosmosToolbarColor' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			$this->themeDesignerConfig['CosmosToolbarColor'] : false;
+
+		return ( $themeDesignerConfig ?: $config );
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getWikiHeaderWordmark() : string {
-		return $this->config->get( 'CosmosWikiHeaderWordmark' );
+		$config = $this->config->get( 'CosmosWikiHeaderWordmark' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			$this->themeDesignerConfig['CosmosWikiHeaderWordmark'] : false;
+
+		return ( $themeDesignerConfig ?: $config );
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getWikiHeaderBackgroundImage() : string {
-		return $this->config->get( 'CosmosWikiHeaderBackgroundImage' );
+		$config = $this->config->get( 'CosmosWikiHeaderBackgroundImage' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			$this->themeDesignerConfig['CosmosWikiHeaderBackgroundImage'] : false;
+
+		return ( $themeDesignerConfig ?: $config );
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getBackgroundImage() : string {
-		return $this->config->get( 'CosmosBackgroundImage' );
+		$config = $this->config->get( 'CosmosBackgroundImage' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			$this->themeDesignerConfig['CosmosBackgroundImage'] : false;
+
+		return ( $themeDesignerConfig ?: $config );
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getBackgroundImageSize() : string {
-		return $this->config->get( 'CosmosBackgroundImageSize' );
+		$config = $this->config->get( 'CosmosBackgroundImageSize' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			$this->themeDesignerConfig['CosmosBackgroundImageSize'] : false;
+
+		return ( $themeDesignerConfig ?: $config );
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function getBackgroundImageRepeat() : bool {
-		return $this->config->get( 'CosmosBackgroundImageRepeat' );
+		$config = $this->config->get( 'CosmosBackgroundImageRepeat' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			$this->themeDesignerConfig['CosmosBackgroundImageRepeat'] : false;
+
+		return ( $themeDesignerConfig ?? $config );
 	}
 
 	/**
 	 * @return bool
 	 */
 	public function getBackgroundImageFixed() : bool {
-		return $this->config->get( 'CosmosBackgroundImageFixed' );
+		$config = $this->config->get( 'CosmosBackgroundImageFixed' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			$this->themeDesignerConfig['CosmosBackgroundImageFixed'] : false;
+
+		return ( $themeDesignerConfig ?? $config );
 	}
 
 	/**
 	 * @return int
 	 */
 	public function getContentOpacityLevel() : int {
-		return $this->config->get( 'CosmosContentOpacityLevel' );
+		$config = $this->config->get( 'CosmosContentOpacityLevel' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			(int)$this->themeDesignerConfig['CosmosContentOpacityLevel'] : false;
+
+		return ( $themeDesignerConfig ?: $config );
 	}
 
 }
