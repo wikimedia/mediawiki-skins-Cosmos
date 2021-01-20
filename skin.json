@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "4.8.3",
+	"version": "5.0.0",
 	"author": [
 		"Universal Omega",
 		"SamanthaNguyen",
@@ -252,13 +252,9 @@
 			"value": "#c0c0c0",
 			"description": "Changes the background color of the personal navigation"
 		},
-		"CosmosBannerLogo": {
-			"value": false,
-			"description": "Sets a logo to appear in the personal navigation next to the search input field (deprecated)"
-		},
 		"CosmosWordmark": {
 			"value": false,
-			"description": "Adds a wordmark to the wiki navigation (deprecated)"
+			"description": "Adds a wordmark to the wiki navigation"
 		},
 		"CosmosWikiHeaderBackgroundImage": {
 			"value": false,

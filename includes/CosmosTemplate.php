@@ -129,9 +129,6 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= $this->buildNavigation();
 		$html .= Html::closeElement( 'nav' );
 
-		// Build the logo
-		$html .= $this->buildBannerLogo( $config );
-
 		// Build the search bar
 		$html .= $this->buildSearchBar();
 
@@ -234,7 +231,7 @@ class CosmosTemplate extends BaseTemplate {
 	/**
 	 * @return array
 	 */
-	public function getMostWantedPages() {
+	protected function getMostWantedPages() {
 		$wantedPagesPage = MediaWikiServices::getInstance()->getSpecialPageFactory()->getPage( 'Wantedpages' );
 		$wantedPagesPageResponse = $wantedPagesPage->doQuery();
 		$dbr = wfGetDB( DB_REPLICA );
@@ -336,46 +333,6 @@ class CosmosTemplate extends BaseTemplate {
 		}
 
 		$html .= Html::closeElement( 'ul' );
-
-		return $html;
-	}
-
-	/**
-	 * @param Config $config
-	 * @return string
-	 */
-	protected function buildBannerLogo( Config $config ) {
-		$html = '';
-
-		// Open container div
-		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-banner-bannerLogo' ] );
-
-		if ( $config->get( 'CosmosBannerLogo' ) ) {
-			// Open link element
-			$html .= Html::openElement(
-				'a',
-				array_merge(
-					[ 'href' => $this->data['nav_urls']['mainpage']['href'] ],
-					Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
-				)
-			);
-
-			// Insert logo image
-			$html .= Html::rawElement(
-				'img',
-				[
-					'id' => 'cosmos-bannerLogo-image',
-					'src' => $config->get( 'CosmosBannerLogo' ),
-					'alt' => $this->get( 'sitename' )
-				]
-			);
-
-			// Close link element
-			$html .= Html::closeElement( 'a' );
-		}
-
-		// Close container div
-		$html .= Html::closeElement( 'div' );
 
 		return $html;
 	}
