@@ -3,10 +3,8 @@
 namespace MediaWiki\Skin\Cosmos\Specials;
 
 use BagOStuff;
-use Config;
-use ConfigFactory;
 use FormSpecialPage;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Skin\Cosmos\CosmosConfig;
 use ObjectCache;
 
 class SpecialThemeDesigner extends FormSpecialPage {
@@ -16,23 +14,22 @@ class SpecialThemeDesigner extends FormSpecialPage {
 	/** @var string */
 	private $cacheDir;
 
-	/** @var Config */
+	/** @var CosmosConfig */
 	private $config;
-
-	/** @var ConfigFactory */
-	private $configFactory;
 
 	/** @var int */
 	private $timestamp;
 
-	public function __construct() {
+	/**
+	 * @param CosmosConfig $config
+	 */
+	public function __construct( CosmosConfig $config ) {
 		parent::__construct( 'ThemeDesigner', 'themedesigner' );
-
-		$this->configFactory = MediaWikiServices::getInstance()->getConfigFactory();
-		$this->config = $this->configFactory->makeConfig( 'cosmos' );
 
 		$this->cache = ObjectCache::getLocalClusterInstance();
 		$this->cacheDir = __DIR__ . "/../../cache";
+
+		$this->config = $config;
 
 		$this->timestamp = $this->cache->get(
 			$this->cache->makeGlobalKey(
@@ -48,40 +45,102 @@ class SpecialThemeDesigner extends FormSpecialPage {
 	protected function getFormFields() {
 		$formDescriptor = [];
 
-		$configs = json_decode(
-			file_get_contents(
-				__DIR__ . "/../../skin.json"
-			), true
-		)['config'];
+		$formDescriptor['CosmosBannerBackgroundColor'] = [
+			'type' => 'text',
+			'default' => $this->config->getBannerBackgroundColor(),
+			'help-message' => 'cosmos-themedesigner-help-1',
+		];
 
-		foreach ( array_keys( $configs ) as $config ) {
-			$value = $configs[$config]['value'];
-			$description = $configs[$config]['description'];
+		$formDescriptor['CosmosWikiHeaderBackgroundColor'] = [
+			'type' => 'text',
+			'default' => $this->config->getWikiHeaderBackgroundColor(),
+			'help-message' => 'cosmos-themedesigner-help-2',
+		];
 
-			switch ( gettype( $value ) ) {
-				case 'array':
-					$type = 'multiselect';
-					$options = $value;
-					break;
-				case 'boolean':
-					$type = 'check';
-					break;
-				case 'integer':
-					$type = 'int';
-					break;
-				default:
-					$type = 'text';
-					break;
-			}
+		$formDescriptor['CosmosMainBackgroundColor'] = [
+			'type' => 'text',
+			'default' => $this->config->getMainBackgroundColor(),
+			'help-message' => 'cosmos-themedesigner-help-3',
+		];
 
-			$formDescriptor[$config] = [
-				'type' => $type,
-				'label' => "\$wg{$config}",
-				'help' => $description,
-				'default' => $this->config->get( $config ) ?? false,
-				'options' => $options ?? false
-			];
-		}
+		$formDescriptor['CosmosContentBackgroundColor'] = [
+			'type' => 'text',
+			'default' => $this->config->getContentBackgroundColor(),
+			'help-message' => 'cosmos-themedesigner-help-4',
+		];
+
+		$formDescriptor['CosmosButtonColor'] = [
+			'type' => 'text',
+			'default' => $this->config->getButtonColor(),
+			'help-message' => 'cosmos-themedesigner-help-5',
+		];
+
+		$formDescriptor['CosmosLinkColor'] = [
+			'type' => 'text',
+			'default' => $this->config->getLinkColor(),
+			'help-message' => 'cosmos-themedesigner-help-6',
+		];
+
+		$formDescriptor['CosmosFooterColor'] = [
+			'type' => 'text',
+			'default' => $this->config->getFooterColor(),
+			'help-message' => 'cosmos-themedesigner-help-7',
+		];
+
+		$formDescriptor['CosmosToolbarColor'] = [
+			'type' => 'text',
+			'default' => $this->config->getToolbarColor(),
+			'help-message' => 'cosmos-themedesigner-help-8',
+		];
+
+		$formDescriptor['CosmosWikiHeaderWordmark'] = [
+			'type' => 'text',
+			'default' => $this->config->getWikiHeaderWordmark(),
+			'help-message' => 'cosmos-themedesigner-help-9',
+		];
+
+		$formDescriptor['CosmosWikiHeaderBackgroundImage'] = [
+			'type' => 'text',
+			'default' => $this->config->getWikiHeaderBackgroundImage(),
+			'help-message' => 'cosmos-themedesigner-help-10',
+		];
+
+		$formDescriptor['CosmosBackgroundImage'] = [
+			'type' => 'text',
+			'default' => $this->config->getBackgroundImage(),
+			'help-message' => 'cosmos-themedesigner-help-11',
+		];
+
+		$formDescriptor['CosmosContentOpacityLevel'] = [
+			'type' => 'int',
+			'min' => 0,
+			'max' => 100,
+			'default' => $this->config->getContentOpacityLevel(),
+			'help-message' => 'cosmos-themedesigner-help-12',
+		];
+
+		$formDescriptor['CosmosBackgroundImageSize'] = [
+			'type' => 'select',
+			'default' => $this->config->getBackgroundImageSize(),
+			'help-message' => 'cosmos-themedesigner-help-13',
+			'options' => [
+				'auto' => 'auto',
+				'contain' => 'contain',
+				'cover' => 'cover',
+			],
+		];
+
+		$formDescriptor['CosmosBackgroundImageRepeat'] = [
+			'type' => 'check',
+			'default' => $this->config->getBackgroundImageRepeat(),
+			'help-message' => 'cosmos-themedesigner-help-14',
+		];
+
+		$formDescriptor['CosmosBackgroundImageFixed'] = [
+			'type' => 'check',
+			'default' => $this->config->getBackgroundImageFixed(),
+			'help-message' => 'cosmos-themedesigner-help-15',
+		];
 
 		return $formDescriptor;
 	}
