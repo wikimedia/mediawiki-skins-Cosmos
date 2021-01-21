@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Matěj Suchánek",
 			"YjM"
 		]
 	},
-	"cosmos-themedesigner-success": "Konfigurace Cosmos byla úspěšně aktulizována."
+	"cosmos-themedesigner-success": "Konfigurace Cosmos byla úspěšně aktualizována."
 }

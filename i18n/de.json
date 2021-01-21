@@ -31,5 +31,21 @@
 	"cosmos-user-blocked": "Gesperrt",
 	"cosmos-themedesigner-success": "Konfiguration für Cosmos erfolgreich aktualisiert.",
 	"themedesigner": "Theme-Designer",
-	"right-themedesigner": "Cosmos ThemeDesigner verwenden"
+	"right-themedesigner": "Cosmos ThemeDesigner verwenden",
+	"action-themedesigner": "Cosmos ThemeDesigner verwenden",
+	"cosmos-themedesigner-help-1": "Hintergrundfarbe des persönlichen Navigationsbanners.",
+	"cosmos-themedesigner-help-2": "Hintergrundfarbe der Kopfzeile der Wiki-Navigation.",
+	"cosmos-themedesigner-help-3": "Haupthintergrundfarbe.",
+	"cosmos-themedesigner-help-4": "Hintergrundfarbe des Hauptinhaltsbereichs.",
+	"cosmos-themedesigner-help-5": "Hintergrundfarbe für Schaltflächen.",
+	"cosmos-themedesigner-help-6": "Farbe der Links.",
+	"cosmos-themedesigner-help-7": "Hintergrundfarbe der Fußzeile.",
+	"cosmos-themedesigner-help-8": "Hintergrundfarbe der Werkzeugleiste",
+	"cosmos-themedesigner-help-9": "Vollständige URL zur Wortmarke.",
+	"cosmos-themedesigner-help-10": "Hintergrundbild der Kopfzeile der Wiki-Navigation.",
+	"cosmos-themedesigner-help-11": "Haupthintergrundbild.",
+	"cosmos-themedesigner-help-12": "Deckkraft des Inhaltsbereichs (in Prozent)",
+	"cosmos-themedesigner-help-13": "Größe des Haupthintergrunds",
+	"cosmos-themedesigner-help-14": "Hintergrundbild wiederholen?",
+	"cosmos-themedesigner-help-15": "Hintergrundbild fixiert?"
 }
