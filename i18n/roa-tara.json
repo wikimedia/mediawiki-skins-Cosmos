@@ -31,5 +31,21 @@
 	"cosmos-user-blocked": "Bloccate",
 	"cosmos-themedesigner-success": "Configurazione aggiornate pe Cosmos.",
 	"themedesigner": "Progettiste d'u teme",
-	"right-themedesigner": "Ause Cosmos ThemeDesigner"
+	"right-themedesigner": "Ause Cosmos ThemeDesigner",
+	"action-themedesigner": "ause Cosmos ThemeDesigner",
+	"cosmos-themedesigner-help-1": "Colore de funne d'u banner d'a navigazzione personale.",
+	"cosmos-themedesigner-help-2": "Colore de funne d'a testate d'a navigazzione uicchi.",
+	"cosmos-themedesigner-help-3": "Colore de funne prengepàle.",
+	"cosmos-themedesigner-help-4": "Colore de funne de l'arèe de condenute prengepàle.",
+	"cosmos-themedesigner-help-5": "Colore de funne pe le buttune.",
+	"cosmos-themedesigner-help-6": "Colore de le collegaminde.",
+	"cosmos-themedesigner-help-7": "Colore de funne pu piè de pàgene.",
+	"cosmos-themedesigner-help-8": "Colore de funne d'a barre de le struminde",
+	"cosmos-themedesigner-help-9": "URL complete a 'u marcatore de parole.",
+	"cosmos-themedesigner-help-10": "Colore de funne de l'immaggine d'a testate d'a navigazzione uicchi.",
+	"cosmos-themedesigner-help-11": "Immaggine de funne prengepàle.",
+	"cosmos-themedesigner-help-12": "Levèlle de opacitàà de l'arèe de contenute (percenduale)",
+	"cosmos-themedesigner-help-13": "Dimenzione d'u funne prengepale",
+	"cosmos-themedesigner-help-14": "Repite l'immaggine de funne?",
+	"cosmos-themedesigner-help-15": "Fisse l'immaggine de funne?"
 }
