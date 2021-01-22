@@ -5,6 +5,7 @@ namespace MediaWiki\Skin\Cosmos;
 use Html;
 use MediaWiki\MediaWikiServices;
 use Sanitizer;
+use TextContent;
 use Title;
 use User;
 use WikiPage;
@@ -121,7 +122,9 @@ class CosmosSocialProfile {
 				$content = $wikiPage->getContent();
 			}
 
-			return Html::element( 'p', [ 'class' => 'bio' ], $content->getText() );
+			return $content instanceof TextContent
+				? Html::element( 'p', [ 'class' => 'bio' ], $content->getText() )
+				: null;
 		}
 	}
 }

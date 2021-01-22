@@ -7,13 +7,13 @@ use Config;
 use ExtensionRegistry;
 use Html;
 use Linker;
-use ManageWiki;
 use MediaWiki\MediaWikiServices;
 use Sanitizer;
 use SiteStats;
 use Skin;
 use SpecialPage;
 use Title;
+use WantedPagesPage;
 use wAvatar;
 use WebRequest;
 
@@ -233,8 +233,10 @@ class CosmosTemplate extends BaseTemplate {
 	 */
 	protected function getMostWantedPages() {
 		$wantedPagesPage = MediaWikiServices::getInstance()->getSpecialPageFactory()->getPage( 'Wantedpages' );
+		'@phan-var WantedPagesPage $wantedPagesPage';
+
 		$wantedPagesPageResponse = $wantedPagesPage->doQuery();
-		$dbr = wfGetDB( DB_REPLICA );
+
 		$wantedPages = [];
 		$fetchedTitlesCount = 0;
 
@@ -270,7 +272,6 @@ class CosmosTemplate extends BaseTemplate {
 
 		$skin = $this->getSkin();
 		$cosmosNavigation = new CosmosNavigation( $skin->getContext() );
-		$append = '';
 		$html = '';
 		$html .= Html::openElement( 'ul', [ 'class' => 'wds-tabs' ] );
 
@@ -288,10 +289,6 @@ class CosmosTemplate extends BaseTemplate {
 			$user = $skin->getUser();
 			$canManageWiki = $permissionManager->userHasRight( $user, 'managewiki' );
 			$manageWikiSidebar = $userOptionsLookup->getOption( $user, 'managewikisidebar', 1 );
-
-			if ( !$canManageWiki && ( $wgManageWikiForceSidebarLinks || $manageWikiSidebar ) ) {
-				$append = '-view';
-			}
 
 			if (
 				( $canManageWiki || $wgManageWikiForceSidebarLinks || $manageWikiSidebar ) &&
@@ -316,10 +313,10 @@ class CosmosTemplate extends BaseTemplate {
 					'<ul class="wds-list wds-is-linked wds-has-bolded-items">'
 				);
 
-				foreach ( (array)ManageWiki::listModules() as $module ) {
-					$html .= '<li class="wds-tabs__tab"><a id="' . "managewiki{$module}link" . '" href="' .
-						htmlspecialchars( SpecialPage::getTitleFor( 'ManageWiki', $module )->getFullURL() ) . '">' .
-						$this->getMsg( "managewiki-link-{$module}{$append}" )->escaped() . '</a></li>';
+				foreach ( $this->data['sidebar']['managewiki-sidebar-header'] as $module ) {
+					$html .= '<li class="wds-tabs__tab"><a id="' . $module['id'] . '" href="' .
+						htmlspecialchars( $module['href'] ) . '">' .
+						$module['text'] . '</a></li>';
 				}
 
 				if ( ExtensionRegistry::getInstance()->isLoaded( 'DataDump' ) ) {
@@ -457,8 +454,8 @@ class CosmosTemplate extends BaseTemplate {
 			], Html::rawElement( 'a', [
 				'class' => $item['class'] ?? false,
 				'href' => $item['href'],
-				'title' => $item['title']
-			], $item['text'] ) );
+				'title' => $item['title'] ?? false
+			], $item['text'] ?? false ) );
 		}
 
 		$html .= Html::closeElement( 'ul' );
@@ -1106,7 +1103,7 @@ class CosmosTemplate extends BaseTemplate {
 				if ( !empty( $view ) ) {
 					$view['imgType'] = 'svg';
 					$view['imgSrc'] = 'back';
-					$view['text'] = $this->getMsg( 'cosmos-action-backtopage', $view['text'] )->text();
+					$view['text'] = $this->getMsg( 'cosmos-action-backtopage', $view['text'] ?? false )->text();
 					$secondary = $view;
 				}
 			} else {
@@ -1151,7 +1148,7 @@ class CosmosTemplate extends BaseTemplate {
 				if ( !empty( $view ) ) {
 					$view['imgType'] = 'svg';
 					$view['imgSrc'] = 'back';
-					$view['text'] = $this->getMsg( 'cosmos-action-backtopage', $view['text'] )->text();
+					$view['text'] = $this->getMsg( 'cosmos-action-backtopage', $view['text'] ?? false )->text();
 					$secondary = $view;
 				}
 
@@ -1184,7 +1181,7 @@ class CosmosTemplate extends BaseTemplate {
 				if ( !empty( $view ) ) {
 					$view['imgType'] = 'svg';
 					$view['imgSrc'] = 'back';
-					$view['text'] = $skin->msg( 'cosmos-action-backtopage', $view['text'] )->text();
+					$view['text'] = $skin->msg( 'cosmos-action-backtopage', $view['text'] ?? false )->text();
 					$secondary = $view;
 				}
 			} else {
