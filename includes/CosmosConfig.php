@@ -164,28 +164,6 @@ class CosmosConfig {
 	}
 
 	/**
-	 * @return bool
-	 */
-	public function getBackgroundImageRepeat() : bool {
-		$config = $this->config->get( 'CosmosBackgroundImageRepeat' );
-		$themeDesignerConfig = $this->themeDesignerConfig ?
-			$this->themeDesignerConfig['CosmosBackgroundImageRepeat'] : false;
-
-		return ( $themeDesignerConfig ?: $config );
-	}
-
-	/**
-	 * @return bool
-	 */
-	public function getBackgroundImageFixed() : bool {
-		$config = $this->config->get( 'CosmosBackgroundImageFixed' );
-		$themeDesignerConfig = $this->themeDesignerConfig ?
-			$this->themeDesignerConfig['CosmosBackgroundImageFixed'] : false;
-
-		return ( $themeDesignerConfig ?: $config );
-	}
-
-	/**
 	 * @return int
 	 */
 	public function getContentOpacityLevel() : int {
@@ -196,4 +174,25 @@ class CosmosConfig {
 		return ( $themeDesignerConfig ?: $config );
 	}
 
+	/**
+	 * @return bool
+	 */
+	public function getBackgroundImageRepeat() : bool {
+		$config = $this->config->get( 'CosmosBackgroundImageRepeat' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			$this->themeDesignerConfig['CosmosBackgroundImageRepeat'] : null;
+
+		return ( $themeDesignerConfig ?? $config );
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function getBackgroundImageFixed() : bool {
+		$config = $this->config->get( 'CosmosBackgroundImageFixed' );
+		$themeDesignerConfig = $this->themeDesignerConfig ?
+			$this->themeDesignerConfig['CosmosBackgroundImageFixed'] : null;
+
+		return ( $themeDesignerConfig ?? $config );
+	}
 }
