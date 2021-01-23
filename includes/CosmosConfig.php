@@ -171,7 +171,7 @@ class CosmosConfig {
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosBackgroundImageRepeat'] : false;
 
-		return ( $themeDesignerConfig ?? $config );
+		return ( $themeDesignerConfig ?: $config );
 	}
 
 	/**
@@ -182,7 +182,7 @@ class CosmosConfig {
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosBackgroundImageFixed'] : false;
 
-		return ( $themeDesignerConfig ?? $config );
+		return ( $themeDesignerConfig ?: $config );
 	}
 
 	/**
