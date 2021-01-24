@@ -1434,9 +1434,7 @@ class CosmosTemplate extends BaseTemplate {
 			[ 'id' => 'cosmos-footerContent-footerLinks', 'class' => 'cosmos-articleAligned' ]
 		);
 
-		$footerLinks = $this->data['footerlinks'];
-
-		foreach ( $footerLinks as $category => $links ) {
+		foreach ( $this->getFooterLinks() as $category => $links ) {
 			// Open unordered list element for link list
 			$html .= Html::openElement(
 				'ul',
@@ -1446,6 +1444,7 @@ class CosmosTemplate extends BaseTemplate {
 			foreach ( $links as $key ) {
 				$html .= Html::rawElement( 'li', [ 'class' => 'cosmos-footerLinks-listItem' ], $this->get( $key ) );
 			}
+
 			// Close unordered list element
 			$html .= Html::closeElement( 'ul' );
 		}
