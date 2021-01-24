@@ -319,12 +319,6 @@ class CosmosTemplate extends BaseTemplate {
 						$module['text'] . '</a></li>';
 				}
 
-				if ( ExtensionRegistry::getInstance()->isLoaded( 'DataDump' ) ) {
-					$html .= '<li class="wds-tabs__tab"><a id="datadumplink" href="' .
-						htmlspecialchars( SpecialPage::getTitleFor( 'DataDump' )->getFullURL() ) . '">' .
-						$this->getMsg( 'datadump-link' )->escaped() . '</a></li>';
-				}
-
 				$html .= ( '</div>' );
 			}
 		}
@@ -1440,7 +1434,7 @@ class CosmosTemplate extends BaseTemplate {
 			[ 'id' => 'cosmos-footerContent-footerLinks', 'class' => 'cosmos-articleAligned' ]
 		);
 
-		$footerLinks = $this->get( 'footerlinks' );
+		$footerLinks = $this->data['footerlinks'];
 
 		foreach ( $footerLinks as $category => $links ) {
 			// Open unordered list element for link list
