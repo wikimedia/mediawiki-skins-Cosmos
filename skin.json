@@ -68,9 +68,9 @@
 	"ResourceModules": {
 		"skins.cosmos.styles": {
 			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
-			"features": {
-				"interface": true
-			},
+			"features": [
+				"interface"
+			],
 			"targets": [
 				"desktop",
 				"mobile"
