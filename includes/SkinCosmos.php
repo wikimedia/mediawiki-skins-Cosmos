@@ -44,12 +44,14 @@ class SkinCosmos extends SkinTemplate {
 		$services = MediaWikiServices::getInstance();
 		$config = $services->getConfigFactory()->makeConfig( 'cosmos' );
 
+		$cosmosConfig = $services->getService( 'CosmosConfig' );
+
+		$cosmosRail = new CosmosRail( $cosmosConfig, $this->getContext() );
+
 		$modules = parent::getDefaultModules();
 
 		// CosmosRail styles
-		if ( !$this->msg( 'cosmos-customsidebar' )->isDisabled() ||
-			!$this->msg( 'cosmos-stickysidebar' )->isDisabled()
-		) {
+		if ( $cosmosRail->buildRail() ) {
 			$modules['styles']['skin'][] = 'skins.cosmos.rail';
 		}
 

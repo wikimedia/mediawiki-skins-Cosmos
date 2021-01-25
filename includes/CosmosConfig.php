@@ -195,4 +195,13 @@ class CosmosConfig {
 
 		return ( $themeDesignerConfig ?? $config );
 	}
+
+	/**
+	 * @return array
+	 */
+	public function getEnabledRailModules() : array {
+		$config = $this->config->get( 'CosmosEnabledRailModules' );
+
+		return $config;
+	}
 }

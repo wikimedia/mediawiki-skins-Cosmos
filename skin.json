@@ -350,6 +350,16 @@
 		"CosmosContentOpacityLevel": {
 			"value": 100,
 			"description": "Set the content area background opacity in percentage (without the percent symbol)"
+		},
+		"CosmosEnabledRailModules": {
+			"value": {
+				"recentchanges": "normal",
+				"interface": [ {
+					"cosmos-customsidebar": "normal",
+					"cosmos-stickysidebar": "sticky"
+				} ]
+			},
+			"description": "Sets which rail modules will be enabled on Cosmos"
 		}
 	},
 	"HookHandlers": {

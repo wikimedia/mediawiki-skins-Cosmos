@@ -112,6 +112,14 @@
 	padding-left: 2px;
 }
 
+.CosmosRail .module h3,
+.CosmosRail .module h4,
+.CosmosRail .module h5,
+.CosmosRail .module h6 {
+	padding-bottom: 0;
+	padding-top: 0;
+}
+
 .CosmosRail .module p {
 	line-height: 21px;
 	margin: 0;
@@ -123,14 +131,21 @@
 }
 
 @media only screen and ( min-width: 1024px ) {
-	.CosmosRail .rail-sticky-module {
+	.CosmosRail .rail-sticky-module:first-of-type {
 		position: absolute;
 	}
 }
 
-.CosmosRail .rail-sticky-module {
+.CosmosRail .rail-sticky-module:first-of-type {
 	position: static;
 	position: -webkit-sticky;
 	position: sticky;
 	top: 65px;
+	z-index: 1;
+}
+
+.CosmosRail .recentchanges-module li {
+	font-size: 14px;
+	list-style: none;
+	padding-bottom: 10px;
 }

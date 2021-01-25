@@ -38,7 +38,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'div', [ 'id' => 'mw-content-block', 'class' => 'ts-inner' ] );
 		$html .= Html::openElement( 'div', [ 'id' => 'mw-content-wrapper' ] );
 		$html .= $this->buildWikiHeader( $cosmosConfig );
-		$html .= $this->buildWiki();
+		$html .= $this->buildWiki( $cosmosConfig );
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
@@ -793,9 +793,12 @@ class CosmosTemplate extends BaseTemplate {
 	 * Generate the page content block
 	 * Broken out here due to the excessive indenting, or stuff.
 	 *
-	 * @return string html
+	 * @param CosmosConfig $config
+	 * @return string
 	 */
-	protected function buildWiki() {
+	protected function buildWiki( CosmosConfig $config ) {
+		$skin = $this->getSkin();
+
 		$html = '';
 
 		// Open container element for page body
@@ -809,8 +812,9 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-articleContainer' ] );
 		$html .= $this->buildArticle();
 
-		// Build the sidebars
-		$html .= $this->buildRail();
+		// Build the rail
+		$cosmosRail = new CosmosRail( $config, $skin->getContext() );
+		$html .= $cosmosRail->buildRail();
 
 		$html .= Html::closeElement( 'div' );
 
@@ -820,42 +824,6 @@ class CosmosTemplate extends BaseTemplate {
 
 		$html .= $this->buildFooter();
 		$html .= $this->buildToolbar();
-
-		return $html;
-	}
-
-	/**
-	 * @return string
-	 */
-	protected function buildRail() {
-		$customSidebarMsg = $this->getMsg( 'cosmos-customsidebar' );
-		$stickySidebarMsg = $this->getMsg( 'cosmos-stickysidebar' );
-		$isCustomSidebarDisabled = $customSidebarMsg->isDisabled();
-		$isStickySidebarDisabled = $stickySidebarMsg->isDisabled();
-
-		if ( ( $isCustomSidebarDisabled && $isStickySidebarDisabled ) ) {
-			return;
-		}
-
-		$html = '';
-
-		$html .= Html::openElement( 'div', [ 'class' => 'CosmosRail', 'id' => 'CosmosRailWrapper' ] );
-		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-rail-inner loaded', 'id' => 'CosmosRail' ] );
-
-		if ( !$isCustomSidebarDisabled ) {
-			$html .= Html::openElement( 'section', [ 'class' => 'railModule module' ] );
-			$html .= $customSidebarMsg->parse();
-			$html .= Html::closeElement( 'section' );
-		}
-
-		if ( !$isStickySidebarDisabled ) {
-			$html .= Html::openElement( 'section', [ 'class' => 'railModule module rail-sticky-module' ] );
-			$html .= $stickySidebarMsg->parse();
-			$html .= Html::closeElement( 'section' );
-		}
-
-		$html .= Html::closeElement( 'div' );
-		$html .= Html::closeElement( 'div' );
 
 		return $html;
 	}

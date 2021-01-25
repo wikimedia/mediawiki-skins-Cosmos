@@ -132,6 +132,7 @@ class ResourceLoaderLessModule extends ResourceLoaderSkinModule {
 			'editsection-color' => $isContentBackgroundColorDark ? '#54595d' : '#aba6a2',
 			'alt-font-color' => $isContentBackgroundColorDark ? '#fff' : '#000',
 			'code-background-color' => $isContentBackgroundColorDark ? '#c5c6c6' : '#3a3939',
+			'rail-header-bottom-border' => $isContentBackgroundColorDark ? '#15130f' : '#eaecf0',
 			'tabs-background-color' => $isContentBackgroundColorDark ? 'transparent' : '#eaecf0',
 			'infobox-background-mix' => $isContentBackgroundColorDark ? '85%' : '90%',
 		];
