@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Agaafd",
 			"MuratTheTurkish"
 		]
 	},
@@ -28,5 +29,20 @@
 	"cosmos-newfiles": "Yeni dosyalar",
 	"prefs-cosmos-responsiveness": "Cosmos için mobil yanıt vermesi",
 	"cosmos-mobile-preference": "Cosmos görünümünün mobil duyarlı sürümünü etkinleştirin",
-	"cosmos-user-blocked": "Engellendi"
+	"cosmos-user-blocked": "Engellendi",
+	"cosmos-themedesigner-success": "Cosmos için yapılandırma başarıyla güncellendi.",
+	"cosmos-themedesigner-help-1": "Kişisel gezinme başlığının arka plan rengi.",
+	"cosmos-themedesigner-help-2": "Wiki gezinti başlığının arka plan görüntüsü.",
+	"cosmos-themedesigner-help-3": "Ana arka plan rengi.",
+	"cosmos-themedesigner-help-4": "Ana içerik alanının arka plan rengi.",
+	"cosmos-themedesigner-help-5": "Düğmeler için arka plan rengi.",
+	"cosmos-themedesigner-help-6": "Bağlantıların rengi.",
+	"cosmos-themedesigner-help-7": "Altbilginin arka plan rengi.",
+	"cosmos-themedesigner-help-8": "Araç çubuğunun arka plan rengi",
+	"cosmos-themedesigner-help-10": "Wiki gezinti başlığının arka plan görüntüsü.",
+	"cosmos-themedesigner-help-11": "Ana arka plan görüntüsü.",
+	"cosmos-themedesigner-help-12": "İçerik alanı opaklık seviyesi (yüzde)",
+	"cosmos-themedesigner-help-13": "Ana arka plan boyutu",
+	"cosmos-themedesigner-help-14": "Arka plan resmi tekrarlansın mı?",
+	"cosmos-themedesigner-help-15": "Arka plan resmi düzeltildi mi?"
 }

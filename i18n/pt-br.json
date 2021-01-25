@@ -31,5 +31,21 @@
 	"cosmos-user-blocked": "Bloqueado",
 	"cosmos-themedesigner-success": "Configuração atualizada com sucesso para Cosmos.",
 	"themedesigner": "Designer de tema",
-	"right-themedesigner": "Usar o designer de tema de Cosmos"
+	"right-themedesigner": "Usar o designer de tema de Cosmos",
+	"action-themedesigner": "usar o designer de tema de Cosmos",
+	"cosmos-themedesigner-help-1": "Cor de fundo do banner de navegação pessoal.",
+	"cosmos-themedesigner-help-2": "Cor de fundo do cabeçalho de navegação da wiki.",
+	"cosmos-themedesigner-help-3": "Cor de fundo principal.",
+	"cosmos-themedesigner-help-4": "Cor de fundo da área de conteúdo principal.",
+	"cosmos-themedesigner-help-5": "Cor de fundo para botões.",
+	"cosmos-themedesigner-help-6": "Cor dos links.",
+	"cosmos-themedesigner-help-7": "Cor de fundo do rodapé.",
+	"cosmos-themedesigner-help-8": "Cor de fundo da barra de ferramentas",
+	"cosmos-themedesigner-help-9": "URL completo para marca.",
+	"cosmos-themedesigner-help-10": "Imagem de fundo do cabeçalho de navegação da wiki.",
+	"cosmos-themedesigner-help-11": "Imagem de fundo principal.",
+	"cosmos-themedesigner-help-12": "Nível de opacidade da área de conteúdo (porcentagem)",
+	"cosmos-themedesigner-help-13": "Tamanho do fundo principal",
+	"cosmos-themedesigner-help-14": "Repetir imagem de fundo?",
+	"cosmos-themedesigner-help-15": "URL completo para marca."
 }

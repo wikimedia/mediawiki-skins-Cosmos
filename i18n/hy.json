@@ -6,5 +6,6 @@
 	},
 	"cosmos-counter-label": "$1 {{PLURAL:$1|Հոդված|Հոդվածներ}}",
 	"cosmos-action-cancel": "Չեղարկել",
-	"cosmos-add-new-page-title": "Ավելացնել Նոր Էջ"
+	"cosmos-add-new-page-title": "Ավելացնել Նոր Էջ",
+	"cosmos-themedesigner-help-6": "Հղումների գույնը"
 }

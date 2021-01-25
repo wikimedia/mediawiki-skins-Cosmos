@@ -26,5 +26,18 @@
 	"cosmos-user-blocked": "차단됨",
 	"cosmos-themedesigner-success": "코스모스의 구성을 성공적으로 업데이트했습니다.",
 	"themedesigner": "테마 디자이너",
-	"right-themedesigner": "코스모스 테마디자이너 사용"
+	"right-themedesigner": "코스모스 테마디자이너 사용",
+	"action-themedesigner": "코스모스 테마디자이너 사용",
+	"cosmos-themedesigner-help-1": "개인 둘러보기 배너의 배경색입니다.",
+	"cosmos-themedesigner-help-2": "위키 둘러보기 헤더의 배경색입니다.",
+	"cosmos-themedesigner-help-3": "주 배경색입니다.",
+	"cosmos-themedesigner-help-5": "버튼의 배경색입니다.",
+	"cosmos-themedesigner-help-6": "링크의 색입니다.",
+	"cosmos-themedesigner-help-7": "푸터의 배경색입니다.",
+	"cosmos-themedesigner-help-8": "도구 모음의 배경색",
+	"cosmos-themedesigner-help-9": "워드마크의 전체 URL입니다.",
+	"cosmos-themedesigner-help-10": "위키 둘러보기 헤더의 배경 이미지입니다.",
+	"cosmos-themedesigner-help-11": "주 배경 이미지입니다.",
+	"cosmos-themedesigner-help-13": "주 배경 크기",
+	"cosmos-themedesigner-help-14": "배경 이미지를 반복 처리하시겠습니까?"
 }

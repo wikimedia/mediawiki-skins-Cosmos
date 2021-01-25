@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Colathewikian",
 			"Shuiwater",
 			"Yfdyh000"
 		]
@@ -19,5 +20,8 @@
 	"cosmos-anon-add-new-page-text": "添加新页面",
 	"cosmos-explore": "探索",
 	"themedesigner": "主题设计工具",
-	"right-themedesigner": "使用Cosmos ThemeDesigner"
+	"right-themedesigner": "使用Cosmos ThemeDesigner",
+	"cosmos-themedesigner-help-5": "按钮的背景颜色。",
+	"cosmos-themedesigner-help-6": "链接的颜色。",
+	"cosmos-themedesigner-help-11": "主要背景图片。"
 }
