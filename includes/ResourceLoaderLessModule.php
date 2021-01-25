@@ -4,9 +4,9 @@ namespace MediaWiki\Skin\Cosmos;
 
 use MediaWiki\MediaWikiServices;
 use ResourceLoaderContext;
-use ResourceLoaderFileModule;
+use ResourceLoaderSkinModule;
 
-class ResourceLoaderLessModule extends ResourceLoaderFileModule {
+class ResourceLoaderLessModule extends ResourceLoaderSkinModule {
 	/**
 	 * Get language-specific LESS variables for this module.
 	 *

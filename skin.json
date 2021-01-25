@@ -20,8 +20,8 @@
 			"class": "MediaWiki\\Skin\\Cosmos\\SkinCosmos",
 			"args": [ {
 				"name": "cosmos",
+				"template": "MediaWiki\\Skin\\Cosmos\\CosmosTemplate",
 				"styles": [
-					"mediawiki.skinning.interface",
 					"skins.cosmos.styles"
 				],
 				"scripts": [
@@ -68,6 +68,9 @@
 	"ResourceModules": {
 		"skins.cosmos.styles": {
 			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
+			"features": {
+				"interface": true
+			},
 			"targets": [
 				"desktop",
 				"mobile"

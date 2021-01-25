@@ -8,17 +8,27 @@ use OutputPage;
 use SkinTemplate;
 
 class SkinCosmos extends SkinTemplate {
-	/** @var string */
-	public $template = CosmosTemplate::class;
+	/**
+	 * @param array $options
+	 */
+	public function __construct(
+		array $options = []
+	) {
+		if ( version_compare( MW_VERSION, '1.36', '<' ) ) {
+			// Associate template - this is replaced by `template` option in 1.36
+			$this->template = CosmosTemplate::class;
+		}
+
+		parent::__construct( $options );
+	}
 
 	/**
 	 * @param OutputPage $out
 	 */
 	public function initPage( OutputPage $out ) {
 		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-		$user = $this->getSkin()->getUser();
 
-		if ( $userOptionsLookup->getBoolOption( $user, 'cosmos-mobile-responsiveness' ) ) {
+		if ( $userOptionsLookup->getBoolOption( $this->getUser(), 'cosmos-mobile-responsiveness' ) ) {
 			$out->addMeta(
 				'viewport',
 				'width=device-width, initial-scale=1.0, ' .
@@ -34,13 +44,11 @@ class SkinCosmos extends SkinTemplate {
 		$services = MediaWikiServices::getInstance();
 		$config = $services->getConfigFactory()->makeConfig( 'cosmos' );
 
-		$skin = $this->getSkin();
-
 		$modules = parent::getDefaultModules();
 
 		// CosmosRail styles
-		if ( !$skin->msg( 'cosmos-customsidebar' )->isDisabled() ||
-			!$skin->msg( 'cosmos-stickysidebar' )->isDisabled()
+		if ( !$this->msg( 'cosmos-customsidebar' )->isDisabled() ||
+			!$this->msg( 'cosmos-stickysidebar' )->isDisabled()
 		) {
 			$modules['styles']['skin'][] = 'skins.cosmos.rail';
 		}
