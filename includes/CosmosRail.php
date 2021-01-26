@@ -243,7 +243,7 @@ class CosmosRail {
 				];
 			}
 
-			$cacheObj->set( $cacheKey, $recentChanges, 30000 );
+			$cacheObj->set( $cacheKey, $recentChanges, 30 );
 		}
 
 		return $recentChanges;
