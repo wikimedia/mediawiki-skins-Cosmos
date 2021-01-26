@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Sabelöga",
 			"WikiPhoenix"
 		]
 	},
@@ -28,5 +29,24 @@
 	"cosmos-newfiles": "Nya filer",
 	"prefs-cosmos-responsiveness": "Mobil responsivitet för Cosmos",
 	"cosmos-mobile-preference": "Aktivera responsiva mobilversionen av utseendet Cosmos",
-	"cosmos-user-blocked": "Blockerad"
+	"cosmos-user-blocked": "Blockerad",
+	"cosmos-themedesigner-success": "Uppdaterade konfigurationen för Cosmos.",
+	"themedesigner": "Temadesigner",
+	"right-themedesigner": "Använd temadesignern för Cosmos",
+	"action-themedesigner": "använda temadesignern för Cosmos",
+	"cosmos-themedesigner-help-1": "Den personliga navigeringsbanderollens bakgrundsfärg.",
+	"cosmos-themedesigner-help-2": "Bakgrundsfärgen för wikinavigeringens sidhuvud.",
+	"cosmos-themedesigner-help-3": "Huvudbakgrundens färg.",
+	"cosmos-themedesigner-help-4": "Huvudinnehållsområdets bakgrundsfärg.",
+	"cosmos-themedesigner-help-5": "Knapparnas bakgrundsfärg.",
+	"cosmos-themedesigner-help-6": "Länkfärg.",
+	"cosmos-themedesigner-help-7": "Sidfotens bakgrundsfärg.",
+	"cosmos-themedesigner-help-8": "Verktygsfältets bakgrundsfärg.",
+	"cosmos-themedesigner-help-9": "Fullständig webbadress till logotypen.",
+	"cosmos-themedesigner-help-10": "Bakgrundsbilden för wikinavigeringens sidhuvud.",
+	"cosmos-themedesigner-help-11": "Bild i huvudbakgrunden.",
+	"cosmos-themedesigner-help-12": "Innehållsområdets opacitet (i procent)",
+	"cosmos-themedesigner-help-13": "Huvudbakgrundens storlek",
+	"cosmos-themedesigner-help-14": "Upprepande bakgrundsbild?",
+	"cosmos-themedesigner-help-15": "Fast bakgrundsbild?"
 }
