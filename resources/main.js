@@ -3,7 +3,8 @@
 ( function ( $, mw ) {
 	var modal = document.getElementById( 'createPageModal' ),
 		btn = document.getElementById( 'createpage' ),
-		span = document.getElementsByClassName( 'close' )[ 0 ];
+		span = document.getElementsByClassName( 'close' )[ 0 ],
+		$top = 0;
 
 	btn.onclick = function () {
 		modal.style.display = 'block';
@@ -37,6 +38,15 @@
 
 	mw.hook( 've.activationComplete' ).add( function () {
 		$( '.ve-activated .firstHeading' ).html( $( 'title' ).html().replace( ' - ' + mw.config.get( 'wgSiteName' ), '' ) );
+	} );
+
+	$( '.CosmosRail .cosmos-rail-inner' ).addClass( 'loaded' );
+	$( '.rail-sticky-module' ).each( function () {
+		var $module = $( this ).nextAll( '.rail-sticky-module' );
+
+		$top += $( this ).outerHeight() + 20;
+
+		$module.attr( 'style', 'top: ' + ( $top + 60 ) + 'px;' );
 	} );
 
 	/**

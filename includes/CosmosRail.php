@@ -54,7 +54,7 @@ class CosmosRail {
 		);
 
 		$html .= Html::openElement( 'div', [
-				'class' => 'cosmos-rail-inner loaded',
+				'class' => 'cosmos-rail-inner',
 				'id' => 'CosmosRail'
 			]
 		);
