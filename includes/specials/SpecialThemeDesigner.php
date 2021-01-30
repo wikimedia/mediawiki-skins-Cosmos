@@ -27,7 +27,7 @@ class SpecialThemeDesigner extends FormSpecialPage {
 		parent::__construct( 'ThemeDesigner', 'themedesigner' );
 
 		$this->cache = ObjectCache::getLocalClusterInstance();
-		$this->cacheDir = __DIR__ . "/../../cache";
+		$this->cacheDir = $this->getConfig()->get( 'CacheDirectory' ) ?? __DIR__ . '/../../../../cache';
 
 		$this->config = $config;
 
@@ -157,19 +157,24 @@ class SpecialThemeDesigner extends FormSpecialPage {
 			wfTimestampNow()
 		);
 
-		if ( !is_dir( $this->cacheDir ) ) {
-			mkdir( $this->cacheDir );
+		if ( !is_dir( "{$this->cacheDir}/cosmos-themedesigner" ) ) {
+			mkdir( "{$this->cacheDir}/cosmos-themedesigner", 0777, true );
 		}
 
+		$dbName = $this->getConfig()->get( 'DBname' );
+
 		file_put_contents(
-			"{$this->cacheDir}/cosmos_themedesigner.json.tmp",
+			"{$this->cacheDir}/cosmos-themedesigner/{$dbName}.json.tmp",
 			json_encode( [
 				'timestamp' => $this->timestamp,
 				'values' => $formData
 			] ), LOCK_EX );
 
-		if ( file_exists( "{$this->cacheDir}/cosmos_themedesigner.json.tmp" ) ) {
-			rename( "{$this->cacheDir}/cosmos_themedesigner.json.tmp", "{$this->cacheDir}/cosmos_themedesigner.json" );
+		if ( file_exists( "{$this->cacheDir}/cosmos-themedesigner/{$dbName}.json.tmp" ) ) {
+			rename(
+				"{$this->cacheDir}/cosmos-themedesigner/{$dbName}.json.tmp",
+				"{$this->cacheDir}/cosmos-themedesigner/{$dbName}.json"
+			);
 		}
 
 		$this->getOutput()->addHTML(

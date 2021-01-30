@@ -20,12 +20,13 @@ class CosmosConfig {
 	public function __construct( Config $config ) {
 		$this->config = $config;
 
-		$this->cacheDir = __DIR__ . "/../cache";
+		$this->cacheDir = $this->config->get( 'CacheDirectory' ) ?? __DIR__ . '/../../../cache';
+		$dbName = $this->config->get( 'DBname' );
 
-		if ( file_exists( "{$this->cacheDir}/cosmos_themedesigner.json" ) ) {
+		if ( file_exists( "{$this->cacheDir}/cosmos-themedesigner/{$dbName}.json" ) ) {
 			$this->themeDesignerConfig = json_decode(
 				file_get_contents(
-					"{$this->cacheDir}/cosmos_themedesigner.json"
+					"{$this->cacheDir}/cosmos-themedesigner/{$dbName}.json"
 				), true
 			)['values'] ?? false;
 		}
