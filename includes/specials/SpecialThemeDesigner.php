@@ -27,7 +27,7 @@ class SpecialThemeDesigner extends FormSpecialPage {
 		parent::__construct( 'ThemeDesigner', 'themedesigner' );
 
 		$this->cache = ObjectCache::getLocalClusterInstance();
-		$this->cacheDir = $this->getConfig()->get( 'CacheDirectory' ) ?? __DIR__ . '/../../../../cache';
+		$this->cacheDir = $this->getConfig()->get( 'CacheDirectory' ) ?: __DIR__ . '/../../../../cache';
 
 		$this->config = $config;
 
