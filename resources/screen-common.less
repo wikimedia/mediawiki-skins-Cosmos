@@ -2310,8 +2310,7 @@ table.mw-datatable {
 
 .client-js.ve-activated .mw-dismissable-notice,
 .ve-activated #ca-talk,
-.action-edit #ca-talk,
-.ve-activated .CosmosRail {
+.action-edit #ca-talk {
 	display: none;
 }
 
@@ -2394,13 +2393,8 @@ table.mw-interwikitable.body td.mw-interwikitable-local-yes {
 	z-index: 1;
 }
 
-#mw-content,
-.CosmosRail .custom-module {
+#mw-content {
 	border: 1px solid @border-color;
-}
-
-.CosmosRail .module h3 {
-	border-bottom: 3px solid @rail-header-bottom-border;
 }
 
 .cosmos-header,
@@ -2421,4 +2415,8 @@ table.mw-interwikitable.body td.mw-interwikitable-local-yes {
 
 #mw-content .infobox {
 	float: right;
+}
+
+.CosmosRail .module h3 {
+	border-bottom: 3px solid @rail-header-bottom-border;
 }

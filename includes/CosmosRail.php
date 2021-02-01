@@ -103,7 +103,12 @@ class CosmosRail {
 	 */
 	protected function getInterfaceModules() {
 		$modules = [];
-		foreach ( (array)$this->config->getEnabledRailModules()['interface'][0] as $message => $type ) {
+
+		$interfaceRailModules = $this->config->getEnabledRailModules()['interface'];
+
+		$interfaceModules = $interfaceRailModules[0] ?? $interfaceRailModules;
+
+		foreach ( (array)$interfaceModules as $message => $type ) {
 			if ( $this->messageLocalizer->msg( $message )->isDisabled() ) {
 				continue;
 			}
