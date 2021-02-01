@@ -22,6 +22,8 @@
 				"name": "cosmos",
 				"template": "MediaWiki\\Skin\\Cosmos\\CosmosTemplate",
 				"styles": [
+					"mediawiki.skinning.interface",
+					"mediawiki.skinning.content.externallinks",
 					"skins.cosmos.styles"
 				],
 				"scripts": [
@@ -68,9 +70,6 @@
 	"ResourceModules": {
 		"skins.cosmos.styles": {
 			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
-			"features": [
-				"interface"
-			],
 			"targets": [
 				"desktop",
 				"mobile"
@@ -353,13 +352,13 @@
 		},
 		"CosmosEnabledRailModules": {
 			"value": {
-				"recentchanges": "normal",
+				"recentchanges": false,
 				"interface": [ {
-					"cosmos-customsidebar": "normal",
-					"cosmos-stickysidebar": "sticky"
+					"cosmos-custom-rail-module": "normal",
+					"cosmos-custom-sticky-rail-module": "sticky"
 				} ]
 			},
-			"description": "Sets which rail modules will be enabled on Cosmos"
+			"description": "Sets which rail modules will be enabled on Cosmos, and whether they are 'sticky' or 'normal'"
 		}
 	},
 	"HookHandlers": {
