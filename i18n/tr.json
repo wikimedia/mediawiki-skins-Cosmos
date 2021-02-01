@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Agaafd",
+			"Joseph",
 			"MuratTheTurkish"
 		]
 	},
@@ -32,6 +33,8 @@
 	"cosmos-user-blocked": "Engellendi",
 	"cosmos-themedesigner-success": "Cosmos için yapılandırma başarıyla güncellendi.",
 	"themedesigner": "Tema Tasarımcısı",
+	"right-themedesigner": "Cosmos ThemeDesigner kullan",
+	"action-themedesigner": "Cosmos ThemeDesigner kullanmaya",
 	"cosmos-themedesigner-help-1": "Kişisel gezinme başlığının arka plan rengi.",
 	"cosmos-themedesigner-help-2": "Wiki gezinti başlığının arka plan görüntüsü.",
 	"cosmos-themedesigner-help-3": "Ana arka plan rengi.",
@@ -40,6 +43,7 @@
 	"cosmos-themedesigner-help-6": "Bağlantıların rengi.",
 	"cosmos-themedesigner-help-7": "Altbilginin arka plan rengi.",
 	"cosmos-themedesigner-help-8": "Araç çubuğunun arka plan rengi",
+	"cosmos-themedesigner-help-9": "Marka damgası için tam URL.",
 	"cosmos-themedesigner-help-10": "Wiki gezinti başlığının arka plan görüntüsü.",
 	"cosmos-themedesigner-help-11": "Ana arka plan görüntüsü.",
 	"cosmos-themedesigner-help-12": "İçerik alanı opaklık seviyesi (yüzde)",
