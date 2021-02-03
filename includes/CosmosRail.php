@@ -44,7 +44,7 @@ class CosmosRail {
 		if ( !array_intersect( $validModules, $enabledModules ) ||
 			( $enabledModules === [ 'interface' ] &&
 				empty( $this->getInterfaceModules() ) ) ) {
-			return;
+			return '';
 		}
 
 		$html = Html::openElement( 'div', [
