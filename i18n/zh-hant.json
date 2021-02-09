@@ -31,5 +31,21 @@
 	"cosmos-user-blocked": "已封鎖",
 	"cosmos-themedesigner-success": "成功更新 Cosmos 的設定。",
 	"themedesigner": "主題設計",
-	"right-themedesigner": "使用 Cosmos 主題設計"
+	"right-themedesigner": "使用 Cosmos 主題設計",
+	"action-themedesigner": "使用 Cosmos 主題設計",
+	"cosmos-themedesigner-help-1": "個人導覽橫幅的背景顏色。",
+	"cosmos-themedesigner-help-2": "Wiki 導航標頭背景顏色。",
+	"cosmos-themedesigner-help-3": "主要背景顏色。",
+	"cosmos-themedesigner-help-4": "主要內容區域的背景顏色。",
+	"cosmos-themedesigner-help-5": "按鈕背景顏色。",
+	"cosmos-themedesigner-help-6": "連結顏色。",
+	"cosmos-themedesigner-help-7": "頁腳背景顏色。",
+	"cosmos-themedesigner-help-8": "工具欄背景顏色",
+	"cosmos-themedesigner-help-9": "Wordmark 的完整 URL。",
+	"cosmos-themedesigner-help-10": "Wiki 導航標頭背景圖片。",
+	"cosmos-themedesigner-help-11": "主要背景圖片。",
+	"cosmos-themedesigner-help-12": "內容區域透明度（百分比）",
+	"cosmos-themedesigner-help-13": "主要背景尺寸",
+	"cosmos-themedesigner-help-14": "重複背景圖片？",
+	"cosmos-themedesigner-help-15": "固定背景圖片？"
 }
