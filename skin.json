@@ -39,7 +39,7 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"ThemeDesignerAliases": "includes/ThemeDesignerAliases.php"
+		"ThemeDesignerAliases": "includes/specials/ThemeDesignerAliases.php"
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Skin\\Cosmos\\": "includes/",
