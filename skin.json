@@ -39,7 +39,7 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"SpecialPageAliases": "includes/specials/SpecialPageAliases.php"
+		"CosmosSpecialPageAliases": "includes/specials/CosmosSpecialPageAliases.php"
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Skin\\Cosmos\\": "includes/",
