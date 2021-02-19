@@ -4,6 +4,7 @@
 			"Helpau",
 			"Kareyac",
 			"Megakott",
+			"Okras",
 			"WerySkok"
 		]
 	},
@@ -31,5 +32,11 @@
 	"cosmos-newfiles": "Новые файлы",
 	"prefs-cosmos-responsiveness": "Адаптивность для мобильных устройств для Cosmos",
 	"cosmos-mobile-preference": "Включить адаптивность для темы оформления Cosmos",
-	"cosmos-user-blocked": "Заблокирован"
+	"cosmos-user-blocked": "Заблокирован",
+	"cosmos-themedesigner-help-3": "Основной цвет фона.",
+	"cosmos-themedesigner-help-6": "Цвет ссылок.",
+	"cosmos-themedesigner-help-7": "Цвет фона нижнего колонтитула.",
+	"cosmos-themedesigner-help-8": "Цвет фона панели инструментов",
+	"cosmos-themedesigner-help-11": "Основное фоновое изображение.",
+	"cosmos-themedesigner-help-13": "Размер основного фона"
 }
