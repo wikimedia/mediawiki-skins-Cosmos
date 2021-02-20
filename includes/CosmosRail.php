@@ -59,11 +59,6 @@ class CosmosRail {
 			]
 		);
 
-		$enableRecentChangesModule = $this->config->getEnabledRailModules()['recentchanges'];
-		if ( !empty( $this->getRecentChanges() ) && $enableRecentChangesModule ) {
-			$html .= $this->getRecentChangesModule();
-		}
-
 		foreach ( (array)$this->getInterfaceModules() as $message => $type ) {
 			if ( $type === 'sticky' ) {
 				$html .= Html::rawElement( 'section', [
@@ -76,6 +71,11 @@ class CosmosRail {
 					], $this->messageLocalizer->msg( $message )->parse()
 				);
 			}
+		}
+
+		$enableRecentChangesModule = $this->config->getEnabledRailModules()['recentchanges'];
+		if ( !empty( $this->getRecentChanges() ) && $enableRecentChangesModule ) {
+			$html .= $this->getRecentChangesModule();
 		}
 
 		$html .= Html::closeElement( 'div' );
