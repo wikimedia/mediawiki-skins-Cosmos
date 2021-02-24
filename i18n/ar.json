@@ -1,10 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Omda4wady",
 			"محمد أحمد عبد الفتاح"
 		]
 	},
+	"cosmos-createpage-next": "التالي",
 	"cosmos-personaltools-anontalk": "نقاشي",
 	"cosmos-editcount-label": "التعديلات منذ الانضمامم للويكي",
+	"cosmos-action-back": "رجوع",
+	"cosmos-add-new-image": "أضف صورة جديدة",
 	"cosmos-themedesigner-help-6": "لون الوصلات."
 }
