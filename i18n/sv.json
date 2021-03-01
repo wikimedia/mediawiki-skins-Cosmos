@@ -48,5 +48,7 @@
 	"cosmos-themedesigner-help-12": "Innehållsområdets opacitet (i procent)",
 	"cosmos-themedesigner-help-13": "Huvudbakgrundens storlek",
 	"cosmos-themedesigner-help-14": "Upprepande bakgrundsbild?",
-	"cosmos-themedesigner-help-15": "Fast bakgrundsbild?"
+	"cosmos-themedesigner-help-15": "Fast bakgrundsbild?",
+	"cosmos.css": "/* All CSS här kommer att läsas in för de som använder utseendet Cosmos */",
+	"cosmos.js": "/* All JavaScript här kommer att läsas in för alla som använder utseendet Cosmos */"
 }
