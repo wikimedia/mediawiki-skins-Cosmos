@@ -132,19 +132,15 @@
 
 @media only screen and ( min-width: 1024px ) {
 	.CosmosRail .rail-sticky-module {
-		position: absolute;
+		position: static;
+		position: -webkit-sticky;
+		position: sticky;
+		z-index: 1;
 	}
-}
 
-.CosmosRail .rail-sticky-module {
-	position: static;
-	position: -webkit-sticky;
-	position: sticky;
-	z-index: 1;
-}
-
-.CosmosRail .cosmos-rail-inner.loaded .rail-sticky-module {
-	top: 65px;
+	.CosmosRail .cosmos-rail-inner.loaded .rail-sticky-module {
+		top: 65px;
+	}
 }
 
 .CosmosRail .recentchanges-module li {

@@ -145,9 +145,18 @@ class ResourceLoaderLessModule extends ResourceLoaderSkinModule {
 		$isBannerBackgroundColorDark = LessUtil::isThemeDark( 'banner-background-color' );
 
 		return [
-			'banner-font-color' => $isBannerBackgroundColorDark ? '#fff' : '#000',
-			'banner-echo-font-color' => $isBannerBackgroundColorDark ? 'fff' : '111',
-			'banner-input-bottom-border' => $isBannerBackgroundColorDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)',
+			'banner-font-color' =>
+				$isBannerBackgroundColorDark ? '#fff' : '#000',
+			'banner-echo-font-color' =>
+				$isBannerBackgroundColorDark ? 'fff' : '111',
+			'banner-search-background' =>
+				$isBannerBackgroundColorDark ? 'rgba(0,0,0,0.4)' : 'rgba(255,255,255,0.4)',
+			'banner-search-focus-background' =>
+				$isBannerBackgroundColorDark ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.6)',
+			'banner-search-button-hover-background' =>
+				$isBannerBackgroundColorDark ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.3)',
+			'banner-search-button-active-background' =>
+				$isBannerBackgroundColorDark ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.3)',
 		];
 	}
 

@@ -156,7 +156,7 @@ body > #mw-content-container {
 	width: 100%;
 	height: 36px;
 	border: 0;
-	background: rgba( 255, 255, 255, 0.4 );
+	background: @banner-search-background;
 	color: @banner-font-color;
 	padding: 5px 20px;
 	margin: 0;
@@ -167,7 +167,7 @@ body > #mw-content-container {
 	transition: background 250ms ease;
 
 	&:focus {
-		background: rgba( 255, 255, 255, 0.6 );
+		background: @banner-search-focus-background;
 	}
 }
 
@@ -198,11 +198,11 @@ body > #mw-content-container {
 	transition: background 250ms ease;
 
 	&:hover {
-		background: rgba( 255, 255, 255, 0.3 );
+		background: @banner-search-button-hover-background;
 	}
 
 	&:active {
-		background: rgba( 0, 0, 0, 0.3 );
+		background: @banner-search-button-active-background;
 	}
 }
 
@@ -245,8 +245,9 @@ body > #mw-content-container {
 
 .cosmos-userButton-label {
 	display: block;
-	font-weight: bold;
+	font-size: 20px;
 	color: @banner-font-color;
+	margin-top: 4px;
 	white-space: nowrap;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -359,13 +360,11 @@ body > #mw-content-container {
 	justify-items: center;
 	stroke: @banner-font-color;
 	stroke-width: 2px;
-	width: 20px;
-	height: 20px;
+	height: 28px;
 	fill: none;
 }
 
 .cosmos-bannerOption-dropdownIcon {
-	width: 10px;
 	height: auto;
 	margin-left: 7px;
 	display: flex;
@@ -1185,7 +1184,7 @@ button.wds-button {
 	align-items: center;
 	display: flex;
 	text-decoration: none;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: bold;
 	margin: 0 9px;
 	padding: 11px 0;
