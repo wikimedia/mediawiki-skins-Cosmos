@@ -59,12 +59,13 @@ body a:focus {
 #cosmos-search-form {
 	width: 100%;
 	display: flex;
+	align-items: center;
 }
 
 #cosmos-banner-search {
 	width: 100%;
 	display: flex;
-	padding-left: 30px;
+	margin: 0 10px;
 }
 
 #cosmos-actionsList-list {
@@ -94,11 +95,15 @@ body a:focus {
 .cosmos-dropdown-list {
 	display: none;
 	position: absolute;
+	top: 100%;
 	right: 0;
-	background-color: #eee;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	font-size: 14px;
+	border-radius: 4px;
 	min-width: 200px;
 	margin: 0;
-	padding: 10px;
+	padding: 7px 0;
 	box-shadow: 0 8px 16px 0 rgba( 0, 0, 0, 0.3 );
 	z-index: 999;
 
@@ -109,14 +114,12 @@ body a:focus {
 		padding: 0;
 		list-style: none;
 
-		&:not( :last-child ) {
-			border-bottom: 1px solid #999;
-		}
-
 		>* {
 			&:only-child {
-				color: #000;
-				padding: 5px 5px 5px 5px;
+				color: #39424d;
+				font-weight: bold;
+				margin: 0 9px;
+				padding: 11px 9px;
 				text-decoration: none;
 				display: block;
 			}
@@ -124,10 +127,12 @@ body a:focus {
 
 		>a {
 			&:only-child {
-				padding: 10px 10px 10px 15px;
+				margin: 0 9px;
+				padding: 11px 9px;
 
 				&:hover {
-					background-color: #ddd;
+					background-color: rgba( 0, 108, 176, 0.1 );
+					color: #0645ad;
 				}
 			}
 		}
@@ -149,27 +154,28 @@ body > #mw-content-container {
 
 #searchInput {
 	width: 100%;
-	font-size: 20px;
+	height: 36px;
 	border: 0;
-	border-bottom: 2px solid @banner-input-bottom-border;
-	background: transparent;
-	background-color: transparent;
+	background: rgba( 255, 255, 255, 0.4 );
 	color: @banner-font-color;
-	padding: 0;
-	margin: 10px 0;
+	padding: 5px 20px;
+	margin: 0;
 	border-radius: 0;
 	outline: 0;
 	box-shadow: none;
 	-webkit-appearance: none;
+	transition: background 250ms ease;
 
-	&:not( :placeholder-shown ) {
-		border-bottom: 2px solid @banner-font-color;
+	&:focus {
+		background: rgba( 255, 255, 255, 0.6 );
 	}
 }
 
 #cosmos-search-buttonContainer {
 	position: relative;
-	margin-left: 5px;
+	width: 46px; // wider click area
+	height: 36px; // search bar height
+	margin-left: -46px; // width
 
 	&:hover {
 		>#cosmos-search-buttonIcon {
@@ -188,12 +194,22 @@ body > #mw-content-container {
 	background: transparent;
 	border: 0;
 	margin: 0;
+	padding: 0;
+	transition: background 250ms ease;
+
+	&:hover {
+		background: rgba( 255, 255, 255, 0.3 );
+	}
+
+	&:active {
+		background: rgba( 0, 0, 0, 0.3 );
+	}
 }
 
 #cosmos-banner-userOptions {
 	display: flex;
-	float: right;
-	padding: 0 15px;
+	margin: 0 10px;
+	align-items: center;
 }
 
 #cosmos-notifications-list {
@@ -217,7 +233,7 @@ body > #mw-content-container {
 }
 
 #cosmos-userButton-avatar {
-	margin-right: 15px;
+	margin-right: 10px;
 
 	>img {
 		width: 30px;
@@ -228,13 +244,9 @@ body > #mw-content-container {
 }
 
 .cosmos-userButton-label {
-	display: inline-block;
-	height: 25px;
-	font-size: 20px;
+	display: block;
+	font-weight: bold;
 	color: @banner-font-color;
-	margin: 5px 0;
-	padding: 5px 0;
-	cursor: default;
 	white-space: nowrap;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -273,6 +285,10 @@ body > #mw-content-container {
 .cosmos-dropdown {
 	position: relative;
 
+	&-icon {
+		transition: transform 250ms ease;
+	}
+
 	&:hover {
 		>.cosmos-button-secondary {
 			opacity: 0.8;
@@ -285,7 +301,6 @@ body > #mw-content-container {
 
 		.cosmos-dropdown-icon {
 			transform: rotate( 180deg );
-			transition: 0.4s;
 		}
 	}
 }
@@ -305,7 +320,8 @@ body > #mw-content-container {
 }
 
 .cosmos-bannerOption {
-	display: inline-block;
+	display: flex;
+	height: 100%;
 
 	&:hover {
 		>.cosmos-bannerOption-button {
@@ -314,7 +330,6 @@ body > #mw-content-container {
 			justify-items: center;
 			stroke: @banner-font-color;
 			stroke-width: 2px;
-			height: 45px;
 			margin-top: 0;
 			margin-bottom: 0;
 			transition: 0.4s;
@@ -333,27 +348,27 @@ body > #mw-content-container {
 
 .cosmos-bannerOption-button {
 	display: flex;
-	padding: 5px 15px;
 	align-items: center;
-	height: 45px;
+	justify-content: center;
+	cursor: pointer;
 }
 
 .cosmos-bannerOption-icon {
-	display: inline-flex;
+	display: flex;
 	align-items: center;
 	justify-items: center;
 	stroke: @banner-font-color;
 	stroke-width: 2px;
-	height: 45px;
-	margin-top: 0;
-	margin-bottom: 0;
+	width: 20px;
+	height: 20px;
 	fill: none;
 }
 
 .cosmos-bannerOption-dropdownIcon {
-	height: 15px;
-	margin: 15px 0 15px 15px;
-	display: inline-block;
+	width: 10px;
+	height: auto;
+	margin-left: 7px;
+	display: flex;
 	stroke: @banner-font-color;
 	stroke-width: 2px;
 	fill: @banner-font-color;
@@ -405,13 +420,15 @@ body > #mw-content-container {
 	height: 55px;
 	margin: 0;
 	padding: 0;
+	font-size: 15px;
 	background-color: @banner-background-color;
 }
 
 #cosmos-banner-content {
 	display: flex;
 	justify-content: space-between;
-	width: 100%;
+	height: 100%;
+	margin: 0 6px;
 }
 
 body > .suggestions .suggestions-results {
@@ -455,6 +472,7 @@ body > .suggestions {
 }
 
 #cosmos-articleHeader-actions {
+	display: flex;
 	float: right;
 	padding-right: 15px;
 	z-index: 10000;
@@ -475,11 +493,9 @@ body > .suggestions {
 .cosmos-button {
 	border: 1px solid transparent;
 	padding: 10px;
-	display: inline-flex;
+	display: flex;
 	align-content: center;
 	align-items: center;
-	text-align: center;
-	vertical-align: middle;
 	text-transform: uppercase;
 	text-decoration: none;
 	cursor: pointer;
@@ -864,8 +880,9 @@ button.wds-button {
 }
 
 .wds-dropdown {
-	display: inline-block;
+	display: flex;
 	position: relative;
+	height: 100%;
 
 	&:after {
 		bottom: -1px;
@@ -1154,6 +1171,9 @@ button.wds-button {
 	flex-shrink: 0;
 	line-height: 14px;
 	position: relative;
+	height: 100%;
+	display: block;
+	margin: 0;
 
 	.wds-dropdown__content {
 		left: -7px;
@@ -1163,19 +1183,18 @@ button.wds-button {
 
 .wds-tabs__tab-label {
 	align-items: center;
-	display: inline-flex;
+	display: flex;
 	text-decoration: none;
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: bold;
-	height: 40px;
-	margin: 0 11px;
-	text-align: center;
+	margin: 0 9px;
+	padding: 11px 0;
 	text-transform: uppercase;
 	white-space: nowrap;
 
 	>a {
 		align-items: center;
-		display: inline-flex;
+		display: flex;
 		text-decoration: none;
 		height: 100%;
 	}
@@ -1732,7 +1751,7 @@ body .oo-ui-tabSelectWidget-framed {
 
 #searchInput {
 	&::placeholder {
-		color: @banner-font-color;
+		opacity: 0.9;
 	}
 }
 
@@ -2244,7 +2263,7 @@ body .postedit-container {
 #p-personal #pt-uls .uls-trigger {
 	background-image: none;
 	display: block;
-	padding-left: 15px;
+	padding-left: 11px;
 }
 
 #p-personal #pt-uls .uls-trigger:before {

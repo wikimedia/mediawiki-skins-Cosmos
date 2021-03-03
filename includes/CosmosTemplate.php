@@ -122,7 +122,7 @@ class CosmosTemplate extends BaseTemplate {
 			'div',
 			[
 				'class' => 'cosmos-button cosmos-button-primary cosmos-mobile-menu-button',
-				'onclick' => '$(".wds-tabs__tab").toggle()'
+				'onclick' => '$(".wds-tabs").toggle()'
 			],
 			$this->getMsg( 'cosmos-mobile-menu-label' )->escaped()
 		);
