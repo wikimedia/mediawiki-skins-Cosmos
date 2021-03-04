@@ -7,10 +7,6 @@ body {
 	background: @content-background-color;
 }
 
-#mw-content {
-	min-height: 400px;
-}
-
 #cosmos-footer {
 	margin-bottom: 150px;
 }
@@ -52,10 +48,6 @@ body a:focus {
 	text-decoration: none;
 }
 
-#mw-content {
-	border: 0;
-}
-
 #cosmos-search-form {
 	display: flex;
 	width: 100%;
@@ -73,7 +65,6 @@ body a:focus {
 	overflow: auto;
 	min-width: 160px;
 	margin: 0;
-	background-color: #f1f1f1;
 	box-shadow: 0 8px 16px 0 rgba( 0, 0, 0, 0.2 );
 
 	a {
@@ -140,7 +131,12 @@ body a:focus {
 }
 
 #mw-content {
-	padding: 0 2em 0;
+	position: relative;
+	z-index: 1;
+	min-height: 250px;
+	padding: 10px 40px;
+	border: 0;
+	word-wrap: break-word;
 }
 
 body > #mw-content-container {
@@ -306,15 +302,6 @@ body > #mw-content-container {
 	}
 }
 
-.cosmos-button-action {
-	height: 28px;
-	margin: 15px 0 15px 0;
-
-	>span {
-		margin: auto 20px;
-	}
-}
-
 .cosmos-button-text {
 	margin: auto;
 	text-decoration: none;
@@ -473,12 +460,13 @@ body > .suggestions {
 #cosmos-articleHeader-actions {
 	z-index: 10000;
 	display: flex;
-	padding-right: 15px;
-	float: right;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 5px 0;
 
-	>* {
-		margin-left: 15px;
-		margin-left: 15px;
+	.cosmos-button {
+		height: 24px;
+		margin-right: 5px;
 	}
 }
 
@@ -487,15 +475,23 @@ body > .suggestions {
 	color: @button-font-color;
 	stroke: @button-font-color;
 	stroke-width: 2px;
+	transition: filter 250ms ease;
+
+	&:hover {
+		filter: brightness( 110% );
+	}
 }
 
 .cosmos-button {
 	display: flex;
 	align-content: center;
 	align-items: center;
-	padding: 10px;
+	padding: 8px 16px;
 	border: 1px solid transparent;
+	border-radius: 4px;
 	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
 	text-decoration: none;
 	text-transform: uppercase;
 	-webkit-touch-callout: none;
@@ -504,23 +500,41 @@ body > .suggestions {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+
+	> svg {
+		width: auto;
+		height: 20px;
+		margin-right: 8px;
+	}
+}
+
+.cosmos-actions-edit {
+	border-radius: 4px 0 0 4px;
+}
+
+#cosmos-articleHeader-title {
+	display: flex;
+	align-items: center;
+	padding: 10px 0;
+
+	.mw-indicators {
+		display: flex;
+		align-items: center;
+		padding: 10px 0;
+		font-size: 15px;
+	}
 }
 
 #cosmos-actions-actionsList {
-	display: inline-block;
-	padding: 0;
-	margin: 15px 0 15px 2px;
+	margin-left: -3px;
 }
 
 #cosmos-actionsList-button {
-	min-width: 28px;
-	margin: 0;
+	border-radius: 0 4px 4px 0;
 	cursor: auto;
 }
 
 #cosmos-actionsList-dropdownIcon {
-	height: 14px;
-	margin: 7px;
 	fill: @button-font-color;
 }
 
@@ -1028,12 +1042,13 @@ button.wds-button {
 }
 
 .cosmos-header__local-navigation {
+	display: flex;
+	height: 46px;
+	padding-left: 11px;
+
 	.wds-dropdown__toggle-chevron {
 		opacity: 0.5;
 	}
-	display: flex;
-	height: 46px;
-	padding-left: 6px;
 
 	a[ href='#' ] {
 		cursor: default;
@@ -1252,7 +1267,6 @@ button.wds-button {
 .cosmos-header {
 	position: relative;
 	z-index: 2;
-	height: 105px;
 	background-color: @header-background-solid-color;
 	background-position: right center;
 	background-repeat: no-repeat;
@@ -1792,6 +1806,7 @@ body {
 
 body #mw-content-text {
 	color: @font-color;
+	line-height: 1.5;
 }
 
 .category-gallery-item {
@@ -1824,12 +1839,9 @@ ul.tabbernav {
 
 .mw-body {
 	h1.firstHeading {
-		display: inline-block;
-		max-width: 100%;
-		-webkit-align-items: flex-end;
-		align-items: flex-end;
+		padding: 0;
 		border: 0;
-		-webkit-box-align: end;
+		margin: 0;
 		color: @alt-font-color;
 		font-size: 36px;
 		font-weight: bold;
@@ -1974,7 +1986,7 @@ body {
 }
 
 #cosmos-footer-footerContent {
-	padding: 0 15px 40px 15px;
+	padding: 0 20px 40px 20px;
 }
 
 #cosmos-footerContent-footerLinks {
@@ -2055,9 +2067,15 @@ body {
 	}
 }
 
+#cosmos-page-header {
+	padding: 20px 0;
+}
+
 #cosmos-header-articleHeader {
-	display: inline-block;
-	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .cosmos-pageAligned .mw-mmv-filepage-buttons .mw-mmv-view-expanded,
@@ -2403,24 +2421,8 @@ table.mw-interwikitable.body td.mw-interwikitable-local-yes {
 	color: #fff;
 }
 
-#mw-content {
-	position: relative;
-	z-index: 1;
-	min-height: 250px;
-	word-wrap: break-word;
-}
-
-#mw-content {
-	border: 1px solid @border-color;
-}
-
-.cosmos-header,
-#mw-content {
+.cosmos-header {
 	border-bottom: 0;
-}
-
-#mw-content {
-	border-top: 0;
 }
 
 #mw-content-wrapper {
