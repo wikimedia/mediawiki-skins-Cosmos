@@ -40,10 +40,10 @@ img {
 }
 
 .firstHeading {
+	padding-bottom: 5px;
+	margin-bottom: 20px;
 	font-size: 25pt;
 	line-height: 28pt;
-	margin-bottom: 20px;
-	padding-bottom: 5px;
 }
 
 .firstHeading,
@@ -64,14 +64,14 @@ h3,
 h4,
 h5,
 h6 {
-	padding: 0;
 	position: relative;
+	padding: 0;
 }
 
 h2 {
+	margin-bottom: 0.25em;
 	font-size: 18pt;
 	line-height: 24pt;
-	margin-bottom: 0.25em;
 }
 
 h3 {
@@ -87,28 +87,28 @@ h6 {
 }
 
 p {
+	margin-top: 5px;
 	font-size: 12pt;
 	line-height: 16pt;
-	margin-top: 5px;
 	text-align: justify;
 
 	&:before {
-		content: '';
 		display: block;
-		width: 120pt;
 		overflow: hidden;
+		width: 120pt;
+		content: '';
 	}
 }
 
 blockquote {
-	border-left: 2px solid #000;
 	padding-left: 20px;
+	border-left: 2px solid #000;
 }
 
 ol,
 ul {
-	margin: 10px 0 0 1.6em;
 	padding: 0;
+	margin: 10px 0 0 1.6em;
 
 	li {
 		padding: 2px 0;
@@ -121,11 +121,11 @@ ul {
 }
 
 .toc {
-	page-break-before: avoid;
-	page-break-after: avoid;
-	background: none;
-	border: 0;
 	display: table;
+	border: 0;
+	background: none;
+	page-break-after: avoid;
+	page-break-before: avoid;
 
 	a {
 		border: 0;
@@ -162,29 +162,29 @@ ul {
 }
 
 .printfooter {
-	margin-top: 10px;
-	border-top: 3px solid #000;
 	padding-top: 10px;
-	font-size: 10pt;
+	border-top: 3px solid #000;
+	margin-top: 10px;
 	clear: both;
+	font-size: 10pt;
 }
 
 #cosmos-footer {
-	margin-top: 12px;
-	border-top: 1px solid #eee;
 	padding-top: 5px;
+	border-top: 1px solid #eee;
+	margin-top: 12px;
 }
 
 #cosmos-footerLinks-info {
-	margin: 0;
 	padding: 0;
+	margin: 0;
 
 	li {
-		color: #999;
-		list-style: none;
 		display: block;
 		padding-bottom: 10px;
+		color: #999;
 		font-size: 10pt;
+		list-style: none;
 
 		a {
 			color: #999 !important;

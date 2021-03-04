@@ -1,6 +1,6 @@
 .portable-infobox {
-	color: @font-color;
 	width: 300px;
+	color: @font-color;
 
 	&.pi-background {
 		background-color: mix( mix( @button-background-color, @alt-font-color, 50% ), @content-background-color, 10% );
@@ -8,8 +8,8 @@
 
 	&.pi-layout-stacked {
 		.pi-data-label {
-			padding-bottom: 6px;
 			padding-right: 0;
+			padding-bottom: 6px;
 		}
 	}
 
@@ -21,10 +21,10 @@
 
 	.pi-collapse .pi-header:after,
 	.pi-header.collapsible:after {
-		border-color: @button-font-color;
-		height: 9px;
 		right: 14px;
 		width: 9px;
+		height: 9px;
+		border-color: @button-font-color;
 	}
 
 	.pi-collapse-closed .pi-header:after {
@@ -32,20 +32,20 @@
 	}
 
 	.pi-data-label {
-		-ms-flex-preferred-size: 88px;
 		-webkit-flex-basis: 88px;
 		-moz-flex-basis: 88px;
 		flex-basis: 88px;
-		color: inherit;
 		padding-right: 14px;
+		color: inherit;
+		-ms-flex-preferred-size: 88px;
 	}
 
 	.pi-data-value {
 		padding-left: 0;
 
 		li {
-			line-height: 18px;
 			padding-bottom: 8px;
+			line-height: 18px;
 
 			&:last-child {
 				padding-bottom: 0;
@@ -62,8 +62,8 @@
 
 		ol,
 		ul {
-			list-style-position: outside;
 			margin-left: 14px;
+			list-style-position: outside;
 		}
 	}
 
@@ -110,8 +110,8 @@
 		}
 
 		.pi-data-value {
-			padding-left: 14px;
 			padding-top: 0;
+			padding-left: 14px;
 		}
 	}
 
@@ -129,8 +129,8 @@
 	}
 
 	.pi-media-collection-tabs {
-		background-color: mix( mix( @button-background-color, @alt-font-color, 50% ), @content-background-color, 10% );
 		margin: 0;
+		background-color: mix( mix( @button-background-color, @alt-font-color, 50% ), @content-background-color, 10% );
 		text-align: left;
 
 		.current {
@@ -169,9 +169,9 @@
 
 	.pi-smart-data-label,
 	.pi-smart-data-value {
-		border-left: 0;
 		box-sizing: border-box;
 		flex-basis: auto;
+		border-left: 0;
 
 		&:nth-child( even ) {
 			background-color: mix( @button-background-color, mix( mix( @button-background-color, @alt-font-color, 50% ), @content-background-color, 10% ), 10% );
@@ -185,25 +185,25 @@
 
 	.pi-tab-link {
 		border: 0;
-		font-size: 14px;
 		margin: 0;
+		font-size: 14px;
 	}
 
 	.pi-title {
+		padding-top: 14px;
 		font-size: 20px;
 		font-weight: bold;
 		line-height: 24px;
-		padding-top: 14px;
 	}
 }
 
 // Mobile
 @media screen and ( max-width: 720px ) {
 	.portable-infobox {
-		float: none;
 		width: initial;
-		font-size: initial;
 		margin: 0;
+		float: none;
+		font-size: initial;
 
 		.pi-title {
 			text-align: center;

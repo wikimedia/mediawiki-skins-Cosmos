@@ -2,20 +2,20 @@
 
 #mw-content {
 	.pi-error-info {
+		padding: 30px 50px;
+		margin: 0;
 		background-color: #f33;
 		color: #fff;
 		font-size: 18px;
 		line-height: 28px;
-		margin: 0;
-		padding: 30px 50px;
 	}
 
 	.pi-debug {
+		width: 100%;
+		margin: 0;
 		background-color: mix( @content-background-color, @alt-font-color, 90% );
 		font-family: monospace;
 		list-style: none;
-		margin: 0;
-		width: 100%;
 
 		li {
 			margin: 0;
@@ -41,37 +41,37 @@
 }
 
 .pi-debug-line-number {
-	-ms-flex-preferred-size: 50px;
 	-webkit-flex-basis: 50px;
 	-moz-flex-basis: 50px;
 	flex-basis: 50px;
-	-ms-flex-negative: 0;
 	-webkit-flex-shrink: 0;
 	-moz-flex-shrink: 0;
 	flex-shrink: 0;
 	padding-left: 10px;
+	-ms-flex-negative: 0;
+	-ms-flex-preferred-size: 50px;
 }
 
 .pi-debug-error-message {
+	position: relative;
+	width: 400px;
+	padding: 10px 15px;
+	margin: 20px 0 10px 25px;
 	background-color: #000;
 	color: #fff;
 	font-family: 'Helvetica', 'Arial', sans-serif;
-	margin: 20px 0 10px 25px;
-	padding: 10px 15px;
-	position: relative;
-	width: 400px;
 
 	&:before {
-		border-bottom: 15px solid #000;
-		border-left: 15px solid transparent;
-		border-right: 15px solid transparent;
-		content: '';
-		display: block;
-		height: 0;
-		left: 25px;
 		position: absolute;
 		top: -15px;
+		left: 25px;
+		display: block;
 		width: 0;
+		height: 0;
+		border-right: 15px solid transparent;
+		border-bottom: 15px solid #000;
+		border-left: 15px solid transparent;
+		content: '';
 	}
 
 	.pi-debug-error-message-item {

@@ -125,8 +125,8 @@ dfn {
  */
 
 h1 {
-	font-size: 2em;
 	margin: 0.67em 0;
+	font-size: 2em;
 }
 
 /**
@@ -152,9 +152,9 @@ small {
 
 sub,
 sup {
+	position: relative;
 	font-size: 75%;
 	line-height: 0;
-	position: relative;
 	vertical-align: baseline;
 }
 
@@ -202,9 +202,9 @@ figure {
  */
 
 hr {
+	height: 0;
 	-moz-box-sizing: content-box;
 	box-sizing: content-box;
-	height: 0;
 }
 
 /**
@@ -239,13 +239,13 @@ input,
 optgroup,
 select,
 textarea {
+	margin: 0; /* 2 */
+	font-size: inherit;
+	font-stretch: inherit;
 	font-style: inherit;
 	font-variant: inherit;
 	font-weight: inherit;
-	font-stretch: inherit;
-	font-size: inherit;
 	line-height: inherit; /* 1 */
-	margin: 0; /* 2 */
 }
 
 /**
@@ -299,8 +299,8 @@ html input[ disabled ] {
 
 button::-moz-focus-inner,
 input::-moz-focus-inner {
-	border: 0;
 	padding: 0;
+	border: 0;
 }
 
 /**
@@ -344,10 +344,10 @@ input[ type='number' ]::-webkit-outer-spin-button {
  */
 
 input[ type='search' ] {
-	-webkit-appearance: textfield; /* 1 */
 	-moz-box-sizing: content-box;
 	-webkit-box-sizing: content-box; /* 2 */
 	box-sizing: content-box;
+	-webkit-appearance: textfield; /* 1 */
 }
 
 /**
@@ -366,9 +366,9 @@ input[ type='search' ]::-webkit-search-decoration {
  */
 
 fieldset {
+	padding: 0.35em 0.625em 0.75em;
 	border: 1px solid #c0c0c0;
 	margin: 0 2px;
-	padding: 0.35em 0.625em 0.75em;
 }
 
 /**
@@ -377,8 +377,8 @@ fieldset {
  */
 
 legend {
-	border: 0; /* 1 */
 	padding: 0; /* 2 */
+	border: 0; /* 1 */
 }
 
 /**

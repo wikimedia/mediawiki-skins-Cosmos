@@ -2,21 +2,21 @@
 // (placing it within portable-infobox class makes it strong enough) //
 
 .portable-infobox {
+	width: 270px;
+	margin: 0 0 15px 15px;
 	background-color: mix( @content-background-color, @link-color, @infobox-background-mix );
 	clear: right;
 	float: right;
-	margin: 0 0 15px 15px;
-	width: 270px;
 
 	.pi-item-spacing {
 		padding: 5px 10px;
 	}
 
 	.pi-secondary-font {
+		margin-top: 0;
 		font-size: 12px;
 		font-weight: bold;
 		line-height: 18px;
-		margin-top: 0;
 	}
 
 	.pi-header,
@@ -31,8 +31,8 @@
 	}
 
 	.pi-data-label {
-		margin-bottom: inherit;
 		margin-top: 0;
+		margin-bottom: inherit;
 	}
 
 	// overwrite default article styles for children of data value
@@ -71,21 +71,21 @@
 }
 
 .pi-caption {
+	color: mix( @content-background-color, @alt-font-color, 50% );
+	font-size: 12px;
+	font-style: italic;
 	-webkit-hyphens: auto;
 	-moz-hyphens: auto;
 	-ms-hyphens: auto;
 	hyphens: auto;
-	color: mix( @content-background-color, @alt-font-color, 50% );
-	font-size: 12px;
-	font-style: italic;
 	text-align: left;
 	word-wrap: break-word;
 }
 
 .pi-data,
 .pi-group {
-	border-bottom-style: solid;
 	border-bottom-width: 1px;
+	border-bottom-style: solid;
 }
 
 .pi-group > .pi-item:last-child {
@@ -98,55 +98,55 @@
 	display: -ms-flexbox;
 	display: -webkit-flex;
 	display: flex;
-	-ms-box-orient: horizontal;
-	-webkit-box-orient: horizontal;
+	overflow: hidden;
+	width: 100%;
+	box-sizing: border-box;
 	-ms-flex-direction: row;
 	-webkit-flex-direction: row;
 	flex-direction: row;
-	box-sizing: border-box;
-	overflow: hidden;
-	width: 100%;
+	-ms-box-orient: horizontal;
+	-webkit-box-orient: horizontal;
 }
 
 .pi-data-label {
-	-ms-flex-preferred-size: 90;
+	overflow: hidden;
 	-webkit-flex-basis: 90;
 	-moz-flex-basis: 90;
 	flex-basis: 90;
+	-ms-flex-preferred-size: 90;
 	-webkit-hyphens: auto;
 	-moz-hyphens: auto;
 	-ms-hyphens: auto;
 	hyphens: auto;
-	overflow: hidden;
 	word-wrap: break-word;
 }
 
 .pi-data-value {
+	padding-left: 0;
+	font-size: 12px;
 	-webkit-hyphens: auto;
 	-moz-hyphens: auto;
 	-ms-hyphens: auto;
 	hyphens: auto;
-	font-size: 12px;
 	line-height: 18px;
-	padding-left: 0;
 	word-break: break-word;
 
 	&:not( :first-child ) {
-		-ms-flex-preferred-size: 180px;
 		-webkit-flex-basis: 180px;
 		-moz-flex-basis: 180px;
 		flex-basis: 180px;
 		padding-left: 10px;
+		-ms-flex-preferred-size: 180px;
 	}
 }
 
 // **********  Special styles for HORIZONTAL group  ********** //
 
 .pi-horizontal-group {
+	width: 100%;
 	border-spacing: 0;
 	table-layout: fixed;
 	text-align: center;
-	width: 100%;
 
 	.pi-header {
 		text-align: left;
@@ -156,8 +156,8 @@
 		vertical-align: top;
 
 		&:not( :first-child ) {
-			border-left-style: solid;
 			border-left-width: 1px;
+			border-left-style: solid;
 		}
 	}
 
@@ -172,16 +172,16 @@
 .pi-smart-data-label {
 	&:not( :first-child ) {
 		border-color: mix( @content-background-color, @link-color, 75% );
-		border-left-style: solid;
 		border-left-width: 1px;
+		border-left-style: solid;
 	}
 }
 
 .pi-smart-group {
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
 	display: flex;
 	flex-direction: column;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
 	text-align: center;
 
 	&:last-child {
@@ -224,29 +224,29 @@
 
 .pi-collapse .pi-header:first-child {
 	&:after {
-		border-color: @font-color;
-		border-style: solid;
-		border-width: 2px 2px 0 0;
-		content: '';
-		display: inline-block;
-		height: 5px;
-		right: 0;
 		position: relative;
 		top: -1px;
-		vertical-align: middle;
+		right: 0;
+		display: inline-block;
 		width: 5px;
+		height: 5px;
+		border-width: 2px 2px 0 0;
+		border-style: solid;
+		border-color: @font-color;
+		content: '';
 		-webkit-transform: rotate( -45deg );
 		transform: rotate( -45deg );
+		vertical-align: middle;
 	}
-	padding-right: 25px;
 	position: relative;
+	padding-right: 25px;
 
 	&:after {
+		position: absolute;
+		top: 50%;
+		right: 10px;
 		display: block;
 		margin-top: -7px;
-		position: absolute;
-		right: 10px;
-		top: 50%;
 	}
 }
 
@@ -254,11 +254,11 @@
 	border-bottom: 0;
 
 	.pi-header:first-child:after {
-		transform: rotate( 135deg );
+		margin-top: -5px;
 		-webkit-transform: rotate( 135deg );
 		-moz-transform: rotate( 135deg );
 		-ms-transform: rotate( 135deg );
-		margin-top: -5px;
+		transform: rotate( 135deg );
 	}
 
 	> *:nth-child( n+2 ) {
@@ -276,20 +276,20 @@
 // **********  Image Collection  ********** //
 
 ul.pi-media-collection-tabs {
-	list-style: none;
-	margin: 0 -1px -1px 0;
 	overflow: hidden;
 	padding: 0;
+	margin: 0 -1px -1px 0;
+	list-style: none;
 	text-align: center;
 
 	li {
-		border: 1px solid mix( @content-background-color, @link-color, 75% );
-		box-sizing: border-box;
-		cursor: pointer;
 		display: inline-block;
-		margin: -1px -1px 0 0;
-		max-width: 50%;
 		overflow: hidden;
+		max-width: 50%;
+		box-sizing: border-box;
+		border: 1px solid mix( @content-background-color, @link-color, 75% );
+		margin: -1px -1px 0 0;
+		cursor: pointer;
 		text-overflow: ellipsis;
 		vertical-align: bottom;
 		white-space: nowrap;
@@ -302,8 +302,8 @@ ul.pi-media-collection-tabs {
 }
 
 .pi-media-collection-tab-content {
-	background-color: mix( @content-background-color, @link-color, @infobox-background-mix );
 	display: none;
+	background-color: mix( @content-background-color, @link-color, @infobox-background-mix );
 
 	.video-thumbnail {
 		display: block;
@@ -317,10 +317,10 @@ ul.pi-media-collection-tabs {
 // Mobile
 @media screen and ( max-width: 720px ) {
 	.portable-infobox {
-		float: none;
 		width: initial;
-		font-size: initial;
 		margin: 0;
+		float: none;
+		font-size: initial;
 
 		.pi-title {
 			text-align: center;

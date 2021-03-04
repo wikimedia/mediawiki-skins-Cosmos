@@ -1,7 +1,7 @@
 #cosmos-pageBody-content {
 	position: relative;
-	width: 680px;
 	z-index: 1;
+	width: 680px;
 }
 
 #cosmos-pageBody-content {
@@ -23,7 +23,7 @@
 }
 
 .cosmos-articleContainer {
-	zoom: 1;
+	position: relative;
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
@@ -32,10 +32,10 @@
 	-webkit-flex-wrap: wrap;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
-	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	justify-content: space-between;
-	position: relative;
+	-webkit-box-pack: justify;
+	zoom: 1;
 }
 
 @media only screen and ( min-width: 1024px ) {
@@ -51,22 +51,22 @@
 }
 
 .CosmosRail {
-	padding: 0 10px;
 	width: 300px;
+	padding: 0 10px;
 }
 
 .CosmosRail .module {
-	background: transparent;
-	zoom: 1;
-	margin-bottom: 30px;
-	padding: 20px 15px 15px;
 	position: relative;
+	padding: 20px 15px 15px;
+	margin-bottom: 30px;
+	background: transparent;
 	word-wrap: break-word;
+	zoom: 1;
 }
 
 .CosmosRail .rail-module {
-	background: transparent;
 	margin: 0 10px 30px;
+	background: transparent;
 }
 
 .cosmos-rail-inner {
@@ -75,13 +75,13 @@
 
 @media only screen and ( max-width: 1023px ) {
 	.CosmosRail {
+		width: auto;
+		padding: 13px 10px 0;
+		clear: both;
 		-moz-column-count: 2;
 		-webkit-column-count: 2;
 		column-count: 2;
-		clear: both;
 		float: none;
-		padding: 13px 10px 0;
-		width: auto;
 	}
 }
 
@@ -94,36 +94,36 @@
 
 @media only screen and ( max-width: 1023px ) {
 	.CosmosRail .module {
-		box-sizing: border-box;
-		display: inline-block;
-		margin: 12px 8px;
 		position: static;
-		vertical-align: top;
+		display: inline-block;
 		width: 330px;
+		box-sizing: border-box;
+		margin: 12px 8px;
+		vertical-align: top;
 	}
 }
 
 .CosmosRail .module h2 {
+	padding-left: 2px;
 	border: 0;
-	font-size: 18px;
-	font-weight: bold;
 	margin-top: 0;
 	margin-bottom: 25px;
-	padding-left: 2px;
+	font-size: 18px;
+	font-weight: bold;
 }
 
 .CosmosRail .module h3,
 .CosmosRail .module h4,
 .CosmosRail .module h5,
 .CosmosRail .module h6 {
-	padding-bottom: 0;
 	padding-top: 0;
+	padding-bottom: 0;
 }
 
 .CosmosRail .module p {
-	line-height: 21px;
-	margin: 0;
 	padding: 0;
+	margin: 0;
+	line-height: 21px;
 }
 
 .CosmosRail .module b {
@@ -144,9 +144,9 @@
 }
 
 .CosmosRail .recentchanges-module li {
+	padding-bottom: 10px;
 	font-size: 14px;
 	list-style: none;
-	padding-bottom: 10px;
 }
 
 .ve-activated .CosmosRail {
