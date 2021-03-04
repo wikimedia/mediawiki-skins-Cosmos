@@ -4,14 +4,19 @@
 			"Mainframe98"
 		]
 	},
+	"cosmos-anonymous": "Anoniem",
+	"cosmos-createpage-header": "Nieuw artikel aanmaken",
 	"cosmos-createpage-next": "Volgende",
 	"cosmos-personaltools-userpage": "Gebruikerspagina",
 	"cosmos-personaltools-usertalk": "Gebruikersoverleg",
+	"cosmos-personaltools-anontalk": "Mijn overleg",
 	"cosmos-action-addsection": "Nieuw onderwerp",
 	"cosmos-action-cancel": "Annuleren",
 	"cosmos-action-backtopage": "Terug naar $1",
 	"cosmos-action-back": "Terug",
 	"cosmos-add-new-page-text": "Toevoegen",
+	"cosmos-anon-add-new-page-text": "Nieuwe pagina toevoegen",
+	"cosmos-explore": "Verkennen",
 	"cosmos-newfiles": "Nieuwe bestanden",
 	"cosmos-user-blocked": "Geblokkeerd"
 }
