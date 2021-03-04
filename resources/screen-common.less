@@ -1749,6 +1749,13 @@ body code {
 #mw-content .toctitle h2 {
 	border-bottom: 0;
 	font-size: 14px;
+	font-weight: bold;
+}
+
+#mw-content .toc > ul {
+	padding: 10px;
+	border-top: solid 1px @border-color;
+	margin: 0;
 }
 
 body .oo-ui-tabSelectWidget-framed {
@@ -1769,19 +1776,37 @@ body .oo-ui-tabSelectWidget-framed {
 
 .toc {
 	display: table;
-	max-width: 300px;
-	padding: 5px;
+	padding: 0;
 	border: 1px solid @border-color;
 	margin: 1em 0;
-	background-color: transparent;
+	background-color: #f8f9fa;
 
 	.toctitle {
-		h2 {
-			display: inline;
-			padding: 0 5px 3px 0;
-			border: 0;
-			margin-top: 0;
-			font-size: 14px;
+		position: relative;
+		padding: 8px 16px;
+
+		.toctogglespan {
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			height: 100%;
+			transition: background 250ms ease;
+
+			&:before,
+			&:after {
+				content: none;
+			}
+
+			&:hover {
+				background-color: rgba( 0, 0, 0, 0.1 );
+			}
+
+			.toctogglelabel {
+				display: block;
+				height: 100%;
+				font-size: 0;
+			}
 		}
 	}
 }
