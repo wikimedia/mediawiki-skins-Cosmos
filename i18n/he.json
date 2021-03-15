@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"YaronSh",
 			"ישראל קלר",
 			"מגזין יהלום"
 		]
@@ -11,12 +12,14 @@
 	"cosmos-createpage-header": "צור מאמר חדש",
 	"cosmos-createpage-input-label": "כתוב את כותרת הדף שלך כאן:",
 	"cosmos-createpage-next": "הבא",
+	"cosmos-createpage-dialoge-text": "כרגע יש לנו <b>$1</b> {{PLURAL:$1|ערך <b>אחד</b>|<b>$1</b> ערכים}} על $2. נא להקליד את שם הערך שלך להלן או ללחוץ על אחת מהכותרות כדי להתחיל לכתוב!",
 	"cosmos-personaltools-userpage": "דף משתמש",
 	"cosmos-personaltools-usertalk": "שיחת משתמש",
 	"cosmos-personaltools-anontalk": "השיחה שלי",
 	"cosmos-editcount-label": "עריכות מאז שהצטרף לוויקי זה",
 	"cosmos-action-addsection": "פסקה חדשה",
 	"cosmos-action-cancel": "לבטל",
+	"cosmos-action-backtopage": "חזרה אל $1",
 	"cosmos-action-back": "אחורה",
 	"cosmos-add-new-image": "הוסף תמונה חדשה",
 	"cosmos-add-new-video": "הוסף סרטון חדש",
@@ -25,10 +28,13 @@
 	"cosmos-anon-add-new-page-text": "הוסף דף חדש",
 	"cosmos-explore": "לחקור",
 	"cosmos-newfiles": "קבצים חדשים",
+	"prefs-cosmos-responsiveness": "הסתגלות לניידים עבור Cosmos",
 	"cosmos-mobile-preference": "אפשר גרסה רספונסיבית לנייד של עור הקוסמוס",
 	"cosmos-user-blocked": "חסום",
 	"cosmos-themedesigner-success": "התצורה של Cosmos עודכנה בהצלחה.",
 	"themedesigner": "מעצב נושאים",
+	"right-themedesigner": "להשתמש במעצב ערכות העיצוב Cosmos",
+	"action-themedesigner": "להשתמש במעצב ערכות העיצוב Cosmos",
 	"cosmos-themedesigner-help-1": "צבע הרקע של באנר הניווט האישי.",
 	"cosmos-themedesigner-help-2": "צבע הרקע של כותרת הניווט בוויקי.",
 	"cosmos-themedesigner-help-3": "צבע רקע ראשי.",
