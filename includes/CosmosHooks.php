@@ -38,7 +38,7 @@ class CosmosHooks implements
 	 * @param array &$bodyAttrs
 	 */
 	public function onOutputPageBodyAttributes( $out, $skin, &$bodyAttrs ) : void {
-		if ( $skin->getUser()->isLoggedIn() ) {
+		if ( $skin->getUser()->isRegistered() ) {
 			$bodyAttrs['class'] .= ' user-logged';
 		} else {
 			$bodyAttrs['class'] .= ' user-anon';
