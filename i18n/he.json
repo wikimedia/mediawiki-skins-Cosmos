@@ -1,21 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
+			"LaG roiL",
 			"YaronSh",
 			"ישראל קלר",
 			"מגזין יהלום"
 		]
 	},
 	"cosmos-desc": "קוסמוס הוא עור שתוכנן ומבוסס על עור אואזיס של פנדום. נועד לשפר את העיצוב שלהם, ולספק עור מדיה-ויקי יעיל למשתמשים שאינם Fandom, או למשתמשים העוברים מחוץ ל- Fandom.",
-	"cosmos-anonymous": "בעילום שם",
-	"cosmos-counter-label": "{{PLURAL:$1|Article|Articles}}",
+	"cosmos-anonymous": "אנונימי",
+	"cosmos-counter-label": "{{PLURAL:$1|ערך|ערכים}}",
 	"cosmos-createpage-header": "צור מאמר חדש",
 	"cosmos-createpage-input-label": "כתוב את כותרת הדף שלך כאן:",
 	"cosmos-createpage-next": "הבא",
 	"cosmos-createpage-dialoge-text": "כרגע יש לנו <b>$1</b> {{PLURAL:$1|ערך <b>אחד</b>|<b>$1</b> ערכים}} על $2. נא להקליד את שם הערך שלך להלן או ללחוץ על אחת מהכותרות כדי להתחיל לכתוב!",
 	"cosmos-personaltools-userpage": "דף משתמש",
 	"cosmos-personaltools-usertalk": "שיחת משתמש",
-	"cosmos-personaltools-anontalk": "השיחה שלי",
+	"cosmos-personaltools-anontalk": "דף השיחה שלי",
 	"cosmos-editcount-label": "עריכות מאז שהצטרף לוויקי זה",
 	"cosmos-action-addsection": "פסקה חדשה",
 	"cosmos-action-cancel": "לבטל",
