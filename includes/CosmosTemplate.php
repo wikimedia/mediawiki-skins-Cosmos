@@ -191,7 +191,7 @@ class CosmosTemplate extends BaseTemplate {
 			'div',
 			[ 'id' => 'create-page-dialog__message' ],
 			$this->getMsg( 'cosmos-createpage-dialoge-text',
-				SiteStats::articles(),
+				number_format( SiteStats::articles() ),
 				$this->get( 'sitename' )
 			)->parse()
 		);
@@ -605,11 +605,15 @@ class CosmosTemplate extends BaseTemplate {
 
 		if ( $canRead ) {
 			$html .= Html::openElement( 'div', [ 'class' => 'cosmos-header__counter' ] );
-			$html .= Html::rawElement( 'span', [ 'class' => 'cosmos-header__counter-value' ], SiteStats::articles() );
+			$html .= Html::rawElement( 'span', [
+					'class' => 'cosmos-header__counter-value'
+				],
+				number_format( SiteStats::articles() )
+			);
 			$html .= Html::rawElement(
 				'span',
 				[ 'class' => 'cosmos-header__counter-label' ],
-				$this->getMsg( 'cosmos-counter-label', SiteStats::articles() )->escaped()
+				$this->getMsg( 'cosmos-counter-label', number_format( SiteStats::articles() ) )->escaped()
 			);
 			$html .= Html::closeElement( 'div' );
 			$html .= Html::openElement( 'div', [ 'class' => 'cosmos-header__wiki-buttons wds-button-group' ] );
