@@ -15,7 +15,6 @@ use SpecialPage;
 use Title;
 use WantedPagesPage;
 use wAvatar;
-use WebRequest;
 
 class CosmosTemplate extends BaseTemplate {
 	/**
@@ -871,7 +870,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		// If it exists, display the site notice at the top of the article
 		// Check for dissmissable site notice extension
-		$request = new WebRequest;
+		$request = $this->getSkin()->getRequest();
 
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'DismissableSiteNotice' ) && $this->data['sitenotice'] ) {
 			$html .= Html::rawElement( 'div', [ 'id' => 'siteNotice' ], $this->get( 'sitenotice' ) );
