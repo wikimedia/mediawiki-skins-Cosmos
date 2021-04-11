@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "5.0.0",
+	"version": "5.2.8",
 	"author": [
 		"Universal Omega",
 		"SamanthaNguyen",
@@ -12,7 +12,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.35.0"
+		"MediaWiki": ">= 1.35.2"
 	},
 	"ValidSkinNames": {
 		"cosmos": {
