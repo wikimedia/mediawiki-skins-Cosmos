@@ -13,7 +13,7 @@
 	"cosmos-createpage-header": "The header for the create page pop-up dialogue.",
 	"cosmos-createpage-input-label": "The new page's name input label.",
 	"cosmos-createpage-next": "The create page dialogue submit/next button label.",
-	"cosmos-createpage-dialoge-text": "The text that appears underneath the input to enter new page name, in create page dialogue, as a label to the article proposals. The first $1 instance should be wrapped in <code><nowiki><b></b></nowiki></code> tags. Uses Plural:$1 for the second $1 instance.",
+	"cosmos-createpage-dialoge-text": "The text that appears underneath the input to enter new page name, in create page dialogue, as a label to the article proposals. The first $1 instance should be wrapped in <code><nowiki>'''$1'''</nowiki></code>. Uses Plural:$1 for the second $1 instance.",
 	"cosmos-custom-rail-module": "{{notranslate}}",
 	"cosmos-custom-sticky-rail-module": "{{notranslate}}",
 	"cosmos-personaltools-userpage": "The link text for user page in personal tools.\n\n{{Identical|User page}}",
