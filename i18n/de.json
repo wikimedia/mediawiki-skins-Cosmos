@@ -10,7 +10,7 @@
 	"cosmos-createpage-header": "Einen neuen Artikel erstellen",
 	"cosmos-createpage-input-label": "Schreibe den Seitennamen hierhin:",
 	"cosmos-createpage-next": "Nächster",
-	"cosmos-createpage-dialoge-text": "Wir haben derzeit <b>$1</b> {{PLURAL:$1|Artikel}} auf $2. Gib oben deinen Artikelnamen ein oder klicke auf einen der Titel unten und beginne zu schreiben!",
+	"cosmos-createpage-dialoge-text": "Wir haben derzeit '''$1''' {{PLURAL:$1|Artikel}} auf $2. Gib oben deinen Artikelnamen ein oder klicke auf einen der Titel unten und beginne zu schreiben!",
 	"cosmos-personaltools-userpage": "Benutzerseite",
 	"cosmos-personaltools-usertalk": "Benutzer Diskussion",
 	"cosmos-personaltools-anontalk": "Meine Diskussionsseite",

@@ -10,7 +10,7 @@
 	"cosmos-createpage-header": "Создајте нова статија",
 	"cosmos-createpage-input-label": "Тука напишете го насловот на страницата:",
 	"cosmos-createpage-next": "Следно",
-	"cosmos-createpage-dialoge-text": "Тековно имаме <b>$1</b> {{PLURAL:$1|статија|статии}} на $2. Погоре внесете го името на вашата статија или стиснете на еден од насловите подолу за да почнете со пишување!",
+	"cosmos-createpage-dialoge-text": "Тековно имаме '''$1''' {{PLURAL:$1|статија|статии}} на $2. Погоре внесете го името на вашата статија или стиснете на еден од насловите подолу за да почнете со пишување!",
 	"cosmos-personaltools-userpage": "Корисничка страница",
 	"cosmos-personaltools-usertalk": "Разговор со корисник",
 	"cosmos-personaltools-anontalk": "Мој разговор",

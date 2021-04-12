@@ -15,7 +15,7 @@
 	"cosmos-createpage-header": "Создать новую статью",
 	"cosmos-createpage-input-label": "Введите сюда заголовок страницы:",
 	"cosmos-createpage-next": "Далее",
-	"cosmos-createpage-dialoge-text": "У нас есть <b>$1</b> {{PLURAL:$1|статья|статьи|статей}} в $2. Введите название статьи ниже или нажмите на одно из названий ниже и начните писать!",
+	"cosmos-createpage-dialoge-text": "У нас есть '''$1''' {{PLURAL:$1|статья|статьи|статей}} в $2. Введите название статьи ниже или нажмите на одно из названий ниже и начните писать!",
 	"cosmos-personaltools-userpage": "Страница участника",
 	"cosmos-personaltools-usertalk": "Обсуждение участника",
 	"cosmos-personaltools-anontalk": "Моё обсуждение",

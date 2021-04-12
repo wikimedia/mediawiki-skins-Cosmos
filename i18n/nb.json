@@ -10,7 +10,7 @@
 	"cosmos-createpage-header": "Opprett en ny artikkel",
 	"cosmos-createpage-input-label": "Skriv inn sidetittelen her:",
 	"cosmos-createpage-next": "Neste",
-	"cosmos-createpage-dialoge-text": "Vi har for tiden <b>$1</b> {{PLURAL:$1|artikkel|artikler}} på $2. Skriv inn artikkelnavnet ovenfor eller trykk på en av titlene nedenfor og begynn å skrive!",
+	"cosmos-createpage-dialoge-text": "Vi har for tiden '''$1''' {{PLURAL:$1|artikkel|artikler}} på $2. Skriv inn artikkelnavnet ovenfor eller trykk på en av titlene nedenfor og begynn å skrive!",
 	"cosmos-personaltools-userpage": "Brukerside",
 	"cosmos-personaltools-usertalk": "Brukerdiskusjon",
 	"cosmos-personaltools-anontalk": "Min diskusjon",

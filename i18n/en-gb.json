@@ -12,7 +12,7 @@
 	"cosmos-createpage-header": "Create a new article",
 	"cosmos-createpage-input-label": "Write your page title here:",
 	"cosmos-createpage-next": "Next",
-	"cosmos-createpage-dialoge-text": "We currently have <b>$1</b> {{PLURAL:$1|article|articles}} on $2. Type your article name above or click on one of the titles below and start writing!",
+	"cosmos-createpage-dialoge-text": "We currently have '''$1''' {{PLURAL:$1|article|articles}} on $2. Type your article name above or click on one of the titles below and start writing!",
 	"cosmos-personaltools-userpage": "User page",
 	"cosmos-personaltools-usertalk": "User talk",
 	"cosmos-personaltools-anontalk": "My talk",

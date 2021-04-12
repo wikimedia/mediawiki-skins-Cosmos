@@ -10,7 +10,7 @@
 	"cosmos-createpage-header": "Luo uusi artikkeli",
 	"cosmos-createpage-input-label": "Kirjoita sivun nimi tähän:",
 	"cosmos-createpage-next": "Seuraava",
-	"cosmos-createpage-dialoge-text": "Tällä hetkellä {{GRAMMAR:inessive|$2}} on <b>$1</b> {{PLURAL:$1|artikkeli|artikkelia}}. Kirjoita artikkelisi nimi yläpuolelle tai klikkaa yhtä alla olevista nimistä ja aloita kirjoittaminen!",
+	"cosmos-createpage-dialoge-text": "Tällä hetkellä {{GRAMMAR:inessive|$2}} on '''$1''' {{PLURAL:$1|artikkeli|artikkelia}}. Kirjoita artikkelisi nimi yläpuolelle tai klikkaa yhtä alla olevista nimistä ja aloita kirjoittaminen!",
 	"cosmos-personaltools-userpage": "Käyttäjäsivu",
 	"cosmos-personaltools-usertalk": "Keskustelu käyttäjästä",
 	"cosmos-personaltools-anontalk": "Keskustelusivuni",

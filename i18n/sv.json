@@ -11,7 +11,7 @@
 	"cosmos-createpage-header": "Skapa en ny artikel",
 	"cosmos-createpage-input-label": "Skriv din sidtitel här:",
 	"cosmos-createpage-next": "Nästa",
-	"cosmos-createpage-dialoge-text": "Vi har för tillfället <b>$1</b> {{PLURAL:$1|artikel|artiklar}} på $2. Skriv namnet på din artikel ovan eller klicka på en av titlarna nedan och börja skriva!",
+	"cosmos-createpage-dialoge-text": "Vi har för tillfället '''$1''' {{PLURAL:$1|artikel|artiklar}} på $2. Skriv namnet på din artikel ovan eller klicka på en av titlarna nedan och börja skriva!",
 	"cosmos-personaltools-userpage": "Användarsida",
 	"cosmos-personaltools-usertalk": "Användardiskussion",
 	"cosmos-personaltools-anontalk": "Min diskussion",
