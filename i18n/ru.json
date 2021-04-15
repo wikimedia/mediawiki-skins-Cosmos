@@ -5,6 +5,7 @@
 			"Kareyac",
 			"Megakott",
 			"Okras",
+			"Urfiner",
 			"WerySkok"
 		]
 	},
@@ -19,6 +20,7 @@
 	"cosmos-personaltools-userpage": "Страница участника",
 	"cosmos-personaltools-usertalk": "Обсуждение участника",
 	"cosmos-personaltools-anontalk": "Моё обсуждение",
+	"cosmos-editcount-label": "Правок после регистрации на этой вики",
 	"cosmos-action-addsection": "Новая тема",
 	"cosmos-action-cancel": "Отмена",
 	"cosmos-action-backtopage": "Вернуться к $1",
@@ -33,6 +35,11 @@
 	"prefs-cosmos-responsiveness": "Адаптивность для мобильных устройств для Cosmos",
 	"cosmos-mobile-preference": "Включить адаптивность для темы оформления Cosmos",
 	"cosmos-user-blocked": "Заблокирован",
+	"cosmos-themedesigner-success": "Конфигурация Cosmos успешно обновлена.",
+	"themedesigner": "Дизайнер тем",
+	"right-themedesigner": "Использовать дизайнер тем Cosmos",
+	"action-themedesigner": "использовать дизайнер тем Cosmos",
+	"cosmos-themedesigner-help-1": "Цвет фона личного навигационного баннера.",
 	"cosmos-themedesigner-help-3": "Основной цвет фона.",
 	"cosmos-themedesigner-help-6": "Цвет ссылок.",
 	"cosmos-themedesigner-help-7": "Цвет фона нижнего колонтитула.",
