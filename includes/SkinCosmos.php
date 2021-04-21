@@ -67,6 +67,14 @@ class SkinCosmos extends SkinTemplate {
 			}
 		}
 
+		if (
+			LessUtil::isThemeDark( 'content-background-color' ) &&
+			ExtensionRegistry::getInstance()->isLoaded( 'CodeMirror' ) &&
+			ExtensionRegistry::getInstance()->isLoaded( 'VisualEditor' )
+		) {
+			$modules['styles']['skin'][] = 'skins.cosmos.codemirror';
+		}
+
 		// Load SocialProfile styles if the respective configuration variables are enabled
 		if ( class_exists( 'UserProfilePage' ) ) {
 			if ( $config->get( 'CosmosSocialProfileModernTabs' ) ) {
@@ -89,11 +97,13 @@ class SkinCosmos extends SkinTemplate {
 				$modules['styles']['skin'][] = 'skins.cosmos.profiletags';
 			}
 
-			if ( $config->get( 'CosmosSocialProfileModernTabs' ) ||
+			if (
+				$config->get( 'CosmosSocialProfileModernTabs' ) ||
 				$config->get( 'CosmosSocialProfileRoundAvatar' ) ||
 				$config->get( 'CosmosSocialProfileShowEditCount' ) ||
 				$config->get( 'CosmosSocialProfileAllowBio' ) ||
-				$config->get( 'CosmosSocialProfileShowGroupTags' ) ) {
+				$config->get( 'CosmosSocialProfileShowGroupTags' )
+			) {
 				$modules['styles']['skin'][] = 'skins.cosmos.socialprofile';
 			}
 		}

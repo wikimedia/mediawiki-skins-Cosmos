@@ -215,6 +215,18 @@
 				}
 			}
 		},
+		"skins.cosmos.codemirror": {
+			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+				"resources/extensions/VisualEditor.CodeMirror.DarkTheme.less": {
+					"media": "screen"
+				}
+			}
+		},
 		"skins.cosmos.js": {
 			"targets": [
 				"desktop"
