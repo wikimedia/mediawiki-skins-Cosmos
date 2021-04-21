@@ -5,27 +5,27 @@ namespace MediaWiki\Skin\Cosmos;
 use DateInterval;
 use DateTime;
 use Html;
+use IContextSource;
 use MediaWiki\MediaWikiServices;
-use MessageLocalizer;
 use Title;
 
 class CosmosRail {
 	/** @var CosmosConfig */
 	private $config;
 
-	/** @var MessageLocalizer */
-	private $messageLocalizer;
+	/** @var IContextSource */
+	private $context;
 
 	/**
 	 * @param CosmosConfig $config
-	 * @param MessageLocalizer $messageLocalizer
+	 * @param IContextSource $context
 	 */
 	public function __construct(
 		CosmosConfig $config,
-		MessageLocalizer $messageLocalizer
+		IContextSource $context
 	) {
 		$this->config = $config;
-		$this->messageLocalizer = $messageLocalizer;
+		$this->context = $context;
 	}
 
 	/**
@@ -34,6 +34,15 @@ class CosmosRail {
 	public function buildRail() {
 		$validModules = [ 'interface', 'recentchanges' ];
 		$enabledModules = [];
+
+		$skin = $this->context->getSkin();
+
+		$blacklistedNamespaces = $this->config->getRailBlacklistedNamespaces();
+		$title = $skin->getTitle()->getFullText();
+
+		if ( Title::newFromText( $title )->inNamespaces( $blacklistedNamespaces ) ) {
+			return '';
+		}
 
 		foreach ( $this->config->getEnabledRailModules() as $module => $value ) {
 			if ( $value ) {
@@ -63,12 +72,12 @@ class CosmosRail {
 			if ( $type === 'sticky' ) {
 				$html .= Html::rawElement( 'section', [
 						'class' => 'railModule module rail-sticky-module custom-module'
-					], $this->messageLocalizer->msg( $message )->parse()
+					], $this->context->msg( $message )->parse()
 				);
 			} else {
 				$html .= Html::rawElement( 'section', [
 						'class' => 'railModule module custom-module'
-					], $this->messageLocalizer->msg( $message )->parse()
+					], $this->context->msg( $message )->parse()
 				);
 			}
 		}
@@ -89,8 +98,8 @@ class CosmosRail {
 	 * @return string
 	 */
 	protected function buildModuleHeader( string $label ) {
-		if ( !$this->messageLocalizer->msg( $label )->isDisabled() ) {
-			$label = $this->messageLocalizer->msg( $label )->text();
+		if ( !$this->context->msg( $label )->isDisabled() ) {
+			$label = $this->context->msg( $label )->text();
 		}
 
 		$html = Html::element( 'h3', [], $label );
@@ -109,7 +118,7 @@ class CosmosRail {
 		$interfaceModules = $interfaceRailModules[0] ?? $interfaceRailModules;
 
 		foreach ( (array)$interfaceModules as $message => $type ) {
-			if ( $this->messageLocalizer->msg( $message )->isDisabled() ) {
+			if ( $this->context->msg( $message )->isDisabled() ) {
 				continue;
 			}
 
@@ -260,21 +269,21 @@ class CosmosRail {
 	 */
 	protected function getDateTimeDiffString( DateInterval $interval ) {
 		if ( $interval->y > 0 ) {
-			$msg = $this->messageLocalizer->msg( 'years', $interval->y );
+			$msg = $this->context->msg( 'years', $interval->y );
 		} elseif ( $interval->m > 0 ) {
-			$msg = $this->messageLocalizer->msg( 'months', $interval->m );
+			$msg = $this->context->msg( 'months', $interval->m );
 		} elseif ( $interval->d > 7 ) {
-			$msg = $this->messageLocalizer->msg( 'weeks', floor( $interval->d / 7 ) );
+			$msg = $this->context->msg( 'weeks', floor( $interval->d / 7 ) );
 		} elseif ( $interval->d > 0 ) {
-			$msg = $this->messageLocalizer->msg( 'days', $interval->d );
+			$msg = $this->context->msg( 'days', $interval->d );
 		} elseif ( $interval->h > 0 ) {
-			$msg = $this->messageLocalizer->msg( 'hours', $interval->h );
+			$msg = $this->context->msg( 'hours', $interval->h );
 		} elseif ( $interval->i > 0 ) {
-			$msg = $this->messageLocalizer->msg( 'minutes', $interval->i );
+			$msg = $this->context->msg( 'minutes', $interval->i );
 		} else {
-			$msg = $this->messageLocalizer->msg( 'seconds', $interval->s );
+			$msg = $this->context->msg( 'seconds', $interval->s );
 		}
 
-		return $this->messageLocalizer->msg( 'ago', $msg );
+		return $this->context->msg( 'ago', $msg );
 	}
 }

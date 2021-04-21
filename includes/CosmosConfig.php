@@ -205,4 +205,13 @@ class CosmosConfig {
 
 		return $config;
 	}
+
+	/**
+	 * @return array
+	 */
+	public function getRailBlacklistedNamespaces() : array {
+		$config = $this->config->get( 'CosmosRailBlacklistedNamespaces' );
+
+		return $config;
+	}
 }

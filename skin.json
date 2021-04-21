@@ -359,6 +359,10 @@
 				} ]
 			},
 			"description": "Sets which rail modules will be enabled on Cosmos, and whether they are 'sticky' or 'normal'"
+		},
+		"CosmosRailBlacklistedNamespaces": {
+			"value": [ -1, 8, 9 ],
+			"description": "Sets namespaces to not show the rail in"
 		}
 	},
 	"HookHandlers": {
