@@ -38,9 +38,19 @@ class CosmosRail {
 		$skin = $this->context->getSkin();
 
 		$blacklistedNamespaces = $this->config->getRailBlacklistedNamespaces();
-		$title = $skin->getTitle()->getFullText();
+		$blacklistedPages = $this->config->getRailBlacklistedPages();
 
-		if ( Title::newFromText( $title )->inNamespaces( $blacklistedNamespaces ) ) {
+		$title = $skin->getTitle();
+
+		if (
+			$title->inNamespaces( $blacklistedNamespaces ) ||
+			(
+				$title->isMainPage() &&
+				in_array( 'mainpage', $blacklistedPages )
+			) ||
+			in_array( $title->getFullText(), $blacklistedPages ) ||
+			$blacklistedPages === [ '{$CURRENTPAGE}' ]
+		) {
 			return '';
 		}
 

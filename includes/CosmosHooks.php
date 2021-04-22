@@ -6,16 +6,30 @@ use ALItem;
 use ALRow;
 use ALSection;
 use ALTree;
+use MediaWiki\Hook\GetDoubleUnderscoreIDsHook;
 use MediaWiki\Hook\OutputPageBodyAttributesHook;
+use MediaWiki\Hook\OutputPageParserOutputHook;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use OutputPage;
+use ParserOutput;
 use Skin;
 use User;
 
 class CosmosHooks implements
+	GetDoubleUnderscoreIDsHook,
 	GetPreferencesHook,
-	OutputPageBodyAttributesHook
+	OutputPageBodyAttributesHook,
+	OutputPageParserOutputHook
 {
+	/**
+	 * @see https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:Hooks/GetDoubleUnderscoreIDs
+	 * @param array &$doubleUnderscoreIDs
+	 */
+	public function onGetDoubleUnderscoreIDs( &$doubleUnderscoreIDs ) {
+		$doubleUnderscoreIDs[] = 'norail';
+	}
+
 	/**
 	 * @see https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:Hooks/GetPreferences
 	 * @param User $user
@@ -50,8 +64,19 @@ class CosmosHooks implements
 	}
 
 	/**
-	 * Implements AdminLinks hook from Extension:Admin_Links.
-	 *
+	 * @see https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:Hooks/OutputPageParserOutput
+	 * @param OutputPage $out
+	 * @param ParserOutput $parserOutput
+	 */
+	public function onOutputPageParserOutput( $out, $parserOutput ) : void {
+		if ( $parserOutput->getProperty( 'norail' ) !== false ) {
+			$cosmosConfig = MediaWikiServices::getInstance()->getService( 'CosmosConfig' );
+
+			$cosmosConfig->setConfig( 'wgCosmosRailBlacklistedPages', [ '{$CURRENTPAGE}' ] );
+		}
+	}
+
+	/**
 	 * @see https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Admin_Links/Hooks/AdminLinks
 	 * @param ALTree &$adminLinksTree
 	 */

@@ -39,7 +39,8 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"CosmosSpecialPageAliases": "includes/specials/CosmosSpecialPageAliases.php"
+		"CosmosSpecialPageAliases": "includes/specials/CosmosSpecialPageAliases.php",
+		"CosmosMagic": "includes/CosmosMagic.php"
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Skin\\Cosmos\\": "includes/",
@@ -375,6 +376,10 @@
 		"CosmosRailBlacklistedNamespaces": {
 			"value": [ -1, 8, 9 ],
 			"description": "Sets namespaces to not show the rail in"
+		},
+		"CosmosRailBlacklistedPages": {
+			"value": [ "mainpage" ],
+			"description": "Sets pages to not show the rail in"
 		}
 	},
 	"HookHandlers": {
@@ -384,10 +389,16 @@
 	},
 	"Hooks": {
 		"AdminLinks": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::addToAdminLinks",
+		"GetDoubleUnderscoreIDs": {
+			"handler": "CosmosHookHandlers"
+		},
 		"GetPreferences": {
 			"handler": "CosmosHookHandlers"
 		},
 		"OutputPageBodyAttributes": {
+			"handler": "CosmosHookHandlers"
+		},
+		"OutputPageParserOutput": {
 			"handler": "CosmosHookHandlers"
 		}
 	},

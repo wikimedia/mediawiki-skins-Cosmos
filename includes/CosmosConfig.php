@@ -33,6 +33,14 @@ class CosmosConfig {
 	}
 
 	/**
+	 * @param string $configName
+	 * @param mixed $newValue
+	 */
+	public function setConfig( string $configName, $newValue ) {
+		$GLOBALS[$configName] = $newValue;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function getBannerBackgroundColor() : string {
@@ -211,6 +219,15 @@ class CosmosConfig {
 	 */
 	public function getRailBlacklistedNamespaces() : array {
 		$config = $this->config->get( 'CosmosRailBlacklistedNamespaces' );
+
+		return $config;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getRailBlacklistedPages() : array {
+		$config = $this->config->get( 'CosmosRailBlacklistedPages' );
 
 		return $config;
 	}
