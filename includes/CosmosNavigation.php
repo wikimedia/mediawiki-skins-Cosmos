@@ -4,7 +4,6 @@ namespace MediaWiki\Skin\Cosmos;
 
 use ExtensionRegistry;
 use Html;
-use MediaWiki\MediaWikiServices;
 use MessageLocalizer;
 use ObjectCache;
 use Sanitizer;
@@ -93,8 +92,6 @@ class CosmosNavigation implements ExpirationAwareness {
 		$nodes = $this->parse( $lines );
 
 		if ( count( $nodes ) > 0 ) {
-			MediaWikiServices::getInstance()->getHookContainer()->run( 'getCosmosNavigation', [ &$nodes ] );
-
 			$mainMenu = [];
 
 			foreach ( $nodes[0]['children'] as $key => $val ) {
