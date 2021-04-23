@@ -29,16 +29,15 @@ class CosmosRail {
 	}
 
 	/**
-	 * @return string
+	 * @param CosmosConfig $config
+	 * @param IContextSource $context
+	 * @return bool
 	 */
-	public function buildRail() {
-		$validModules = [ 'interface', 'recentchanges' ];
-		$enabledModules = [];
+	public static function railsExist( CosmosConfig $config, IContextSource $context ) {
+		$skin = $context->getSkin();
 
-		$skin = $this->context->getSkin();
-
-		$blacklistedNamespaces = $this->config->getRailBlacklistedNamespaces();
-		$blacklistedPages = $this->config->getRailBlacklistedPages();
+		$blacklistedNamespaces = $config->getRailBlacklistedNamespaces();
+		$blacklistedPages = $config->getRailBlacklistedPages();
 
 		$title = $skin->getTitle();
 
@@ -51,18 +50,44 @@ class CosmosRail {
 			in_array( $title->getFullText(), $blacklistedPages ) ||
 			$blacklistedPages === [ '{$CURRENTPAGE}' ]
 		) {
-			return '';
+			return false;
 		}
 
-		foreach ( $this->config->getEnabledRailModules() as $module => $value ) {
+		$validModules = [ 'interface', 'recentchanges' ];
+		$enabledModules = [];
+
+		foreach ( $config->getEnabledRailModules() as $module => $value ) {
 			if ( $value ) {
 				$enabledModules[] = $module;
 			}
 		}
 
+		$moduleCount = 0;
+
+		$interfaceRailModules = $config->getEnabledRailModules()['interface'];
+
+		$interfaceModules = $interfaceRailModules[0] ?? $interfaceRailModules;
+
+		foreach ( (array)$interfaceModules as $message => $type ) {
+			if ( !$context->msg( $message )->isDisabled() ) {
+				$moduleCount++;
+			}
+		}
+
 		if ( !array_intersect( $validModules, $enabledModules ) ||
 			( $enabledModules === [ 'interface' ] &&
-				empty( $this->getInterfaceModules() ) ) ) {
+				$moduleCount === 0 ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function buildRail() {
+		if ( !self::railsExist( $this->config, $this->context ) ) {
 			return '';
 		}
 
@@ -128,11 +153,9 @@ class CosmosRail {
 		$interfaceModules = $interfaceRailModules[0] ?? $interfaceRailModules;
 
 		foreach ( (array)$interfaceModules as $message => $type ) {
-			if ( $this->context->msg( $message )->isDisabled() ) {
-				continue;
+			if ( !$this->context->msg( $message )->isDisabled() ) {
+				$modules += [ $message => $type ];
 			}
-
-			$modules += [ $message => $type ];
 		}
 
 		return $modules;

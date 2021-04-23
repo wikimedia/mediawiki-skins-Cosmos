@@ -46,12 +46,10 @@ class SkinCosmos extends SkinTemplate {
 
 		$cosmosConfig = $services->getService( 'CosmosConfig' );
 
-		$cosmosRail = new CosmosRail( $cosmosConfig, $this->getContext() );
-
 		$modules = parent::getDefaultModules();
 
 		// CosmosRail styles
-		if ( $cosmosRail->buildRail() ) {
+		if ( CosmosRail::railsExist( $cosmosConfig, $this->getContext() ) ) {
 			$modules['styles']['skin'][] = 'skins.cosmos.rail';
 		}
 
