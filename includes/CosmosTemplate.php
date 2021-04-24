@@ -446,7 +446,7 @@ class CosmosTemplate extends BaseTemplate {
 				'id' => "pt-{$key}"
 			], Html::rawElement( 'a', [
 				'class' => $item['class'] ?? false,
-				'href' => $item['href'],
+				'href' => $item['href'] ?? false,
 				'title' => $item['title'] ?? false
 			], $item['text'] ?? false ) );
 		}
