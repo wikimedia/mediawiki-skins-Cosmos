@@ -14,32 +14,33 @@ class CosmosRail {
 	private $config;
 
 	/** @var IContextSource */
-	private $context;
+	private $contextSource;
 
 	/**
 	 * @param CosmosConfig $config
-	 * @param IContextSource $context
+	 * @param IContextSource $contextSource
 	 */
 	public function __construct(
 		CosmosConfig $config,
-		IContextSource $context
+		IContextSource $contextSource
 	) {
 		$this->config = $config;
-		$this->context = $context;
+		$this->contextSource = $contextSource;
 	}
 
 	/**
 	 * @param CosmosConfig $config
-	 * @param IContextSource $context
+	 * @param IContextSource $contextSource
 	 * @return bool
 	 */
-	public static function railsExist( CosmosConfig $config, IContextSource $context ) {
-		$skin = $context->getSkin();
-
+	public static function railsExist(
+		CosmosConfig $config,
+		IContextSource $contextSource
+	) {
 		$blacklistedNamespaces = $config->getRailBlacklistedNamespaces();
 		$blacklistedPages = $config->getRailBlacklistedPages();
 
-		$title = $skin->getTitle();
+		$title = $contextSource->getTitle();
 
 		if (
 			$title->inNamespaces( $blacklistedNamespaces ) ||
@@ -69,7 +70,7 @@ class CosmosRail {
 		$interfaceModules = $interfaceRailModules[0] ?? $interfaceRailModules;
 
 		foreach ( (array)$interfaceModules as $message => $type ) {
-			if ( !$context->msg( $message )->isDisabled() ) {
+			if ( !$contextSource->msg( $message )->isDisabled() ) {
 				$moduleCount++;
 			}
 		}
@@ -87,7 +88,7 @@ class CosmosRail {
 	 * @return string
 	 */
 	public function buildRail() {
-		if ( !self::railsExist( $this->config, $this->context ) ) {
+		if ( !self::railsExist( $this->config, $this->contextSource ) ) {
 			return '';
 		}
 
@@ -107,12 +108,12 @@ class CosmosRail {
 			if ( $type === 'sticky' ) {
 				$html .= Html::rawElement( 'section', [
 						'class' => 'railModule module rail-sticky-module custom-module'
-					], $this->context->msg( $message )->parse()
+					], $this->contextSource->msg( $message )->parse()
 				);
 			} else {
 				$html .= Html::rawElement( 'section', [
 						'class' => 'railModule module custom-module'
-					], $this->context->msg( $message )->parse()
+					], $this->contextSource->msg( $message )->parse()
 				);
 			}
 		}
@@ -133,8 +134,8 @@ class CosmosRail {
 	 * @return string
 	 */
 	protected function buildModuleHeader( string $label ) {
-		if ( !$this->context->msg( $label )->isDisabled() ) {
-			$label = $this->context->msg( $label )->text();
+		if ( !$this->contextSource->msg( $label )->isDisabled() ) {
+			$label = $this->contextSource->msg( $label )->text();
 		}
 
 		$html = Html::element( 'h3', [], $label );
@@ -153,7 +154,7 @@ class CosmosRail {
 		$interfaceModules = $interfaceRailModules[0] ?? $interfaceRailModules;
 
 		foreach ( (array)$interfaceModules as $message => $type ) {
-			if ( !$this->context->msg( $message )->isDisabled() ) {
+			if ( !$this->contextSource->msg( $message )->isDisabled() ) {
 				$modules += [ $message => $type ];
 			}
 		}
@@ -302,21 +303,21 @@ class CosmosRail {
 	 */
 	protected function getDateTimeDiffString( DateInterval $interval ) {
 		if ( $interval->y > 0 ) {
-			$msg = $this->context->msg( 'years', $interval->y );
+			$msg = $this->contextSource->msg( 'years', $interval->y );
 		} elseif ( $interval->m > 0 ) {
-			$msg = $this->context->msg( 'months', $interval->m );
+			$msg = $this->contextSource->msg( 'months', $interval->m );
 		} elseif ( $interval->d > 7 ) {
-			$msg = $this->context->msg( 'weeks', floor( $interval->d / 7 ) );
+			$msg = $this->contextSource->msg( 'weeks', floor( $interval->d / 7 ) );
 		} elseif ( $interval->d > 0 ) {
-			$msg = $this->context->msg( 'days', $interval->d );
+			$msg = $this->contextSource->msg( 'days', $interval->d );
 		} elseif ( $interval->h > 0 ) {
-			$msg = $this->context->msg( 'hours', $interval->h );
+			$msg = $this->contextSource->msg( 'hours', $interval->h );
 		} elseif ( $interval->i > 0 ) {
-			$msg = $this->context->msg( 'minutes', $interval->i );
+			$msg = $this->contextSource->msg( 'minutes', $interval->i );
 		} else {
-			$msg = $this->context->msg( 'seconds', $interval->s );
+			$msg = $this->contextSource->msg( 'seconds', $interval->s );
 		}
 
-		return $this->context->msg( 'ago', $msg );
+		return $this->contextSource->msg( 'ago', $msg );
 	}
 }
