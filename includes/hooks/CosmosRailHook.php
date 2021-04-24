@@ -8,5 +8,5 @@ interface CosmosRailHook {
 	/**
 	 * @param CosmosRail $cosmosRail
 	 */
-	public function onCosmosRail( CosmosRail $cosmosRail ) : void;
+	public function onCosmosRail( CosmosRail $cosmosRail );
 }
