@@ -40,7 +40,7 @@ class CosmosRail {
 	 * @param IContextSource $contextSource
 	 * @return bool
 	 */
-	public static function railsExist(
+	public static function railsHidden(
 		CosmosConfig $config,
 		IContextSource $contextSource
 	) {
@@ -58,9 +58,21 @@ class CosmosRail {
 			in_array( $title->getFullText(), $blacklistedPages ) ||
 			$blacklistedPages === [ '{$CURRENTPAGE}' ]
 		) {
-			return false;
+			return true;
 		}
 
+		return false;
+	}
+
+	/**
+	 * @param CosmosConfig $config
+	 * @param IContextSource $contextSource
+	 * @return bool
+	 */
+	public static function railsExist(
+		CosmosConfig $config,
+		IContextSource $contextSource
+	) {
 		$validModules = [ 'interface', 'recentchanges' ];
 		$enabledModules = [];
 
@@ -113,8 +125,9 @@ class CosmosRail {
 	 * @return string
 	 */
 	public function buildRail() {
-		if ( !self::railsExist( $this->config, $this->contextSource ) &&
-			!self::hookRailsExist( $this )
+		if ( ( !self::railsExist( $this->config, $this->contextSource ) &&
+			!self::hookRailsExist( $this ) ) ||
+				self::railsHidden( $this->config, $this->contextSource )
 		) {
 			return '';
 		}
