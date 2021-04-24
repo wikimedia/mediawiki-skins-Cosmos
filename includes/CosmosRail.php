@@ -16,6 +16,9 @@ class CosmosRail {
 	/** @var IContextSource */
 	private $contextSource;
 
+	/** @var string */
+	private static $railHookContents = '';
+
 	/**
 	 * @param CosmosConfig $config
 	 * @param IContextSource $contextSource
@@ -26,6 +29,10 @@ class CosmosRail {
 	) {
 		$this->config = $config;
 		$this->contextSource = $contextSource;
+
+		if ( !(bool)static::$railHookContents ) {
+			MediaWikiServices::getInstance()->getHookContainer()->run( 'CosmosRail', [ $this ] );
+		}
 	}
 
 	/**
@@ -85,10 +92,30 @@ class CosmosRail {
 	}
 
 	/**
+	 * @param self $self
+	 * @return bool
+	 */
+	public static function hookRailsExist(
+		self $self
+	) {
+		if ( !(bool)static::$railHookContents ) {
+			MediaWikiServices::getInstance()->getHookContainer()->run( 'CosmosRail', [ $self ] );
+		}
+
+		if ( !(bool)static::$railHookContents ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function buildRail() {
-		if ( !self::railsExist( $this->config, $this->contextSource ) ) {
+		if ( !self::railsExist( $this->config, $this->contextSource ) &&
+			!self::hookRailsExist( $this )
+		) {
 			return '';
 		}
 
@@ -104,15 +131,19 @@ class CosmosRail {
 			]
 		);
 
+		if ( (bool)static::$railHookContents ) {
+			$html .= static::$railHookContents;
+		}
+
 		foreach ( (array)$this->getInterfaceModules() as $message => $type ) {
 			if ( $type === 'sticky' ) {
 				$html .= Html::rawElement( 'section', [
-						'class' => 'railModule module rail-sticky-module custom-module'
+						'class' => 'railModule module rail-sticky-module interface-module'
 					], $this->contextSource->msg( $message )->parse()
 				);
 			} else {
 				$html .= Html::rawElement( 'section', [
-						'class' => 'railModule module custom-module'
+						'class' => 'railModule module interface-module'
 					], $this->contextSource->msg( $message )->parse()
 				);
 			}
@@ -127,6 +158,39 @@ class CosmosRail {
 		$html .= Html::closeElement( 'div' );
 
 		return $html;
+	}
+
+	/**
+	 * @param string $body
+	 * @param string $header
+	 * @param string $type
+	 * @param string $class
+	 */
+	public function buildModule(
+		string $body,
+		string $header = '',
+		string $type = 'normal',
+		string $class = 'custom-module'
+	) {
+		if ( $type === 'sticky' ) {
+			static::$railHookContents .= Html::openElement( 'section', [
+					'class' => "railModule module rail-sticky-module {$class}"
+				]
+			);
+		} else {
+			static::$railHookContents .= Html::openElement( 'section', [
+					'class' => "railModule module {$class}"
+				]
+			);
+		}
+
+		if ( $header ) {
+			static::$railHookContents .= $this->buildModuleHeader( $header );
+		}
+
+		static::$railHookContents .= $body;
+
+		static::$railHookContents .= Html::closeElement( 'section' );
 	}
 
 	/**
