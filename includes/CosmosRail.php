@@ -154,7 +154,7 @@ class CosmosRail {
 		$interfaceModules = $interfaceRailModules[0] ?? $interfaceRailModules;
 
 		foreach ( (array)$interfaceModules as $message => $type ) {
-			if ( !$this->contextSource->msg( $message )->isDisabled() ) {
+			if ( $type && !$this->contextSource->msg( $message )->isDisabled() ) {
 				$modules += [ $message => $type ];
 			}
 		}
