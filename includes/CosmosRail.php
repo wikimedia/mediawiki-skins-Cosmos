@@ -31,7 +31,8 @@ class CosmosRail {
 		$this->contextSource = $contextSource;
 
 		if ( !(bool)static::$railHookContents ) {
-			MediaWikiServices::getInstance()->getHookContainer()->run( 'CosmosRail', [ $this ] );
+			$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
+			$hookContainer->run( 'CosmosRail', [ $this, $contextSource->getSkin() ] );
 		}
 	}
 
@@ -105,13 +106,16 @@ class CosmosRail {
 
 	/**
 	 * @param self $self
+	 * @param IContextSource $contextSource
 	 * @return bool
 	 */
 	public static function hookRailsExist(
-		self $self
+		self $self,
+		IContextSource $contextSource
 	) {
 		if ( !(bool)static::$railHookContents ) {
-			MediaWikiServices::getInstance()->getHookContainer()->run( 'CosmosRail', [ $self ] );
+			$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
+			$hookContainer->run( 'CosmosRail', [ $self, $contextSource->getSkin() ] );
 		}
 
 		if ( !(bool)static::$railHookContents ) {
@@ -126,7 +130,7 @@ class CosmosRail {
 	 */
 	public function buildRail() {
 		if ( ( !self::railsExist( $this->config, $this->contextSource ) &&
-			!self::hookRailsExist( $this ) ) ||
+			!self::hookRailsExist( $this, $this->contextSource ) ) ||
 				self::railsHidden( $this->config, $this->contextSource )
 		) {
 			return '';
