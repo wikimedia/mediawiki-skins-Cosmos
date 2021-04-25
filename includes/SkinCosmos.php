@@ -52,8 +52,8 @@ class SkinCosmos extends SkinTemplate {
 		if ( ( CosmosRail::railsExist( $cosmosConfig, $this->getContext() ) ||
 			CosmosRail::hookRailsExist(
 				new CosmosRail( $cosmosConfig, $this->getContext() )
-			) ) ||
-			CosmosRail::railsHidden( $cosmosConfig, $this->getContext() )
+			) ) &&
+			!CosmosRail::railsHidden( $cosmosConfig, $this->getContext() )
 		) {
 			$modules['styles']['skin'][] = 'skins.cosmos.rail';
 		}
