@@ -61,10 +61,10 @@ class CosmosSocialProfile {
 			$numberOfTags = 0;
 			$userTags = '';
 
-			foreach ( $config->get( 'CosmosProfileTagGroups' ) as $value ) {
+			foreach ( $config->get( 'CosmosSocialProfileTagGroups' ) as $value ) {
 				if ( in_array( $value, $user->getGroups() ) ) {
 					$numberOfTags++;
-					$numberOfTagsConfig = $config->get( 'CosmosNumberofGroupTags' );
+					$numberOfTagsConfig = $config->get( 'CosmosSocialProfileNumberofGroupTags' );
 					$userGroupMessage = wfMessage( "group-{$value}-member" );
 
 					if ( $numberOfTags <= $numberOfTagsConfig ) {

@@ -336,6 +336,14 @@
 			"value": true,
 			"description": "Enables usergroup tags to appear next to user's username on SocialProfile profile pages"
 		},
+		"CosmosSocialProfileTagGroups": {
+			"value": [ "bureaucrat", "bot", "sysop", "interface-admin" ],
+			"description": "Array of usergroups to show on SocialProfile pages if the user has them"
+		},
+		"CosmosSocialProfileNumberofGroupTags": {
+			"value": 2,
+			"description": "Set the max number of group tags to show on a user's SocialProfile page if they have them"
+		},
 		"CosmosUseSocialProfileAvatar": {
 			"value": true,
 			"description": "Use SocialProfile avatar as avatar next to username in top banner"
@@ -351,14 +359,6 @@
 		"CosmosBackgroundImageFixed": {
 			"value": true,
 			"description": "If true the background image will be set to position: fixed"
-		},
-		"CosmosProfileTagGroups": {
-			"value": [ "bureaucrat", "bot", "sysop", "interface-admin" ],
-			"description": "Array of usergroups to show on SocialProfile pages if the user has them"
-		},
-		"CosmosNumberofGroupTags": {
-			"value": 2,
-			"description": "Set the max number of group tags to show on a user's SocialProfile page if they have them"
 		},
 		"CosmosContentOpacityLevel": {
 			"value": 100,
