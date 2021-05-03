@@ -423,17 +423,17 @@ class CosmosTemplate extends BaseTemplate {
 				case 'userpage':
 					$item['text'] = $this->getMsg( 'cosmos-personaltools-userpage' )
 						->escaped();
-				break;
+					break;
 				case 'mytalk':
 					$item['text'] = $this->getMsg( 'cosmos-personaltools-usertalk' )
 						->escaped();
-				break;
+					break;
 				case 'anontalk':
 					$item['text'] = $this->getMsg( 'cosmos-personaltools-anontalk' )
 						->escaped();
-				break;
+					break;
 				default:
-				break;
+					break;
 			}
 
 			$tooltipMsg = $this->getMsg( "tooltip-pt-{$key}" );
@@ -981,7 +981,7 @@ class CosmosTemplate extends BaseTemplate {
 					if ( stripos( $tab['class'], 'selected' ) !== false ) {
 						$isEditing = true;
 					}
-				break;
+					break;
 				case 'viewsource':
 					$edit = $tab;
 					$edit['imgType'] = 'svg';
@@ -990,7 +990,7 @@ class CosmosTemplate extends BaseTemplate {
 					if ( stripos( $tab['class'], 'selected' ) !== false ) {
 						$isViewSource = true;
 					}
-				break;
+					break;
 
 					// If the action is talk, assign the tab array to the talk variable and
 					// specify the path to the button icon
@@ -999,7 +999,7 @@ class CosmosTemplate extends BaseTemplate {
 					$talk = $tab;
 					$talk['imgType'] = 'svg';
 					$talk['imgSrc'] = 'talk';
-				break;
+					break;
 
 					// If the action is add section, then replace the tooltip (which is, by
 					// default, just a '+') with 'Add new section', a more appropriate
@@ -1027,7 +1027,7 @@ class CosmosTemplate extends BaseTemplate {
 							}
 						}
 					}
-				break;
+					break;
 			}
 		}
 
@@ -1219,7 +1219,7 @@ class CosmosTemplate extends BaseTemplate {
 						break;
 					}
 					$html .= $icon->makeSvg( 28, 28, [ 'class' => 'cosmos-button-icon' ] );
-				break;
+					break;
 				default:
 					$stylePath = $this->getSkin()
 						->getConfig()
@@ -1228,7 +1228,7 @@ class CosmosTemplate extends BaseTemplate {
 						'img',
 						[ 'src' => $stylePath . '/Cosmos/resources/icons/' . $info['imgSrc'] ]
 					);
-				break;
+					break;
 			}
 		}
 

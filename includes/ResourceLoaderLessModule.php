@@ -48,7 +48,7 @@ class ResourceLoaderLessModule extends ResourceLoaderSkinModule {
 			$lessVars['main-background-image-position'] = 'absolute';
 		}
 		// convert @content-background-color to rgba for background-color opacity
-		list( $r, $g, $b ) = array_map( function ( $c ) {
+		list( $r, $g, $b ) = array_map( static function ( $c ) {
 			return hexdec( str_pad( $c, 2, $c ) );
 		},
 		str_split( ltrim( $colorName, '#' ), strlen( $colorName ) > 4 ? 2 : 1 ) );
@@ -61,7 +61,7 @@ class ResourceLoaderLessModule extends ResourceLoaderSkinModule {
 		} else {
 			$colorName = LessUtil::colorNameToHex( $footerBackgroundColor );
 		}
-		list( $r, $g, $b ) = array_map( function ( $c ) {
+		list( $r, $g, $b ) = array_map( static function ( $c ) {
 			return hexdec( str_pad( $c, 2, $c ) );
 		},
 		str_split( ltrim( $colorName, '#' ), strlen( $colorName ) > 4 ? 2 : 1 ) );
@@ -78,7 +78,7 @@ class ResourceLoaderLessModule extends ResourceLoaderSkinModule {
 		} else {
 			$colorName = LessUtil::colorNameToHex( $headerBackgroundColor );
 		}
-		list( $r, $g, $b ) = array_map( function ( $c ) {
+		list( $r, $g, $b ) = array_map( static function ( $c ) {
 			return hexdec( str_pad( $c, 2, $c ) );
 		},
 		str_split( ltrim( $colorName, '#' ), strlen( $colorName ) > 4 ? 2 : 1 ) );
