@@ -51,7 +51,7 @@ class CosmosSocialProfile {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
 		$user = self::getUser( $user );
 
-		if ( $user && $user->isBlocked() ) {
+		if ( $user && $user->getBlock() ) {
 			$userTags = Html::element(
 				'span',
 				[ 'class' => 'tag tag-blocked' ],
