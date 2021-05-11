@@ -411,10 +411,8 @@ class CosmosTemplate extends BaseTemplate {
 		$personalTools = $this->get( 'personal_urls' );
 
 		// Don't build adminlinks into personal menu. If allowed, it will be built into the wiki header instead.
-		// Don't build darkmode into personal menu, this skin does not support darkmode, so that would not do anything.
 		// Don't build the notifications into the personal menu, they are built into the top banner instead.
 		unset( $personalTools[ 'adminlinks' ] );
-		unset( $personalTools[ 'darkmode-link' ] );
 		unset( $personalTools[ 'notifications-alert' ] );
 		unset( $personalTools[ 'notifications-notice' ] );
 
