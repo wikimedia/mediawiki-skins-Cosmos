@@ -4,6 +4,7 @@
 			"Joetaras"
 		]
 	},
+	"skinname-cosmos": "Cosmos",
 	"cosmos-desc": "Cosmos jè 'nu skin proggettate e basate sus a 'u skin Fandom's Oasis. Proggettate pe migliorà 'a grafeca lore, e dà 'nu skin de MediaUicchi efficiende pe le utinde non-Fandom, o pe le utinde ca stonne a iessene da Fandom.",
 	"cosmos-anonymous": "Anonime",
 	"cosmos-counter-label": "{{PLURAL:$1|Vôsce}}",
@@ -47,5 +48,7 @@
 	"cosmos-themedesigner-help-12": "Levèlle de opacitàà de l'arèe de contenute (percenduale)",
 	"cosmos-themedesigner-help-13": "Dimenzione d'u funne prengepale",
 	"cosmos-themedesigner-help-14": "Repite l'immaggine de funne?",
-	"cosmos-themedesigner-help-15": "Fisse l'immaggine de funne?"
+	"cosmos-themedesigner-help-15": "Fisse l'immaggine de funne?",
+	"cosmos.css": "/* Tutte le CSS aqquà avène carecate pe le utinde ca ausane 'a masckere Cosmos */",
+	"cosmos.js": "/* Tutte le JavaScript aqquà avène carecate pe le utinde ca ausane 'a masckere Cosmos */"
 }
