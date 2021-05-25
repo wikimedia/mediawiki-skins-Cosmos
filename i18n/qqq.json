@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Giannaras99",
 			"Umherirrender",
 			"Universal Omega"
 		]
@@ -32,7 +33,7 @@
 	"cosmos-explore": "The header for the explore tab in the navigation.\n\n{{Identical|Explore}}",
 	"cosmos-newfiles": "New files label.",
 	"cosmos-navigation": "{{notranslate}}",
-	"prefs-cosmos-responsiveness": "The label for the Mobile Responsiveness section in Special:Preferences.",
+	"prefs-cosmos-responsiveness": "The label for the Mobile Responsiveness for Cosmos section in Special:Preferences.",
 	"cosmos-mobile-preference": "The checkbox label for the mobile responsiveness toggle in Special:Preferences",
 	"cosmos-user-blocked": "The text used to show a user is blocked on social profile Pages' avatar area.\n\n{{Identical|Blocked}}",
 	"cosmos-themedesigner-success": "Message displayed when the theme designer form is submitted.",
