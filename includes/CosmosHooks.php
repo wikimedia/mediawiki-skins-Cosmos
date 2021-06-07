@@ -12,6 +12,7 @@ use MediaWiki\Hook\OutputPageParserOutputHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use OutputPage;
+use Parser;
 use ParserOutput;
 use Skin;
 use User;
@@ -61,6 +62,11 @@ class CosmosHooks implements
 		if ( $out->getTitle()->isMainPage() ) {
 			$bodyAttrs['class'] .= ' mainpage';
 		}
+
+		if ( $out->getProperty( 'additionalBodyClass' ) ) {
+			$property = $out->getProperty( 'additionalBodyClass' );
+			$bodyAttrs['class'] .= ' ' . trim( $property );
+		}
 	}
 
 	/**
@@ -74,6 +80,28 @@ class CosmosHooks implements
 
 			$cosmosConfig->setConfig( 'wgCosmosRailBlacklistedPages', [ '{$CURRENTPAGE}' ] );
 		}
+
+		if ( $parserOutput->getProperty( 'additionalBodyClass' ) ) {
+			$parserProperty = $parserOutput->getProperty( 'additionalBodyClass' );
+			$out->setProperty( 'additionalBodyClass', $parserProperty );
+		}
+	}
+
+	/**
+	 * @param Parser $parser
+	 */
+	public function onParserFirstCallInit( Parser $parser ) {
+		$parser->setFunctionHook(
+			'additionalbodyclass', [ __CLASS__, 'setAdditionalBodyClass' ]
+		);
+	}
+
+	/**
+	 * @param Parser $parser
+	 * @param string $newClass
+	 */
+	public static function setAdditionalBodyClass( Parser $parser, string $newClass ) {
+		$parser->getOutput()->setProperty( 'additionalBodyClass', $newClass );
 	}
 
 	/**

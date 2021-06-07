@@ -401,6 +401,9 @@
 		},
 		"OutputPageParserOutput": {
 			"handler": "CosmosHookHandlers"
+		},
+		"ParserFirstCallInit": {
+			"handler": "CosmosHookHandlers"
 		}
 	},
 	"DefaultUserOptions": {
