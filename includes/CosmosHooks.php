@@ -14,6 +14,7 @@ use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use OutputPage;
 use Parser;
 use ParserOutput;
+use Sanitizer;
 use Skin;
 use User;
 
@@ -65,7 +66,7 @@ class CosmosHooks implements
 
 		if ( $out->getProperty( 'additionalBodyClass' ) ) {
 			$property = $out->getProperty( 'additionalBodyClass' );
-			$bodyAttrs['class'] .= ' ' . trim( $property );
+			$bodyAttrs['class'] .= ' ' . Sanitizer::escapeClass( $property );
 		}
 	}
 
