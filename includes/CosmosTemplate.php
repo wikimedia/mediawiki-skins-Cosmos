@@ -199,8 +199,10 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'ul', [ 'class' => 'articleProposals' ] );
 
 		// Get most wanted pages
-		foreach ( $this->getMostWantedPages( $config ) as $page ) {
-			$html .= '<li><a href="' . $page['url'] . '" class="new">' . $page['title'] . '</a></li>';
+		if ( $config->get( 'CosmosEnableWantedPages' ) ) {
+			foreach ( $this->getMostWantedPages( $config ) as $page ) {
+				$html .= '<li><a href="' . $page['url'] . '" class="new">' . $page['title'] . '</a></li>';
+			}
 		}
 
 		$html .= Html::closeElement( 'ul' );
@@ -242,10 +244,18 @@ class CosmosTemplate extends BaseTemplate {
 			$wantedPagesPage->fetchFromCache( false ) : $wantedPagesPage->doQuery();
 
 		$wantedPages = [];
+
+		$fetchedNamespaces = $config->get( 'CosmosWantedPagesFetchedNamespaces' );
+
 		$fetchedTitlesCount = 0;
+		$maxTitlesCount = $config->get( 'CosmosWantedPagesMaxTitlesCount' );
 
 		foreach ( $wantedPagesPageResponse as $row ) {
-			if ( $row->title && in_array( $row->namespace, [ NS_MAIN ] ) && $fetchedTitlesCount < 6 ) {
+			if (
+				$row->title &&
+				in_array( $row->namespace, [ $fetchedNamespaces ] ) &&
+				$fetchedTitlesCount < $maxTitlesCount
+			) {
 				$wantedPageTitle = Title::newFromText( $row->title, $row->namespace );
 
 				if (

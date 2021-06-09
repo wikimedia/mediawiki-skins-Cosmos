@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "6.0.0",
+	"version": "6.2.0",
 	"author": [
 		"Universal Omega",
 		"SamanthaNguyen",
@@ -382,9 +382,21 @@
 			"value": [ "mainpage" ],
 			"description": "Sets pages to not show the rail in"
 		},
+		"CosmosEnableWantedPages": {
+			"value": true,
+			"description": "Whether or not to enable the WantedPages feature of the create page dialogue."
+		},
 		"CosmosFetchWantedPagesFromCache": {
 			"value": false,
 			"description": "Whether or not to fetch the wanted pages shown within the create page dialogue from cache. If enabled you will need to run php updateSpecialPages.php --only=WantedPages in order to update the wanted pages. It is recommended to set this to true on large wikis."
+		},
+		"CosmosWantedPagesMaxTitlesCount": {
+			"value": 6,
+			"description": "Set to the max number of wanted pages to display in the create page dialogue, if wanted pages are enabled."
+		},
+		"CosmosWantedPagesFetchedNamespaces": {
+			"value": [ 0 ],
+			"description": "Set to an array of namespaces to fetch wanted pages from, if wanted pages are enabled for the create page dialogue."
 		}
 	},
 	"HookHandlers": {
