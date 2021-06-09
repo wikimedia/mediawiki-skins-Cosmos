@@ -32,7 +32,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		$html = $this->get( 'headelement' );
 		$html .= $this->buildBanner( $config );
-		$html .= $this->buildCreateArticleDialog();
+		$html .= $this->buildCreateArticleDialog( $config );
 		$html .= Html::openElement( 'div', [ 'id' => 'mw-content-container', 'class' => 'ts-container' ] );
 		$html .= Html::openElement( 'div', [ 'id' => 'mw-content-block', 'class' => 'ts-inner' ] );
 		$html .= Html::openElement( 'div', [ 'id' => 'mw-content-wrapper' ] );
@@ -144,9 +144,10 @@ class CosmosTemplate extends BaseTemplate {
 	}
 
 	/**
+	 * @param Config $config
 	 * @return string
 	 */
-	protected function buildCreateArticleDialog() {
+	protected function buildCreateArticleDialog( Config $config ) {
 		$skin = $this->getSkin();
 
 		$html = '';
@@ -198,7 +199,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'ul', [ 'class' => 'articleProposals' ] );
 
 		// Get most wanted pages
-		foreach ( $this->getMostWantedPages() as $page ) {
+		foreach ( $this->getMostWantedPages( $config ) as $page ) {
 			$html .= '<li><a href="' . $page['url'] . '" class="new">' . $page['title'] . '</a></li>';
 		}
 
@@ -228,13 +229,17 @@ class CosmosTemplate extends BaseTemplate {
 	}
 
 	/**
+	 * @param Config $config
 	 * @return array
 	 */
-	protected function getMostWantedPages() {
+	protected function getMostWantedPages( Config $config ) {
 		$wantedPagesPage = MediaWikiServices::getInstance()->getSpecialPageFactory()->getPage( 'Wantedpages' );
 		'@phan-var WantedPagesPage $wantedPagesPage';
 
-		$wantedPagesPageResponse = $wantedPagesPage->doQuery();
+		$readFromCache = $config->get( 'CosmosFetchWantedPagesFromCache' );
+
+		$wantedPagesPageResponse = $readFromCache ?
+			$wantedPagesPage->fetchFromCache( false ) : $wantedPagesPage->doQuery();
 
 		$wantedPages = [];
 		$fetchedTitlesCount = 0;

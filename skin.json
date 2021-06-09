@@ -381,6 +381,10 @@
 		"CosmosRailBlacklistedPages": {
 			"value": [ "mainpage" ],
 			"description": "Sets pages to not show the rail in"
+		},
+		"CosmosFetchWantedPagesFromCache": {
+			"value": false,
+			"description": "Whether or not to fetch the wanted pages shown within the create page dialogue from cache. If enabled you will need to run php updateSpecialPages.php --only=WantedPages in order to update the wanted pages. It is recommended to set this to true on large wikis."
 		}
 	},
 	"HookHandlers": {
