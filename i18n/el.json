@@ -12,7 +12,6 @@
 	"cosmos-createpage-header": "Δημιουργία ενός νέου άρθρου",
 	"cosmos-createpage-input-label": "Γράψτε εδώ τον τίτλο της σελίδας:",
 	"cosmos-createpage-next": "Επόμενο",
-	"cosmos-createpage-dialoge-text": "Αυτή τη στιγμή έχουμε '''$1''' {{PLURAL:$1|λήμμα|λήμματα}} στο $2. Πληκτρολογήστε τον τίτλο της σελίδας σας ή επιλέξτε σε έναν τίτλο παρακάτω και ξεκινήστε να γράφετε!",
 	"cosmos-personaltools-userpage": "Σελίδα Χρήστη",
 	"cosmos-personaltools-usertalk": "Συζήτηση Χρήστη",
 	"cosmos-personaltools-anontalk": "Η συζήτηση μου",

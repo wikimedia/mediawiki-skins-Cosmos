@@ -10,7 +10,6 @@
 	"cosmos-createpage-header": "建立一個新條目",
 	"cosmos-createpage-input-label": "在此寫入您的頁面標題：",
 	"cosmos-createpage-next": "下一個",
-	"cosmos-createpage-dialoge-text": "我們目前在$2共有 '''$1''' {{PLURAL:$1|個條目}}。請在上方輸入您的條目名稱，或是在下方點擊其一標題來開始編寫！",
 	"cosmos-personaltools-userpage": "使用者頁面",
 	"cosmos-personaltools-usertalk": "使用者討論",
 	"cosmos-personaltools-anontalk": "我的討論",

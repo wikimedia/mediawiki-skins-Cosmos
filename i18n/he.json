@@ -14,7 +14,6 @@
 	"cosmos-createpage-header": "יצירת ערך חדש",
 	"cosmos-createpage-input-label": "נא לכתוב את כותרת הדף שלך כאן:",
 	"cosmos-createpage-next": "הבא",
-	"cosmos-createpage-dialoge-text": "כרגע יש לנו '''$1''' {{PLURAL:$1|ערך <b>אחד</b>|'''$1''' ערכים}} על $2. נא להקליד את שם הערך שלך להלן או ללחוץ על אחת מהכותרות כדי להתחיל לכתוב!",
 	"cosmos-personaltools-userpage": "דף משתמש",
 	"cosmos-personaltools-usertalk": "שיחת משתמש",
 	"cosmos-personaltools-anontalk": "דף השיחה שלי",

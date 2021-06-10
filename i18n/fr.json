@@ -14,7 +14,6 @@
 	"cosmos-createpage-header": "Créer un nouvel article",
 	"cosmos-createpage-input-label": "Écrivez le titre de votre page ici :",
 	"cosmos-createpage-next": "Suivant",
-	"cosmos-createpage-dialoge-text": "Nous avons actuellement '''$1''' article{{PLURAL:$1||s}} sur $2. Saisissez le nom de votre article ci-dessus ou cliquez sur un des titres ci-dessous et commencez à écrire !",
 	"cosmos-personaltools-userpage": "Page utilisateur",
 	"cosmos-personaltools-usertalk": "Discussion utilisateur",
 	"cosmos-personaltools-anontalk": "Ma discussion",
