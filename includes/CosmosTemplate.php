@@ -187,12 +187,18 @@ class CosmosTemplate extends BaseTemplate {
 			[ 'class' => 'wds-input__field', 'id' => 'create-page-dialog__title' ]
 		);
 		$html .= Html::closeElement( 'div' );
+
 		$html .= Html::rawElement(
 			'div',
 			[ 'id' => 'create-page-dialog__message' ],
-			$this->getMsg( 'cosmos-createpage-dialoge-text',
+			$this->getMsg( 'cosmos-createpage-text',
 				$skin->getLanguage()->formatNum( SiteStats::articles() ),
-				$this->get( 'sitename' )
+				$this->get( 'sitename' ),
+				$config->get( 'CosmosEnableWantedPages' ) ?
+					$this->getMsg( 'cosmos-createpage-wanted-pages' )->text() :
+					$this->getMsg( 'cosmos-createpage-no-wanted-pages',
+						SpecialPage::getTitleFor( 'WantedPages' )
+					)->text()
 			)->parse()
 		);
 		$html .= Html::openElement( 'div', [ 'class' => 'create-page-dialog__proposals' ] );
@@ -253,7 +259,7 @@ class CosmosTemplate extends BaseTemplate {
 		foreach ( $wantedPagesPageResponse as $row ) {
 			if (
 				$row->title &&
-				in_array( $row->namespace, [ $fetchedNamespaces ] ) &&
+				in_array( $row->namespace, $fetchedNamespaces ) &&
 				$fetchedTitlesCount < $maxTitlesCount
 			) {
 				$wantedPageTitle = Title::newFromText( $row->title, $row->namespace );
