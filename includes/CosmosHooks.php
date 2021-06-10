@@ -11,11 +11,13 @@ use MediaWiki\Hook\OutputPageBodyAttributesHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use ObjectCache;
 use OutputPage;
 use Parser;
 use ParserOutput;
 use Sanitizer;
 use Skin;
+use Title;
 use User;
 
 class CosmosHooks implements
@@ -86,6 +88,16 @@ class CosmosHooks implements
 			$parserProperty = $parserOutput->getProperty( 'additionalBodyClass' );
 			$out->setProperty( 'additionalBodyClass', $parserProperty );
 		}
+	}
+
+	/**
+	 * @param Title $title
+	 * @param string $text
+	 */
+	public function onMessageCacheReplace( $title, $text ) {
+		$memc = ObjectCache::getLocalClusterInstance();
+
+		$memc->delete( $memc->makeKey( 'mCosmosNavigation', 'cosmosNavigation' ) );
 	}
 
 	/**

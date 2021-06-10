@@ -412,6 +412,9 @@
 		"GetPreferences": {
 			"handler": "CosmosHookHandlers"
 		},
+		"MessageCacheReplace": {
+			"handler": "CosmosHookHandlers"
+		},
 		"OutputPageBodyAttributes": {
 			"handler": "CosmosHookHandlers"
 		},

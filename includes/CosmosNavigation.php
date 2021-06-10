@@ -4,8 +4,10 @@ namespace MediaWiki\Skin\Cosmos;
 
 use ExtensionRegistry;
 use Html;
+use MediaWiki\MediaWikiServices;
 use MessageLocalizer;
 use ObjectCache;
+use RequestContext;
 use Sanitizer;
 use Title;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
@@ -25,7 +27,27 @@ class CosmosNavigation implements ExpirationAwareness {
 	 * @return string
 	 */
 	public function getCode() {
-		return $this->getMenu( $this->getMenuLines() );
+		$memc = ObjectCache::getLocalClusterInstance();
+
+		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
+		$lang = RequestContext::getMain()->getLanguage();
+
+		$cache = $lang->getCode() == $contLang->getCode();
+		if ( $cache ) {
+			$key = $memc->makeKey( 'mCosmosNavigation', 'cosmosNavigation' );
+			$menu = $memc->get( $key );
+		}
+
+		if ( empty( $menu ) ) {
+			$menu = $this->getMenu( $this->getMenuLines() );
+
+			if ( $cache ) {
+				// @phan-suppress-next-line PhanPossiblyUndeclaredVariable
+				$memc->set( $key, $menu, self::TTL_HOUR * 8 );
+			}
+		}
+
+		return $menu;
 	}
 
 	/**
@@ -175,7 +197,9 @@ class CosmosNavigation implements ExpirationAwareness {
 			}
 
 			$nodes['mainMenu'] = $mainMenu;
+
 			$memc = ObjectCache::getLocalClusterInstance();
+
 			$memc->set( $menuHash, $nodes, self::TTL_DAY * 3 );
 
 			return $menu;
