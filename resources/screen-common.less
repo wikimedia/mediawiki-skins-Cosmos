@@ -552,7 +552,6 @@ body > .suggestions {
 	-webkit-appearance: none;
 	background: 0 0;
 	border-radius: 3px;
-	color: #0e191a;
 	cursor: default;
 	font-size: 12px;
 	font-weight: 600;
@@ -562,37 +561,6 @@ body > .suggestions {
 	text-decoration: none;
 	text-transform: uppercase;
 	vertical-align: top;
-
-	&:not( .wds-is-text ) {
-		&:not( .wds-is-secondary ) {
-			background-color: #00cdd0;
-
-			&:active {
-				border-color: #00686a;
-				background-color: #00686a;
-			}
-
-			&:focus {
-				&:not( :disabled ) {
-					border-color: #00686a;
-					background-color: #00686a;
-				}
-			}
-
-			&:hover {
-				&:not( :disabled ) {
-					border-color: #00686a;
-					background-color: #00686a;
-				}
-			}
-		}
-
-		&:not( .wds-is-secondary ).wds-is-active {
-			border-color: #00686a;
-			background-color: #00686a;
-		}
-		border-color: #00cdd0;
-	}
 
 	&:disabled {
 		cursor: default;
@@ -1617,15 +1585,15 @@ button.wds-button {
 .mw-dismissable-notice {
 	z-index: 100;
 	width: auto;
-	border: 1px solid @button-font-color;
-	background-color: @button-background-color;
-	color: @button-font-color;
+	border: 0;
+	background-color: transparent;
+	color: @font-color;
 	opacity: 1;
 
 	.wikitable {
 		td {
 			border: 0;
-			background: @button-background-color;
+			background: transparent;
 		}
 		border: 0;
 	}
@@ -1780,7 +1748,7 @@ body .oo-ui-tabSelectWidget-framed {
 	padding: 0;
 	border: 1px solid @border-color;
 	margin: 1em 0;
-	background-color: #f8f9fa;
+	background-color: @toc-background-color;
 
 	.toctitle {
 		position: relative;
@@ -1809,6 +1777,10 @@ body .oo-ui-tabSelectWidget-framed {
 				font-size: 0;
 			}
 		}
+	}
+
+	.tocnumber {
+		color: @font-color;
 	}
 }
 

@@ -135,6 +135,7 @@ class ResourceLoaderLessModule extends ResourceLoaderSkinModule {
 			'rail-header-bottom-border' => $isContentBackgroundColorDark ? '#0a0a0a' : '#eaecf0',
 			'tabs-background-color' => $isContentBackgroundColorDark ? 'transparent' : '#eaecf0',
 			'infobox-background-mix' => $isContentBackgroundColorDark ? '85%' : '90%',
+			'toc-background-color' => $isContentBackgroundColorDark ? 'transparent' : '#f8f9fa',
 		];
 	}
 
