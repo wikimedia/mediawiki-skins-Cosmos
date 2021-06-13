@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "6.2.0",
+	"version": "6.2.1",
 	"author": [
 		"Universal Omega",
 		"SamanthaNguyen",
@@ -12,7 +12,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.35.2"
+		"MediaWiki": ">= 1.36.0"
 	},
 	"ValidSkinNames": {
 		"cosmos": {
@@ -22,8 +22,6 @@
 				"name": "cosmos",
 				"template": "MediaWiki\\Skin\\Cosmos\\CosmosTemplate",
 				"styles": [
-					"mediawiki.skinning.interface",
-					"mediawiki.skinning.content.externallinks",
 					"skins.cosmos.styles"
 				],
 				"scripts": [
@@ -72,6 +70,10 @@
 	"ResourceModules": {
 		"skins.cosmos.styles": {
 			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
+			"features": {
+				"content-links": true,
+				"interface": true
+			},
 			"targets": [
 				"desktop",
 				"mobile"
