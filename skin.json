@@ -72,7 +72,12 @@
 			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
 			"features": {
 				"content-links": true,
-				"interface": true
+				"content-tables": true,
+				"content-thumbnails": true,
+				"elements": true,
+				"interface": true,
+				"interface-category": true,
+				"logo": true
 			},
 			"targets": [
 				"desktop",
