@@ -62,6 +62,12 @@ class CosmosHooks implements
 			$bodyAttrs['class'] .= ' user-anon';
 		}
 
+		if ( LessUtil::isThemeDark( 'content-background-color' ) ) {
+			$bodyAttrs['class'] .= ' theme-dark';
+		} else {
+			$bodyAttrs['class'] .= ' theme-light';
+		}
+
 		if ( $out->getTitle()->isMainPage() ) {
 			$bodyAttrs['class'] .= ' mainpage';
 		}
