@@ -41,6 +41,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
+		$html .= $this->buildToolbar();
 		$html .= Html::closeElement( 'div' );
 
 		$html .= $this->getTrail();
@@ -845,7 +846,6 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'section' );
 
 		$html .= $this->buildFooter();
-		$html .= $this->buildToolbar();
 
 		return $html;
 	}
