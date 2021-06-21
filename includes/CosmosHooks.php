@@ -9,7 +9,6 @@ use ALTree;
 use MediaWiki\Hook\GetDoubleUnderscoreIDsHook;
 use MediaWiki\Hook\OutputPageBodyAttributesHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use ObjectCache;
 use OutputPage;
@@ -85,9 +84,7 @@ class CosmosHooks implements
 	 */
 	public function onOutputPageParserOutput( $out, $parserOutput ) : void {
 		if ( $parserOutput->getProperty( 'norail' ) !== false ) {
-			$cosmosConfig = MediaWikiServices::getInstance()->getService( 'CosmosConfig' );
-
-			$cosmosConfig->setConfig( 'wgCosmosRailBlacklistedPages', [ '{$CURRENTPAGE}' ] );
+			$out->setProperty( 'norail', true );
 		}
 
 		if ( $parserOutput->getProperty( 'additionalBodyClass' ) ) {

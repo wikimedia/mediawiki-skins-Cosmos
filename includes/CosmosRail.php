@@ -49,6 +49,7 @@ class CosmosRail {
 		$blacklistedPages = $config->getRailBlacklistedPages();
 
 		$title = $contextSource->getTitle();
+		$out = $contextSource->getOutput();
 
 		if (
 			$title->inNamespaces( $blacklistedNamespaces ) ||
@@ -57,7 +58,7 @@ class CosmosRail {
 				in_array( 'mainpage', $blacklistedPages )
 			) ||
 			in_array( $title->getFullText(), $blacklistedPages ) ||
-			$blacklistedPages === [ '{$CURRENTPAGE}' ]
+			(bool)$out->getProperty( 'norail' )
 		) {
 			return true;
 		}

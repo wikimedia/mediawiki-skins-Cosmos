@@ -33,14 +33,6 @@ class CosmosConfig {
 	}
 
 	/**
-	 * @param string $configName
-	 * @param mixed $newValue
-	 */
-	public function setConfig( string $configName, $newValue ) {
-		$GLOBALS[$configName] = $newValue;
-	}
-
-	/**
 	 * @return string
 	 */
 	public function getBannerBackgroundColor() : string {
