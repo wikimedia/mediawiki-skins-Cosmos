@@ -1,12 +1,12 @@
 {
 	"name": "Cosmos",
-	"version": "6.2.1",
+	"version": "6.2.2",
 	"author": [
 		"Universal Omega",
 		"SamanthaNguyen",
 		"..."
 	],
-	"url": "https://www.mediawiki.org/wiki/Special:MyLanguage/Skin:Cosmos",
+	"url": "https://www.mediawiki.org/wiki/Skin:Cosmos",
 	"descriptionmsg": "cosmos-desc",
 	"namemsg": "skinname-cosmos",
 	"license-name": "GPL-2.0-or-later",
