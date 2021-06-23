@@ -14,42 +14,42 @@ class CosmosRail {
 	private $config;
 
 	/** @var IContextSource */
-	private $contextSource;
+	private $context;
 
 	/** @var string */
 	private static $railHookContents = '';
 
 	/**
 	 * @param CosmosConfig $config
-	 * @param IContextSource $contextSource
+	 * @param IContextSource $context
 	 */
 	public function __construct(
 		CosmosConfig $config,
-		IContextSource $contextSource
+		IContextSource $context
 	) {
 		$this->config = $config;
-		$this->contextSource = $contextSource;
+		$this->context = $context;
 
 		if ( !(bool)static::$railHookContents ) {
 			$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
-			$hookContainer->run( 'CosmosRail', [ $this, $contextSource->getSkin() ] );
+			$hookContainer->run( 'CosmosRail', [ $this, $context->getSkin() ] );
 		}
 	}
 
 	/**
 	 * @param CosmosConfig $config
-	 * @param IContextSource $contextSource
+	 * @param IContextSource $context
 	 * @return bool
 	 */
 	public static function railsHidden(
 		CosmosConfig $config,
-		IContextSource $contextSource
+		IContextSource $context
 	) {
 		$blacklistedNamespaces = $config->getRailBlacklistedNamespaces();
 		$blacklistedPages = $config->getRailBlacklistedPages();
 
-		$title = $contextSource->getTitle();
-		$out = $contextSource->getOutput();
+		$title = $context->getTitle();
+		$out = $context->getOutput();
 
 		if (
 			$title->inNamespaces( $blacklistedNamespaces ) ||
@@ -68,12 +68,12 @@ class CosmosRail {
 
 	/**
 	 * @param CosmosConfig $config
-	 * @param IContextSource $contextSource
+	 * @param IContextSource $context
 	 * @return bool
 	 */
 	public static function railsExist(
 		CosmosConfig $config,
-		IContextSource $contextSource
+		IContextSource $context
 	) {
 		$validModules = [ 'interface', 'recentchanges' ];
 		$enabledModules = [];
@@ -91,7 +91,7 @@ class CosmosRail {
 		$interfaceModules = $interfaceRailModules[0] ?? $interfaceRailModules;
 
 		foreach ( (array)$interfaceModules as $message => $type ) {
-			if ( $type && !$contextSource->msg( $message )->isDisabled() ) {
+			if ( $type && !$context->msg( $message )->isDisabled() ) {
 				$moduleCount++;
 			}
 		}
@@ -106,17 +106,19 @@ class CosmosRail {
 	}
 
 	/**
-	 * @param self $self
-	 * @param IContextSource $contextSource
+	 * @param CosmosConfig $config
+	 * @param IContextSource $context
 	 * @return bool
 	 */
 	public static function hookRailsExist(
-		self $self,
-		IContextSource $contextSource
+		CosmosConfig $config,
+		IContextSource $context
 	) {
 		if ( !(bool)static::$railHookContents ) {
+			$self = new self( $config, $context );
+
 			$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
-			$hookContainer->run( 'CosmosRail', [ $self, $contextSource->getSkin() ] );
+			$hookContainer->run( 'CosmosRail', [ $self, $context->getSkin() ] );
 		}
 
 		if ( !(bool)static::$railHookContents ) {
@@ -130,9 +132,9 @@ class CosmosRail {
 	 * @return string
 	 */
 	public function buildRail() {
-		if ( ( !self::railsExist( $this->config, $this->contextSource ) &&
-			!self::hookRailsExist( $this, $this->contextSource ) ) ||
-				self::railsHidden( $this->config, $this->contextSource )
+		if ( ( !self::railsExist( $this->config, $this->context ) &&
+			!self::hookRailsExist( $this->config, $this->context ) ) ||
+				self::railsHidden( $this->config, $this->context )
 		) {
 			return '';
 		}
@@ -157,12 +159,12 @@ class CosmosRail {
 			if ( $type === 'sticky' ) {
 				$html .= Html::rawElement( 'section', [
 						'class' => 'railModule module rail-sticky-module interface-module'
-					], $this->contextSource->msg( $message )->parse()
+					], $this->context->msg( $message )->parse()
 				);
 			} else {
 				$html .= Html::rawElement( 'section', [
 						'class' => 'railModule module interface-module'
-					], $this->contextSource->msg( $message )->parse()
+					], $this->context->msg( $message )->parse()
 				);
 			}
 		}
@@ -216,8 +218,8 @@ class CosmosRail {
 	 * @return string
 	 */
 	protected function buildModuleHeader( string $label ) {
-		if ( !$this->contextSource->msg( $label )->isDisabled() ) {
-			$label = $this->contextSource->msg( $label )->text();
+		if ( !$this->context->msg( $label )->isDisabled() ) {
+			$label = $this->context->msg( $label )->text();
 		}
 
 		$html = Html::element( 'h3', [], $label );
@@ -236,7 +238,7 @@ class CosmosRail {
 		$interfaceModules = $interfaceRailModules[0] ?? $interfaceRailModules;
 
 		foreach ( (array)$interfaceModules as $message => $type ) {
-			if ( $type && !$this->contextSource->msg( $message )->isDisabled() ) {
+			if ( $type && !$this->context->msg( $message )->isDisabled() ) {
 				$modules += [ $message => $type ];
 			}
 		}
@@ -385,21 +387,21 @@ class CosmosRail {
 	 */
 	protected function getDateTimeDiffString( DateInterval $interval ) {
 		if ( $interval->y > 0 ) {
-			$msg = $this->contextSource->msg( 'years', $interval->y );
+			$msg = $this->context->msg( 'years', $interval->y );
 		} elseif ( $interval->m > 0 ) {
-			$msg = $this->contextSource->msg( 'months', $interval->m );
+			$msg = $this->context->msg( 'months', $interval->m );
 		} elseif ( $interval->d > 7 ) {
-			$msg = $this->contextSource->msg( 'weeks', floor( $interval->d / 7 ) );
+			$msg = $this->context->msg( 'weeks', floor( $interval->d / 7 ) );
 		} elseif ( $interval->d > 0 ) {
-			$msg = $this->contextSource->msg( 'days', $interval->d );
+			$msg = $this->context->msg( 'days', $interval->d );
 		} elseif ( $interval->h > 0 ) {
-			$msg = $this->contextSource->msg( 'hours', $interval->h );
+			$msg = $this->context->msg( 'hours', $interval->h );
 		} elseif ( $interval->i > 0 ) {
-			$msg = $this->contextSource->msg( 'minutes', $interval->i );
+			$msg = $this->context->msg( 'minutes', $interval->i );
 		} else {
-			$msg = $this->contextSource->msg( 'seconds', $interval->s );
+			$msg = $this->context->msg( 'seconds', $interval->s );
 		}
 
-		return $this->contextSource->msg( 'ago', $msg );
+		return $this->context->msg( 'ago', $msg );
 	}
 }

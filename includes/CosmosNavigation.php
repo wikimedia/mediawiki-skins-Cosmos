@@ -33,6 +33,7 @@ class CosmosNavigation implements ExpirationAwareness {
 		$lang = RequestContext::getMain()->getLanguage();
 
 		$cache = $lang->getCode() == $contLang->getCode();
+
 		if ( $cache ) {
 			$key = $memc->makeKey( 'mCosmosNavigation', 'cosmosNavigation' );
 			$menu = $memc->get( $key );
@@ -59,47 +60,55 @@ class CosmosNavigation implements ExpirationAwareness {
 	public function getSubMenu( $nodes, $children, $bolded = false ) {
 		$menu = '';
 		$val = 0;
+
 		foreach ( $children as $key => $val ) {
-			$link_html = htmlspecialchars( $nodes[$val]['text'] );
-			if ( !empty( $nodes[$val]['children'] ) ) {
-				$link_html .= Icon::getIcon( 'level-2-dropdown' )
-					->makeSvg( 12, 12, [
-						'id' => 'wds-icons-menu-control-tiny',
-						'class' => 'wds-icon wds-icon-tiny wds-dropdown-chevron'
-					] );
+			$linkHtml = htmlspecialchars( $nodes[$val]['text'] );
+
+			$nodeChildren = $nodes[$val]['children'] ?? [];
+
+			if ( !empty( $nodeChildren ) ) {
+				$linkHtml .= Icon::getIcon( 'level-2-dropdown' )->makeSvg( 12, 12, [
+					'id' => 'wds-icons-menu-control-tiny',
+					'class' => [ 'wds-icon', 'wds-icon-tiny', 'wds-dropdown-chevron' ]
+				] );
 			}
 
-			$menu_item = Html::rawElement( 'a', [
+			$menuItem = Html::rawElement( 'a', [
 				'href' => !empty( $nodes[$val]['href'] ) ? $nodes[$val]['href'] : '#',
-				'class' => ( !empty( $nodes[$val]['children'] ) ? 'wds-dropdown-level-2__toggle' : null ),
-				'rel' => $nodes[$val]['internal'] ? null : 'nofollow'
-			], $link_html ) . "\n";
+				'class' => [
+					'wds-dropdown-level-2__toggle' => !empty( $nodeChildren )
+				],
+				'rel' => [ 'nofollow' => empty( $nodes[$val]['internal'] ?? [] ) ]
+			], $linkHtml );
 
-			if ( !empty( $nodes[$val]['children'] ) ) {
-				$menu_item .= '<div class="wds-is-not-scrollable wds-dropdown-level-2__content" id="p-' .
-					Sanitizer::escapeIdForAttribute( $nodes[$val]['text'] ) . '" aria-labelledby="p-' .
-					Sanitizer::escapeIdForAttribute( $nodes[$val]['text'] ) . '-label">';
-				$menu_item .= $this->getSubMenu( $nodes, $nodes[$val]['children'] );
-				$menu_item .= '</div>';
+			$menuItem .= "\n";
+
+			$text = Sanitizer::escapeIdForAttribute( $nodes[$val]['text'] );
+
+			if ( !empty( $nodeChildren ) ) {
+				$menuItem .= Html::rawElement( 'div', [
+					'class' => [
+						'wds-is-not-scrollable',
+						'wds-dropdown-level-2__content'
+					],
+					'id' => "p-{$text}",
+					'aria-labelledby' => "p-{$text}-label"
+				], $this->getSubMenu( $nodes, $nodeChildren ) );
 			}
 
-			if ( !empty( $nodes[$val]['children'] ) ) {
-				$stickClass = $key > count( $nodes[$val]['children'] ) - 1 ? 'wds-is-sticked-to-parent ' : '';
-				$liClass = $stickClass . 'wds-dropdown-level-2';
-			} else {
-				$liClass = false;
-			}
 			$menu .= Html::rawElement( 'li',  [
-				'id' => Sanitizer::escapeIdForAttribute( 'n-' . strtr( $nodes[$val]['text'], ' ', '-' ) ),
-				'class' => $liClass
-			], $menu_item );
+				'id' => "n-{$text}",
+				'class' => [
+					'wds-is-sticked-to-parent' => $key > count( $nodeChildren ) - 1,
+					'wds-dropdown-level-2' => !empty( $nodeChildren )
+				]
+			], $menuItem );
 		}
 
-		$menu = Html::rawElement(
-			'div',
-			[],
-			'<ul class="wds-list wds-is-linked' . ( $bolded === true ? ' wds-has-bolded-items' : '' ) .
-				'">' . $menu . '</ul>'
+		$menu = Html::rawElement( 'div', [],
+			Html::rawElement( 'ul', [
+				'class' => [ 'wds-list', 'wds-is-linked', 'wds-has-bolded-items' => $bolded ]
+			], $menu )
 		);
 
 		return $menu;
@@ -121,31 +130,28 @@ class CosmosNavigation implements ExpirationAwareness {
 					$mainMenu[$val] = $nodes[$val]['children'];
 				}
 
-				$menu .= '<li class="wds-tabs__tab">';
+				$menu .= Html::openElement( 'li', [
+					'class' => 'wds-tabs__tab'
+				] );
+
+				$text = Sanitizer::escapeIdForAttribute( $nodes[$val]['text'] );
+
 				if ( !empty( $nodes[$val]['children'] ) ) {
-					$menu .= '<div class="wds-dropdown" id="p-' .
-						Sanitizer::escapeIdForAttribute( $nodes[$val]['text'] ) .
-						'" aria-labelledby="p-' . Sanitizer::escapeIdForAttribute( $nodes[$val]['text'] ) . '-label">';
+					$menu .= Html::openElement( 'div', [
+						'class' => 'wds-dropdown',
+						'id' => "p-{$text}",
+						'aria-labelledby' => "p-{$text}-label"
+					] );
 				}
 
-				$menu .= '<div class="wds-tabs__tab-label ';
-				if ( !empty( $nodes[$val]['children'] ) ) {
-					$menu .= ' wds-dropdown__toggle';
-				}
-
-				$menu .= '" id="p-' . Sanitizer::escapeIdForAttribute( $nodes[$val]['text'] ) . '-label">';
 				if (
 					!empty( $nodes[$val]['href'] ) &&
 					$nodes[$val]['text'] !== 'Navigation' &&
 					$nodes[$val]['text'] !== $this->messageLocalizer->msg( 'cosmos-explore' )->text()
 				) {
-					$exploreHREF = htmlspecialchars( $nodes[$val]['href'] );
+					$exploreHref = $nodes[$val]['href'];
 				} else {
-					$exploreHREF = '#';
-				}
-				$menu .= '<a href="' . $exploreHREF . '"';
-				if ( !isset( $nodes[$val]['internal'] ) || !$nodes[$val]['internal'] ) {
-					$menu .= ' rel="nofollow"';
+					$exploreHref = '#';
 				}
 
 				if ( $nodes[$val]['text'] === $this->messageLocalizer->msg( 'cosmos-explore' )->text() ) {
@@ -154,36 +160,64 @@ class CosmosNavigation implements ExpirationAwareness {
 						91,
 						[ 'id' => 'cosmos-icons-explore', 'class' => 'wds-icon' ]
 					);
-					$exploreStyle = 'style="padding-top: 2px;"';
+					$exploreStyle = 'padding-top: 2px;';
 				} else {
 					$exploreIcon = $exploreStyle = '';
 				}
 
-				$menu .= '>' . $exploreIcon . '<span ' . $exploreStyle . '>' .
-					htmlspecialchars( $nodes[$val]['text'] ) . '</span>';
+				$menu .= Html::openElement( 'div', [
+					'class' => [
+						'wds-tabs__tab-label',
+						'wds-dropdown__toggle' => !empty( $nodes[$val]['children'] )
+					],
+					'id' => "p-{$text}-label"
+				] );
+
+				$menu .= Html::openElement( 'a', [
+					'href' => $exploreHref,
+					'rel' => [ 'nofollow' => empty( $nodes[$val]['internal'] ?? [] ) ]
+				] );
+
+				$menu .= $exploreIcon;
+
+				$menu .= Html::rawElement( 'span', [
+						'style' => $exploreStyle
+					], htmlspecialchars( $nodes[$val]['text'] )
+				);
+
 				if ( !empty( $nodes[$val]['children'] ) ) {
-					$menu .= Icon::getIcon( 'dropdown' )->makeSvg(
-						14,
-						14,
-						[
-							'id' => 'wds-icons-dropdown-tiny',
-							'class' => 'wds-icon wds-icon-tiny wds-dropdown__toggle-chevron'
+					$menu .= Icon::getIcon( 'dropdown' )->makeSvg( 14, 14, [
+						'id' => 'wds-icons-dropdown-tiny',
+						'class' => [
+							'wds-icon',
+							'wds-icon-tiny',
+							'wds-dropdown__toggle-chevron'
 						]
-					);
+					] );
 				}
 
-				$menu .= '</a></div>';
+				$menu .= Html::closeElement( 'a' );
+				$menu .= Html::closeElement( 'div' );
+
 				if ( !empty( $nodes[$val]['children'] ) ) {
-					$menu .= '<div class="wds-is-not-scrollable wds-dropdown__content">';
-					$menu .= $this->getSubMenu( $nodes, $nodes[$val]['children'], true );
-					$menu .= '</div></div>';
+					$menu .= Html::rawElement( 'div', [
+						'class' => [
+							'wds-is-not-scrollable',
+							'wds-dropdown__content'
+						]
+					], $this->getSubMenu( $nodes, $nodes[$val]['children'], true ) );
+
+					$menu .= Html::closeElement( 'div' );
 				}
 
 			}
-			$menu .= '</li>';
+
+			$menu .= Html::closeElement( 'li' );
+
 			$menu = Html::rawElement( 'li', [
 				'class' => 'wds-tabs__tab'
 			], $menu );
+
 			$menu = preg_replace( '/<!--b-->(.*)<!--e-->/U', '', $menu );
 			$menuHash = hash( 'md5', serialize( $nodes ) );
 
@@ -191,9 +225,12 @@ class CosmosNavigation implements ExpirationAwareness {
 				if ( !isset( $val['depth'] ) || $val['depth'] == 1 ) {
 					unset( $nodes[$key] );
 				}
-				unset( $nodes[$key]['parentIndex'] );
-				unset( $nodes[$key]['depth'] );
-				unset( $nodes[$key]['original'] );
+
+				unset(
+					$nodes[$key]['parentIndex'],
+					$nodes[$key]['original'],
+					$nodes[$key]['depth']
+				);
 			}
 
 			$nodes['mainMenu'] = $mainMenu;
@@ -217,7 +254,7 @@ class CosmosNavigation implements ExpirationAwareness {
 
 		if ( is_array( $lines ) && count( $lines ) > 0 ) {
 			foreach ( $lines as $line ) {
-				if ( trim( $line ) === '' ) {
+				if ( trim( str_replace( '*', '', $line ) ) === '' ) {
 					// ignore empty lines
 					continue;
 				}
@@ -271,6 +308,7 @@ class CosmosNavigation implements ExpirationAwareness {
 	 */
 	public function parseLine( $line ) {
 		$lineTmp = explode( '|', trim( $line, '* ' ), 2 );
+
 		// for external links defined as [http://example.com] instead of just http://example.com
 		$lineTmp[0] = trim( $lineTmp[0], '[]' );
 		$internal = false;
@@ -302,6 +340,7 @@ class CosmosNavigation implements ExpirationAwareness {
 				$href = '#';
 			} else {
 				$title = Title::newFromText( $link );
+
 				if ( is_object( $title ) ) {
 					$href = $title->fixSpecialName()
 						->getLocalURL();
@@ -347,8 +386,8 @@ class CosmosNavigation implements ExpirationAwareness {
 				strpos( $cosmosNavigationMessage, '{$NEWVIDEOS}' ) !== false
 			)
 		) {
-			$exploreChildURL = "**" . htmlspecialchars( Title::newFromText( 'NewVideos', NS_SPECIAL ) ) . '|';
-			$exploreChildText = "newvideos";
+			$exploreChildURL = '**' . htmlspecialchars( Title::newFromText( 'NewVideos', NS_SPECIAL ) ) . '|';
+			$exploreChildText = 'newvideos';
 
 			if ( strpos( $cosmosNavigationMessage, '{$WANTEDPAGES_FORCE}' ) !== false ) {
 				$forceExploreChildURL = "\n**" .
@@ -359,7 +398,7 @@ class CosmosNavigation implements ExpirationAwareness {
 			strpos( $cosmosNavigationMessage, '{$WANTEDPAGES_CONDITIONAL}' ) !== false ||
 			strpos( $cosmosNavigationMessage, '{$WANTEDPAGES}' ) !== false
 		) {
-			$exploreChildURL = "**" . htmlspecialchars( Title::newFromText( 'WantedPages', NS_SPECIAL ) ) . '|';
+			$exploreChildURL = '**' . htmlspecialchars( Title::newFromText( 'WantedPages', NS_SPECIAL ) ) . '|';
 			$exploreChildText = 'wantedpages';
 		}
 
@@ -369,12 +408,14 @@ class CosmosNavigation implements ExpirationAwareness {
 			'',
 			$cosmosNavigationMessage
 		);
+
 		$message = trim(
 			$cleanedMsg . $exploreChildURL . $exploreChildText . $forceExploreChildURL . $forceExploreChildText
 		);
 
 		if ( $this->messageLocalizer->msg( $messageKey, $message )->exists() ) {
 			$lines = explode( "\n", $message );
+
 			if ( count( $lines ) > 0 ) {
 				return $lines;
 			}

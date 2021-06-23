@@ -2,28 +2,79 @@
 
 namespace MediaWiki\Skin\Cosmos;
 
+use Config;
+use ConfigFactory;
 use ExtensionRegistry;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\User\UserOptionsLookup;
 use OutputPage;
 use SkinTemplate;
+use TitleFactory;
 
 class SkinCosmos extends SkinTemplate {
+
+	/** @var Config */
+	public $config;
+
+	/** @var CosmosConfig */
+	public $cosmosConfig;
+
+	/** @var PermissionManager */
+	public $permissionManager;
+
+	/** @var SpecialPageFactory */
+	public $specialPageFactory;
+
+	/** @var TitleFactory */
+	public $titleFactory;
+
+	/** @var UserOptionsLookup */
+	public $userOptionsLookup;
+
+	/** @var CosmosWordmarkLookup */
+	public $wordmarkLookup;
+
 	/**
+	 * @param ConfigFactory $configFactory
+	 * @param CosmosConfig $cosmosConfig
+	 * @param CosmosWordmarkLookup $cosmosWordmarkLookup
+	 * @param PermissionManager $permissionManager
+	 * @param SpecialPageFactory $specialPageFactory
+	 * @param TitleFactory $titleFactory
+	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param array $options
 	 */
 	public function __construct(
-		array $options = []
+		ConfigFactory $configFactory,
+		CosmosConfig $cosmosConfig,
+		CosmosWordmarkLookup $cosmosWordmarkLookup,
+		PermissionManager $permissionManager,
+		SpecialPageFactory $specialPageFactory,
+		TitleFactory $titleFactory,
+		UserOptionsLookup $userOptionsLookup,
+		array $options
 	) {
 		parent::__construct( $options );
+
+		$this->config = $configFactory->makeConfig( 'Cosmos' );
+		$this->cosmosConfig = $cosmosConfig;
+		$this->permissionManager = $permissionManager;
+		$this->specialPageFactory = $specialPageFactory;
+		$this->titleFactory = $titleFactory;
+		$this->userOptionsLookup = $userOptionsLookup;
+		$this->wordmarkLookup = $cosmosWordmarkLookup;
 	}
 
 	/**
 	 * @param OutputPage $out
 	 */
 	public function initPage( OutputPage $out ) {
-		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-
-		if ( $userOptionsLookup->getBoolOption( $this->getUser(), 'cosmos-mobile-responsiveness' ) ) {
+		if (
+			$this->userOptionsLookup->getBoolOption(
+				$this->getUser(), 'cosmos-mobile-responsiveness'
+			)
+		) {
 			$out->addMeta(
 				'viewport',
 				'width=device-width, initial-scale=1.0, ' .
@@ -36,20 +87,13 @@ class SkinCosmos extends SkinTemplate {
 	 * @return array
 	 */
 	public function getDefaultModules() {
-		$services = MediaWikiServices::getInstance();
-		$config = $services->getConfigFactory()->makeConfig( 'cosmos' );
-
-		$cosmosConfig = $services->getService( 'CosmosConfig' );
-
 		$modules = parent::getDefaultModules();
 
 		// CosmosRail styles
-		if ( ( CosmosRail::railsExist( $cosmosConfig, $this->getContext() ) ||
-			CosmosRail::hookRailsExist(
-				new CosmosRail( $cosmosConfig, $this->getContext() ),
-				$this->getContext()
-			) ) &&
-			!CosmosRail::railsHidden( $cosmosConfig, $this->getContext() )
+		if ( ( CosmosRail::railsExist( $this->cosmosConfig, $this->getContext() ) ||
+				CosmosRail::hookRailsExist( $this->cosmosConfig, $this->getContext() )
+			) &&
+			!CosmosRail::railsHidden( $this->cosmosConfig, $this->getContext() )
 		) {
 			$modules['styles']['skin'][] = 'skins.cosmos.rail';
 		}
@@ -59,7 +103,7 @@ class SkinCosmos extends SkinTemplate {
 			$modules['styles']['skin'][] = 'skins.cosmos.portableinfobox';
 
 			// Load PortableInfobox EuropaTheme style if the configuration is enabled
-			if ( $config->get( 'CosmosEnablePortableInfoboxEuropaTheme' ) ) {
+			if ( $this->config->get( 'CosmosEnablePortableInfoboxEuropaTheme' ) ) {
 				$modules['styles']['skin'][] = 'skins.cosmos.portableinfobox.europa';
 			} else {
 				$modules['styles']['skin'][] = 'skins.cosmos.portableinfobox.default';
@@ -76,32 +120,32 @@ class SkinCosmos extends SkinTemplate {
 
 		// Load SocialProfile styles if the respective configuration variables are enabled
 		if ( class_exists( 'UserProfilePage' ) ) {
-			if ( $config->get( 'CosmosSocialProfileModernTabs' ) ) {
+			if ( $this->config->get( 'CosmosSocialProfileModernTabs' ) ) {
 				$modules['styles']['skin'][] = 'skins.cosmos.profiletabs';
 			}
 
-			if ( $config->get( 'CosmosSocialProfileRoundAvatar' ) ) {
+			if ( $this->config->get( 'CosmosSocialProfileRoundAvatar' ) ) {
 				$modules['styles']['skin'][] = 'skins.cosmos.profileavatar';
 			}
 
-			if ( $config->get( 'CosmosSocialProfileShowEditCount' ) ) {
+			if ( $this->config->get( 'CosmosSocialProfileShowEditCount' ) ) {
 				$modules['styles']['skin'][] = 'skins.cosmos.profileeditcount';
 			}
 
-			if ( $config->get( 'CosmosSocialProfileAllowBio' ) ) {
+			if ( $this->config->get( 'CosmosSocialProfileAllowBio' ) ) {
 				$modules['styles']['skin'][] = 'skins.cosmos.profilebio';
 			}
 
-			if ( $config->get( 'CosmosSocialProfileShowGroupTags' ) ) {
+			if ( $this->config->get( 'CosmosSocialProfileShowGroupTags' ) ) {
 				$modules['styles']['skin'][] = 'skins.cosmos.profiletags';
 			}
 
 			if (
-				$config->get( 'CosmosSocialProfileModernTabs' ) ||
-				$config->get( 'CosmosSocialProfileRoundAvatar' ) ||
-				$config->get( 'CosmosSocialProfileShowEditCount' ) ||
-				$config->get( 'CosmosSocialProfileAllowBio' ) ||
-				$config->get( 'CosmosSocialProfileShowGroupTags' )
+				$this->config->get( 'CosmosSocialProfileModernTabs' ) ||
+				$this->config->get( 'CosmosSocialProfileRoundAvatar' ) ||
+				$this->config->get( 'CosmosSocialProfileShowEditCount' ) ||
+				$this->config->get( 'CosmosSocialProfileAllowBio' ) ||
+				$this->config->get( 'CosmosSocialProfileShowGroupTags' )
 			) {
 				$modules['styles']['skin'][] = 'skins.cosmos.socialprofile';
 			}

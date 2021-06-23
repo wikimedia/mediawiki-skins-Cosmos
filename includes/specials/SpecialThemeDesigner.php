@@ -1,9 +1,10 @@
 <?php
 
-namespace MediaWiki\Skin\Cosmos\Specials;
+namespace MediaWiki\Skin\Cosmos\Special;
 
 use BagOStuff;
 use FormSpecialPage;
+use Html;
 use MediaWiki\Skin\Cosmos\CosmosConfig;
 use ObjectCache;
 
@@ -75,12 +76,6 @@ class SpecialThemeDesigner extends FormSpecialPage {
 			'help-message' => 'cosmos-themedesigner-help-5',
 		];
 
-		$formDescriptor['CosmosLinkColor'] = [
-			'type' => 'text',
-			'default' => $this->config->getLinkColor(),
-			'help-message' => 'cosmos-themedesigner-help-6',
-		];
-
 		$formDescriptor['CosmosFooterBackgroundColor'] = [
 			'type' => 'text',
 			'default' => $this->config->getFooterBackgroundColor(),
@@ -91,6 +86,20 @@ class SpecialThemeDesigner extends FormSpecialPage {
 			'type' => 'text',
 			'default' => $this->config->getToolbarBackgroundColor(),
 			'help-message' => 'cosmos-themedesigner-help-8',
+		];
+
+		$formDescriptor['CosmosLinkColor'] = [
+			'type' => 'text',
+			'default' => $this->config->getLinkColor(),
+			'help-message' => 'cosmos-themedesigner-help-6',
+		];
+
+		$formDescriptor['CosmosContentOpacityLevel'] = [
+			'type' => 'int',
+			'min' => 0,
+			'max' => 100,
+			'default' => $this->config->getContentOpacityLevel(),
+			'help-message' => 'cosmos-themedesigner-help-12',
 		];
 
 		$formDescriptor['CosmosWordmark'] = [
@@ -109,14 +118,6 @@ class SpecialThemeDesigner extends FormSpecialPage {
 			'type' => 'text',
 			'default' => $this->config->getBackgroundImage(),
 			'help-message' => 'cosmos-themedesigner-help-11',
-		];
-
-		$formDescriptor['CosmosContentOpacityLevel'] = [
-			'type' => 'int',
-			'min' => 0,
-			'max' => 100,
-			'default' => $this->config->getContentOpacityLevel(),
-			'help-message' => 'cosmos-themedesigner-help-12',
 		];
 
 		$formDescriptor['CosmosBackgroundImageSize'] = [
@@ -178,9 +179,7 @@ class SpecialThemeDesigner extends FormSpecialPage {
 		}
 
 		$this->getOutput()->addHTML(
-			'<div class="successbox">' .
-				$this->msg( 'cosmos-themedesigner-success' )->escaped() .
-			'</div>'
+			Html::successBox( $this->msg( 'cosmos-themedesigner-success' )->escaped() )
 		);
 
 		return true;

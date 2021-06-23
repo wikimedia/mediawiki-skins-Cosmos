@@ -323,7 +323,8 @@ class Icon {
 			// icon array and return it
 			$source = self::$iconSources[$iconName];
 			self::$icons[$iconName] = new Icon( $source['width'], $source['height'],
-					$source['content'] );
+				$source['content'] );
+
 			return self::$icons[$iconName];
 		} else {
 			// Finally, if the requested icon is not part of either array, just

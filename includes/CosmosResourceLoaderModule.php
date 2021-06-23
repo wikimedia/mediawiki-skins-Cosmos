@@ -5,65 +5,122 @@ namespace MediaWiki\Skin\Cosmos;
 use MediaWiki\MediaWikiServices;
 use ResourceLoaderContext;
 use ResourceLoaderSkinModule;
+use Wikimedia\Minify\CSSMin;
 
-class ResourceLoaderLessModule extends ResourceLoaderSkinModule {
+class CosmosResourceLoaderModule extends ResourceLoaderSkinModule {
+
+	/** @var CosmosConfig */
+	private $cosmosConfig;
+
 	/**
-	 * Get language-specific LESS variables for this module.
+	 * @inheritDoc
+	 *
+	 * @param ResourceLoaderContext $context
+	 * @return array
+	 */
+	public function getPreloadLinks( ResourceLoaderContext $context ) : array {
+		$preloadLinks = parent::getPreloadLinks( $context );
+
+		$services = MediaWikiServices::getInstance();
+		$wordmark = $services->getService( 'CosmosWordmarkLookup' )->getWordmarkUrl();
+
+		$mainBackground = $services->getService( 'CosmosBackgroundLookup' )->getMainBackgroundUrl();
+		$wikiHeaderBackground = $services->getService( 'CosmosBackgroundLookup' )->getWikiHeaderBackgroundUrl();
+
+		if ( $wordmark ?? false ) {
+			$preloadLinks[$wordmark] = [ 'as' => 'image' ];
+		}
+
+		if ( $mainBackground ?? false ) {
+			$preloadLinks[$mainBackground] = [ 'as' => 'image' ];
+		}
+
+		if ( $wikiHeaderBackground ?? false ) {
+			$preloadLinks[$wikiHeaderBackground] = [ 'as' => 'image' ];
+		}
+
+		return $preloadLinks;
+	}
+
+	/**
+	 * @inheritDoc
 	 *
 	 * @param ResourceLoaderContext $context
 	 * @return array
 	 */
 	protected function getLessVars( ResourceLoaderContext $context ) {
 		$lessVars = parent::getLessVars( $context );
-		$config = MediaWikiServices::getInstance()->getService( 'CosmosConfig' );
 
-		$contentBackgroundColor = $config->getContentBackgroundColor();
+		$services = MediaWikiServices::getInstance();
+
+		$this->cosmosConfig = $services->getService( 'CosmosConfig' );
+
+		$mainBackground = $services->getService( 'CosmosBackgroundLookup' )->getMainBackgroundUrl();
+		$wikiHeaderBackground = $services->getService( 'CosmosBackgroundLookup' )->getWikiHeaderBackgroundUrl();
+
+		$contentBackgroundColor = $this->cosmosConfig->getContentBackgroundColor();
+
 		if ( strpos( $contentBackgroundColor, 'rgb' ) !== false ) {
-			$rgbArr = explode( ",", $contentBackgroundColor, 3 );
-			$colorName = sprintf( "#%02x%02x%02x", $rgbArr[0], $rgbArr[1], $rgbArr[2] );
+			$rgbArr = explode( ',', $contentBackgroundColor, 3 );
+			$colorName = sprintf( '#%02x%02x%02x', $rgbArr[0], $rgbArr[1], $rgbArr[2] );
 		} else {
 			$colorName = LessUtil::colorNameToHex( $contentBackgroundColor );
 		}
-		$lessVars['banner-background-color'] = $config->getBannerBackgroundColor();
 
-		if ( $config->getBackgroundImage() ) {
-			$lessVars['main-background-image-isset'] = 1;
-			$lessVars['main-background-image'] = 'url(' . $config->getBackgroundImage() . ')';
+		$lessVars['banner-background-color'] = $this->cosmosConfig->getBannerBackgroundColor();
+
+		if ( $mainBackground ) {
+			$lessVars['main-background-image'] = CSSMin::buildUrlValue( $mainBackground );
 		} else {
-			$lessVars['main-background-image-isset'] = 0;
+			$lessVars['main-background-image'] = 0;
 		}
-		$lessVars['main-background-color'] = $config->getMainBackgroundColor();
-		$lessVars['content-background-color'] = $config->getContentBackgroundColor();
-		$lessVars['main-background-image-size'] = $config->getBackgroundImageSize();
-		$lessVars['link-color'] = $config->getLinkColor();
-		$lessVars['button-background-color'] = $config->getButtonBackgroundColor();
-		if ( $config->getBackgroundImageRepeat() ) {
+
+		if ( $wikiHeaderBackground ) {
+			$lessVars['wiki-header-background-image'] = CSSMin::buildUrlValue( $wikiHeaderBackground );
+		} else {
+			$lessVars['wiki-header-background-image'] = 0;
+		}
+
+		$lessVars['main-background-color'] = $this->cosmosConfig->getMainBackgroundColor();
+		$lessVars['content-background-color'] = $this->cosmosConfig->getContentBackgroundColor();
+		$lessVars['main-background-image-size'] = $this->cosmosConfig->getBackgroundImageSize();
+		$lessVars['link-color'] = $this->cosmosConfig->getLinkColor();
+		$lessVars['button-background-color'] = $this->cosmosConfig->getButtonBackgroundColor();
+
+		if ( $this->cosmosConfig->getBackgroundImageRepeat() ) {
 			$lessVars['main-background-image-repeat'] = 'repeat';
 		} else {
 			$lessVars['main-background-image-repeat'] = 'no-repeat';
 		}
-		if ( $config->getBackgroundImageFixed() ) {
+
+		if ( $this->cosmosConfig->getBackgroundImageFixed() ) {
 			$lessVars['main-background-image-position'] = 'fixed';
 		} else {
 			$lessVars['main-background-image-position'] = 'absolute';
 		}
+
 		// convert @content-background-color to rgba for background-color opacity
 		list( $r, $g, $b ) = array_map( static function ( $c ) {
 			return hexdec( str_pad( $c, 2, $c ) );
 		},
+
 		str_split( ltrim( $colorName, '#' ), strlen( $colorName ) > 4 ? 2 : 1 ) );
-		$contentOpacityLevelConfig = $config->getContentOpacityLevel();
+
+		$contentOpacityLevelConfig = $this->cosmosConfig->getContentOpacityLevel();
 		$lessVars['content-opacity-level'] = "rgba($r, $g, $b, " . $contentOpacityLevelConfig / 100.00 . ')';
-		$footerBackgroundColor = $config->getFooterBackgroundColor();
+
+		$footerBackgroundColor = $this->cosmosConfig->getFooterBackgroundColor();
 		if ( strpos( $footerBackgroundColor, 'rgb' ) !== false ) {
-			$rgbArr = explode( ",", $footerBackgroundColor, 3 );
-			$colorName = sprintf( "#%02x%02x%02x", $rgbArr[0], $rgbArr[1], $rgbArr[2] );
+			$rgbArr = explode( ',', $footerBackgroundColor, 3 );
+			$colorName = sprintf( '#%02x%02x%02x', $rgbArr[0], $rgbArr[1], $rgbArr[2] );
 		} else {
 			$colorName = LessUtil::colorNameToHex( $footerBackgroundColor );
 		}
+
 		list( $r, $g, $b ) = array_map( static function ( $c ) {
 			return hexdec( str_pad( $c, 2, $c ) );
 		},
+
 		str_split( ltrim( $colorName, '#' ), strlen( $colorName ) > 4 ? 2 : 1 ) );
 		$lessVars['footer-background-color'] = "rgba($r, $g, $b, 0.9)";
 
@@ -71,16 +128,18 @@ class ResourceLoaderLessModule extends ResourceLoaderSkinModule {
 		$lessVars['footer-font-color1'] = $isFooterBackgroundColorDark ? '#999' : '#666';
 		$lessVars['footer-font-color2'] = $isFooterBackgroundColorDark ? '#fff' : '#000';
 
-		$headerBackgroundColor = $config->getWikiHeaderBackgroundColor();
+		$headerBackgroundColor = $this->cosmosConfig->getWikiHeaderBackgroundColor();
 		if ( strpos( $headerBackgroundColor, 'rgb' ) !== false ) {
-			$rgbArr = explode( ",", $headerBackgroundColor, 3 );
-			$colorName = sprintf( "#%02x%02x%02x", $rgbArr[0], $rgbArr[1], $rgbArr[2] );
+			$rgbArr = explode( ',', $headerBackgroundColor, 3 );
+			$colorName = sprintf( '#%02x%02x%02x', $rgbArr[0], $rgbArr[1], $rgbArr[2] );
 		} else {
 			$colorName = LessUtil::colorNameToHex( $headerBackgroundColor );
 		}
+
 		list( $r, $g, $b ) = array_map( static function ( $c ) {
 			return hexdec( str_pad( $c, 2, $c ) );
 		},
+
 		str_split( ltrim( $colorName, '#' ), strlen( $colorName ) > 4 ? 2 : 1 ) );
 
 		$rightGradient = "linear-gradient(to right,rgba($r,$g,$b,0.5),rgba($r,$g,$b,0.5))";
@@ -96,7 +155,7 @@ class ResourceLoaderLessModule extends ResourceLoaderSkinModule {
 
 		return array_merge(
 			$lessVars,
-			$this->getThemedToolbarBackgroundColorSettings( $config ),
+			$this->getThemedToolbarBackgroundColorSettings(),
 			$this->getThemeContentBackgroundColorSettings(),
 			$this->getThemedBannerBackgroundColorSettings(),
 			$this->getThemedButtonBackgroundColorSettings()
@@ -104,11 +163,10 @@ class ResourceLoaderLessModule extends ResourceLoaderSkinModule {
 	}
 
 	/**
-	 * @param CosmosConfig $config
 	 * @return array
 	 */
-	private function getThemedToolbarBackgroundColorSettings( CosmosConfig $config ) : array {
-		$toolbarBackgroundColor = $config->getToolbarBackgroundColor();
+	private function getThemedToolbarBackgroundColorSettings() : array {
+		$toolbarBackgroundColor = $this->cosmosConfig->getToolbarBackgroundColor();
 
 		return [
 			'toolbar-background-color2' => $toolbarBackgroundColor,

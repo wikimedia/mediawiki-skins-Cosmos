@@ -1243,6 +1243,10 @@ button.wds-button {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 
+	& when not( @wiki-header-background-image = 0 ) {
+		background-image: @wiki-header-background-image;
+	}
+
 	&:before {
 		position: absolute;
 		z-index: -1;

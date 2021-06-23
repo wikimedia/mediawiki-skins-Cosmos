@@ -1,6 +1,6 @@
 @media screen and ( min-width: 850px ) {
 	body {
-		& when( @main-background-image-isset = 1 ) {
+		& when not( @main-background-image = 0 ) {
 			&:after {
 				position: @main-background-image-position;
 				z-index: -1;

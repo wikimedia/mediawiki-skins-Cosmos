@@ -39,11 +39,6 @@ class LessUtil {
 					$themeSettings->getButtonBackgroundColor()
 				);
 
-			static::$cosmosSettings['link-color'] =
-				self::sanitizeColor(
-					$themeSettings->getLinkColor()
-				);
-
 			static::$cosmosSettings['toolbar-background-color'] =
 				self::sanitizeColor(
 					$themeSettings->getToolbarBackgroundColor()
@@ -52,6 +47,11 @@ class LessUtil {
 			static::$cosmosSettings['footer-background-color'] =
 				self::sanitizeColor(
 					$themeSettings->getFooterBackgroundColor()
+				);
+
+			static::$cosmosSettings['link-color'] =
+				self::sanitizeColor(
+					$themeSettings->getLinkColor()
 				);
 
 			foreach ( static::$cosmosSettings as $key => $val ) {
@@ -71,6 +71,7 @@ class LessUtil {
 	 */
 	public static function sanitizeColor( $color ) {
 		$color = trim( strtolower( $color ) );
+
 		return $color;
 	}
 
@@ -140,9 +141,11 @@ class LessUtil {
 			} else {
 				$S = $deltaMax / ( 2 - $clrMax - $clrMin );
 			}
+
 			$deltaR = ( ( ( $clrMax - $clrR ) / 6 ) + ( $deltaMax / 2 ) ) / $deltaMax;
 			$deltaG = ( ( ( $clrMax - $clrG ) / 6 ) + ( $deltaMax / 2 ) ) / $deltaMax;
 			$deltaB = ( ( ( $clrMax - $clrB ) / 6 ) + ( $deltaMax / 2 ) ) / $deltaMax;
+
 			if ( $clrR == $clrMax ) {
 				$H = $deltaB - $deltaG;
 			} elseif ( $clrG == $clrMax ) {
@@ -152,9 +155,11 @@ class LessUtil {
 			} else {
 				throw new LogicException( 'Unreachable' );
 			}
+
 			if ( $H < 0 ) {
 				$H += 1;
 			}
+
 			if ( $H > 1 ) {
 				$H -= 1;
 			}
@@ -335,7 +340,7 @@ class LessUtil {
 	/**
 	 * @param string $hex
 	 *
-	 * @return array with r, g and b keys
+	 * @return array with r, g, and b keys
 	 */
 	public static function hexToRgb( string $hex ): array {
 		$hex = str_replace( '#', '', $hex );

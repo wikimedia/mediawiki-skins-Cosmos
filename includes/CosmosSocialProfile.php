@@ -6,9 +6,7 @@ use Html;
 use MediaWiki\MediaWikiServices;
 use Sanitizer;
 use TextContent;
-use Title;
 use User;
-use WikiPage;
 
 class CosmosSocialProfile {
 	/**
@@ -16,7 +14,10 @@ class CosmosSocialProfile {
 	 * @return User|false
 	 */
 	private static function getUser( $user ) {
-		$title = Title::newFromText( $user );
+		$services = MediaWikiServices::getInstance();
+
+		$titleFactory = $services->getTitleFactory();
+		$title = $titleFactory->newFromText( $user );
 
 		if (
 			is_object( $title ) &&
@@ -26,7 +27,8 @@ class CosmosSocialProfile {
 			$user = $title->getText();
 		}
 
-		$user = User::newFromName( $user );
+		$userFactory = $services->getUserFactory();
+		$user = $userFactory->newFromName( $user );
 
 		return $user;
 	}
@@ -48,7 +50,11 @@ class CosmosSocialProfile {
 	 * @return string|null
 	 */
 	public static function getUserGroups( $user ) {
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'cosmos' );
+		$services = MediaWikiServices::getInstance();
+
+		$config = $services->getConfigFactory()->makeConfig( 'Cosmos' );
+		$userGroupManager = $services->getUserGroupManager();
+
 		$user = self::getUser( $user );
 
 		if ( $user && $user->getBlock() ) {
@@ -62,7 +68,7 @@ class CosmosSocialProfile {
 			$userTags = '';
 
 			foreach ( $config->get( 'CosmosSocialProfileTagGroups' ) as $value ) {
-				if ( in_array( $value, $user->getGroups() ) ) {
+				if ( in_array( $value, $userGroupManager->getUserGroups( $user ) ) ) {
 					$numberOfTags++;
 					$numberOfTagsConfig = $config->get( 'CosmosSocialProfileNumberofGroupTags' );
 					$userGroupMessage = wfMessage( "group-{$value}-member" );
@@ -101,10 +107,14 @@ class CosmosSocialProfile {
 	 * @return string|null
 	 */
 	public static function getUserBio( $user, $followRedirects ) {
-		if ( $user && Title::newFromText( "User:{$user}/bio" )->isKnown() ) {
-			$userBioPage = Title::newFromText( "User:{$user}/bio" );
+		$services = MediaWikiServices::getInstance();
+		$titleFactory = $services->getTitleFactory();
 
-			$wikiPage = new WikiPage( $userBioPage );
+		$userBioPage = $titleFactory->newFromText( "User:{$user}/bio" );
+
+		if ( $user && $userBioPage && $userBioPage->isKnown() ) {
+			$wikiPageFactory = $services->getWikiPageFactory();
+			$wikiPage = $wikiPageFactory->newFromTitle( $userBioPage );
 
 			$content = $wikiPage->getContent();
 
@@ -117,7 +127,7 @@ class CosmosSocialProfile {
 			) {
 				$userBioPage = $content->getRedirectTarget();
 
-				$wikiPage = new WikiPage( $userBioPage );
+				$wikiPage = $wikiPageFactory->newFromTitle( $userBioPage );
 
 				$content = $wikiPage->getContent();
 			}

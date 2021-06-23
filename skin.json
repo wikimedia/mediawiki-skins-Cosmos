@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "6.2.2",
+	"version": "6.3.0",
 	"author": [
 		"Universal Omega",
 		"SamanthaNguyen",
@@ -18,6 +18,15 @@
 		"cosmos": {
 			"displayname": "Cosmos",
 			"class": "MediaWiki\\Skin\\Cosmos\\SkinCosmos",
+			"services": [
+				"ConfigFactory",
+				"CosmosConfig",
+				"CosmosWordmarkLookup",
+				"PermissionManager",
+				"SpecialPageFactory",
+				"TitleFactory",
+				"UserOptionsLookup"
+			],
 			"args": [ {
 				"name": "cosmos",
 				"template": "MediaWiki\\Skin\\Cosmos\\CosmosTemplate",
@@ -43,13 +52,13 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Skin\\Cosmos\\": "includes/",
 		"MediaWiki\\Skin\\Cosmos\\Hook\\": "includes/hooks/",
-		"MediaWiki\\Skin\\Cosmos\\Specials\\": "includes/specials/"
+		"MediaWiki\\Skin\\Cosmos\\Special\\": "includes/specials/"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
 	],
 	"ConfigRegistry": {
-		"cosmos": "GlobalVarConfig::newInstance"
+		"Cosmos": "GlobalVarConfig::newInstance"
 	},
 	"GroupPermissions": {
 		"sysop": {
@@ -61,7 +70,7 @@
 	],
 	"SpecialPages": {
 		"ThemeDesigner": {
-			"class": "MediaWiki\\Skin\\Cosmos\\Specials\\SpecialThemeDesigner",
+			"class": "MediaWiki\\Skin\\Cosmos\\Special\\SpecialThemeDesigner",
 			"services": [
 				"CosmosConfig"
 			]
@@ -69,7 +78,7 @@
 	},
 	"ResourceModules": {
 		"skins.cosmos.styles": {
-			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
+			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
 			"features": {
 				"content-links": true,
 				"content-tables": true,
@@ -121,7 +130,7 @@
 			}
 		},
 		"skins.cosmos.portableinfobox": {
-			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
+			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -133,7 +142,7 @@
 			}
 		},
 		"skins.cosmos.portableinfobox.default": {
-			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
+			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -143,7 +152,7 @@
 			}
 		},
 		"skins.cosmos.portableinfobox.europa": {
-			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
+			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -153,7 +162,7 @@
 			}
 		},
 		"skins.cosmos.socialprofile": {
-			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
+			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -165,7 +174,7 @@
 			}
 		},
 		"skins.cosmos.profiletabs": {
-			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
+			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -177,7 +186,7 @@
 			}
 		},
 		"skins.cosmos.profileavatar": {
-			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
+			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -189,7 +198,7 @@
 			}
 		},
 		"skins.cosmos.profileeditcount": {
-			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
+			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -201,7 +210,7 @@
 			}
 		},
 		"skins.cosmos.profiletags": {
-			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
+			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -213,7 +222,7 @@
 			}
 		},
 		"skins.cosmos.profilebio": {
-			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
+			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -225,7 +234,7 @@
 			}
 		},
 		"skins.cosmos.codemirror": {
-			"class": "MediaWiki\\Skin\\Cosmos\\ResourceLoaderLessModule",
+			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -275,21 +284,9 @@
 			"value": "#c0c0c0",
 			"description": "Changes the background color of the personal navigation"
 		},
-		"CosmosWordmark": {
-			"value": false,
-			"description": "Adds a wordmark to the wiki navigation"
-		},
-		"CosmosWikiHeaderBackgroundImage": {
-			"value": false,
-			"description": "Adds a background image to the wiki navigation"
-		},
 		"CosmosWikiHeaderBackgroundColor": {
 			"value": "#c0c0c0",
 			"description": "Changes the background color of the wiki navigation"
-		},
-		"CosmosBackgroundImage": {
-			"value": false,
-			"description": "Adds a background image to the page body (behind the content area)"
 		},
 		"CosmosMainBackgroundColor": {
 			"value": "#1A1A1A",
@@ -298,14 +295,6 @@
 		"CosmosContentBackgroundColor": {
 			"value": "#ffffff",
 			"description": "Changes the background color of the wiki article area"
-		},
-		"CosmosBackgroundImageSize": {
-			"value": "cover",
-			"description": "Sets the background image size for the body background if set"
-		},
-		"CosmosLinkColor": {
-			"value": "#0645ad",
-			"description": "Changes the color of links in the cosmos wiki article area"
 		},
 		"CosmosButtonBackgroundColor": {
 			"value": "#c0c0c0",
@@ -318,6 +307,76 @@
 		"CosmosFooterBackgroundColor": {
 			"value": "#c0c0c0",
 			"description": "Changes the background color of the footer"
+		},
+		"CosmosLinkColor": {
+			"value": "#0645ad",
+			"description": "Changes the color of links in the cosmos wiki article area"
+		},
+		"CosmosContentOpacityLevel": {
+			"value": 100,
+			"description": "Set the content area background opacity in percentage (without the percent symbol)"
+		},
+		"CosmosWordmark": {
+			"value": false,
+			"description": "Adds a wordmark to the wiki navigation"
+		},
+		"CosmosWikiHeaderBackgroundImage": {
+			"value": false,
+			"description": "Adds a background image to the wiki navigation"
+		},
+		"CosmosBackgroundImage": {
+			"value": false,
+			"description": "Adds a background image to the page body (behind the content area)"
+		},
+		"CosmosBackgroundImageSize": {
+			"value": "cover",
+			"description": "Sets the background image size for the body background if set"
+		},
+		"CosmosBackgroundImageRepeat": {
+			"value": false,
+			"description": "If true the background image will be set to 'repeat' otherwise, if false, it will be set to 'no-repeat'"
+		},
+		"CosmosBackgroundImageFixed": {
+			"value": true,
+			"description": "If true the background image will be set to position: fixed"
+		},
+		"CosmosEnableWantedPages": {
+			"value": true,
+			"description": "Whether or not to enable the WantedPages feature of the create page dialogue."
+		},
+		"CosmosFetchWantedPagesFromCache": {
+			"value": false,
+			"description": "Whether or not to fetch the wanted pages shown within the create page dialogue from cache. If enabled you will need to run php updateSpecialPages.php --only=WantedPages in order to update the wanted pages. It is recommended to set this to true on large wikis."
+		},
+		"CosmosWantedPagesMaxTitlesCount": {
+			"value": 6,
+			"description": "Set to the max number of wanted pages to display in the create page dialogue, if wanted pages are enabled."
+		},
+		"CosmosWantedPagesFetchedNamespaces": {
+			"value": [ 0 ],
+			"description": "Set to an array of namespaces to fetch wanted pages from, if wanted pages are enabled for the create page dialogue."
+		},
+		"CosmosRailBlacklistedNamespaces": {
+			"value": [ -1, 8, 9 ],
+			"description": "Sets namespaces to not show the rail in"
+		},
+		"CosmosRailBlacklistedPages": {
+			"value": [ "mainpage" ],
+			"description": "Sets pages to not show the rail in"
+		},
+		"CosmosEnabledRailModules": {
+			"value": {
+				"recentchanges": false,
+				"interface": [ {
+					"cosmos-custom-rail-module": "normal",
+					"cosmos-custom-sticky-rail-module": "sticky"
+				} ]
+			},
+			"description": "Sets which rail modules will be enabled on Cosmos, and whether they are 'sticky' or 'normal'"
+		},
+		"CosmosEnablePortableInfoboxEuropaTheme": {
+			"value": true,
+			"description": "Enables the Europa theme from Fandom's portable infobox extension on the ported extension."
 		},
 		"CosmosSocialProfileModernTabs": {
 			"value": true,
@@ -354,56 +413,6 @@
 		"CosmosUseSocialProfileAvatar": {
 			"value": true,
 			"description": "Use SocialProfile avatar as avatar next to username in top banner"
-		},
-		"CosmosEnablePortableInfoboxEuropaTheme": {
-			"value": true,
-			"description": "Enables the Europa theme from Fandom's portable infobox extension on the ported extension."
-		},
-		"CosmosBackgroundImageRepeat": {
-			"value": false,
-			"description": "If true the background image will be set to 'repeat' otherwise, if false, it will be set to 'no-repeat'"
-		},
-		"CosmosBackgroundImageFixed": {
-			"value": true,
-			"description": "If true the background image will be set to position: fixed"
-		},
-		"CosmosContentOpacityLevel": {
-			"value": 100,
-			"description": "Set the content area background opacity in percentage (without the percent symbol)"
-		},
-		"CosmosEnabledRailModules": {
-			"value": {
-				"recentchanges": false,
-				"interface": [ {
-					"cosmos-custom-rail-module": "normal",
-					"cosmos-custom-sticky-rail-module": "sticky"
-				} ]
-			},
-			"description": "Sets which rail modules will be enabled on Cosmos, and whether they are 'sticky' or 'normal'"
-		},
-		"CosmosRailBlacklistedNamespaces": {
-			"value": [ -1, 8, 9 ],
-			"description": "Sets namespaces to not show the rail in"
-		},
-		"CosmosRailBlacklistedPages": {
-			"value": [ "mainpage" ],
-			"description": "Sets pages to not show the rail in"
-		},
-		"CosmosEnableWantedPages": {
-			"value": true,
-			"description": "Whether or not to enable the WantedPages feature of the create page dialogue."
-		},
-		"CosmosFetchWantedPagesFromCache": {
-			"value": false,
-			"description": "Whether or not to fetch the wanted pages shown within the create page dialogue from cache. If enabled you will need to run php updateSpecialPages.php --only=WantedPages in order to update the wanted pages. It is recommended to set this to true on large wikis."
-		},
-		"CosmosWantedPagesMaxTitlesCount": {
-			"value": 6,
-			"description": "Set to the max number of wanted pages to display in the create page dialogue, if wanted pages are enabled."
-		},
-		"CosmosWantedPagesFetchedNamespaces": {
-			"value": [ 0 ],
-			"description": "Set to an array of namespaces to fetch wanted pages from, if wanted pages are enabled for the create page dialogue."
 		}
 	},
 	"HookHandlers": {
