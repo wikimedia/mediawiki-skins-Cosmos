@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Colathewikian",
+			"GuoPC",
 			"Lakejason0",
 			"Shuiwater",
-			"Yfdyh000"
+			"Yfdyh000",
+			"Zhang8569"
 		]
 	},
 	"cosmos-desc": "Cosmos是一款基于Fandom的Oasis皮肤而设计的皮肤，旨在改进其设计，并为非Fandom用户或准备从Fandom过渡出来的用户提供更有效率的MediaWiki皮肤。",
@@ -13,6 +15,9 @@
 	"cosmos-createpage-header": "创建一个新条目",
 	"cosmos-createpage-input-label": "写下你的页面标题：",
 	"cosmos-createpage-next": "下一步",
+	"cosmos-createpage-text": "目前我们有'''$1''' {{PLURAL:$1|article|articles}} 在 $2. 请将你的名字写在 $3之上",
+	"cosmos-createpage-wanted-pages": "或点击下面其中一个标题且开始写作！",
+	"cosmos-createpage-no-wanted-pages": "或创建[[$1|此处]]所列文章中的一个！",
 	"cosmos-personaltools-userpage": "用户页",
 	"cosmos-personaltools-usertalk": "用户讨论",
 	"cosmos-personaltools-anontalk": "我的讨论",
