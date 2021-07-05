@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"DDPAT",
 			"Ата"
 		]
 	},
@@ -32,9 +33,9 @@
 	"cosmos-mobile-preference": "Увімкнути адаптивну мобільну версію для теми Cosmos",
 	"cosmos-user-blocked": "Заблоковано",
 	"cosmos-themedesigner-success": "Конфігурацію Cosmos успішно оновлено.",
-	"themedesigner": "Дизайнер тем",
-	"right-themedesigner": "Використання дизайнера тем Cosmos",
-	"action-themedesigner": "використання дизайнера тем Cosmos",
+	"themedesigner": "Конструктор тем",
+	"right-themedesigner": "Використання конструктору тем Cosmos",
+	"action-themedesigner": "використання конструктору тем Cosmos",
 	"cosmos-themedesigner-help-1": "Колір тла особистого навігаційного банера.",
 	"cosmos-themedesigner-help-2": "Колір тла навігаційної шапки вікі.",
 	"cosmos-themedesigner-help-3": "Основний колір тла.",
