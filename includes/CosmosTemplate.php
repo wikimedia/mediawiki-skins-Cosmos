@@ -1035,7 +1035,7 @@ class CosmosTemplate extends BaseTemplate {
 				default:
 					if ( substr( $key, 0, 6 ) === 'nstab-' ) {
 						$view = $tab;
-					} else {
+					} elseif ( substr( $key, 0, 8 ) !== 'varlang-' ) {
 						if ( stripos( $tab['class'], 'selected' ) === false ) {
 							$dropdown[$key] = $tab;
 						} else {
