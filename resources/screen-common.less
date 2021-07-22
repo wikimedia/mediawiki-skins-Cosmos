@@ -12,7 +12,13 @@ body {
 }
 
 .mw-prefs-buttons {
-	background: transparent;
+	background: @content-background-color;
+}
+
+.skin-cosmos {
+	#baseform .managewiki-submit-formfields {
+		background: @content-background-color;
+	}
 }
 
 .mw-changeslist-legend {
@@ -1239,7 +1245,7 @@ button.wds-button {
 	background-color: @header-background-solid-color;
 	background-position: right center;
 	background-repeat: no-repeat;
-	background-size: auto;
+	background-size: contain;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 
@@ -2127,13 +2133,8 @@ body h6 {
 	color: @font-color;
 }
 
-@toolbar-background-color1: mix(@toolbar-background-color2, @toolbar-background-color-mix, 25%);
-
 #cosmos-toolbar {
-	position: sticky;
-	z-index: 1000;
-	bottom: 0;
-	left: 0;
+	z-index: 1;
 	display: flex;
 	width: 100%;
 	height: auto;
@@ -2141,11 +2142,6 @@ body h6 {
 	align-items: center;
 	padding: 0;
 	margin: 0;
-	background-image: -moz-linear-gradient( left, @toolbar-background-color1 0, @toolbar-background-color2 50%, @toolbar-background-color1 100% );
-	background-image: -webkit-gradient( linear, 0% 0%, 100% 0%, color-stop( 0, @toolbar-background-color1 ), color-stop( 50%, @toolbar-background-color2 ), color-stop( 100%, @toolbar-background-color1 ) );
-	background-image: -o-linear-gradient( left, @toolbar-background-color1 0, @toolbar-background-color2 50%, @toolbar-background-color1 100% );
-	background-image: -ms-linear-gradient( left, @toolbar-background-color1 0, @toolbar-background-color2 50%, @toolbar-background-color1 100% );
-	box-shadow: 0 0 10px 0 @content-background-color;
 }
 
 .cosmos-toolbar-tools {
@@ -2157,17 +2153,17 @@ body h6 {
 
 .cosmos-tools-list,
 .cosmos-tools-list ul {
-	padding: 0;
+	padding: 5px;
 	margin: 0;
 	list-style: none;
 
 	li,
 	ul {
 		display: inline;
-		color: @toolbar-font-color;
+		color: @header-font-color;
 
 		>a {
-			color: @toolbar-font-color;
+			color: @header-font-color;
 		}
 	}
 
@@ -2204,8 +2200,6 @@ body h6 {
 
 #cosmos-pageBody-content {
 	padding: 0 0 15px 0;
-	overflow-x: auto;
-	overflow-y: hidden;
 }
 
 #cosmos-siteNotice-closeButton {
