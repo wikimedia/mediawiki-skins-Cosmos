@@ -86,6 +86,7 @@
 				"elements": true,
 				"interface": true,
 				"interface-category": true,
+				"interface-message-box": true,
 				"logo": true
 			},
 			"targets": [
