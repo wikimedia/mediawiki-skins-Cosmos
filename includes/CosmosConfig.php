@@ -35,7 +35,7 @@ class CosmosConfig {
 	/**
 	 * @return string
 	 */
-	public function getBannerBackgroundColor() : string {
+	public function getBannerBackgroundColor(): string {
 		$config = $this->config->get( 'CosmosBannerBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosBannerBackgroundColor'] : false;
@@ -46,7 +46,7 @@ class CosmosConfig {
 	/**
 	 * @return string
 	 */
-	public function getWikiHeaderBackgroundColor() : string {
+	public function getWikiHeaderBackgroundColor(): string {
 		$config = $this->config->get( 'CosmosWikiHeaderBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosWikiHeaderBackgroundColor'] : false;
@@ -57,7 +57,7 @@ class CosmosConfig {
 	/**
 	 * @return string
 	 */
-	public function getMainBackgroundColor() : string {
+	public function getMainBackgroundColor(): string {
 		$config = $this->config->get( 'CosmosMainBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosMainBackgroundColor'] : false;
@@ -68,7 +68,7 @@ class CosmosConfig {
 	/**
 	 * @return string
 	 */
-	public function getContentBackgroundColor() : string {
+	public function getContentBackgroundColor(): string {
 		$config = $this->config->get( 'CosmosContentBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosContentBackgroundColor'] : false;
@@ -79,7 +79,7 @@ class CosmosConfig {
 	/**
 	 * @return string
 	 */
-	public function getButtonBackgroundColor() : string {
+	public function getButtonBackgroundColor(): string {
 		$config = $this->config->get( 'CosmosButtonBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosButtonBackgroundColor'] : false;
@@ -90,7 +90,7 @@ class CosmosConfig {
 	/**
 	 * @return string
 	 */
-	public function getLinkColor() : string {
+	public function getLinkColor(): string {
 		$config = $this->config->get( 'CosmosLinkColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosLinkColor'] : false;
@@ -101,7 +101,7 @@ class CosmosConfig {
 	/**
 	 * @return string
 	 */
-	public function getFooterBackgroundColor() : string {
+	public function getFooterBackgroundColor(): string {
 		$config = $this->config->get( 'CosmosFooterBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosFooterBackgroundColor'] : false;
@@ -112,7 +112,7 @@ class CosmosConfig {
 	/**
 	 * @return string
 	 */
-	public function getToolbarBackgroundColor() : string {
+	public function getToolbarBackgroundColor(): string {
 		$config = $this->config->get( 'CosmosToolbarBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosToolbarBackgroundColor'] : false;
@@ -123,7 +123,7 @@ class CosmosConfig {
 	/**
 	 * @return string
 	 */
-	public function getWordmark() : string {
+	public function getWordmark(): string {
 		$config = $this->config->get( 'CosmosWordmark' ) ?:
 				$this->config->get( 'Logos' )['wordmark']['src'] ??
 				$this->config->get( 'Logos' )['1x'] ??
@@ -137,7 +137,7 @@ class CosmosConfig {
 	/**
 	 * @return string
 	 */
-	public function getWikiHeaderBackgroundImage() : string {
+	public function getWikiHeaderBackgroundImage(): string {
 		$config = $this->config->get( 'CosmosWikiHeaderBackgroundImage' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosWikiHeaderBackgroundImage'] : false;
@@ -148,7 +148,7 @@ class CosmosConfig {
 	/**
 	 * @return string
 	 */
-	public function getBackgroundImage() : string {
+	public function getBackgroundImage(): string {
 		$config = $this->config->get( 'CosmosBackgroundImage' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosBackgroundImage'] : false;
@@ -159,7 +159,7 @@ class CosmosConfig {
 	/**
 	 * @return string
 	 */
-	public function getBackgroundImageSize() : string {
+	public function getBackgroundImageSize(): string {
 		$config = $this->config->get( 'CosmosBackgroundImageSize' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosBackgroundImageSize'] : false;
@@ -170,7 +170,7 @@ class CosmosConfig {
 	/**
 	 * @return int
 	 */
-	public function getContentOpacityLevel() : int {
+	public function getContentOpacityLevel(): int {
 		$config = $this->config->get( 'CosmosContentOpacityLevel' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			(int)$this->themeDesignerConfig['CosmosContentOpacityLevel'] : false;
@@ -181,7 +181,7 @@ class CosmosConfig {
 	/**
 	 * @return bool
 	 */
-	public function getBackgroundImageRepeat() : bool {
+	public function getBackgroundImageRepeat(): bool {
 		$config = $this->config->get( 'CosmosBackgroundImageRepeat' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosBackgroundImageRepeat'] : null;
@@ -192,7 +192,7 @@ class CosmosConfig {
 	/**
 	 * @return bool
 	 */
-	public function getBackgroundImageFixed() : bool {
+	public function getBackgroundImageFixed(): bool {
 		$config = $this->config->get( 'CosmosBackgroundImageFixed' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosBackgroundImageFixed'] : null;
@@ -203,7 +203,7 @@ class CosmosConfig {
 	/**
 	 * @return array
 	 */
-	public function getEnabledRailModules() : array {
+	public function getEnabledRailModules(): array {
 		$config = $this->config->get( 'CosmosEnabledRailModules' );
 
 		return $config;
@@ -212,7 +212,7 @@ class CosmosConfig {
 	/**
 	 * @return array
 	 */
-	public function getRailBlacklistedNamespaces() : array {
+	public function getRailBlacklistedNamespaces(): array {
 		$config = $this->config->get( 'CosmosRailBlacklistedNamespaces' );
 
 		return $config;
@@ -221,7 +221,7 @@ class CosmosConfig {
 	/**
 	 * @return array
 	 */
-	public function getRailBlacklistedPages() : array {
+	public function getRailBlacklistedPages(): array {
 		$config = $this->config->get( 'CosmosRailBlacklistedPages' );
 
 		return $config;

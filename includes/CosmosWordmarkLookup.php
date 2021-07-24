@@ -35,7 +35,7 @@ class CosmosWordmarkLookup {
 	/**
 	 * @return string|null
 	 */
-	public function getWordmarkUrl() : ?string {
+	public function getWordmarkUrl(): ?string {
 		if ( (bool)$this->wordmark ) {
 			if ( !$this->isWordmarkUrl() ) {
 				$file = $this->getWordmarkFile();
@@ -61,7 +61,7 @@ class CosmosWordmarkLookup {
 	/**
 	 * @return File|null
 	 */
-	public function getWordmarkFile() : ?File {
+	public function getWordmarkFile(): ?File {
 		$title = $this->titleFactory->makeTitle( NS_FILE, $this->wordmark );
 
 		return $this->repoGroup->findFile( $title ) ?: null;

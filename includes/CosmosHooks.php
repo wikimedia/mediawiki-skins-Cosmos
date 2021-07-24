@@ -54,7 +54,7 @@ class CosmosHooks implements
 	 * @param Skin $skin
 	 * @param array &$bodyAttrs
 	 */
-	public function onOutputPageBodyAttributes( $out, $skin, &$bodyAttrs ) : void {
+	public function onOutputPageBodyAttributes( $out, $skin, &$bodyAttrs ): void {
 		if ( $skin->getUser()->isRegistered() ) {
 			$bodyAttrs['class'] .= ' user-logged';
 		} else {
@@ -82,7 +82,7 @@ class CosmosHooks implements
 	 * @param OutputPage $out
 	 * @param ParserOutput $parserOutput
 	 */
-	public function onOutputPageParserOutput( $out, $parserOutput ) : void {
+	public function onOutputPageParserOutput( $out, $parserOutput ): void {
 		if ( $parserOutput->getProperty( 'norail' ) !== false ) {
 			$out->setProperty( 'norail', true );
 		}

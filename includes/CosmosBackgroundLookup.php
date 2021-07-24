@@ -41,7 +41,7 @@ class CosmosBackgroundLookup {
 	/**
 	 * @return string|null
 	 */
-	public function getMainBackgroundUrl() : ?string {
+	public function getMainBackgroundUrl(): ?string {
 		if ( (bool)$this->main ) {
 			if ( !$this->isBackgroundUrl( $this->main ) ) {
 				$file = $this->getBackgroundFile( $this->main );
@@ -60,7 +60,7 @@ class CosmosBackgroundLookup {
 	/**
 	 * @return string|null
 	 */
-	public function getWikiHeaderBackgroundUrl() : ?string {
+	public function getWikiHeaderBackgroundUrl(): ?string {
 		if ( (bool)$this->wikiHeader ) {
 			if ( !$this->isBackgroundUrl( $this->wikiHeader ) ) {
 				$file = $this->getBackgroundFile( $this->wikiHeader );
@@ -88,7 +88,7 @@ class CosmosBackgroundLookup {
 	 * @param string $background
 	 * @return File|null
 	 */
-	public function getBackgroundFile( string $background ) : ?File {
+	public function getBackgroundFile( string $background ): ?File {
 		$title = $this->titleFactory->makeTitle( NS_FILE, $background );
 
 		return $this->repoGroup->findFile( $title ) ?: null;

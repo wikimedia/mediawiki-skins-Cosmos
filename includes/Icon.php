@@ -312,7 +312,7 @@ class Icon {
 	 * @param string $iconName
 	 * @return Icon|null
 	 */
-	public static function getIcon( string $iconName ) : ?Icon {
+	public static function getIcon( string $iconName ): ?Icon {
 		if ( isset( self::$icons[$iconName] ) ) {
 			// If the requested icon is already part of the icon array, just return
 			// it immediately
@@ -361,7 +361,7 @@ class Icon {
 	 * @return string
 	 */
 	public function makeSvg( int $width = -1, int $height = -1,
-			array $attributes = [] ) : string {
+			array $attributes = [] ): string {
 		if ( $width < 0 ) {
 			$width = $this->defaultWidth;
 		}
@@ -386,7 +386,7 @@ class Icon {
 	 * @param int $height
 	 * @return string
 	 */
-	public function makeInnerSvg( int $width = -1, int $height = -1 ) : string {
+	public function makeInnerSvg( int $width = -1, int $height = -1 ): string {
 		if ( $width < 0 ) {
 			$width = $this->defaultWidth;
 		}
@@ -411,7 +411,7 @@ class Icon {
 	 * @param int $height
 	 */
 	protected function makeElement( string &$result, array $element,
-			int $width, int $height ) : void {
+			int $width, int $height ): void {
 		// TODO: Implement rescaling of element to match the given width and height
 
 		$result .= Html::element( $element['type'], $element['attributes'] );

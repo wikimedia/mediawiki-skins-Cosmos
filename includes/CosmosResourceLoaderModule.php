@@ -18,7 +18,7 @@ class CosmosResourceLoaderModule extends ResourceLoaderSkinModule {
 	 * @param ResourceLoaderContext $context
 	 * @return array
 	 */
-	public function getPreloadLinks( ResourceLoaderContext $context ) : array {
+	public function getPreloadLinks( ResourceLoaderContext $context ): array {
 		$preloadLinks = parent::getPreloadLinks( $context );
 
 		$services = MediaWikiServices::getInstance();
@@ -165,7 +165,7 @@ class CosmosResourceLoaderModule extends ResourceLoaderSkinModule {
 	/**
 	 * @return array
 	 */
-	private function getThemedToolbarBackgroundColorSettings() : array {
+	private function getThemedToolbarBackgroundColorSettings(): array {
 		$toolbarBackgroundColor = $this->cosmosConfig->getToolbarBackgroundColor();
 
 		return [
@@ -181,7 +181,7 @@ class CosmosResourceLoaderModule extends ResourceLoaderSkinModule {
 	/**
 	 * @return array
 	 */
-	private function getThemeContentBackgroundColorSettings() : array {
+	private function getThemeContentBackgroundColorSettings(): array {
 		$isContentBackgroundColorDark = LessUtil::isThemeDark( 'content-background-color' );
 
 		return [
@@ -199,7 +199,7 @@ class CosmosResourceLoaderModule extends ResourceLoaderSkinModule {
 	/**
 	 * @return array
 	 */
-	private function getThemedBannerBackgroundColorSettings() : array {
+	private function getThemedBannerBackgroundColorSettings(): array {
 		$isBannerBackgroundColorDark = LessUtil::isThemeDark( 'banner-background-color' );
 
 		return [
@@ -221,7 +221,7 @@ class CosmosResourceLoaderModule extends ResourceLoaderSkinModule {
 	/**
 	 * @return array
 	 */
-	private function getThemedButtonBackgroundColorSettings() : array {
+	private function getThemedButtonBackgroundColorSettings(): array {
 		$isButtonBackgroundColorDark = LessUtil::isThemeDark( 'button-background-color' );
 
 		return [
