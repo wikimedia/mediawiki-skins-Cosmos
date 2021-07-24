@@ -2137,28 +2137,42 @@ body h6 {
 
 #cosmos-toolbar {
 	position: sticky;
-	z-index: 1000;
-	bottom: 0;
-	left: 0;
+	z-index: 399;
+	right: 9px;
+	bottom: 9px;
 	display: flex;
-	width: 100%;
+	width: fit-content;
+	max-width: 50%;
 	height: auto;
 	min-height: 25px;
 	align-items: center;
-	padding: 0;
+	padding: 5px;
 	margin: 0;
 	background-image: -moz-linear-gradient( left, @toolbar-background-color1 0, @toolbar-background-color2 50%, @toolbar-background-color1 100% );
 	background-image: -webkit-gradient( linear, 0% 0%, 100% 0%, color-stop( 0, @toolbar-background-color1 ), color-stop( 50%, @toolbar-background-color2 ), color-stop( 100%, @toolbar-background-color1 ) );
 	background-image: -o-linear-gradient( left, @toolbar-background-color1 0, @toolbar-background-color2 50%, @toolbar-background-color1 100% );
 	background-image: -ms-linear-gradient( left, @toolbar-background-color1 0, @toolbar-background-color2 50%, @toolbar-background-color1 100% );
+	border-radius: 20px;
 	box-shadow: 0 0 10px 0 @content-background-color;
+	float: right;
+}
+
+.mw-special-ManageWiki #cosmos-toolbar,
+.mw-special-Preferences #cosmos-toolbar {
+	display: none;
+}
+
+#mw-data-after-content .mw-cookiewarning-container {
+	display: none;
 }
 
 .cosmos-toolbar-tools {
-	padding: 0;
-	margin: 0 auto;
-	font-size: 10pt;
-	text-align: center;
+	display: -webkit-box;
+	display: flex;
+	align-items: center;
+	padding-left: 5px;
+	-webkit-box-align: center;
+	font-size: 12px;
 }
 
 .cosmos-tools-list,
@@ -2166,6 +2180,12 @@ body h6 {
 	padding: 0;
 	margin: 0;
 	list-style: none;
+	text-align: center;
+
+	li {
+		padding: 1px 8px 0;
+		margin: 2px 0;
+	}
 
 	li,
 	ul {
@@ -2175,14 +2195,9 @@ body h6 {
 		>a {
 			color: @toolbar-font-color;
 		}
-	}
 
-	li,
-	ul {
-		&:not( :first-child ) {
-			&:before {
-				content: ' | ';
-			}
+		&:not( :last-of-type ) {
+			border-right: 1px solid @toolbar-font-color;
 		}
 	}
 }
@@ -2210,6 +2225,9 @@ body h6 {
 
 #cosmos-pageBody-content {
 	padding: 0 0 15px 0;
+}
+
+body:not( .mw-special-ManageWiki ):not( .mw-special-Preferences ) #cosmos-pageBody-content {
 	overflow-x: auto;
 	overflow-y: hidden;
 }

@@ -4,6 +4,7 @@ namespace MediaWiki\Skin\Cosmos;
 
 use BaseTemplate;
 use Config;
+use CookieWarning\Hooks as CookieWarningHooks;
 use ExtensionRegistry;
 use Html;
 use Linker;
@@ -1534,6 +1535,11 @@ class CosmosTemplate extends BaseTemplate {
 
 		// Close container element
 		$html .= Html::closeElement( 'section' );
+
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'CookieWarning' ) ) {
+			// @phan-suppress-next-line PhanUndeclaredClassMethod
+			$html .= CookieWarningHooks::onSkinAfterContent( $html, $skin );
+		}
 
 		return $html;
 	}
