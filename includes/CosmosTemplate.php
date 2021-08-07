@@ -552,19 +552,29 @@ class CosmosTemplate extends BaseTemplate {
 	 * @return string
 	 */
 	protected function buildSearchBar() {
+		$skin = $this->getSkin();
+
 		$html = '';
 
 		// Open container div
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-banner-search' ] );
 
 		// Open search form
-		$html .= Html::openElement( 'form', [ 'action' => $this->get( 'wgScript' ), 'id' => 'cosmos-search-form' ] );
+		$html .= Html::openElement( 'form', [
+			'action' => $this->get( 'wgScript' ),
+			'id' => 'searchform',
+			'class' => 'cosmos-search-form'
+		] );
+
+		$html .= Html::openElement( 'div', [
+			'id' => 'simpleSearch',
+		] );
 
 		// Insert hidden search title
 		$html .= Html::hidden( 'title', $this->get( 'searchtitle' ) );
 
 		// Insert search bar
-		$html .= $this->makeSearchInput( [ 'id' => 'searchInput', 'class' => 'cosmos-search-input' ] );
+		$html .= $skin->makeSearchInput( [ 'id' => 'searchInput', 'class' => 'cosmos-search-input' ] );
 
 		$html .= Html::openElement(
 			'div',
@@ -579,10 +589,10 @@ class CosmosTemplate extends BaseTemplate {
 		);
 
 		// Insert search button
-		$html .= $this->makeSearchButton( 'go', [ 'id' => 'searchButton', 'class' => 'cosmos-search-button' ] );
+		$html .= $skin->makeSearchButton( 'go', [ 'id' => 'searchButton', 'class' => 'cosmos-search-button' ] );
 
 		// Insert fallback search button
-		$html .= $this->makeSearchButton(
+		$html .= $skin->makeSearchButton(
 			'fulltext',
 			[ 'id' => 'mw-searchButton', 'class' => 'mw-fallbackSearchButton cosmos-search-button' ]
 		);
@@ -590,6 +600,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 
 		// Close form
+		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'form' );
 
 		// Close container div

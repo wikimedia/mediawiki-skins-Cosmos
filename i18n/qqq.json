@@ -39,6 +39,7 @@
 	"prefs-cosmos-responsiveness": "The label for the Mobile Responsiveness for Cosmos section in Special:Preferences.",
 	"cosmos-mobile-preference": "The checkbox label for the mobile responsiveness toggle in Special:Preferences",
 	"cosmos-user-blocked": "The text used to show a user is blocked on social profile Pages' avatar area.\n\n{{Identical|Blocked}}",
+	"cosmos-search-loader": "Text to display below search input while the search suggestion module is loading",
 	"cosmos-themedesigner-success": "Message displayed when the theme designer form is submitted.",
 	"themedesigner": "Display name of the ThemeDesigner special page.",
 	"right-themedesigner": "{{doc-right|themedesigner}}",

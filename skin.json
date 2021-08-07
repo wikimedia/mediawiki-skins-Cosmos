@@ -1,5 +1,5 @@
 {
-	"name": "cosmos",
+	"name": "Cosmos",
 	"version": "6.3.0",
 	"author": [
 		"Universal Omega",
@@ -35,6 +35,7 @@
 				],
 				"scripts": [
 					"skins.cosmos.js",
+					"skins.cosmos.main",
 					"skins.cosmos.mobile"
 				]
 			} ]
@@ -120,6 +121,41 @@
 					"media": "print"
 				}
 			}
+		},
+		"skins.cosmos.main": {
+			"packageFiles": [
+				"resources/main/skin.js",
+				{
+					"name": "resources/main/config.json",
+					"callback": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::getCosmosResourceLoaderConfig"
+				},
+				"resources/main/searchLoader.js"
+			],
+			"dependencies": [
+				"mediawiki.page.ready",
+				"mediawiki.util"
+			],
+			"messages": [ "cosmos-search-loader" ]
+		},
+		"skins.cosmos.search": {
+			"dependencies": [
+				"mediawiki.Uri",
+				"wvui"
+			],
+			"packageFiles": [
+				"resources/search/skins.cosmos.search.js",
+				"resources/search/instrumentation.js",
+				"resources/search/App.vue",
+				{
+					"name": "resources/search/config.json",
+					"callback": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::getCosmosWVUISearchResourceLoaderConfig"
+				}
+			],
+			"messages": [
+				"searchbutton",
+				"searchresults",
+				"searchsuggest-containing"
+			]
 		},
 		"skins.cosmos.rail": {
 			"targets": [
@@ -340,6 +376,18 @@
 		"CosmosBackgroundImageFixed": {
 			"value": true,
 			"description": "If true the background image will be set to position: fixed"
+		},
+		"CosmosSearchHost": {
+			"value": ""
+		},
+		"CosmosUseWVUISearch": {
+			"value": true
+		},
+		"CosmosWVUISearchOptions": {
+			"value": {
+				"showThumbnail": true,
+				"showDescription": true
+			}
 		},
 		"CosmosEnableWantedPages": {
 			"value": true,

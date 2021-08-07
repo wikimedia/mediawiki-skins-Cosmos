@@ -6,14 +6,17 @@ use ALItem;
 use ALRow;
 use ALSection;
 use ALTree;
+use Config;
 use MediaWiki\Hook\GetDoubleUnderscoreIDsHook;
 use MediaWiki\Hook\OutputPageBodyAttributesHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use ObjectCache;
 use OutputPage;
 use Parser;
 use ParserOutput;
+use ResourceLoaderContext;
 use Sanitizer;
 use Skin;
 use Title;
@@ -55,6 +58,8 @@ class CosmosHooks implements
 	 * @param array &$bodyAttrs
 	 */
 	public function onOutputPageBodyAttributes( $out, $skin, &$bodyAttrs ): void {
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'Cosmos' );
+
 		if ( $skin->getUser()->isRegistered() ) {
 			$bodyAttrs['class'] .= ' user-logged';
 		} else {
@@ -74,6 +79,10 @@ class CosmosHooks implements
 		if ( $out->getProperty( 'additionalBodyClass' ) ) {
 			$property = $out->getProperty( 'additionalBodyClass' );
 			$bodyAttrs['class'] .= ' ' . Sanitizer::escapeClass( $property );
+		}
+
+		if ( $config->get( 'CosmosUseWVUISearch' ) ) {
+			$bodyAttrs['class'] .= ' skin-cosmos-search-vue';
 		}
 	}
 
@@ -131,5 +140,31 @@ class CosmosHooks implements
 		$cosmos_row->addItem( ALItem::newFromEditLink( 'Cosmos-tagline', 'Edit tagline' ) );
 		$cosmos_section->addRow( $cosmos_row );
 		$adminLinksTree->addSection( $cosmos_section, wfMessage( 'adminlinks_users' )->text() );
+	}
+
+	/**
+	 * @param ResourceLoaderContext $context
+	 * @param Config $config
+	 * @return array
+	 */
+	public static function getCosmosResourceLoaderConfig(
+		ResourceLoaderContext $context,
+		Config $config
+	) {
+		return [
+			'wgCosmosSearchHost' => $config->get( 'CosmosSearchHost' ),
+		];
+	}
+
+	/**
+	 * @param ResourceLoaderContext $context
+	 * @param Config $config
+	 * @return array
+	 */
+	public static function getCosmosWVUISearchResourceLoaderConfig(
+		ResourceLoaderContext $context,
+		Config $config
+	): array {
+		return $config->get( 'CosmosWVUISearchOptions' );
 	}
 }

@@ -54,7 +54,7 @@ body a:focus {
 	text-decoration: none;
 }
 
-#cosmos-search-form {
+.cosmos-search-form {
 	display: flex;
 	width: 100%;
 	align-items: center;
@@ -154,7 +154,7 @@ body > #mw-content-container {
 	width: 100%;
 }
 
-#searchInput {
+#searchform input {
 	width: 100%;
 	height: 36px;
 	padding: 5px 20px;
@@ -170,6 +170,30 @@ body > #mw-content-container {
 
 	&:focus {
 		background: @banner-search-focus-background;
+	}
+}
+
+#cosmos-banner-search {
+	.cosmos-search-button,
+	.wvui-icon {
+		display: none;
+	}
+
+	.wvui-typeahead-search,
+	#simpleSearch {
+		display: flex;
+		width: 100%;
+		align-items: center;
+		border: 0;
+		border-radius: 0;
+	}
+
+	.wvui-button {
+		z-index: 3;
+	}
+
+	.wvui-typeahead-search__suggestions {
+		top: auto;
 	}
 }
 
