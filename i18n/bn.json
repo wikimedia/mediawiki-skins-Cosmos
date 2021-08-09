@@ -25,5 +25,6 @@
 	"cosmos-anon-add-new-page-text": "নতুন পাতা যোগ করুন",
 	"cosmos-explore": "অনুসন্ধান",
 	"cosmos-newfiles": "নতুন ফাইল",
-	"cosmos-user-blocked": "বাধাপ্রাপ্ত"
+	"cosmos-user-blocked": "বাধাপ্রাপ্ত",
+	"cosmos-search-loader": "অনুসন্ধানের পরামর্শ লোড করা হচ্ছে"
 }

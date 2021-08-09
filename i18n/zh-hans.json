@@ -36,6 +36,7 @@
 	"prefs-cosmos-responsiveness": "Cosmos的移动端响应能力",
 	"cosmos-mobile-preference": "启用Cosmos皮肤的具有移动端响应式设计的版本",
 	"cosmos-user-blocked": "已封禁",
+	"cosmos-search-loader": "正在加载搜索建议",
 	"cosmos-themedesigner-success": "已成功更新Cosmos的配置。",
 	"themedesigner": "主题设计工具",
 	"right-themedesigner": "使用Cosmos ThemeDesigner",
