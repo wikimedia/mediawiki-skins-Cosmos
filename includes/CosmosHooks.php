@@ -153,6 +153,7 @@ class CosmosHooks implements
 	) {
 		return [
 			'wgCosmosSearchHost' => $config->get( 'CosmosSearchHost' ),
+			'wgCosmosSearchUseActionAPI' => (bool)$config->get( 'CosmosSearchUseActionAPI' ),
 		];
 	}
 
@@ -165,6 +166,11 @@ class CosmosHooks implements
 		ResourceLoaderContext $context,
 		Config $config
 	): array {
-		return $config->get( 'CosmosWVUISearchOptions' );
+		return array_merge( [
+			'wgCosmosSearchDescriptionSource' => $config->get( 'CosmosSearchDescriptionSource' ),
+			'wgCosmosMaxSearchResults' => $config->get( 'CosmosMaxSearchResults' ),
+			'wgScriptPath' => $config->get( 'ScriptPath' ),
+			'wgSearchSuggestCacheExpiry' => $config->get( 'SearchSuggestCacheExpiry' ),
+		], $config->get( 'CosmosSearchOptions' ) );
 	}
 }

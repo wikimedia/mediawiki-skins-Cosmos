@@ -145,6 +145,7 @@
 			"packageFiles": [
 				"resources/search/skins.cosmos.search.js",
 				"resources/search/instrumentation.js",
+				"resources/search/actionAPIGateway.js",
 				"resources/search/App.vue",
 				{
 					"name": "resources/search/config.json",
@@ -383,11 +384,20 @@
 		"CosmosUseWVUISearch": {
 			"value": true
 		},
-		"CosmosWVUISearchOptions": {
+		"CosmosSearchOptions": {
 			"value": {
 				"showThumbnail": true,
 				"showDescription": true
 			}
+		},
+		"CosmosSearchDescriptionSource": {
+			"value": "textextracts"
+		},
+		"CosmosMaxSearchResults": {
+			"value": 6
+		},
+		"CosmosSearchUseActionAPI": {
+			"value": true
 		},
 		"CosmosEnableWantedPages": {
 			"value": true,

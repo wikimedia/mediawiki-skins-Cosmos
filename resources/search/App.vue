@@ -54,18 +54,42 @@ module.exports = {
 	},
 	computed: {
 		/**
-		 * Allow wikis eg. Hebrew Wikipedia to replace the default search API client
+		 * Allow wikis to replace the default search API client
 		 *
 		 * @return {void|Object}
 		 */
 		getClient: function () {
+			if ( mw.config.get( 'wgCosmosSearchClient', undefined ) ) {
+				return mw.config.get( 'wgCosmosSearchClient', undefined );
+			}
+
+			if ( mw.config.get( 'wgCosmosSearchUseActionAPI', false ) ) {
+				var actionAPI = require( './actionAPIGateway.js' );
+				return {
+					fetchByTitle: function ( query, domain, limit ) {
+						var xhr = fetch( actionAPI.getUrl( query, domain ) )
+						.then( function ( resp ) {
+							return resp.json();
+						} ).then( function ( json ) {
+							return {
+								results: actionAPI.convertDataToResults( json )
+							}
+						} );
+
+						return {
+							fetch: xhr,
+							abort: function () {}
+						}
+					}
+				};
+			}
+
 			return mw.config.get( 'wgCosmosSearchClient', undefined );
 		},
 		language: function () {
 			return mw.config.get( 'wgUserLanguage' );
 		},
 		domain: function () {
-			// It might be helpful to allow this to be configurable in future.
 			return mw.config.get( 'wgCosmosSearchHost', location.host );
 		}
 	},
