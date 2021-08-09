@@ -35,8 +35,8 @@
 				],
 				"scripts": [
 					"skins.cosmos.js",
-					"skins.cosmos.main",
-					"skins.cosmos.mobile"
+					"skins.cosmos.mobile",
+					"skins.cosmos.searchLoader"
 				]
 			} ]
 		}
@@ -122,14 +122,13 @@
 				}
 			}
 		},
-		"skins.cosmos.main": {
+		"skins.cosmos.searchLoader": {
 			"packageFiles": [
-				"resources/main/skin.js",
+				"resources/search/searchLoader.js",
 				{
-					"name": "resources/main/config.json",
+					"name": "resources/search/config.json",
 					"callback": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::getCosmosResourceLoaderConfig"
-				},
-				"resources/main/searchLoader.js"
+				}
 			],
 			"dependencies": [
 				"mediawiki.page.ready",
@@ -144,7 +143,6 @@
 			],
 			"packageFiles": [
 				"resources/search/skins.cosmos.search.js",
-				"resources/search/instrumentation.js",
 				"resources/search/actionAPIGateway.js",
 				"resources/search/App.vue",
 				{

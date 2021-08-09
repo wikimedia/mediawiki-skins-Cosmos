@@ -11,16 +11,6 @@
 
 var /** @type {CosmosResourceLoaderVirtualConfig} */
 	config = require( /** @type {string} */ ( './config.json' ) ),
-	// T251544: Collect search performance metrics to compare Vue search with
-	// mediawiki.searchSuggest performance.
-	CAN_TEST_SEARCH = !!(
-		window.performance &&
-		performance.mark &&
-		performance.measure &&
-		performance.getEntriesByName ),
-	LOAD_START_MARK = 'mwCosmosVueSearchLoadStart',
-	LOAD_END_MARK = 'mwCosmosVueSearchLoadEnd',
-	LOAD_MEASURE = 'mwCosmosVueSearchLoadStartToLoadEnd',
 	SEARCH_FORM_ID = 'simpleSearch',
 	SEARCH_INPUT_ID = 'searchInput',
 	SEARCH_LOADING_CLASS = 'search-form__loader';
@@ -37,13 +27,7 @@ var /** @type {CosmosResourceLoaderVirtualConfig} */
  * @param {function(): void} afterLoadFn function to execute after search module loads.
  */
 function loadSearchModule( element, moduleName, afterLoadFn ) {
-	var SHOULD_TEST_SEARCH = CAN_TEST_SEARCH && moduleName === 'skins.cosmos.search';
-
 	function requestSearchModule() {
-		if ( SHOULD_TEST_SEARCH ) {
-			performance.mark( LOAD_START_MARK );
-		}
-
 		mw.loader.using( moduleName, afterLoadFn );
 
 		if ( $( window ).width() < 851 ) {
@@ -141,16 +125,6 @@ function setLoadingIndicatorListeners( element, attach, eventCallback ) {
 }
 
 /**
- * Marks when the lazy load has completed.
- */
-function markLoadEnd() {
-	if ( performance.getEntriesByName( LOAD_START_MARK ).length ) {
-		performance.mark( LOAD_END_MARK );
-		performance.measure( LOAD_MEASURE, LOAD_START_MARK, LOAD_END_MARK );
-	}
-}
-
-/**
  * Initialize the loading of the search module as well as the loading indicator.
  * Only initialize the loading indicator when not using the core search module.
  *
@@ -187,8 +161,6 @@ function initSearchLoader( document ) {
 			searchInput,
 			'skins.cosmos.search',
 			function () {
-				markLoadEnd();
-
 				setLoadingIndicatorListeners(
 					/** @type {HTMLElement} */ ( searchForm ),
 					false,
@@ -199,6 +171,4 @@ function initSearchLoader( document ) {
 	}
 }
 
-module.exports = {
-	initSearchLoader: initSearchLoader
-};
+initSearchLoader( document );
