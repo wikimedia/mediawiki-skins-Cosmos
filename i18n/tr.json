@@ -3,7 +3,8 @@
 		"authors": [
 			"Agaafd",
 			"Joseph",
-			"MuratTheTurkish"
+			"MuratTheTurkish",
+			"SaldırganSincap"
 		]
 	},
 	"cosmos-desc": "Cosmos, Fandom'un Oasis görünümünden yola çıkılarak tasarlanmış bir görünümdür. Tasarımlarını geliştirmek ve Fandom dışındaki kullanıcılar veya Fandom'dan geçiş yapan kullanıcılar için verimli bir MediaWiki görünümü sağlamak için tasarlanmıştır.",
@@ -33,6 +34,7 @@
 	"prefs-cosmos-responsiveness": "Cosmos için mobil yanıt vermesi",
 	"cosmos-mobile-preference": "Cosmos görünümünün mobil duyarlı sürümünü etkinleştirin",
 	"cosmos-user-blocked": "Engellendi",
+	"cosmos-search-loader": "Arama önerileri yükleniyor",
 	"cosmos-themedesigner-success": "Cosmos için yapılandırma başarıyla güncellendi.",
 	"themedesigner": "Tema Tasarımcısı",
 	"right-themedesigner": "Cosmos ThemeDesigner kullan",
