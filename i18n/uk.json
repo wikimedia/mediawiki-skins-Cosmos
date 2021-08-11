@@ -5,6 +5,7 @@
 			"Ата"
 		]
 	},
+	"skinname-cosmos": "Космос",
 	"cosmos-desc": "Cosmos — тема оформлення, розроблена і базована на основі теми Oasis із Fandom. Має на меті покращити їхній дизайн і надати ефективну тему MediaWiki для користувачів не-Фандому або для користувачів, які переходять із Фандому.",
 	"cosmos-anonymous": "Анонім",
 	"cosmos-counter-label": "{{PLURAL:$1|Стаття|Статті}}",
@@ -32,6 +33,7 @@
 	"prefs-cosmos-responsiveness": "Адаптивність для мобільних пристроїв для Cosmos",
 	"cosmos-mobile-preference": "Увімкнути адаптивну мобільну версію для теми Cosmos",
 	"cosmos-user-blocked": "Заблоковано",
+	"cosmos-search-loader": "Завантаження пропозицій щодо пошуку",
 	"cosmos-themedesigner-success": "Конфігурацію Cosmos успішно оновлено.",
 	"themedesigner": "Конструктор тем",
 	"right-themedesigner": "Використання конструктору тем Cosmos",
@@ -50,5 +52,7 @@
 	"cosmos-themedesigner-help-12": "Рівень непрозорості простору вмісту (у відсотках)",
 	"cosmos-themedesigner-help-13": "Розмір основного тла",
 	"cosmos-themedesigner-help-14": "Повторити зображення тла?",
-	"cosmos-themedesigner-help-15": "Фіксувати зображення тла?"
+	"cosmos-themedesigner-help-15": "Фіксувати зображення тла?",
+	"cosmos.css": "/* Усі CSS тут будуть завантажені для користувачів скіна Cosmos */",
+	"cosmos.js": "/* Усі JavaScript тут будуть завантажені для користувачів скіна Cosmos */"
 }
