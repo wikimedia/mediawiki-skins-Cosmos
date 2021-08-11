@@ -392,10 +392,10 @@
 			"value": "textextracts"
 		},
 		"CosmosMaxSearchResults": {
-			"value": 6
+			"value": 10
 		},
 		"CosmosSearchUseActionAPI": {
-			"value": true
+			"value": false
 		},
 		"CosmosEnableWantedPages": {
 			"value": true,
