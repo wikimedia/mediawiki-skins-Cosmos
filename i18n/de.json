@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"McDutchie",
 			"Pittigrilli"
 		]
 	},
@@ -35,7 +36,7 @@
 	"cosmos-themedesigner-success": "Konfiguration für Cosmos erfolgreich aktualisiert.",
 	"themedesigner": "Theme-Designer",
 	"right-themedesigner": "Cosmos ThemeDesigner verwenden",
-	"action-themedesigner": "Cosmos ThemeDesigner verwenden",
+	"action-themedesigner": "Cosmos ThemeDesigner zu verwenden",
 	"cosmos-themedesigner-help-1": "Hintergrundfarbe des persönlichen Navigationsbanners.",
 	"cosmos-themedesigner-help-2": "Hintergrundfarbe der Kopfzeile der Wiki-Navigation.",
 	"cosmos-themedesigner-help-3": "Haupthintergrundfarbe.",
