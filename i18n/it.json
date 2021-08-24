@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
-			"Mpayansilva"
+			"Mpayansilva",
+			"Stefano"
 		]
 	},
 	"cosmos-anonymous": "Anonimo",
@@ -22,5 +23,6 @@
 	"cosmos-anon-add-new-page-text": "Aggiungi nuova pagina",
 	"cosmos-explore": "Esplora",
 	"cosmos-newfiles": "Nuovi file",
-	"cosmos-user-blocked": "Bloccato"
+	"cosmos-user-blocked": "Bloccato",
+	"cosmos-search-loader": "Carica suggerimenti per la ricerca"
 }
