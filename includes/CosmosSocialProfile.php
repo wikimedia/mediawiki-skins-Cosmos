@@ -11,7 +11,7 @@ use User;
 class CosmosSocialProfile {
 	/**
 	 * @param string $user
-	 * @return User|false
+	 * @return User|null
 	 */
 	private static function getUser( $user ) {
 		$services = MediaWikiServices::getInstance();
