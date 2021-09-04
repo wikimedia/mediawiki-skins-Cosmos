@@ -10,6 +10,7 @@
 		"declaration-no-important": null,
 		"no-descending-specificity": null,
 		"no-duplicate-selectors": null,
-		"selector-max-id": null
+		"selector-max-id": null,
+		"declaration-property-unit-disallowed-list": null
 	}
 }
