@@ -34,18 +34,14 @@ class CosmosNavigation implements ExpirationAwareness {
 
 		$cache = $lang->getCode() == $contLang->getCode();
 
+		$menuGetter = function (): string {
+			return $this->getMenu( $this->getMenuLines() );
+		};
 		if ( $cache ) {
 			$key = $memc->makeKey( 'mCosmosNavigation', 'cosmosNavigation' );
-			$menu = $memc->get( $key );
-		}
-
-		if ( empty( $menu ) ) {
-			$menu = $this->getMenu( $this->getMenuLines() );
-
-			if ( $cache ) {
-				// @phan-suppress-next-line PhanPossiblyUndeclaredVariable
-				$memc->set( $key, $menu, self::TTL_HOUR * 8 );
-			}
+			$menu = $memc->getWithSetCallback( $key, self::TTL_HOUR * 8, $menuGetter );
+		} else {
+			$menu = $menuGetter();
 		}
 
 		return $menu;
