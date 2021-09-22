@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Winston Sung",
 			"铁桶"
 		]
 	},
-	"cosmos-desc": "Cosmos是一款基於Fandom的Oasis佈景主題所設計的佈景主題，旨在改進其設計，並未非Fandom用戶或轉出Fandom的用戶提供高效的MediaWiki佈景主題。",
+	"cosmos-desc": "Cosmos是一款基於Fandom的Oasis外觀所設計的外觀，旨在改進其設計，並為非Fandom用戶或轉出Fandom的用戶提供高效的MediaWiki外觀。",
 	"cosmos-anonymous": "匿名",
 	"cosmos-counter-label": "{{PLURAL:$1|個頁面}}",
 	"cosmos-createpage-header": "建立新頁面",
@@ -29,7 +30,7 @@
 	"cosmos-explore": "探索",
 	"cosmos-newfiles": "新檔案",
 	"prefs-cosmos-responsiveness": "Cosmos的流動端響應式設計",
-	"cosmos-mobile-preference": "啟用流動端響應式設計版本的Cosmos佈景主題",
+	"cosmos-mobile-preference": "啟用流動端響應式設計版本的Cosmos外觀",
 	"cosmos-user-blocked": "封鎖中",
 	"cosmos-search-loader": "正在載入搜尋建議",
 	"cosmos-themedesigner-success": "已成功更新Cosmos的配置。",
