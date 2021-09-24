@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "6.3.0",
+	"version": "6.6.1",
 	"author": [
 		"Universal Omega",
 		"SamanthaNguyen",
@@ -20,8 +20,10 @@
 			"class": "MediaWiki\\Skin\\Cosmos\\SkinCosmos",
 			"services": [
 				"ConfigFactory",
+				"ContentLanguage",
 				"CosmosConfig",
 				"CosmosWordmarkLookup",
+				"LanguageNameUtils",
 				"PermissionManager",
 				"SpecialPageFactory",
 				"TitleFactory",

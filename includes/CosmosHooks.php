@@ -92,13 +92,24 @@ class CosmosHooks implements
 	 * @param ParserOutput $parserOutput
 	 */
 	public function onOutputPageParserOutput( $out, $parserOutput ): void {
-		if ( $parserOutput->getProperty( 'norail' ) !== false ) {
-			$out->setProperty( 'norail', true );
-		}
+		if ( version_compare( MW_VERSION, '1.38', '<' ) ) {
+			if ( $parserOutput->getProperty( 'norail' ) !== false ) {
+				$out->setProperty( 'norail', true );
+			}
 
-		if ( $parserOutput->getProperty( 'additionalBodyClass' ) ) {
-			$parserProperty = $parserOutput->getProperty( 'additionalBodyClass' );
-			$out->setProperty( 'additionalBodyClass', $parserProperty );
+			if ( $parserOutput->getProperty( 'additionalBodyClass' ) ) {
+				$parserProperty = $parserOutput->getProperty( 'additionalBodyClass' );
+				$out->setProperty( 'additionalBodyClass', $parserProperty );
+			}
+		} else {
+			if ( $parserOutput->getPageProperty( 'norail' ) !== false ) {
+				$out->setProperty( 'norail', true );
+			}
+
+			if ( $parserOutput->getPageProperty( 'additionalBodyClass' ) ) {
+				$parserProperty = $parserOutput->getPageProperty( 'additionalBodyClass' );
+				$out->setProperty( 'additionalBodyClass', $parserProperty );
+			}
 		}
 	}
 
@@ -126,7 +137,11 @@ class CosmosHooks implements
 	 * @param string $newClass
 	 */
 	public static function setAdditionalBodyClass( Parser $parser, string $newClass ) {
-		$parser->getOutput()->setProperty( 'additionalBodyClass', $newClass );
+		if ( version_compare( MW_VERSION, '1.38', '<' ) ) {
+			$parser->getOutput()->setProperty( 'additionalBodyClass', $newClass );
+		} else {
+			$parser->getOutput()->setPageProperty( 'additionalBodyClass', $newClass );
+		}
 	}
 
 	/**

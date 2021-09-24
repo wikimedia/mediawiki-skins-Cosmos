@@ -7,7 +7,9 @@ use Config;
 use CookieWarning\Hooks as CookieWarningHooks;
 use ExtensionRegistry;
 use Html;
+use Language;
 use Linker;
+use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserOptionsLookup;
@@ -24,8 +26,14 @@ class CosmosTemplate extends BaseTemplate {
 	/** @var Config */
 	protected $config;
 
+	/** @var Language */
+	private $contentLanguage;
+
 	/** @var CosmosConfig */
 	private $cosmosConfig;
+
+	/** @var LanguageNameUtils */
+	private $languageNameUtils;
 
 	/** @var PermissionManager */
 	private $permissionManager;
@@ -53,7 +61,9 @@ class CosmosTemplate extends BaseTemplate {
 		'@phan-var SkinCosmos $skin';
 
 		$this->config = $skin->config;
+		$this->contentLanguage = $skin->contentLanguage;
 		$this->cosmosConfig = $skin->cosmosConfig;
+		$this->languageNameUtils = $skin->languageNameUtils;
 		$this->permissionManager = $skin->permissionManager;
 		$this->specialPageFactory = $skin->specialPageFactory;
 		$this->titleFactory = $skin->titleFactory;
@@ -655,7 +665,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-header__sitename' ] );
 		$html .= Html::rawElement(
 			'a',
-			[ 'href' => $this->data['nav_urls']['mainpage']['href'] ],
+			[ 'href' => $this->data['nav_urls']['mainpage']['href'] ?? '#' ],
 			$this->getMsg( 'cosmos-tagline' )->escaped()
 		);
 
@@ -837,7 +847,7 @@ class CosmosTemplate extends BaseTemplate {
 			$html .= Html::openElement(
 				'a',
 				array_merge(
-					[ 'href' => $this->data['nav_urls']['mainpage']['href'] ],
+					[ 'href' => $this->data['nav_urls']['mainpage']['href'] ?? '#' ],
 					Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
 				)
 			);
@@ -995,6 +1005,7 @@ class CosmosTemplate extends BaseTemplate {
 	protected function buildArticleHeader() {
 		$html = '';
 
+		$html .= $this->buildArticleInterlang();
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-header-articleHeader' ] );
 		$html .= Html::openElement( 'h1', [ 'id' => 'cosmos-articleHeader-title', 'class' => 'firstHeading' ] );
 		$html .= Html::rawElement( 'span', [ 'id' => 'cosmos-title-text' ], $this->get( 'title' ) );
@@ -1004,6 +1015,192 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= $this->buildActionButtons();
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
+
+		return $html;
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function buildArticleInterlang() {
+		$skin = $this->getSkin();
+		$html = '';
+
+		if ( count( $this->data['content_navigation']['variants'] ?? [] ) != 0 || $this->get( 'language_urls' ) ) {
+			$html .= Html::openElement( 'div', [ 'id' => 'cosmos-header-interlang' ] );
+
+			$dropdownIcon = Icon::getIcon( 'dropdown' )->makeSvg( 14, 14, [
+				'id' => 'wds-icons-dropdown-tiny',
+				'class' => [
+					'wds-icon',
+					'wds-icon-tiny',
+					'wds-dropdown__toggle-chevron',
+				],
+			] );
+
+			// Language variant (varlang) links
+			if ( count( $this->data['content_navigation']['variants'] ?? [] ) != 0 ) {
+
+				// Special casing for variant to change label to selected.
+				// Check the class of the item for a `selected` class and if so, propagate the items label to the main
+				// label.
+				$variantLabel = $this->getMsg( 'variants' )->text();
+				foreach ( $this->data['content_navigation']['variants'] ?? [] as $item ) {
+					if ( stripos( $item['class'] ?? '', 'selected' ) !== false ) {
+						$variantLabel = $item['text'];
+						break;
+					}
+				}
+
+				$variantLinks = '';
+				foreach ( $this->data['content_navigation']['variants'] ?? [] as $module ) {
+					$variantLinks .= Html::rawElement(
+						'li', [
+							'class' => [
+								'wds-tabs__tab',
+								'variant-link',
+								'variant-' . $module['hreflang'],
+							],
+							'id' => $module['id']
+						],
+						Html::element(
+							'a', [
+								'href' => $module['href'],
+								'lang' => $module['lang'],
+								'hreflang' => $module['hreflang'],
+								'data-tracking-label' => 'variant-' . $module['hreflang']
+							], $module['text']
+						)
+					);
+				}
+
+				$html .= Html::rawElement(
+					'div', [
+						'class' => [
+							'wds-dropdown',
+							'page-header__variants',
+							'mw-portlet',
+							'mw-portlet-variants',
+						],
+						'id' => 'p-variants',
+						'aria-labelledby' => 'p-variants-label'
+					],
+					Html::rawElement(
+						'div', [
+							'class' => [
+								'wds-tabs__tab-label',
+								'wds-dropdown__toggle',
+							],
+							'id' => 'p-lang-label',
+						],
+						Html::element(
+							'span', [
+								'class' => 'user-variant',
+								'style' => 'padding-top: 2px; font-size: 14px;',
+							], $variantLabel
+						)
+					) . $dropdownIcon . Html::rawElement(
+						'div', [
+							'class' => [
+								'wds-dropdown__content',
+								'wds-is-not-scrollable',
+								'wds-is-right-aligned',
+							],
+						],
+						Html::rawElement(
+							'ul', [
+								'class' => [
+									'wds-list',
+									'wds-is-linked',
+								],
+							], $variantLinks
+						)
+					)
+				);
+			}
+
+			// Interlanguage (languages) links
+			if ( $this->get( 'language_urls' ) ) {
+				$title = $skin->getTitle();
+
+				// Special casing for Language to change label to current page content language (not view language).
+				$interlangLabel = $this->getMsg( 'otherlanguages' )->text();
+				$pageLanguage = $title->getPageLanguage()->getCode();
+
+				if ( $title->getNamespace() == NS_SPECIAL ) {
+					$pageLanguage = $this->contentLanguage->getCode();
+				}
+
+				$interlangLabel = $this->languageNameUtils->getLanguageName( $pageLanguage );
+
+				$interlangLinks = '';
+				foreach ( $this->get( 'language_urls', [] ) as $module ) {
+					$interlangLinks .= Html::rawElement(
+						'li', [
+							'class' => [
+								'wds-tabs__tab',
+								'interlanguage-link',
+								'interwiki-' . $module['hreflang'],
+							],
+						],
+						Html::element(
+							'a', [
+								'href' => $module['href'],
+								'lang' => $module['lang'],
+								'hreflang' => $module['hreflang'],
+								'title' => $module['title'],
+								'data-tracking-label' => 'lang-' . $module['hreflang'],
+							], $module['text']
+						)
+					);
+				}
+
+				$html .= Html::rawElement(
+					'div', [
+						'class' => [
+							'wds-dropdown',
+							'page-header__languages',
+							'mw-portlet',
+							'mw-portlet-lang',
+						],
+						'id' => 'p-lang',
+						'aria-labelledby' => 'p-lang-label'
+					],
+					Html::rawElement(
+						'div', [
+							'class' => [
+								'wds-tabs__tab-label',
+								'wds-dropdown__toggle',
+							],
+							'id' => 'p-lang-label',
+						],
+						Html::element(
+							'span', [
+								'class' => 'user-language',
+								'style' => 'padding-top: 2px; font-size: 14px;',
+							], $interlangLabel
+						)
+					) . $dropdownIcon . Html::rawElement(
+						'div', [
+							'class' => [
+								'wds-dropdown__content',
+								'wds-is-right-aligned',
+							],
+						],
+						Html::rawElement(
+							'ul', [
+								'class' => [
+									'wds-list',
+									'wds-is-linked',
+								],
+							], $interlangLinks
+						)
+					)
+				);
+			}
+
+			$html .= Html::closeElement( 'div' );
+		}
 
 		return $html;
 	}
