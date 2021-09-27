@@ -99,6 +99,7 @@ class CosmosSocialProfile {
 		if ( $user ) {
 			return $user->getEditCount();
 		}
+		return null;
 	}
 
 	/**

@@ -115,7 +115,7 @@ class CosmosTemplate extends BaseTemplate {
 				], Html::rawElement( 'a', [
 					'href' => $contribsUrl
 				], Html::rawElement( 'em', [],
-					CosmosSocialProfile::getUserEdits( $profileOwner )
+					(string)CosmosSocialProfile::getUserEdits( $profileOwner )
 				) .
 				Html::rawElement( 'span', [],
 					$this->getMsg( 'cosmos-editcount-label' )->escaped() .

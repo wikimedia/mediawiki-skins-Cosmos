@@ -22,6 +22,4 @@ $cfg['suppress_issue_types'] = array_merge(
 	]
 );
 
-$cfg['scalar_implicit_cast'] = true;
-
 return $cfg;
