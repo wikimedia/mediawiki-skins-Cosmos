@@ -504,11 +504,14 @@ class CosmosTemplate extends BaseTemplate {
 			}
 
 			$html .= Html::rawElement( 'li', [
-				'id' => "pt-{$key}"
+				'id' => "pt-{$key}",
+				'class' => [
+					'active' => $item['active'] ?? false,
+				],
 			], Html::rawElement( 'a', [
-				'class' => $item['class'] ?? false,
+				'class' => $item['link-class'] ?? $item['class'] ?? false,
 				'href' => $item['href'] ?? false,
-				'title' => $item['title'] ?? false
+				'title' => $item['title'] ?? false,
 			], $item['text'] ?? false ) );
 		}
 
@@ -1197,7 +1200,7 @@ class CosmosTemplate extends BaseTemplate {
 								'href' => $module['href'],
 								'lang' => $module['lang'],
 								'hreflang' => $module['hreflang'],
-								'data-tracking-label' => 'variant-' . $module['hreflang']
+								'id' => 'variant-' . $module['hreflang']
 							], $module['text']
 						)
 					);
@@ -1278,7 +1281,7 @@ class CosmosTemplate extends BaseTemplate {
 								'lang' => $module['lang'],
 								'hreflang' => $module['hreflang'],
 								'title' => $module['title'],
-								'data-tracking-label' => 'lang-' . $module['hreflang'],
+								'id' => 'lang-' . $module['hreflang'],
 							], $module['text']
 						)
 					);
