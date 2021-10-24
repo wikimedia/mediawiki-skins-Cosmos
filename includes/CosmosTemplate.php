@@ -1005,6 +1005,7 @@ class CosmosTemplate extends BaseTemplate {
 	protected function buildArticleHeader() {
 		$html = '';
 
+		$html .= $this->buildArticleCategories();
 		$html .= $this->buildArticleInterlang();
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-header-articleHeader' ] );
 		$html .= Html::openElement( 'h1', [ 'id' => 'cosmos-articleHeader-title', 'class' => 'firstHeading' ] );
@@ -1015,6 +1016,134 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= $this->buildActionButtons();
 		$html .= Html::closeElement( 'div' );
 		$html .= Html::closeElement( 'div' );
+
+		return $html;
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function buildArticleCategories() {
+		$skin = $this->getSkin();
+		$context = $skin->getContext();
+
+		$categories = [];
+		$categoryNames = $context->getOutput()->getCategories( 'normal' );
+
+		foreach ( $categoryNames as $categoryName ) {
+			$categoryTitle = $this->titleFactory->newFromText( $categoryName, NS_CATEGORY );
+
+			if ( empty( $categoryTitle ) ) {
+				continue;
+			}
+
+			array_push( $categories, $categoryTitle );
+		}
+
+		$hasMoreCategories = count( $categories ) > 4;
+
+		$categoriesLinks = [];
+		$categoriesArray = $hasMoreCategories ?
+			array_slice( $categories, 0, 3 ) :
+			$categories;
+
+		foreach ( $categoriesArray as $i => $category ) {
+			$categoriesLinks[] = Html::element( 'a', [
+					'href' => $category->getLocalURL(),
+					'id' => 'categories-top-' . $i,
+				], $category->getText()
+			);
+		}
+
+		$categoriesHTML = implode( ', ', $categoriesLinks );
+
+		if ( $hasMoreCategories ) {
+			$categoriesHTML .= $this->getMsg( 'cosmos-article-header-categories-more-separator' )->escaped();
+		}
+
+		$moreCategories = $hasMoreCategories ? array_slice( $categories, 3 ) : [];
+
+		$inCategoriesText = $this->getMsg( 'cosmos-article-header-categories-in' )->escaped();
+		$moreCategoriesText = $this->getMsg( 'cosmos-article-header-categories-more' )
+			->numParams( count( $moreCategories ) )
+			->escaped();
+
+		if ( $context->canUseWikiPage() && $context->getWikiPage()->getTitle()->isMainPage() ) {
+			$hasVisibleCategories = false;
+		} else {
+			$hasVisibleCategories = count( $categories ) > 0;
+		}
+
+		$html = '';
+		if ( $hasVisibleCategories ) {
+			$html .= Html::openElement( 'div', [
+					'class' => 'page-header__categories',
+				]
+			);
+
+			$html .= Html::rawElement( 'span', [
+					'class' => 'page-header__categories-in',
+				], $inCategoriesText
+			);
+
+			$html .= Html::openElement( 'div', [
+					'class' => 'page-header__categories-links',
+				]
+			);
+
+			$html .= $categoriesHTML;
+
+			if ( $hasMoreCategories ) {
+				$html .= Html::openElement( 'div', [
+						'class' => [
+							'wds-dropdown',
+							'page-header__categories-dropdown',
+						]
+					]
+				);
+
+				$html .= Html::rawElement( 'a', [
+						'class' => 'wds-dropdown__toggle',
+					], $moreCategoriesText
+				);
+
+				$html .= Html::openElement( 'div', [
+						'class' => [
+							'wds-dropdown__content',
+							'page-header__categories-dropdown-content',
+							'wds-is-left-aligned',
+						]
+					]
+				);
+
+				$html .= Html::openElement( 'ul', [
+						'class' => [
+							'wds-list',
+							'wds-is-linked',
+						]
+					]
+				);
+
+				foreach ( $moreCategories as $i => $category ) {
+					$html .= Html::openElement( 'li' );
+
+					$html .= Html::element( 'a', [
+							'href' => $category->getLocalURL(),
+							'id' => 'categories-top-more-' . $i,
+						], $category->getText()
+					);
+
+					$html .= Html::closeElement( 'li' );
+				}
+
+				$html .= Html::closeElement( 'ul' );
+				$html .= Html::closeElement( 'div' );
+				$html .= Html::closeElement( 'div' );
+			}
+
+			$html .= Html::closeElement( 'div' );
+			$html .= Html::closeElement( 'div' );
+		}
 
 		return $html;
 	}
