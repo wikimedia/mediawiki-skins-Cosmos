@@ -168,6 +168,26 @@ class CosmosConfig {
 	}
 
 	/**
+	 * @return string
+	 */
+	public function getContentWidth(): string {
+		$config = $this->config->get( 'CosmosContentWidth' );
+
+		switch ( $config ) {
+			case 'full':
+				$width = 'auto';
+				break;
+			case 'large':
+				$width = '176';
+				break;
+			default:
+				$width = '0';
+		}
+
+		return $width;
+	}
+
+	/**
 	 * @return int
 	 */
 	public function getContentOpacityLevel(): int {

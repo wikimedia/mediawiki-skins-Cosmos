@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "6.6.2",
+	"version": "6.6.3",
 	"author": [
 		"Universal Omega",
 		"SamanthaNguyen",
@@ -369,6 +369,10 @@
 		"CosmosBackgroundImageSize": {
 			"value": "cover",
 			"description": "Sets the background image size for the body background if set"
+		},
+		"CosmosContentWidth": {
+			"value": "default",
+			"description": "Sets the main content area width. Can be 'default', 'large', or 'full'."
 		},
 		"CosmosBackgroundImageRepeat": {
 			"value": false,

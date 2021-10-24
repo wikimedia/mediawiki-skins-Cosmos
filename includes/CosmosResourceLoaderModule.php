@@ -84,6 +84,11 @@ class CosmosResourceLoaderModule extends ResourceLoaderSkinModule {
 		$lessVars['main-background-color'] = $this->cosmosConfig->getMainBackgroundColor();
 		$lessVars['content-background-color'] = $this->cosmosConfig->getContentBackgroundColor();
 		$lessVars['main-background-image-size'] = $this->cosmosConfig->getBackgroundImageSize();
+
+		$contentWidth = $this->cosmosConfig->getContentWidth();
+		$lessVars['content-width-1084'] = $contentWidth === 'auto' ? 'auto' : 1024 + $contentWidth . 'px';
+		$lessVars['content-width-1596'] = $contentWidth === 'auto' ? 'auto' : 1178 + $contentWidth . 'px';
+
 		$lessVars['link-color'] = $this->cosmosConfig->getLinkColor();
 		$lessVars['button-background-color'] = $this->cosmosConfig->getButtonBackgroundColor();
 
