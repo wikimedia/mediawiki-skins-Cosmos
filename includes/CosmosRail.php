@@ -151,6 +151,11 @@ class CosmosRail {
 			]
 		);
 
+		$enableRecentChangesModule = $this->config->getEnabledRailModules()['recentchanges'];
+		if ( !empty( $this->getRecentChanges() ) && $enableRecentChangesModule ) {
+			$html .= $this->getRecentChangesModule();
+		}
+
 		if ( (bool)static::$railHookContents ) {
 			$html .= static::$railHookContents;
 		}
@@ -167,11 +172,6 @@ class CosmosRail {
 					], $this->context->msg( $message )->parse()
 				);
 			}
-		}
-
-		$enableRecentChangesModule = $this->config->getEnabledRailModules()['recentchanges'];
-		if ( !empty( $this->getRecentChanges() ) && $enableRecentChangesModule ) {
-			$html .= $this->getRecentChangesModule();
 		}
 
 		$html .= Html::closeElement( 'div' );
