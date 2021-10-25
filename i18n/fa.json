@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jeeputer"
+		]
+	},
+	"cosmos-article-header-categories-in": "در:",
+	"cosmos-article-header-categories-more": "و {{FORMATNUM:$1}} مورد بیشتر"
+}

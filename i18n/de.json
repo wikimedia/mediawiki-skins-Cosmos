@@ -33,6 +33,8 @@
 	"cosmos-mobile-preference": "Mobile, responsive Version der Cosmos-Benutzeroberfläche aktivieren",
 	"cosmos-user-blocked": "Gesperrt",
 	"cosmos-search-loader": "Laden von Suchvorschlägen",
+	"cosmos-article-header-categories-in": "in:",
+	"cosmos-article-header-categories-more": "und {{FORMATNUM:$1}} weitere",
 	"cosmos-themedesigner-success": "Konfiguration für Cosmos erfolgreich aktualisiert.",
 	"themedesigner": "Theme-Designer",
 	"right-themedesigner": "Cosmos ThemeDesigner verwenden",

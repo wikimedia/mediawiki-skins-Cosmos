@@ -4,5 +4,7 @@
 			"Ajeje Brazorf"
 		]
 	},
-	"cosmos-action-cancel": "Annulla"
+	"cosmos-action-cancel": "Annulla",
+	"cosmos-article-header-categories-in": "n:",
+	"cosmos-article-header-categories-more-separator": ","
 }

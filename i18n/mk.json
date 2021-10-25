@@ -33,6 +33,8 @@
 	"cosmos-mobile-preference": "Овозможи мобилно одѕивна верзија на рувото „Космос“",
 	"cosmos-user-blocked": "Блокиран",
 	"cosmos-search-loader": "Вчитувам предлози за пребарувањето",
+	"cosmos-article-header-categories-in": "во:",
+	"cosmos-article-header-categories-more": "и уште {{FORMATNUM:$1}}",
 	"cosmos-themedesigner-success": "Успешнно ја подновивте поставеноста на Космос.",
 	"themedesigner": "Уредник на изглед",
 	"right-themedesigner": "Користи Уредник на изглед за „Космос“",

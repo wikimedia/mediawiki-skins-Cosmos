@@ -35,6 +35,8 @@
 	"prefs-cosmos-responsiveness": "Capacidad de respuesta móvil para Cosmos",
 	"cosmos-mobile-preference": "Habilitar la versión con capacidad de respuesta móvil de la apariencia Cosmos",
 	"cosmos-user-blocked": "Bloqueado",
+	"cosmos-article-header-categories-in": "En:",
+	"cosmos-article-header-categories-more": "y {{FORMATNUM:$1}} más",
 	"cosmos-themedesigner-success": "Se actualizó la configuración de Cosmos correctamente.",
 	"themedesigner": "Diseñador de temas",
 	"right-themedesigner": "Utilizar el diseñador de temas de Cosmos"

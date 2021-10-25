@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"DreZhsh",
 			"Fujimaru-kun",
 			"Gomoko",
 			"Universal Omega",
@@ -36,6 +37,8 @@
 	"cosmos-mobile-preference": "Permettre la version mobile réactive sur l’habillage Cosmos",
 	"cosmos-user-blocked": "Bloqué",
 	"cosmos-search-loader": "Chargement des suggestions de recherche",
+	"cosmos-article-header-categories-in": "dans :",
+	"cosmos-article-header-categories-more": "et {{FORMATNUM:$1}} de plus",
 	"cosmos-themedesigner-success": "Configuration bien mise à jour pour Cosmos.",
 	"themedesigner": "Concepteur de thème",
 	"right-themedesigner": "Utiliser le concepteur de thème de Cosmos",

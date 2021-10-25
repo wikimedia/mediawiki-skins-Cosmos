@@ -33,6 +33,8 @@
 	"cosmos-mobile-preference": "Włącz responsywną mobilnie wersję skórki Kosmos",
 	"cosmos-user-blocked": "Zablokowany",
 	"cosmos-search-loader": "Wczytywanie sugestii wyszukiwania",
+	"cosmos-article-header-categories-in": "w:",
+	"cosmos-article-header-categories-more": "i {{FORMATNUM:$1}} więcej",
 	"cosmos-themedesigner-success": "Pomyślnie zaktualizowano konfigurację skórki Kosmos.",
 	"themedesigner": "Kreator motywu",
 	"right-themedesigner": "Dostęp do kreatora motywu skórki Kosmos",

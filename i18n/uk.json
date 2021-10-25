@@ -34,6 +34,8 @@
 	"cosmos-mobile-preference": "Увімкнути адаптивну мобільну версію для теми Cosmos",
 	"cosmos-user-blocked": "Заблоковано",
 	"cosmos-search-loader": "Завантаження пропозицій щодо пошуку",
+	"cosmos-article-header-categories-in": "в:",
+	"cosmos-article-header-categories-more": "і {{FORMATNUM:$1}} більше",
 	"cosmos-themedesigner-success": "Конфігурацію Cosmos успішно оновлено.",
 	"themedesigner": "Конструктор тем",
 	"right-themedesigner": "Використання конструктору тем Cosmos",
