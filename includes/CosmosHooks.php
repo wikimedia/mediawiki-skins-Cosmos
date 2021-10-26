@@ -151,8 +151,21 @@ class CosmosHooks implements
 	public static function addToAdminLinks( ALTree &$adminLinksTree ) {
 		$cosmos_section = new ALSection( wfMessage( 'skinname-cosmos' )->text() );
 		$cosmos_row = new ALRow( 'cosmos' );
-		$cosmos_row->addItem( ALItem::newFromEditLink( 'Cosmos-navigation', 'Edit navigation' ) );
-		$cosmos_row->addItem( ALItem::newFromEditLink( 'Cosmos-tagline', 'Edit tagline' ) );
+
+		$cosmos_row->addItem(
+			ALItem::newFromEditLink(
+				'Cosmos-navigation',
+				wfMessage( 'cosmos-adminlinks-edit-navigation' )->text()
+			)
+		);
+
+		$cosmos_row->addItem(
+			ALItem::newFromEditLink(
+				'Cosmos-tagline',
+				wfMessage( 'cosmos-adminlinks-edit-tagline' )->text()
+			)
+		);
+
 		$cosmos_section->addRow( $cosmos_row );
 		$adminLinksTree->addSection( $cosmos_section, wfMessage( 'adminlinks_users' )->text() );
 	}

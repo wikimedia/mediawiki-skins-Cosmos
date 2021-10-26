@@ -6,6 +6,8 @@
 	},
 	"skinname-cosmos": "Cosmos",
 	"cosmos-desc": "Cosmos is a skin designed and based off Fandom's Oasis skin. Designed to improve upon their design, and provide an efficient MediaWiki skin for non-Fandom users, or for users transitioning out of Fandom.",
+	"cosmos-adminlinks-edit-navigation": "Edit navigation",
+	"cosmos-adminlinks-edit-tagline": "Edit tagline",
 	"cosmos-anonymous": "Anonymous",
 	"cosmos-tagline": "{{int:Sitetitle}}",
 	"cosmos-counter-label": "{{PLURAL:$1|Article|Articles}}",
