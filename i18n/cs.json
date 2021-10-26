@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Fraxinus.cs",
 			"Matěj Suchánek",
 			"YjM"
 		]
 	},
+	"cosmos-article-header-categories-in": "v:",
+	"cosmos-article-header-categories-more": "a dalších {{FORMATNUM:$1}}",
 	"cosmos-themedesigner-success": "Konfigurace Cosmos byla úspěšně aktualizována."
 }
