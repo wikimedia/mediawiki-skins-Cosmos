@@ -41,6 +41,13 @@ class SpecialThemeDesigner extends FormSpecialPage {
 	}
 
 	/**
+	 * @return string
+	 */
+	protected function getMessagePrefix() {
+		return 'cosmos-' . strtolower( $this->getName() );
+	}
+
+	/**
 	 * @return array
 	 */
 	protected function getFormFields() {

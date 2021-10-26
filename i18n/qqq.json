@@ -47,6 +47,7 @@
 	"cosmos-article-header-categories-more-separator": "{{notranslate}}\nThe separator between first couple of categories and \"more categories\" link",
 	"cosmos-article-header-categories-more": "Link to more categories that are hidden by default",
 	"cosmos-themedesigner-success": "Message displayed when the theme designer form is submitted.",
+	"cosmos-themedesigner-text": "Header text for the ThemeDesigner special page.",
 	"themedesigner": "Display name of the ThemeDesigner special page.",
 	"right-themedesigner": "{{doc-right|themedesigner}}",
 	"action-themedesigner": "{{doc-action|themedesigner}}",
