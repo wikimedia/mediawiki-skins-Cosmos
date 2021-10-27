@@ -43,6 +43,7 @@
 	"cosmos-article-header-categories-more-separator": ", ",
 	"cosmos-article-header-categories-more": "and {{FORMATNUM:$1}} more",
 	"cosmos-themedesigner-success": "Successfully updated configuration for Cosmos.",
+	"cosmos-themedesigner-text": "Customize the theme for the '''Cosmos''' skin.",
 	"themedesigner": "Theme Designer",
 	"right-themedesigner": "Use Cosmos ThemeDesigner",
 	"action-themedesigner": "use Cosmos ThemeDesigner",
