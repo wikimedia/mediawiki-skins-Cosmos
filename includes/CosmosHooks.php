@@ -149,25 +149,25 @@ class CosmosHooks implements
 	 * @param ALTree &$adminLinksTree
 	 */
 	public static function addToAdminLinks( ALTree &$adminLinksTree ) {
-		$cosmos_section = new ALSection( wfMessage( 'skinname-cosmos' )->text() );
-		$cosmos_row = new ALRow( 'cosmos' );
+		$cosmosSection = new ALSection( wfMessage( 'skinname-cosmos' )->text() );
+		$cosmosRow = new ALRow( 'cosmos' );
 
-		$cosmos_row->addItem(
+		$cosmosRow->addItem(
 			ALItem::newFromEditLink(
 				'Cosmos-navigation',
 				wfMessage( 'cosmos-adminlinks-edit-navigation' )->text()
 			)
 		);
 
-		$cosmos_row->addItem(
+		$cosmosRow->addItem(
 			ALItem::newFromEditLink(
 				'Cosmos-tagline',
 				wfMessage( 'cosmos-adminlinks-edit-tagline' )->text()
 			)
 		);
 
-		$cosmos_section->addRow( $cosmos_row );
-		$adminLinksTree->addSection( $cosmos_section, wfMessage( 'adminlinks_users' )->text() );
+		$cosmosSection->addRow( $cosmosRow );
+		$adminLinksTree->addSection( $cosmosSection, wfMessage( 'adminlinks_users' )->text() );
 	}
 
 	/**
