@@ -36,6 +36,8 @@
 	"cosmos-mobile-preference": "הפעלת גרסה שמתאימה את עצמה לניידים של עיצוב קוסמוס",
 	"cosmos-user-blocked": "חסום",
 	"cosmos-search-loader": "טעינת הצעות חיפוש",
+	"cosmos-article-header-categories-in": "שייך ל־:",
+	"cosmos-article-header-categories-more": "ועוד {{FORMATNUM:$1}}",
 	"cosmos-themedesigner-success": "התצורה של קוסמוס עודכנה בהצלחה.",
 	"themedesigner": "מעצב נושאים",
 	"right-themedesigner": "שימוש במעצב ערכות העיצוב של קוסמוס",

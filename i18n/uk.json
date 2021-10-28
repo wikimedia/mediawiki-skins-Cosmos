@@ -7,6 +7,8 @@
 	},
 	"skinname-cosmos": "Космос",
 	"cosmos-desc": "Cosmos — тема оформлення, розроблена і базована на основі теми Oasis із Fandom. Має на меті покращити їхній дизайн і надати ефективну тему MediaWiki для користувачів не-Фандому або для користувачів, які переходять із Фандому.",
+	"cosmos-adminlinks-edit-navigation": "Edit navigation",
+	"cosmos-adminlinks-edit-tagline": "Редагувати слоган",
 	"cosmos-anonymous": "Анонім",
 	"cosmos-counter-label": "{{PLURAL:$1|Стаття|Статті}}",
 	"cosmos-createpage-header": "Створити нову статтю",

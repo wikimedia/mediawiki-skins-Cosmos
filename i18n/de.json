@@ -6,6 +6,8 @@
 		]
 	},
 	"cosmos-desc": "Cosmos ist ein Skin, der auf dem Oasis-Skin von Fandom basiert. Sie wurde entwickelt, um deren Design zu verbessern und eine effiziente MediaWiki-Skin für Nicht-Fandom-Benutzer oder für Benutzer, die aus Fandom aussteigen, bereitzustellen.",
+	"cosmos-adminlinks-edit-navigation": "Bearbeitungs-Navigation",
+	"cosmos-adminlinks-edit-tagline": "Tagline bearbeiten",
 	"cosmos-anonymous": "Anonym",
 	"cosmos-counter-label": "{{PLURAL:$1|Artikel}}",
 	"cosmos-createpage-header": "Einen neuen Artikel erstellen",
@@ -36,6 +38,7 @@
 	"cosmos-article-header-categories-in": "in:",
 	"cosmos-article-header-categories-more": "und {{FORMATNUM:$1}} weitere",
 	"cosmos-themedesigner-success": "Konfiguration für Cosmos erfolgreich aktualisiert.",
+	"cosmos-themedesigner-text": "Passe das Design für den '''Cosmos'''-Skin an.",
 	"themedesigner": "Theme-Designer",
 	"right-themedesigner": "Cosmos ThemeDesigner verwenden",
 	"action-themedesigner": "Cosmos ThemeDesigner zu verwenden",

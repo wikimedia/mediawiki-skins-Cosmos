@@ -6,6 +6,7 @@
 		]
 	},
 	"cosmos-desc": "Cosmos é um tema desenhado e baseado no tema Oasis do Fandom. Projetado para melhorar seu design e fornecer um tema no MediaWiki eficiente para usuários não-Fandom ou para usuários em transição fora do Fandom.",
+	"cosmos-adminlinks-edit-navigation": "Editar navegação",
 	"cosmos-anonymous": "Anônimo",
 	"cosmos-counter-label": "{{PLURAL:$1|Artigo|Artigos}}",
 	"cosmos-createpage-header": "Criar uma novo artigo",
