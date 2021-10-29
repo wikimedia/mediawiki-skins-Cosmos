@@ -39,6 +39,7 @@
 	"cosmos-article-header-categories-in": "в:",
 	"cosmos-article-header-categories-more": "і {{FORMATNUM:$1}} більше",
 	"cosmos-themedesigner-success": "Конфігурацію Cosmos успішно оновлено.",
+	"cosmos-themedesigner-text": "Налаштуйте тему для скіна '''Космос'''.",
 	"themedesigner": "Конструктор тем",
 	"right-themedesigner": "Використання конструктору тем Cosmos",
 	"action-themedesigner": "використання конструктору тем Cosmos",

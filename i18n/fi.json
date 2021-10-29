@@ -6,6 +6,8 @@
 		]
 	},
 	"cosmos-desc": "Cosmos on Fandomin Oasis-ulkoasuun perustuva ulkoasu. Se on suunniteltu sen parannukseksi ja tarjoamaan tehokkaan MediaWiki-ulkoasun Fandomin ulkopuolisille tai sieltä pois siirtyville käyttäjille.",
+	"cosmos-adminlinks-edit-navigation": "Muokkaa navigaatiota",
+	"cosmos-adminlinks-edit-tagline": "Muokkaa tunnuslausetta",
 	"cosmos-anonymous": "Anonyymi",
 	"cosmos-counter-label": "{{PLURAL:$1|artikkeli|artikkelia}}",
 	"cosmos-createpage-header": "Luo uusi artikkeli",

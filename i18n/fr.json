@@ -42,6 +42,7 @@
 	"cosmos-article-header-categories-in": "dans :",
 	"cosmos-article-header-categories-more": "et {{FORMATNUM:$1}} de plus",
 	"cosmos-themedesigner-success": "Configuration bien mise à jour pour Cosmos.",
+	"cosmos-themedesigner-text": "Personnalisez le thème du skin '''Cosmos'''.",
 	"themedesigner": "Concepteur de thème",
 	"right-themedesigner": "Utiliser le concepteur de thème de Cosmos",
 	"action-themedesigner": "utiliser le concepteur de thème de Cosmos",
