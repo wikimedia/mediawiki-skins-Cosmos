@@ -9,6 +9,8 @@
 		]
 	},
 	"cosmos-desc": "קוסמוס הוא עיצוב שמבוסס על אואזיס של פנדום. נועד להיות טוב יותר מהעיצוב שלהם, ולספק עיצוב מדיה־ויקי יעיל למשתמשים שאינם פנדום, או למשתמשים העוברים אל מחוץ לפנדום.",
+	"cosmos-adminlinks-edit-navigation": "עריכת ניווט",
+	"cosmos-adminlinks-edit-tagline": "עריכת מוטו",
 	"cosmos-anonymous": "אלמוני",
 	"cosmos-counter-label": "{{PLURAL:$1|ערך|ערכים}}",
 	"cosmos-createpage-header": "יצירת ערך חדש",
@@ -39,6 +41,7 @@
 	"cosmos-article-header-categories-in": "שייך ל־:",
 	"cosmos-article-header-categories-more": "ועוד {{FORMATNUM:$1}}",
 	"cosmos-themedesigner-success": "התצורה של קוסמוס עודכנה בהצלחה.",
+	"cosmos-themedesigner-text": "התאמה אישית של ערכת הנושא עבור עיצוב '''Cosmos'''.",
 	"themedesigner": "מעצב נושאים",
 	"right-themedesigner": "שימוש במעצב ערכות העיצוב של קוסמוס",
 	"action-themedesigner": "להשתמש במעצב ערכות העיצוב של קוסמוס",

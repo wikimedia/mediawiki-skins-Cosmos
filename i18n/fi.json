@@ -25,5 +25,6 @@
 	"cosmos-mobile-preference": "Ota käyttöön Cosmos-ulkoasun responsiivinen mobiiliversio",
 	"cosmos-user-blocked": "Estetty",
 	"cosmos-search-loader": "Ladataan hakuehdotuksia",
-	"cosmos-article-header-categories-more": "ja {{FORMATNUM:$1}} lisää"
+	"cosmos-article-header-categories-more": "ja {{FORMATNUM:$1}} lisää",
+	"cosmos-themedesigner-text": "Mukauta teema ulkoasulle '''Cosmos'''."
 }
