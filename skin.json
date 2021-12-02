@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "6.6.3",
+	"version": "6.6.4",
 	"author": [
 		"Universal Omega",
 		"SamanthaNguyen",
@@ -24,9 +24,12 @@
 				"CosmosConfig",
 				"CosmosWordmarkLookup",
 				"LanguageNameUtils",
+				"LinkRenderer",
+				"MainWANObjectCache",
 				"PermissionManager",
 				"SpecialPageFactory",
 				"TitleFactory",
+				"UserFactory",
 				"UserOptionsLookup"
 			],
 			"args": [ {

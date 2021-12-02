@@ -2,12 +2,15 @@
 
 namespace MediaWiki\Skin\Cosmos;
 
-use DateInterval;
-use DateTime;
 use Html;
 use IContextSource;
+use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
-use Title;
+use MediaWiki\Special\SpecialPageFactory;
+use MediaWiki\User\UserFactory;
+use MWTimestamp;
+use TitleValue;
+use WANObjectCache;
 
 class CosmosRail {
 	/** @var CosmosConfig */
@@ -15,6 +18,18 @@ class CosmosRail {
 
 	/** @var IContextSource */
 	private $context;
+
+	/** @var LinkRenderer */
+	private $linkRenderer;
+
+	/** @var WANObjectCache */
+	private $objectCache;
+
+	/** @var SpecialPageFactory */
+	private $specialPageFactory;
+
+	/** @var UserFactory */
+	private $userFactory;
 
 	/** @var string */
 	private static $railHookContents = '';
@@ -30,9 +45,18 @@ class CosmosRail {
 		$this->config = $config;
 		$this->context = $context;
 
+		/** @var SkinCosmos */
+		$skin = $context->getSkin();
+		'@phan-var SkinCosmos $skin';
+
+		$this->linkRenderer = $skin->linkRenderer;
+		$this->objectCache = $skin->objectCache;
+		$this->specialPageFactory = $skin->specialPageFactory;
+		$this->userFactory = $skin->userFactory;
+
 		if ( !(bool)static::$railHookContents ) {
 			$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
-			$hookContainer->run( 'CosmosRail', [ $this, $context->getSkin() ] );
+			$hookContainer->run( 'CosmosRail', [ $this, $skin ] );
 		}
 	}
 
@@ -250,7 +274,6 @@ class CosmosRail {
 	 * @return string
 	 */
 	protected function getRecentChangesModule() {
-		$currentTime = DateTime::createFromFormat( 'YmdHis', wfTimestampNow() );
 		$type = $this->config->getEnabledRailModules()['recentchanges'];
 
 		if ( $type === 'sticky' ) {
@@ -268,40 +291,39 @@ class CosmosRail {
 		$html .= $this->buildModuleHeader( 'recentchanges' );
 
 		foreach ( $this->getRecentChanges() as $recentChange ) {
-				// Get the time the edit was made
-				$time = DateTime::createFromFormat( 'YmdHis', $recentChange['timestamp'] );
-
-				// Get a string representing the time difference
-				$timeDiff = $this->getDateTimeDiffString( $currentTime->diff( $time ) );
-
-				// Get the title of the page that was edited
-				$page = Title::newFromText( $recentChange['title'], $recentChange['namespace'] );
-
-				// Get the title of the userpage of the user who edited it
-				$user = Title::newFromText( $recentChange['user'], NS_USER );
-
 				// Open list item for recent change
 				$html .= Html::openElement( 'li' );
 
 				$html .= Html::openElement( 'div', [ 'class' => 'cosmos-recentChanges-page' ] );
 
 				// Create a link to the edited page
-				$html .= Html::openElement( 'a', [ 'href' => $page->getInternalURL() ] );
-				$html .= $page->getFullText();
-				$html .= Html::closeElement( 'a' );
+				$html .= $this->linkRenderer->makeKnownLink(
+					new TitleValue( (int)$recentChange['namespace'], $recentChange['title'] )
+				);
 
 				$html .= Html::closeElement( 'div' );
 
 				$html .= Html::openElement( 'div', [ 'class' => 'cosmos-recentChanges-info' ] );
 
 				// Create a link to the user who edited it
-				$html .= Html::openElement( 'a', [ 'href' => $user->getInternalURL() ] );
-				$html .= $user->getText();
-				$html .= Html::closeElement( 'a' );
+				$performer = $recentChange['performer'];
+				if ( !$performer->isRegistered() ) {
+					$linkTarget = new TitleValue(
+						NS_SPECIAL,
+						$this->specialPageFactory->getLocalNameFor( 'Contributions', $performer->getName() )
+					);
+				} else {
+					$linkTarget = new TitleValue( NS_USER, $performer->getTitleKey() );
+				}
+
+				$html .= $this->linkRenderer->makeLink( $linkTarget, $performer->getName() );
 
 				// Display how long ago it was edited
 				$html .= ' • ';
-				$html .= $timeDiff;
+				$language = $this->context->getSkin()->getLanguage();
+				$html .= $language->getHumanTimestamp(
+					MWTimestamp::getInstance( $recentChange['timestamp'] )
+				);
 
 				$html .= Html::closeElement( 'div' );
 
@@ -317,16 +339,15 @@ class CosmosRail {
 	/**
 	 * @return array
 	 */
-	protected static function getRecentChanges() {
-		$cacheObj = MediaWikiServices::getInstance()->getMainWANObjectCache();
-		$cacheKey = $cacheObj->makeKey( 'cosmos_recentChanges', 4 );
-		$recentChanges = $cacheObj->get( $cacheKey );
+	protected function getRecentChanges() {
+		$cacheKey = $this->objectCache->makeKey( 'cosmos_recentChanges', 4 );
+		$recentChanges = $this->objectCache->get( $cacheKey );
 
 		if ( empty( $recentChanges ) ) {
-			$database = wfGetDB( DB_REPLICA );
-			$recentChangesTable = $database->tableName( 'recentchanges' );
+			$dbr = wfGetDB( DB_REPLICA );
+			$recentChangesTable = $dbr->tableName( 'recentchanges' );
 
-			$rawRecentChanges = $database->select(
+			$res = $dbr->select(
 				'recentchanges',
 				[
 					'rc_timestamp', 'rc_actor', 'rc_namespace',
@@ -342,66 +363,20 @@ class CosmosRail {
 				[ 'ORDER BY' => 'rc_id DESC', 'LIMIT' => 4, 'OFFSET' => 0 ]
 			);
 
-			$actors = [];
-
 			$recentChanges = [];
-
-			foreach ( $rawRecentChanges as $recentChange ) {
-				$actorId = $recentChange->rc_actor;
-				$actor = $actors[$actorId] ?? '';
-
-				if ( empty( $actor ) ) {
-					$actorRaw = $database->selectRow(
-						'actor',
-						[ 'actor_user', 'actor_name' ],
-						[ 'actor_id' => $recentChange->rc_actor ],
-						__METHOD__
-					);
-
-					$actor = [];
-					$actor['name'] = $actorRaw->actor_name;
-					$actor['anon'] = empty( $actorRaw->actor_user );
-
-					$actors[$actorId] = $actor;
-				}
-
+			foreach ( $res as $row ) {
 				$recentChanges[] = [
-					'timestamp' => $recentChange->rc_timestamp,
-					'user' => $actor['name'],
-					'anon' => $actor['anon'],
-					'namespace' => $recentChange->rc_namespace,
-					'title' => $recentChange->rc_title,
-					'type' => $recentChange->rc_type
+					'performer' => $this->userFactory->newFromActorId( $row->rc_actor ),
+					'timestamp' => $row->rc_timestamp,
+					'namespace' => $row->rc_namespace,
+					'title' => $row->rc_title,
+					'type' => $row->rc_type,
 				];
 			}
 
-			$cacheObj->set( $cacheKey, $recentChanges, 30 );
+			$this->objectCache->set( $cacheKey, $recentChanges, 30 );
 		}
 
 		return $recentChanges;
-	}
-
-	/**
-	 * @param DateInterval $interval
-	 * @return string
-	 */
-	protected function getDateTimeDiffString( DateInterval $interval ) {
-		if ( $interval->y > 0 ) {
-			$msg = $this->context->msg( 'years', $interval->y );
-		} elseif ( $interval->m > 0 ) {
-			$msg = $this->context->msg( 'months', $interval->m );
-		} elseif ( $interval->d > 7 ) {
-			$msg = $this->context->msg( 'weeks', floor( $interval->d / 7 ) );
-		} elseif ( $interval->d > 0 ) {
-			$msg = $this->context->msg( 'days', $interval->d );
-		} elseif ( $interval->h > 0 ) {
-			$msg = $this->context->msg( 'hours', $interval->h );
-		} elseif ( $interval->i > 0 ) {
-			$msg = $this->context->msg( 'minutes', $interval->i );
-		} else {
-			$msg = $this->context->msg( 'seconds', $interval->s );
-		}
-
-		return $this->context->msg( 'ago', $msg );
 	}
 }

@@ -7,12 +7,15 @@ use ConfigFactory;
 use ExtensionRegistry;
 use Language;
 use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserOptionsLookup;
 use OutputPage;
 use SkinTemplate;
 use TitleFactory;
+use WANObjectCache;
 
 class SkinCosmos extends SkinTemplate {
 
@@ -28,6 +31,12 @@ class SkinCosmos extends SkinTemplate {
 	/** @var LanguageNameUtils */
 	public $languageNameUtils;
 
+	/** @var LinkRenderer */
+	public $linkRenderer;
+
+	/** @var WANObjectCache */
+	public $objectCache;
+
 	/** @var PermissionManager */
 	public $permissionManager;
 
@@ -36,6 +45,9 @@ class SkinCosmos extends SkinTemplate {
 
 	/** @var TitleFactory */
 	public $titleFactory;
+
+	/** @var UserFactory */
+	public $userFactory;
 
 	/** @var UserOptionsLookup */
 	public $userOptionsLookup;
@@ -49,9 +61,12 @@ class SkinCosmos extends SkinTemplate {
 	 * @param CosmosConfig $cosmosConfig
 	 * @param CosmosWordmarkLookup $cosmosWordmarkLookup
 	 * @param LanguageNameUtils $languageNameUtils
+	 * @param LinkRenderer $linkRenderer
+	 * @param WANObjectCache $WANObjectCache
 	 * @param PermissionManager $permissionManager
 	 * @param SpecialPageFactory $specialPageFactory
 	 * @param TitleFactory $titleFactory
+	 * @param UserFactory $userFactory
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param array $options
 	 */
@@ -61,9 +76,12 @@ class SkinCosmos extends SkinTemplate {
 		CosmosConfig $cosmosConfig,
 		CosmosWordmarkLookup $cosmosWordmarkLookup,
 		LanguageNameUtils $languageNameUtils,
+		LinkRenderer $linkRenderer,
+		WANObjectCache $WANObjectCache,
 		PermissionManager $permissionManager,
 		SpecialPageFactory $specialPageFactory,
 		TitleFactory $titleFactory,
+		UserFactory $userFactory,
 		UserOptionsLookup $userOptionsLookup,
 		array $options
 	) {
@@ -73,9 +91,12 @@ class SkinCosmos extends SkinTemplate {
 		$this->contentLanguage = $contentLanguage;
 		$this->cosmosConfig = $cosmosConfig;
 		$this->languageNameUtils = $languageNameUtils;
+		$this->linkRenderer = $linkRenderer;
+		$this->objectCache = $WANObjectCache;
 		$this->permissionManager = $permissionManager;
 		$this->specialPageFactory = $specialPageFactory;
 		$this->titleFactory = $titleFactory;
+		$this->userFactory = $userFactory;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->wordmarkLookup = $cosmosWordmarkLookup;
 	}
