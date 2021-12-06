@@ -5,11 +5,13 @@
 			"Kareyac",
 			"Megakott",
 			"Okras",
-			"WerySkok"
+			"WerySkok",
+			"Alexandr Efremov",
+			"Urfiner"
 		]
 	},
 	"skinname-cosmos": "Cosmos",
-	"cosmos-desc": "Cosmos - это скин, созданный на основе скина Oasis ФЭНДОМа. Предназначены для улучшения их дизайна и обеспечения эффективного скина MediaWiki для участников, не являющихся пользователями ФЭНДОМа, или для пользователей, выходящих из ФЭНДОМа.",
+	"cosmos-desc": "Cosmos - тема оформления, разработанная на основе темы оформления Oasis ФЭНДОМа. Предназначена для улучшения их дизайна и обеспечения эффективной темы оформления MediaWiki для участников, не являющихся пользователями ФЭНДОМа, или для пользователей, выходящих из ФЭНДОМа.",
 	"cosmos-anonymous": "Аноним",
 	"cosmos-counter-label": "{{PLURAL:$1|статья|статьи|статей}}",
 	"cosmos-createpage-header": "Создать новую статью",
@@ -19,6 +21,7 @@
 	"cosmos-personaltools-userpage": "Страница участника",
 	"cosmos-personaltools-usertalk": "Обсуждение участника",
 	"cosmos-personaltools-anontalk": "Моё обсуждение",
+	"cosmos-editcount-label": "Правок после регистрации на этой вики",
 	"cosmos-action-addsection": "Новая тема",
 	"cosmos-action-cancel": "Отмена",
 	"cosmos-action-backtopage": "Вернуться к $1",
@@ -33,10 +36,23 @@
 	"prefs-cosmos-responsiveness": "Адаптивность для мобильных устройств для Cosmos",
 	"cosmos-mobile-preference": "Включить адаптивность для темы оформления Cosmos",
 	"cosmos-user-blocked": "Заблокирован",
+	"cosmos-themedesigner-success": "Конфигурация Cosmos успешно обновлена.",
+	"themedesigner": "Дизайнер тем",
+	"right-themedesigner": "Использовать дизайнер тем Cosmos",
+	"action-themedesigner": "использовать дизайнер тем Cosmos",
+	"cosmos-themedesigner-help-1": "Цвет фона личного навигационного баннера.",
+	"cosmos-themedesigner-help-2": "Цвет фона заголовка навигации вики.",
 	"cosmos-themedesigner-help-3": "Основной цвет фона.",
+	"cosmos-themedesigner-help-4": "Цвет фона основной области содержимого.",
+	"cosmos-themedesigner-help-5": "Цвет фона для кнопок.",
 	"cosmos-themedesigner-help-6": "Цвет ссылок.",
 	"cosmos-themedesigner-help-7": "Цвет фона нижнего колонтитула.",
 	"cosmos-themedesigner-help-8": "Цвет фона панели инструментов",
+	"cosmos-themedesigner-help-9": "Полный URL-адрес для текстовой метке",
+	"cosmos-themedesigner-help-10": "Фоновое изображение заголовка навигации вики.",
 	"cosmos-themedesigner-help-11": "Основное фоновое изображение.",
-	"cosmos-themedesigner-help-13": "Размер основного фона"
+	"cosmos-themedesigner-help-12": "Уровень прозрачности области содержимого (в процентах)",
+	"cosmos-themedesigner-help-13": "Размер основного фона",
+	"cosmos-themedesigner-help-14": "Повторять фоновое изображение?",
+	"cosmos-themedesigner-help-15": "Фиксированное фоновое изображение?"
 }

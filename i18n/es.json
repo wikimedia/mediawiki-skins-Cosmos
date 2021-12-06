@@ -4,12 +4,14 @@
 			"Avengium",
 			"Fitoschido",
 			"Rodney Araujo",
-			"Universal Omega"
+			"Universal Omega",
+			"Jackiezelaya",
+			"McDutchie"
 		]
 	},
 	"cosmos-desc": "Cosmos es una apariencia diseñada y basada en la apariencia Oasis de Fandom. Diseñada para mejorar su diseño, y proporciona una apariencia MediaWiki eficaz para los usuarios que no son de Fandom, o para los usuarios que se transfieren fuera de Fandom.",
 	"cosmos-anonymous": "Anónimo",
-	"cosmos-counter-label": "{{PLURAL:$1|Artículos|Artículo}}",
+	"cosmos-counter-label": "{{PLURAL:$1|Artículo|Artículos}}",
 	"cosmos-createpage-header": "Crear un artículo nuevo",
 	"cosmos-createpage-input-label": "Escribe tu título de página aquí:",
 	"cosmos-createpage-next": "Siguiente",

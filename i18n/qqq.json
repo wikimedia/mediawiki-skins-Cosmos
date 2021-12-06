@@ -2,7 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Umherirrender",
-			"Universal Omega"
+			"Universal Omega",
+			"Amire80",
+			"Giannaras99",
+			"Joseph",
+			"Raymond"
 		]
 	},
 	"skinname-cosmos": "{{name}}",
@@ -10,9 +14,9 @@
 	"cosmos-anonymous": "The text that shows instead of a username in the top banner if the user is not logged in.\n\n{{Identical|Anonymous}}",
 	"cosmos-tagline": "{{notranslate}}\nThe tagline in the wiki navigation header.\n\n{{msg-mw|sitetitle}}",
 	"cosmos-counter-label": "The label for the article counter in wiki navigation. Uses Plural:$1.",
-	"cosmos-createpage-header": "The header for the create page pop-up dialogue.",
+	"cosmos-createpage-header": "The header for the create page pop-up dialog.",
 	"cosmos-createpage-input-label": "The new page's name input label.",
-	"cosmos-createpage-next": "The create page dialogue submit/next button label.",
+	"cosmos-createpage-next": "The create page dialog submit/next button label.",
 	"cosmos-createpage-dialoge-text": "The text that appears underneath the input to enter new page name, in create page dialogue, as a label to the article proposals. The first $1 instance should be wrapped in <code><nowiki><b></b></nowiki></code> tags. Uses Plural:$1 for the second $1 instance.",
 	"cosmos-custom-rail-module": "{{notranslate}}",
 	"cosmos-custom-sticky-rail-module": "{{notranslate}}",
@@ -32,7 +36,7 @@
 	"cosmos-explore": "The header for the explore tab in the navigation.\n\n{{Identical|Explore}}",
 	"cosmos-newfiles": "New files label.",
 	"cosmos-navigation": "{{notranslate}}",
-	"prefs-cosmos-responsiveness": "The label for the Mobile Responsiveness section in Special:Preferences.",
+	"prefs-cosmos-responsiveness": "The label for the Mobile Responsiveness for Cosmos section in Special:Preferences.",
 	"cosmos-mobile-preference": "The checkbox label for the mobile responsiveness toggle in Special:Preferences",
 	"cosmos-user-blocked": "The text used to show a user is blocked on social profile Pages' avatar area.\n\n{{Identical|Blocked}}",
 	"cosmos-themedesigner-success": "Message displayed when the theme designer form is submitted.",
