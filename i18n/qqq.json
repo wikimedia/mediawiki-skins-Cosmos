@@ -3,7 +3,10 @@
 		"authors": [
 			"Giannaras99",
 			"Umherirrender",
-			"Universal Omega"
+			"Universal Omega",
+			"Amire80",
+			"Joseph",
+			"Raymond"
 		]
 	},
 	"skinname-cosmos": "{{name}}",
@@ -14,7 +17,7 @@
 	"cosmos-createpage-header": "The header for the create page pop-up dialog.",
 	"cosmos-createpage-input-label": "The new page's name input label.",
 	"cosmos-createpage-next": "The create page dialog submit/next button label.",
-	"cosmos-createpage-text": "The text that appears underneath the input to enter new page name, in create page dialog, as a label to the article proposals. The first $1 instance should be wrapped in <code><nowiki>'''$1'''</nowiki></code>. Uses Plural:$1 for the second $1 instance.",
+	"cosmos-createpage-text": "The text that appears underneath the input to enter new page name, in create page dialog, as a label to the article proposals. The first $1 instance should be wrapped in <code><nowiki>'''$1'''</nowiki></code>. Uses Plural:$1 for the second $1 instance.\n$3 is one of the following:\n* {{msg-mw|Cosmos-createpage-no-wanted-pages}}\n* {{msg-mw|Cosmos-createpage-wanted-pages}}",
 	"cosmos-createpage-wanted-pages": "The second part of cosmos-createpage-text if the wanted pages feature is enabled.",
 	"cosmos-createpage-no-wanted-pages": "The second part of cosmos-createpage-text if the wanted pages feature is not enabled.",
 	"cosmos-custom-rail-module": "{{notranslate}}",

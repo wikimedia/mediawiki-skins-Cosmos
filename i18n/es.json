@@ -5,7 +5,8 @@
 			"Fitoschido",
 			"McDutchie",
 			"Rodney Araujo",
-			"Universal Omega"
+			"Universal Omega",
+			"Jackiezelaya"
 		]
 	},
 	"cosmos-desc": "Cosmos es una apariencia diseñada y basada en la apariencia Oasis de Fandom. Diseñada para mejorar su diseño, y proporciona una apariencia MediaWiki eficaz para los usuarios que no son de Fandom, o para los usuarios que se transfieren fuera de Fandom.",
@@ -14,6 +15,9 @@
 	"cosmos-createpage-header": "Crear un artículo nuevo",
 	"cosmos-createpage-input-label": "Escribe tu título de página aquí:",
 	"cosmos-createpage-next": "Siguiente",
+	"cosmos-createpage-text": "Actualmente tenemos '''$1''' {{PLURAL:$1|artículo|artículos}} en $2. Escriba el nombre de su artículo encima de $3",
+	"cosmos-createpage-wanted-pages": "o haga clic en uno de los títulos a continuación y empezar a escribir!",
+	"cosmos-createpage-no-wanted-pages": "o crear uno de los artículos enumerados [[$1|aquí]]!",
 	"cosmos-personaltools-userpage": "Página de usuario",
 	"cosmos-personaltools-usertalk": "Usuario discusión",
 	"cosmos-personaltools-anontalk": "Mi discusión",
