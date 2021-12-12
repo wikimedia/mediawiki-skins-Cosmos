@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "6.6.4",
+	"version": "6.6.5",
 	"author": [
 		"Universal Omega",
 		"SamanthaNguyen",
@@ -488,6 +488,9 @@
 	},
 	"Hooks": {
 		"AdminLinks": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::addToAdminLinks",
+		"AlternateEditPreview": {
+			"handler": "CosmosHookHandlers"
+		},
 		"GetDoubleUnderscoreIDs": {
 			"handler": "CosmosHookHandlers"
 		},

@@ -359,16 +359,16 @@ class CosmosNavigation implements ExpirationAwareness {
 	 * @return array|null
 	 */
 	private function getMenuLines() {
-		return $this->getMessageAsArray( 'Cosmos-navigation' );
+		return self::extract(
+			$this->messageLocalizer->msg( 'Cosmos-navigation' )->inContentLanguage()->text()
+		);
 	}
 
 	/**
-	 * @param string $messageKey
+	 * @param string $navigation
 	 * @return array|null
 	 */
-	private function getMessageAsArray( $messageKey ) {
-		$cosmosNavigationMessage = $this->messageLocalizer->msg( $messageKey )->inContentLanguage()->text();
-
+	public static function extract( string $navigation ) {
 		$exploreChildURL = null;
 		$exploreChildText = null;
 
@@ -378,21 +378,21 @@ class CosmosNavigation implements ExpirationAwareness {
 		if (
 			ExtensionRegistry::getInstance()->isLoaded( 'Video' ) &&
 			(
-				strpos( $cosmosNavigationMessage, '{$NEWVIDEOS_CONDITIONAL}' ) !== false ||
-				strpos( $cosmosNavigationMessage, '{$NEWVIDEOS}' ) !== false
+				strpos( $navigation, '{$NEWVIDEOS_CONDITIONAL}' ) !== false ||
+				strpos( $navigation, '{$NEWVIDEOS}' ) !== false
 			)
 		) {
 			$exploreChildURL = '**' . htmlspecialchars( Title::newFromText( 'NewVideos', NS_SPECIAL ) ) . '|';
 			$exploreChildText = 'newvideos';
 
-			if ( strpos( $cosmosNavigationMessage, '{$WANTEDPAGES_FORCE}' ) !== false ) {
+			if ( strpos( $navigation, '{$WANTEDPAGES_FORCE}' ) !== false ) {
 				$forceExploreChildURL = "\n**" .
 					htmlspecialchars( Title::newFromText( 'WantedPages', NS_SPECIAL ) ) . '|';
 				$forceExploreChildText = 'wantedpages';
 			}
 		} elseif (
-			strpos( $cosmosNavigationMessage, '{$WANTEDPAGES_CONDITIONAL}' ) !== false ||
-			strpos( $cosmosNavigationMessage, '{$WANTEDPAGES}' ) !== false
+			strpos( $navigation, '{$WANTEDPAGES_CONDITIONAL}' ) !== false ||
+			strpos( $navigation, '{$WANTEDPAGES}' ) !== false
 		) {
 			$exploreChildURL = '**' . htmlspecialchars( Title::newFromText( 'WantedPages', NS_SPECIAL ) ) . '|';
 			$exploreChildText = 'wantedpages';
@@ -402,14 +402,14 @@ class CosmosNavigation implements ExpirationAwareness {
 			'/(\{\$NEWVIDEOS\})|(\{\$WANTEDPAGES\})|(\{\$NEWVIDEOS_CONDITIONAL\})' .
 				'|(\{\$WANTEDPAGES_CONDITIONAL\})|(\{\$WANTEDPAGES_FORCE\})/',
 			'',
-			$cosmosNavigationMessage
+			$navigation
 		);
 
 		$message = trim(
 			$cleanedMsg . $exploreChildURL . $exploreChildText . $forceExploreChildURL . $forceExploreChildText
 		);
 
-		if ( $this->messageLocalizer->msg( $messageKey, $message )->exists() ) {
+		if ( $message !== '' && $message !== '-' ) {
 			$lines = explode( "\n", $message );
 
 			if ( count( $lines ) > 0 ) {

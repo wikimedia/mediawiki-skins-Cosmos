@@ -7,6 +7,10 @@ use ALRow;
 use ALSection;
 use ALTree;
 use Config;
+use Content;
+use EditPage;
+use Html;
+use MediaWiki\Hook\AlternateEditPreviewHook;
 use MediaWiki\Hook\GetDoubleUnderscoreIDsHook;
 use MediaWiki\Hook\OutputPageBodyAttributesHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
@@ -21,13 +25,104 @@ use Sanitizer;
 use Skin;
 use Title;
 use User;
+use WikitextContent;
 
 class CosmosHooks implements
+	AlternateEditPreviewHook,
 	GetDoubleUnderscoreIDsHook,
 	GetPreferencesHook,
 	OutputPageBodyAttributesHook,
 	OutputPageParserOutputHook
 {
+
+	/**
+	 * @param EditPage $editPage
+	 * @param Content &$content
+	 * @param string &$previewHTML
+	 * @param ParserOutput &$parserOutput
+	 * @return bool
+	 */
+	public function onAlternateEditPreview(
+		$editPage,
+		&$content,
+		&$previewHTML,
+		&$parserOutput
+	): bool {
+		$context = $editPage->getContext();
+		$skin = $context->getSkin();
+		$out = $context->getOutput();
+
+		if (
+			!( $skin instanceof SkinCosmos ) ||
+			!( $content instanceof WikitextContent ) ||
+			!$editPage->getTitle()->equals( Title::newFromText( 'Cosmos-navigation', NS_MEDIAWIKI ) )
+		) {
+			return true;
+		}
+
+		$pageText = trim( $content->getText() );
+
+		if ( $pageText === '' || $pageText === '-' ) {
+			return true;
+		}
+
+		$out->enableOOUI();
+
+		$conflict = '';
+		if ( $editPage->isConflict ) {
+			$conflict = Html::rawElement(
+				'div',
+				[
+					'id' => 'mw-previewconflict',
+					'class' => 'warningbox'
+				],
+				$context->msg( 'previewconflict' )->escaped()
+			);
+		}
+
+		$previewnote = $context->msg( 'previewnote' )->plain() .
+			' <span class="mw-continue-editing">' .
+			'[[#' . EditPage::EDITFORM_ID . '|' .
+			$context->getLanguage()->getArrow() . ' ' .
+			$context->msg( 'continue-editing' )->text() . ']]</span>';
+
+		$previewHTML = Html::rawElement(
+			'div',
+			[ 'class' => 'previewnote' ],
+			Html::rawElement(
+				'h2',
+				[ 'id' => 'mw-previewheader' ],
+				$context->msg( 'preview' )->escaped()
+			) .
+			Html::rawElement(
+				'div',
+				[ 'class' => 'warningbox' ],
+				$out->parseAsInterface( $previewnote )
+			) . $conflict
+		);
+
+		$cosmosNavigation = new CosmosNavigation( $context );
+
+		$previewHTML .= Html::openElement(
+			'header',
+			[ 'class' => 'cosmos-header' ]
+		);
+
+		$previewHTML .= Html::openElement(
+			'nav',
+			[ 'class' => 'cosmos-header__local-navigation navigation-preview' ]
+		);
+
+		$previewHTML .= Html::openElement( 'ul', [ 'class' => 'wds-tabs' ] );
+		$previewHTML .= $cosmosNavigation->getMenu( CosmosNavigation::extract( $pageText ) );
+		$previewHTML .= Html::closeElement( 'ul' );
+
+		$previewHTML .= Html::closeElement( 'nav' );
+		$previewHTML .= Html::closeElement( 'header' );
+
+		return false;
+	}
+
 	/**
 	 * @see https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:Hooks/GetDoubleUnderscoreIDs
 	 * @param array &$doubleUnderscoreIDs
