@@ -10,7 +10,9 @@ use Config;
 use Content;
 use EditPage;
 use Html;
+use MediaWiki;
 use MediaWiki\Hook\AlternateEditPreviewHook;
+use MediaWiki\Hook\BeforeInitializeHook;
 use MediaWiki\Hook\GetDoubleUnderscoreIDsHook;
 use MediaWiki\Hook\OutputPageBodyAttributesHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
@@ -25,10 +27,12 @@ use Sanitizer;
 use Skin;
 use Title;
 use User;
+use WebRequest;
 use WikitextContent;
 
 class CosmosHooks implements
 	AlternateEditPreviewHook,
+	BeforeInitializeHook,
 	GetDoubleUnderscoreIDsHook,
 	GetPreferencesHook,
 	OutputPageBodyAttributesHook,
@@ -121,6 +125,23 @@ class CosmosHooks implements
 		$previewHTML .= Html::closeElement( 'header' );
 
 		return false;
+	}
+
+	/**
+	 * @param Title $title
+	 * @param null $unused
+	 * @param OutputPage $output
+	 * @param User $user
+	 * @param WebRequest $request
+	 * @param MediaWiki $mediaWiki
+	 */
+	public function onBeforeInitialize( $title, $unused, $output, $user, $request, $mediaWiki ) {
+		if (
+			( $output->getSkin() instanceof SkinCosmos ) &&
+			$title->equals( Title::newFromText( 'Cosmos-navigation', NS_MEDIAWIKI ) )
+		) {
+			$request->setVal( 'wteswitched', '1' );
+		}
 	}
 
 	/**

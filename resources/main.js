@@ -81,4 +81,14 @@
 
 	// On window resize, update the footer height if necessary
 	$( window ).on( 'resize', updateFooterHeight );
+
+	$( function () {
+		if (
+			mw.config.get( 'wgVisualEditorConfig' ) &&
+			mw.config.get( 'wgVisualEditorConfig' ).enableWikitext &&
+			mw.config.get( 'wgPageName' ) === 'MediaWiki:Cosmos-navigation'
+		) {
+			mw.config.values.wgVisualEditorConfig.enableWikitext = false;
+		}
+	} );
 }( jQuery, mediaWiki ) );

@@ -491,6 +491,9 @@
 		"AlternateEditPreview": {
 			"handler": "CosmosHookHandlers"
 		},
+		"BeforeInitialize": {
+			"handler": "CosmosHookHandlers"
+		},
 		"GetDoubleUnderscoreIDs": {
 			"handler": "CosmosHookHandlers"
 		},
