@@ -12,7 +12,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.36.0"
+		"MediaWiki": ">= 1.37.0"
 	},
 	"ValidSkinNames": {
 		"cosmos": {
@@ -144,7 +144,7 @@
 		"skins.cosmos.search": {
 			"dependencies": [
 				"mediawiki.Uri",
-				"wvui"
+				"wvui-search"
 			],
 			"packageFiles": [
 				"resources/search/skins.cosmos.search.js",

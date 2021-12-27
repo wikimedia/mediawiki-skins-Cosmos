@@ -10,6 +10,7 @@
 		:title="searchTitle"
 		:placeholder="searchPlaceholder"
 		:aria-label="searchPlaceholder"
+		:search-page-title="searchPageTitle"
 		:initial-input-value="searchQuery"
 		:button-label="$i18n( 'searchbutton' ).text()"
 		:form-action="action"
@@ -19,13 +20,13 @@
 	>
 		<input type="hidden"
 			name="title"
-			value="Special:Search"
+			:value="searchPageTitle"
 		>
 	</wvui-typeahead-search>
 </template>
 
 <script>
-var wvui = require( 'wvui' );
+var wvui = require( 'wvui-search' );
 
 module.exports = {
 	name: 'App',
@@ -85,6 +86,10 @@ module.exports = {
 		}
 	},
 	props: {
+		searchPageTitle: {
+			type: String,
+			default: 'Special:Search'
+		},
 		autofocusInput: {
 			type: Boolean,
 			default: false
