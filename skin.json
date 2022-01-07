@@ -87,8 +87,8 @@
 			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
 			"features": {
 				"content-links": true,
+				"content-media": true,
 				"content-tables": true,
-				"content-thumbnails": true,
 				"elements": true,
 				"interface": true,
 				"interface-category": true,
@@ -172,6 +172,10 @@
 		},
 		"skins.cosmos.portableinfobox": {
 			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"features": {
+				"content-body": false,
+				"toc": false
+			},
 			"targets": [
 				"desktop",
 				"mobile"
@@ -184,6 +188,10 @@
 		},
 		"skins.cosmos.portableinfobox.default": {
 			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"features": {
+				"content-body": false,
+				"toc": false
+			},
 			"targets": [
 				"desktop",
 				"mobile"
@@ -194,6 +202,10 @@
 		},
 		"skins.cosmos.portableinfobox.europa": {
 			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"features": {
+				"content-body": false,
+				"toc": false
+			},
 			"targets": [
 				"desktop",
 				"mobile"
@@ -204,6 +216,10 @@
 		},
 		"skins.cosmos.socialprofile": {
 			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"features": {
+				"content-body": false,
+				"toc": false
+			},
 			"targets": [
 				"desktop",
 				"mobile"
@@ -216,6 +232,10 @@
 		},
 		"skins.cosmos.profiletabs": {
 			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"features": {
+				"content-body": false,
+				"toc": false
+			},
 			"targets": [
 				"desktop",
 				"mobile"
@@ -228,6 +248,10 @@
 		},
 		"skins.cosmos.profileavatar": {
 			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"features": {
+				"content-body": false,
+				"toc": false
+			},
 			"targets": [
 				"desktop",
 				"mobile"
@@ -240,6 +264,10 @@
 		},
 		"skins.cosmos.profileeditcount": {
 			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"features": {
+				"content-body": false,
+				"toc": false
+			},
 			"targets": [
 				"desktop",
 				"mobile"
@@ -252,6 +280,10 @@
 		},
 		"skins.cosmos.profiletags": {
 			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"features": {
+				"content-body": false,
+				"toc": false
+			},
 			"targets": [
 				"desktop",
 				"mobile"
@@ -264,6 +296,10 @@
 		},
 		"skins.cosmos.profilebio": {
 			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"features": {
+				"content-body": false,
+				"toc": false
+			},
 			"targets": [
 				"desktop",
 				"mobile"
@@ -276,6 +312,10 @@
 		},
 		"skins.cosmos.codemirror": {
 			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"features": {
+				"content-body": false,
+				"toc": false
+			},
 			"targets": [
 				"desktop",
 				"mobile"
