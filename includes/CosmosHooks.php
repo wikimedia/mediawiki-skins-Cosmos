@@ -163,7 +163,7 @@ class CosmosHooks implements
 			'help-message' => 'cosmos-mobile-preference',
 			'label-message' => 'prefs-cosmos-responsiveness',
 			'section' => 'rendering/skin/skin-prefs',
-			'hide-if' => [ '!==', 'wpskin', 'cosmos' ],
+			'hide-if' => [ '!==', 'skin', 'cosmos' ],
 		];
 	}
 
