@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Khun Kt"
+		]
+	},
+	"cosmos-anonymous": "သေတဝ်းအမိဉ်ꩻ",
+	"cosmos-counter-label": "{{PLURAL:$1|ရောမ်ဖြုဲင်ꩻ|ရောမ်ဖြုဲင်ꩻဖိုင်ႏ}}",
+	"cosmos-createpage-header": "ဖန်ဆင်ꩻ ရောမ်ဖြုဲင်ꩻတသာ",
+	"cosmos-createpage-input-label": "တဲမ်းသွော့ နာꩻလိတ်မဲ့ငါကတူႏစဲဉ်ႏ ယိုကိုသြ:",
+	"cosmos-createpage-next": "ထဲင်းယင်း",
+	"cosmos-personaltools-userpage": "ကေားသုင်ꩻသား လိတ်မဲ့ငါ",
+	"cosmos-personaltools-usertalk": "ကေားသုင်ꩻသား အိုင်ကိုမ်ချက်",
+	"cosmos-personaltools-anontalk": "ခွေသွဉ်း အိုင်ကိုမ်ဒေါ့ꩻရီချက်",
+	"cosmos-action-addsection": "အကျောင်ꩻခရာႏတသာ",
+	"cosmos-action-cancel": "မာꩻတဝ်းဒွုမ်",
+	"cosmos-action-backtopage": "သဲင်ꩻချာ $1 ထျꩻ",
+	"cosmos-action-back": "သဲင်ꩻချာ",
+	"cosmos-add-new-image": "သော့ꩻပုင်ႏတသာ",
+	"cosmos-add-new-video": "သော့ꩻဗီဒီယိုတသာ",
+	"cosmos-add-new-page-title": "သော့ꩻလိတ်မဲ့ငါတသာ",
+	"cosmos-add-new-page-text": "ထဲမ်သော့ꩻ",
+	"cosmos-anon-add-new-page-text": "ထဲမ်သော့ꩻလိတ်မဲ့ငါတသာ",
+	"cosmos-explore": "ထိုမ်ႏလွူꩻထွား",
+	"cosmos-newfiles": "ဖုဲင်တသာ",
+	"cosmos-user-blocked": "ပေ့ꩻဗိဉ်ႏခါꩻလဲဉ်း",
+	"cosmos-themedesigner-help-3": "ဗဟိုႏအခံႏဆꩻချာဖဲ့ꩻ အရောင်ႏ။"
+}
