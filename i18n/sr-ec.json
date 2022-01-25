@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kizule"
+		]
+	},
+	"cosmos-anonymous": "Анонимно",
+	"cosmos-personaltools-userpage": "Корисничка страница",
+	"cosmos-personaltools-usertalk": "Корисничка страница за разговор",
+	"cosmos-personaltools-anontalk": "Моја страница за разговор",
+	"cosmos-action-addsection": "Нова тема",
+	"cosmos-action-cancel": "Откажи",
+	"cosmos-action-backtopage": "Назад на $1",
+	"cosmos-action-back": "Назад",
+	"cosmos-add-new-image": "Додај нову слику",
+	"cosmos-add-new-video": "Додај нов видео",
+	"cosmos-add-new-page-title": "Додај нову страницу",
+	"cosmos-add-new-page-text": "Додај",
+	"cosmos-anon-add-new-page-text": "Додај нову страницу",
+	"cosmos-explore": "Истражи",
+	"cosmos-newfiles": "Нове датотеке"
+}
