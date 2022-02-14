@@ -9,7 +9,7 @@
 		]
 	},
 	"skinname-cosmos": "Cosmos",
-	"cosmos-desc": "Cosmos est un habillage conçu et basé sur l’habillage Oasis de Fandom. Conçu pour améliorer son look et fournir un habillage MediaWiki efficient pour les utilisateurs non Fandom ou pour les utilisateurs ayant quitté Fandom.",
+	"cosmos-desc": "Cosmos est un habillage conçu et basé sur l’habillage Oasis de Fandom. Conçu pour améliorer son look et fournir un habillage MediaWiki efficace pour les non-utilisateurs de Fandom ou pour les utilisateurs passant à autre chose que Fandom.",
 	"cosmos-anonymous": "Anonyme",
 	"cosmos-counter-label": "Article{{PLURAL:$1||s}}",
 	"cosmos-createpage-header": "Créer un nouvel article",
