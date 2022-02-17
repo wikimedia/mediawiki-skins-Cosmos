@@ -218,7 +218,8 @@ class CosmosHooks implements
 				$out->setProperty( 'additionalBodyClass', $parserProperty );
 			}
 		} else {
-			if ( $parserOutput->getPageProperty( 'norail' ) !== false ) {
+			// T301915
+			if ( ( $parserOutput->getPageProperty( 'norail' ) ?? false ) !== false ) {
 				$out->setProperty( 'norail', true );
 			}
 
