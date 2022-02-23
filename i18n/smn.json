@@ -4,10 +4,20 @@
 			"Seipinne"
 		]
 	},
+	"cosmos-anonymous": "Anonyym",
+	"cosmos-counter-label": "{{PLURAL:$1|artikkâl|artikkâlid}}",
+	"cosmos-createpage-header": "Räähti uđđâ artikkâl",
+	"cosmos-createpage-input-label": "Čääli siijđo noomâ taas:",
 	"cosmos-createpage-next": "Čuávuvâš",
 	"cosmos-personaltools-userpage": "Kevtteesijđo",
+	"cosmos-personaltools-usertalk": "Savâstâllâm kevttest",
+	"cosmos-personaltools-anontalk": "Savâstâllâmsijđom",
 	"cosmos-action-addsection": "Uđđâ fáddá",
 	"cosmos-action-cancel": "Jooskâ",
+	"cosmos-action-back": "Maassâd",
+	"cosmos-add-new-page-title": "Lasseet uđđâ siijđo",
 	"cosmos-add-new-page-text": "Lasseet",
-	"cosmos-anon-add-new-page-text": "Lasseet uđđâ siijđo"
+	"cosmos-anon-add-new-page-text": "Lasseet uđđâ siijđo",
+	"cosmos-user-blocked": "Estum",
+	"cosmos-search-loader": "Luođđiimin uuccâmiävtuttâsâid"
 }
