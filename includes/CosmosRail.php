@@ -6,7 +6,7 @@ use Html;
 use IContextSource;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Special\SpecialPageFactory;
+use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserFactory;
 use MWTimestamp;
 use TitleValue;
