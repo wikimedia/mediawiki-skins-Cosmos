@@ -4,16 +4,21 @@
 			"Al Riaz Uddin Ripon",
 			"YahyA",
 			"Yahya",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"MdsShakil",
+			"খাত্তাব হাসান"
 		]
 	},
+	"cosmos-desc": "কসমস হল ফ্যানডমের মরুদ্যান ত্বকের উপর ভিত্তি করে ডিজাইন করা একটি আবরণ। তাদের ডিজাইনে উন্নতি করার জন্য ডিজাইন করা হয়েছে, এবং নন-ফ্যানডম ব্যবহারকারীদের জন্য বা ফ্যানডম থেকে ট্রানজিশন করা ব্যবহারকারীদের জন্য একটি উন্নত মিডিয়াউইকি আবরণ প্রদান করা হয়েছে।",
 	"cosmos-anonymous": "অজ্ঞাত",
+	"cosmos-counter-label": "টি {{PLURAL:$1|নিবন্ধ}}",
 	"cosmos-createpage-header": "নতুন নিবন্ধ তৈরি করুন",
 	"cosmos-createpage-input-label": "আপনার পাতাটির শিরোনাম এখানে লিখুন",
 	"cosmos-createpage-next": "পরবর্তী",
 	"cosmos-personaltools-userpage": "ব্যবহারকারী পাতা",
 	"cosmos-personaltools-usertalk": "ব্যবহারকারী আলাপ",
 	"cosmos-personaltools-anontalk": "আমার আলোচনা",
+	"cosmos-editcount-label": "এই উইকিতে যোগদানের পর থেকে সম্পাদনা",
 	"cosmos-action-addsection": "নতুন প্রসঙ্গ",
 	"cosmos-action-cancel": "বাতিল",
 	"cosmos-action-backtopage": "$1 এ ফেরত যান",
@@ -25,5 +30,12 @@
 	"cosmos-anon-add-new-page-text": "নতুন পাতা যোগ করুন",
 	"cosmos-explore": "অনুসন্ধান",
 	"cosmos-newfiles": "নতুন ফাইল",
-	"cosmos-user-blocked": "বাধাপ্রাপ্ত"
+	"prefs-cosmos-responsiveness": "কসমসের জন্য মোবাইল প্রতিক্রিয়াশীলতা",
+	"cosmos-mobile-preference": "কসমস আবরণের জন্য মোবাইল প্রতিক্রিয়াশীল সংস্করণ সক্ষম করুন",
+	"cosmos-user-blocked": "বাধাপ্রাপ্ত",
+	"cosmos-themedesigner-success": "কসমসের কনফিগারেশন সফলভাবে হালনাগাদ করা হয়েছে।",
+	"themedesigner": "থিম ডিজাইনার",
+	"right-themedesigner": "কসমস থিমডিজাইনার ব্যবহার",
+	"action-themedesigner": "কসমস থিমডিজাইনার ব্যবহার করুন",
+	"cosmos-themedesigner-help-15": "স্থির ব্যাকগ্রাউন্ড চিত্র?"
 }
