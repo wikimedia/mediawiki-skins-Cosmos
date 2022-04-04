@@ -15,7 +15,7 @@
 	"cosmos-createpage-input-label": "在此填寫您的頁面標題：",
 	"cosmos-createpage-next": "下一步",
 	"cosmos-createpage-text": "我們目前在$2上擁有'''$1'''{{PLURAL:$1|個頁面}}。請在上方輸入您的頁面名稱$3",
-	"cosmos-createpage-wanted-pages": "或點擊以下任意標題來開始撰寫頁面！",
+	"cosmos-createpage-wanted-pages": "或點擊以下任意標題來開始編寫頁面！",
 	"cosmos-createpage-no-wanted-pages": "或建立[[$1|此處]]所列的頁面之一！",
 	"cosmos-personaltools-userpage": "使用者頁面",
 	"cosmos-personaltools-usertalk": "使用者討論",

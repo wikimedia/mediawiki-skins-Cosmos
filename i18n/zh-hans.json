@@ -19,7 +19,7 @@
 	"cosmos-createpage-input-label": "在此填写您的页面标题：",
 	"cosmos-createpage-next": "下一步",
 	"cosmos-createpage-text": "我们当前在$2上拥有'''$1'''{{PLURAL:$1|个页面}}。请在上方输入您的页面名称$3",
-	"cosmos-createpage-wanted-pages": "或点击以下任意标题来开始撰写页面！",
+	"cosmos-createpage-wanted-pages": "或点击以下任意标题来开始编写页面！",
 	"cosmos-createpage-no-wanted-pages": "或创建[[$1|此处]]所列的页面之一！",
 	"cosmos-personaltools-userpage": "用户页",
 	"cosmos-personaltools-usertalk": "用户讨论",
