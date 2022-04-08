@@ -6,7 +6,7 @@
 	},
 	"cosmos-adminlinks-edit-navigation": "Mute navigistem",
 	"cosmos-anonymous": "Anonyym",
-	"cosmos-counter-label": "{{PLURAL:$1|artikkâl|artikkâlid}}",
+	"cosmos-counter-label": "{{PLURAL:$1|artikkâl|artikkâl|artikkâl|artikkâlid}}",
 	"cosmos-createpage-header": "Räähti uđđâ artikkâl",
 	"cosmos-createpage-input-label": "Čääli siijđo noomâ taas:",
 	"cosmos-createpage-next": "Čuávuvâš",
