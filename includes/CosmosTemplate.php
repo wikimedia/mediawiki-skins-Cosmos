@@ -254,7 +254,7 @@ class CosmosTemplate extends BaseTemplate {
 				$this->config->get( 'CosmosEnableWantedPages' ) ?
 					$this->getMsg( 'cosmos-createpage-wanted-pages' )->text() :
 					$this->getMsg( 'cosmos-createpage-no-wanted-pages',
-						SpecialPage::getTitleFor( 'WantedPages' )
+						SpecialPage::getTitleFor( 'Wantedpages' )
 					)->text()
 			)->parse()
 		);
@@ -1407,7 +1407,7 @@ class CosmosTemplate extends BaseTemplate {
 					if ( substr( $key, 0, 6 ) === 'nstab-' ) {
 						$view = $tab;
 					} elseif ( substr( $key, 0, 8 ) !== 'varlang-' ) {
-						if ( stripos( $tab['class'], 'selected' ) === false ) {
+						if ( stripos( $tab['class'] ?? '', 'selected' ) === false ) {
 							$dropdown[$key] = $tab;
 						} else {
 							if ( $key === 'history' ) {
