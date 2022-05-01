@@ -1189,6 +1189,9 @@ class CosmosTemplate extends BaseTemplate {
 					$variantLinks .= Html::rawElement(
 						'li', [
 							'class' => [
+								$module['class'] ?? '',
+								'ca-variants-' . $module['hreflang'],
+								'mw-list-item',
 								'wds-tabs__tab',
 								'variant-link',
 								'variant-' . $module['hreflang'],
