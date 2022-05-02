@@ -7,7 +7,8 @@
 			"Okras",
 			"WerySkok",
 			"Alexandr Efremov",
-			"Urfiner"
+			"Urfiner",
+			"Rairakkumee"
 		]
 	},
 	"skinname-cosmos": "Cosmos",
@@ -24,7 +25,7 @@
 	"cosmos-editcount-label": "Правок после регистрации на этой вики",
 	"cosmos-action-addsection": "Новая тема",
 	"cosmos-action-cancel": "Отмена",
-	"cosmos-action-backtopage": "Вернуться к $1",
+	"cosmos-action-backtopage": "Назад к разделу «$1»",
 	"cosmos-action-back": "Назад",
 	"cosmos-add-new-image": "Добавить новое изображение",
 	"cosmos-add-new-video": "Добавить новое видео",
@@ -48,11 +49,13 @@
 	"cosmos-themedesigner-help-6": "Цвет ссылок.",
 	"cosmos-themedesigner-help-7": "Цвет фона нижнего колонтитула.",
 	"cosmos-themedesigner-help-8": "Цвет фона панели инструментов",
-	"cosmos-themedesigner-help-9": "Полный URL-адрес для текстовой метке",
+	"cosmos-themedesigner-help-9": "Полный URL-адрес для логотипа.",
 	"cosmos-themedesigner-help-10": "Фоновое изображение заголовка навигации вики.",
 	"cosmos-themedesigner-help-11": "Основное фоновое изображение.",
 	"cosmos-themedesigner-help-12": "Уровень прозрачности области содержимого (в процентах)",
 	"cosmos-themedesigner-help-13": "Размер основного фона",
 	"cosmos-themedesigner-help-14": "Повторять фоновое изображение?",
-	"cosmos-themedesigner-help-15": "Фиксированное фоновое изображение?"
+	"cosmos-themedesigner-help-15": "Фиксированное фоновое изображение?",
+	"cosmos.css": "/* Весь размещённый здесь код CSS будет загружен для пользователей темы оформления Cosmos */",
+	"cosmos.js": "/* Весь размещённый здесь код JavaScript будет загружен для пользователей темы оформления Cosmos */"
 }
