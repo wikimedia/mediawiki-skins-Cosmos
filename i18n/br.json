@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Huñvreüs"
+		]
+	},
+	"cosmos-adminlinks-edit-navigation": "Kemmañ merdeerezh",
+	"cosmos-adminlinks-edit-tagline": "Kemmañ lugan",
+	"cosmos-anonymous": "Dizanv",
+	"cosmos-counter-label": "{{PLURAL:$1|Pennad|Pennadoù}}",
+	"cosmos-createpage-header": "Krouiñ ur pennad nevez",
+	"cosmos-createpage-input-label": "Skrivit titl ho pajenn amañ:",
+	"cosmos-createpage-next": "War-lerc'h",
+	"cosmos-personaltools-userpage": "Pajenn implijer",
+	"cosmos-personaltools-usertalk": "Kaozeadenn an implijer",
+	"cosmos-personaltools-anontalk": "Ma c’haozeadennoù",
+	"cosmos-action-addsection": "Kaoz nevez",
+	"cosmos-action-cancel": "Nullañ",
+	"cosmos-action-backtopage": "Distreiñ da $1",
+	"cosmos-action-back": "Distreiñ",
+	"cosmos-add-new-image": "Ouzhpennañ ur skeudenn nevez",
+	"cosmos-add-new-video": "Ouzhpennañ ur video nevez",
+	"cosmos-add-new-page-title": "Ouzhpennañ ur bajenn nevez",
+	"cosmos-add-new-page-text": "Ouzhpennañ",
+	"cosmos-anon-add-new-page-text": "Ouzhpennañ ur bajenn nevez",
+	"cosmos-newfiles": "Restroù nevez",
+	"cosmos-user-blocked": "Stanket",
+	"cosmos-search-loader": "O kargañ alioù klask",
+	"cosmos-article-header-categories-in": "e-barzh:",
+	"cosmos-article-header-categories-more": "ha {{FORMATNUM:$1}} ouzhpenn",
+	"themedesigner": "Aozer tem",
+	"cosmos-themedesigner-help-6": "Liv al liammoù"
+}
