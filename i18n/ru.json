@@ -8,7 +8,8 @@
 			"Okras",
 			"Urfiner",
 			"WerySkok",
-			"Rairakkumee"
+			"Rairakkumee",
+			"Pacha Tchernof"
 		]
 	},
 	"skinname-cosmos": "Cosmos",
@@ -51,7 +52,7 @@
 	"cosmos-themedesigner-help-6": "Цвет ссылок.",
 	"cosmos-themedesigner-help-7": "Цвет фона нижнего колонтитула.",
 	"cosmos-themedesigner-help-8": "Цвет фона панели инструментов",
-	"cosmos-themedesigner-help-9": "Полный URL-адрес для логотипа.",
+	"cosmos-themedesigner-help-9": "Полный URL-адрес для текстового логотипа.",
 	"cosmos-themedesigner-help-10": "Фоновое изображение заголовка навигации вики.",
 	"cosmos-themedesigner-help-11": "Основное фоновое изображение.",
 	"cosmos-themedesigner-help-12": "Уровень прозрачности области содержимого (в процентах)",
