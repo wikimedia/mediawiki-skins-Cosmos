@@ -41,5 +41,9 @@
 	"themedesigner": "Temadesigner",
 	"right-themedesigner": "Bruke Cosmos' temadesigner",
 	"action-themedesigner": "bruke Cosmos' temadesigner",
-	"cosmos-themedesigner-help-1": "Bakgrunnsfarge for det personlige navigasjonsbanneret."
+	"cosmos-themedesigner-help-1": "Bakgrunnsfarge for det personlige navigasjonsbanneret.",
+	"cosmos-themedesigner-help-3": "Hovedbakgrunnsfarge.",
+	"cosmos-themedesigner-help-4": "Bakgrunnsfargen til hovedinnholdsområdet.",
+	"cosmos-themedesigner-help-5": "Bakgrunnsfarge for knapper.",
+	"cosmos-themedesigner-help-6": "Fargen til lenker."
 }
