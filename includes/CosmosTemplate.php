@@ -1262,7 +1262,8 @@ class CosmosTemplate extends BaseTemplate {
 				$interlangLabel = $this->getMsg( 'otherlanguages' )->text();
 				$pageLanguage = $title->getPageLanguage()->getCode();
 
-				if ( $title->getNamespace() == NS_SPECIAL ) {
+				// Fix cases including special pages and Scribunto Lua module pages
+				if ( $title->getNamespace() == NS_SPECIAL || !( $title->hasContentModel( CONTENT_MODEL_WIKITEXT ) ) ) {
 					$pageLanguage = $this->contentLanguage->getCode();
 				}
 
