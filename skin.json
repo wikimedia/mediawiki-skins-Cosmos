@@ -1,9 +1,8 @@
 {
 	"name": "Cosmos",
-	"version": "6.6.5",
+	"version": "6.6.6",
 	"author": [
 		"Universal Omega",
-		"SamanthaNguyen",
 		"..."
 	],
 	"url": "https://www.mediawiki.org/wiki/Skin:Cosmos",
@@ -12,7 +11,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.37.0"
+		"MediaWiki": ">= 1.38.0"
 	},
 	"ValidSkinNames": {
 		"cosmos": {

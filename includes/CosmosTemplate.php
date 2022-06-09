@@ -1882,7 +1882,10 @@ class CosmosTemplate extends BaseTemplate {
 
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'CookieWarning' ) ) {
 			// @phan-suppress-next-line PhanUndeclaredClassMethod
-			$html .= CookieWarningHooks::onSkinAfterContent( $html, $skin );
+			$cookieWarningHooks = new CookieWarningHooks();
+
+			// @phan-suppress-next-line PhanUndeclaredClassMethod
+			$html .= $cookieWarningHooks->onSkinAfterContent( $html, $skin );
 		}
 
 		return $html;

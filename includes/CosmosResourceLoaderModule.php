@@ -15,6 +15,7 @@ class CosmosResourceLoaderModule extends ResourceLoaderSkinModule {
 	/**
 	 * @inheritDoc
 	 *
+	 * @suppress PhanParamSignatureRealMismatchParamType
 	 * @param ResourceLoaderContext $context
 	 * @return array
 	 */
@@ -45,6 +46,7 @@ class CosmosResourceLoaderModule extends ResourceLoaderSkinModule {
 	/**
 	 * @inheritDoc
 	 *
+	 * @suppress PhanParamSignatureRealMismatchParamType
 	 * @param ResourceLoaderContext $context
 	 * @return array
 	 */

@@ -1,4 +1,6 @@
-The Cosmos skin is written by Universal Omega and SamanthaNguyen.
+The Cosmos skin is written and maintained by Universal Omega.
+
+SamanthaNguyen and others have also contributed to the development of the Cosmos skin.
 
 Portions of the skin are based on the Onyx skin (https://www.mediawiki.org/wiki/Skin:Onyx),
 released under the GNU General Public License, version 2 or later, by Daniel Beard, Jack Phoenix
