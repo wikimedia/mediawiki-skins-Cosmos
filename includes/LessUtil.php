@@ -89,6 +89,10 @@ class LessUtil {
 
 		$backgroundColor = $cosmosSettings[$background];
 
+		if ( strtolower( $backgroundColor ) === 'transparent' ) {
+			return false;
+		}
+
 		// convert RGB to HSL
 		list( $hue, $saturation, $lightness ) = self::rgb2hsl( $backgroundColor );
 
