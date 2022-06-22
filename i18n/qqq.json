@@ -40,8 +40,6 @@
 	"cosmos-explore": "The header for the explore tab in the navigation.\n\n{{Identical|Explore}}",
 	"cosmos-newfiles": "New files label.",
 	"cosmos-navigation": "{{notranslate}}",
-	"prefs-cosmos-responsiveness": "The label for the Mobile Responsiveness for Cosmos section in Special:Preferences.",
-	"cosmos-mobile-preference": "The checkbox label for the mobile responsiveness toggle in Special:Preferences",
 	"cosmos-user-blocked": "The text used to show a user is blocked on social profile Pages' avatar area.\n\n{{Identical|Blocked}}",
 	"cosmos-search-loader": "Text to display below search input while the search suggestion module is loading",
 	"cosmos-article-header-categories-in": "Label displayed before list of categories that given article belongs to",

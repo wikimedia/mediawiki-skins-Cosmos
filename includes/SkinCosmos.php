@@ -11,8 +11,6 @@ use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserFactory;
-use MediaWiki\User\UserOptionsLookup;
-use OutputPage;
 use SkinTemplate;
 use TitleFactory;
 use WANObjectCache;
@@ -49,9 +47,6 @@ class SkinCosmos extends SkinTemplate {
 	/** @var UserFactory */
 	public $userFactory;
 
-	/** @var UserOptionsLookup */
-	public $userOptionsLookup;
-
 	/** @var CosmosWordmarkLookup */
 	public $wordmarkLookup;
 
@@ -67,7 +62,6 @@ class SkinCosmos extends SkinTemplate {
 	 * @param SpecialPageFactory $specialPageFactory
 	 * @param TitleFactory $titleFactory
 	 * @param UserFactory $userFactory
-	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param array $options
 	 */
 	public function __construct(
@@ -82,7 +76,6 @@ class SkinCosmos extends SkinTemplate {
 		SpecialPageFactory $specialPageFactory,
 		TitleFactory $titleFactory,
 		UserFactory $userFactory,
-		UserOptionsLookup $userOptionsLookup,
 		array $options
 	) {
 		parent::__construct( $options );
@@ -97,25 +90,7 @@ class SkinCosmos extends SkinTemplate {
 		$this->specialPageFactory = $specialPageFactory;
 		$this->titleFactory = $titleFactory;
 		$this->userFactory = $userFactory;
-		$this->userOptionsLookup = $userOptionsLookup;
 		$this->wordmarkLookup = $cosmosWordmarkLookup;
-	}
-
-	/**
-	 * @param OutputPage $out
-	 */
-	public function initPage( OutputPage $out ) {
-		if (
-			$this->userOptionsLookup->getBoolOption(
-				$this->getUser(), 'cosmos-mobile-responsiveness'
-			)
-		) {
-			$out->addMeta(
-				'viewport',
-				'width=device-width, initial-scale=1.0, ' .
-				'user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0'
-			);
-		}
 	}
 
 	/**

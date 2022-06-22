@@ -17,7 +17,6 @@ use MediaWiki\Hook\GetDoubleUnderscoreIDsHook;
 use MediaWiki\Hook\OutputPageBodyAttributesHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use ObjectCache;
 use OutputPage;
 use Parser;
@@ -34,7 +33,6 @@ class CosmosHooks implements
 	AlternateEditPreviewHook,
 	BeforeInitializeHook,
 	GetDoubleUnderscoreIDsHook,
-	GetPreferencesHook,
 	OutputPageBodyAttributesHook,
 	OutputPageParserOutputHook
 {
@@ -150,21 +148,6 @@ class CosmosHooks implements
 	 */
 	public function onGetDoubleUnderscoreIDs( &$doubleUnderscoreIDs ) {
 		$doubleUnderscoreIDs[] = 'norail';
-	}
-
-	/**
-	 * @see https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:Hooks/GetPreferences
-	 * @param User $user
-	 * @param array &$preferences
-	 */
-	public function onGetPreferences( $user, &$preferences ) {
-		$preferences['cosmos-mobile-responsiveness'] = [
-			'type' => 'check',
-			'help-message' => 'cosmos-mobile-preference',
-			'label-message' => 'prefs-cosmos-responsiveness',
-			'section' => 'rendering/skin/skin-prefs',
-			'hide-if' => [ '!==', 'skin', 'cosmos' ],
-		];
 	}
 
 	/**

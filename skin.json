@@ -28,11 +28,11 @@
 				"PermissionManager",
 				"SpecialPageFactory",
 				"TitleFactory",
-				"UserFactory",
-				"UserOptionsLookup"
+				"UserFactory"
 			],
 			"args": [ {
 				"name": "cosmos",
+				"responsive": true,
 				"template": "MediaWiki\\Skin\\Cosmos\\CosmosTemplate",
 				"styles": [
 					"skins.cosmos.styles"
@@ -536,9 +536,6 @@
 		"GetDoubleUnderscoreIDs": {
 			"handler": "CosmosHookHandlers"
 		},
-		"GetPreferences": {
-			"handler": "CosmosHookHandlers"
-		},
 		"MessageCacheReplace": {
 			"handler": "CosmosHookHandlers"
 		},
@@ -551,9 +548,6 @@
 		"ParserFirstCallInit": {
 			"handler": "CosmosHookHandlers"
 		}
-	},
-	"DefaultUserOptions": {
-		"cosmos-mobile-responsiveness": 1
 	},
 	"manifest_version": 2
 }

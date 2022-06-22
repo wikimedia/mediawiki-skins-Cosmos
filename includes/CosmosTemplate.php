@@ -12,7 +12,6 @@ use Linker;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\SpecialPage\SpecialPageFactory;
-use MediaWiki\User\UserOptionsLookup;
 use Sanitizer;
 use SiteStats;
 use SpecialPage;
@@ -44,9 +43,6 @@ class CosmosTemplate extends BaseTemplate {
 	/** @var TitleFactory */
 	private $titleFactory;
 
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
-
 	/** @var CosmosWordmarkLookup */
 	private $wordmarkLookup;
 
@@ -67,7 +63,6 @@ class CosmosTemplate extends BaseTemplate {
 		$this->permissionManager = $skin->permissionManager;
 		$this->specialPageFactory = $skin->specialPageFactory;
 		$this->titleFactory = $skin->titleFactory;
-		$this->userOptionsLookup = $skin->userOptionsLookup;
 		$this->wordmarkLookup = $skin->wordmarkLookup;
 
 		$html = $this->get( 'headelement' );
