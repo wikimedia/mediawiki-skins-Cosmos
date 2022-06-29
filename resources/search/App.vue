@@ -1,13 +1,13 @@
 <template>
 	<wvui-typeahead-search
-		id="searchform"
+		:id="id"
 		ref="searchForm"
 		:client="getClient"
 		:domain="domain"
-		:footer-search-text="$i18n( 'searchsuggest-containing' ).text()"
 		:suggestions-label="$i18n( 'searchresults' ).text()"
 		:accesskey="searchAccessKey"
 		:title="searchTitle"
+		:article-path="articlePath"
 		:placeholder="searchPlaceholder"
 		:aria-label="searchPlaceholder"
 		:search-page-title="searchPageTitle"
@@ -17,28 +17,36 @@
 		:search-language="language"
 		:show-thumbnail="showThumbnail"
 		:show-description="showDescription"
+		:highlight-query="highlightQuery"
+		:auto-expand-width="autoExpandWidth"
 	>
-		<input type="hidden"
-			name="title"
-			:value="searchPageTitle"
-		>
+		<template #default>
+			<input type="hidden"
+				name="title"
+				:value="searchPageTitle"
+			>
+			<input type="hidden"
+				name="wprov"
+				:value="wprov"
+			>
+		</template>
+		<template #search-footer-text="{ searchQuery }">
+			<span v-i18n-html:cosmos-searchsuggest-containing="[ searchQuery ]"></span>
+		</template>
 	</wvui-typeahead-search>
 </template>
 
 <script>
-var wvui = require( 'wvui-search' );
+const wvui = require( 'wvui-search' ),
+	client = require( './restSearchClient.js' );
 
 module.exports = {
 	name: 'App',
 	components: wvui,
-	mounted: function () {
+	mounted() {
 		// access the element associated with the wvui-typeahead-search component
-		// eslint-disable-next-line no-jquery/variable-pattern
-		var wvuiSearchForm = this.$refs.searchForm.$el;
+		const wvuiSearchForm = this.$refs.searchForm.$el;
 		if ( this.autofocusInput ) {
-			// TODO: The wvui-typeahead-search component accepts an id prop but does not
-			// display that value as an HTML attribute on the form element.
-			wvuiSearchForm.querySelector( 'form' ).setAttribute( 'id', 'searchform' );
 			// TODO: The wvui-typeahead-search component does not accept an autofocus parameter
 			// or directive. This can be removed when its does.
 			wvuiSearchForm.querySelector( 'input' ).focus();
@@ -46,13 +54,17 @@ module.exports = {
 	},
 	computed: {
 		/**
+		 * @return {string}
+		 */
+		articlePath: () => mw.config.get( 'wgScript' ),
+		/**
 		 * Allow wikis to replace the default search API client
 		 *
 		 * @return {void|Object}
 		 */
-		getClient: function () {
+		getClient: () => {
 			if ( mw.config.get( 'wgCosmosSearchClient', undefined ) ) {
-				return mw.config.get( 'wgCosmosSearchClient', undefined );
+				return client( mw.config );
 			}
 
 			if ( mw.config.get( 'wgCosmosSearchUseActionAPI', false ) ) {
@@ -76,16 +88,20 @@ module.exports = {
 				};
 			}
 
-			return mw.config.get( 'wgCosmosSearchClient', undefined );
+			return client( mw.config );
 		},
-		language: function () {
+		language: () => {
 			return mw.config.get( 'wgUserLanguage' );
 		},
-		domain: function () {
+		domain: () => {
 			return mw.config.get( 'wgCosmosSearchHost', location.host );
 		}
 	},
 	props: {
+		id: {
+			type: String,
+			required: true
+		},
 		searchPageTitle: {
 			type: String,
 			default: 'Special:Search'
@@ -124,6 +140,14 @@ module.exports = {
 		showDescription: {
 			type: Boolean,
 			default: true
+		},
+		highlightQuery: {
+			type: Boolean,
+			default: true
+		},
+		autoExpandWidth: {
+			type: Boolean,
+			default: false
 		}
 	}
 };

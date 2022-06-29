@@ -281,6 +281,7 @@ class CosmosHooks implements
 		return array_merge( [
 			'wgCosmosSearchDescriptionSource' => $config->get( 'CosmosSearchDescriptionSource' ),
 			'wgCosmosMaxSearchResults' => $config->get( 'CosmosMaxSearchResults' ),
+			'wgCosmosSearchUseActionAPI' => (bool)$config->get( 'CosmosSearchUseActionAPI' ),
 			'wgScriptPath' => $config->get( 'ScriptPath' ),
 			'wgSearchSuggestCacheExpiry' => $config->get( 'SearchSuggestCacheExpiry' ),
 		], $config->get( 'CosmosSearchOptions' ) );

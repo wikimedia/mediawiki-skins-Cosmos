@@ -128,9 +128,9 @@
 		},
 		"skins.cosmos.searchLoader": {
 			"packageFiles": [
-				"resources/search/searchLoader.js",
+				"resources/searchLoader.js",
 				{
-					"name": "resources/search/config.json",
+					"name": "resources/config.json",
 					"callback": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::getCosmosResourceLoaderConfig"
 				}
 			],
@@ -141,12 +141,15 @@
 			"messages": [ "cosmos-search-loader" ]
 		},
 		"skins.cosmos.search": {
+			"es6": true,
 			"dependencies": [
 				"mediawiki.Uri",
 				"wvui-search"
 			],
 			"packageFiles": [
 				"resources/search/skins.cosmos.search.js",
+				"resources/search/fetch.js",
+				"resources/search/restSearchClient.js",
 				"resources/search/actionAPIGateway.js",
 				"resources/search/App.vue",
 				{
@@ -157,7 +160,7 @@
 			"messages": [
 				"searchbutton",
 				"searchresults",
-				"searchsuggest-containing"
+				"cosmos-searchsuggest-containing"
 			]
 		},
 		"skins.cosmos.rail": {

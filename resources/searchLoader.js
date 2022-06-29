@@ -11,8 +11,6 @@
 
 var /** @type {CosmosResourceLoaderVirtualConfig} */
 	config = require( /** @type {string} */ ( './config.json' ) ),
-	SEARCH_FORM_ID = 'simpleSearch',
-	SEARCH_INPUT_ID = 'searchInput',
 	SEARCH_LOADING_CLASS = 'search-form__loader';
 
 /**
@@ -29,6 +27,8 @@ var /** @type {CosmosResourceLoaderVirtualConfig} */
 function loadSearchModule( element, moduleName, afterLoadFn ) {
 	function requestSearchModule() {
 		mw.loader.using( moduleName, afterLoadFn );
+
+		element.removeEventListener( 'focus', requestSearchModule );
 
 		if ( $( window ).width() < 851 ) {
 			$( '#cosmos-banner-userOptions' ).hide();
@@ -55,8 +55,6 @@ function loadSearchModule( element, moduleName, afterLoadFn ) {
 				}
 			}, 100 );
 		}
-
-		element.removeEventListener( 'focus', requestSearchModule );
 	}
 
 	if ( document.activeElement === element ) {
@@ -82,8 +80,8 @@ function renderSearchLoadingIndicator( event ) {
 
 	if (
 		!( event.currentTarget instanceof HTMLElement ) ||
-		!( event.target instanceof HTMLInputElement ) ||
-		!( input.id === SEARCH_INPUT_ID ) ) {
+		!( event.target instanceof HTMLInputElement )
+	) {
 		return;
 	}
 
@@ -106,7 +104,7 @@ function renderSearchLoadingIndicator( event ) {
  * Attaches or detaches the event listeners responsible for activating
  * the loading indicator.
  *
- * @param {HTMLElement} element
+ * @param {Element} element
  * @param {boolean} attach
  * @param {function(Event): void} eventCallback
  */
@@ -131,44 +129,55 @@ function setLoadingIndicatorListeners( element, attach, eventCallback ) {
  * @param {Document} document
  */
 function initSearchLoader( document ) {
-	var searchForm = document.getElementById( SEARCH_FORM_ID ),
-		searchInput = document.getElementById( SEARCH_INPUT_ID ),
-		shouldUseCoreSearch;
+	var searchBoxes = document.querySelectorAll( '.cosmos-search-box' );
 
-	// Allow developers to defined $wgCosmosSearchHost in LocalSettings to target different APIs
 	if ( config.wgCosmosSearchHost ) {
 		mw.config.set( 'wgCosmosSearchHost', config.wgCosmosSearchHost );
 	}
 
-	if ( config.wgCosmosSearchUseActionAPI ) {
-		mw.config.set( 'wgCosmosSearchUseActionAPI', true );
-	}
-
-	if ( !searchForm || !searchInput ) {
+	if ( !searchBoxes.length ) {
 		return;
 	}
 
-	shouldUseCoreSearch = !document.body.classList.contains( 'skin-cosmos-search-vue' );
+	/**
+	 * If we are in a browser that doesn't support ES6 fall back to non-JS version.
+	 **/
+	if ( mw.loader.getState( 'skins.cosmos.search' ) === null ) {
+		document.body.classList.remove(
+			'skin-cosmos-search-vue'
+		);
+		return;
+	}
 
-	if ( shouldUseCoreSearch || !window.fetch ) {
-		loadSearchModule( searchInput, 'mediawiki.searchSuggest', function () {} );
-	} else {
-		// Remove tooltips while Vue search is still loading
-		searchInput.setAttribute( 'autocomplete', 'off' );
-		searchInput.removeAttribute( 'title' );
-		setLoadingIndicatorListeners( searchForm, true, renderSearchLoadingIndicator );
-		loadSearchModule(
-			searchInput,
-			'skins.cosmos.search',
-			function () {
+	Array.prototype.forEach.call( searchBoxes, function ( searchBox ) {
+		var searchInner = searchBox.querySelector( 'form > div' ),
+			searchInput = searchBox.querySelector( 'input[name="search"]' ),
+			clearLoadingIndicators = function () {
 				setLoadingIndicatorListeners(
-					/** @type {HTMLElement} */ ( searchForm ),
+					searchInner,
 					false,
 					renderSearchLoadingIndicator
 				);
-			}
+			},
+			isPrimarySearch = searchInput && searchInput.getAttribute( 'id' ) === 'searchInput';
+
+		if ( !searchInput || !searchInner ) {
+			return;
+		}
+		// Remove tooltips while Vue search is still loading
+		searchInput.setAttribute( 'autocomplete', 'off' );
+		searchInput.removeAttribute( 'title' );
+		setLoadingIndicatorListeners( searchInner, true, renderSearchLoadingIndicator );
+		loadSearchModule(
+			searchInput,
+			'skins.cosmos.search',
+			// Make sure we clearLoadingIndicators so that event listeners are removed.
+			// Note, loading Vue.js will remove the element from the DOM.
+			isPrimarySearch ? function () {
+				clearLoadingIndicators();
+			} : clearLoadingIndicators
 		);
-	}
+	} );
 }
 
 initSearchLoader( document );

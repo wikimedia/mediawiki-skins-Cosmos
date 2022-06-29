@@ -1,4 +1,4 @@
-/* global mediaWiki */
+/* global jQuery, mediaWiki */
 
 ( function ( $, mw ) {
 	var modal = document.getElementById( 'createPageModal' ),

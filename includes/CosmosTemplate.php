@@ -565,24 +565,30 @@ class CosmosTemplate extends BaseTemplate {
 		$html = '';
 
 		// Open container div
-		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-banner-search' ] );
+		$html .= Html::openElement( 'div', [
+			'id' => 'p-search',
+			'class' => [
+				'cosmos-banner-search',
+				'cosmos-search-box',
+			],
+		] );
 
 		// Open search form
 		$html .= Html::openElement( 'form', [
 			'action' => $this->get( 'wgScript' ),
 			'id' => 'searchform',
-			'class' => 'cosmos-search-form'
+			'class' => 'cosmos-search-box-form',
 		] );
 
 		$html .= Html::openElement( 'div', [
 			'id' => 'simpleSearch',
 		] );
 
-		// Insert hidden search title
-		$html .= Html::hidden( 'title', $this->get( 'searchtitle' ) );
-
 		// Insert search bar
 		$html .= $skin->makeSearchInput( [ 'id' => 'searchInput', 'class' => 'cosmos-search-input' ] );
+
+		// Insert hidden search title
+		$html .= Html::hidden( 'title', $this->get( 'searchtitle' ) );
 
 		$html .= Html::openElement(
 			'div',

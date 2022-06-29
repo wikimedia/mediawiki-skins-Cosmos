@@ -79,11 +79,11 @@ function convertDataToResults( data ) {
 
 	const results = [];
 
-	if ( typeof data?.query?.pages === 'undefined' ) {
+	if ( typeof data.query.pages === 'undefined' ) {
 		return [];
 	}
 
-	/* eslint-disable-next-line es/no-object-values */
+	/* eslint-disable-next-line es/no-object-values, compat/compat */
 	data = Object.values( data.query.pages );
 
 	// Sort the data with the index property since it is not in order

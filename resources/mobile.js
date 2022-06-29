@@ -1,11 +1,11 @@
 if ( $( window ).width() < 851 ) {
-	$( 'body:not(.skin-cosmos-search-vue) .cosmos-search-input' ).on( 'focus', function () {
+	$( 'body:not(.skin-cosmos-search-vue) .cosmos-search-box-input' ).on( 'focus', function () {
 		$( '#cosmos-banner-userOptions' ).hide();
 		$( '.cosmos-mobile-menu-button' ).hide();
 		$( '#cosmos-search-buttonContainer' ).show();
 	} );
 
-	$( 'body:not(.skin-cosmos-search-vue) .cosmos-search-input' ).on( 'focusout', function () {
+	$( 'body:not(.skin-cosmos-search-vue) .cosmos-search-box-input' ).on( 'focusout', function () {
 		$( '#cosmos-banner-userOptions' ).show();
 		$( '.cosmos-mobile-menu-button' ).show();
 		$( '#cosmos-search-buttonContainer' ).hide();

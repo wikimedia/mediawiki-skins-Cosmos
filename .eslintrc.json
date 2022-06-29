@@ -5,17 +5,12 @@
 		"wikimedia/jquery",
 		"wikimedia/mediawiki"
 	],
-	"parserOptions": {
-		"ecmaVersion": 2021
-	},
-	"env": {
-		"browser": true,
-		"jquery": true,
-		"es6": true
-	},
 	"rules": {
 		"no-jquery/no-global-selector": 0,
 		"no-implicit-globals": 0,
 		"compat/compat": 0
+	},
+	"parserOptions": {
+		"ecmaVersion": 2021
 	}
 }
