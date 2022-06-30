@@ -38,7 +38,8 @@
 
 <script>
 const wvui = require( 'wvui-search' ),
-	client = require( './restSearchClient.js' );
+	restClient = require( './restSearchClient.js' ),
+	actionClient = require( './actionSearchClient.js' );
 
 module.exports = {
 	name: 'App',
@@ -64,31 +65,14 @@ module.exports = {
 		 */
 		getClient: () => {
 			if ( mw.config.get( 'wgCosmosSearchClient', undefined ) ) {
-				return client( mw.config );
+				return restClient( mw.config );
 			}
 
 			if ( mw.config.get( 'wgCosmosSearchUseActionAPI', false ) ) {
-				var actionAPI = require( './actionAPIGateway.js' );
-				return {
-					fetchByTitle: function ( query, domain, limit ) {
-						var xhr = fetch( actionAPI.getUrl( query, domain ) )
-						.then( function ( resp ) {
-							return resp.json();
-						} ).then( function ( json ) {
-							return {
-								results: actionAPI.convertDataToResults( json )
-							}
-						} );
-
-						return {
-							fetch: xhr,
-							abort: function () {}
-						}
-					}
-				};
+				return actionClient( mw.config );
 			}
 
-			return client( mw.config );
+			return restClient( mw.config );
 		},
 		language: () => {
 			return mw.config.get( 'wgUserLanguage' );

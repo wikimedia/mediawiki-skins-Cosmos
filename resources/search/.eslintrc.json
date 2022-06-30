@@ -7,6 +7,8 @@
 			"error",
 			{
 				"definedTypes": [
+					"ActionResponse",
+					"SearchResponse",
 					"RequestInit",
 					"MwMap"
 				]

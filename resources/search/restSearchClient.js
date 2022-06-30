@@ -1,6 +1,7 @@
 /** @module restSearchClient */
 
-const fetchJson = require( './fetch.js' );
+const fetchJson = require( './fetch.js' ),
+	searchConfig = require( './config.json' );
 
 /**
  * @typedef {Object} RestResponse
@@ -91,7 +92,7 @@ function adaptApiResponse( query, restResponse ) {
 /**
  * @callback fetchByTitle
  * @param {string} query The search term.
- * @param {string} domain The base URL for the wiki without protocol. Example: 'sr.wikipedia.org'.
+ * @param {string} domain The base URL for the wiki without protocol.
  * @param {number} [limit] Maximum number of results.
  * @return {AbortableSearchFetch}
  */
@@ -111,7 +112,7 @@ function restSearchClient( config ) {
 		/**
 		 * @type {fetchByTitle}
 		 */
-		fetchByTitle: ( q, domain, limit = 10 ) => {
+		fetchByTitle: ( q, domain, limit = searchConfig.wgCosmosMaxSearchResults ) => {
 			const params = { q, limit };
 			const url = '//' + domain + config.get( 'wgScriptPath' ) + '/rest.php/v1/search/title?' + $.param( params );
 			const result = fetchJson( url, {

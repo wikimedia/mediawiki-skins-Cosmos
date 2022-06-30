@@ -149,8 +149,8 @@
 			"packageFiles": [
 				"resources/search/skins.cosmos.search.js",
 				"resources/search/fetch.js",
+				"resources/search/actionSearchClient.js",
 				"resources/search/restSearchClient.js",
-				"resources/search/actionAPIGateway.js",
 				"resources/search/App.vue",
 				{
 					"name": "resources/search/config.json",
