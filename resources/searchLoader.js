@@ -135,6 +135,10 @@ function initSearchLoader( document ) {
 		mw.config.set( 'wgCosmosSearchHost', config.wgCosmosSearchHost );
 	}
 
+	if ( config.wgCosmosSearchUseActionAPI ) {
+		mw.config.set( 'wgCosmosSearchUseActionAPI', true );
+	}
+
 	if ( !searchBoxes.length ) {
 		return;
 	}
