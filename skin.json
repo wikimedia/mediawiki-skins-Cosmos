@@ -34,6 +34,9 @@
 				"name": "cosmos",
 				"responsive": true,
 				"template": "MediaWiki\\Skin\\Cosmos\\CosmosTemplate",
+				"bodyClasses": [
+					"skin-cosmos-search-vue"
+				],
 				"styles": [
 					"skins.cosmos.styles"
 				],
@@ -154,7 +157,7 @@
 				"resources/search/App.vue",
 				{
 					"name": "resources/search/config.json",
-					"callback": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::getCosmosWVUISearchResourceLoaderConfig"
+					"callback": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::getCosmosSearchResourceLoaderConfig"
 				}
 			],
 			"messages": [
@@ -429,9 +432,6 @@
 		},
 		"CosmosSearchHost": {
 			"value": ""
-		},
-		"CosmosUseWVUISearch": {
-			"value": true
 		},
 		"CosmosSearchOptions": {
 			"value": {
