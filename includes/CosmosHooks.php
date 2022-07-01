@@ -16,7 +16,6 @@ use MediaWiki\Hook\BeforeInitializeHook;
 use MediaWiki\Hook\GetDoubleUnderscoreIDsHook;
 use MediaWiki\Hook\OutputPageBodyAttributesHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
-use MediaWiki\MediaWikiServices;
 use ObjectCache;
 use OutputPage;
 use Parser;
@@ -157,8 +156,6 @@ class CosmosHooks implements
 	 * @param array &$bodyAttrs
 	 */
 	public function onOutputPageBodyAttributes( $out, $skin, &$bodyAttrs ): void {
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'Cosmos' );
-
 		if ( $skin->getUser()->isRegistered() ) {
 			$bodyAttrs['class'] .= ' user-logged';
 		} else {
@@ -178,10 +175,6 @@ class CosmosHooks implements
 		if ( $out->getProperty( 'additionalBodyClass' ) ) {
 			$property = $out->getProperty( 'additionalBodyClass' );
 			$bodyAttrs['class'] .= ' ' . Sanitizer::escapeClass( $property );
-		}
-
-		if ( $config->get( 'CosmosUseWVUISearch' ) ) {
-			$bodyAttrs['class'] .= ' skin-cosmos-search-vue';
 		}
 	}
 
@@ -274,7 +267,7 @@ class CosmosHooks implements
 	 * @param Config $config
 	 * @return array
 	 */
-	public static function getCosmosWVUISearchResourceLoaderConfig(
+	public static function getCosmosSearchResourceLoaderConfig(
 		ResourceLoaderContext $context,
 		Config $config
 	): array {
