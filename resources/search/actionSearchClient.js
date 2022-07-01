@@ -1,8 +1,51 @@
 /** @module actionSearchClient */
 
 const fetchJson = require( './fetch.js' ),
-	searchConfig = require( './config.json' ),
-	descriptionSource = searchConfig.wgCosmosSearchDescriptionSource;
+	searchConfig = require( './config.json' );
+
+/**
+ * @typedef {Object} ActionResponse
+ * @property {ActionResult[]} pages
+ */
+
+/**
+ * @typedef {Object} ActionResult
+ * @property {number} id
+ * @property {string} key
+ * @property {string} title
+ * @property {string} [description]
+ * @property {ActionThumbnail | null} [thumbnail]
+ *
+ */
+
+/**
+ * @typedef {Object} ActionThumbnail
+ * @property {string} url
+ * @property {number | null} [width]
+ * @property {number | null} [height]
+ */
+
+/**
+ * @typedef {Object} SearchResponse
+ * @property {string} query
+ * @property {SearchResult[]} results
+ */
+
+/**
+ * @typedef {Object} SearchResult
+ * @property {number} id
+ * @property {string} key
+ * @property {string} title
+ * @property {string} [description]
+ * @property {SearchResultThumbnail} [thumbnail]
+ */
+
+/**
+ * @typedef {Object} SearchResultThumbnail
+ * @property {string} url
+ * @property {number} [width]
+ * @property {number} [height]
+ */
 
 /**
  * Build URL used for fetch request
@@ -33,7 +76,7 @@ function getUrl( input, domain, limit, config ) {
 			gpslimit: maxResults
 		};
 
-	switch ( descriptionSource ) {
+	switch ( searchConfig.wgCosmosSearchDescriptionSource ) {
 		case 'wikidata':
 			query.prop += '|description';
 			break;
@@ -58,6 +101,10 @@ function getUrl( input, domain, limit, config ) {
 	return endpoint + queryString;
 }
 
+/**
+ * @param {Object} pages
+ * @return {Array}
+ */
 function convertObjectToArray( pages ) {
 	if ( !pages ) {
 		return [];
@@ -72,12 +119,14 @@ function convertObjectToArray( pages ) {
  * @return {SearchResponse}
  */
 function adaptApiResponse( query, actionResponse ) {
+	const descriptionSource = searchConfig.wgCosmosSearchDescriptionSource;
 	return {
 		query,
 		results:
 			convertObjectToArray( actionResponse.query.pages )
 				.map( ( { pageid, title, pageprops, description, extract, thumbnail } ) => ( {
 					id: pageid,
+					key: title,
 					title: title,
 					description: descriptionSource === 'pagedescription' &&
 						pageprops &&
