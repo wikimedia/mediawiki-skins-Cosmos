@@ -24,5 +24,6 @@
 	"cosmos-explore": "Esplora",
 	"cosmos-newfiles": "Nuovi file",
 	"cosmos-user-blocked": "Bloccato",
-	"cosmos-search-loader": "Carica suggerimenti per la ricerca"
+	"cosmos-search-loader": "Carica suggerimenti per la ricerca",
+	"cosmos-article-header-categories-more": "e altre $1"
 }

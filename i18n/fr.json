@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Cigaryno",
 			"DreZhsh",
 			"Fujimaru-kun",
 			"Gomoko",
@@ -40,7 +41,7 @@
 	"cosmos-searchsuggest-containing": "Rechercher les pages contenant <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>",
 	"cosmos-article-header-categories-in": "dans :",
 	"cosmos-article-header-categories-more-separator": ",&#32;",
-	"cosmos-article-header-categories-more": "et {{FORMATNUM:$1}} de plus",
+	"cosmos-article-header-categories-more": "et $1 de plus",
 	"cosmos-themedesigner-success": "Configuration bien mise à jour pour Cosmos.",
 	"cosmos-themedesigner-text": "Personnaliser le thème de l’habillage '''Cosmos'''.",
 	"themedesigner": "Concepteur de thème",
