@@ -42,7 +42,7 @@
 	"cosmos-user-blocked": "Заблокирован",
 	"cosmos-search-loader": "Загружаются поисковые предложения",
 	"cosmos-article-header-categories-in": "в:",
-	"cosmos-article-header-categories-more": "и {{FORMATNUM:$1}} других",
+	"cosmos-article-header-categories-more": "и {{PLURAL:$1|$1 другая|$1 других}}",
 	"cosmos-themedesigner-success": "Конфигурация Cosmos успешно обновлена.",
 	"cosmos-themedesigner-text": "Настройка темы для скина '''Cosmos'''.",
 	"themedesigner": "Дизайнер тем",
