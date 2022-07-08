@@ -4,6 +4,7 @@
 			"Avengium",
 			"Fitoschido",
 			"Jackiezelaya",
+			"MarcoAurelio",
 			"McDutchie",
 			"Rodney Araujo",
 			"Universal Omega"
@@ -31,7 +32,7 @@
 	"cosmos-newfiles": "Archivos nuevos",
 	"cosmos-user-blocked": "Bloqueado",
 	"cosmos-article-header-categories-in": "En:",
-	"cosmos-article-header-categories-more": "y {{FORMATNUM:$1}} más",
+	"cosmos-article-header-categories-more": "y $1 más",
 	"cosmos-themedesigner-success": "Se actualizó la configuración de Cosmos correctamente.",
 	"themedesigner": "Diseñador de temas",
 	"right-themedesigner": "Utilizar el diseñador de temas de Cosmos"
