@@ -61,13 +61,9 @@ module.exports = {
 		/**
 		 * Allow wikis to replace the default search API client
 		 *
-		 * @return {void|Object}
+		 * @return {Object}
 		 */
 		getClient: () => {
-			if ( mw.config.get( 'wgCosmosSearchClient', undefined ) ) {
-				return restClient( mw.config );
-			}
-
 			if ( mw.config.get( 'wgCosmosSearchUseActionAPI', false ) ) {
 				return actionClient( mw.config );
 			}

@@ -50,52 +50,52 @@ const fetchJson = require( './fetch.js' ),
 /**
  * Build URL used for fetch request
  *
- * @param {string} input The search input.
+ * @param {string} query The search term.
  * @param {string} domain The base URL for the wiki without protocol.
  * @param {number} [limit] Maximum number of results
  * @param {MwMap} config
  * @return {string} url
  */
-function getUrl( input, domain, limit, config ) {
+function getUrl( query, domain, limit, config ) {
 	const endpoint = '//' + domain + config.get( 'wgScriptPath' ) + '/api.php?format=json',
 		cacheExpiry = searchConfig.wgSearchSuggestCacheExpiry,
-		maxResults = searchConfig.wgCosmosMaxSearchResults,
-		query = {
-			action: 'query',
+		params = {
+			formatversion: '2',
+			uselang: 'content',
 			smaxage: cacheExpiry,
 			maxage: cacheExpiry,
-			generator: 'prefixsearch',
+			origin: '*',
+			action: 'query',
 			prop: 'pageprops|pageimages',
-			redirects: '',
+			descprefersource: 'local',
 			ppprop: 'displaytitle',
+			pilicense: 'any',
 			piprop: 'thumbnail',
-			pithumbsize: 200,
-			pilimit: maxResults,
-			gpssearch: input,
-			gpsnamespace: 0,
-			gpslimit: maxResults
+			pithumbsize: '80',
+			generator: 'prefixsearch',
+			gpslimit: limit.toString(),
+			gpssearch: query
 		};
 
 	switch ( searchConfig.wgCosmosSearchDescriptionSource ) {
 		case 'wikidata':
-			query.prop += '|description';
+			params.prop += '|description';
 			break;
 		case 'textextracts':
-			query.prop += '|extracts';
-			query.exchars = '60';
-			query.exintro = '1';
-			query.exlimit = maxResults;
-			query.explaintext = '1';
+			params.prop += '|extracts';
+			params.exchars = '60';
+			params.exintro = '1';
+			params.explaintext = '1';
 			break;
 		case 'pagedescription':
-			query.prop += '|pageprops';
-			query.ppprop += '|description';
+			params.prop += '|pageprops';
+			params.ppprop += '|description';
 			break;
 	}
 
 	let queryString = '';
-	for ( const property in query ) {
-		queryString += '&' + property + '=' + query[ property ];
+	for ( const property in params ) {
+		queryString += '&' + property + '=' + params[ property ];
 	}
 
 	return endpoint + queryString;
@@ -176,19 +176,33 @@ function actionSearchClient( config ) {
 		/**
 		 * @type {fetchByTitle}
 		 */
-		fetchByTitle: ( q, domain, limit = searchConfig.wgCosmosMaxSearchResults ) => {
-			const url = getUrl( q, domain, limit, config );
-			const result = fetchJson( url, {
-				headers: {
-					accept: 'application/json'
+		fetchByTitle: ( query, domain, limit = searchConfig.wgCosmosMaxSearchResults ) => {
+			query = query.trim();
+
+			if ( !query ) {
+				return {
+					abort: () => {
+						// Do nothing (no-op)
+					},
+					fetch: Promise.resolve( { query, results: [] } )
+				};
+			}
+
+			const headers = {
+				accept: 'application/json'
+			};
+
+			const url = getUrl( query, domain, limit, config );
+			const { fetch, abort } = fetchJson( url, { headers } );
+
+			const searchResponsePromise = fetch.then(
+				( /** @type {ActionResponse} */ res ) => {
+					return adaptApiResponse( query, res );
 				}
-			} );
-			const searchResponsePromise = result.fetch
-				.then( ( /** @type {ActionResponse} */ res ) => {
-					return adaptApiResponse( q, res );
-				} );
+			);
+
 			return {
-				abort: result.abort,
+				abort,
 				fetch: searchResponsePromise
 			};
 		}
