@@ -65,9 +65,9 @@ function getUrl( query, domain, limit, config ) {
 			smaxage: cacheExpiry,
 			maxage: cacheExpiry,
 			origin: '*',
+			redirects: '',
 			action: 'query',
 			prop: 'pageprops|pageimages',
-			descprefersource: 'local',
 			ppprop: 'displaytitle',
 			pilicense: 'any',
 			piprop: 'thumbnail',
@@ -80,6 +80,7 @@ function getUrl( query, domain, limit, config ) {
 	switch ( searchConfig.wgCosmosSearchDescriptionSource ) {
 		case 'wikidata':
 			params.prop += '|description';
+			params.descprefersource = 'local';
 			break;
 		case 'textextracts':
 			params.prop += '|extracts';
@@ -120,10 +121,12 @@ function convertObjectToArray( pages ) {
  */
 function adaptApiResponse( query, actionResponse ) {
 	const descriptionSource = searchConfig.wgCosmosSearchDescriptionSource;
+	const pages = actionResponse.query ? actionResponse.query.pages : {};
+
 	return {
 		query,
 		results:
-			convertObjectToArray( actionResponse.query.pages )
+			convertObjectToArray( pages )
 				.map( ( { pageid, title, pageprops, description, extract, thumbnail } ) => ( {
 					id: pageid,
 					key: title,
