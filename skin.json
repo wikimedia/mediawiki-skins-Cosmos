@@ -54,13 +54,11 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"CosmosSpecialPageAliases": "includes/specials/CosmosSpecialPageAliases.php",
-		"CosmosMagic": "includes/CosmosMagic.php"
+		"CosmosAliases": "CosmosAliases.php",
+		"CosmosMagic": "CosmosMagic.php"
 	},
 	"AutoloadNamespaces": {
-		"MediaWiki\\Skin\\Cosmos\\": "includes/",
-		"MediaWiki\\Skin\\Cosmos\\Hook\\": "includes/hooks/",
-		"MediaWiki\\Skin\\Cosmos\\Special\\": "includes/specials/"
+		"MediaWiki\\Skin\\Cosmos\\": "includes/"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
@@ -134,7 +132,7 @@
 				"resources/searchLoader.js",
 				{
 					"name": "resources/config.json",
-					"callback": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::getCosmosResourceLoaderConfig"
+					"callback": "MediaWiki\\Skin\\Cosmos\\Hook\\ResourceLoaderCallbacks::getCosmosResourceLoaderConfig"
 				}
 			],
 			"dependencies": [
@@ -157,7 +155,7 @@
 				"resources/search/App.vue",
 				{
 					"name": "resources/search/config.json",
-					"callback": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::getCosmosSearchResourceLoaderConfig"
+					"callback": "MediaWiki\\Skin\\Cosmos\\Hook\\ResourceLoaderCallbacks::getCosmosSearchResourceLoaderConfig"
 				}
 			],
 			"messages": [
@@ -524,32 +522,32 @@
 		}
 	},
 	"HookHandlers": {
-		"CosmosHookHandlers": {
-			"class": "MediaWiki\\Skin\\Cosmos\\CosmosHooks"
+		"main": {
+			"class": "MediaWiki\\Skin\\Cosmos\\Hooks"
 		}
 	},
 	"Hooks": {
-		"AdminLinks": "MediaWiki\\Skin\\Cosmos\\CosmosHooks::addToAdminLinks",
+		"AdminLinks": "MediaWiki\\Skin\\Cosmos\\Hooks::addToAdminLinks",
 		"AlternateEditPreview": {
-			"handler": "CosmosHookHandlers"
+			"handler": "main"
 		},
 		"BeforeInitialize": {
-			"handler": "CosmosHookHandlers"
+			"handler": "main"
 		},
 		"GetDoubleUnderscoreIDs": {
-			"handler": "CosmosHookHandlers"
+			"handler": "main"
 		},
 		"MessageCacheReplace": {
-			"handler": "CosmosHookHandlers"
+			"handler": "main"
 		},
 		"OutputPageBodyAttributes": {
-			"handler": "CosmosHookHandlers"
+			"handler": "main"
 		},
 		"OutputPageParserOutput": {
-			"handler": "CosmosHookHandlers"
+			"handler": "main"
 		},
 		"ParserFirstCallInit": {
-			"handler": "CosmosHookHandlers"
+			"handler": "main"
 		}
 	},
 	"manifest_version": 2

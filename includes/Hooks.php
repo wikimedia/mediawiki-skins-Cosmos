@@ -6,7 +6,6 @@ use ALItem;
 use ALRow;
 use ALSection;
 use ALTree;
-use Config;
 use Content;
 use EditPage;
 use Html;
@@ -20,7 +19,6 @@ use ObjectCache;
 use OutputPage;
 use Parser;
 use ParserOutput;
-use ResourceLoaderContext;
 use Sanitizer;
 use Skin;
 use Title;
@@ -28,7 +26,7 @@ use User;
 use WebRequest;
 use WikitextContent;
 
-class CosmosHooks implements
+class Hooks implements
 	AlternateEditPreviewHook,
 	BeforeInitializeHook,
 	GetDoubleUnderscoreIDsHook,
@@ -245,36 +243,5 @@ class CosmosHooks implements
 
 		$cosmosSection->addRow( $cosmosRow );
 		$adminLinksTree->addSection( $cosmosSection, wfMessage( 'adminlinks_users' )->text() );
-	}
-
-	/**
-	 * @param ResourceLoaderContext $context
-	 * @param Config $config
-	 * @return array
-	 */
-	public static function getCosmosResourceLoaderConfig(
-		ResourceLoaderContext $context,
-		Config $config
-	) {
-		return [
-			'wgCosmosSearchHost' => $config->get( 'CosmosSearchHost' ),
-			'wgCosmosSearchUseActionAPI' => (bool)$config->get( 'CosmosSearchUseActionAPI' ),
-		];
-	}
-
-	/**
-	 * @param ResourceLoaderContext $context
-	 * @param Config $config
-	 * @return array
-	 */
-	public static function getCosmosSearchResourceLoaderConfig(
-		ResourceLoaderContext $context,
-		Config $config
-	): array {
-		return array_merge( [
-			'wgCosmosSearchDescriptionSource' => $config->get( 'CosmosSearchDescriptionSource' ),
-			'wgCosmosMaxSearchResults' => $config->get( 'CosmosMaxSearchResults' ),
-			'wgSearchSuggestCacheExpiry' => $config->get( 'SearchSuggestCacheExpiry' ),
-		], $config->get( 'CosmosSearchOptions' ) );
 	}
 }
