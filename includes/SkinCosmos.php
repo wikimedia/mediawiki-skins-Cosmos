@@ -13,6 +13,7 @@ use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserFactory;
 use SkinTemplate;
 use TitleFactory;
+use UserProfilePage;
 use WANObjectCache;
 
 class SkinCosmos extends SkinTemplate {
@@ -129,7 +130,7 @@ class SkinCosmos extends SkinTemplate {
 		}
 
 		// Load SocialProfile styles if the respective configuration variables are enabled
-		if ( class_exists( 'UserProfilePage' ) ) {
+		if ( class_exists( UserProfilePage::class ) ) {
 			if ( $this->config->get( 'CosmosSocialProfileModernTabs' ) ) {
 				$modules['styles']['skin'][] = 'skins.cosmos.profiletabs';
 			}

@@ -17,6 +17,7 @@ use SiteStats;
 use SpecialPage;
 use Title;
 use TitleFactory;
+use UserProfilePage;
 use WantedPagesPage;
 use wAvatar;
 
@@ -84,7 +85,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'html' );
 		$title = $this->titleFactory->newFromText( $this->get( 'title' ) );
 		if (
-			class_exists( 'UserProfilePage' ) &&
+			class_exists( UserProfilePage::class ) &&
 			(
 				$this->config->get( 'CosmosSocialProfileShowGroupTags' ) ||
 				$this->config->get( 'CosmosSocialProfileShowEditCount' ) ||
@@ -436,7 +437,7 @@ class CosmosTemplate extends BaseTemplate {
 			]
 		);
 
-		if ( class_exists( 'wAvatar' ) && $this->config->get( 'CosmosUseSocialProfileAvatar' ) ) {
+		if ( class_exists( wAvatar::class ) && $this->config->get( 'CosmosUseSocialProfileAvatar' ) ) {
 			$avatar = new wAvatar( $skin->getUser()
 				->getId(), 'm' );
 			$avatarElement = $avatar->getAvatarURL();
