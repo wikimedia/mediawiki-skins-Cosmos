@@ -46,6 +46,7 @@ module.exports = {
 	components: wvui,
 	mounted() {
 		// access the element associated with the wvui-typeahead-search component
+		// eslint-disable-next-line no-jquery/variable-pattern
 		const wvuiSearchForm = this.$refs.searchForm.$el;
 		if ( this.autofocusInput ) {
 			// TODO: The wvui-typeahead-search component does not accept an autofocus parameter

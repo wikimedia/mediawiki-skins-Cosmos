@@ -1,16 +1,16 @@
 {
 	"extends": [
 		"stylelint-config-idiomatic-order",
-		"stylelint-config-wikimedia"
+		"stylelint-config-wikimedia/support-modern",
+		"stylelint-config-wikimedia/mediawiki"
 	],
-	"ignoreFiles": [
-		"resources/libraries/**.{css|less}"
-	],
+	"reportNeedlessDisables": true,
 	"rules": {
 		"declaration-no-important": null,
+		"declaration-property-unit-disallowed-list": null,
 		"no-descending-specificity": null,
 		"no-duplicate-selectors": null,
-		"selector-max-id": null,
-		"declaration-property-unit-disallowed-list": null
+		"selector-class-pattern": null,
+		"selector-max-id": null
 	}
 }

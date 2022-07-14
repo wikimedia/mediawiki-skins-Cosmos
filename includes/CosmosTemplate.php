@@ -731,7 +731,7 @@ class CosmosTemplate extends BaseTemplate {
 					[
 						'class' => 'wds-icon-small',
 						'id' => 'wds-icons-activity-small',
-						'stroke' => 'currentColor',
+						'stroke' => 'currentcolor',
 						'stroke-linecap' => 'round',
 						'stroke-linejoin' => 'round',
 						'stroke-width' => 2
