@@ -145,7 +145,7 @@ function initSearchLoader( document ) {
 
 	/**
 	 * If we are in a browser that doesn't support ES6 fall back to non-JS version.
-	 **/
+	 */
 	if ( mw.loader.getState( 'skins.cosmos.search' ) === null ) {
 		document.body.classList.remove(
 			'skin-cosmos-search-vue'

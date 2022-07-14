@@ -135,7 +135,7 @@ function adaptApiResponse( query, actionResponse ) {
 						pageprops &&
 						pageprops.description ?
 						( pageprops.description.length > 60 ?
-							pageprops.description.substring( 0, 60 ) + '...' :
+							pageprops.description.slice( 0, 60 ) + '...' :
 							pageprops.description === '.' ? '' :
 								pageprops.description || ''
 						) :
