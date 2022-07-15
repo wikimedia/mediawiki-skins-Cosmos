@@ -25,6 +25,7 @@
 	"cosmos-newfiles": "새 파일",
 	"cosmos-user-blocked": "차단됨",
 	"cosmos-search-loader": "검색 제안을 불러오는 중",
+	"cosmos-article-header-categories-more": "및 $1개 더 보기",
 	"cosmos-themedesigner-success": "코스모스의 구성을 성공적으로 업데이트했습니다.",
 	"cosmos-themedesigner-text": "'''코스모스''' 스킨의 테마를 사용자에 맞게 지정합니다.",
 	"themedesigner": "테마 디자이너",
