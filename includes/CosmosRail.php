@@ -69,19 +69,19 @@ class CosmosRail {
 		CosmosConfig $config,
 		IContextSource $context
 	) {
-		$blacklistedNamespaces = $config->getRailBlacklistedNamespaces();
-		$blacklistedPages = $config->getRailBlacklistedPages();
+		$disabledNamespaces = $config->getRailDisabledNamespaces();
+		$disabledPages = $config->getRailDisabledPages();
 
 		$title = $context->getTitle();
 		$out = $context->getOutput();
 
 		if (
-			$title->inNamespaces( $blacklistedNamespaces ) ||
+			$title->inNamespaces( $disabledNamespaces ) ||
 			(
 				$title->isMainPage() &&
-				in_array( 'mainpage', $blacklistedPages )
+				in_array( 'mainpage', $disabledPages )
 			) ||
-			in_array( $title->getFullText(), $blacklistedPages ) ||
+			in_array( $title->getFullText(), $disabledPages ) ||
 			(bool)$out->getProperty( 'norail' )
 		) {
 			return true;

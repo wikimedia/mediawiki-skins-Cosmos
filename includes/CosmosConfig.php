@@ -232,8 +232,8 @@ class CosmosConfig {
 	/**
 	 * @return array
 	 */
-	public function getRailBlacklistedNamespaces(): array {
-		$config = $this->config->get( 'CosmosRailBlacklistedNamespaces' );
+	public function getRailDisabledNamespaces(): array {
+		$config = $this->config->get( 'CosmosRailDisabledNamespaces' );
 
 		return $config;
 	}
@@ -241,8 +241,8 @@ class CosmosConfig {
 	/**
 	 * @return array
 	 */
-	public function getRailBlacklistedPages(): array {
-		$config = $this->config->get( 'CosmosRailBlacklistedPages' );
+	public function getRailDisabledPages(): array {
+		$config = $this->config->get( 'CosmosRailDisabledPages' );
 
 		return $config;
 	}

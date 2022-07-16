@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "6.6.6",
+	"version": "6.6.7",
 	"author": [
 		"Universal Omega",
 		"..."
@@ -462,13 +462,13 @@
 			"value": [ 0 ],
 			"description": "Set to an array of namespaces to fetch wanted pages from, if wanted pages are enabled for the create page dialogue."
 		},
-		"CosmosRailBlacklistedNamespaces": {
+		"CosmosRailDisabledNamespaces": {
 			"value": [ -1, 8, 9 ],
-			"description": "Sets namespaces to not show the rail in"
+			"description": "List of namespaces to disable the rail in."
 		},
-		"CosmosRailBlacklistedPages": {
+		"CosmosRailDisabledPages": {
 			"value": [ "mainpage" ],
-			"description": "Sets pages to not show the rail in"
+			"description": "List of pages to disable the rail in."
 		},
 		"CosmosEnabledRailModules": {
 			"value": {
