@@ -356,11 +356,11 @@
 	},
 	"ResourceModuleSkinStyles": {
 		"cosmos": {
-			"+oojs-ui-core.styles": "resources/ooui.less",
-			"+ext.echo.styles.badge": "resources/extensions/Echo.less",
-			"+ext.visualEditor.core": "resources/extensions/VisualEditor.core.less",
-			"+ext.CodeMirror.visualEditor.init": "resources/extensions/VisualEditor.CodeMirror.less",
-			"+ext.dummyfandoommainpagetags.styles": "resources/extensions/DummyFandoomMainpageTags.less"
+			"+oojs-ui-core.styles": "resources/skinStyles/ooui.less",
+			"+ext.echo.styles.badge": "resources/skinStyles/ext.echo.styles.badge.less",
+			"+ext.visualEditor.core": "resources/skinStyles/ext.visualEditor.less",
+			"+ext.CodeMirror.visualEditor.init": "resources/skinStyles/ext.CodeMirror.visualEditor.less",
+			"+ext.dummyfandoommainpagetags.styles": "resources/skinStyles/ext.dummyfandoommainpagetags.less"
 		}
 	},
 	"config": {
