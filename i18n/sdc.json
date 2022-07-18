@@ -1,8 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
+			"F Samaritani",
 			"Jun Misugi"
 		]
 	},
+	"cosmos-createpage-next": "Sighenti",
+	"cosmos-personaltools-userpage": "Pàgina utenti",
+	"cosmos-action-cancel": "Annullà",
+	"cosmos-action-back": "Indareddu",
+	"cosmos-add-new-page-text": "Aggiungì",
+	"cosmos-newfiles": "Nobi files",
+	"cosmos-user-blocked": "Bruccaddu",
 	"cosmos-themedesigner-help-6": "Curori di li liadduri"
 }
