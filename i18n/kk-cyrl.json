@@ -8,7 +8,7 @@
 	"cosmos-adminlinks-edit-navigation": "Шарлауды өңдеу",
 	"cosmos-adminlinks-edit-tagline": "Слоганды өңдеу",
 	"cosmos-anonymous": "Аноним",
-	"cosmos-counter-label": "$1 мақала",
+	"cosmos-counter-label": "{{PLURAL:$1|мақала}}",
 	"cosmos-createpage-header": "Жаңа мақала бастау",
 	"cosmos-createpage-input-label": "Бет тақырыбын мына жерге жазыңыз:",
 	"cosmos-createpage-next": "Келесі",
