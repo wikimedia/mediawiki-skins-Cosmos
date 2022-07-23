@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "6.6.9",
+	"version": "6.7.0",
 	"author": [
 		"Universal Omega",
 		"..."
@@ -16,7 +16,7 @@
 	"ValidSkinNames": {
 		"cosmos": {
 			"displayname": "Cosmos",
-			"class": "MediaWiki\\Skin\\Cosmos\\SkinCosmos",
+			"class": "MediaWiki\\Skins\\Cosmos\\SkinCosmos",
 			"services": [
 				"ConfigFactory",
 				"ContentLanguage",
@@ -34,7 +34,7 @@
 			"args": [ {
 				"name": "cosmos",
 				"responsive": true,
-				"template": "MediaWiki\\Skin\\Cosmos\\CosmosTemplate",
+				"template": "MediaWiki\\Skins\\Cosmos\\CosmosTemplate",
 				"bodyClasses": [
 					"skin-cosmos-search-vue"
 				],
@@ -57,7 +57,7 @@
 		"CosmosMagic": "CosmosMagic.php"
 	},
 	"AutoloadNamespaces": {
-		"MediaWiki\\Skin\\Cosmos\\": "includes/"
+		"MediaWiki\\Skins\\Cosmos\\": "includes/"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
@@ -75,7 +75,7 @@
 	],
 	"SpecialPages": {
 		"ThemeDesigner": {
-			"class": "MediaWiki\\Skin\\Cosmos\\Special\\SpecialThemeDesigner",
+			"class": "MediaWiki\\Skins\\Cosmos\\Special\\SpecialThemeDesigner",
 			"services": [
 				"CosmosConfig"
 			]
@@ -83,7 +83,7 @@
 	},
 	"ResourceModules": {
 		"skins.cosmos.styles": {
-			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"class": "MediaWiki\\Skins\\Cosmos\\CosmosResourceLoaderModule",
 			"features": {
 				"content-links": true,
 				"content-media": true,
@@ -128,7 +128,7 @@
 				"resources/skins.cosmos.js/searchLoader.js",
 				{
 					"name": "resources/skins.cosmos.js/config.json",
-					"callback": "MediaWiki\\Skin\\Cosmos\\Hook\\ResourceLoaderCallbacks::getCosmosResourceLoaderConfig"
+					"callback": "MediaWiki\\Skins\\Cosmos\\Hook\\ResourceLoaderCallbacks::getCosmosResourceLoaderConfig"
 				}
 			],
 			"dependencies": [
@@ -152,7 +152,7 @@
 				"resources/skins.cosmos.search/App.vue",
 				{
 					"name": "resources/skins.cosmos.search/config.json",
-					"callback": "MediaWiki\\Skin\\Cosmos\\Hook\\ResourceLoaderCallbacks::getCosmosSearchResourceLoaderConfig"
+					"callback": "MediaWiki\\Skins\\Cosmos\\Hook\\ResourceLoaderCallbacks::getCosmosSearchResourceLoaderConfig"
 				}
 			],
 			"messages": [
@@ -169,7 +169,7 @@
 			"styles": "resources/skins.cosmos.rail/rail.less"
 		},
 		"skins.cosmos.portableinfobox": {
-			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"class": "MediaWiki\\Skins\\Cosmos\\CosmosResourceLoaderModule",
 			"features": {
 				"content-body": false,
 				"toc": false
@@ -185,7 +185,7 @@
 			}
 		},
 		"skins.cosmos.portableinfobox.default": {
-			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"class": "MediaWiki\\Skins\\Cosmos\\CosmosResourceLoaderModule",
 			"features": {
 				"content-body": false,
 				"toc": false
@@ -197,7 +197,7 @@
 			"styles": "resources/extensions/PortableInfobox/PortableInfoboxDefaultTheme.less"
 		},
 		"skins.cosmos.portableinfobox.europa": {
-			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"class": "MediaWiki\\Skins\\Cosmos\\CosmosResourceLoaderModule",
 			"features": {
 				"content-body": false,
 				"toc": false
@@ -209,7 +209,7 @@
 			"styles": "resources/extensions/PortableInfobox/PortableInfoboxEuropaTheme.less"
 		},
 		"skins.cosmos.socialprofile": {
-			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"class": "MediaWiki\\Skins\\Cosmos\\CosmosResourceLoaderModule",
 			"features": {
 				"content-body": false,
 				"toc": false
@@ -225,7 +225,7 @@
 			}
 		},
 		"skins.cosmos.profiletabs": {
-			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"class": "MediaWiki\\Skins\\Cosmos\\CosmosResourceLoaderModule",
 			"features": {
 				"content-body": false,
 				"toc": false
@@ -241,7 +241,7 @@
 			}
 		},
 		"skins.cosmos.profileavatar": {
-			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"class": "MediaWiki\\Skins\\Cosmos\\CosmosResourceLoaderModule",
 			"features": {
 				"content-body": false,
 				"toc": false
@@ -257,7 +257,7 @@
 			}
 		},
 		"skins.cosmos.profileeditcount": {
-			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"class": "MediaWiki\\Skins\\Cosmos\\CosmosResourceLoaderModule",
 			"features": {
 				"content-body": false,
 				"toc": false
@@ -273,7 +273,7 @@
 			}
 		},
 		"skins.cosmos.profiletags": {
-			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"class": "MediaWiki\\Skins\\Cosmos\\CosmosResourceLoaderModule",
 			"features": {
 				"content-body": false,
 				"toc": false
@@ -289,7 +289,7 @@
 			}
 		},
 		"skins.cosmos.profilebio": {
-			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"class": "MediaWiki\\Skins\\Cosmos\\CosmosResourceLoaderModule",
 			"features": {
 				"content-body": false,
 				"toc": false
@@ -305,7 +305,7 @@
 			}
 		},
 		"skins.cosmos.codemirror": {
-			"class": "MediaWiki\\Skin\\Cosmos\\CosmosResourceLoaderModule",
+			"class": "MediaWiki\\Skins\\Cosmos\\CosmosResourceLoaderModule",
 			"features": {
 				"content-body": false,
 				"toc": false
@@ -494,11 +494,11 @@
 	},
 	"HookHandlers": {
 		"main": {
-			"class": "MediaWiki\\Skin\\Cosmos\\Hooks"
+			"class": "MediaWiki\\Skins\\Cosmos\\Hooks"
 		}
 	},
 	"Hooks": {
-		"AdminLinks": "MediaWiki\\Skin\\Cosmos\\Hooks::addToAdminLinks",
+		"AdminLinks": "MediaWiki\\Skins\\Cosmos\\Hooks::addToAdminLinks",
 		"AlternateEditPreview": {
 			"handler": "main"
 		},

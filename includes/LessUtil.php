@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Skin\Cosmos;
+namespace MediaWiki\Skins\Cosmos;
 
 use LogicException;
 use MediaWiki\MediaWikiServices;

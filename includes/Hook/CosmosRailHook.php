@@ -1,8 +1,8 @@
 <?php
 
-namespace MediaWiki\Skin\Cosmos\Hook;
+namespace MediaWiki\Skins\Cosmos\Hook;
 
-use MediaWiki\Skin\Cosmos\CosmosRail;
+use MediaWiki\Skins\Cosmos\CosmosRail;
 use Skin;
 
 interface CosmosRailHook {

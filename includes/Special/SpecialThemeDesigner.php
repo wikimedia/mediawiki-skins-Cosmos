@@ -1,11 +1,11 @@
 <?php
 
-namespace MediaWiki\Skin\Cosmos\Special;
+namespace MediaWiki\Skins\Cosmos\Special;
 
 use BagOStuff;
 use FormSpecialPage;
 use Html;
-use MediaWiki\Skin\Cosmos\CosmosConfig;
+use MediaWiki\Skins\Cosmos\CosmosConfig;
 use ObjectCache;
 
 class SpecialThemeDesigner extends FormSpecialPage {

@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Skin\Cosmos\Hook;
+namespace MediaWiki\Skins\Cosmos\Hook;
 
 use Config;
 use ResourceLoaderContext;
