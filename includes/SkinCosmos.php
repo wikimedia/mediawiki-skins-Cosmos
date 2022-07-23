@@ -15,6 +15,7 @@ use SkinTemplate;
 use TitleFactory;
 use UserProfilePage;
 use WANObjectCache;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 class SkinCosmos extends SkinTemplate {
 
@@ -26,6 +27,9 @@ class SkinCosmos extends SkinTemplate {
 
 	/** @var CosmosConfig */
 	public $cosmosConfig;
+
+	/** @var ILoadBalancer */
+	public $dbLoadBalancer;
 
 	/** @var LanguageNameUtils */
 	public $languageNameUtils;
@@ -56,6 +60,7 @@ class SkinCosmos extends SkinTemplate {
 	 * @param Language $contentLanguage
 	 * @param CosmosConfig $cosmosConfig
 	 * @param CosmosWordmarkLookup $cosmosWordmarkLookup
+	 * @param ILoadBalancer $dbLoadBalancer
 	 * @param LanguageNameUtils $languageNameUtils
 	 * @param LinkRenderer $linkRenderer
 	 * @param WANObjectCache $WANObjectCache
@@ -70,6 +75,7 @@ class SkinCosmos extends SkinTemplate {
 		Language $contentLanguage,
 		CosmosConfig $cosmosConfig,
 		CosmosWordmarkLookup $cosmosWordmarkLookup,
+		ILoadBalancer $dbLoadBalancer,
 		LanguageNameUtils $languageNameUtils,
 		LinkRenderer $linkRenderer,
 		WANObjectCache $WANObjectCache,
@@ -84,6 +90,7 @@ class SkinCosmos extends SkinTemplate {
 		$this->config = $configFactory->makeConfig( 'Cosmos' );
 		$this->contentLanguage = $contentLanguage;
 		$this->cosmosConfig = $cosmosConfig;
+		$this->dbLoadBalancer = $dbLoadBalancer;
 		$this->languageNameUtils = $languageNameUtils;
 		$this->linkRenderer = $linkRenderer;
 		$this->objectCache = $WANObjectCache;

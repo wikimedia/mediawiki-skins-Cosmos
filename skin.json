@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "6.6.8",
+	"version": "6.6.9",
 	"author": [
 		"Universal Omega",
 		"..."
@@ -22,6 +22,7 @@
 				"ContentLanguage",
 				"CosmosConfig",
 				"CosmosWordmarkLookup",
+				"DBLoadBalancer",
 				"LanguageNameUtils",
 				"LinkRenderer",
 				"MainWANObjectCache",

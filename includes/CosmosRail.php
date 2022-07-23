@@ -9,8 +9,11 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserFactory;
 use MWTimestamp;
+use RecentChange;
 use TitleValue;
 use WANObjectCache;
+use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 
 class CosmosRail {
 	/** @var CosmosConfig */
@@ -18,6 +21,9 @@ class CosmosRail {
 
 	/** @var IContextSource */
 	private $context;
+
+	/** @var ILoadBalancer */
+	private $dbLoadBalancer;
 
 	/** @var LinkRenderer */
 	private $linkRenderer;
@@ -49,6 +55,7 @@ class CosmosRail {
 		$skin = $context->getSkin();
 		'@phan-var SkinCosmos $skin';
 
+		$this->dbLoadBalancer = $skin->dbLoadBalancer;
 		$this->linkRenderer = $skin->linkRenderer;
 		$this->objectCache = $skin->objectCache;
 		$this->specialPageFactory = $skin->specialPageFactory;
@@ -344,24 +351,26 @@ class CosmosRail {
 		$recentChanges = $this->objectCache->get( $cacheKey );
 
 		if ( empty( $recentChanges ) ) {
-			$dbr = wfGetDB( DB_REPLICA );
-			$recentChangesTable = $dbr->tableName( 'recentchanges' );
+			$dbr = $this->dbLoadBalancer->getConnectionRef( DB_REPLICA );
 
-			$res = $dbr->select(
-				'recentchanges',
-				[
-					'rc_timestamp', 'rc_actor', 'rc_namespace',
-					'rc_title', 'rc_type',
-				],
-				[
-					'rc_bot <> 1',
-					'rc_type <> ' . RC_EXTERNAL,
-					'rc_type <> ' . RC_LOG,
-					"rc_id IN (SELECT MAX(rc_id) FROM {$recentChangesTable} GROUP BY rc_namespace, rc_title)"
-				],
-				__METHOD__,
-				[ 'ORDER BY' => 'rc_id DESC', 'LIMIT' => 4, 'OFFSET' => 0 ]
-			);
+			$res = $dbr->newSelectQueryBuilder()
+				->table( 'recentchanges' )
+				->fields( [
+					'rc_actor',
+					'rc_namespace',
+					'rc_title',
+					'rc_timestamp',
+				] )
+				->where( [
+					'rc_type' => RecentChange::parseToRCType( [ 'new', 'edit' ] ),
+					'rc_bot' => 0,
+					'rc_deleted' => 0,
+				] )
+				->orderBy( 'rc_timestamp', SelectQueryBuilder::SORT_DESC )
+				->limit( 4 )
+				->offset( 0 )
+				->caller( __METHOD__ )
+				->fetchResultSet();
 
 			$recentChanges = [];
 			foreach ( $res as $row ) {
@@ -370,7 +379,6 @@ class CosmosRail {
 					'timestamp' => $row->rc_timestamp,
 					'namespace' => $row->rc_namespace,
 					'title' => $row->rc_title,
-					'type' => $row->rc_type,
 				];
 			}
 
