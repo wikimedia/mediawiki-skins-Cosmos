@@ -1,9 +1,9 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Skin\Cosmos\CosmosBackgroundLookup;
-use MediaWiki\Skin\Cosmos\CosmosConfig;
-use MediaWiki\Skin\Cosmos\CosmosWordmarkLookup;
+use MediaWiki\Skins\Cosmos\CosmosBackgroundLookup;
+use MediaWiki\Skins\Cosmos\CosmosConfig;
+use MediaWiki\Skins\Cosmos\CosmosWordmarkLookup;
 
 return [
 	'CosmosConfig' => static function ( MediaWikiServices $services ): CosmosConfig {
