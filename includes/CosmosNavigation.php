@@ -9,10 +9,12 @@ use MessageLocalizer;
 use ObjectCache;
 use RequestContext;
 use Sanitizer;
+use SpecialPage;
 use Title;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
 class CosmosNavigation implements ExpirationAwareness {
+
 	/** @var MessageLocalizer */
 	private $messageLocalizer;
 
@@ -26,7 +28,7 @@ class CosmosNavigation implements ExpirationAwareness {
 	/**
 	 * @return string
 	 */
-	public function getCode() {
+	public function getCode(): string {
 		$memc = ObjectCache::getLocalClusterInstance();
 
 		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
@@ -37,6 +39,7 @@ class CosmosNavigation implements ExpirationAwareness {
 		$menuGetter = function (): string {
 			return $this->getMenu( $this->getMenuLines() );
 		};
+
 		if ( $cache ) {
 			$key = $memc->makeKey( 'mCosmosNavigation', 'cosmosNavigation' );
 			$menu = $memc->getWithSetCallback( $key, self::TTL_HOUR * 8, $menuGetter );
@@ -53,7 +56,11 @@ class CosmosNavigation implements ExpirationAwareness {
 	 * @param bool $bolded
 	 * @return string
 	 */
-	public function getSubMenu( $nodes, $children, $bolded = false ) {
+	public function getSubMenu(
+		array $nodes,
+		array $children,
+		bool $bolded = false
+	): string {
 		$menu = '';
 		$val = 0;
 
@@ -114,7 +121,7 @@ class CosmosNavigation implements ExpirationAwareness {
 	 * @param array $lines
 	 * @return string
 	 */
-	public function getMenu( $lines ) {
+	public function getMenu( array $lines ): string {
 		$menu = '';
 		$nodes = $this->parse( $lines );
 
@@ -243,12 +250,12 @@ class CosmosNavigation implements ExpirationAwareness {
 	 * @param array $lines
 	 * @return array
 	 */
-	public function parse( $lines ) {
+	public function parse( array $lines ): array {
 		$nodes = [];
 		$lastDepth = 0;
 		$i = 0;
 
-		if ( is_array( $lines ) && count( $lines ) > 0 ) {
+		if ( count( $lines ) > 0 ) {
 			foreach ( $lines as $line ) {
 				if ( trim( str_replace( '*', '', $line ) ) === '' ) {
 					// ignore empty lines
@@ -302,7 +309,7 @@ class CosmosNavigation implements ExpirationAwareness {
 	 * @param string $line
 	 * @return array
 	 */
-	public function parseLine( $line ) {
+	public function parseLine( string $line ): array {
 		$lineTmp = explode( '|', trim( $line, '* ' ), 2 );
 
 		// for external links defined as [http://example.com] instead of just http://example.com
@@ -356,9 +363,9 @@ class CosmosNavigation implements ExpirationAwareness {
 	}
 
 	/**
-	 * @return array|null
+	 * @return array
 	 */
-	private function getMenuLines() {
+	private function getMenuLines(): array {
 		return self::extract(
 			$this->messageLocalizer->msg( 'Cosmos-navigation' )->inContentLanguage()->text()
 		);
@@ -366,9 +373,9 @@ class CosmosNavigation implements ExpirationAwareness {
 
 	/**
 	 * @param string $navigation
-	 * @return array|null
+	 * @return array
 	 */
-	public static function extract( string $navigation ) {
+	public static function extract( string $navigation ): array {
 		$exploreChildURL = null;
 		$exploreChildText = null;
 
@@ -382,19 +389,19 @@ class CosmosNavigation implements ExpirationAwareness {
 				strpos( $navigation, '{$NEWVIDEOS}' ) !== false
 			)
 		) {
-			$exploreChildURL = '**' . htmlspecialchars( Title::newFromText( 'NewVideos', NS_SPECIAL ) ) . '|';
+			$exploreChildURL = '**' . htmlspecialchars( SpecialPage::getTitleFor( 'NewVideos' ) ) . '|';
 			$exploreChildText = 'newvideos';
 
 			if ( strpos( $navigation, '{$WANTEDPAGES_FORCE}' ) !== false ) {
 				$forceExploreChildURL = "\n**" .
-					htmlspecialchars( Title::newFromText( 'WantedPages', NS_SPECIAL ) ) . '|';
+					htmlspecialchars( SpecialPage::getTitleFor( 'Wantedpages' ) ) . '|';
 				$forceExploreChildText = 'wantedpages';
 			}
 		} elseif (
 			strpos( $navigation, '{$WANTEDPAGES_CONDITIONAL}' ) !== false ||
 			strpos( $navigation, '{$WANTEDPAGES}' ) !== false
 		) {
-			$exploreChildURL = '**' . htmlspecialchars( Title::newFromText( 'WantedPages', NS_SPECIAL ) ) . '|';
+			$exploreChildURL = '**' . htmlspecialchars( SpecialPage::getTitleFor( 'Wantedpages' ) ) . '|';
 			$exploreChildText = 'wantedpages';
 		}
 
@@ -417,6 +424,6 @@ class CosmosNavigation implements ExpirationAwareness {
 			}
 		}
 
-		return null;
+		return [];
 	}
 }
