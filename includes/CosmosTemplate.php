@@ -110,8 +110,8 @@ class CosmosTemplate extends BaseTemplate {
 				: null;
 
 			if ( $this->config->get( 'CosmosSocialProfileShowEditCount' ) ) {
-				$contribsUrl = $this->titleFactory->newFromText(
-					"Contributions/{$profileOwner}", NS_SPECIAL
+				$contribsUrl = SpecialPage::getTitleFor(
+					'Contributions', $profileOwner
 				)->getFullURL();
 
 				$editCount = Html::closeElement( 'br' );
@@ -640,9 +640,8 @@ class CosmosTemplate extends BaseTemplate {
 
 		$uploadsEnabled = $this->config->get( 'EnableUploads' );
 
-		$specialUploadURL = $this->titleFactory->newFromText(
-			'Upload', NS_SPECIAL
-		)->getFullURL();
+		$specialUploadURL = SpecialPage::getTitleFor( 'Upload' )->getFullURL();
+		$recentChangesURL = SpecialPage::getTitleFor( 'Recentchanges' )->getFullURL();
 
 		$uploadNavigationURL = $this->config->get( 'UploadNavigationUrl' );
 
@@ -652,7 +651,6 @@ class CosmosTemplate extends BaseTemplate {
 		$adminLinksExtensionLoaded = ExtensionRegistry::getInstance()->isLoaded( 'Admin Links' );
 
 		$recentChangesMessage = $this->getMsg( 'recentchanges' );
-		$recentChangesURLMessage = $this->getMsg( 'recentchanges-url' );
 
 		$cosmosAddNewPageTextMessage = $this->getMsg( 'cosmos-add-new-page-text' );
 
@@ -746,10 +744,7 @@ class CosmosTemplate extends BaseTemplate {
 					'a',
 					[
 						'class' => 'wds-button wds-is-secondary',
-						'href' =>
-							$this->titleFactory->newFromText(
-								$recentChangesURLMessage->text(), NS_SPECIAL
-							)->getFullURL(),
+						'href' => $recentChangesURL,
 						'title' => ucwords( $recentChangesMessage->text() )
 					],
 					$recentChangesIcon . $recentChangesText
@@ -761,10 +756,7 @@ class CosmosTemplate extends BaseTemplate {
 					'a',
 					[
 						'class' => 'wds-button wds-is-secondary',
-						'href' =>
-							$this->titleFactory->newFromText(
-								'AdminLinks', NS_SPECIAL
-							)->getFullURL(),
+						'href' => SpecialPage::getTitleFor( 'AdminLinks' )->getFullURL(),
 						'title' => ucwords( $this->getMsg( 'adminlinks' )->text() )
 					],
 					Icon::getIcon( 'admindashboard' )->makeSvg(
@@ -798,18 +790,12 @@ class CosmosTemplate extends BaseTemplate {
 				if ( $canAddVideo ) {
 					$newVideoHTML = '<li id="m-add-new-video"><a href="' .
 						htmlspecialchars(
-							$this->titleFactory->newFromText(
-								'AddVideo', NS_SPECIAL
-							)->getFullURL()
+							SpecialPage::getTitleFor( 'AddVideo' )->getFullURL()
 						) .
 						'">' . $this->getMsg( 'cosmos-add-new-video' )->escaped() . '</a></li>';
 				} else {
 					$newVideoHTML = null;
 				}
-
-				$recentChangesURL = $this->titleFactory->newFromText(
-					$recentChangesURLMessage->text(), NS_SPECIAL
-				)->getFullURL();
 
 				$html .= Html::rawElement(
 					'div',
