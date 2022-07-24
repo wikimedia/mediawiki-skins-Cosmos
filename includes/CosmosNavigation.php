@@ -234,9 +234,9 @@ class CosmosNavigation implements ExpirationAwareness {
 			$memc = ObjectCache::getLocalClusterInstance();
 
 			$memc->set( $menuHash, $nodes, self::TTL_DAY * 3 );
-
-			return $menu;
 		}
+
+		return $menu;
 	}
 
 	/**
