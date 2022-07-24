@@ -9,11 +9,12 @@ use TextContent;
 use User;
 
 class CosmosSocialProfile {
+
 	/**
 	 * @param string $user
-	 * @return User|null
+	 * @return ?User
 	 */
-	private static function getUser( $user ) {
+	private static function getUser( string $user ): ?User {
 		$services = MediaWikiServices::getInstance();
 
 		$titleFactory = $services->getTitleFactory();
@@ -35,27 +36,30 @@ class CosmosSocialProfile {
 
 	/**
 	 * @param string $user
-	 * @return string|null
+	 * @return ?string
 	 */
-	public static function getUserRegistration( $user ) {
+	public static function getUserRegistration( string $user ): ?string {
 		$user = self::getUser( $user );
 
 		if ( $user ) {
 			return date( 'F j, Y', strtotime( $user->getRegistration() ) );
 		}
+
+		return null;
 	}
 
 	/**
 	 * @param string $user
-	 * @return string|null
+	 * @return ?string
 	 */
-	public static function getUserGroups( $user ) {
+	public static function getUserGroups( string $user ): ?string {
 		$services = MediaWikiServices::getInstance();
 
 		$config = $services->getConfigFactory()->makeConfig( 'Cosmos' );
 		$userGroupManager = $services->getUserGroupManager();
 
 		$user = self::getUser( $user );
+		$userTags = null;
 
 		if ( $user && $user->getBlock() ) {
 			$userTags = Html::element(
@@ -82,8 +86,6 @@ class CosmosSocialProfile {
 					}
 				}
 			}
-		} else {
-			$userTags = null;
 		}
 
 		return $userTags;
@@ -91,27 +93,32 @@ class CosmosSocialProfile {
 
 	/**
 	 * @param string $user
-	 * @return int|null
+	 * @return ?int
 	 */
-	public static function getUserEdits( $user ) {
+	public static function getUserEdits( string $user ): ?int {
 		$user = self::getUser( $user );
 
 		if ( $user ) {
 			return $user->getEditCount();
 		}
+
 		return null;
 	}
 
 	/**
 	 * @param string $user
 	 * @param bool $followRedirects
-	 * @return string|null
+	 * @return ?string
 	 */
-	public static function getUserBio( $user, $followRedirects ) {
+	public static function getUserBio(
+		string $user,
+		bool $followRedirects
+	): ?string {
 		$services = MediaWikiServices::getInstance();
 		$titleFactory = $services->getTitleFactory();
 
-		$userBioPage = $titleFactory->newFromText( "User:{$user}/bio" );
+		$userBioPage = $titleFactory->newFromText( "User:{$user}" )
+			->getSubpage( 'bio' );
 
 		if ( $user && $userBioPage && $userBioPage->isKnown() ) {
 			$wikiPageFactory = $services->getWikiPageFactory();
