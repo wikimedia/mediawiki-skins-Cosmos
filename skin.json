@@ -42,6 +42,7 @@
 					"skins.cosmos.styles"
 				],
 				"scripts": [
+					"skins.cosmos.searchLoader",
 					"skins.cosmos.js"
 				]
 			} ]
@@ -122,17 +123,27 @@
 			}
 		},
 		"skins.cosmos.js": {
-			"packageFiles": [
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"scripts": [
 				"resources/skins.cosmos.js/cosmos.js",
-				"resources/skins.cosmos.js/mobile.js",
-				"resources/skins.cosmos.js/searchLoader.js",
+				"resources/skins.cosmos.js/mobile.js"
+			],
+			"dependencies": [
+				"mediawiki.cookie"
+			]
+		},
+		"skins.cosmos.searchLoader": {
+			"packageFiles": [
+				"resources/skins.cosmos.searchLoader/searchLoader.js",
 				{
-					"name": "resources/skins.cosmos.js/config.json",
+					"name": "resources/skins.cosmos.searchLoader/config.json",
 					"callback": "MediaWiki\\Skins\\Cosmos\\Hook\\ResourceLoaderCallbacks::getCosmosResourceLoaderConfig"
 				}
 			],
 			"dependencies": [
-				"mediawiki.cookie",
 				"mediawiki.page.ready",
 				"mediawiki.util"
 			],
