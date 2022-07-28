@@ -67,57 +67,46 @@ class Hooks implements
 
 		$out->enableOOUI();
 
-		$conflict = '';
 		if ( $editPage->isConflict ) {
-			$conflict = Html::rawElement(
-				'div',
-				[
-					'id' => 'mw-previewconflict',
-					'class' => 'warningbox'
-				],
-				$context->msg( 'previewconflict' )->escaped()
+			$conflict = Html::warningBox(
+				$context->msg( 'previewconflict' )->escaped(),
+				'mw-previewconflict'
 			);
+		} else {
+			$conflict = '';
 		}
 
-		$previewnote = $context->msg( 'previewnote' )->plain() .
+		$note = $context->msg( 'previewnote' )->plain() .
 			' <span class="mw-continue-editing">' .
 			'[[#' . EditPage::EDITFORM_ID . '|' .
 			$context->getLanguage()->getArrow() . ' ' .
 			$context->msg( 'continue-editing' )->text() . ']]</span>';
 
-		$previewHTML = Html::rawElement(
-			'div',
+		$previewHTML = Html::rawElement( 'div',
 			[ 'class' => 'previewnote' ],
-			Html::rawElement(
-				'h2',
+			Html::rawElement( 'h2',
 				[ 'id' => 'mw-previewheader' ],
 				$context->msg( 'preview' )->escaped()
 			) .
-			Html::rawElement(
-				'div',
-				[ 'class' => 'warningbox' ],
-				$out->parseAsInterface( $previewnote )
+			Html::warningBox(
+				$out->parseAsInterface( $note )
 			) . $conflict
 		);
 
 		$cosmosNavigation = new CosmosNavigation( $context );
 
-		$previewHTML .= Html::openElement(
-			'header',
-			[ 'class' => 'cosmos-header' ]
+		$previewHTML .= Html::rawElement( 'header',
+			[ 'class' => 'cosmos-header' ],
+			Html::rawElement( 'nav', [
+				'class' => [
+					'cosmos-header__local-navigation',
+					'navigation-preview',
+				],
+			], Html::rawElement( 'ul',
+				[ 'class' => 'wds-tabs' ],
+				$cosmosNavigation->getMenu( CosmosNavigation::extract( $pageText ) )
+			) )
 		);
-
-		$previewHTML .= Html::openElement(
-			'nav',
-			[ 'class' => 'cosmos-header__local-navigation navigation-preview' ]
-		);
-
-		$previewHTML .= Html::openElement( 'ul', [ 'class' => 'wds-tabs' ] );
-		$previewHTML .= $cosmosNavigation->getMenu( CosmosNavigation::extract( $pageText ) );
-		$previewHTML .= Html::closeElement( 'ul' );
-
-		$previewHTML .= Html::closeElement( 'nav' );
-		$previewHTML .= Html::closeElement( 'header' );
 
 		return false;
 	}
