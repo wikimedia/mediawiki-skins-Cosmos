@@ -41,6 +41,7 @@
 	"cosmos-newfiles": "Новые файлы",
 	"cosmos-user-blocked": "Заблокирован",
 	"cosmos-search-loader": "Загружаются поисковые предложения",
+	"cosmos-searchsuggest-containing": "Поиск страниц, содержащих <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>",
 	"cosmos-article-header-categories-in": "в:",
 	"cosmos-article-header-categories-more": "и {{PLURAL:$1|$1 другая|$1 других}}",
 	"cosmos-themedesigner-success": "Конфигурация Cosmos успешно обновлена.",
