@@ -144,5 +144,7 @@ class CosmosSocialProfile {
 				? Html::element( 'p', [ 'class' => 'bio' ], $content->getText() )
 				: null;
 		}
+
+		return null;
 	}
 }
