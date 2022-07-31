@@ -5,6 +5,7 @@ namespace MediaWiki\Skins\Cosmos;
 use Config;
 
 class CosmosConfig {
+
 	/** @var string */
 	private $cacheDir;
 
@@ -218,32 +219,5 @@ class CosmosConfig {
 			$this->themeDesignerConfig['CosmosBackgroundImageFixed'] : null;
 
 		return ( $themeDesignerConfig ?? $config );
-	}
-
-	/**
-	 * @return array
-	 */
-	public function getEnabledRailModules(): array {
-		$config = $this->config->get( 'CosmosEnabledRailModules' );
-
-		return $config;
-	}
-
-	/**
-	 * @return array
-	 */
-	public function getRailDisabledNamespaces(): array {
-		$config = $this->config->get( 'CosmosRailDisabledNamespaces' );
-
-		return $config;
-	}
-
-	/**
-	 * @return array
-	 */
-	public function getRailDisabledPages(): array {
-		$config = $this->config->get( 'CosmosRailDisabledPages' );
-
-		return $config;
 	}
 }

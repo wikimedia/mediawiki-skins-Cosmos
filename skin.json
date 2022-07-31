@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "6.7.0",
+	"version": "6.8.0",
 	"author": [
 		"Universal Omega",
 		"..."
@@ -20,16 +20,12 @@
 			"services": [
 				"ConfigFactory",
 				"ContentLanguage",
-				"CosmosConfig",
+				"CosmosRailBuilder",
 				"CosmosWordmarkLookup",
-				"DBLoadBalancer",
 				"LanguageNameUtils",
-				"LinkRenderer",
-				"MainWANObjectCache",
 				"PermissionManager",
 				"SpecialPageFactory",
-				"TitleFactory",
-				"UserFactory"
+				"TitleFactory"
 			],
 			"args": [ {
 				"name": "cosmos",

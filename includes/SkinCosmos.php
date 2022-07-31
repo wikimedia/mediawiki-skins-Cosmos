@@ -7,15 +7,11 @@ use ConfigFactory;
 use ExtensionRegistry;
 use Language;
 use MediaWiki\Languages\LanguageNameUtils;
-use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\SpecialPage\SpecialPageFactory;
-use MediaWiki\User\UserFactory;
 use SkinTemplate;
 use TitleFactory;
 use UserProfilePage;
-use WANObjectCache;
-use Wikimedia\Rdbms\ILoadBalancer;
 
 class SkinCosmos extends SkinTemplate {
 
@@ -25,20 +21,11 @@ class SkinCosmos extends SkinTemplate {
 	/** @var Language */
 	public $contentLanguage;
 
-	/** @var CosmosConfig */
-	public $cosmosConfig;
-
-	/** @var ILoadBalancer */
-	public $dbLoadBalancer;
+	/** @var CosmosRailBuilder */
+	public $cosmosRailBuilder;
 
 	/** @var LanguageNameUtils */
 	public $languageNameUtils;
-
-	/** @var LinkRenderer */
-	public $linkRenderer;
-
-	/** @var WANObjectCache */
-	public $objectCache;
 
 	/** @var PermissionManager */
 	public $permissionManager;
@@ -49,55 +36,40 @@ class SkinCosmos extends SkinTemplate {
 	/** @var TitleFactory */
 	public $titleFactory;
 
-	/** @var UserFactory */
-	public $userFactory;
-
 	/** @var CosmosWordmarkLookup */
 	public $wordmarkLookup;
 
 	/**
 	 * @param ConfigFactory $configFactory
 	 * @param Language $contentLanguage
-	 * @param CosmosConfig $cosmosConfig
+	 * @param CosmosRailBuilder $cosmosRailBuilder
 	 * @param CosmosWordmarkLookup $cosmosWordmarkLookup
-	 * @param ILoadBalancer $dbLoadBalancer
 	 * @param LanguageNameUtils $languageNameUtils
-	 * @param LinkRenderer $linkRenderer
-	 * @param WANObjectCache $WANObjectCache
 	 * @param PermissionManager $permissionManager
 	 * @param SpecialPageFactory $specialPageFactory
 	 * @param TitleFactory $titleFactory
-	 * @param UserFactory $userFactory
 	 * @param array $options
 	 */
 	public function __construct(
 		ConfigFactory $configFactory,
 		Language $contentLanguage,
-		CosmosConfig $cosmosConfig,
+		CosmosRailBuilder $cosmosRailBuilder,
 		CosmosWordmarkLookup $cosmosWordmarkLookup,
-		ILoadBalancer $dbLoadBalancer,
 		LanguageNameUtils $languageNameUtils,
-		LinkRenderer $linkRenderer,
-		WANObjectCache $WANObjectCache,
 		PermissionManager $permissionManager,
 		SpecialPageFactory $specialPageFactory,
 		TitleFactory $titleFactory,
-		UserFactory $userFactory,
 		array $options
 	) {
 		parent::__construct( $options );
 
 		$this->config = $configFactory->makeConfig( 'Cosmos' );
 		$this->contentLanguage = $contentLanguage;
-		$this->cosmosConfig = $cosmosConfig;
-		$this->dbLoadBalancer = $dbLoadBalancer;
+		$this->cosmosRailBuilder = $cosmosRailBuilder;
 		$this->languageNameUtils = $languageNameUtils;
-		$this->linkRenderer = $linkRenderer;
-		$this->objectCache = $WANObjectCache;
 		$this->permissionManager = $permissionManager;
 		$this->specialPageFactory = $specialPageFactory;
 		$this->titleFactory = $titleFactory;
-		$this->userFactory = $userFactory;
 		$this->wordmarkLookup = $cosmosWordmarkLookup;
 	}
 
@@ -108,10 +80,9 @@ class SkinCosmos extends SkinTemplate {
 		$modules = parent::getDefaultModules();
 
 		// CosmosRail styles
-		if ( ( CosmosRail::railsExist( $this->cosmosConfig, $this->getContext() ) ||
-				CosmosRail::hookRailsExist( $this->cosmosConfig, $this->getContext() )
-			) &&
-			!CosmosRail::railsHidden( $this->cosmosConfig, $this->getContext() )
+		if (
+			!$this->cosmosRailBuilder->isHidden() &&
+			$this->cosmosRailBuilder->hasModules()
 		) {
 			$modules['styles']['skin'][] = 'skins.cosmos.rail';
 		}

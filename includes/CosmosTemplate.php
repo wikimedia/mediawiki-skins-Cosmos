@@ -29,8 +29,8 @@ class CosmosTemplate extends BaseTemplate {
 	/** @var Language */
 	private $contentLanguage;
 
-	/** @var CosmosConfig */
-	private $cosmosConfig;
+	/** @var CosmosRailBuilder */
+	private $cosmosRailBuilder;
 
 	/** @var LanguageNameUtils */
 	private $languageNameUtils;
@@ -59,7 +59,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		$this->config = $skin->config;
 		$this->contentLanguage = $skin->contentLanguage;
-		$this->cosmosConfig = $skin->cosmosConfig;
+		$this->cosmosRailBuilder = $skin->cosmosRailBuilder;
 		$this->languageNameUtils = $skin->languageNameUtils;
 		$this->permissionManager = $skin->permissionManager;
 		$this->specialPageFactory = $skin->specialPageFactory;
@@ -865,14 +865,16 @@ class CosmosTemplate extends BaseTemplate {
 	 * @return string
 	 */
 	protected function buildWiki() {
-		$skin = $this->getSkin();
-
 		$html = '';
 
 		// Open container element for page body
 		$html .= Html::openElement( 'section', [ 'id' => 'mw-content' ] );
-		$html .= Html::openElement( 'div', [ 'id' => 'content', 'class' => [
-				'cosmos-pageAligned', 'mw-body'
+
+		$html .= Html::openElement( 'div', [
+			'id' => 'content',
+			'class' => [
+				'cosmos-pageAligned',
+				'mw-body',
 			]
 		] );
 
@@ -880,14 +882,10 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= $this->buildHeader();
 
 		// Build the article content
-		$html .= Html::openElement( 'div', [ 'class' => 'cosmos-articleContainer' ] );
-		$html .= $this->buildArticle();
-
-		// Build the rail
-		$cosmosRail = new CosmosRail( $this->cosmosConfig, $skin->getContext() );
-		$html .= $cosmosRail->buildRail();
-
-		$html .= Html::closeElement( 'div' );
+		$html .= Html::rawElement( 'div',
+			[ 'class' => 'cosmos-articleContainer' ],
+			$this->buildArticle() . $this->cosmosRailBuilder->buildRail()
+		);
 
 		// Close container element for page body
 		$html .= Html::closeElement( 'div' );
