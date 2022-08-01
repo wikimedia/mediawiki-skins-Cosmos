@@ -127,8 +127,7 @@ class CosmosConfig {
 	public function getWordmark(): string {
 		$config = $this->config->get( 'CosmosWordmark' ) ?:
 				$this->config->get( 'Logos' )['wordmark']['src'] ??
-				$this->config->get( 'Logos' )['1x'] ??
-				$this->config->get( 'Logo' );
+				$this->config->get( 'Logos' )['1x'] ?? '';
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosWordmark'] : false;
 
