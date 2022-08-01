@@ -11,7 +11,10 @@ use MediaWiki\Skins\Cosmos\Hook\CosmosHookRunner;
 return [
 	'CosmosConfig' => static function ( MediaWikiServices $services ): CosmosConfig {
 		return new CosmosConfig(
-			$services->getConfigFactory()->makeConfig( 'Cosmos' )
+			new ServiceOptions(
+				CosmosConfig::CONSTRUCTOR_OPTIONS,
+				$services->getConfigFactory()->makeConfig( 'Cosmos' )
+			)
 		);
 	},
 

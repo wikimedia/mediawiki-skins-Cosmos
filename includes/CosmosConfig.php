@@ -2,32 +2,53 @@
 
 namespace MediaWiki\Skins\Cosmos;
 
-use Config;
+use MediaWiki\Config\ServiceOptions;
 
 class CosmosConfig {
 
-	/** @var string */
-	private $cacheDir;
+	public const CONSTRUCTOR_OPTIONS = [
+		'CacheDirectory',
+		'CosmosBackgroundImage',
+		'CosmosBackgroundImageFixed',
+		'CosmosBackgroundImageRepeat',
+		'CosmosBackgroundImageSize',
+		'CosmosBannerBackgroundColor',
+		'CosmosButtonBackgroundColor',
+		'CosmosContentBackgroundColor',
+		'CosmosContentOpacityLevel',
+		'CosmosContentWidth',
+		'CosmosFooterBackgroundColor',
+		'CosmosLinkColor',
+		'CosmosMainBackgroundColor',
+		'CosmosToolbarBackgroundColor',
+		'CosmosWikiHeaderBackgroundColor',
+		'CosmosWikiHeaderBackgroundImage',
+		'CosmosWordmark',
+		'DBname',
+		'Logos',
+	];
 
-	/** @var Config */
-	private $config;
+	/** @var ServiceOptions */
+	private $options;
 
 	/** @var array */
 	private $themeDesignerConfig;
 
 	/**
-	 * @param Config $config
+	 * @param ServiceOptions $options
 	 */
-	public function __construct( Config $config ) {
-		$this->config = $config;
+	public function __construct( ServiceOptions $options ) {
+		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 
-		$this->cacheDir = $this->config->get( 'CacheDirectory' ) ?: __DIR__ . '/../../../cache';
-		$dbName = $this->config->get( 'DBname' );
+		$this->options = $options;
 
-		if ( file_exists( "{$this->cacheDir}/cosmos-themedesigner/{$dbName}.json" ) ) {
+		$cacheDir = $this->options->get( 'CacheDirectory' ) ?: __DIR__ . '/../../../cache';
+		$dbName = $this->options->get( 'DBname' );
+
+		if ( file_exists( "{$cacheDir}/cosmos-themedesigner/{$dbName}.json" ) ) {
 			$this->themeDesignerConfig = json_decode(
 				file_get_contents(
-					"{$this->cacheDir}/cosmos-themedesigner/{$dbName}.json"
+					"{$cacheDir}/cosmos-themedesigner/{$dbName}.json"
 				), true
 			)['values'] ?? false;
 		}
@@ -37,7 +58,7 @@ class CosmosConfig {
 	 * @return string
 	 */
 	public function getBannerBackgroundColor(): string {
-		$config = $this->config->get( 'CosmosBannerBackgroundColor' );
+		$config = $this->options->get( 'CosmosBannerBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosBannerBackgroundColor'] : false;
 
@@ -48,7 +69,7 @@ class CosmosConfig {
 	 * @return string
 	 */
 	public function getWikiHeaderBackgroundColor(): string {
-		$config = $this->config->get( 'CosmosWikiHeaderBackgroundColor' );
+		$config = $this->options->get( 'CosmosWikiHeaderBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosWikiHeaderBackgroundColor'] : false;
 
@@ -59,7 +80,7 @@ class CosmosConfig {
 	 * @return string
 	 */
 	public function getMainBackgroundColor(): string {
-		$config = $this->config->get( 'CosmosMainBackgroundColor' );
+		$config = $this->options->get( 'CosmosMainBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosMainBackgroundColor'] : false;
 
@@ -70,7 +91,7 @@ class CosmosConfig {
 	 * @return string
 	 */
 	public function getContentBackgroundColor(): string {
-		$config = $this->config->get( 'CosmosContentBackgroundColor' );
+		$config = $this->options->get( 'CosmosContentBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosContentBackgroundColor'] : false;
 
@@ -81,7 +102,7 @@ class CosmosConfig {
 	 * @return string
 	 */
 	public function getButtonBackgroundColor(): string {
-		$config = $this->config->get( 'CosmosButtonBackgroundColor' );
+		$config = $this->options->get( 'CosmosButtonBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosButtonBackgroundColor'] : false;
 
@@ -92,7 +113,7 @@ class CosmosConfig {
 	 * @return string
 	 */
 	public function getLinkColor(): string {
-		$config = $this->config->get( 'CosmosLinkColor' );
+		$config = $this->options->get( 'CosmosLinkColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosLinkColor'] : false;
 
@@ -103,7 +124,7 @@ class CosmosConfig {
 	 * @return string
 	 */
 	public function getFooterBackgroundColor(): string {
-		$config = $this->config->get( 'CosmosFooterBackgroundColor' );
+		$config = $this->options->get( 'CosmosFooterBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosFooterBackgroundColor'] : false;
 
@@ -114,7 +135,7 @@ class CosmosConfig {
 	 * @return string
 	 */
 	public function getToolbarBackgroundColor(): string {
-		$config = $this->config->get( 'CosmosToolbarBackgroundColor' );
+		$config = $this->options->get( 'CosmosToolbarBackgroundColor' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosToolbarBackgroundColor'] : false;
 
@@ -125,9 +146,9 @@ class CosmosConfig {
 	 * @return string
 	 */
 	public function getWordmark(): string {
-		$config = $this->config->get( 'CosmosWordmark' ) ?:
-				$this->config->get( 'Logos' )['wordmark']['src'] ??
-				$this->config->get( 'Logos' )['1x'] ?? '';
+		$config = $this->options->get( 'CosmosWordmark' ) ?:
+				$this->options->get( 'Logos' )['wordmark']['src'] ??
+				$this->options->get( 'Logos' )['1x'] ?? '';
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosWordmark'] : false;
 
@@ -138,7 +159,7 @@ class CosmosConfig {
 	 * @return string
 	 */
 	public function getWikiHeaderBackgroundImage(): string {
-		$config = $this->config->get( 'CosmosWikiHeaderBackgroundImage' );
+		$config = $this->options->get( 'CosmosWikiHeaderBackgroundImage' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosWikiHeaderBackgroundImage'] : false;
 
@@ -149,7 +170,7 @@ class CosmosConfig {
 	 * @return string
 	 */
 	public function getBackgroundImage(): string {
-		$config = $this->config->get( 'CosmosBackgroundImage' );
+		$config = $this->options->get( 'CosmosBackgroundImage' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosBackgroundImage'] : false;
 
@@ -160,7 +181,7 @@ class CosmosConfig {
 	 * @return string
 	 */
 	public function getBackgroundImageSize(): string {
-		$config = $this->config->get( 'CosmosBackgroundImageSize' );
+		$config = $this->options->get( 'CosmosBackgroundImageSize' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosBackgroundImageSize'] : false;
 
@@ -171,7 +192,7 @@ class CosmosConfig {
 	 * @return string
 	 */
 	public function getContentWidth(): string {
-		$config = $this->config->get( 'CosmosContentWidth' );
+		$config = $this->options->get( 'CosmosContentWidth' );
 
 		switch ( $config ) {
 			case 'full':
@@ -191,7 +212,7 @@ class CosmosConfig {
 	 * @return int
 	 */
 	public function getContentOpacityLevel(): int {
-		$config = $this->config->get( 'CosmosContentOpacityLevel' );
+		$config = $this->options->get( 'CosmosContentOpacityLevel' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			(int)$this->themeDesignerConfig['CosmosContentOpacityLevel'] : false;
 
@@ -202,7 +223,7 @@ class CosmosConfig {
 	 * @return bool
 	 */
 	public function getBackgroundImageRepeat(): bool {
-		$config = $this->config->get( 'CosmosBackgroundImageRepeat' );
+		$config = $this->options->get( 'CosmosBackgroundImageRepeat' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosBackgroundImageRepeat'] : null;
 
@@ -213,7 +234,7 @@ class CosmosConfig {
 	 * @return bool
 	 */
 	public function getBackgroundImageFixed(): bool {
-		$config = $this->config->get( 'CosmosBackgroundImageFixed' );
+		$config = $this->options->get( 'CosmosBackgroundImageFixed' );
 		$themeDesignerConfig = $this->themeDesignerConfig ?
 			$this->themeDesignerConfig['CosmosBackgroundImageFixed'] : null;
 
