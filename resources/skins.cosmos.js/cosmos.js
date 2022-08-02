@@ -88,7 +88,10 @@
 			mw.config.get( 'wgVisualEditorConfig' ).enableWikitext &&
 			mw.config.get( 'wgPageName' ) === 'MediaWiki:Cosmos-navigation'
 		) {
-			mw.config.values.wgVisualEditorConfig.enableWikitext = false;
+			var visualEditorConfig = mw.config.get( 'wgVisualEditorConfig' );
+			visualEditorConfig.enableWikitext = false;
+
+			mw.config.set( 'wgVisualEditorConfig', visualEditorConfig );
 		}
 	} );
 }( jQuery, mediaWiki ) );

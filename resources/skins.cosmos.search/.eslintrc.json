@@ -3,6 +3,7 @@
 		"../../.eslintrces6.json"
 	],
 	"rules": {
+		"es-x/no-symbol-prototype-description": 0,
 		"jsdoc/no-undefined-types": [
 			"error",
 			{
