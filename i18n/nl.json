@@ -31,6 +31,7 @@
 	"cosmos-newfiles": "Nieuwe bestanden",
 	"cosmos-user-blocked": "Geblokkeerd",
 	"cosmos-search-loader": "Zoeksuggesties worden geladen",
+	"cosmos-searchsuggest-containing": "Zoek naar pagina's die <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong> bevatten",
 	"cosmos-themedesigner-success": "De instellingen van Cosmos zijn bijgewerkt.",
 	"themedesigner": "Thema-ontwerper",
 	"right-themedesigner": "Cosmos ThemeDesigner gebruiken",
