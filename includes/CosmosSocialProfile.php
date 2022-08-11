@@ -11,63 +11,30 @@ use User;
 class CosmosSocialProfile {
 
 	/**
-	 * @param string $user
-	 * @return ?User
+	 * @param User $user
+	 * @return string
 	 */
-	private static function getUser( string $user ): ?User {
-		$services = MediaWikiServices::getInstance();
-
-		$titleFactory = $services->getTitleFactory();
-		$title = $titleFactory->newFromText( $user );
-
-		if (
-			is_object( $title ) &&
-			( $title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE ) &&
-			!$title->isSubpage()
-		) {
-			$user = $title->getText();
-		}
-
-		$userFactory = $services->getUserFactory();
-		$user = $userFactory->newFromName( $user );
-
-		return $user;
+	public static function getUserRegistration( User $user ): string {
+		return date( 'F j, Y', strtotime( $user->getRegistration() ) );
 	}
 
 	/**
-	 * @param string $user
-	 * @return ?string
+	 * @param User $user
+	 * @return string
 	 */
-	public static function getUserRegistration( string $user ): ?string {
-		$user = self::getUser( $user );
-
-		if ( $user ) {
-			return date( 'F j, Y', strtotime( $user->getRegistration() ) );
-		}
-
-		return null;
-	}
-
-	/**
-	 * @param string $user
-	 * @return ?string
-	 */
-	public static function getUserGroups( string $user ): ?string {
+	public static function getUserGroups( User $user ): string {
 		$services = MediaWikiServices::getInstance();
 
 		$config = $services->getConfigFactory()->makeConfig( 'Cosmos' );
 		$userGroupManager = $services->getUserGroupManager();
 
-		$user = self::getUser( $user );
-		$userTags = null;
-
-		if ( $user && $user->getBlock() ) {
+		if ( $user->getBlock() ) {
 			$userTags = Html::element(
 				'span',
 				[ 'class' => 'tag tag-blocked' ],
 				wfMessage( 'cosmos-user-blocked' )->text()
 			);
-		} elseif ( $user ) {
+		} else {
 			$numberOfTags = 0;
 			$userTags = '';
 
@@ -92,17 +59,11 @@ class CosmosSocialProfile {
 	}
 
 	/**
-	 * @param string $user
-	 * @return ?int
+	 * @param User $user
+	 * @return string
 	 */
-	public static function getUserEdits( string $user ): ?int {
-		$user = self::getUser( $user );
-
-		if ( $user ) {
-			return $user->getEditCount();
-		}
-
-		return null;
+	public static function getUserEdits( User $user ): string {
+		return (string)$user->getEditCount();
 	}
 
 	/**
@@ -120,7 +81,7 @@ class CosmosSocialProfile {
 		$userBioPage = $titleFactory->newFromText( "User:{$user}" )
 			->getSubpage( 'bio' );
 
-		if ( $user && $userBioPage && $userBioPage->isKnown() ) {
+		if ( $userBioPage && $userBioPage->isKnown() ) {
 			$wikiPageFactory = $services->getWikiPageFactory();
 			$wikiPage = $wikiPageFactory->newFromTitle( $userBioPage );
 

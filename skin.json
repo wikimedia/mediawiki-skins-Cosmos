@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "6.8.0",
+	"version": "6.9.0",
 	"author": [
 		"Universal Omega",
 		"..."
@@ -502,6 +502,12 @@
 	"HookHandlers": {
 		"main": {
 			"class": "MediaWiki\\Skins\\Cosmos\\Hooks"
+		},
+		"SocialProfile": {
+			"class": "MediaWiki\\Skins\\Cosmos\\Hook\\Handlers\\SocialProfile",
+			"services": [
+				"ConfigFactory"
+			]
 		}
 	},
 	"Hooks": {
@@ -526,6 +532,9 @@
 		},
 		"ParserFirstCallInit": {
 			"handler": "main"
+		},
+		"UserProfileGetProfileTitle": {
+			"handler": "SocialProfile"
 		}
 	},
 	"manifest_version": 2

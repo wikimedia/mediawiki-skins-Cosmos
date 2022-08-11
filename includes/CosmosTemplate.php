@@ -17,7 +17,6 @@ use SiteStats;
 use SpecialPage;
 use Title;
 use TitleFactory;
-use UserProfilePage;
 use WantedPagesPage;
 use wAvatar;
 
@@ -83,71 +82,8 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= $this->getTrail();
 		$html .= Html::closeElement( 'body' );
 		$html .= Html::closeElement( 'html' );
-		$title = $this->titleFactory->newFromText( $this->get( 'title' ) );
-		if (
-			class_exists( UserProfilePage::class ) &&
-			(
-				$this->config->get( 'CosmosSocialProfileShowGroupTags' ) ||
-				$this->config->get( 'CosmosSocialProfileShowEditCount' ) ||
-				$this->config->get( 'CosmosSocialProfileAllowBio' )
-			) && (
-				is_object( $title ) &&
-				( $title->getNamespace() == NS_USER || $title->getNamespace() == NS_USER_PROFILE ) &&
-				!$title->isSubpage()
-			)
-		) {
 
-			// Set up Cosmos-specific SocialProfile elements
-			$profileOwner = $title->getText();
-
-			$replace = [
-				'<div id="profile-title">' . $profileOwner . '</div>',
-				'<div id="profile-title-container">'
-			];
-
-			$groupTags = $this->config->get( 'CosmosSocialProfileShowGroupTags' )
-				? CosmosSocialProfile::getUserGroups( $profileOwner )
-				: null;
-
-			if ( $this->config->get( 'CosmosSocialProfileShowEditCount' ) ) {
-				$contribsUrl = SpecialPage::getTitleFor(
-					'Contributions', $profileOwner
-				)->getFullURL();
-
-				$editCount = Html::closeElement( 'br' );
-
-				$editCount .= Html::rawElement( 'div', [
-					'class' => [ 'contributions-details', 'tally' ]
-				], Html::rawElement( 'a', [
-					'href' => $contribsUrl
-				], Html::rawElement( 'em', [],
-					(string)CosmosSocialProfile::getUserEdits( $profileOwner )
-				) .
-				Html::rawElement( 'span', [],
-					$this->getMsg( 'cosmos-editcount-label' )->escaped() .
-					Html::closeElement( 'br' ) .
-					CosmosSocialProfile::getUserRegistration( $profileOwner )
-				) ) );
-			} else {
-				$editCount = null;
-			}
-
-			// experimental
-			$followBioRedirects = $this->config->get( 'CosmosSocialProfileFollowBioRedirects' );
-
-			$bio = $this->config->get( 'CosmosSocialProfileAllowBio' )
-				? CosmosSocialProfile::getUserBio( $profileOwner, $followBioRedirects )
-				: null;
-
-			$replaceWith = [
-				'<h1 itemprop="name">' . $profileOwner . '</h1>' . $groupTags . $editCount . $bio,
-				'<div class="hgroup">'
-			];
-
-			return str_replace( $replace, $replaceWith, $html );
-		} else {
-			return $html;
-		}
+		return $html;
 	}
 
 	/**
