@@ -6,7 +6,7 @@ use MediaWiki\Skins\Cosmos\CosmosBackgroundLookup;
 use MediaWiki\Skins\Cosmos\CosmosConfig;
 use MediaWiki\Skins\Cosmos\CosmosRailBuilder;
 use MediaWiki\Skins\Cosmos\CosmosWordmarkLookup;
-use MediaWiki\Skins\Cosmos\Hook\CosmosHookRunner;
+use MediaWiki\Skins\Cosmos\Hooks\CosmosHookRunner;
 
 return [
 	'CosmosConfig' => static function ( MediaWikiServices $services ): CosmosConfig {

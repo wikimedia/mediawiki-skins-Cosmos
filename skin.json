@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "6.9.0",
+	"version": "6.9.1",
 	"author": [
 		"Universal Omega",
 		"..."
@@ -136,7 +136,7 @@
 				"resources/skins.cosmos.searchLoader/searchLoader.js",
 				{
 					"name": "resources/skins.cosmos.searchLoader/config.json",
-					"callback": "MediaWiki\\Skins\\Cosmos\\Hook\\ResourceLoaderCallbacks::getCosmosResourceLoaderConfig"
+					"callback": "MediaWiki\\Skins\\Cosmos\\Hooks\\ResourceLoaderCallbacks::getCosmosResourceLoaderConfig"
 				}
 			],
 			"dependencies": [
@@ -159,7 +159,7 @@
 				"resources/skins.cosmos.search/App.vue",
 				{
 					"name": "resources/skins.cosmos.search/config.json",
-					"callback": "MediaWiki\\Skins\\Cosmos\\Hook\\ResourceLoaderCallbacks::getCosmosSearchResourceLoaderConfig"
+					"callback": "MediaWiki\\Skins\\Cosmos\\Hooks\\ResourceLoaderCallbacks::getCosmosSearchResourceLoaderConfig"
 				}
 			],
 			"messages": [
@@ -503,8 +503,8 @@
 		"main": {
 			"class": "MediaWiki\\Skins\\Cosmos\\Hooks"
 		},
-		"SocialProfile": {
-			"class": "MediaWiki\\Skins\\Cosmos\\Hook\\Handlers\\SocialProfile",
+		"socialprofile": {
+			"class": "MediaWiki\\Skins\\Cosmos\\Hooks\\Handlers\\SocialProfileHookHandler",
 			"services": [
 				"ConfigFactory"
 			]
@@ -534,7 +534,7 @@
 			"handler": "main"
 		},
 		"UserProfileGetProfileTitle": {
-			"handler": "SocialProfile"
+			"handler": "socialprofile"
 		}
 	},
 	"manifest_version": 2

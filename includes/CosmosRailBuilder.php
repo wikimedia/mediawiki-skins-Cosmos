@@ -6,7 +6,7 @@ use Html;
 use IContextSource;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Linker\LinkRenderer;
-use MediaWiki\Skins\Cosmos\Hook\CosmosHookRunner;
+use MediaWiki\Skins\Cosmos\Hooks\CosmosHookRunner;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\User\UserFactory;
 use MWTimestamp;

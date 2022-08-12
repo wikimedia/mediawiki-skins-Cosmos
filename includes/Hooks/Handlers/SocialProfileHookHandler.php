@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Skins\Cosmos\Hook\Handlers;
+namespace MediaWiki\Skins\Cosmos\Hooks\Handlers;
 
 use Config;
 use ConfigFactory;
@@ -9,7 +9,7 @@ use MediaWiki\Skins\Cosmos\CosmosSocialProfile;
 use SpecialPage;
 use UserProfilePage;
 
-class SocialProfile {
+class SocialProfileHookHandler {
 
 	/** @var Config */
 	private $config;
@@ -56,7 +56,7 @@ class SocialProfile {
 					CosmosSocialProfile::getUserEdits( $profileOwner )
 				) .
 				Html::rawElement( 'span', [],
-					wfMessage( 'cosmos-editcount-label' )->escaped() .
+					$userProfilePage->getContext()->msg( 'cosmos-editcount-label' )->escaped() .
 					Html::closeElement( 'br' ) .
 					CosmosSocialProfile::getUserRegistration( $profileOwner )
 				) ) );

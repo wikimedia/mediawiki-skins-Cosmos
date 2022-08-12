@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Skins\Cosmos\Hook;
+namespace MediaWiki\Skins\Cosmos\Hooks;
 
 use Skin;
 
