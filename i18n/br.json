@@ -27,7 +27,7 @@
 	"cosmos-user-blocked": "Stanket",
 	"cosmos-search-loader": "O kargañ alioù klask",
 	"cosmos-article-header-categories-in": "e-barzh:",
-	"cosmos-article-header-categories-more": "ha {{FORMATNUM:$1}} ouzhpenn",
+	"cosmos-article-header-categories-more": "ha $1 ouzhpenn",
 	"themedesigner": "Aozer tem",
 	"cosmos-themedesigner-help-6": "Liv al liammoù"
 }
