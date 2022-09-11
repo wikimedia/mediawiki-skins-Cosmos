@@ -83,7 +83,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'body' );
 		$html .= Html::closeElement( 'html' );
 
-		return $html;
+		echo $html;
 	}
 
 	/**
