@@ -48,8 +48,6 @@ class CosmosTemplate extends BaseTemplate {
 
 	/**
 	 * Outputs the entire contents of the page
-	 *
-	 * @return string
 	 */
 	public function execute() {
 		/** @var SkinCosmos */
