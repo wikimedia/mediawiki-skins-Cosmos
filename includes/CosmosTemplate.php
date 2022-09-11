@@ -63,8 +63,7 @@ class CosmosTemplate extends BaseTemplate {
 		$this->titleFactory = $skin->titleFactory;
 		$this->wordmarkLookup = $skin->wordmarkLookup;
 
-		$html = $this->get( 'headelement' );
-		$html .= $this->buildBanner();
+		$html = $this->buildBanner();
 		$html .= $this->buildCreateArticleDialog();
 		$html .= Html::openElement( 'div', [ 'id' => 'mw-content-container', 'class' => 'ts-container' ] );
 		$html .= Html::openElement( 'div', [ 'id' => 'mw-content-block', 'class' => 'ts-inner' ] );
@@ -76,10 +75,6 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'div' );
 		$html .= $this->buildToolbar();
 		$html .= Html::closeElement( 'div' );
-
-		$html .= $this->getTrail();
-		$html .= Html::closeElement( 'body' );
-		$html .= Html::closeElement( 'html' );
 
 		echo $html;
 	}
