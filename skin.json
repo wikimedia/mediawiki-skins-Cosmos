@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "6.9.2",
+	"version": "6.9.3",
 	"author": [
 		"Universal Omega",
 		"..."
@@ -11,7 +11,7 @@
 	"license-name": "GPL-3.0-or-later",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.38.0"
+		"MediaWiki": ">= 1.39.0"
 	},
 	"ValidSkinNames": {
 		"cosmos": {
@@ -29,6 +29,7 @@
 			],
 			"args": [ {
 				"name": "cosmos",
+				"bodyOnly": true,
 				"responsive": true,
 				"template": "MediaWiki\\Skins\\Cosmos\\CosmosTemplate",
 				"bodyClasses": [
