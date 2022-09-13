@@ -807,6 +807,8 @@ class CosmosTemplate extends BaseTemplate {
 			]
 		] );
 
+		$html .= Html::element( 'a', [ 'id' => 'top' ], '' );
+
 		// Build the header
 		$html .= $this->buildHeader();
 
@@ -926,7 +928,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= $this->buildArticleCategories();
 		$html .= $this->buildArticleInterlang();
 		$html .= Html::openElement( 'div', [ 'id' => 'cosmos-header-articleHeader' ] );
-		$html .= Html::openElement( 'h1', [ 'id' => 'cosmos-articleHeader-title', 'class' => 'firstHeading' ] );
+		$html .= Html::openElement( 'h1', [ 'id' => 'firstHeading', 'class' => 'firstHeading' ] );
 		$html .= Html::rawElement( 'span', [ 'id' => 'cosmos-title-text' ], $this->get( 'title' ) );
 		$html .= $this->getIndicators();
 		$html .= Html::closeElement( 'h1' );
@@ -1723,13 +1725,20 @@ class CosmosTemplate extends BaseTemplate {
 
 		foreach ( $this->getFooterLinks() as $category => $links ) {
 			// Open unordered list element for link list
-			$html .= Html::openElement(
-				'ul',
-				[ 'id' => "cosmos-footerLinks-{$category}", 'class' => 'cosmos-footerLinks-list' ]
-			);
+			$html .= Html::openElement( 'ul', [
+				'id' => Sanitizer::escapeIdForAttribute(
+					"footer-{$category}"
+				),
+				'class' => 'cosmos-footerLinks-list',
+			] );
 
-			foreach ( $links as $key ) {
-				$html .= Html::rawElement( 'li', [ 'class' => 'cosmos-footerLinks-listItem' ], $this->get( $key ) );
+			foreach ( $links as $link ) {
+				$html .= Html::rawElement( 'li', [
+					'id' => Sanitizer::escapeIdForAttribute(
+						"footer-{$category}-{$link}"
+					),
+					'class' => 'cosmos-footerLinks-listItem',
+				], $this->get( $link ) );
 			}
 
 			// Close unordered list element
