@@ -296,9 +296,9 @@ class CosmosRailBuilder {
 			$body .= ' • ';
 			$language = $this->context->getSkin()->getLanguage();
 
-			$body .= $language->getHumanTimestamp(
+			$body .= htmlspecialchars( $language->getHumanTimestamp(
 				MWTimestamp::getInstance( $recentChange['timestamp'] )
-			);
+			) );
 
 			$body .= Html::closeElement( 'div' );
 

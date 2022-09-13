@@ -610,7 +610,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		if ( $canRead ) {
 			$html .= Html::openElement( 'div', [ 'class' => 'cosmos-header__counter' ] );
-			$html .= Html::rawElement( 'span', [
+			$html .= Html::element( 'span', [
 					'class' => 'cosmos-header__counter-value'
 				],
 				$skin->getLanguage()->formatNum( SiteStats::articles() )
