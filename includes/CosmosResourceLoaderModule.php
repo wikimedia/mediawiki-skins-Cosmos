@@ -3,11 +3,11 @@
 namespace MediaWiki\Skins\Cosmos;
 
 use MediaWiki\MediaWikiServices;
-use ResourceLoaderContext;
-use ResourceLoaderSkinModule;
+use MediaWiki\ResourceLoader\Context;
+use MediaWiki\ResourceLoader\SkinModule;
 use Wikimedia\Minify\CSSMin;
 
-class CosmosResourceLoaderModule extends ResourceLoaderSkinModule {
+class CosmosResourceLoaderModule extends SkinModule {
 
 	/** @var CosmosConfig */
 	private $cosmosConfig;
@@ -15,11 +15,10 @@ class CosmosResourceLoaderModule extends ResourceLoaderSkinModule {
 	/**
 	 * @inheritDoc
 	 *
-	 * @suppress PhanParamSignatureRealMismatchParamType
-	 * @param ResourceLoaderContext $context
+	 * @param Context $context
 	 * @return array
 	 */
-	public function getPreloadLinks( ResourceLoaderContext $context ): array {
+	public function getPreloadLinks( Context $context ): array {
 		$preloadLinks = parent::getPreloadLinks( $context );
 
 		$services = MediaWikiServices::getInstance();
@@ -46,11 +45,10 @@ class CosmosResourceLoaderModule extends ResourceLoaderSkinModule {
 	/**
 	 * @inheritDoc
 	 *
-	 * @suppress PhanParamSignatureRealMismatchParamType
-	 * @param ResourceLoaderContext $context
+	 * @param Context $context
 	 * @return array
 	 */
-	protected function getLessVars( ResourceLoaderContext $context ) {
+	protected function getLessVars( Context $context ) {
 		$lessVars = parent::getLessVars( $context );
 
 		$services = MediaWikiServices::getInstance();
