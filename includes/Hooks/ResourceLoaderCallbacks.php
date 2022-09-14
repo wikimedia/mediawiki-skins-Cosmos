@@ -3,17 +3,17 @@
 namespace MediaWiki\Skins\Cosmos\Hooks;
 
 use Config;
-use ResourceLoaderContext;
+use MediaWiki\ResourceLoader\Context;
 
 class ResourceLoaderCallbacks {
 
 	/**
-	 * @param ResourceLoaderContext $context
+	 * @param Context $context
 	 * @param Config $config
 	 * @return array
 	 */
 	public static function getCosmosResourceLoaderConfig(
-		ResourceLoaderContext $context,
+		Context $context,
 		Config $config
 	): array {
 		return [
@@ -23,12 +23,12 @@ class ResourceLoaderCallbacks {
 	}
 
 	/**
-	 * @param ResourceLoaderContext $context
+	 * @param Context $context
 	 * @param Config $config
 	 * @return array
 	 */
 	public static function getCosmosSearchResourceLoaderConfig(
-		ResourceLoaderContext $context,
+		Context $context,
 		Config $config
 	): array {
 		return array_merge( [
