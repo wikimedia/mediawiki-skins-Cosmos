@@ -32,8 +32,9 @@
 	"cosmos-newfiles": "Nye filer",
 	"cosmos-user-blocked": "Blokkert",
 	"cosmos-search-loader": "Laster søkeresultater",
+	"cosmos-searchsuggest-containing": "Søk etter sider som inneholder <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>",
 	"cosmos-article-header-categories-in": "i:",
-	"cosmos-article-header-categories-more": "og {{formatnum:$1}} til",
+	"cosmos-article-header-categories-more": "og $1 til",
 	"cosmos-themedesigner-success": "Oppdaterte konfigurasjonen for Cosmos.",
 	"cosmos-themedesigner-text": "Tilpass temaet for '''Cosmos'''-drakten.",
 	"themedesigner": "Temadesigner",
@@ -43,5 +44,12 @@
 	"cosmos-themedesigner-help-3": "Hovedbakgrunnsfarge.",
 	"cosmos-themedesigner-help-4": "Bakgrunnsfargen til hovedinnholdsområdet.",
 	"cosmos-themedesigner-help-5": "Bakgrunnsfarge for knapper.",
-	"cosmos-themedesigner-help-6": "Fargen til lenker."
+	"cosmos-themedesigner-help-6": "Fargen til lenker.",
+	"cosmos-themedesigner-help-8": "Bakgrunnsfargen til verktøylinja",
+	"cosmos-themedesigner-help-9": "Fullstendig URL-til logotypen.",
+	"cosmos-themedesigner-help-11": "Hovedbakgrunnsbilde.",
+	"cosmos-themedesigner-help-12": "Gjennomsiktigheten til innholdsområdet (i prosent)",
+	"cosmos-themedesigner-help-13": "Hovedbakgrunnsstørrelse",
+	"cosmos-themedesigner-help-14": "Repeter bakgrunnsbildet?",
+	"cosmos-themedesigner-help-15": "Fast posisjon for bakgrunnsbildet?"
 }
