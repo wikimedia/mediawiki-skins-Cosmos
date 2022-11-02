@@ -17,7 +17,7 @@
 	"cosmos-createpage-next": "التالي",
 	"cosmos-createpage-text": "لدينا حاليًا '' ' $1 ' '' {{PLURAL:$1| مقالة | مقالات}} على $2 . اكتب اسم مقالتك أعلى $3",
 	"cosmos-createpage-wanted-pages": "أو انقر فوق أحد العناوين أدناه وابدأ في الكتابة!",
-	"cosmos-createpage-no-wanted-pages": "أو أنشئ إحدى المقالات المدرجة [[ $1 | هنا]]!",
+	"cosmos-createpage-no-wanted-pages": "أو أنشئ إحدى المقالات المدرجة [[$1|هنا]]!",
 	"cosmos-personaltools-userpage": "صفحة مستخدم",
 	"cosmos-personaltools-usertalk": "نقاش المستخدم",
 	"cosmos-personaltools-anontalk": "نقاشي",
