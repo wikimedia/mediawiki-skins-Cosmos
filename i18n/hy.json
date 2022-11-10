@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kareyac"
+			"Kareyac",
+			"Սերգեյ Սաֆարյան"
 		]
 	},
 	"cosmos-counter-label": "$1 {{PLURAL:$1|Հոդված|Հոդվածներ}}",
 	"cosmos-action-cancel": "Չեղարկել",
 	"cosmos-add-new-page-title": "Ավելացնել Նոր Էջ",
+	"cosmos-article-header-categories-more": "և $1 այլ",
 	"cosmos-themedesigner-help-6": "Հղումների գույնը"
 }
