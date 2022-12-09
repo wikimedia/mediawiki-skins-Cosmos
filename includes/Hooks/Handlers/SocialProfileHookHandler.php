@@ -7,6 +7,7 @@ use ConfigFactory;
 use Html;
 use IContextSource;
 use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Skins\Cosmos\SkinCosmos;
 use MediaWiki\User\UserGroupManager;
 use Sanitizer;
 use SpecialPage;
@@ -70,6 +71,11 @@ class SocialProfileHookHandler {
 			$this->config->get( 'CosmosSocialProfileAllowBio' )
 		) {
 			$this->context = $userProfilePage->getContext();
+
+			if ( !$this->context->getSkin() instanceof SkinCosmos ) {
+				return;
+			}
+
 			$this->profileOwner = $userProfilePage->profileOwner;
 
 			$groupTags = $this->config->get( 'CosmosSocialProfileShowGroupTags' )

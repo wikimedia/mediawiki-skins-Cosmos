@@ -143,6 +143,10 @@ class Hooks implements
 	 * @param array &$bodyAttrs
 	 */
 	public function onOutputPageBodyAttributes( $out, $skin, &$bodyAttrs ): void {
+		if ( !$skin instanceof SkinCosmos ) {
+			return;
+		}
+
 		if ( $skin->getUser()->isRegistered() ) {
 			$bodyAttrs['class'] .= ' user-logged';
 		} else {
