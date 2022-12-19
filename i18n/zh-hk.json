@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Winston Sung",
-			"铁桶"
+			"铁桶",
+			"捍粵者"
 		]
 	},
 	"cosmos-desc": "Cosmos是一款基於Fandom的Oasis外觀所設計的外觀，旨在改進其設計，並為非Fandom用戶或轉出Fandom的用戶提供高效的MediaWiki外觀。",
 	"cosmos-anonymous": "匿名",
-	"cosmos-counter-label": "{{PLURAL:$1|個頁面}}",
+	"cosmos-counter-label": "$1頁頁面",
 	"cosmos-createpage-header": "建立新頁面",
 	"cosmos-createpage-input-label": "在此填寫您的頁面標題：",
 	"cosmos-createpage-next": "下一步",
