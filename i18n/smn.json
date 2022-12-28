@@ -21,5 +21,5 @@
 	"cosmos-anon-add-new-page-text": "Lasseet uđđâ siijđo",
 	"cosmos-user-blocked": "Estum",
 	"cosmos-search-loader": "Luođđiimin uuccâmiävtuttâsâid",
-	"cosmos-article-header-categories-more": "já {{FORMATNUM:$1}} lase"
+	"cosmos-article-header-categories-more": "já $1 lase"
 }
