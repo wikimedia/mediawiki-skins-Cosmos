@@ -57,6 +57,6 @@
 	"cosmos-themedesigner-help-13": "Velikost glavnega ozadja",
 	"cosmos-themedesigner-help-14": "Ponovitev slike ozadja?",
 	"cosmos-themedesigner-help-15": "Fiksna slika ozadja?",
-	"cosmos.css": "/* Vsi koda CSS tukaj bo naložena za uporabnike preobleke Cosmos */",
-	"cosmos.js": "/* Vsa koda JavaScript tukaj bo naložena za uporabnike preobleke Cosmos */"
+	"cosmos.css": "/* Vsa koda CSS tukaj se bo naložila za uporabnike preobleke Cosmos */",
+	"cosmos.js": "/* Vsa koda JavaScript tukaj se bo naložila za uporabnike preobleke Cosmos */"
 }
