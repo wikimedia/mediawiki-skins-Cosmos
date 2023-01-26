@@ -12,6 +12,8 @@
 	},
 	"skinname-cosmos": "{{name}}",
 	"cosmos-desc": "{{desc|what=skin|name=Cosmos|url=https://www.mediawiki.org/wiki/Special:MyLanguage/Skin:Cosmos}}",
+	"cosmos-adminlinks-edit-css": "Text for 'Edit CSS file' in Special:AdminLinks, when the AdminLinks extension is installed.",
+	"cosmos-adminlinks-edit-js": "Text for 'Edit JS file' in Special:AdminLinks, when the AdminLinks extension is installed.",
 	"cosmos-adminlinks-edit-navigation": "Text for 'Edit navigation' in Special:AdminLinks, when the AdminLinks extension is installed.",
 	"cosmos-adminlinks-edit-tagline": "Text for 'Edit tagline' in Special:AdminLinks, when the AdminLinks extension is installed.",
 	"cosmos-anonymous": "The text that shows instead of a username in the top banner if the user is not logged in.\n\n{{Identical|Anonymous}}",

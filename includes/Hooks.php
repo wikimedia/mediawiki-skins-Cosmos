@@ -234,6 +234,20 @@ class Hooks implements
 			)
 		);
 
+		$cosmosRow->addItem(
+			ALItem::newFromEditLink(
+				'Cosmos.css',
+				wfMessage( 'cosmos-adminlinks-edit-css' )->text()
+			)
+		);
+
+		$cosmosRow->addItem(
+			ALItem::newFromEditLink(
+				'Cosmos.js',
+				wfMessage( 'cosmos-adminlinks-edit-js' )->text()
+			)
+		);
+
 		$cosmosSection->addRow( $cosmosRow );
 		$adminLinksTree->addSection( $cosmosSection, wfMessage( 'adminlinks_users' )->text() );
 	}
