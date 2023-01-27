@@ -18,10 +18,13 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 	]
 );
 
-$cfg['suppress_issue_types'] = array_merge(
-	$cfg['suppress_issue_types'], [
-		'PhanPluginDuplicateAdjacentStatement',
-	]
-);
+$cfg['suppress_issue_types'] = [
+	'PhanAccessClassInternal',
+	'PhanAccessMethodInternal',
+	'PhanParamNameIndicatingUnused',
+	'PhanPluginDuplicateAdjacentStatement',
+	'PhanPluginMixedKeyNoKey',
+	'SecurityCheck-LikelyFalsePositive',
+];
 
 return $cfg;

@@ -334,7 +334,8 @@ class CosmosNavigation implements ExpirationAwareness {
 			$link = $lineTmp[0];
 		}
 
-		if ( preg_match( '/^(?:' . wfUrlProtocols() . ')/', $link ) ) {
+		$urlUtils = MediaWikiServices::getInstance()->getUrlUtils();
+		if ( preg_match( '/^(?:' . $urlUtils->validProtocols() . ')/', $link ) ) {
 			$href = $link;
 		} else {
 			if ( empty( $link ) ) {

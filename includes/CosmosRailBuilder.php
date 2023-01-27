@@ -317,7 +317,7 @@ class CosmosRailBuilder {
 		$recentChanges = $this->WANObjectCache->get( $cacheKey );
 
 		if ( empty( $recentChanges ) ) {
-			$dbr = $this->dbLoadBalancer->getConnectionRef( DB_REPLICA );
+			$dbr = $this->dbLoadBalancer->getConnection( DB_REPLICA );
 
 			$res = $dbr->newSelectQueryBuilder()
 				->table( 'recentchanges' )

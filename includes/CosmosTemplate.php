@@ -491,6 +491,7 @@ class CosmosTemplate extends BaseTemplate {
 	 */
 	protected function buildSearchBar() {
 		$skin = $this->getSkin();
+		'@phan-var SkinCosmos $skin';
 
 		$html = '';
 
