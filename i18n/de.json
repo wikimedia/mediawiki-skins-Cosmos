@@ -6,6 +6,8 @@
 		]
 	},
 	"cosmos-desc": "Cosmos ist ein Skin, der auf dem Oasis-Skin von Fandom basiert. Sie wurde entwickelt, um deren Design zu verbessern und eine effiziente MediaWiki-Skin für Nicht-Fandom-Benutzer oder für Benutzer, die aus Fandom aussteigen, bereitzustellen. Wenn du möchtest, kannst du dem [https://discord.gg/GPVgFTaQTJ Cosmos-Discord-Server] beitreten, wenn du Hilfe bei der Gestaltung oder etwas anderem benötigt.",
+	"cosmos-adminlinks-edit-css": "CSS-Datei bearbeiten",
+	"cosmos-adminlinks-edit-js": "JS-Datei bearbeiten",
 	"cosmos-adminlinks-edit-navigation": "Bearbeitungs-Navigation",
 	"cosmos-adminlinks-edit-tagline": "Tagline bearbeiten",
 	"cosmos-anonymous": "Anonym",

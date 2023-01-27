@@ -6,6 +6,8 @@
 	},
 	"skinname-cosmos": "Cosmos",
 	"cosmos-desc": "Cosmos je preobleka, oblikovana in zasnovana na preobleki Fandom's Oasis. Zasnovana je za izboljšanje njene podobe in zagotavljanje učinkovite preobleke MediaWiki za uporabnike, ki niso člani Fandom, ali za uporabnike, ki prehajajo iz Fandoma. Če želite, se lahko pridružite [https://discord.gg/GPVgFTaQTJ strežniku Cosmos Discord], če potrebujete pomoč pri oblikovanju tem ali česa drugega.",
+	"cosmos-adminlinks-edit-css": "Uredi datoteko CSS",
+	"cosmos-adminlinks-edit-js": "Uredi datoteko JS",
 	"cosmos-adminlinks-edit-navigation": "Uredi navigacijo",
 	"cosmos-adminlinks-edit-tagline": "Uredi slogan",
 	"cosmos-anonymous": "Anonimni",

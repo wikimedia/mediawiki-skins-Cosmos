@@ -2,12 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"A2y4",
+			"MathXplore",
 			"Omotecho",
 			"UsagiNeko",
 			"Waki285"
 		]
 	},
 	"cosmos-desc": "コスモス外装は Fandom のオアシス外装をもとに設計されました。その改善点を盛り込み、また非-Fandom 利用者あるいは Fandom から離れる利用者にも有効なメディアウィキ外装を提供します。",
+	"cosmos-adminlinks-edit-css": "CSSファイルを編集する",
+	"cosmos-adminlinks-edit-js": "JSファイルを編集",
 	"cosmos-anonymous": "匿名利用者",
 	"cosmos-counter-label": "{{PLURAL:$1|記事}}",
 	"cosmos-createpage-header": "新規記事を作成",
