@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kizule"
+			"Kizule",
+			"Milicevic01"
 		]
 	},
+	"cosmos-adminlinks-edit-css": "Уреди CSS датотеку",
+	"cosmos-adminlinks-edit-js": "Уреди JS датотеку",
 	"cosmos-anonymous": "Анонимно",
 	"cosmos-personaltools-userpage": "Корисничка страница",
 	"cosmos-personaltools-usertalk": "Корисничка страница за разговор",

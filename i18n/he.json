@@ -9,6 +9,8 @@
 		]
 	},
 	"cosmos-desc": "קוסמוס הוא עיצוב שמבוסס על אואזיס של פנדום. נועד להיות טוב יותר מהעיצוב שלהם, ולספק עיצוב מדיה־ויקי יעיל למשתמשים שאינם פנדום, או למשתמשים העוברים אל מחוץ לפנדום. אפשר להצטרף ל[https://discord.gg/GPVgFTaQTJ שרת Cosmos Discord] אם נחוץ לך סיוע בנושא עיצוב או משהו אחר.",
+	"cosmos-adminlinks-edit-css": "עריכת קובץ CSS",
+	"cosmos-adminlinks-edit-js": "עריכת קובץ JS",
 	"cosmos-adminlinks-edit-navigation": "עריכת ניווט",
 	"cosmos-adminlinks-edit-tagline": "עריכת מוטו",
 	"cosmos-anonymous": "אלמוני",

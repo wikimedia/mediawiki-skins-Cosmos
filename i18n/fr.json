@@ -11,6 +11,8 @@
 	},
 	"skinname-cosmos": "Cosmos",
 	"cosmos-desc": "Cosmos est un habillage conçu et basé sur l’habillage Oasis de Fandom. Conçu pour améliorer son apparence et fournir un habillage MediaWiki efficace pour les non-utilisateurs de Fandom ou pour les utilisateurs passant à autre chose que Fandom. Si vous voulez, vous pouvez rejoindre le [https://discord.gg/GPVgFTaQTJ serveur Cosmos Discord] si vous avez besoin d’aide sur les apparences ou quelque chose d’autre.",
+	"cosmos-adminlinks-edit-css": "Modifier le fichier CSS",
+	"cosmos-adminlinks-edit-js": "Modifier le fichier JavaScript",
 	"cosmos-adminlinks-edit-navigation": "Modifier la navigation",
 	"cosmos-adminlinks-edit-tagline": "Modifier le slogan",
 	"cosmos-anonymous": "Anonyme",

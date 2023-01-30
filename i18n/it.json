@@ -6,6 +6,8 @@
 			"Stefano"
 		]
 	},
+	"cosmos-adminlinks-edit-css": "Modifica file CSS",
+	"cosmos-adminlinks-edit-js": "Modifica file JS",
 	"cosmos-anonymous": "Anonimo",
 	"cosmos-counter-label": "{{PLURAL:$1|Voce|Voci}}",
 	"cosmos-createpage-header": "Crea una nuova voce",

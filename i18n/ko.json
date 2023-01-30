@@ -4,6 +4,8 @@
 			"Ykhwong"
 		]
 	},
+	"cosmos-adminlinks-edit-css": "CSS 파일 편집",
+	"cosmos-adminlinks-edit-js": "JS 파일 편집",
 	"cosmos-anonymous": "익명",
 	"cosmos-createpage-header": "새 문서 만들기",
 	"cosmos-createpage-input-label": "여기에 문서 제목을 쓰세요:",
