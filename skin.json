@@ -335,6 +335,7 @@
 	},
 	"ResourceModuleSkinStyles": {
 		"cosmos": {
+			"+mediawiki.action.view.filepage": "resources/skinStyles/mediawiki.action.view.filepage.less",
 			"+oojs-ui-core.styles": "resources/skinStyles/ooui.less",
 			"+ext.echo.styles.badge": "resources/skinStyles/ext.echo.styles.badge.less",
 			"+ext.visualEditor.core": "resources/skinStyles/ext.visualEditor.less",
