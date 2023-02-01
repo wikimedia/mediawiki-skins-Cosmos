@@ -1,10 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Eukarióta",
 			"Hanna Tardos",
 			"Misibacsi"
 		]
 	},
+	"cosmos-adminlinks-edit-css": "CSS-fájl szerkesztése",
+	"cosmos-adminlinks-edit-js": "JavaScript-fájl szerkesztése",
 	"cosmos-anonymous": "Névtelen",
 	"cosmos-counter-label": "$1 szócikk",
 	"cosmos-createpage-header": "Új szócikk létrehozása",
