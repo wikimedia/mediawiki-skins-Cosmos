@@ -5,6 +5,8 @@
 			"Robby"
 		]
 	},
+	"cosmos-adminlinks-edit-css": "CSS-Fichier änneren",
+	"cosmos-adminlinks-edit-js": "JS-Fichier änneren",
 	"cosmos-anonymous": "Anonym",
 	"cosmos-counter-label": "{{PLURAL:$1|Artikel|Artikelen}}",
 	"cosmos-createpage-header": "En neien Artikel uleeën",
