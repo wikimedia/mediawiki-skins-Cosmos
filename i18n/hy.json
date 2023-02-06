@@ -5,6 +5,8 @@
 			"Սերգեյ Սաֆարյան"
 		]
 	},
+	"cosmos-adminlinks-edit-css": "Խմբագրել CSS նիշքը",
+	"cosmos-adminlinks-edit-js": "Խմբագրել JS նիշքը",
 	"cosmos-counter-label": "$1 {{PLURAL:$1|հոդված}}",
 	"cosmos-action-cancel": "Չեղարկել",
 	"cosmos-add-new-page-title": "Ավելացնել Նոր Էջ",
