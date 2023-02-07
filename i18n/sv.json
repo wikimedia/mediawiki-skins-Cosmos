@@ -6,6 +6,8 @@
 		]
 	},
 	"cosmos-desc": "Cosmos är ett utseende baserat på Fandoms Oasis-utseende. Det är designat för att förbättra deras design och tillhandahålla ett effektivt MediaWiki-utseende för användare som inte har använt Fandom eller användare som har gjort det. Om du vill kan du ansluta till [https://discord.gg/GPVgFTaQTJ Cosmos Discord-server] om du behöver hjälp med temat eller någonting annat.",
+	"cosmos-adminlinks-edit-css": "Ändra CSS-fil",
+	"cosmos-adminlinks-edit-js": "Ändra JS-fil",
 	"cosmos-adminlinks-edit-navigation": "Redigera navigering",
 	"cosmos-adminlinks-edit-tagline": "Redigera motto",
 	"cosmos-anonymous": "Anonym",
