@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"cosmos-adminlinks-edit-css": "Uredi CSS datoteku",
+	"cosmos-adminlinks-edit-js": "Uredi JS datoteku",
+	"cosmos-anonymous": "Anonimno",
+	"cosmos-personaltools-userpage": "Korisnička stranica",
+	"cosmos-personaltools-usertalk": "Korisnička stranica za razgovor",
+	"cosmos-personaltools-anontalk": "Moja stranica za razgovor",
+	"cosmos-action-addsection": "Nova tema",
+	"cosmos-action-cancel": "Otkaži",
+	"cosmos-action-backtopage": "Nazad na $1",
+	"cosmos-action-back": "Nazad",
+	"cosmos-add-new-image": "Dodaj novu sliku",
+	"cosmos-add-new-video": "Dodaj nov video",
+	"cosmos-add-new-page-title": "Dodaj novu stranicu",
+	"cosmos-add-new-page-text": "Dodaj",
+	"cosmos-anon-add-new-page-text": "Dodaj novu stranicu",
+	"cosmos-explore": "Istraži",
+	"cosmos-newfiles": "Nove datoteke"
+}
