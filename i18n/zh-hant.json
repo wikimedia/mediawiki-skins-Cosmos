@@ -6,7 +6,9 @@
 			"铁桶"
 		]
 	},
-	"cosmos-desc": "Cosmos是一款基於Fandom的Oasis外觀所設計的外觀，旨在改進其設計，並為非Fandom使用者或轉出Fandom的使用者提供高效的MediaWiki外觀。",
+	"cosmos-desc": "Cosmos 是一款基於 Fandom 的 Oasis 外觀所設計的外觀，旨在改進其設計，並為非 Fandom 使用者或轉出 Fandom 的使用者提供高效的 MediaWiki 外觀。如果您有主題或是其他方面協助上的需要，您可以加入 [https://discord.gg/GPVgFTaQTJ Cosmos Discord 伺服器]。",
+	"cosmos-adminlinks-edit-css": "編輯 CSS 檔案",
+	"cosmos-adminlinks-edit-js": "編輯 JS 檔案",
 	"cosmos-adminlinks-edit-navigation": "編輯導覽",
 	"cosmos-adminlinks-edit-tagline": "編輯標語",
 	"cosmos-anonymous": "匿名",
