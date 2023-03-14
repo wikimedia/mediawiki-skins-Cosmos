@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"J budissin"
+		]
+	},
+	"cosmos-createpage-header": "Nowy zapisk wutworić",
+	"cosmos-createpage-input-label": "Napisaj titul strony tule:",
+	"cosmos-createpage-next": "Přichodny",
+	"cosmos-personaltools-userpage": "Wužiwarska strona",
+	"cosmos-personaltools-anontalk": "Moja diskusijna strona",
+	"cosmos-action-addsection": "Nowa tema",
+	"cosmos-action-cancel": "Přetorhnyć",
+	"cosmos-action-backtopage": "Wróćo k $1",
+	"cosmos-action-back": "Wróćo",
+	"cosmos-add-new-image": "Nowy wobraz dodać",
+	"cosmos-add-new-video": "Nowe widejo dodać",
+	"cosmos-add-new-page-title": "Nowu stronu dodać",
+	"cosmos-add-new-page-text": "Dodać",
+	"cosmos-anon-add-new-page-text": "Nowu stronu dodać",
+	"cosmos-explore": "Wotkrywać",
+	"cosmos-newfiles": "Nowe dataje",
+	"cosmos-user-blocked": "Zablokowany",
+	"cosmos-search-loader": "Pytanske namjety začitać",
+	"cosmos-searchsuggest-containing": "Pytać za stronami, kotrež wobsahuja <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>",
+	"cosmos-article-header-categories-in": "w:",
+	"cosmos-themedesigner-help-6": "Barba wotkazow."
+}
