@@ -11,6 +11,8 @@
 		"no-descending-specificity": null,
 		"no-duplicate-selectors": null,
 		"selector-class-pattern": null,
-		"selector-max-id": null
+		"selector-max-id": null,
+		"plugin/no-unsupported-browser-features": null,
+		"selector-pseudo-element-colon-notation": null
 	}
 }
