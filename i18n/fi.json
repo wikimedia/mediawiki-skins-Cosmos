@@ -3,7 +3,8 @@
 		"authors": [
 			"01miki10",
 			"Korjaus1",
-			"MITO"
+			"MITO",
+			"Pyscowicz"
 		]
 	},
 	"cosmos-desc": "Cosmos on Fandomin Oasis-ulkoasuun perustuva ulkoasu. Se on suunniteltu sen parannukseksi ja tarjoamaan tehokkaan MediaWiki-ulkoasun Fandomin ulkopuolisille tai sieltä pois siirtyville käyttäjille.",
@@ -24,8 +25,11 @@
 	"cosmos-add-new-page-title": "Lisää uusi sivu",
 	"cosmos-add-new-page-text": "Lisää",
 	"cosmos-anon-add-new-page-text": "Lisää uusi sivu",
+	"cosmos-explore": "Tutki",
 	"cosmos-newfiles": "Uudet tiedostot",
 	"cosmos-mobile-preference": "Ota käyttöön Cosmos-ulkoasun responsiivinen mobiiliversio",
 	"cosmos-user-blocked": "Estetty",
+	"right-themedesigner": "Käyttää Cosmos ThemeDesigneria",
+	"action-themedesigner": "käyttää Cosmos ThemeDesigneria",
 	"cosmos-themedesigner-help-6": "Linkkien väri."
 }
