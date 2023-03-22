@@ -54,5 +54,7 @@
 	"cosmos-themedesigner-help-12": "Nivello de opacitate del area de contento (percentage)",
 	"cosmos-themedesigner-help-13": "Dimension del fundo principal",
 	"cosmos-themedesigner-help-14": "Repeter le imagine de fundo?",
-	"cosmos-themedesigner-help-15": "Imagine de fundo fixate?"
+	"cosmos-themedesigner-help-15": "Imagine de fundo fixate?",
+	"cosmos.css": "/* Le codice CSS placiate essera cargate pro le usatores del apparentia Cosmos */",
+	"cosmos.js": "/* Le codice JavaScript placiate hic essera cargate pro le usatores del apparentia Cosmos */"
 }
