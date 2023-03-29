@@ -760,7 +760,7 @@ body > .suggestions {
 			background-size: 100% 9px;
 			overflow-y: auto;
 
-			&:after {
+			&::after {
 				position: relative;
 				z-index: -1;
 				display: block;
@@ -770,7 +770,7 @@ body > .suggestions {
 				content: '';
 			}
 
-			&:before {
+			&::before {
 				position: relative;
 				z-index: -1;
 				display: block;
@@ -903,7 +903,7 @@ button.wds-button {
 	display: flex;
 	height: 100%;
 
-	&:after {
+	&::after {
 		position: absolute;
 		z-index: 2;
 		bottom: -1px;
@@ -918,7 +918,7 @@ button.wds-button {
 		pointer-events: none;
 	}
 
-	&:before {
+	&::before {
 		position: absolute;
 		z-index: 2;
 		bottom: -1px;
@@ -937,11 +937,11 @@ button.wds-button {
 		&:not( .wds-is-not-hoverable ) {
 			&:hover {
 				&:not( .wds-no-chevron ) {
-					&:after {
+					&::after {
 						display: block;
 					}
 
-					&:before {
+					&::before {
 						display: block;
 					}
 				}
@@ -957,13 +957,13 @@ button.wds-button {
 			}
 
 			&:hover.wds-has-dark-shadow {
-				&:before {
+				&::before {
 					display: none;
 				}
 			}
 
 			&:hover.wds-has-shadow {
-				&:before {
+				&::before {
 					display: none;
 				}
 			}
@@ -1008,11 +1008,11 @@ button.wds-button {
 
 .wds-dropdown.wds-is-active {
 	&:not( .wds-no-chevron ) {
-		&:after {
+		&::after {
 			display: block;
 		}
 
-		&:before {
+		&::before {
 			display: block;
 		}
 	}
@@ -1231,7 +1231,7 @@ button.wds-button {
 }
 
 .wds-toggle__label {
-	&:before {
+	&::before {
 		position: absolute;
 		top: 50%;
 		left: 6px;
@@ -1245,7 +1245,7 @@ button.wds-button {
 		transform: translateY( -50% );
 	}
 
-	&:after {
+	&::after {
 		position: absolute;
 		top: 50%;
 		left: 5px;
@@ -1284,7 +1284,7 @@ button.wds-button {
 		background-image: @wiki-header-background-image;
 	}
 
-	&:before {
+	&::before {
 		position: absolute;
 		z-index: -1;
 		display: block;
@@ -1310,7 +1310,7 @@ button.wds-button {
 				background-size: 100% 9px;
 				overflow-y: auto;
 
-				&:after {
+				&::after {
 					position: relative;
 					z-index: -1;
 					display: block;
@@ -1320,7 +1320,7 @@ button.wds-button {
 					content: '';
 				}
 
-				&:before {
+				&::before {
 					position: relative;
 					z-index: -1;
 					display: block;
@@ -1361,11 +1361,11 @@ button.wds-button {
 	}
 
 	.wds-dropdown {
-		&:after {
+		&::after {
 			border-bottom-color: #fff;
 		}
 
-		&:before {
+		&::before {
 			border-bottom-color: #ccc;
 		}
 	}
@@ -1804,8 +1804,8 @@ body .oo-ui-tabSelectWidget-framed {
 			height: 100%;
 			transition: background 250ms ease;
 
-			&:before,
-			&:after {
+			&::before,
+			&::after {
 				content: none;
 			}
 
@@ -1986,7 +1986,7 @@ h6 {
 
 #mw-content {
 	h2 {
-		&:after {
+		&::after {
 			display: none;
 		}
 	}
@@ -2062,7 +2062,7 @@ body {
 		padding: 0 0 5px 0;
 
 		&:not( :first-child ) {
-			&:before {
+			&::before {
 				color: @footer-font-color1;
 				content: ' | ';
 			}
@@ -2398,7 +2398,7 @@ body .mw-notification {
 	color: @button-font-color;
 }
 
-body .postedit:after {
+body .postedit::after {
 	top: auto;
 	bottom: 1.5px;
 	background: url( 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" stroke="%23@{notice-close-button-color}" width="20" height="20" viewBox="0 0 20 20"%3E %3Cpath d="M3.636 2.222l14.142 14.142-1.414 1.414L2.222 3.636z%22/%3E %3Cpath d="M17.778 3.636L3.636 17.778l-1.414-1.414L16.364 2.222z"/%3E %3C/svg%3E' ) no-repeat;
@@ -2420,7 +2420,7 @@ body .postedit-container {
 	background-image: none;
 }
 
-#p-personal #pt-uls .uls-trigger:before {
+#p-personal #pt-uls .uls-trigger::before {
 	display: none;
 }
 
@@ -2540,13 +2540,13 @@ table.mw-datatable {
 }
 
 body .oo-ui-icon-tray,
-.mw-ui-icon-tray:before {
+.mw-ui-icon-tray::before {
 	background: url( "data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' stroke='%23@{banner-echo-font-color}' stroke-width = '2px' fill='none' viewBox='0 0 28 28'%3e%3cpath d='M 2 5 L 26 5 L 26 23 L 2 23 Z M 2 9 L 14 19 L 26 9 L 26 23 L 2 23 Z M 2 23 L 10 15 Z M 26 23 L 18 15 Z'/%3e%3c/svg%3e" ) no-repeat;
 	background-size: cover;
 }
 
 body .oo-ui-icon-bell,
-.mw-ui-icon-bell:before {
+.mw-ui-icon-bell::before {
 	background: url( "data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' stroke='%23@{banner-echo-font-color}' stroke-width = '2px' fill='none' viewBox='0 0 28 28'%3e%3cpath d='M 2 21 L 6 15 L 6 10 A 5 5 180 0 1 22 10 L 22 15 L 26 21 Z M 18 21.5 A 4 4.5 180 0 1 10 21.5'/%3e%3c/svg%3e" ) no-repeat;
 	background-size: cover;
 }

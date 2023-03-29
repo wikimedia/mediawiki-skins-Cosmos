@@ -223,7 +223,7 @@
 // **********  Collapsible groups  ********** //
 
 .pi-collapse .pi-header:first-child {
-	&:after {
+	&::after {
 		position: relative;
 		top: -1px;
 		right: 0;
@@ -241,7 +241,7 @@
 	position: relative;
 	padding-right: 25px;
 
-	&:after {
+	&::after {
 		position: absolute;
 		top: 50%;
 		right: 10px;
@@ -253,7 +253,7 @@
 .pi-collapse-closed {
 	border-bottom: 0;
 
-	.pi-header:first-child:after {
+	.pi-header:first-child::after {
 		margin-top: -5px;
 		-webkit-transform: rotate( 135deg );
 		-moz-transform: rotate( 135deg );
