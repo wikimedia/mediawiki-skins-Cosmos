@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ajiniyaz Nurniyazov"
+		]
+	},
+	"cosmos-adminlinks-edit-navigation": "Navigaciyanı ózgertiw",
+	"cosmos-adminlinks-edit-tagline": "Súrendi ózgertiw",
+	"cosmos-anonymous": "Anonim",
+	"cosmos-counter-label": "{{PLURAL:$1|dana maqala}}",
+	"cosmos-createpage-header": "Jańa maqala baslaw",
+	"cosmos-createpage-input-label": "Maqalanıń atamasın mına jerge jazıń:",
+	"cosmos-createpage-next": "Keyingi",
+	"cosmos-personaltools-userpage": "Paydalanıwshı beti",
+	"cosmos-personaltools-usertalk": "Paydalanıwshı talqılawı",
+	"cosmos-personaltools-anontalk": "Meniń talqılawım",
+	"cosmos-editcount-label": "Usı wikige qosılǵannan berli redaktorlaw sanı",
+	"cosmos-action-addsection": "Jańa tema",
+	"cosmos-action-cancel": "Biykarlaw",
+	"cosmos-action-back": "Artqa",
+	"cosmos-add-new-image": "Jańa súwret qosıw",
+	"cosmos-add-new-video": "Jańa video qosıw",
+	"cosmos-add-new-page-title": "Jańa bet qosıw",
+	"cosmos-add-new-page-text": "Qosıw",
+	"cosmos-anon-add-new-page-text": "Jańa bet qosıw",
+	"cosmos-explore": "Izertlew",
+	"cosmos-newfiles": "Jańa fayllar",
+	"cosmos-user-blocked": "Bloklanǵan",
+	"cosmos-search-loader": "Izlew usınısları júklenbekte",
+	"cosmos-searchsuggest-containing": "<strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong> tekstin óz ishine alǵan betlerdi izlew",
+	"cosmos-article-header-categories-in": "kategoriyalarda:"
+}
