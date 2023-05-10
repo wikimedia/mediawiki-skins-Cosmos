@@ -38,7 +38,7 @@
 	"cosmos-user-blocked": "বাধাপ্রাপ্ত",
 	"cosmos-search-loader": "অনুসন্ধানের পরামর্শ লোড করা হচ্ছে",
 	"cosmos-article-header-categories-in": "বিষয়:",
-	"cosmos-article-header-categories-more": "এবং আরও {{FORMATNUM:$1}}টি",
+	"cosmos-article-header-categories-more": "এবং আরও $1টি",
 	"cosmos-themedesigner-success": "কসমসের কনফিগারেশন সফলভাবে হালনাগাদ করা হয়েছে।",
 	"cosmos-themedesigner-text": "'''কসমস''' আবরণের জন্য থিম কাস্টমাইজ করুন।",
 	"themedesigner": "থিম ডিজাইনার",
