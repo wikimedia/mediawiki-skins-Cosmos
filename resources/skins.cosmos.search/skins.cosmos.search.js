@@ -1,7 +1,7 @@
 /** @module search */
 
 const
-	Vue = require( 'vue' ).default || require( 'vue' ),
+	Vue = require( 'vue' ),
 	App = require( './App.vue' ),
 	config = require( './config.json' );
 
@@ -25,6 +25,7 @@ function initApp( searchBox ) {
 	Vue.createMwApp(
 		App, $.extend( {
 			id: searchForm.id,
+			autocapitalizeValue: search.getAttribute( 'autocapitalize' ),
 			autofocusInput: search === document.activeElement,
 			action: searchForm.getAttribute( 'action' ),
 			searchAccessKey: search.getAttribute( 'accessKey' ),

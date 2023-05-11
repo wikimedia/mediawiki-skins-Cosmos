@@ -39,7 +39,7 @@
 	"cosmos-navigation": "{{int:Sidebar}}\n*cosmos-explore\n**recentchanges-url|recentchanges\n**randompage-url|randompage\n**Special:NewFiles|cosmos-newfiles\n{$NEWVIDEOS_CONDITIONAL}\n{$WANTEDPAGES_CONDITIONAL}",
 	"cosmos-user-blocked": "Blocked",
 	"cosmos-search-loader": "Loading search suggestions",
-	"cosmos-searchsuggest-containing": "Search for pages containing <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>",
+	"cosmos-searchsuggest-containing": "Search for pages containing <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>",
 	"cosmos-article-header-categories-in": "in:",
 	"cosmos-article-header-categories-more-separator": ",&#32;",
 	"cosmos-article-header-categories-more": "and $1 more",

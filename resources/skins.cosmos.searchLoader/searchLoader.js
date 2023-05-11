@@ -38,20 +38,22 @@ function loadSearchModule( element, moduleName, afterLoadFn ) {
 		function onFocusOut() {
 			$( '#cosmos-banner-userOptions' ).show();
 			$( '.cosmos-mobile-menu-button' ).show();
+			$( '.cdx-button' ).css( { visibility: 'hidden', width: '46px' } );
 		}
 
 		function onFocus() {
 			$( '#cosmos-banner-userOptions' ).hide();
 			$( '.cosmos-mobile-menu-button' ).hide();
+			$( '.cdx-button' ).css( { visibility: 'visible', width: 'auto' } );
 		}
 
 		if ( $( window ).width() < 851 ) {
 			var inputCheck = setInterval( function () {
-				if ( document.getElementsByClassName( 'wvui-input__input' )[ 0 ] !== undefined ) {
+				if ( document.getElementsByClassName( 'cdx-text-input__input' )[ 0 ] !== undefined ) {
 					clearInterval( inputCheck );
 
-					document.getElementsByClassName( 'wvui-input__input' )[ 0 ].addEventListener( 'focus', onFocus );
-					document.getElementsByClassName( 'wvui-input__input' )[ 0 ].addEventListener( 'focusout', onFocusOut );
+					document.getElementsByClassName( 'cdx-text-input__input' )[ 0 ].addEventListener( 'focus', onFocus );
+					document.getElementsByClassName( 'cdx-text-input__input' )[ 0 ].addEventListener( 'focusout', onFocusOut );
 				}
 			}, 100 );
 		}

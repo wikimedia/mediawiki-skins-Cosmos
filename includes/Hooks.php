@@ -15,6 +15,8 @@ use MediaWiki\Hook\BeforeInitializeHook;
 use MediaWiki\Hook\GetDoubleUnderscoreIDsHook;
 use MediaWiki\Hook\OutputPageBodyAttributesHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
+use MediaWiki\ResourceLoader as RL;
+use MediaWiki\Skins\Hook\SkinPageReadyConfigHook;
 use ObjectCache;
 use OutputPage;
 use Parser;
@@ -31,7 +33,8 @@ class Hooks implements
 	BeforeInitializeHook,
 	GetDoubleUnderscoreIDsHook,
 	OutputPageBodyAttributesHook,
-	OutputPageParserOutputHook
+	OutputPageParserOutputHook,
+	SkinPageReadyConfigHook
 {
 
 	/**
@@ -126,6 +129,18 @@ class Hooks implements
 		) {
 			$request->setVal( 'wteswitched', '1' );
 		}
+	}
+
+	/**
+	 * @param RL\Context $context
+	 * @param array &$config
+	 */
+	public function onSkinPageReadyConfig( RL\Context $context, array &$config ): void {
+		if ( $context->getSkin() !== 'cosmos' ) {
+			return;
+		}
+
+		$config['search'] = false;
 	}
 
 	/**

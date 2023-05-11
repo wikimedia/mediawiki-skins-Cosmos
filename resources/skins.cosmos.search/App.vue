@@ -1,25 +1,26 @@
 <template>
-	<!-- eslint-disable-next-line vue/no-undef-components -->
-	<wvui-typeahead-search
+	<cdx-typeahead-search
 		:id="id"
 		ref="searchForm"
-		:client="getClient"
-		:domain="domain"
-		:suggestions-label="$i18n( 'searchresults' ).text()"
+		class="cosmos-typeahead-search"
+		:class="rootClasses"
+		:search-results-label="$i18n( 'searchresults' ).text()"
 		:accesskey="searchAccessKey"
+		:autocapitalize="autocapitalizeValue"
 		:title="searchTitle"
-		:article-path="articlePath"
 		:placeholder="searchPlaceholder"
 		:aria-label="searchPlaceholder"
-		:search-page-title="searchPageTitle"
 		:initial-input-value="searchQuery"
 		:button-label="$i18n( 'searchbutton' ).text()"
 		:form-action="action"
-		:search-language="language"
 		:show-thumbnail="showThumbnail"
-		:show-description="showDescription"
 		:highlight-query="highlightQuery"
 		:auto-expand-width="autoExpandWidth"
+		:search-results="suggestions"
+		:search-footer-url="searchFooterUrl"
+		@input="onInput"
+		@focus="onFocus"
+		@blur="onBlur"
 	>
 		<template #default>
 			<input
@@ -37,22 +38,34 @@
 		<template #search-footer-text="{ searchQuery }">
 			<span v-i18n-html:cosmos-searchsuggest-containing="[ searchQuery ]"></span>
 		</template>
-	</wvui-typeahead-search>
+	</cdx-typeahead-search>
 </template>
 
 <script>
-const wvui = require( 'wvui-search' ),
-	restClient = require( './restSearchClient.js' ),
-	actionClient = require( './actionSearchClient.js' );
+const { CdxTypeaheadSearch } = require( '@wikimedia/codex-search' ),
+	{ defineComponent, nextTick } = require( 'vue' ),
+	restClient = require( './restSearchClient.js' )( mw.config ),
+	actionClient = require( './actionSearchClient.js' )( mw.config ),
+	urlGenerator = require( './urlGenerator.js' )( mw.config );
 
 // @vue/component
-module.exports = {
+module.exports = exports = defineComponent( {
 	name: 'App',
-	components: wvui,
+	compatConfig: {
+		MODE: 3
+	},
+	compilerOptions: {
+		whitespace: 'condense'
+	},
+	components: { CdxTypeaheadSearch },
 	props: {
 		id: {
 			type: String,
 			required: true
+		},
+		autocapitalizeValue: {
+			type: String,
+			default: undefined
 		},
 		searchPageTitle: {
 			type: String,
@@ -67,81 +80,126 @@ module.exports = {
 			default: ''
 		},
 		/** The keyboard shortcut to focus search. */
-		// eslint-disable-next-line vue/require-default-prop
 		searchAccessKey: {
-			type: String
+			type: String,
+			default: undefined
 		},
 		/** The access key informational tip for search. */
-		// eslint-disable-next-line vue/require-default-prop
 		searchTitle: {
-			type: String
+			type: String,
+			default: undefined
 		},
 		/** The ghost text shown when no search query is entered. */
-		// eslint-disable-next-line vue/require-default-prop
 		searchPlaceholder: {
-			type: String
+			type: String,
+			default: undefined
 		},
 		/**
 		 * The search query string taken from the server-side rendered input immediately before
 		 * client render.
 		 */
-		// eslint-disable-next-line vue/require-default-prop
 		searchQuery: {
-			type: String
+			type: String,
+			default: undefined
 		},
 		showThumbnail: {
 			type: Boolean,
-			// eslint-disable-next-line vue/no-boolean-default
-			default: true
+			required: true,
+			default: false
 		},
 		showDescription: {
 			type: Boolean,
-			// eslint-disable-next-line vue/no-boolean-default
-			default: true
+			default: false
 		},
 		highlightQuery: {
 			type: Boolean,
-			// eslint-disable-next-line vue/no-boolean-default
-			default: true
+			default: false
 		},
 		autoExpandWidth: {
 			type: Boolean,
 			default: false
 		}
 	},
+	data() {
+		return {
+			// Suggestions to be shown in the TypeaheadSearch menu.
+			suggestions: [],
+
+			// Link to the search page for the current search query.
+			searchFooterUrl: '',
+
+			// The current search query. Used to detect whether a fetch response is stale.
+			currentSearchQuery: '',
+
+			// Whether to apply a CSS class that disables the CSS transitions on the text input
+			disableTransitions: this.autofocusInput,
+
+			isFocused: false
+		};
+	},
 	computed: {
+		rootClasses() {
+			return {
+				'cosmos-search-box-disable-transitions': this.disableTransitions,
+				'cosmos-typeahead-search--active': this.isFocused
+			};
+		}
+	},
+	methods: {
 		/**
-		 * @return {string}
-		 */
-		articlePath: () => mw.config.get( 'wgScript' ),
-		/**
-		 * Allow wikis to replace the default search API client
+		 * Fetch suggestions when new input is received.
 		 *
-		 * @return {Object}
+		 * @param {string} value
 		 */
-		getClient: () => {
-			if ( mw.config.get( 'wgCosmosSearchUseActionAPI', false ) ) {
-				return actionClient( mw.config );
+		onInput: function ( value ) {
+			const domain = mw.config.get( 'wgCosmosSearchHost', location.host ),
+				query = value.trim();
+
+			this.currentSearchQuery = query;
+
+			if ( query === '' ) {
+				this.suggestions = [];
+				this.searchFooterUrl = '';
+				return;
 			}
 
-			return restClient( mw.config );
+			if ( mw.config.get( 'wgCosmosSearchUseActionAPI', false ) ) {
+				actionClient.fetchByTitle( query, domain, undefined, this.showDescription ).fetch
+					.then( ( data ) => {
+						this.suggestions = data.results;
+						this.searchFooterUrl = urlGenerator.generateUrl( query );
+					} )
+					.catch( () => {
+						// TODO: error handling
+					} );
+				return;
+			}
+
+			restClient.fetchByTitle( query, domain, undefined, this.showDescription ).fetch
+				.then( ( data ) => {
+					this.suggestions = data.results;
+					this.searchFooterUrl = urlGenerator.generateUrl( query );
+				} )
+				.catch( () => {
+					// TODO: error handling
+				} );
 		},
-		language: () => {
-			return mw.config.get( 'wgUserLanguage' );
+
+		onFocus() {
+			this.isFocused = true;
 		},
-		domain: () => {
-			return mw.config.get( 'wgCosmosSearchHost', location.host );
+
+		onBlur() {
+			this.isFocused = false;
 		}
 	},
 	mounted() {
-		// access the element associated with the wvui-typeahead-search component
-		// eslint-disable-next-line no-jquery/variable-pattern
-		const wvuiSearchForm = this.$refs.searchForm.$el;
 		if ( this.autofocusInput ) {
-			// TODO: The wvui-typeahead-search component does not accept an autofocus parameter
-			// or directive. This can be removed when its does.
-			wvuiSearchForm.querySelector( 'input' ).focus();
+			this.$refs.searchForm.focus();
+			nextTick( () => {
+				this.disableTransitions = false;
+			} );
 		}
 	}
-};
+} );
 </script>

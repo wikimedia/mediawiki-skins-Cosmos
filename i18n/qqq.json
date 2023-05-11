@@ -45,7 +45,7 @@
 	"cosmos-navigation": "{{notranslate}}",
 	"cosmos-user-blocked": "The text used to show a user is blocked on social profile Pages' avatar area.\n\n{{Identical|Blocked}}",
 	"cosmos-search-loader": "Text to display below search input while the search suggestion module is loading",
-	"cosmos-searchsuggest-containing": "Label used in the special item of the search suggestions list which gives the user an option to perform a full text search for the term. Used in the WVUI typeahead search component.",
+	"cosmos-searchsuggest-containing": "Label used in the special item of the search suggestions list which gives the user an option to perform a full text search for the term. Used in the Codex typeahead search component.",
 	"cosmos-article-header-categories-in": "Label displayed before list of categories that given article belongs to",
 	"cosmos-article-header-categories-more-separator": "{{optional}}\nSeparator between first couple of categories and \"more categories\" link.\nThe default value is a comma followed by a trailing space.",
 	"cosmos-article-header-categories-more": "Link to more categories that are hidden by default",

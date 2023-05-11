@@ -1,7 +1,8 @@
 /** @module restSearchClient */
 
 const fetchJson = require( './fetch.js' ),
-	searchConfig = require( './config.json' );
+	searchConfig = require( './config.json' ),
+	urlGenerator = require( './urlGenerator.js' );
 
 /**
  * @typedef {Object} RestResponse
@@ -59,20 +60,26 @@ function nullish( a, b ) {
 }
 
 /**
+ * @param {MwMap} config
  * @param {string} query
  * @param {RestResponse} restResponse
+ * @param {boolean} showDescription
  * @return {SearchResponse}
  */
-function adaptApiResponse( query, restResponse ) {
+function adaptApiResponse( config, query, restResponse, showDescription ) {
+	const urlGeneratorInstance = urlGenerator( config );
 	return {
 		query,
-		results: restResponse.pages.map( ( page ) => {
+		results: restResponse.pages.map( ( page, index ) => {
 			const thumbnail = page.thumbnail;
 			return {
 				id: page.id,
+				value: page.id || -( index + 1 ),
+				label: page.title,
 				key: page.key,
 				title: page.title,
-				description: page.description,
+				description: showDescription ? page.description : undefined,
+				url: urlGeneratorInstance.generateUrl( page ),
 				thumbnail: thumbnail ? {
 					url: thumbnail.url,
 					width: nullish( thumbnail.width, undefined ),
@@ -107,13 +114,13 @@ function adaptApiResponse( query, restResponse ) {
  * @return {SearchClient}
  */
 function restSearchClient( config ) {
-	const customClient = config.get( 'wgCosmosSearchClient' );
-	return customClient || {
+	return config.get( 'wgCosmosSearchClient', {
 		/**
 		 * @type {fetchByTitle}
 		 */
-		fetchByTitle: ( q, domain, limit = searchConfig.wgCosmosMaxSearchResults ) => {
-			const params = { q, limit };
+		fetchByTitle: ( q, domain,
+			limit = searchConfig.wgCosmosMaxSearchResults, showDescription = true ) => {
+			const params = { q, limit: limit.toString() };
 			const url = '//' + domain + config.get( 'wgScriptPath' ) + '/rest.php/v1/search/title?' + $.param( params );
 			const result = fetchJson( url, {
 				headers: {
@@ -122,14 +129,14 @@ function restSearchClient( config ) {
 			} );
 			const searchResponsePromise = result.fetch
 				.then( ( /** @type {RestResponse} */ res ) => {
-					return adaptApiResponse( q, res );
+					return adaptApiResponse( config, q, res, showDescription );
 				} );
 			return {
 				abort: result.abort,
 				fetch: searchResponsePromise
 			};
 		}
-	};
+	} );
 }
 
 module.exports = restSearchClient;

@@ -4,14 +4,7 @@
 	],
 	"rules": {
 		"es-x/no-symbol-prototype-description": 0,
-		"jsdoc/no-undefined-types": [
-			"error",
-			{
-				"definedTypes": [
-					"RequestInit",
-					"MwMap"
-				]
-			}
-		]
+		"jsdoc/no-undefined-types": "off",
+		"compat/compat": "off"
 	}
 }
