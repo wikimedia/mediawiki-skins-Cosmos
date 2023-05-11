@@ -1,6 +1,6 @@
 {
 	"name": "Cosmos",
-	"version": "6.9.5",
+	"version": "7.0.0",
 	"author": [
 		"Universal Omega",
 		"..."
@@ -150,11 +150,12 @@
 			"es6": true,
 			"dependencies": [
 				"mediawiki.Uri",
-				"wvui-search"
+				"@wikimedia/codex-search"
 			],
 			"packageFiles": [
 				"resources/skins.cosmos.search/skins.cosmos.search.js",
 				"resources/skins.cosmos.search/fetch.js",
+				"resources/skins.cosmos.search/urlGenerator.js",
 				"resources/skins.cosmos.search/actionSearchClient.js",
 				"resources/skins.cosmos.search/restSearchClient.js",
 				"resources/skins.cosmos.search/App.vue",
@@ -535,6 +536,9 @@
 			"handler": "main"
 		},
 		"ParserFirstCallInit": {
+			"handler": "main"
+		},
+		"SkinPageReadyConfig": {
 			"handler": "main"
 		},
 		"UserProfileGetProfileTitle": {

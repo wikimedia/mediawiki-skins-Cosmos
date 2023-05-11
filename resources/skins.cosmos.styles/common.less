@@ -150,7 +150,6 @@ body > #mw-content-container {
 }
 
 #searchform {
-	display: flex;
 	width: 100%;
 }
 
@@ -176,27 +175,32 @@ body > #mw-content-container {
 
 #p-search {
 	.cosmos-search-button,
-	.wvui-input__start-icon,
-	.wvui-typeahead-search__suggestions-footer-article-icon {
+	.cdx-text-input__start-icon,
+	.cdx-typeahead-search__search-footer__icon {
 		display: none;
 	}
 
-	.wvui-typeahead-search,
+	.cosmos-typeahead-search,
 	#simpleSearch {
 		display: flex;
 		width: 100%;
 		align-items: center;
+	}
+
+	.cosmos-typeahead-search,
+	.cdx-search-input--has-end-button,
+	#simpleSearch {
 		border: 0;
 		background-color: transparent;
 		border-radius: 0;
 	}
 
-	.wvui-button {
-		z-index: 3;
+	.cdx-text-input__input {
+		min-width: unset;
 	}
 
-	.wvui-typeahead-search__suggestions {
-		top: auto;
+	.cdx-button {
+		z-index: 3;
 	}
 
 	input[ type='search' ] {
