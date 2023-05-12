@@ -28,11 +28,6 @@
 				name="title"
 				:value="searchPageTitle"
 			>
-			<input
-				type="hidden"
-				name="wprov"
-				:value="wprov"
-			>
 		</template>
 		<!-- eslint-disable-next-line vue/no-template-shadow -->
 		<template #search-footer-text="{ searchQuery }">
