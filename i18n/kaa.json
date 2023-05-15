@@ -27,6 +27,6 @@
 	"cosmos-newfiles": "Jańa fayllar",
 	"cosmos-user-blocked": "Bloklanǵan",
 	"cosmos-search-loader": "Izlew usınısları júklenbekte",
-	"cosmos-searchsuggest-containing": "<strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong> tekstin óz ishine alǵan betlerdi izlew",
+	"cosmos-searchsuggest-containing": "<strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong> tekstin óz ishine alǵan betlerdi izlew",
 	"cosmos-article-header-categories-in": "kategoriyalarda:"
 }

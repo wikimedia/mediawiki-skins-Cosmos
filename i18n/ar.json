@@ -35,7 +35,7 @@
 	"cosmos-newfiles": "ملفات جديدة",
 	"cosmos-user-blocked": "ممنوع",
 	"cosmos-search-loader": "تحميل اقتراحات البحث",
-	"cosmos-searchsuggest-containing": "ابحث عن الصفحات التي تحتوي على <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>",
+	"cosmos-searchsuggest-containing": "ابحث عن الصفحات التي تحتوي على <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>",
 	"cosmos-article-header-categories-in": "في:",
 	"cosmos-article-header-categories-more": "و $1 آخر",
 	"cosmos-themedesigner-success": "تم تحديث التكوين بنجاح لـ Cosmos.",

@@ -35,7 +35,7 @@
 	"cosmos-newfiles": "Nowe pliki",
 	"cosmos-user-blocked": "Zablokowany",
 	"cosmos-search-loader": "Wczytywanie sugestii wyszukiwania",
-	"cosmos-searchsuggest-containing": "Szukaj stron zawierających <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>",
+	"cosmos-searchsuggest-containing": "Szukaj stron zawierających <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>",
 	"cosmos-article-header-categories-in": "w:",
 	"cosmos-article-header-categories-more": "i $1 więcej",
 	"cosmos-themedesigner-success": "Pomyślnie zaktualizowano konfigurację skórki Kosmos.",

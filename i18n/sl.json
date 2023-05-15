@@ -35,7 +35,7 @@
 	"cosmos-newfiles": "Nove datoteke",
 	"cosmos-user-blocked": "Blokiran_a",
 	"cosmos-search-loader": "Nalaganje predlogov za iskanje",
-	"cosmos-searchsuggest-containing": "Poišči strani, ki vsebujejo <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>",
+	"cosmos-searchsuggest-containing": "Poišči strani, ki vsebujejo <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>",
 	"cosmos-article-header-categories-in": "v:",
 	"cosmos-article-header-categories-more-separator": ",&#32;",
 	"cosmos-article-header-categories-more": "in še $1",

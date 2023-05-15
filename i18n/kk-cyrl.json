@@ -32,7 +32,7 @@
 	"cosmos-newfiles": "Жаңа файлдар",
 	"cosmos-user-blocked": "Бұғатталған",
 	"cosmos-search-loader": "Іздеу ұсыныстары жүктелуде",
-	"cosmos-searchsuggest-containing": "<strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">\"$1\"</strong> бар беттерді іздеу",
+	"cosmos-searchsuggest-containing": "<strong class=\"cdx-typeahead-search__search-footer__query\">\"$1\"</strong> бар беттерді іздеу",
 	"cosmos-article-header-categories-in": "Санаттар:",
 	"cosmos-article-header-categories-more": "... тағы $1",
 	"cosmos-themedesigner-success": "Cosmos конфигурациясы сәтті жаңартылды.",

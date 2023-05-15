@@ -34,7 +34,7 @@
 	"cosmos-newfiles": "Ficheiros novos",
 	"cosmos-user-blocked": "Bloqueado",
 	"cosmos-search-loader": "A carregar sugestões de pesquisa",
-	"cosmos-searchsuggest-containing": "Procurar páginas que contenham <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>",
+	"cosmos-searchsuggest-containing": "Procurar páginas que contenham <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>",
 	"cosmos-article-header-categories-in": "em:",
 	"cosmos-article-header-categories-more": "e mais $1",
 	"cosmos-themedesigner-success": "Configuração do Cosmos atualizada.",

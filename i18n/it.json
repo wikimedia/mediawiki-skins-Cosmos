@@ -27,5 +27,6 @@
 	"cosmos-newfiles": "Nuovi file",
 	"cosmos-user-blocked": "Bloccato",
 	"cosmos-search-loader": "Carica suggerimenti per la ricerca",
+	"cosmos-searchsuggest-containing": "Cerca le pagine che contengono <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>",
 	"cosmos-article-header-categories-more": "e altre $1"
 }

@@ -38,7 +38,7 @@
 	"cosmos-newfiles": "קבצים חדשים",
 	"cosmos-user-blocked": "חסום",
 	"cosmos-search-loader": "טעינת הצעות חיפוש",
-	"cosmos-searchsuggest-containing": "חיפוש דפים שמכילים <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>",
+	"cosmos-searchsuggest-containing": "חיפוש דפים שמכילים <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>",
 	"cosmos-article-header-categories-in": "שייך ל־:",
 	"cosmos-article-header-categories-more": "ועוד $1",
 	"cosmos-themedesigner-success": "התצורה של קוסמוס עודכנה בהצלחה.",
