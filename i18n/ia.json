@@ -34,7 +34,7 @@
 	"cosmos-newfiles": "Nove files",
 	"cosmos-user-blocked": "Blocate",
 	"cosmos-search-loader": "Cargante suggestiones de recerca",
-	"cosmos-searchsuggest-containing": "Cercar paginas que contine <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>",
+	"cosmos-searchsuggest-containing": "Cercar paginas que contine <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>",
 	"cosmos-article-header-categories-in": "in:",
 	"cosmos-article-header-categories-more": "e $1 alteres",
 	"cosmos-themedesigner-success": "Le configuration de Cosmos ha essite actualisate.",

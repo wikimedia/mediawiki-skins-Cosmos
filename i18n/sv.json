@@ -35,7 +35,7 @@
 	"cosmos-newfiles": "Nya filer",
 	"cosmos-user-blocked": "Blockerad",
 	"cosmos-search-loader": "Läser in sökförslag",
-	"cosmos-searchsuggest-containing": "Sök efter sidor som innehåller <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>",
+	"cosmos-searchsuggest-containing": "Sök efter sidor som innehåller <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>",
 	"cosmos-article-header-categories-in": "i:",
 	"cosmos-article-header-categories-more": "och $1 till",
 	"cosmos-themedesigner-success": "Uppdaterade konfigurationen för Cosmos.",

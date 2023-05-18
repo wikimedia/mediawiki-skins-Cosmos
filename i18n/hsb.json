@@ -22,7 +22,7 @@
 	"cosmos-newfiles": "Nowe dataje",
 	"cosmos-user-blocked": "Zablokowany",
 	"cosmos-search-loader": "Pytanske namjety začitać",
-	"cosmos-searchsuggest-containing": "Pytać za stronami, kotrež wobsahuja <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>",
+	"cosmos-searchsuggest-containing": "Pytać za stronami, kotrež wobsahuja <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>",
 	"cosmos-article-header-categories-in": "w:",
 	"cosmos-themedesigner-help-6": "Barba wotkazow."
 }

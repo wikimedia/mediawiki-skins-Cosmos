@@ -36,7 +36,7 @@
 	"cosmos-newfiles": "新檔圖庫",
 	"cosmos-user-blocked": "封鎖中",
 	"cosmos-search-loader": "正在載入搜尋建議",
-	"cosmos-searchsuggest-containing": "搜尋包含 <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong> 的頁面",
+	"cosmos-searchsuggest-containing": "搜尋包含 <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong> 的頁面",
 	"cosmos-article-header-categories-in": "在：",
 	"cosmos-article-header-categories-more": "以及另外 $1 個分類",
 	"cosmos-themedesigner-success": "已成功更新Cosmos的配置。",

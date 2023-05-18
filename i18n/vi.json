@@ -8,6 +8,6 @@
 	},
 	"cosmos-createpage-input-label": "Viết tiêu đề trang của bạn ở đây:",
 	"cosmos-personaltools-userpage": "Trang cá nhân",
-	"cosmos-searchsuggest-containing": "Tìm trang có chứa <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>",
+	"cosmos-searchsuggest-containing": "Tìm trang có chứa <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>",
 	"cosmos-article-header-categories-more": "và $1 nữa"
 }

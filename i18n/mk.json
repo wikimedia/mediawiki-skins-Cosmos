@@ -35,7 +35,7 @@
 	"cosmos-newfiles": "Нови податотеки",
 	"cosmos-user-blocked": "Блокиран",
 	"cosmos-search-loader": "Вчитувам предлози за пребарувањето",
-	"cosmos-searchsuggest-containing": "Пребарај страници кои го содржат <strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>",
+	"cosmos-searchsuggest-containing": "Пребарај страници кои го содржат <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>",
 	"cosmos-article-header-categories-in": "во:",
 	"cosmos-article-header-categories-more": "и уште $1",
 	"cosmos-themedesigner-success": "Успешнно ја подновивте поставеноста на Космос.",

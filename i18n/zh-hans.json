@@ -39,7 +39,7 @@
 	"cosmos-newfiles": "新文件",
 	"cosmos-user-blocked": "封禁中",
 	"cosmos-search-loader": "正在加载搜索建议",
-	"cosmos-searchsuggest-containing": "搜索包含<strong class=\"wvui-typeahead-search__suggestions__footer__text__query\">$1</strong>的页面",
+	"cosmos-searchsuggest-containing": "搜索包含<strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>的页面",
 	"cosmos-article-header-categories-in": "分类：",
 	"cosmos-article-header-categories-more": "以及另外$1个分类",
 	"cosmos-themedesigner-success": "已成功更新Cosmos的配置。",
