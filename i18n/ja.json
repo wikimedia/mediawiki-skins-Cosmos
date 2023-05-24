@@ -4,10 +4,12 @@
 			"A2y4",
 			"Omotecho",
 			"UsagiNeko",
-			"Waki285"
+			"Waki285",
+			"MathXplore",
+			"Shirayuki"
 		]
 	},
-	"cosmos-desc": "コスモス外装は Fandom のオアシス外装をもとに設計されました。その改善点を盛り込み、また非-Fandom 利用者あるいは Fandom から離れる利用者にも有効なメディアウィキ外装を提供します。",
+	"cosmos-desc": "コスモス外装は Fandom のオアシス外装をもとに設計されました。その改善点を盛り込み、また非-Fandom 利用者あるいは Fandom から離れる利用者にも有効な MediaWiki 外装を提供します。必要な場合、テーマ設定やその他のサポートを必要とする場合は、[https://discord.gg/GPVgFTaQTJ Cosmos Discord サーバー]に参加することもできます。",
 	"cosmos-anonymous": "匿名利用者",
 	"cosmos-counter-label": "{{PLURAL:$1|記事}}",
 	"cosmos-createpage-header": "新規記事を作成",
