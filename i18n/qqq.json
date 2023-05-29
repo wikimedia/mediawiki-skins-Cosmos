@@ -6,7 +6,9 @@
 			"Amire80",
 			"Giannaras99",
 			"Joseph",
-			"Raymond"
+			"Raymond",
+			"Shirayuki",
+			"Verdy p"
 		]
 	},
 	"skinname-cosmos": "{{name}}",
@@ -58,6 +60,6 @@
 	"cosmos-themedesigner-help-13": "Help message for ThemeDesigner",
 	"cosmos-themedesigner-help-14": "Help message for ThemeDesigner",
 	"cosmos-themedesigner-help-15": "Help message for ThemeDesigner",
-	"cosmos.css": "{{optional}}",
-	"cosmos.js": "{{optional}}"
+	"cosmos.css": "{{optional}}\n{{related/css}}",
+	"cosmos.js": "{{optional}}\n{{related/js}}"
 }
