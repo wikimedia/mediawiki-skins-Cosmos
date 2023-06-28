@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Hanna Tardos",
-			"Misibacsi"
+			"Misibacsi",
+			"Eukarióta",
+			"Krisztina"
 		]
 	},
 	"cosmos-anonymous": "Névtelen",
@@ -16,9 +18,12 @@
 	"cosmos-action-cancel": "Mégse",
 	"cosmos-action-backtopage": "Vissza ide: $1",
 	"cosmos-action-back": "Vissza",
+	"cosmos-add-new-video": "Új videó hozzáadása",
 	"cosmos-add-new-page-title": "Új oldal hozzáadása",
 	"cosmos-add-new-page-text": "Hozzáadás",
 	"cosmos-anon-add-new-page-text": "Új oldal hozzáadása",
 	"cosmos-explore": "Felfedezés",
-	"cosmos-user-blocked": "Blokkolva"
+	"cosmos-newfiles": "Új fájlok",
+	"cosmos-user-blocked": "Blokkolva",
+	"cosmos-search-loader": "Keresési javaslatok betöltése"
 }
