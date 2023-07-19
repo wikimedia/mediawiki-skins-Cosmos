@@ -9,11 +9,12 @@
 			"Pacha Tchernof",
 			"Rairakkumee",
 			"Urfiner",
-			"WerySkok"
+			"WerySkok",
+			"BerryAVGN"
 		]
 	},
 	"skinname-cosmos": "Cosmos",
-	"cosmos-desc": "Cosmos - тема оформления, разработанная на основе темы оформления Oasis ФЭНДОМа. Предназначена для улучшения их дизайна и обеспечения эффективной темы оформления MediaWiki для участников, не являющихся пользователями ФЭНДОМа, или для пользователей, выходящих из ФЭНДОМа.",
+	"cosmos-desc": "Cosmos - тема оформления, разработанная на основе темы оформления Oasis ФЭНДОМ. Предназначена для улучшения их дизайна и обеспечения эффективной темы оформления MediaWiki для участников, не являющихся пользователями ФЭНДОМ, или для пользователей, выходящих из ФЭНДОМ. При желании вы можете присоединиться к [https://discord.gg/GPVgFTaQTJ Discord-серверу Cosmos], если вам требуется помощь в тематическом оформлении или что-то ещё.",
 	"cosmos-adminlinks-edit-navigation": "Редактировать навигацию",
 	"cosmos-adminlinks-edit-tagline": "Редактировать название вики",
 	"cosmos-anonymous": "Аноним",
@@ -45,7 +46,7 @@
 	"cosmos-article-header-categories-in": "в:",
 	"cosmos-article-header-categories-more": "и {{PLURAL:$1|$1 другая|$1 других}}",
 	"cosmos-themedesigner-success": "Конфигурация Cosmos успешно обновлена.",
-	"cosmos-themedesigner-text": "Настройка темы для скина '''Cosmos'''.",
+	"cosmos-themedesigner-text": "Настройка темы для оформления '''Cosmos'''.",
 	"themedesigner": "Дизайнер тем",
 	"right-themedesigner": "Использовать дизайнер тем Cosmos",
 	"action-themedesigner": "использовать дизайнер тем Cosmos",
