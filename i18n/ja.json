@@ -4,7 +4,10 @@
 			"A2y4",
 			"Omotecho",
 			"Waki285",
-			"UsagiNeko"
+			"UsagiNeko",
+			"MathXplore",
+			"Shirayuki",
+			"ひまり"
 		]
 	},
 	"cosmos-desc": "コスモス外装は Fandom のオアシス外装をもとに設計されました。その改善点を盛り込み、また非-Fandom 利用者あるいは Fandom から離れる利用者にも有効なメディアウィキ外装を提供します。",
@@ -15,6 +18,26 @@
 	"cosmos-createpage-next": "次へ",
 	"cosmos-personaltools-userpage": "利用者ページ",
 	"cosmos-personaltools-usertalk": "利用者・トーク",
+	"cosmos-action-addsection": "新しい話題",
 	"cosmos-action-cancel": "キャンセル",
-	"cosmos-user-blocked": "ブロック済み"
+	"cosmos-action-backtopage": "$1に戻る",
+	"cosmos-action-back": "戻る",
+	"cosmos-add-new-image": "新しい画像を追加",
+	"cosmos-add-new-video": "新しいビデオを追加",
+	"cosmos-add-new-page-title": "新規ページを追加",
+	"cosmos-add-new-page-text": "追加",
+	"cosmos-anon-add-new-page-text": "新規ページを追加",
+	"cosmos-explore": "探索",
+	"cosmos-newfiles": "新しいファイル",
+	"cosmos-user-blocked": "ブロック済み",
+	"themedesigner": "テーマデザイナー",
+	"cosmos-themedesigner-help-3": "メインの背景色。",
+	"cosmos-themedesigner-help-4": "メインコンテンツ領域の背景色。",
+	"cosmos-themedesigner-help-5": "ボタンの背景色。",
+	"cosmos-themedesigner-help-6": "リンクの色。",
+	"cosmos-themedesigner-help-7": "フッターの背景色。",
+	"cosmos-themedesigner-help-8": "ツールバーの背景色",
+	"cosmos-themedesigner-help-9": "ワードマークへの完全な URL。",
+	"cosmos-themedesigner-help-11": "メインの背景画像。",
+	"cosmos-themedesigner-help-13": "メインの背景サイズ"
 }
