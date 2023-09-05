@@ -7,10 +7,13 @@
 			"MarcoAurelio",
 			"McDutchie",
 			"Rodney Araujo",
-			"Universal Omega"
+			"Universal Omega",
+			"No se"
 		]
 	},
 	"cosmos-desc": "Cosmos es una apariencia diseñada y basada en la apariencia Oasis de Fandom. Diseñada para mejorar su diseño, y proporciona una apariencia MediaWiki eficaz para los usuarios que no son de Fandom, o para los usuarios que se transfieren fuera de Fandom.",
+	"cosmos-adminlinks-edit-navigation": "Editar navegación",
+	"cosmos-adminlinks-edit-tagline": "Editar lema",
 	"cosmos-anonymous": "Anónimo",
 	"cosmos-counter-label": "{{PLURAL:$1|Artículo|Artículos}}",
 	"cosmos-createpage-header": "Crear un artículo nuevo",
