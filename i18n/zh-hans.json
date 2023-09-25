@@ -7,7 +7,8 @@
 			"Yfdyh000",
 			"GuoPC",
 			"Zhang8569",
-			"铁桶"
+			"铁桶",
+			"LittlePaw365"
 		]
 	},
 	"cosmos-desc": "Cosmos是一款基于Fandom的Oasis皮肤所设计的皮肤，旨在改进其设计，并为非Fandom用户或转出Fandom的用户提供高效的MediaWiki皮肤。",
@@ -23,7 +24,7 @@
 	"cosmos-editcount-label": "加入此wiki后的编辑次数",
 	"cosmos-action-addsection": "新话题",
 	"cosmos-action-cancel": "取消",
-	"cosmos-action-backtopage": "返回至$1",
+	"cosmos-action-backtopage": "返回$1",
 	"cosmos-action-back": "返回",
 	"cosmos-add-new-image": "添加新图片",
 	"cosmos-add-new-video": "添加新视频",
