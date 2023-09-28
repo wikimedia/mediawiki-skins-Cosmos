@@ -28,7 +28,7 @@
 	"cosmos-editcount-label": "加入此wiki后的编辑次数",
 	"cosmos-action-addsection": "新话题",
 	"cosmos-action-cancel": "取消",
-	"cosmos-action-backtopage": "返回至$1",
+	"cosmos-action-backtopage": "返回$1",
 	"cosmos-action-back": "返回",
 	"cosmos-add-new-image": "添加新图片",
 	"cosmos-add-new-video": "添加新视频",
