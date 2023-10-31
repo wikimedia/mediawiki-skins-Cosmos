@@ -53,5 +53,7 @@
 	"cosmos-themedesigner-help-12": "Nivel de opacidade da área de contido (porcentaxe)",
 	"cosmos-themedesigner-help-13": "Tamaño do fondo principal",
 	"cosmos-themedesigner-help-14": "Queres repetir a imaxe de fondo?",
-	"cosmos-themedesigner-help-15": "Queres unha imaxe de fondo fixa?"
+	"cosmos-themedesigner-help-15": "Queres unha imaxe de fondo fixa?",
+	"cosmos.css": "/* O CSS colocado aquí afectará aos usuarios da aparencia Cosmos */",
+	"cosmos.js": "/* O código JavaScript colocado aquí cargarase para os usuarios que utilicen a aparencia Cosmos */"
 }
