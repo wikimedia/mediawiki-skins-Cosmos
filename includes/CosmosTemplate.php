@@ -295,7 +295,7 @@ class CosmosTemplate extends BaseTemplate {
 				]
 			);
 
-			$headerID = Sanitizer::escapeIdForAttribute( $this->getMsg( 'managewiki-sidebar-header' )->text() );
+			$headerID = Sanitizer::escapeIdForAttribute( $this->getMsg( 'managewiki-sidebar-header' )->escaped() );
 			$html .= Html::rawElement(
 				'li',
 				[ 'class' => 'wds-tabs__tab' ],
@@ -309,7 +309,7 @@ class CosmosTemplate extends BaseTemplate {
 			foreach ( $this->data['sidebar']['managewiki-sidebar-header'] as $module ) {
 				$html .= '<li class="wds-tabs__tab"><a id="' . $module['id'] . '" href="' .
 					htmlspecialchars( $module['href'] ) . '">' .
-					$module['text'] . '</a></li>';
+					htmlspecialchars( $module['text'] ) . '</a></li>';
 			}
 
 			$html .= '</div>';
@@ -408,15 +408,15 @@ class CosmosTemplate extends BaseTemplate {
 			switch ( $key ) {
 				case 'userpage':
 					$item['text'] = $this->getMsg( 'cosmos-personaltools-userpage' )
-						->escaped();
+						->text();
 					break;
 				case 'mytalk':
 					$item['text'] = $this->getMsg( 'cosmos-personaltools-usertalk' )
-						->escaped();
+						->text();
 					break;
 				case 'anontalk':
 					$item['text'] = $this->getMsg( 'cosmos-personaltools-anontalk' )
-						->escaped();
+						->text();
 					break;
 				default:
 					break;
@@ -433,7 +433,7 @@ class CosmosTemplate extends BaseTemplate {
 				'class' => [
 					'active' => $item['active'] ?? false,
 				],
-			], Html::rawElement( 'a', [
+			], Html::element( 'a', [
 				'class' => $item['link-class'] ?? $item['class'] ?? false,
 				'href' => $item['href'] ?? false,
 				'title' => $item['title'] ?? false,
