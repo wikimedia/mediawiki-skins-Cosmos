@@ -9,7 +9,6 @@ use ALTree;
 use Content;
 use EditPage;
 use Html;
-use MediaWiki;
 use MediaWiki\Hook\AlternateEditPreviewHook;
 use MediaWiki\Hook\BeforeInitializeHook;
 use MediaWiki\Hook\GetDoubleUnderscoreIDsHook;
@@ -24,8 +23,6 @@ use ParserOutput;
 use Sanitizer;
 use Skin;
 use Title;
-use User;
-use WebRequest;
 use WikitextContent;
 
 class Hooks implements
@@ -115,12 +112,7 @@ class Hooks implements
 	}
 
 	/**
-	 * @param Title $title
-	 * @param null $unused
-	 * @param OutputPage $output
-	 * @param User $user
-	 * @param WebRequest $request
-	 * @param MediaWiki $mediaWiki
+	 * @inheritDoc
 	 */
 	public function onBeforeInitialize( $title, $unused, $output, $user, $request, $mediaWiki ) {
 		if (
