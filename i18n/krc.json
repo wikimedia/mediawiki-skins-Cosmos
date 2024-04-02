@@ -4,5 +4,14 @@
 			"Къарачайлы"
 		]
 	},
-	"cosmos-desc": "Космос — Fandom этген Oasis скинни тамалында джаратылгъан скинди. Аланы дизайнларын маджаллашдырыргъа эмда MediaWiki къабукъну, Fandom хайырланыучула болмагъан, эмда андан кёчген къошулуучулагъа  теджеуню тамаша этер мурат бла джарашдырылгъанды. Излей эсегиз, сиз да [https://discord.gg/GPVgFTaQTJ Cosmos Discord server] къошулуб, темала бла эмда башха затла бла байламлы болушлукъ алыргъа боллукъсуз."
+	"cosmos-desc": "Космос — Fandom этген Oasis скинни тамалында джаратылгъан скинди. Аланы дизайнларын маджаллашдырыргъа эмда MediaWiki къабукъну, Fandom хайырланыучула болмагъан, эмда андан кёчген къошулуучулагъа  теджеуню тамаша этер мурат бла джарашдырылгъанды. Излей эсегиз, сиз да [https://discord.gg/GPVgFTaQTJ Cosmos Discord server] къошулуб, темала бла эмда башха затла бла байламлы болушлукъ алыргъа боллукъсуз.",
+	"cosmos-adminlinks-edit-css": "CSS-файлны тюзет",
+	"cosmos-adminlinks-edit-js": "JS-файлны тюзет",
+	"cosmos-adminlinks-edit-navigation": "Навигацияны тюзет",
+	"cosmos-adminlinks-edit-tagline": "Слоганны тюзет",
+	"cosmos-anonymous": "Аноним",
+	"cosmos-counter-label": "{{PLURAL:$1|Статья|Статьяла}}",
+	"cosmos-createpage-header": "Джангы статья болдур",
+	"cosmos-createpage-input-label": "Сени бет башлыгъынгы бери джаз:",
+	"cosmos-createpage-next": "Эндиги"
 }
