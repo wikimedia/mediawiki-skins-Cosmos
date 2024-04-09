@@ -4,7 +4,8 @@
 			"Eukarióta",
 			"Hanna Tardos",
 			"Misibacsi",
-			"Krisztina"
+			"Krisztina",
+			"Dj"
 		]
 	},
 	"cosmos-adminlinks-edit-css": "CSS-fájl szerkesztése",
@@ -16,10 +17,13 @@
 	"cosmos-createpage-next": "Tovább",
 	"cosmos-personaltools-userpage": "Felhasználói lap",
 	"cosmos-personaltools-usertalk": "Szerkesztővita",
+	"cosmos-personaltools-anontalk": "Vitalapom",
+	"cosmos-editcount-label": "Szerkesztések a wikihez csatlakozás óta",
 	"cosmos-action-addsection": "Új téma",
 	"cosmos-action-cancel": "Mégse",
 	"cosmos-action-backtopage": "Vissza ide: $1",
 	"cosmos-action-back": "Vissza",
+	"cosmos-add-new-image": "Új kép hozzáadás",
 	"cosmos-add-new-video": "Új videó hozzáadása",
 	"cosmos-add-new-page-title": "Új oldal hozzáadása",
 	"cosmos-add-new-page-text": "Hozzáadás",
