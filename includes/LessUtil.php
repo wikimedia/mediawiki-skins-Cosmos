@@ -94,7 +94,7 @@ class LessUtil {
 		}
 
 		// convert RGB to HSL
-		list( $hue, $saturation, $lightness ) = self::rgb2hsl( $backgroundColor );
+		[ $hue, $saturation, $lightness ] = self::rgb2hsl( $backgroundColor );
 
 		$isDark = ( $lightness < 0.5 );
 

@@ -11,10 +11,10 @@
 		"lint:i18n": "banana-checker --requireLowerCase=0 i18n/"
 	},
 	"devDependencies": {
-		"eslint-config-wikimedia": "0.25.0",
-		"grunt-banana-checker": "0.11.0",
+		"eslint-config-wikimedia": "0.27.0",
+		"grunt-banana-checker": "0.11.1",
 		"postcss-less": "6.0.0",
 		"stylelint-config-idiomatic-order": "8.1.0",
-		"stylelint-config-wikimedia": "0.15.0"
+		"stylelint-config-wikimedia": "0.16.1"
 	}
 }

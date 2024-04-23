@@ -99,7 +99,7 @@ class CosmosNavigation implements ExpirationAwareness {
 				], $this->getSubMenu( $nodes, $nodeChildren ) );
 			}
 
-			$menu .= Html::rawElement( 'li',  [
+			$menu .= Html::rawElement( 'li', [
 				'id' => "n-{$text}",
 				'class' => [
 					'wds-is-sticked-to-parent' => $key > count( $nodeChildren ) - 1,

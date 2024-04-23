@@ -16,7 +16,6 @@ const fetchJson = require( './fetch.js' ),
  * @property {string} title
  * @property {string} [description]
  * @property {RestThumbnail | null} [thumbnail]
- *
  */
 
 /**

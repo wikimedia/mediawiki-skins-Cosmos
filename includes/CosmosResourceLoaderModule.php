@@ -105,7 +105,7 @@ class CosmosResourceLoaderModule extends SkinModule {
 		}
 
 		// convert @content-background-color to rgba for background-color opacity
-		list( $r, $g, $b ) = array_map( static function ( $c ) {
+		[ $r, $g, $b ] = array_map( static function ( $c ) {
 			return hexdec( str_pad( $c, 2, $c ) );
 		},
 
@@ -122,7 +122,7 @@ class CosmosResourceLoaderModule extends SkinModule {
 			$colorName = LessUtil::colorNameToHex( $footerBackgroundColor );
 		}
 
-		list( $r, $g, $b ) = array_map( static function ( $c ) {
+		[ $r, $g, $b ] = array_map( static function ( $c ) {
 			return hexdec( str_pad( $c, 2, $c ) );
 		},
 
@@ -141,7 +141,7 @@ class CosmosResourceLoaderModule extends SkinModule {
 			$colorName = LessUtil::colorNameToHex( $headerBackgroundColor );
 		}
 
-		list( $r, $g, $b ) = array_map( static function ( $c ) {
+		[ $r, $g, $b ] = array_map( static function ( $c ) {
 			return hexdec( str_pad( $c, 2, $c ) );
 		},
 
