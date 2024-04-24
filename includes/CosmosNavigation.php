@@ -29,7 +29,6 @@ class CosmosNavigation implements ExpirationAwareness {
 	 * @return string
 	 */
 	public function getCode(): string {
-		// @phan-suppress-next-line PhanDeprecatedFunction
 		$memc = ObjectCache::getLocalClusterInstance();
 
 		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
@@ -239,7 +238,6 @@ class CosmosNavigation implements ExpirationAwareness {
 
 			$nodes['mainMenu'] = $mainMenu;
 
-			// @phan-suppress-next-line PhanDeprecatedFunction
 			$memc = ObjectCache::getLocalClusterInstance();
 
 			$memc->set( $menuHash, $nodes, self::TTL_DAY * 3 );
