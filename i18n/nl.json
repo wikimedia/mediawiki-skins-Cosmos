@@ -2,13 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Mainframe98",
-			"McDutchie"
+			"McDutchie",
+			"Romaine"
 		]
 	},
 	"cosmos-desc": "Cosmos is een skin ontworpen en gebaseerd op Fandom's Oasis skin. Ontworpen om hun ontwerp te verbeteren en een efficiënte MediaWiki-skin te bieden voor niet-Fandom-gebruikers, of voor gebruikers die overstappen uit Fandom. U bent welkom op de [https://discord.gg/GPVgFTaQTJ Cosmos Discord-server] als u hulp nodig hebt bij thema's of iets anders.",
 	"cosmos-adminlinks-edit-css": "CSS-bestand bewerken",
 	"cosmos-adminlinks-edit-js": "JS-bestand bewerken",
 	"cosmos-adminlinks-edit-navigation": "Navigatie bewerken",
+	"cosmos-adminlinks-edit-tagline": "Tagline bewerken",
 	"cosmos-anonymous": "Anoniem",
 	"cosmos-counter-label": "{{PLURAL:$1|Artikel|Artikelen}}",
 	"cosmos-createpage-header": "Nieuw artikel aanmaken",
@@ -35,6 +37,8 @@
 	"cosmos-user-blocked": "Geblokkeerd",
 	"cosmos-search-loader": "Zoeksuggesties worden geladen",
 	"cosmos-searchsuggest-containing": "Zoek naar pagina's die <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong> bevatten",
+	"cosmos-article-header-categories-in": "in:",
+	"cosmos-article-header-categories-more": "en $1 meer",
 	"cosmos-themedesigner-success": "De instellingen van Cosmos zijn bijgewerkt.",
 	"themedesigner": "Thema-ontwerper",
 	"right-themedesigner": "Cosmos ThemeDesigner gebruiken",
