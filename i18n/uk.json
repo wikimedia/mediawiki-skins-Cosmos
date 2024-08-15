@@ -4,7 +4,8 @@
 			"DDPAT",
 			"Ice bulldog",
 			"No se",
-			"Ата"
+			"Ата",
+			"Ignatgg"
 		]
 	},
 	"skinname-cosmos": "Космос",
@@ -38,6 +39,7 @@
 	"cosmos-newfiles": "Нові файли",
 	"cosmos-user-blocked": "Заблоковано",
 	"cosmos-search-loader": "Завантаження пропозицій щодо пошуку",
+	"cosmos-searchsuggest-containing": "Знайдіть сторінки, що містять <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>",
 	"cosmos-article-header-categories-in": "в:",
 	"cosmos-article-header-categories-more": "і ще $1",
 	"cosmos-themedesigner-success": "Конфігурацію Cosmos успішно оновлено.",
