@@ -197,6 +197,7 @@ class Hooks implements
 	 * @param string $text
 	 */
 	public function onMessageCacheReplace( $title, $text ) {
+		// @phan-suppress-next-line PhanDeprecatedFunction
 		$memc = ObjectCache::getLocalClusterInstance();
 
 		$memc->delete( $memc->makeKey( 'mCosmosNavigation', 'cosmosNavigation' ) );

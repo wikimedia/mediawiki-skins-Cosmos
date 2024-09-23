@@ -27,6 +27,7 @@ class SpecialThemeDesigner extends FormSpecialPage {
 	public function __construct( CosmosConfig $config ) {
 		parent::__construct( 'ThemeDesigner', 'themedesigner' );
 
+		// @phan-suppress-next-line PhanDeprecatedFunction
 		$this->cache = ObjectCache::getLocalClusterInstance();
 		$this->cacheDir = $this->getConfig()->get( 'CacheDirectory' ) ?: __DIR__ . '/../../../../cache';
 

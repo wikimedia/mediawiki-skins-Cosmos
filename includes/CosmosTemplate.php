@@ -4,6 +4,7 @@ namespace MediaWiki\Skins\Cosmos;
 
 use BaseTemplate;
 use Config;
+use CookieWarning\Decisions as CookieWarningDecisions;
 use CookieWarning\Hooks as CookieWarningHooks;
 use ExtensionRegistry;
 use Html;
@@ -12,6 +13,7 @@ use Linker;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\User\Options\UserOptionsManager;
 use Sanitizer;
 use SiteStats;
 use SpecialPage;
@@ -24,6 +26,9 @@ class CosmosTemplate extends BaseTemplate {
 
 	/** @var Config */
 	protected $config;
+
+	/** @var CookieWarningDecisions|null */
+	private $cookieWarningDecisions;
 
 	/** @var Language */
 	private $contentLanguage;
@@ -43,6 +48,9 @@ class CosmosTemplate extends BaseTemplate {
 	/** @var TitleFactory */
 	private $titleFactory;
 
+	/** @var UserOptionsManager */
+	private $userOptionsManager;
+
 	/** @var CosmosWordmarkLookup */
 	private $wordmarkLookup;
 
@@ -61,7 +69,10 @@ class CosmosTemplate extends BaseTemplate {
 		$this->permissionManager = $skin->permissionManager;
 		$this->specialPageFactory = $skin->specialPageFactory;
 		$this->titleFactory = $skin->titleFactory;
+		$this->userOptionsManager = $skin->userOptionsManager;
 		$this->wordmarkLookup = $skin->wordmarkLookup;
+
+		$this->cookieWarningDecisions = $skin->cookieWarningDecisions;
 
 		$html = $this->buildBanner();
 		$html .= $this->buildCreateArticleDialog();
@@ -1806,7 +1817,16 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::closeElement( 'section' );
 
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'CookieWarning' ) ) {
-			$cookieWarningHooks = new CookieWarningHooks();
+			if ( $this->cookieWarningDecisions ) {
+				$cookieWarningHooks = new CookieWarningHooks(
+					$this->config,
+					$this->cookieWarningDecisions,
+					$this->userOptionsManager
+				);
+			} else {
+				// @phan-suppress-next-line PhanParamTooFew
+				$cookieWarningHooks = new CookieWarningHooks();
+			}
 			$html .= $cookieWarningHooks->onSkinAfterContent( $html, $skin );
 		}
 
