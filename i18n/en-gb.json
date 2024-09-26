@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Reedy",
+			"Universal Omega"
+		]
+	},
+	"cosmos-themedesigner-help-1": "Background colour of the personal navigation banner.",
+	"cosmos-themedesigner-help-2": "Background colour of the wiki navigation header.",
+	"cosmos-themedesigner-help-3": "Main background colour.",
+	"cosmos-themedesigner-help-4": "Background colour of main content area.",
+	"cosmos-themedesigner-help-5": "Background colour for buttons.",
+	"cosmos-themedesigner-help-6": "Colour of links.",
+	"cosmos-themedesigner-help-7": "Background colour of the footer.",
+	"cosmos-themedesigner-help-8": "Background colour of the toolbar"
+}
