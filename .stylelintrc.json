@@ -12,6 +12,7 @@
 		"no-duplicate-selectors": null,
 		"selector-class-pattern": null,
 		"selector-max-id": null,
-		"plugin/no-unsupported-browser-features": null
+		"plugin/no-unsupported-browser-features": null,
+		"order/properties-order": null
 	}
 }
