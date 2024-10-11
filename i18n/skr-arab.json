@@ -4,5 +4,14 @@
 			"Saraiki"
 		]
 	},
-	"cosmos-newfiles": "نویاں فائلاں"
+	"cosmos-createpage-next": "اڳلا",
+	"cosmos-action-cancel": "منسوخ",
+	"cosmos-action-back": "پچھوں",
+	"cosmos-add-new-image": "نویں تصویر شامل کرو",
+	"cosmos-add-new-page-title": "نواں ورقہ شامل کرو",
+	"cosmos-add-new-page-text": "شامل کرو",
+	"cosmos-anon-add-new-page-text": "نواں ورقہ شامل کرو",
+	"cosmos-explore": "پھلورو",
+	"cosmos-newfiles": "نویاں فائلاں",
+	"cosmos-user-blocked": "بلاک تھی ڳیا"
 }
