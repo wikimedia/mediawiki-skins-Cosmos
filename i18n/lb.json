@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Les Meloures",
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"cosmos-anonymous": "Anonym",
 	"cosmos-counter-label": "{{PLURAL:$1|Artikel|Artikelen}}",
 	"cosmos-createpage-header": "En neien Artikel uleeën",
+	"cosmos-createpage-next": "Nächst",
 	"cosmos-personaltools-userpage": "Benotzersäit",
 	"cosmos-personaltools-usertalk": "Benotzerdiskussioun",
 	"cosmos-personaltools-anontalk": "Meng Diskussioun",
@@ -15,8 +17,20 @@
 	"cosmos-action-cancel": "Ofbriechen",
 	"cosmos-action-backtopage": "Zréck op $1",
 	"cosmos-action-back": "Zréck",
-	"cosmos-add-new-page-title": "Net Säit derbäisetzen",
+	"cosmos-add-new-image": "Neit Bild derbäisetzen",
+	"cosmos-add-new-video": "Neie Video derbäisetzen",
+	"cosmos-add-new-page-title": "Nei Säit derbäisetzen",
+	"cosmos-add-new-page-text": "Derbäisetzen",
 	"cosmos-anon-add-new-page-text": "Nei Säit derbäisetzen",
+	"cosmos-explore": "Entdecken",
 	"cosmos-newfiles": "Nei Fichieren",
-	"cosmos-article-header-categories-more": "an $1 méi"
+	"cosmos-user-blocked": "Gespaart",
+	"cosmos-article-header-categories-in": "an:",
+	"cosmos-article-header-categories-more": "an $1 méi",
+	"cosmos-themedesigner-help-3": "Haapthannergrondfaarf.",
+	"cosmos-themedesigner-help-5": "Hannergrondfaarf fir Knäppercher.",
+	"cosmos-themedesigner-help-6": "Faarf vu Linken.",
+	"cosmos-themedesigner-help-11": "Haapthannergrondbild.",
+	"cosmos-themedesigner-help-13": "Gréisst vum Haapthannergrond",
+	"cosmos-themedesigner-help-14": "Hannergrondbild widderhuelen?"
 }
