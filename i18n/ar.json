@@ -7,7 +7,9 @@
 		]
 	},
 	"skinname-cosmos": "كوزموس",
-	"cosmos-desc": "Cosmos هو جلد مصمم ومبني على بشرة Fandom's Oasis. مصممة لتحسين تصميمها ، وتوفير مظهر ميدياويكي فعال للمستخدمين غير المعجبين ، أو للمستخدمين الذين ينتقلون من قاعدة المعجبين.",
+	"cosmos-desc": "Cosmos هو مظهر مصمم ومبني على مظهر Oasis الخاص بـ Fandom. تم تصميمه لتحسين تصميمه وتوفير مظهر MediaWiki فعال للمستخدمين غير المنتمين إلى Fandom أو للمستخدمين الذين ينتقلون من Fandom. إذا كنت ترغب في ذلك، يمكنك الانضمام إلى [https://discord.gg/GPVgFTaQTJ Cosmos Discord server] إذا كنت بحاجة إلى مساعدة في تصميم المظهر أو أي شيء آخر.",
+	"cosmos-adminlinks-edit-css": "عدل ملف CSS",
+	"cosmos-adminlinks-edit-js": "عدل ملف JS",
 	"cosmos-adminlinks-edit-navigation": "تحرير التنقل",
 	"cosmos-adminlinks-edit-tagline": "تحرير سطر الوصف",
 	"cosmos-anonymous": "مجهول",
