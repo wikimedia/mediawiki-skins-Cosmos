@@ -2,14 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Ajeje Brazorf",
-			"GianAntonucci"
+			"GianAntonucci",
+			"Gmelfi"
 		]
 	},
 	"cosmos-anonymous": "Anònimu",
 	"cosmos-createpage-input-label": "Scrivi lu tìtulu dâ tò pàggina ccà:",
 	"cosmos-personaltools-userpage": "Pàggina di l'utenti",
 	"cosmos-personaltools-usertalk": "Discurruta di l'utenti",
-	"cosmos-personaltools-anontalk": "I me discurruti",
+	"cosmos-personaltools-anontalk": "Li me discurruti",
 	"cosmos-action-addsection": "Argumentu novu",
 	"cosmos-action-cancel": "Annulla",
 	"cosmos-add-new-image": "Agghiunci na mmàggini nova",
