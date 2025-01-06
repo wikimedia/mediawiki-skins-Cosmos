@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Seipinne"
+			"Seipinne",
+			"Yupik"
 		]
 	},
 	"cosmos-adminlinks-edit-navigation": "Mute navigistem",
@@ -20,6 +21,6 @@
 	"cosmos-add-new-page-text": "Lasseet",
 	"cosmos-anon-add-new-page-text": "Lasseet uđđâ siijđo",
 	"cosmos-user-blocked": "Estum",
-	"cosmos-search-loader": "Luođđiimin uuccâmiävtuttâsâid",
+	"cosmos-search-loader": "Luođiimin uuccâmiävtuttâsâid",
 	"cosmos-article-header-categories-more": "já $1 lase"
 }
