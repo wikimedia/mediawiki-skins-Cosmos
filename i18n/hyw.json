@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Շահէն"
+			"Շահէն",
+			"Kareyac"
 		]
 	},
+	"cosmos-action-cancel": "Չեղարկել",
 	"cosmos-themedesigner-help-6": "Յղումներու գոյնը:"
 }
