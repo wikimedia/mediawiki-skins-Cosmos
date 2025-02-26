@@ -7,10 +7,11 @@
 			"Shirayuki",
 			"UsagiNeko",
 			"Waki285",
-			"ひまり"
+			"ひまり",
+			"Yaakiyu.jp"
 		]
 	},
-	"cosmos-desc": "コスモス外装は Fandom のオアシス外装をもとに設計されました。その改善点を盛り込み、また非-Fandom 利用者あるいは Fandom から離れる利用者にも有効な MediaWiki 外装を提供します。必要な場合、テーマ設定やその他のサポートを必要とする場合は、[https://discord.gg/GPVgFTaQTJ Cosmos Discord サーバー]に参加することもできます。",
+	"cosmos-desc": "コスモススキンは Fandom のオアシススキンをもとに設計されました。その改善点を盛り込み、またFandomを利用しない人あるいは Fandom から離れる利用者にも有効なMediaWikiスキンを提供します。テーマ設定やその他のサポートを必要とする場合は、[https://discord.gg/GPVgFTaQTJ Cosmos Discord サーバー]に参加することもできます。",
 	"cosmos-adminlinks-edit-css": "CSSファイルを編集する",
 	"cosmos-adminlinks-edit-js": "JSファイルを編集",
 	"cosmos-adminlinks-edit-navigation": "ナビゲーションの編集",
@@ -34,6 +35,7 @@
 	"cosmos-newfiles": "新しいファイル",
 	"cosmos-user-blocked": "ブロック済み",
 	"cosmos-search-loader": "検索候補を読み込んでいます",
+	"cosmos-themedesigner-text": "'''Cosmos''' スキンのテーマをカスタマイズします。",
 	"themedesigner": "テーマデザイナー",
 	"cosmos-themedesigner-help-3": "メインの背景色。",
 	"cosmos-themedesigner-help-4": "メインコンテンツ領域の背景色。",
