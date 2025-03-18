@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Skins\Cosmos;
 
-use Html;
+use MediaWiki\Html\Html;
 
 class Icon {
 	/** @var array */

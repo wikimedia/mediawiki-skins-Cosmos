@@ -3,14 +3,14 @@
 namespace MediaWiki\Skins\Cosmos;
 
 use ExtensionRegistry;
-use Html;
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use MessageLocalizer;
 use ObjectCache;
 use RequestContext;
 use Sanitizer;
 use SpecialPage;
-use Title;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
 class CosmosNavigation implements ExpirationAwareness {

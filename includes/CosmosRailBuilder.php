@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Skins\Cosmos;
 
-use Html;
 use IContextSource;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Skins\Cosmos\Hooks\CosmosHookRunner;
 use MediaWiki\SpecialPage\SpecialPageFactory;

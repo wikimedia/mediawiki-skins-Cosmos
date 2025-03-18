@@ -4,8 +4,8 @@ namespace MediaWiki\Skins\Cosmos\Hooks\Handlers;
 
 use Config;
 use ConfigFactory;
-use Html;
 use IContextSource;
+use MediaWiki\Html\Html;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Skins\Cosmos\SkinCosmos;
 use MediaWiki\User\UserGroupManager;

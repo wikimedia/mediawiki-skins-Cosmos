@@ -7,22 +7,22 @@ use ALRow;
 use ALSection;
 use ALTree;
 use Content;
-use EditPage;
-use Html;
+use MediaWiki\EditPage\EditPage;
 use MediaWiki\Hook\AlternateEditPreviewHook;
 use MediaWiki\Hook\BeforeInitializeHook;
 use MediaWiki\Hook\GetDoubleUnderscoreIDsHook;
 use MediaWiki\Hook\OutputPageBodyAttributesHook;
 use MediaWiki\Hook\OutputPageParserOutputHook;
+use MediaWiki\Html\Html;
 use MediaWiki\ResourceLoader as RL;
 use MediaWiki\Skins\Hook\SkinPageReadyConfigHook;
+use MediaWiki\Title\Title;
 use ObjectCache;
 use OutputPage;
 use Parser;
 use ParserOutput;
 use Sanitizer;
 use Skin;
-use Title;
 use WikitextContent;
 
 class Hooks implements

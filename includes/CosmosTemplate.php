@@ -7,19 +7,19 @@ use Config;
 use CookieWarning\Decisions as CookieWarningDecisions;
 use CookieWarning\Hooks as CookieWarningHooks;
 use ExtensionRegistry;
-use Html;
 use Language;
-use Linker;
+use MediaWiki\Html\Html;
 use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\Linker\Linker;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Specials\SpecialWantedPages;
+use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsManager;
 use Sanitizer;
 use SiteStats;
 use SpecialPage;
-use Title;
 use TitleFactory;
-use WantedPagesPage;
 use wAvatar;
 
 class CosmosTemplate extends BaseTemplate {
@@ -237,7 +237,7 @@ class CosmosTemplate extends BaseTemplate {
 	 */
 	protected function getMostWantedPages() {
 		$wantedPagesPage = $this->specialPageFactory->getPage( 'Wantedpages' );
-		'@phan-var WantedPagesPage $wantedPagesPage';
+		'@phan-var SpecialWantedPages $wantedPagesPage';
 
 		$readFromCache = $this->config->get( 'CosmosFetchWantedPagesFromCache' );
 

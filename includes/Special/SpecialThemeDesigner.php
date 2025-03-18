@@ -4,7 +4,7 @@ namespace MediaWiki\Skins\Cosmos\Special;
 
 use BagOStuff;
 use FormSpecialPage;
-use Html;
+use MediaWiki\Html\Html;
 use MediaWiki\Skins\Cosmos\CosmosConfig;
 use ObjectCache;
 
