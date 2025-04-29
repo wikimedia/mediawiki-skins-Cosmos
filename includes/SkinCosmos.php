@@ -122,6 +122,10 @@ class SkinCosmos extends SkinTemplate {
 			$modules['styles']['skin'][] = 'skins.cosmos.codemirror';
 		}
 
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'CodeEditor' ) ) {
+			$modules['styles']['skin'][] = 'skins.cosmos.codeeditor';
+		}
+
 		// Load SocialProfile styles if the respective configuration variables are enabled
 		if ( class_exists( UserProfilePage::class ) ) {
 			if ( $this->config->get( 'CosmosSocialProfileModernTabs' ) ) {

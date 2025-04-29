@@ -332,6 +332,22 @@
 					"media": "screen"
 				}
 			}
+		},
+		"skins.cosmos.codeeditor": {
+			"class": "MediaWiki\\Skins\\Cosmos\\CosmosResourceLoaderModule",
+			"features": {
+				"content-body": false,
+				"toc": false
+			},
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": {
+				"resources/extensions/CodeEditor/CodeEditor.less": {
+					"media": "screen"
+				}
+			}
 		}
 	},
 	"ResourceFileModulePaths": {
