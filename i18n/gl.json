@@ -34,7 +34,7 @@
 	"cosmos-newfiles": "Novos ficheiros",
 	"cosmos-user-blocked": "Bloqueado",
 	"cosmos-search-loader": "Cargando as suxestións de busca",
-	"cosmos-searchsuggest-containing": "Procurar as páxinas que conteñan \"<strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>\"",
+	"cosmos-searchsuggest-containing": "Procurar as páxinas que conteñan «<strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>»",
 	"cosmos-article-header-categories-in": "en:",
 	"cosmos-article-header-categories-more": "e $1 máis",
 	"cosmos-themedesigner-success": "Actualizouse correctamente a configuración de Cosmos.",
