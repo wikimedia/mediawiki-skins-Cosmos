@@ -1,7 +1,7 @@
 /* global jQuery, mediaWiki */
 
 ( function ( $, mw ) {
-	var modal = document.getElementById( 'createPageModal' ),
+	let modal = document.getElementById( 'createPageModal' ),
 		btn = document.getElementById( 'createpage' ),
 		span = document.getElementsByClassName( 'close' )[ 0 ],
 		$top = 0;
@@ -20,8 +20,8 @@
 		}
 	};
 
-	$( '.create-page-dialog__wrapper #create-page-dialog__title' ).on( 'keyup', function () {
-		var empty = false;
+	$( '.create-page-dialog__wrapper #create-page-dialog__title' ).on( 'keyup', () => {
+		let empty = false;
 
 		$( '.create-page-dialog__wrapper #create-page-dialog__title' ).each( function () {
 			if ( $( this ).val() === '' ) {
@@ -36,13 +36,13 @@
 		}
 	} );
 
-	mw.hook( 've.activationComplete' ).add( function () {
+	mw.hook( 've.activationComplete' ).add( () => {
 		$( '.ve-activated .firstHeading' ).html( $( 'title' ).html().replace( ' - ' + mw.config.get( 'wgSiteName' ), '' ) );
 	} );
 
 	$( '.CosmosRail .cosmos-rail-inner' ).addClass( 'loaded' );
 	$( '.rail-sticky-module' ).each( function () {
-		var $module = $( this ).nextAll( '.rail-sticky-module' );
+		const $module = $( this ).nextAll( '.rail-sticky-module' );
 
 		$top += $( this ).outerHeight() + 20;
 
@@ -55,7 +55,7 @@
 	 * regardless of how small the page is
 	 */
 	function updateFooterHeight() {
-		var $footer = $( '#cosmos-footer' );
+		const $footer = $( '#cosmos-footer' );
 		// Reset the footer height to its default value
 		$footer.height( 'auto' );
 		if ( $( window ).height() > $footer.offset().top + $footer.outerHeight( false ) ) {
@@ -69,12 +69,12 @@
 	 * Closes the site notice
 	 */
 	function closeSiteNotice() {
-		var $siteNotice = $( '#cosmos-content-siteNotice' );
+		const $siteNotice = $( '#cosmos-content-siteNotice' );
 		$siteNotice.remove();
 		mw.cookie.set( 'CosmosSiteNoticeState', 'closed', { expires: 604800 } );
 	}
 
-	$( function () {
+	$( () => {
 		$( '#cosmos-siteNotice-closeButton' ).on( 'click', closeSiteNotice );
 		updateFooterHeight();
 	} );
@@ -82,13 +82,13 @@
 	// On window resize, update the footer height if necessary
 	$( window ).on( 'resize', updateFooterHeight );
 
-	$( function () {
+	$( () => {
 		if (
 			mw.config.get( 'wgVisualEditorConfig' ) &&
 			mw.config.get( 'wgVisualEditorConfig' ).enableWikitext &&
 			mw.config.get( 'wgPageName' ) === 'MediaWiki:Cosmos-navigation'
 		) {
-			var visualEditorConfig = mw.config.get( 'wgVisualEditorConfig' );
+			const visualEditorConfig = mw.config.get( 'wgVisualEditorConfig' );
 			visualEditorConfig.enableWikitext = false;
 
 			mw.config.set( 'wgVisualEditorConfig', visualEditorConfig );

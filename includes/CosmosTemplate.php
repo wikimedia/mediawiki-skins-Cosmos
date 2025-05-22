@@ -1540,7 +1540,7 @@ class CosmosTemplate extends BaseTemplate {
 			switch ( $info['imgType'] ) {
 				case 'svg':
 					$icon = Icon::getIcon( $info['imgSrc'] );
-					if ( !isset( $icon ) ) {
+					if ( !$icon ) {
 						break;
 					}
 

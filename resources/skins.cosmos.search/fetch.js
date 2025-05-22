@@ -33,9 +33,7 @@ function fetchJson( resource, init ) {
 		signal: controller.signal
 	} ) ).then( ( response ) => {
 		if ( !response.ok ) {
-			return Promise.reject(
-				'Network request failed with HTTP code ' + response.status
-			);
+			throw 'Network request failed with HTTP code ' + response.status;
 		}
 		return response.json();
 	} );

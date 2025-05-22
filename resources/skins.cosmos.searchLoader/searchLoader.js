@@ -9,7 +9,7 @@
 /** @interface CosmosResourceLoaderVirtualConfig */
 /** @interface MediaWikiPageReadyModule */
 
-var /** @type {CosmosResourceLoaderVirtualConfig} */
+const /** @type {CosmosResourceLoaderVirtualConfig} */
 	config = require( /** @type {string} */ ( './config.json' ) ),
 	SEARCH_LOADING_CLASS = 'search-form__loader';
 
@@ -48,7 +48,7 @@ function loadSearchModule( element, moduleName, afterLoadFn ) {
 		}
 
 		if ( $( window ).width() < 851 ) {
-			var inputCheck = setInterval( function () {
+			var inputCheck = setInterval( () => {
 				if ( document.getElementsByClassName( 'cdx-text-input__input' )[ 0 ] !== undefined ) {
 					clearInterval( inputCheck );
 
@@ -77,7 +77,7 @@ function loadSearchModule( element, moduleName, afterLoadFn ) {
  */
 function renderSearchLoadingIndicator( event ) {
 
-	var form = /** @type {HTMLElement} */ ( event.currentTarget ),
+	const form = /** @type {HTMLElement} */ ( event.currentTarget ),
 		input = /** @type {HTMLInputElement} */ ( event.target );
 
 	if (
@@ -113,9 +113,9 @@ function renderSearchLoadingIndicator( event ) {
 function setLoadingIndicatorListeners( element, attach, eventCallback ) {
 
 	/** @type { "addEventListener" | "removeEventListener" } */
-	var addOrRemoveListener = ( attach ? 'addEventListener' : 'removeEventListener' );
+	const addOrRemoveListener = ( attach ? 'addEventListener' : 'removeEventListener' );
 
-	[ 'input', 'focusin', 'focusout' ].forEach( function ( eventType ) {
+	[ 'input', 'focusin', 'focusout' ].forEach( ( eventType ) => {
 		element[ addOrRemoveListener ]( eventType, eventCallback );
 	} );
 
@@ -131,7 +131,7 @@ function setLoadingIndicatorListeners( element, attach, eventCallback ) {
  * @param {Document} document
  */
 function initSearchLoader( document ) {
-	var searchBoxes = document.querySelectorAll( '.cosmos-search-box' );
+	const searchBoxes = document.querySelectorAll( '.cosmos-search-box' );
 
 	if ( config.wgCosmosSearchHost ) {
 		mw.config.set( 'wgCosmosSearchHost', config.wgCosmosSearchHost );
@@ -155,8 +155,8 @@ function initSearchLoader( document ) {
 		return;
 	}
 
-	Array.prototype.forEach.call( searchBoxes, function ( searchBox ) {
-		var searchInner = searchBox.querySelector( 'form > div' ),
+	Array.prototype.forEach.call( searchBoxes, ( searchBox ) => {
+		const searchInner = searchBox.querySelector( 'form > div' ),
 			searchInput = searchBox.querySelector( 'input[name="search"]' ),
 			clearLoadingIndicators = function () {
 				setLoadingIndicatorListeners(
@@ -179,7 +179,7 @@ function initSearchLoader( document ) {
 			'skins.cosmos.search',
 			// Make sure we clearLoadingIndicators so that event listeners are removed.
 			// Note, loading Vue.js will remove the element from the DOM.
-			isPrimarySearch ? function () {
+			isPrimarySearch ? () => {
 				clearLoadingIndicators();
 			} : clearLoadingIndicators
 		);
