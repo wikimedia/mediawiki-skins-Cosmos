@@ -11,7 +11,7 @@
 			"Yaakiyu.jp"
 		]
 	},
-	"cosmos-desc": "コスモススキンは Fandom のオアシススキンをもとに設計されました。その改善点を盛り込み、またFandomを利用しない人あるいは Fandom から離れる利用者にも有効なMediaWikiスキンを提供します。テーマ設定やその他のサポートを必要とする場合は、[https://discord.gg/GPVgFTaQTJ Cosmos Discord サーバー]に参加することもできます。",
+	"cosmos-desc": "コスモス外装は Fandom のオアシス外装をもとに設計されました。その設計を改良し、Fandom を利用しない利用者や Fandom から移行する利用者にとって効率的な MediaWiki 外装を提供します。テーマの設定やその他のサポートが必要な場合は、[https://discord.gg/GPVgFTaQTJ Cosmos Discord サーバー]に参加することもできます。",
 	"cosmos-adminlinks-edit-navigation": "ナビゲーションの編集",
 	"cosmos-anonymous": "匿名利用者",
 	"cosmos-counter-label": "{{PLURAL:$1|記事}}",
@@ -33,7 +33,7 @@
 	"cosmos-newfiles": "新しいファイル",
 	"cosmos-user-blocked": "ブロック済み",
 	"cosmos-search-loader": "検索候補を読み込んでいます",
-	"cosmos-themedesigner-text": "'''Cosmos''' スキンのテーマをカスタマイズします。",
+	"cosmos-themedesigner-text": "'''Cosmos''' 外装のテーマをカスタマイズします。",
 	"themedesigner": "テーマデザイナー",
 	"cosmos-themedesigner-help-3": "メインの背景色。",
 	"cosmos-themedesigner-help-4": "メインコンテンツ領域の背景色。",
@@ -43,5 +43,6 @@
 	"cosmos-themedesigner-help-8": "ツールバーの背景色",
 	"cosmos-themedesigner-help-9": "ワードマークへの完全な URL。",
 	"cosmos-themedesigner-help-11": "メインの背景画像。",
-	"cosmos-themedesigner-help-13": "メインの背景サイズ"
+	"cosmos-themedesigner-help-13": "メインの背景サイズ",
+	"cosmos.js": "/* ここにあるすべてのJavaScriptは、コスモス外装を使用している利用者に対して読み込まれます */"
 }
