@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aefgh39622"
+		]
+	},
+	"cosmos-adminlinks-edit-css": "แก้ไขไฟล์ CSS",
+	"cosmos-adminlinks-edit-js": "แก้ไขไฟล์ JS",
+	"cosmos-anonymous": "ไม่ระบุตัวตน",
+	"cosmos-counter-label": "{{PLURAL:$1|บทความ}}",
+	"cosmos-createpage-header": "สร้างบทความใหม่",
+	"cosmos-createpage-next": "ถัดไป",
+	"cosmos-personaltools-userpage": "หน้าผู้ใช้",
+	"cosmos-personaltools-usertalk": "คุยกับผู้ใช้",
+	"cosmos-action-addsection": "หัวข้อใหม่",
+	"cosmos-action-cancel": "ยกเลิก",
+	"cosmos-action-backtopage": "กลับไปที่ $1",
+	"cosmos-action-back": "ย้อนกลับ",
+	"cosmos-add-new-image": "เพิ่มภาพใหม่",
+	"cosmos-add-new-video": "เพิ่มวิดีโอใหม่",
+	"cosmos-add-new-page-title": "เพิ่มหน้าใหม่",
+	"cosmos-add-new-page-text": "เพิ่ม",
+	"cosmos-anon-add-new-page-text": "เพิ่มหน้าใหม่",
+	"cosmos-explore": "สำรวจ",
+	"cosmos-newfiles": "ไฟล์ใหม่",
+	"cosmos-user-blocked": "ถูกบล็อก"
+}
