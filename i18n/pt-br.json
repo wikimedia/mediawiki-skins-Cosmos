@@ -6,7 +6,7 @@
 			"Robertpontes"
 		]
 	},
-	"cosmos-desc": "Cosmos é um tema desenhado e baseado no tema Oasis do Fandom. Projetado para melhorar seu design e fornecer um tema no MediaWiki eficiente para usuários não-Fandom ou para usuários em transição fora do Fandom.",
+	"cosmos-desc": "O Cosmos é um tema desenhado e baseado no tema Oasis do Fandom. Foi projetado para melhorar o design do Oasis e fornecer um tema do MediaWiki eficiente, para usuários que não pertencem ao Fandom ou que estão de saída do Fandom. Se quiser, pode juntar-se ao [https://discord.gg/GPVgFTaQTJ servidor Discord do Cosmos] se precisar de suporte sobre temas ou sobre outro assunto.",
 	"cosmos-adminlinks-edit-css": "Editar arquivo CSS",
 	"cosmos-adminlinks-edit-js": "Editar arquivo JS",
 	"cosmos-adminlinks-edit-navigation": "Editar navegação",
@@ -34,7 +34,10 @@
 	"cosmos-newfiles": "Novos arquivos",
 	"cosmos-user-blocked": "Bloqueado",
 	"cosmos-search-loader": "Carregando sugestões de pesquisa",
+	"cosmos-article-header-categories-in": "em:",
+	"cosmos-article-header-categories-more": "e mais $1",
 	"cosmos-themedesigner-success": "Configuração atualizada com sucesso para Cosmos.",
+	"cosmos-themedesigner-text": "Personalizar o tema '''Cosmos'''.",
 	"themedesigner": "Designer de tema",
 	"right-themedesigner": "Usar o designer de tema de Cosmos",
 	"action-themedesigner": "usar o designer de tema de Cosmos",
@@ -52,5 +55,7 @@
 	"cosmos-themedesigner-help-12": "Nível de opacidade da área de conteúdo (porcentagem)",
 	"cosmos-themedesigner-help-13": "Tamanho do fundo principal",
 	"cosmos-themedesigner-help-14": "Repetir imagem de fundo?",
-	"cosmos-themedesigner-help-15": "URL completo para marca."
+	"cosmos-themedesigner-help-15": "URL completo para marca.",
+	"cosmos.css": "/* Todo o CSS aqui será carregado para os usuários da skin Cosmos */",
+	"cosmos.js": "/* Todo o JavaScript aqui será carregado para os usuários da skin Cosmos */"
 }
