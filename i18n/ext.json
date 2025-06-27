@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"HackerPunki"
+		]
+	},
+	"cosmos-adminlinks-edit-css": "Adital archivu CSS",
+	"cosmos-adminlinks-edit-js": "Adital archivu JS",
+	"cosmos-anonymous": "Alónimu",
+	"cosmos-counter-label": "{{PLURAL:$1|Artícalu|Artícalus}}",
+	"cosmos-createpage-header": "Crial un nueu artícalu",
+	"cosmos-createpage-input-label": "Escrevi el títalu de página aquina:",
+	"cosmos-createpage-next": "Siguienti"
+}
