@@ -27,6 +27,8 @@
 	"cosmos-explore": "Entdecken",
 	"cosmos-newfiles": "Nei Fichieren",
 	"cosmos-user-blocked": "Gespaart",
+	"cosmos-search-loader": "Sichvirschléi gi gelueden",
+	"cosmos-searchsuggest-containing": "No Säite mat <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong> sichen",
 	"cosmos-article-header-categories-in": "an:",
 	"cosmos-article-header-categories-more": "an $1 méi",
 	"cosmos-themedesigner-help-3": "Haapthannergrondfaarf.",
