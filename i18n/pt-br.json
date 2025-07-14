@@ -8,6 +8,7 @@
 	},
 	"cosmos-desc": "O Cosmos é um tema desenhado e baseado no tema Oasis do Fandom. Foi projetado para melhorar o design do Oasis e fornecer um tema do MediaWiki eficiente, para usuários que não pertencem ao Fandom ou que estão de saída do Fandom. Se quiser, pode juntar-se ao [https://discord.gg/GPVgFTaQTJ servidor Discord do Cosmos] se precisar de suporte sobre temas ou sobre outro assunto.",
 	"cosmos-adminlinks-edit-navigation": "Editar navegação",
+	"cosmos-adminlinks-edit-tagline": "Editar slogan",
 	"cosmos-anonymous": "Anônimo",
 	"cosmos-counter-label": "{{PLURAL:$1|Artigo|Artigos}}",
 	"cosmos-createpage-header": "Criar uma novo artigo",
