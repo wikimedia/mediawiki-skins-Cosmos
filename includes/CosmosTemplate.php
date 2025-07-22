@@ -826,7 +826,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		// Build the article content
 		$html .= Html::rawElement( 'div',
-			[ 'class' => 'cosmos-articleContainer' ],
+			[ 'class' => 'cosmos-articleContainer', 'id' => 'bodyContent' ],
 			$this->buildArticle() . $this->cosmosRailBuilder->buildRail()
 		);
 
