@@ -19,6 +19,7 @@ use MediaWiki\User\Options\UserOptionsManager;
 use Sanitizer;
 use SiteStats;
 use SpecialPage;
+use Telepedia\UserProfileV2\Avatar\UserProfileV2Avatar;
 use TitleFactory;
 use wAvatar;
 
@@ -377,10 +378,16 @@ class CosmosTemplate extends BaseTemplate {
 			]
 		);
 
+		$userId = $skin->getUser()->getId();
+
+		$userProfileV2Loaded = ExtensionRegistry::getInstance()->isLoaded( 'UserProfileV2' );
+
 		if ( class_exists( wAvatar::class ) && $this->config->get( 'CosmosUseSocialProfileAvatar' ) ) {
-			$avatar = new wAvatar( $skin->getUser()
-				->getId(), 'm' );
+			$avatar = new wAvatar( $userId, 'm' );
 			$avatarElement = $avatar->getAvatarURL();
+		} elseif ( $userProfileV2Loaded && $this->config->get( 'CosmosUseUPv2Avatar' ) ) {
+                        // @phan-suppress-next-line PhanUndeclaredClassMethod Optional Extension
+                        $avatarElement = ( new UserProfileV2Avatar( $userId ) )->getAvatarUrl( [ 'raw' => false ] );
 		} else {
 			$avatarElement = Icon::getIcon( 'avatar' )->makeSvg( 28, 28 );
 		}

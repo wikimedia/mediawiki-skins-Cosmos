@@ -520,6 +520,10 @@
 		"CosmosUseSocialProfileAvatar": {
 			"value": true,
 			"description": "Use SocialProfile avatar as avatar next to username in top banner"
+		},
+		"CosmosUseUPv2Avatar": {
+			"value": true,
+			"description": "Use UserProfileV2 avatar as avatar next to username in top banner"
 		}
 	},
 	"HookHandlers": {
