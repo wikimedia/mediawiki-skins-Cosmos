@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ktchankt"
+			"Ktchankt",
+			"Yueman"
 		]
 	},
-	"cosmos-personaltools-userpage": "用戶頁"
+	"cosmos-personaltools-userpage": "用戶頁",
+	"cosmos-action-cancel": "取消"
 }
