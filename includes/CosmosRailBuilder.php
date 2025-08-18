@@ -329,7 +329,7 @@ class CosmosRailBuilder {
 				] )
 				->where( [
 					'rc_namespace' => $this->options->get( 'ContentNamespaces' ),
-					'rc_type' => RecentChange::parseToRCType( [ 'new', 'edit' ] ),
+					'rc_source' => [ RecentChange::SRC_NEW, RecentChange::SRC_EDIT ],
 					'rc_bot' => 0,
 					'rc_deleted' => 0,
 				] )
