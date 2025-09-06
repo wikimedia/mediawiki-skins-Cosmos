@@ -29,6 +29,9 @@
 				:value="searchPageTitle"
 			>
 		</template>
+		<template #search-results-pending>
+			{{ $i18n( 'cosmos-search-loader' ).text() }}
+		</template>
 		<!-- eslint-disable-next-line vue/no-template-shadow -->
 		<template #search-footer-text="{ searchQuery }">
 			<span v-i18n-html:cosmos-searchsuggest-containing="[ searchQuery ]"></span>
@@ -37,7 +40,7 @@
 </template>
 
 <script>
-const { CdxTypeaheadSearch } = require( '@wikimedia/codex-search' ),
+const { CdxTypeaheadSearch } = mw.loader.require( 'skins.cosmos.search.codex.scripts' ),
 	{ defineComponent, nextTick } = require( 'vue' ),
 	restClient = require( './restSearchClient.js' )( mw.config ),
 	actionClient = require( './actionSearchClient.js' )( mw.config ),
