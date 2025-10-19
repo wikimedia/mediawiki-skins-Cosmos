@@ -1311,7 +1311,7 @@ class CosmosTemplate extends BaseTemplate {
 					$edit = $tab;
 					$edit['imgType'] = 'svg';
 					$edit['imgSrc'] = 'edit';
-					if ( stripos( $tab['class'], 'selected' ) !== false ) {
+					if ( stripos( $tab['class'] ?? '', 'selected' ) !== false ) {
 						$isEditing = true;
 					}
 					break;
@@ -1320,7 +1320,7 @@ class CosmosTemplate extends BaseTemplate {
 					$edit['imgType'] = 'svg';
 					$edit['imgSrc'] = 'view';
 
-					if ( stripos( $tab['class'], 'selected' ) !== false ) {
+					if ( stripos( $tab['class'] ?? '', 'selected' ) !== false ) {
 						$isViewSource = true;
 					}
 					break;
