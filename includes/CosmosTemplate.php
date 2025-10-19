@@ -386,8 +386,8 @@ class CosmosTemplate extends BaseTemplate {
 			$avatar = new wAvatar( $userId, 'm' );
 			$avatarElement = $avatar->getAvatarURL();
 		} elseif ( $userProfileV2Loaded && $this->config->get( 'CosmosUseUPv2Avatar' ) ) {
-                        // @phan-suppress-next-line PhanUndeclaredClassMethod Optional Extension
-                        $avatarElement = ( new UserProfileV2Avatar( $userId ) )->getAvatarUrl( [ 'raw' => false ] );
+			// @phan-suppress-next-line PhanUndeclaredClassMethod Optional Extension
+			$avatarElement = ( new UserProfileV2Avatar( $userId ) )->getAvatarUrl( [ 'raw' => false ] );
 		} else {
 			$avatarElement = Icon::getIcon( 'avatar' )->makeSvg( 28, 28 );
 		}
