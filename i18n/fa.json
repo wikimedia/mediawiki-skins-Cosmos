@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jeeputer"
+			"Jeeputer",
+			"LordProfo"
 		]
 	},
+	"cosmos-personaltools-userpage": "صفحهٔ کاربر",
 	"cosmos-article-header-categories-in": "در:",
 	"cosmos-article-header-categories-more": "و $1 مورد بیشتر"
 }
