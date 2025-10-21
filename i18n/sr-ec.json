@@ -8,6 +8,9 @@
 	"cosmos-adminlinks-edit-css": "Уреди CSS датотеку",
 	"cosmos-adminlinks-edit-js": "Уреди JS датотеку",
 	"cosmos-anonymous": "Анонимно",
+	"cosmos-createpage-header": "Нови чланак",
+	"cosmos-createpage-input-label": "Наслов странице:",
+	"cosmos-createpage-next": "Следеће",
 	"cosmos-personaltools-userpage": "Корисничка страница",
 	"cosmos-personaltools-usertalk": "Корисничка страница за разговор",
 	"cosmos-personaltools-anontalk": "Моја страница за разговор",
@@ -21,5 +24,6 @@
 	"cosmos-add-new-page-text": "Додај",
 	"cosmos-anon-add-new-page-text": "Додај нову страницу",
 	"cosmos-explore": "Истражи",
-	"cosmos-newfiles": "Нове датотеке"
+	"cosmos-newfiles": "Нове датотеке",
+	"cosmos-user-blocked": "Блокиран"
 }
