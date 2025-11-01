@@ -65,7 +65,7 @@
 		"includes/ServiceWiring.php"
 	],
 	"ConfigRegistry": {
-		"Cosmos": "GlobalVarConfig::newInstance"
+		"Cosmos": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
 	},
 	"GroupPermissions": {
 		"sysop": {
