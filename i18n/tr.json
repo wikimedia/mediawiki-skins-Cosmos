@@ -7,7 +7,7 @@
 			"SaldırganSincap"
 		]
 	},
-	"cosmos-desc": "Cosmos, Fandom'un Oasis görünümünden yola çıkılarak tasarlanmış bir görünümdür. Tasarımlarını geliştirmek ve Fandom dışındaki kullanıcılar veya Fandom'dan geçiş yapan kullanıcılar için verimli bir MediaWiki görünümü sağlamak için tasarlanmıştır.",
+	"cosmos-desc": "Cosmos, Fandom'un Oasis görünümünden yola çıkılarak tasarlanmış bir görünümdür. Tasarımlarını geliştirmek ve Fandom dışındaki kullanıcılar veya Fandom'dan geçiş yapan kullanıcılar için verimli bir MediaWiki görünümü sağlamak için tasarlanmıştır. Dilerseniz tema veya başka bir konuda yardıma ihtiyacınız olursa [https://discord.gg/GPVgFTaQTJ Cosmos Discord sunucusuna] katılabilirsiniz.",
 	"cosmos-anonymous": "Anonim",
 	"cosmos-counter-label": "{{PLURAL:$1|Madde|Maddeler}}",
 	"cosmos-createpage-header": "Yeni bir madde oluştur",
