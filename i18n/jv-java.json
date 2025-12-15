@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bennylin"
+		]
+	},
+	"cosmos-adminlinks-edit-navigation": "ꦧꦼꦱꦸꦠ꧀ꦤꦥ꦳ꦶꦒꦱꦶ",
+	"cosmos-anonymous": "ꦲꦤꦺꦴꦤꦶꦩꦸꦱ꧀",
+	"cosmos-counter-label": "{{PLURAL:$1|ꦄꦂꦠꦶꦏꦼꦭ꧀}}",
+	"cosmos-createpage-header": "ꦒꦮꦺ​ꦄꦂꦠꦶꦏꦼꦭ꧀ꦲꦚꦂ",
+	"cosmos-createpage-input-label": "ꦠꦸꦭꦶꦱ꧀ꦱꦼꦱꦶꦫꦃ​ꦏꦕ​ꦱꦩ꧀ꦥꦺꦪꦤ꧀:",
+	"cosmos-createpage-next": "ꦱꦧꦚ꧀ꦗꦸꦂꦫꦺ",
+	"cosmos-personaltools-userpage": "ꦏꦕ​ꦤꦫꦒꦸꦤ",
+	"cosmos-personaltools-usertalk": "ꦉꦩ꧀ꦧꦸꦒ꧀ꦒꦤ꧀ꦤꦫꦒꦸꦤ",
+	"cosmos-personaltools-anontalk": "ꦉꦩ꧀ꦧꦸꦒ꧀ꦒꦤ꧀ꦏꦸ",
+	"cosmos-editcount-label": "ꦧꦼꦱꦸꦠ꧀ꦠꦤ꧀ꦮꦶꦮꦶꦠ꧀ꦒꦧꦸꦁ​ꦏꦫꦺꦴ​ꦮꦶꦏꦶ​ꦲꦶꦏꦶ",
+	"cosmos-action-addsection": "ꦠꦺꦴꦥꦶꦏ꧀ꦲꦚꦂ",
+	"cosmos-action-cancel": "ꦮꦸꦫꦸꦁ",
+	"cosmos-action-backtopage": "ꦧꦭꦶ​ꦩꦼꦚꦁ​$1",
+	"cosmos-action-back": "ꦧꦭꦶ",
+	"cosmos-add-new-image": "ꦠꦩ꧀ꦧꦃ​ꦧꦼꦂꦏꦱ꧀ꦲꦚꦂ",
+	"cosmos-add-new-video": "ꦠꦩ꧀ꦧꦃ​ꦥ꦳ꦶꦢꦺꦪꦺꦴ​ꦲꦚꦂ",
+	"cosmos-add-new-page-title": "ꦠꦩ꧀ꦧꦃ​ꦏꦕ​ꦲꦚꦂ",
+	"cosmos-add-new-page-text": "ꦠꦩ꧀ꦧꦃ",
+	"cosmos-anon-add-new-page-text": "ꦠꦩ꧀ꦧꦃ​ꦏꦕ​ꦲꦚꦂ",
+	"cosmos-explore": "ꦗꦼꦭꦗꦃ",
+	"cosmos-newfiles": "ꦧꦼꦂꦏꦱ꧀ꦲꦚꦂ",
+	"cosmos-user-blocked": "ꦢꦶꦥꦼꦁꦒꦏ꧀",
+	"cosmos-search-loader": "ꦒꦺꦴꦭꦺꦏ꧀ꦱꦫꦤ꧀ꦥꦤꦼꦭꦸꦱꦸꦂꦫꦤ꧀",
+	"cosmos-article-header-categories-in": "ꦲꦶꦁ:",
+	"cosmos-article-header-categories-more": "ꦭꦤ꧀​$1ꦩꦤꦺꦃ"
+}
