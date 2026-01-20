@@ -4,7 +4,8 @@
 			"Phunh",
 			"RiceCracker12",
 			"SongNgu.xyz",
-			"Yosari101"
+			"Yosari101",
+			"Nvdtn19"
 		]
 	},
 	"cosmos-desc": "Cosmos được thiết kế dựa trên skin Oasis của Fandom nhằm cải thiện thiết kế của họ và cung cấp một skin MediaWiki hiệu quả cho những người dùng không phải Fandom hoặc cho những người dùng chuyển ra khỏi Fandom.",
@@ -12,7 +13,7 @@
 	"cosmos-adminlinks-edit-js": "Sửa đổi JavaScript",
 	"cosmos-adminlinks-edit-navigation": "Sửa đổi thanh điều hướng",
 	"cosmos-adminlinks-edit-tagline": "Sửa đổi dòng mô tả",
-	"cosmos-anonymous": "Vô danh",
+	"cosmos-anonymous": "Chưa đăng nhập",
 	"cosmos-counter-label": "{{PLURAL:$1|Bài viết}}",
 	"cosmos-createpage-header": "Tạo bài mới",
 	"cosmos-createpage-input-label": "Viết tiêu đề trang của bạn ở đây:",
