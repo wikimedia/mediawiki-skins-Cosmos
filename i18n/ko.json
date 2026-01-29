@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ykhwong"
+			"Ykhwong",
+			"Tensama0415"
 		]
 	},
 	"cosmos-adminlinks-edit-css": "CSS 파일 편집",
@@ -14,7 +15,7 @@
 	"cosmos-createpage-input-label": "여기에 문서 제목을 쓰세요:",
 	"cosmos-createpage-next": "다음",
 	"cosmos-personaltools-userpage": "사용자 문서",
-	"cosmos-personaltools-usertalk": "사용자토론",
+	"cosmos-personaltools-usertalk": "사용자 토론",
 	"cosmos-personaltools-anontalk": "내 토론",
 	"cosmos-editcount-label": "이 위키에 가입한 이후 편집",
 	"cosmos-action-addsection": "새 주제",
