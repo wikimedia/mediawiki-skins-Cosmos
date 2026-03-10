@@ -191,7 +191,7 @@ class CosmosTemplate extends BaseTemplate {
 				$this->config->get( 'CosmosEnableWantedPages' ) ?
 					$this->getMsg( 'cosmos-createpage-wanted-pages' )->text() :
 					$this->getMsg( 'cosmos-createpage-no-wanted-pages',
-						SpecialPage::getTitleFor( 'Wantedpages' )
+						SpecialPage::getTitleFor( 'Wantedpages' )->getPrefixedText()
 					)->text()
 			)->parse()
 		);
