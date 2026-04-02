@@ -63,6 +63,18 @@ class CosmosTemplate extends BaseTemplate {
 		$skin = $this->getSkin();
 		'@phan-var SkinCosmos $skin';
 
+		$cNav = $this->get( 'content_navigation' );
+		$personalTools = array_merge(
+			$cNav['user-interface-preferences'],
+			$cNav['user-page'],
+			$cNav['notifications'],
+			$cNav['user-menu']
+		);
+		$this->set(
+			'personal_urls_cosmos',
+			$personalTools
+		);
+
 		$this->config = $skin->config;
 		$this->contentLanguage = $skin->contentLanguage;
 		$this->cosmosRailBuilder = $skin->cosmosRailBuilder;
@@ -414,7 +426,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html .= Html::openElement( 'div', [ 'class' => 'body cosmos-personalTools-list cosmos-dropdown-list' ] );
 		$html .= Html::openElement( 'ul' );
 
-		$personalTools = $this->get( 'personal_urls' );
+		$personalTools = $this->get( 'personal_urls_cosmos' );
 
 		unset(
 			$personalTools[ 'notifications-notice' ],
@@ -475,7 +487,7 @@ class CosmosTemplate extends BaseTemplate {
 		$html = '';
 
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
-			$personalTools = $skin->getPersonalToolsForMakeListItem( $this->get( 'personal_urls' ) );
+			$personalTools = $skin->getPersonalToolsForMakeListItem( $this->get( 'personal_urls_cosmos' ) );
 
 			$notificationIcons = [];
 			$notificationIcons['notifications-alert'] = $personalTools['notifications-alert'];

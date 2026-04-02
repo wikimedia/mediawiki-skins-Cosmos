@@ -11,7 +11,7 @@
 	"license-name": "GPL-3.0-or-later",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.43.0"
+		"MediaWiki": ">= 1.46.0"
 	},
 	"ValidSkinNames": {
 		"cosmos": {
@@ -38,6 +38,16 @@
 				"template": "MediaWiki\\Skins\\Cosmos\\CosmosTemplate",
 				"bodyClasses": [
 					"skin-cosmos-search-vue"
+				],
+				"menus": [
+					"associated-pages",
+					"views",
+					"actions",
+					"variants",
+					"user-page",
+					"user-interface-preferences",
+					"notifications",
+					"user-menu"
 				],
 				"styles": [
 					"skins.cosmos.styles"
