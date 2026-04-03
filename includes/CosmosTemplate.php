@@ -1088,6 +1088,20 @@ class CosmosTemplate extends BaseTemplate {
 	}
 
 	/**
+	 * Checks whether the given navigation item has a particular class.
+	 */
+	private function hasClass( array $item, string $class ): bool {
+		$classes = $item['class'] ?? '';
+		if ( is_array( $classes ) ) {
+			return in_array( $class, $classes, true );
+		}
+		if ( is_string( $classes ) ) {
+			return stripos( $classes, $class ) !== false;
+		}
+		return false;
+	}
+
+	/**
 	 * @return string
 	 */
 	protected function buildArticleInterlang() {
@@ -1114,7 +1128,7 @@ class CosmosTemplate extends BaseTemplate {
 				// label.
 				$variantLabel = $this->getMsg( 'variants' )->text();
 				foreach ( $this->data['content_navigation']['variants'] ?? [] as $item ) {
-					if ( stripos( $item['class'] ?? '', 'selected' ) !== false ) {
+					if ( $this->hasClass( $item, 'selected' ) ) {
 						$variantLabel = $item['text'];
 						break;
 					}
@@ -1311,7 +1325,7 @@ class CosmosTemplate extends BaseTemplate {
 					$edit = $tab;
 					$edit['imgType'] = 'svg';
 					$edit['imgSrc'] = 'edit';
-					if ( stripos( $tab['class'] ?? '', 'selected' ) !== false ) {
+					if ( $this->hasClass( $tab, 'selected' ) ) {
 						$isEditing = true;
 					}
 					break;
@@ -1320,7 +1334,7 @@ class CosmosTemplate extends BaseTemplate {
 					$edit['imgType'] = 'svg';
 					$edit['imgSrc'] = 'view';
 
-					if ( stripos( $tab['class'] ?? '', 'selected' ) !== false ) {
+					if ( $this->hasClass( $tab, 'selected' ) ) {
 						$isViewSource = true;
 					}
 					break;
@@ -1347,7 +1361,7 @@ class CosmosTemplate extends BaseTemplate {
 					if ( substr( $key, 0, 6 ) === 'nstab-' ) {
 						$view = $tab;
 					} elseif ( substr( $key, 0, 8 ) !== 'varlang-' ) {
-						if ( stripos( $tab['class'] ?? '', 'selected' ) === false ) {
+						if ( !$this->hasClass( $tab, 'selected' ) ) {
 							$dropdown[$key] = $tab;
 						} else {
 							if ( $key === 'history' ) {
