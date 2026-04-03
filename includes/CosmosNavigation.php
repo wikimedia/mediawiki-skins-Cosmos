@@ -317,7 +317,7 @@ class CosmosNavigation implements ExpirationAwareness {
 		$internal = false;
 
 		if ( count( $lineTmp ) == 2 && $lineTmp[1] != '' ) {
-			$link = trim( $this->messageLocalizer->msg( $lineTmp[0] )->inContentLanguage()->text() );
+			$link = trim( $this->messageLocalizer->msg( trim( $lineTmp[0] ) )->inContentLanguage()->text() );
 			$line = trim( $lineTmp[1] );
 		} else {
 			$link = trim( $lineTmp[0] );
@@ -330,7 +330,7 @@ class CosmosNavigation implements ExpirationAwareness {
 			$text = $line;
 		}
 
-		if ( !$this->messageLocalizer->msg( $lineTmp[0] )->exists() ) {
+		if ( !$this->messageLocalizer->msg( trim( $lineTmp[0] ) )->exists() ) {
 			$link = $lineTmp[0];
 		}
 
