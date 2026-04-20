@@ -103,7 +103,7 @@ class SkinCosmos extends SkinTemplate {
 		}
 
 		// Load PortableInfobox styles
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'Portable Infobox' ) ) {
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'PortableInfobox' ) ) {
 			$modules['styles']['skin'][] = 'skins.cosmos.portableinfobox';
 
 			// Load PortableInfobox EuropaTheme style if the configuration is enabled
