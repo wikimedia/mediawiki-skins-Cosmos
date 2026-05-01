@@ -6,7 +6,6 @@ use ALItem;
 use ALRow;
 use ALSection;
 use ALTree;
-use Content;
 use MediaWiki\EditPage\EditPage;
 use MediaWiki\Hook\AlternateEditPreviewHook;
 use MediaWiki\Hook\BeforeInitializeHook;
@@ -35,11 +34,7 @@ class Hooks implements
 {
 
 	/**
-	 * @param EditPage $editPage
-	 * @param Content &$content
-	 * @param string &$previewHTML
-	 * @param ParserOutput &$parserOutput
-	 * @return bool
+	 * @inheritDoc
 	 */
 	public function onAlternateEditPreview(
 		$editPage,
