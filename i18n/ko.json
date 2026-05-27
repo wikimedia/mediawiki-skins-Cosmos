@@ -5,6 +5,7 @@
 			"Tensama0415"
 		]
 	},
+	"skinname-cosmos": "코스모스",
 	"cosmos-desc": "코스모스는 팬덤의 오아시스 스킨을 기반으로 디자인된 스킨입니다. 팬덤의 디자인을 개선하고, 팬덤을 사용하지 않거나 팬덤에서 다른 미디어위키로 전환하는 사용자들을 위해 효율적인 미디어위키 스킨을 제공하고자 제작되었습니다. 테마 설정이나 기타 도움이 필요하시면 [https://discord.gg/GPVgFTaQTJ 코스모스 디스코드 서버]에 참여하세요.",
 	"cosmos-adminlinks-edit-css": "CSS 파일 편집",
 	"cosmos-adminlinks-edit-js": "JS 파일 편집",
@@ -57,5 +58,7 @@
 	"cosmos-themedesigner-help-12": "콘텐츠 영역 불투명도 수준 (백분율)",
 	"cosmos-themedesigner-help-13": "주 배경 크기",
 	"cosmos-themedesigner-help-14": "배경 이미지를 반복 처리하시겠습니까?",
-	"cosmos-themedesigner-help-15": "배경 이미지를 고정하시겠습니까?"
+	"cosmos-themedesigner-help-15": "배경 이미지를 고정하시겠습니까?",
+	"cosmos.css": "/* 이 CSS 설정은 코스모스 스킨을 사용하는 사용자에게 적용됩니다 */",
+	"cosmos.js": "/* 이 자바스크립트 설정은 코스모스 스킨을 사용하는 사용자에게 적용됩니다 */"
 }
