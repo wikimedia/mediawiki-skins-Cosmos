@@ -5,12 +5,16 @@
 			"Anthelior",
 			"Joseph",
 			"MuratTheTurkish",
-			"SaldırganSincap"
+			"SaldırganSincap",
+			"HakanIST"
 		]
 	},
+	"skinname-cosmos": "Cosmos",
 	"cosmos-desc": "Cosmos, Fandom'un Oasis görünümünden yola çıkılarak tasarlanmış bir görünümdür. Tasarımlarını geliştirmek ve Fandom dışındaki kullanıcılar veya Fandom'dan geçiş yapan kullanıcılar için verimli bir MediaWiki görünümü sağlamak için tasarlanmıştır. Dilerseniz tema veya başka bir konuda yardıma ihtiyacınız olursa [https://discord.gg/GPVgFTaQTJ Cosmos Discord sunucusuna] katılabilirsiniz.",
 	"cosmos-adminlinks-edit-css": "CSS dosyasını düzenle",
 	"cosmos-adminlinks-edit-js": "JS dosyasını düzenle",
+	"cosmos-adminlinks-edit-navigation": "Gezintiyi düzenle",
+	"cosmos-adminlinks-edit-tagline": "Alt başlığı düzenle",
 	"cosmos-anonymous": "Anonim",
 	"cosmos-counter-label": "{{PLURAL:$1|Madde|Maddeler}}",
 	"cosmos-createpage-header": "Yeni bir madde oluştur",
@@ -36,7 +40,12 @@
 	"cosmos-newfiles": "Yeni dosyalar",
 	"cosmos-user-blocked": "Engellendi",
 	"cosmos-search-loader": "Arama önerileri yükleniyor",
+	"cosmos-searchsuggest-containing": "<strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong> içeren sayfaları ara",
+	"cosmos-article-header-categories-in": "şurada:",
+	"cosmos-article-header-categories-more-separator": ",&#32;",
+	"cosmos-article-header-categories-more": "ve $1 daha",
 	"cosmos-themedesigner-success": "Cosmos için yapılandırma başarıyla güncellendi.",
+	"cosmos-themedesigner-text": "'''Cosmos''' görünümü için temayı özelleştirin.",
 	"themedesigner": "Tema Tasarımcısı",
 	"right-themedesigner": "Cosmos ThemeDesigner kullan",
 	"action-themedesigner": "Cosmos ThemeDesigner kullanmaya",
@@ -54,5 +63,7 @@
 	"cosmos-themedesigner-help-12": "İçerik alanı opaklık seviyesi (yüzde)",
 	"cosmos-themedesigner-help-13": "Ana arka plan boyutu",
 	"cosmos-themedesigner-help-14": "Arka plan resmi tekrarlansın mı?",
-	"cosmos-themedesigner-help-15": "Arka plan resmi düzeltildi mi?"
+	"cosmos-themedesigner-help-15": "Arka plan resmi düzeltildi mi?",
+	"cosmos.css": "/* All CSS here will be loaded for users of the Cosmos skin */",
+	"cosmos.js": "/* All JavaScript here will be loaded for users of the Cosmos skin */"
 }
