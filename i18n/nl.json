@@ -3,7 +3,8 @@
 		"authors": [
 			"Mainframe98",
 			"McDutchie",
-			"Romaine"
+			"Romaine",
+			"Siebrand"
 		]
 	},
 	"cosmos-desc": "Cosmos is een skin ontworpen en gebaseerd op Fandom's Oasis skin. Ontworpen om hun ontwerp te verbeteren en een efficiënte MediaWiki-skin te bieden voor niet-Fandom-gebruikers, of voor gebruikers die overstappen uit Fandom. U bent welkom op de [https://discord.gg/GPVgFTaQTJ Cosmos Discord-server] als u hulp nodig hebt bij thema's of iets anders.",
@@ -52,7 +53,7 @@
 	"cosmos-themedesigner-help-6": "Kleur van de koppelingen.",
 	"cosmos-themedesigner-help-7": "Achtergrondkleur van de voettekst.",
 	"cosmos-themedesigner-help-8": "Achtergrondkleur van de werkbalk.",
-	"cosmos-themedesigner-help-9": "Volledige URL naar het woordmerk.",
+	"cosmos-themedesigner-help-9": "Volledige url naar het woordmerk.",
 	"cosmos-themedesigner-help-10": "Achtergrondafbeelding voor de kopregel voor wiki-navigatie.",
 	"cosmos-themedesigner-help-11": "Hoofdachtergrondafbeelding.",
 	"cosmos-themedesigner-help-12": "Ondoorzichtigheidsniveau inhoudsgebied (percentage)",
