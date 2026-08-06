@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bachounda"
+		]
+	},
+	"cosmos-desc": "Cosmos هو تصميم (سكين) مصمم ومبني على تصميم Oasis تاع Fandom. مصمم باش يطور من تصميمهم، ويوفر تصميم ميدياويكي فعال للمستخدمين اللي برا Fandom، ولا للمستخدمين اللي ينتقلو خارج Fandom. إذا حبيت، تقدر تنضم لـ [https://discord.gg/GPVgFTaQTJ سيرڤير Cosmos في Discord] إذا كنت محتاج مساعدة في التثيم ولا حاجة أخرى.",
+	"cosmos-adminlinks-edit-css": "عدّل ملف CSS",
+	"cosmos-adminlinks-edit-js": "عدل ملف JS",
+	"cosmos-adminlinks-edit-navigation": "عدّل التصفح",
+	"cosmos-adminlinks-edit-tagline": "تحرير سطر الوصف",
+	"cosmos-anonymous": "مجهول",
+	"cosmos-counter-label": "{{PLURAL:$1| مقالة | مقالات}}",
+	"cosmos-createpage-header": "اصنع مقالة جديدة",
+	"cosmos-createpage-input-label": "اكتب عنوان صفحتك هنا:",
+	"cosmos-createpage-next": "التالي",
+	"cosmos-createpage-text": "دوك عندنا '''$1''' {{PLURAL:$1|مقالة|مقالة}} في $2. اكتب اسم المقالة ديالك فوق $3",
+	"cosmos-createpage-wanted-pages": "ولا انقر على واحد من العناوين تحت وابدا الكتابة!",
+	"cosmos-personaltools-userpage": "صفحات المستعملين",
+	"cosmos-personaltools-usertalk": "نقاش المستخدم",
+	"cosmos-personaltools-anontalk": "نقاشي",
+	"cosmos-editcount-label": "التعديلات من وقت الانضمامم للويكي",
+	"cosmos-action-addsection": "موضوع جديد",
+	"cosmos-action-cancel": "بطّل",
+	"cosmos-action-backtopage": "رجوع ل$1",
+	"cosmos-action-back": "رجوع",
+	"cosmos-add-new-image": "زيد تصويرة جديدة",
+	"cosmos-add-new-video": "زيد فيديو جديد",
+	"cosmos-add-new-page-title": "زيد صفحة جديدة",
+	"cosmos-add-new-page-text": "زيد",
+	"cosmos-anon-add-new-page-text": "زيد صفحه جديدة",
+	"cosmos-explore": "استكشف",
+	"cosmos-newfiles": "ملفات جدد",
+	"cosmos-user-blocked": "ممنوع",
+	"cosmos-search-loader": "طلع اقتراحات البحث",
+	"cosmos-searchsuggest-containing": "ابحث على الصفحات اللي تحوي <strong class=\"cdx-typeahead-search__search-footer__query\">$1</strong>",
+	"cosmos-article-header-categories-in": "في:",
+	"cosmos-article-header-categories-more": "و $1 آخر",
+	"themedesigner": "مصمم المظهر"
+}
