@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bartomelow",
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
 			"Robertpontes"
 		]
 	},
-	"cosmos-desc": "O Cosmos é um tema desenhado e baseado no tema Oasis do Fandom. Foi projetado para melhorar o design do Oasis e fornecer um tema do MediaWiki eficiente, para usuários que não pertencem ao Fandom ou que estão de saída do Fandom. Se quiser, pode juntar-se ao [https://discord.gg/GPVgFTaQTJ servidor Discord do Cosmos] se precisar de suporte sobre temas ou sobre outro assunto.",
+	"cosmos-desc": "O Cosmos é um tema criado com base no tema Oasis do Fandom. Ele foi desenvolvido para aprimorar o design original e oferecer um tema eficiente do MediaWiki para usuários que não fazem parte do Fandom ou para aqueles que estão deixando a plataforma. Se desejar, você pode entrar no [https://discord.gg/GPVgFTaQTJ servidor do Cosmos no Discord] caso precise de ajuda com a personalização do tema ou com qualquer outra questão.",
 	"cosmos-adminlinks-edit-css": "Editar arquivo CSS",
 	"cosmos-adminlinks-edit-js": "Editar arquivo JS",
 	"cosmos-adminlinks-edit-navigation": "Editar navegação",
@@ -27,9 +28,9 @@
 	"cosmos-action-cancel": "Cancelar",
 	"cosmos-action-backtopage": "Voltar para $1",
 	"cosmos-action-back": "Voltar",
-	"cosmos-add-new-image": "Adicionar nova imagem",
-	"cosmos-add-new-video": "Adicionar novo vídeo",
-	"cosmos-add-new-page-title": "Adicionar nova página",
+	"cosmos-add-new-image": "Adicionar Nova Imagem",
+	"cosmos-add-new-video": "Adicionar Novo Vídeo",
+	"cosmos-add-new-page-title": "Adicionar Nova Página",
 	"cosmos-add-new-page-text": "Adicionar",
 	"cosmos-anon-add-new-page-text": "Adicionar uma nova página",
 	"cosmos-explore": "Explorar",
@@ -40,7 +41,7 @@
 	"cosmos-article-header-categories-in": "em:",
 	"cosmos-article-header-categories-more": "e mais $1",
 	"cosmos-themedesigner-success": "Configuração atualizada com sucesso para Cosmos.",
-	"cosmos-themedesigner-text": "Personalizar o tema '''Cosmos'''.",
+	"cosmos-themedesigner-text": "Personalize o tema do visual ‘’'Cosmos'‘’.",
 	"themedesigner": "Designer de tema",
 	"right-themedesigner": "Usar o designer de tema de Cosmos",
 	"action-themedesigner": "usar o designer de tema de Cosmos",
@@ -48,7 +49,7 @@
 	"cosmos-themedesigner-help-2": "Cor de fundo do cabeçalho de navegação da wiki.",
 	"cosmos-themedesigner-help-3": "Cor de fundo principal.",
 	"cosmos-themedesigner-help-4": "Cor de fundo da área de conteúdo principal.",
-	"cosmos-themedesigner-help-5": "Cor de fundo para botões.",
+	"cosmos-themedesigner-help-5": "Cor de fundo dos botões.",
 	"cosmos-themedesigner-help-6": "Cor dos links.",
 	"cosmos-themedesigner-help-7": "Cor de fundo do rodapé.",
 	"cosmos-themedesigner-help-8": "Cor de fundo da barra de ferramentas",
@@ -58,7 +59,7 @@
 	"cosmos-themedesigner-help-12": "Nível de opacidade da área de conteúdo (porcentagem)",
 	"cosmos-themedesigner-help-13": "Tamanho do fundo principal",
 	"cosmos-themedesigner-help-14": "Repetir imagem de fundo?",
-	"cosmos-themedesigner-help-15": "URL completo para marca.",
+	"cosmos-themedesigner-help-15": "Imagem de fundo fixado?",
 	"cosmos.css": "/* Todo o CSS aqui será carregado para os usuários da skin Cosmos */",
 	"cosmos.js": "/* Todo o JavaScript aqui será carregado para os usuários da skin Cosmos */"
 }
