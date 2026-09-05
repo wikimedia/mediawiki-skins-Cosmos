@@ -281,7 +281,7 @@ class CosmosRailBuilder {
 
 			// Create a link to the user who edited it
 			$performer = $recentChange['performer'];
-			if ( !$performer->isRegistered() ) {
+			if ( !$performer->isNamed() ) {
 				$linkTarget = new TitleValue(
 					NS_SPECIAL,
 					$this->specialPageFactory->getLocalNameFor( 'Contributions', $performer->getName() )
