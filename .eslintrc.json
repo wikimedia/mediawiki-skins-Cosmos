@@ -10,7 +10,8 @@
 		"no-implicit-globals": 0,
 		"compat/compat": 0,
 		"prefer-const": "warn",
-		"no-var": "warn"
+		"no-var": "warn",
+		"no-redeclare": "warn"
 	},
 	"parserOptions": {
 		"ecmaVersion": 2022
