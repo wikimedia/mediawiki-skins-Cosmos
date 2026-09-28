@@ -25,7 +25,7 @@ class SpecialThemeDesigner extends FormSpecialPage {
 	 * @param CosmosConfig $config
 	 */
 	public function __construct( CosmosConfig $config ) {
-		parent::__construct( 'ThemeDesigner', 'themedesigner' );
+		parent::__construct( 'ThemeDesigner' );
 
 		$this->cache = ObjectCache::getLocalClusterInstance();
 		$this->cacheDir = $this->getConfig()->get( 'CacheDirectory' ) ?: __DIR__ . '/../../../../cache';
@@ -38,6 +38,13 @@ class SpecialThemeDesigner extends FormSpecialPage {
 				'cosmos_themedesigner'
 			)
 		);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getRestriction(): string {
+		return 'themedesigner';
 	}
 
 	/**
