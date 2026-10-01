@@ -59,13 +59,7 @@ class CosmosResourceLoaderModule extends SkinModule {
 		$wikiHeaderBackground = $services->getService( 'CosmosBackgroundLookup' )->getWikiHeaderBackgroundUrl();
 
 		$contentBackgroundColor = $this->cosmosConfig->getContentBackgroundColor();
-
-		if ( strpos( $contentBackgroundColor, 'rgb' ) !== false ) {
-			$rgbArr = explode( ',', $contentBackgroundColor, 3 );
-			$colorName = sprintf( '#%02x%02x%02x', $rgbArr[0], $rgbArr[1], $rgbArr[2] );
-		} else {
-			$colorName = LessUtil::colorNameToHex( $contentBackgroundColor );
-		}
+		$contentRgb = $this->resolveColor( $contentBackgroundColor );
 
 		$lessVars['banner-background-color'] = $this->cosmosConfig->getBannerBackgroundColor();
 
@@ -104,48 +98,23 @@ class CosmosResourceLoaderModule extends SkinModule {
 			$lessVars['main-background-image-position'] = 'absolute';
 		}
 
-		// convert @content-background-color to rgba for background-color opacity
-		[ $r, $g, $b ] = array_map( static function ( $c ) {
-			return hexdec( str_pad( $c, 2, $c ) );
-		},
-
-		str_split( ltrim( $colorName, '#' ), strlen( $colorName ) > 4 ? 2 : 1 ) );
+		// Convert content background to rgba for opacity.
+		[ $r, $g, $b ] = $contentRgb;
 
 		$contentOpacityLevelConfig = $this->cosmosConfig->getContentOpacityLevel();
 		$lessVars['content-opacity-level'] = "rgba($r, $g, $b, " . $contentOpacityLevelConfig / 100.00 . ')';
 
 		$footerBackgroundColor = $this->cosmosConfig->getFooterBackgroundColor();
-		if ( strpos( $footerBackgroundColor, 'rgb' ) !== false ) {
-			$rgbArr = explode( ',', $footerBackgroundColor, 3 );
-			$colorName = sprintf( '#%02x%02x%02x', $rgbArr[0], $rgbArr[1], $rgbArr[2] );
-		} else {
-			$colorName = LessUtil::colorNameToHex( $footerBackgroundColor );
-		}
-
-		[ $r, $g, $b ] = array_map( static function ( $c ) {
-			return hexdec( str_pad( $c, 2, $c ) );
-		},
-
-		str_split( ltrim( $colorName, '#' ), strlen( $colorName ) > 4 ? 2 : 1 ) );
-		$lessVars['footer-background-color'] = "rgba($r, $g, $b, 0.9)";
+		[ $r, $g, $b, $footerAlpha ] = $this->resolveColor( $footerBackgroundColor );
+		$lessVars['footer-background-color'] = "rgba($r, $g, $b, " . ( $footerAlpha > 0 ? '0.9' : '0' ) . ')';
 
 		$isFooterBackgroundColorDark = LessUtil::isThemeDark( 'footer-background-color' );
 		$lessVars['footer-font-color1'] = $isFooterBackgroundColorDark ? '#999' : '#666';
 		$lessVars['footer-font-color2'] = $isFooterBackgroundColorDark ? '#fff' : '#000';
 
 		$headerBackgroundColor = $this->cosmosConfig->getWikiHeaderBackgroundColor();
-		if ( strpos( $headerBackgroundColor, 'rgb' ) !== false ) {
-			$rgbArr = explode( ',', $headerBackgroundColor, 3 );
-			$colorName = sprintf( '#%02x%02x%02x', $rgbArr[0], $rgbArr[1], $rgbArr[2] );
-		} else {
-			$colorName = LessUtil::colorNameToHex( $headerBackgroundColor );
-		}
-
-		[ $r, $g, $b ] = array_map( static function ( $c ) {
-			return hexdec( str_pad( $c, 2, $c ) );
-		},
-
-		str_split( ltrim( $colorName, '#' ), strlen( $colorName ) > 4 ? 2 : 1 ) );
+		[ $r, $g, $b, $headerAlpha ] = $this->resolveColor( $headerBackgroundColor );
+		$colorName = $headerAlpha > 0 ? sprintf( '#%02x%02x%02x', $r, $g, $b ) : 'transparent';
 
 		$rightGradient = "linear-gradient(to right,rgba($r,$g,$b,0.5),rgba($r,$g,$b,0.5))";
 		$leftGradient = "linear-gradient(to left,rgba($r,$g,$b,0) 200px,$colorName 430px)";
@@ -165,6 +134,17 @@ class CosmosResourceLoaderModule extends SkinModule {
 			$this->getThemedBannerBackgroundColorSettings(),
 			$this->getThemedButtonBackgroundColorSettings()
 		);
+	}
+
+	/**
+	 * Reads a configured color as channels. Values that cannot be
+	 * parsed, like none, are treated as transparent.
+	 *
+	 * @param string|null $color
+	 * @return array{0: int, 1: int, 2: int, 3: float} Red, green, blue and alpha
+	 */
+	private function resolveColor( ?string $color ): array {
+		return array_values( LessUtil::parseColor( (string)$color ) ?? [ 'r' => 0, 'g' => 0, 'b' => 0, 'a' => 0.0 ] );
 	}
 
 	/**

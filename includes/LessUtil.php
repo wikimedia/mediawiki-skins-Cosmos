@@ -71,7 +71,6 @@ class LessUtil {
 	 */
 	public static function sanitizeColor( $color ) {
 		$color = trim( strtolower( $color ) );
-
 		return $color;
 	}
 
@@ -89,7 +88,8 @@ class LessUtil {
 
 		$backgroundColor = $cosmosSettings[$background];
 
-		if ( strtolower( $backgroundColor ) === 'transparent' ) {
+		$parsed = self::parseColor( (string)$backgroundColor );
+		if ( $parsed === null || (float)$parsed['a'] === 0.0 ) {
 			return true;
 		}
 
@@ -97,7 +97,6 @@ class LessUtil {
 		[ $hue, $saturation, $lightness ] = self::rgb2hsl( $backgroundColor );
 
 		$isDark = ( $lightness < 0.5 );
-
 		return $isDark;
 	}
 
@@ -108,23 +107,8 @@ class LessUtil {
 	 * @return array HSL set
 	 */
 	private static function rgb2hsl( $rgbhex ) {
-		if ( $rgbhex[0] != '#' ) {
-			$rgbhex = self::colorNameToHex( $rgbhex );
-		}
-
-		// We need to convert hex shorthand format
-		if ( strlen( $rgbhex ) == 4 ) {
-			$rgbhex[6] = $rgbhex[3];
-			$rgbhex[5] = $rgbhex[3];
-			$rgbhex[4] = $rgbhex[2];
-			$rgbhex[3] = $rgbhex[2];
-			$rgbhex[2] = $rgbhex[1];
-		}
-
-		// convert HEX color to rgb values
-		// #474646 -> 71, 70, 70
-		$rgb = str_split( substr( $rgbhex, 1 ), 2 );
-		$rgb = array_map( 'hexdec', $rgb );
+		$parsed = self::parseColor( (string)$rgbhex ) ?? [ 'r' => 0, 'g' => 0, 'b' => 0 ];
+		$rgb = [ $parsed['r'], $parsed['g'], $parsed['b'] ];
 
 		$clrR = ( !empty( $rgb[0] ) ? ( $rgb[0] / 255 ) : 0 );
 		$clrG = ( !empty( $rgb[1] ) ? ( $rgb[1] / 255 ) : 0 );
@@ -172,7 +156,7 @@ class LessUtil {
 		return [
 			$H,
 			$S,
-			$L
+			$L,
 		];
 	}
 
@@ -193,7 +177,7 @@ class LessUtil {
 			'beige' => '#f5f5dc',
 			'bisque' => '#ffe4c4',
 			'black' => '#000000',
-			'blanchedalmond ' => '#ffebcd',
+			'blanchedalmond' => '#ffebcd',
 			'blue' => '#0000ff',
 			'blueviolet' => '#8a2be2',
 			'brown' => '#a52a2a',
@@ -331,14 +315,83 @@ class LessUtil {
 			'white' => '#ffffff',
 			'whitesmoke' => '#f5f5f5',
 			'yellow' => '#ffff00',
-			'yellowgreen' => '#9acd32'
+			'yellowgreen' => '#9acd32',
 		];
 
-		if ( isset( $colors[$colorName] ) ) {
-			return $colors[$colorName];
-		} else {
-			return $colorName;
+		$key = strtolower( trim( (string)$colorName ) );
+		return $colors[$key] ?? $colorName;
+	}
+
+	/**
+	 * Parses a CSS color into channels. Supports hex, rgb(), rgba(),
+	 * color names and transparent. Returns null for anything else.
+	 *
+	 * @param string $color
+	 * @return array|null r, g, b as 0 to 255 and a as 0 to 1
+	 */
+	public static function parseColor( string $color ): ?array {
+		$color = strtolower( trim( $color ) );
+		if ( $color === 'transparent' ) {
+			return [ 'r' => 0, 'g' => 0, 'b' => 0, 'a' => 0.0 ];
 		}
+
+		if ( preg_match( '/^[a-z]+$/', $color ) ) {
+			$color = self::colorNameToHex( $color );
+		}
+
+		if ( $color !== '' && $color[0] === '#' ) {
+			$hex = substr( $color, 1 );
+			if ( !ctype_xdigit( $hex ) || !in_array( strlen( $hex ), [ 3, 4, 6, 8 ], true ) ) {
+				return null;
+			}
+
+			if ( strlen( $hex ) <= 4 ) {
+				$hex = preg_replace( '/./', '$0$0', $hex );
+			}
+
+			$alpha = strlen( $hex ) === 8 ? hexdec( substr( $hex, 6, 2 ) ) / 255 : 1.0;
+
+			return [
+				'r' => hexdec( substr( $hex, 0, 2 ) ),
+				'g' => hexdec( substr( $hex, 2, 2 ) ),
+				'b' => hexdec( substr( $hex, 4, 2 ) ),
+				'a' => $alpha,
+			];
+		}
+
+		if ( !preg_match( '/^rgba?\(([^)]*)\)$/', $color, $matches ) ) {
+			return null;
+		}
+
+		$parts = preg_split( '/[\s,\/]+/', trim( $matches[1] ), -1, PREG_SPLIT_NO_EMPTY );
+		if ( count( $parts ) < 3 || count( $parts ) > 4 ) {
+			return null;
+		}
+
+		$channels = [];
+		foreach ( array_slice( $parts, 0, 3 ) as $part ) {
+			$isPercent = str_ends_with( $part, '%' );
+			$number = $isPercent ? substr( $part, 0, -1 ) : $part;
+			if ( !is_numeric( $number ) ) {
+				return null;
+			}
+
+			$value = $isPercent ? (float)$number * 2.55 : (float)$number;
+			$channels[] = (int)round( max( 0, min( 255, $value ) ) );
+		}
+
+		$alpha = 1.0;
+		if ( isset( $parts[3] ) ) {
+			$isPercent = str_ends_with( $parts[3], '%' );
+			$number = $isPercent ? substr( $parts[3], 0, -1 ) : $parts[3];
+			if ( !is_numeric( $number ) ) {
+				return null;
+			}
+
+			$alpha = max( 0.0, min( 1.0, $isPercent ? (float)$number / 100 : (float)$number ) );
+		}
+
+		return [ 'r' => $channels[0], 'g' => $channels[1], 'b' => $channels[2], 'a' => $alpha ];
 	}
 
 	/**
