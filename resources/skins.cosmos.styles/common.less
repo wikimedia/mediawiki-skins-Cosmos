@@ -2061,14 +2061,27 @@ body {
 }
 
 #cosmos-footerIcons-list {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
 	margin: 0 0 -15px 0;
 	direction: rtl;
 	list-style: none;
 }
 
 .cosmos-footerIcons-listItem {
-	display: inline-block;
+	display: flex;
+	align-items: center;
 	margin: 0 0 15px 15px;
+
+	a {
+		display: flex;
+		align-items: center;
+	}
+
+	img {
+		display: block;
+	}
 }
 
 #cosmos-footer {
