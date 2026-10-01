@@ -1303,6 +1303,27 @@ class CosmosTemplate extends BaseTemplate {
 		return $html;
 	}
 
+	private function getContentActions(): array {
+		$cNav = $this->get( 'content_navigation' ) ?? [];
+		$actions = [];
+
+		foreach ( [ 'associated-pages', 'views', 'actions' ] as $menu ) {
+			foreach ( $cNav[$menu] ?? [] as $key => $item ) {
+				if ( !empty( $item['redundant'] ) ) {
+					continue;
+				}
+
+				if ( isset( $item['id'] ) && str_starts_with( $item['id'], 'ca-' ) ) {
+					$key = substr( $item['id'], 3 );
+				}
+
+				$actions[$key] ??= $item;
+			}
+		}
+
+		return $actions;
+	}
+
 	/**
 	 * @return string
 	 */
@@ -1328,7 +1349,7 @@ class CosmosTemplate extends BaseTemplate {
 
 		// Sort through the flat content actions array provided by the API, and
 		// extract, discard and modify what is necessary
-		foreach ( $this->data['content_actions'] as $key => $tab ) {
+		foreach ( $this->getContentActions() as $key => $tab ) {
 			switch ( $key ) {
 				// If the action is edit or view source, assign the tab array to the
 				// edit variable, and specify the path to the image to use as the
