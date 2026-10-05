@@ -490,8 +490,11 @@ class CosmosTemplate extends BaseTemplate {
 			$personalTools = $skin->getPersonalToolsForMakeListItem( $this->get( 'personal_urls_cosmos' ) );
 
 			$notificationIcons = [];
-			$notificationIcons['notifications-alert'] = $personalTools['notifications-alert'];
-			$notificationIcons['notifications-notice'] = $personalTools['notifications-notice'];
+			foreach ( [ 'notifications-alert', 'notifications-notice' ] as $key ) {
+				if ( isset( $personalTools[$key] ) ) {
+					$notificationIcons[$key] = $personalTools[$key];
+				}
+			}
 
 			$iconList = '';
 
