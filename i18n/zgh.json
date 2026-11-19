@@ -1,8 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hakim1bal"
+			"Hakim1bal",
+			"Daoudsfouli"
 		]
 	},
-	"cosmos-add-new-page-text": "ⵔⵏⵓ"
+	"cosmos-personaltools-userpage": "ⵜⴰⵙⵏⴰ ⵏ ⵓⵏⵙⵙⵎⵔⴰⵙ",
+	"cosmos-add-new-image": "ⵔⵏⵓ ⵜⴰⵡⵍⴰⴼⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ",
+	"cosmos-add-new-video": "ⵔⵏⵓ ⴰⴼⵉⴷⵢⵓ ⴰⵎⴰⵢⵏⵓ",
+	"cosmos-add-new-page-title": "ⵔⵏⵓ ⵜⴰⵡⵍⴰⴼⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ",
+	"cosmos-add-new-page-text": "ⵔⵏⵓ",
+	"cosmos-anon-add-new-page-text": "ⵔⵏⵓ ⵜⴰⵡⵍⴰⴼⵜ ⵜⴰⵎⴰⵢⵏⵓⵜ"
 }
